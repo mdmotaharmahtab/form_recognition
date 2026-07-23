@@ -1,0 +1,99 @@
+{
+  "name": "ecs-platform-agent",
+  "endpoints": [
+    {
+      "envSelection": {
+        "envMode": "EXPLICIT_ENV",
+        "envName": "CRF_ICF_UseCase"
+      },
+      "hasCustomResponse": false,
+      "testQueries": [
+        {
+          "name": "Query #1",
+          "q": {
+            "form_name": "Physical Examination",
+            "fields": [
+              {
+                "validation_id": "",
+                "ecs_id": "1234",
+                "form_id": "",
+                "form_name": "Inclusion/Exclusion Criteria Summary",
+                "form_field_value": "Initial Informed Consent Date (auto-populated):",
+                "validation_logic": "",
+                "reasoning": "",
+                "indication": "",
+                "molecule": "",
+                "field_oids": [
+                  "IC_DSSTDAT",
+                  "IEYN"
+                ],
+                "action": "",
+                "source": "LLM Generated",
+                "action_details": "",
+                "path": ""
+              },
+              {
+                "validation_id": "",
+                "ecs_id": "5678",
+                "form_id": "",
+                "form_name": "Inclusion/Exclusion Criteria Summary",
+                "form_field_value": "Did the participant meet all eligibility criteria?",
+                "validation_logic": "",
+                "reasoning": "",
+                "indication": "",
+                "molecule": "",
+                "field_oids": [
+                  "IC_DSSTDAT",
+                  "IEYN"
+                ],
+                "action": "",
+                "source": "LLM Generated",
+                "action_details": "",
+                "path": ""
+              }
+            ],
+            "user_id": "sp.otsuka.com",
+            "file_id": "123"
+          }
+        }
+      ],
+      "inputFolderRefs": [],
+      "userFunctionName": "generate_ecs_llm",
+      "code": "#necessary imports \nfrom datetime import datetime\nimport traceback\nimport dataikuapi\nimport io\nimport json\nimport time\nimport base64\nimport uuid\n# import from GLOBAL SHARED CODE\nfrom utils import connection \n# imports from library \nfrom utilities.variables import RD_PROJECT_NAME\nfrom utilities.variables import SECRET_NAME , TOKEN_KEY\nfrom utilities.logging_config import logging\nfrom utilities.llm import make_llm_call_batch, create_default_validation, parse_llm_batch_output\nimport boto3\nimport traceback\nimport json \n\n\n\n\n\ndef generate_ecs_llm(form_name, fields,file_id,user_id):\n    \"\"\"\n    This function is responsible for generating the ECS by llm based on form_nam eand field_name\n    \"\"\"\n    try:\n        st \u003d time.time()\n        DATAIKU_HOST , API_SECRET_KEY  \u003d connection.get_dataiku_host_and_api_key(RD_PROJECT_NAME,SECRET_NAME,TOKEN_KEY)\n        \n        client \u003d dataikuapi.DSSClient(DATAIKU_HOST, API_SECRET_KEY)\n        project \u003d client.get_project(RD_PROJECT_NAME)\n        proj_vars \u003d project.get_variables()[\"local\"]\n        llm_token_usage_log \u003d proj_vars.get(\"llm_token_usage\")\n        generation_agent_id \u003d proj_vars.get(\u0027ecs_generation_agent_id\u0027)\n        snowflake_conn \u003d proj_vars.get(\"snowflake_connection_string\")\n        #output \u003d make_llm_call(form_name,field_name,client,project)\n        llm_get \u003d project.get_llm(f\"agent:{generation_agent_id}\")\n        generation_agent \u003d llm_get.new_completion()\n        payload \u003d {\n            \"form_name\":form_name,\n            \"field_name\":fields,\n\n        }\n        generation_agent.with_context({\n            \"payload\":payload      \n\n        })\n        generation_result \u003d generation_agent.execute()\n        response \u003d  json.loads(generation_result.text)\n        output_list \u003d response[\u0027response\u0027]\n        et \u003d time.time()\n        total_time \u003d et-st\n        query \u003d f\"\"\"INSERT INTO {llm_token_usage_log}\n                (request_id, report_type, workflow,  input_token, output_token,  crf_file_id,execution_time,created_at)\n                VALUES (\n                    \u0027{user_id}\u0027, \u0027ECS\u0027, \u0027ECS Generation Agent\u0027, \n                    {response[\u0027input_token\u0027]}, {response[\u0027output_token\u0027]}, \u0027{file_id}\u0027, {total_time},current_timestamp\n                )\n        \"\"\"\n        client.sql_query(query \u003d query , connection \u003d snowflake_conn,post_queries\u003d[\"COMMIT\"])\n        \n        return {\"response\":output_list}\n        \n    \n    except Exception as e:\n        \n        t \u003d traceback.format_exc()\n        return {\"error message\":f\"error caused ue to {t}\"}",
+      "id": "ecs-generation",
+      "type": "PY_FUNCTION",
+      "openAPI": {
+        "title": "ecs-generation",
+        "content": "{\n  \"paths\" : {\n    \"/ecs-generation/run\" : {\n      \"post\" : {\n        \"summary\" : \"ecs-generation endpoint\",\n        \"description\" : \"Prediction type: PY_FUNCTION\",\n        \"parameters\" : [ {\n          \"in\" : \"body\",\n          \"name\" : \"serviceInputPayload\",\n          \"description\" : \"The input payload for executing the real-time machine learning service.\",\n          \"required\" : true,\n          \"schema\" : {\n            \"$ref\" : \"#/definitions/ecs-generation_EndpointInput\"\n          }\n        } ],\n        \"responses\" : {\n          \"200\" : {\n            \"description\" : \"The service processed the input correctly and provided a result prediction, if applicable.\",\n            \"schema\" : {\n              \"$ref\" : \"#/definitions/ecs-generation_EndpointOutput\"\n            }\n          },\n          \"default\" : {\n            \"description\" : \"The service failed to execute due to an error.\",\n            \"schema\" : {\n              \"$ref\" : \"#/definitions/ecs-generation_ErrorResponse\"\n            }\n          }\n        }\n      }\n    }\n  },\n  \"definitions\" : {\n    \"ecs-generation_EndpointInput\" : {\n      \"type\" : \"object\",\n      \"properties\" : {\n        \"features\" : {\n          \"type\" : \"object\",\n          \"properties\" : {\n            \"stringPropExample\" : {\n              \"type\" : \"string\"\n            },\n            \"intPropExample\" : {\n              \"type\" : \"integer\",\n              \"format\" : \"int32\"\n            },\n            \"doublePropExample\" : {\n              \"type\" : \"number\",\n              \"format\" : \"double\"\n            },\n            \"boolPropExample\" : {\n              \"type\" : \"boolean\"\n            },\n            \"floatPropExample\" : {\n              \"type\" : \"number\",\n              \"format\" : \"float\"\n            }\n          }\n        }\n      }\n    },\n    \"ecs-generation_EndpointOutput\" : {\n      \"type\" : \"object\",\n      \"properties\" : {\n        \"result\" : {\n          \"type\" : \"object\",\n          \"properties\" : {\n            \"OutputPropExample\" : {\n              \"type\" : \"string\"\n            }\n          }\n        }\n      }\n    },\n    \"ecs-generation_ErrorResponse\" : {\n      \"type\" : \"object\",\n      \"properties\" : {\n        \"status_code\" : {\n          \"type\" : \"integer\",\n          \"format\" : \"int32\"\n        },\n        \"message\" : {\n          \"type\" : \"string\"\n        }\n      }\n    }\n  }\n}",
+        "enabled": false,
+        "isManual": true
+      }
+    }
+  ],
+  "authMethod": "PUBLIC",
+  "authRealm": {
+    "queryKeys": []
+  },
+  "oauth2Config": {
+    "keysFormat": "JWKS_URI",
+    "jwkUriConnectTimeout": 500,
+    "jwkUriReadTimeout": 500,
+    "jwkUriSizeLimit": 51200,
+    "disableSSLCertificatesCheck": false,
+    "scopeClaimFormat": "STRING",
+    "scopeClaimKey": "scope"
+  },
+  "deploymentMonitoring": [],
+  "creationTag": {
+    "versionNumber": 0,
+    "lastModifiedBy": {
+      "login": "Sarthak.Pal-CW@otsuka-us.com"
+    },
+    "lastModifiedOn": 1758620926772
+  },
+  "tags": [],
+  "customFields": {},
+  "checklists": {
+    "checklists": []
+  }
+}

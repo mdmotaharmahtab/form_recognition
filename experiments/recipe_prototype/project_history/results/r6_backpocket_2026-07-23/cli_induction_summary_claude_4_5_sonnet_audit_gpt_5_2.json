@@ -1,0 +1,21 @@
+[
+ {
+  "doc": "326-201-00007_Annotated_CRF___v1.0_30_Sep_2024_1_",
+  "versions": 5,
+  "stop_reason": "budget",
+  "status": "ok_audit_issues",
+  "best_version": 5,
+  "fields": 3348,
+  "forms": 9,
+  "pages_with_fields": 489,
+  "audit_issues": 52,
+  "warnings": [
+   "These field_name values were extracted on >=70% of ALL pages: 'Answer(s):'. Text recurring on nearly every page is usually page template furniture (watermark/footer/stamp), not a field - verify against the page dumps and stop extracting it unless it is genuinely a per-page data-entry field."
+  ],
+  "elapsed_s": 1653.711,
+  "stage0_s": 2.14,
+  "llm_s": 1633.01,
+  "llm_calls": 10,
+  "version_budget": 5
+ }
+]

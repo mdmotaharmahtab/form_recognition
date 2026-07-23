@@ -1,0 +1,45 @@
+x=  47.8 y=  66.1 sz=14.4 #004c99   | C-SSRS since last visit - Page 1
+x= 494.9 y= 115.3 sz= 9.2 #454545   | Yes
+x= 527.0 y= 115.3 sz= 9.2 #454545   | No
+x=  47.8 y= 116.5 sz= 7.8 black     | Was the questionnaire administered?
+x=  47.8 y= 138.1 sz= 7.8 #ff0000   | [QSYN18]
+x=  47.8 y= 150.5 sz= 7.8 #ff0000   | [TYPE: enumeration (values: Yes, No)]
+x=  47.8 y= 177.3 sz= 7.8 black     | Date of completion
+x=  47.8 y= 200.2 sz= 7.8 #ff0000   | [QSDAT18]
+x=  47.8 y= 212.6 sz= 7.8 #ff0000   | [TYPE: date]
+x=  47.8 y= 239.4 sz= 7.8 black     | Rater's initials
+x=  47.8 y= 262.3 sz= 7.8 #ff0000   | [QSINIT18]
+x=  47.8 y= 274.7 sz= 7.8 #ff0000   | [TYPE: text]
+x=  47.8 y= 287.1 sz= 7.8 #ff0000   | [VISIBILITY: site only]
+x=  47.8 y= 321.8 sz= 7.8 black   B | Version Number 14-Jan-2009
+x=  47.8 y= 368.2 sz= 7.8 black     | Ask questions 1 and 2. If both are negative, proceed to "Suicidal Behavior" Section. If the answer to question 2 is "yes", ask questions 3, 4 and
+x=  47.8 y= 378.6 sz= 7.8 black     | 5. If the answer to question 1 and/or 2 is "yes", complete "Intensity of Ideation" section below.
+x=  45.2 y= 444.8 sz= 9.2 black     | Suicidal Ideation
+x= 353.1 y= 444.8 sz= 9.2 black     | Since Last Visit
+x=  45.8 y= 465.6 sz= 7.8 black   B | Row 1
+x=  45.8 y= 485.2 sz= 7.8 black   B | 1. Wish to be dead
+x=  45.8 y= 504.2 sz= 7.8 black     | Subject endorses thoughts about a wish to be dead or not alive anymore, or wish to
+x=  45.8 y= 515.3 sz= 7.8 black     | fall asleep and not wake up.
+x= 353.7 y= 523.8 sz= 7.8 #ff0000   | [CSS0201]
+x= 505.4 y= 525.2 sz= 9.2 black     | Yes
+x=  45.8 y= 534.2 sz= 7.8 black   B | Have you wished you were dead or wished you could go to sleep and not wake
+x= 353.7 y= 538.2 sz= 7.8 #ff0000   | [TYPE: enumeration (values: Yes, No)]
+x= 505.4 y= 538.3 sz= 9.2 black     | No
+x=  45.8 y= 545.4 sz= 7.8 black   B | up?
+x=  45.8 y= 565.0 sz= 7.8 black   B | Row 2
+x=  45.8 y= 584.6 sz= 7.8 black     | If Yes, describe
+x= 353.7 y= 611.4 sz= 7.8 #ff0000   | [CSS0201A]
+x= 353.7 y= 625.8 sz= 7.8 #ff0000   | [TYPE: text]
+x=  45.8 y= 645.4 sz= 7.8 black   B | Row 3
+x=  45.8 y= 665.0 sz= 7.8 black   B | 2. Non-specific active suicidal thoughts
+x=  45.8 y= 684.0 sz= 7.8 black     | General non-specific thoughts of wanting to end one's life/commit suicide (e.g. "I've
+x=  45.8 y= 695.1 sz= 7.8 black     | thought about killing myself") without thoughts of way to kill oneself/associated
+x= 353.7 y= 703.6 sz= 7.8 #ff0000   | [CSS0202]
+x= 505.4 y= 705.0 sz= 9.2 black     | Yes
+x=  45.8 y= 706.2 sz= 7.8 black     | methods,intent or plan during the assessment period.
+x= 353.7 y= 717.9 sz= 7.8 #ff0000   | [TYPE: enumeration (values: Yes, No)]
+x= 505.4 y= 718.1 sz= 9.2 black     | No
+x=  45.8 y= 725.1 sz= 7.8 black   B | Have you actually had any thoughts of killing yourself?
+x=  45.8 y= 744.8 sz= 7.8 black   B | Row 4
+x=  45.8 y= 764.4 sz= 7.8 black     | If Yes, describe
+x= 353.7 y= 791.2 sz= 7.8 #ff0000   | [CSS0202A]

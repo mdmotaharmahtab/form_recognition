@@ -1,0 +1,77 @@
+{
+ "rave_vs_ground_truth": {
+  "gt_rows": 915,
+  "induced_rows": 814,
+  "gt_distinct_oids": 532,
+  "induced_distinct_oids": 532,
+  "oid_recall_pct": 93,
+  "oid_precision_pct": 93,
+  "form_oid_pair_recall_pct": 85,
+  "missed_oids_sample": [
+   "aeacnoth",
+   "aeacnoyn",
+   "aecontrt",
+   "aedis",
+   "aeendttm",
+   "aestdttm",
+   "bp_alert",
+   "cmdosfrq",
+   "cmdsfrmo",
+   "cmdsfrqo",
+   "cmroute",
+   "cmrouteo",
+   "deq_qstefeelstcdhighlike",
+   "ecdosadj",
+   "ecfast"
+  ],
+  "extra_oids_sample": [
+   "aedisaestdttmaeendttm",
+   "bp_alerthr_alert",
+   "cmdsfrmocmdosfrq",
+   "cmroutecmrouteo",
+   "css0203a_qsorres",
+   "css0204a_qsorres",
+   "css0205a_qsorres",
+   "css0213a_qsorres",
+   "css0216a_qsorres",
+   "css0218a_qsorres",
+   "css0219a_qsorres",
+   "css0402c_qsorres",
+   "css0403c_qsorres",
+   "css0404b_qsorres",
+   "css0404c_qsorres"
+  ]
+ },
+ "ecs_index_oid_coverage": [
+  {
+   "doc": "331-201-00246_Annotated_CRF___v_26_Jul_2023",
+   "fields": 1039,
+   "distinct_oids": 483,
+   "oids_in_ecs_index_pct": 36
+  },
+  {
+   "doc": "384-201-00002_Annotated_Unique_CRF_04Nov2024",
+   "fields": 814,
+   "distinct_oids": 532,
+   "oids_in_ecs_index_pct": 86
+  },
+  {
+   "doc": "384-201-00004_aCRF_16JAN2025",
+   "fields": 460,
+   "distinct_oids": 289,
+   "oids_in_ecs_index_pct": 32
+  },
+  {
+   "doc": "MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06",
+   "fields": 574,
+   "distinct_oids": 291,
+   "oids_in_ecs_index_pct": 45
+  },
+  {
+   "doc": "QSC302573_Final_AnnotatedCRFs_16Oct2024-326-201-0000",
+   "fields": 574,
+   "distinct_oids": 104,
+   "oids_in_ecs_index_pct": 41
+  }
+ ]
+}

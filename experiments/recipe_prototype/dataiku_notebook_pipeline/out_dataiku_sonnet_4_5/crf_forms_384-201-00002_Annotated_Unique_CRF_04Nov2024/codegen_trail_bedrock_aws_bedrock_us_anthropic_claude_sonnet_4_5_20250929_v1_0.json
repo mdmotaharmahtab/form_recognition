@@ -1,0 +1,141 @@
+{
+ "stop_reason": "plateau",
+ "versions": 2,
+ "best_version": 1,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "confirm",
+   "outcome": "confirmed_no_fields"
+  },
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 1599,
+    "pages_total": 404,
+    "pages_with_fields": 155,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 76,
+    "fields_per_form": 21.0,
+    "forms_per_100_pages": 18.8,
+    "pages_covered_pct": 38
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 21,
+   "audit_pages": [
+    1,
+    3,
+    4,
+    91,
+    183,
+    214
+   ],
+   "audit_partial": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [
+      "Log. Pursuant to Section 11.100 of Title 21 of the Code of Federal Regulations, this is to"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 3,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 4,
+     "missed": [],
+     "false": [
+      "Check all that apply"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 91,
+     "missed": [],
+     "false": [
+      "Holter Continuous Ecg"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 183,
+     "missed": [],
+     "false": [
+      "1=Slight diminution in the",
+      "2=Moderate resistance to",
+      "3=Marked resistance and",
+      "4=Complete absence of",
+      "completely with a good",
+      "thump as it hits the table",
+      "1=Slight slowing in fall,",
+      "mainly noted by lack of",
+      "slap as head meets the",
+      "2=Moderate slowing in the",
+      "fall quite noticeable to the",
+      "3=Head falls stiffly and",
+      "4=Head does not reach the",
+      "4=21 and more blinks",
+      "obvious to sight and touch",
+      "2=Tremor of hand or arm",
+      "occurring spasmodically",
+      "3=Persistent tremor of one"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 214,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "score": [
+    0,
+    21,
+    0,
+    -155
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "revise_audit",
+   "metrics": {
+    "error": "generated extractor crashed:\nTraceback (most recent call last):\n  File \"/data/dataiku/dss_data/jupyter-run/dku-workdirs/ECSGENERATION/CRF_codegen_induction95780c5a-dssuser_MdMotaha8f825895/crf_codegen_work/modules/sandbox_runner.py\", line 121, in main\n    raw = fn(pages)\n  File \"<generated_extractor>\", line 92, in extract\nAttributeError: 'Line' object has no attribute 'fontsize'\n"
+   },
+   "problems": [
+    "Program failed to run: generated extractor crashed:\nTraceback (most recent call last):\n  File \"/data/dataiku/dss_data/jupyter-run/dku-workdirs/ECSGENERATION/CRF_codegen_induction95780c5a-dssuser_MdMotaha8f825895/crf_codegen_work/modules/sandbox_runner.py\", line 121, in main\n    raw = fn(pages)\n  File \"<generated_extractor>\", line 92, in extract\nAttributeError: 'Line' object has no attribute 'fontsize'\n"
+   ],
+   "warnings": [],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_partial": null,
+   "audit_verdicts": null,
+   "score": [
+    1,
+    "not_audited",
+    0,
+    0
+   ],
+   "became_best": false
+  }
+ ]
+}

@@ -1,0 +1,135 @@
+{
+  "doc_key": "annotatedCRF_33120100246-_v1.0_-17Aug2021",
+  "annotator_notes": "Viedoc-style annotated eCRF, 596 pages, no PDF bookmarks (2021 predecessor of the 331-201-00246 books). Form titles print on a form's first page; continuations carry over. '[OID]'/'[TYPE:...]' markers precede human labels. Option values, Row N markers, read-only/visibility markers are NOT fields.",
+  "pages": [
+    {
+      "page": 39,
+      "form_name": "Triplicate ECG Assessments",
+      "form_source": "carryover",
+      "fields": [
+        "Overall ECG interpretation",
+        "Abnormal Findings",
+        "Was the ECG abnormality clinically significant?",
+        "Are additional ECG assessments required?"
+      ],
+      "acceptable_extras": [],
+      "notes": "EGORRESA/EGORRESS/EGCLSIG/EGADD; title on p38."
+    },
+    {
+      "page": 141,
+      "form_name": "C-SSRS - Since Last Visit",
+      "form_source": "carryover",
+      "fields": [
+        "Suicidal behavior was present during the assessment period?",
+        "Suicide:"
+      ],
+      "acceptable_extras": [
+        "Suicidal behavior:"
+      ],
+      "notes": "C-SSRS suicidal-behavior tail (CSS0220/CSS0221); 'Suicide:' has only its short label."
+    },
+    {
+      "page": 223,
+      "form_name": "Triplicate Orthostatic BP and HR - 6h Postdose",
+      "form_source": "printed",
+      "fields": [
+        "Were Vital Signs Collected?",
+        "If not collected, reason:",
+        "Collection Date",
+        "Planned Timepoint",
+        "Time Placed in Position"
+      ],
+      "acceptable_extras": [
+        "Supine"
+      ],
+      "notes": "Title printed at top. Supine section starts at the bottom with its first prompt."
+    },
+    {
+      "page": 243,
+      "form_name": "Laboratory results review",
+      "form_source": "carryover",
+      "fields": [
+        "Hematology clinically significant abnormal assay # 3",
+        "Hematology abnormal assay # 3 Investigator comment",
+        "Hematology clinically significant abnormal assay # 4",
+        "Hematology abnormal assay # 4 Investigator comment"
+      ],
+      "acceptable_extras": [],
+      "notes": "Hematology lab-review continuation; analyte lists are enumeration values."
+    },
+    {
+      "page": 264,
+      "form_name": "PK Blood Draw",
+      "form_source": "carryover",
+      "fields": [],
+      "acceptable_extras": [],
+      "notes": "PK sample grid continuation: only OID/TYPE dumps, Row 3-5 markers, option values and data rows (Sertraline PK / 2h Postdose / Scan). Column-header labels were on the previous page - zero new labelled fields (false-positive probe)."
+    },
+    {
+      "page": 301,
+      "form_name": "Laboratory results review",
+      "form_source": "carryover",
+      "fields": [
+        "Urinalysis clinically significant abnormal assay # 2",
+        "Urinalysis abnormal assay # 2 Investigator comment"
+      ],
+      "acceptable_extras": []
+    },
+    {
+      "page": 466,
+      "form_name": "Laboratory results review",
+      "form_source": "printed",
+      "fields": [
+        "Laboratory collection date",
+        "Laboratory results review date",
+        "Has the investigator reviewed all laboratory results from this visit and assessed abnormal results clinical significance?",
+        "Were there any clinically significant abnormal results?",
+        "Were there any clinically significant abnormal chemistry results?"
+      ],
+      "acceptable_extras": [],
+      "notes": "Title printed. 'Please check if the entry is correct...' and 'If Yes, please add to Adverse Events form' are instructions."
+    },
+    {
+      "page": 484,
+      "form_name": "C-SSRS - Since Last Visit",
+      "form_source": "carryover",
+      "fields": [
+        "Was the questionnaire administered?",
+        "Date of completion",
+        "Rater's initials",
+        "Have you wished you were dead or wished you could go to sleep and not wake up?",
+        "If Yes, describe",
+        "Have you actually had any thoughts of killing yourself?"
+      ],
+      "acceptable_extras": [
+        "1. Wish to be dead",
+        "2. Non-specific active suicidal thoughts",
+        "Suicidal Ideation"
+      ],
+      "notes": "Printed subtitle is 'C-SSRS since last visit - Page 1' (form banner proper on p483). Numbered item headers with definitions precede the interviewer questions; 'If Yes, describe' repeats and collapses."
+    },
+    {
+      "page": 566,
+      "form_name": "Laboratory Results Review - Unscheduled",
+      "form_source": "carryover",
+      "fields": [
+        "Chemistry clinically significant abnormal assay # 1:",
+        "Chemistry abnormal assay # 1 Investigator comment"
+      ],
+      "acceptable_extras": []
+    },
+    {
+      "page": 593,
+      "form_name": "Triplicate Orthostatic BP and HR - Unscheduled",
+      "form_source": "carryover",
+      "fields": [
+        "Time Placed in Position",
+        "Time of Vitals Measurement #3"
+      ],
+      "acceptable_extras": [
+        "Standing"
+      ],
+      "notes": "Standing-vitals tail (VSSTTIM/VSSTVTIM)."
+    }
+  ]
+}

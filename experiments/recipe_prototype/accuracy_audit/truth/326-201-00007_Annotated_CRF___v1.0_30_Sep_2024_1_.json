@@ -1,0 +1,153 @@
+{
+  "doc_key": "326-201-00007_Annotated_CRF___v1.0_30_Sep_2024_1_",
+  "annotator_notes": "Same QSC-vendor schedule format as the 112-page sibling, 489 pages. Form name = 'Schedule Category & Name' header value, study prefix 'QSC302573, ' optional. Truth field = activity question text. Named answer slots (measurements) recorded as acceptable_extras. Option lists, activity headers, date templates, SAS annotations are not fields.",
+  "pages": [
+    {
+      "page": 72,
+      "form_name": "QSC302573, 05a - Period 1 Draft v0.2",
+      "form_source": "printed",
+      "fields": [
+        "12 Lead Standard ECG",
+        "ECG Rhythm assessment and interpretation"
+      ],
+      "acceptable_extras": [
+        "Ventricular Rate",
+        "PR interval",
+        "QRS Duration",
+        "QT interval",
+        "QRS Axis",
+        "RR interval",
+        "QTcF"
+      ],
+      "notes": "Page top is the option continuation of a sleep-rating question from the previous page."
+    },
+    {
+      "page": 98,
+      "form_name": "QSC302573, 05a - Period 1 Draft v0.2",
+      "form_source": "printed",
+      "fields": [
+        "Record specific gravity of sample (Perform urinalysis and read results)"
+      ],
+      "acceptable_extras": [],
+      "notes": "Page top is an option continuation (7/8/9) of a prior urinalysis question."
+    },
+    {
+      "page": 101,
+      "form_name": "QSC302573, 05a - Period 1 Draft v0.2",
+      "form_source": "printed",
+      "fields": [
+        "12 Lead Standard ECG",
+        "ECG Rhythm assessment and interpretation",
+        "Was the ECG clinically significant? (Medic to assess)"
+      ],
+      "acceptable_extras": [
+        "Ventricular Rate",
+        "PR interval",
+        "QRS Duration",
+        "QT interval",
+        "QRS Axis",
+        "RR interval",
+        "QTcF"
+      ]
+    },
+    {
+      "page": 156,
+      "form_name": "QSC302573, 05b - Period 2 Draft v0.1",
+      "form_source": "printed",
+      "fields": [
+        "Confirm an AE and Conmed check has been performed (Record any AE and Conmeds if applicable)",
+        "Vital Signs",
+        "Clinical Assessment of Vital Signs (Medic or Nurse to assess vital signs)"
+      ],
+      "acceptable_extras": [
+        "Systolic",
+        "Diastolic",
+        "Heart Rate",
+        "Respiratory Rate",
+        "Oral Temperature - Degrees Celsius"
+      ],
+      "notes": "'Vital Signs' question carries the parenthetical '(Supine for at least 3 minutes)' on the next line; either wording accepted."
+    },
+    {
+      "page": 229,
+      "form_name": "QSC302573, 05c - Period 3 Parts 1 and 2 Draft v0.1",
+      "form_source": "printed",
+      "fields": [
+        "Vital Sign Findings",
+        "Vital Signs Standing BP and HR (Standing for at least 3 minutes)",
+        "Is there a drop in SYSTOLIC BP from supine to standing?",
+        "Is there a drop in DIASTOLIC BP from supine to standing?"
+      ],
+      "acceptable_extras": [
+        "Open Field",
+        "Systolic",
+        "Diastolic",
+        "Heart Rate"
+      ]
+    },
+    {
+      "page": 332,
+      "form_name": "QSC302573, 05d - Period 3 Part 3 Draft v0.1",
+      "form_source": "printed",
+      "fields": [
+        "What was the protein result?",
+        "What was the blood result? (Perform urinalysis and read results)"
+      ],
+      "acceptable_extras": [],
+      "notes": "Page top is the option continuation (glucose concentrations) of a prior question."
+    },
+    {
+      "page": 425,
+      "form_name": "QSC302573, 05e - Period 4 Part 3 Draft v0.1",
+      "form_source": "printed",
+      "fields": [
+        "What was the leukocyte result? (Perform urinalysis and read results)",
+        "Is participant female and menstruating? (If 'Yes', DO NOT send sample for Microscopy. If 'No', send sample for Microscopy)",
+        "Confirm sample sent for microscopy (Complete associated paperwork)"
+      ],
+      "acceptable_extras": []
+    },
+    {
+      "page": 431,
+      "form_name": "QSC302573, 05e - Period 4 Part 3 Draft v0.1",
+      "form_source": "printed",
+      "fields": [
+        "Vital Signs Difference for DIASTOLIC Drop",
+        "Clinical Assessment of Standing Vital Signs (Medic or Nurse to assess vital signs)",
+        "Vital Sign Findings",
+        "Has the participant fasted for 8 hours?"
+      ],
+      "acceptable_extras": [
+        "Diastolic Drop",
+        "Open Field"
+      ]
+    },
+    {
+      "page": 448,
+      "form_name": "QSC302573, 05e - Period 4 Part 3 Draft v0.1",
+      "form_source": "printed",
+      "fields": [
+        "Reflexes"
+      ],
+      "acceptable_extras": [],
+      "notes": "Page top is the option continuation of a neurological-exam item started on the previous page."
+    },
+    {
+      "page": 464,
+      "form_name": "QSC302573, 07 - Early Termination Draft v0.1",
+      "form_source": "printed",
+      "fields": [
+        "Vital Signs Standing BP and HR (Standing for at least 3 minutes)",
+        "Is there a drop in SYSTOLIC BP from supine to standing?",
+        "Is there a drop in DIASTOLIC BP from supine to standing?",
+        "Vital Signs Difference for SYSTOLIC Drop"
+      ],
+      "acceptable_extras": [
+        "Systolic",
+        "Diastolic",
+        "Heart Rate",
+        "Systolic Drop"
+      ]
+    }
+  ]
+}

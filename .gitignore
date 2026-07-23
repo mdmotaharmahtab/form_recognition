@@ -1,0 +1,51 @@
+# ---- caches / virtual envs ----
+__pycache__/
+*.py[cod]
+*.egg-info/
+.ipynb_checkpoints/
+.venv/
+venv/
+env/
+.env
+node_modules/
+.DS_Store
+
+# ---- archives & large binaries ----
+*.zip
+*.7z
+*.tar
+*.tar.gz
+*.tgz
+*.pdf
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+*.xlsx
+*.xls
+*.parquet
+*.pkl
+*.bin
+*.mp4
+
+# ---- large data & generated pipeline outputs ----
+data/
+**/data/outputs/
+**/data/crf_forms/
+**/reference_recipes/
+
+# ---- throwaway / probe scripts & logs ----
+tmp/
+tmp_*.py
+tmp_*.sh
+*.log
+
+# ---- nested repo / backups (kept outside git history) ----
+ECSGENERATION/project_config/
+ECSGENERATION/backup/
+
+# ---- keep the reconstructed project history in full, even though the ----
+# ---- patterns above would otherwise drop its snapshots ----
+!experiments/recipe_prototype/project_history/
+!experiments/recipe_prototype/project_history/**

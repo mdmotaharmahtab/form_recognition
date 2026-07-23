@@ -1,0 +1,134 @@
+{
+  "doc_key": "384-201-00004_aCRF_16JAN2025",
+  "annotator_notes": "ClinSpark/DrVince annotated CRF, 206 pages. Page header is generic ('384-201-00004 / Annotated CRF / N of 206 / drvince.clinspark.com') - it does NOT carry the form title. Form titles come from the PDF bookmark tree (Forms section) and are printed as a doubled banner only on a form's FIRST page; later pages of a multi-page form omit it (form_source=carryover). Each field = the human-readable prompt line immediately followed by a '[OID]' and '[SAS Field Name: X]' pair and an input widget (O options or [___] box). Interview/help sentences under a label, 'Help Text', 'Comment', item-group headers (Odm OID = IG.*), 'Code List', 'Format', 'Origin', 'Odm OID', 'Description', 'Mandatory?' metadata are NOT fields. Repeated identical labels on one page (e.g. 'If yes, describe:') collapse to one. The back matter (Units of Measure, Code Lists) are reference tables with zero data-entry fields.",
+  "pages": [
+    {
+      "page": 18,
+      "form_name": "C-SSRS - Baseline/Screening",
+      "form_source": "carryover",
+      "fields": [
+        "Most severe ideation. (Past 6 Months).",
+        "Description of most severe ideation. (Past 6 Months).",
+        "Frequency (Lifetime)",
+        "Frequency (Past 6 Months)",
+        "Duration (Lifetime)",
+        "Duration (Past 6 Months)",
+        "Controllability (Lifetime)",
+        "Controllability (Past 6 Months)",
+        "Deterrents (Lifetime)"
+      ],
+      "acceptable_extras": [
+        "How many times have you had these thoughts? (Lifetime).",
+        "How many times have you had these thoughts? (Past 6 Months).",
+        "When you have the thoughts how long do they last? (Lifetime).",
+        "When you have the thoughts how long do they last? (Past 6 Months).",
+        "Could/can you stop thinking about killing yourself or wanting to die if you want to? (Lifetime).",
+        "Could/can you stop thinking about killing yourself or wanting to die if you want to? (Past 6 Months).",
+        "Are there things-anyone or anything (e.g., family, religion, pain of death) - that stopped you from wanting to die or acting on thoughts of committing suicide? (Lifetime)."
+      ],
+      "notes": "Each short label is followed by the interviewer question; either the label or the question is an acceptable field name."
+    },
+    {
+      "page": 24,
+      "form_name": "C-SSRS - Since Last Visit",
+      "form_source": "carryover",
+      "fields": [
+        "If yes, describe:",
+        "Have you had these thoughts and had some intention of acting on them since last visit?",
+        "Have you started to work out or worked out the details of how to kill yourself since your last visit? Do you intend to carry out this plan?",
+        "Most Severe Ideation",
+        "Description of Ideation"
+      ],
+      "acceptable_extras": [
+        "4. Active Suicidal Ideation with Some Intent to Act, without Specific Plan",
+        "5. Active Suicidal Ideation with Specific Plan and Intent",
+        "INTENSITY OF IDEATION"
+      ],
+      "notes": "'If yes, describe:' occurs three times (CSS0203A/0204A/0205A) - collapses to one distinct label. The numbered ideation levels and INTENSITY OF IDEATION are item-group headers."
+    },
+    {
+      "page": 36,
+      "form_name": "Disposition",
+      "form_source": "carryover",
+      "fields": [
+        "Why was the volunteer not needed?",
+        "Other, Specify:",
+        "How was the volunteer non-compliant with the study drug?",
+        "How was the volunteer non-compliant with the study schedule?",
+        "Reason for physician decision",
+        "What withdrawal criteria was met?",
+        "Why was the volunteer discontinued at sponsor request?"
+      ],
+      "acceptable_extras": [],
+      "notes": "DSREAS10 label is cut off at the page bottom (only metadata visible) - not counted."
+    },
+    {
+      "page": 78,
+      "form_name": "Physical Examination - Screening",
+      "form_source": "carryover",
+      "fields": [
+        "Abnormal findings",
+        "Body system",
+        "Examination result",
+        "Clinical significance"
+      ],
+      "acceptable_extras": [
+        "Musculoskeletal/Extremities",
+        "Dermatologic/Mucosae"
+      ],
+      "notes": "The page repeats Body system/Examination result/Clinical significance/Abnormal findings for each body-system item group; distinct labels collapse. Item-group names (Musculoskeletal/Extremities...) are group headers."
+    },
+    {
+      "page": 85,
+      "form_name": "Principal Investigator Approval",
+      "form_source": "printed",
+      "fields": [
+        "I acknowledge that I have reviewed and approved all data for this volunteer."
+      ],
+      "acceptable_extras": [],
+      "notes": "Single-page form; title printed as doubled banner."
+    },
+    {
+      "page": 113,
+      "form_name": "Urine Collection - PK - Interval Stop (8-12)",
+      "form_source": "printed",
+      "fields": [
+        "Date and time of last collection."
+      ],
+      "acceptable_extras": [],
+      "notes": "Title printed on page ('Urine Collection - PK - Interval Stop (8-12)' then subtitle 'Interval PK Stop (8-12)'). 'Save and return form...' is help text."
+    },
+    {
+      "page": 137,
+      "form_name": "Units of Measure",
+      "form_source": "printed",
+      "fields": [],
+      "acceptable_extras": [],
+      "notes": "Reference table (Name/Symbol) in the back matter - not a data-entry form."
+    },
+    {
+      "page": 155,
+      "form_name": "Cuff Size",
+      "form_source": "printed",
+      "fields": [],
+      "acceptable_extras": [],
+      "notes": "Code list (Coded/Decode) - not a data-entry form."
+    },
+    {
+      "page": 165,
+      "form_name": "Dose Formulation",
+      "form_source": "printed",
+      "fields": [],
+      "acceptable_extras": [],
+      "notes": "Code list (Coded/Decode) - not a data-entry form."
+    },
+    {
+      "page": 196,
+      "form_name": "PE_RESULT Urogenital",
+      "form_source": "printed",
+      "fields": [],
+      "acceptable_extras": [],
+      "notes": "Code list (Coded/Decode) - not a data-entry form."
+    }
+  ]
+}

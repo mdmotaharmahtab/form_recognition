@@ -1,0 +1,900 @@
+DOCUMENT: MAC186_X11-201-00001_eCRF v1.10_form tracker v1.6_06Mar2025.pdf
+doc_key: MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025
+pages: 913 | text_layer_pct: 100
+sampled pages (1-based): [63, 74, 89, 104, 208, 286, 300, 317, 358, 359]
+
+======================================================================
+=== PAGE 63 (cluster 0) ===
+--- look-back: first line of preceding pages ---
+  p23: [61]
+  p24: HAM-D Performed
+  p25: 14. Genital Symptoms
+  p26: Variable details
+  p27: [19]
+  p28: MADRS Performed
+  p29: Variable details
+  p30: CGI-S Performed
+  p31: Variable details
+  p32: SCID-5-CT Performed
+  p33: Variable details
+  p34: MGH Assessment Performed
+  p35: 16
+  p36: 39
+  p37: Variable details
+  p38: SAFER Interview Performed
+  p39: Variable details
+  p40: Physical Examination Performed
+  p41: Variable details
+  p42: Neurological Examination Performed
+  p43: Variable details
+  p44: Assessment Performed
+  p45: Variable details
+  p46: Breath Alcohol Screen and Urine Cotinine
+  p47: Variable details
+  p48: Sample Performed
+  p49: Variable details
+  p50: Dipstick Performed
+  p51: Sent for Microscopy
+  p52: Variable details
+  p53: Vital Signs Performed
+  p54: Variable details
+  p55: ECG Performed
+  p56: Variable details
+  p57: Echocardiogram Performed
+  p58: Variable details
+  p59: Pupillometry Assessment Performed
+  p60: Variable details
+  p61: Sample Performed
+  p62: Parameter  [5]
+--- page text ---
+Variable details 
+ 
+Name
+Export Name
+Type
+Max length
+Categories
+[1]
+Sample Performed
+LBPERF
+Categorical yes/no (dichotomous)
+3
+[2]
+Reason Not Performed
+LBREASND
+Text or Any Value
+4000
+[3]
+Sample Date
+LBDAT
+Date
+11
+[4]
+Sample Time
+LBTIM
+Time
+5
+[5]
+Parameter
+LBTEST
+Categorical select one (nominal)
+39
+Basophils
+Basophils/Leukocytes
+Eosinophils
+Eosinophils/Leukocytes
+Ery. Mean Corpuscular HGB Concentration
+Ery. Mean Corpuscular Volume
+Erythrocyte
+Hematocrit
+Hemoglobin
+Leukocytes
+Lymphocytes
+Lymphocytes/Leukocytes
+Monocytes
+Monocytes/Leukocytes
+Neutrophils
+Neutrophils/Leukocytes
+Platelets
+[6]
+Not Done
+LBND
+Categorical yes/no (dichotomous)
+3
+[7]
+Reason Not Done
+LBREASND2
+Text or Any Value
+4000
+[8]
+Interpretation
+LBORRES
+Categorical select one (nominal)
+12
+Normal
+Abnormal NCS
+Abnormal CS
+MAC186_X11_201_00001_eCRF_v1_10_form_tracker_v1_6_06Mar2025
+
+
+======================================================================
+=== PAGE 74 (cluster 1) ===
+--- look-back: first line of preceding pages ---
+  p34: MGH Assessment Performed
+  p35: 16
+  p36: 39
+  p37: Variable details
+  p38: SAFER Interview Performed
+  p39: Variable details
+  p40: Physical Examination Performed
+  p41: Variable details
+  p42: Neurological Examination Performed
+  p43: Variable details
+  p44: Assessment Performed
+  p45: Variable details
+  p46: Breath Alcohol Screen and Urine Cotinine
+  p47: Variable details
+  p48: Sample Performed
+  p49: Variable details
+  p50: Dipstick Performed
+  p51: Sent for Microscopy
+  p52: Variable details
+  p53: Vital Signs Performed
+  p54: Variable details
+  p55: ECG Performed
+  p56: Variable details
+  p57: Echocardiogram Performed
+  p58: Variable details
+  p59: Pupillometry Assessment Performed
+  p60: Variable details
+  p61: Sample Performed
+  p62: Parameter  [5]
+  p63: Variable details
+  p64: Sample Performed
+  p65: Variable details
+  p66: Sample Performed
+  p67: Variable details
+  p68: Sample Performed
+  p69: Variable details
+  p70: Sample Performed
+  p71: Variable details
+  p72: Sample Performed
+  p73: Variable details
+--- page text ---
+ Screening EEG Performed
+ Reason Not Performed
+ EEG Start Date
+ EEG Start Time
+ Interpretation
+Screening EEG
+Screening EEG
+Yes  [1]
+No
+  [2]
+  [3]
+  [4]
+  [5]
+MAC186_X11_201_00001_eCRF_v1_10_form_tracker_v1_6_06Mar2025
+
+
+======================================================================
+=== PAGE 89 (cluster 1) ===
+--- look-back: first line of preceding pages ---
+  p49: Variable details
+  p50: Dipstick Performed
+  p51: Sent for Microscopy
+  p52: Variable details
+  p53: Vital Signs Performed
+  p54: Variable details
+  p55: ECG Performed
+  p56: Variable details
+  p57: Echocardiogram Performed
+  p58: Variable details
+  p59: Pupillometry Assessment Performed
+  p60: Variable details
+  p61: Sample Performed
+  p62: Parameter  [5]
+  p63: Variable details
+  p64: Sample Performed
+  p65: Variable details
+  p66: Sample Performed
+  p67: Variable details
+  p68: Sample Performed
+  p69: Variable details
+  p70: Sample Performed
+  p71: Variable details
+  p72: Sample Performed
+  p73: Variable details
+  p74: Screening EEG Performed
+  p75: Variable details
+  p76: Attendant Session Performed
+  p77: Variable details
+  p78: Sleep EEG Performed
+  p79: Variable details
+  p80: Visit:
+  p81: Visit Date
+  p82: Variable details
+  p83: All Eligibility Criteria Met
+  p84: Variable details
+  p85: HAM-D Performed
+  p86: 14. Genital Symptoms
+  p87: Variable details
+  p88: [19]
+--- page text ---
+ MADRS Performed
+ Reason Not Performed
+ MADRS Date
+ MADRS Time
+ Rater Initials
+ Total MADRS Scale Score
+Montgomery and Asberg Depression RS (MADRS)
+Montgomery and Asberg Depression RS (MADRS)
+Version: SIGMA - Since Last Evaluation 2016, v. 1 (Up to Day 3), SIGMA 2011, v. 1.2 (After Day 3).
+Yes  [1]
+No
+  [2]
+  [3]
+  [4]
+  [5]
+Test  [6]
+Result  [7]
+1
+1. Reported Sadness
+2
+2. Apparent Sadness
+3
+3. Inner Tension
+4
+4. Reduced Sleep
+5
+5. Reduced appetite
+6
+6. Concentration Difficulties
+7
+7. Lassitude
+8
+8. Inability To Feel
+9
+9. Pessimistic Thoughts
+10
+10. Suicidal Thoughts
+  [8]
+MAC186_X11_201_00001_eCRF_v1_10_form_tracker_v1_6_06Mar2025
+
+
+======================================================================
+=== PAGE 104 (cluster 0) ===
+--- look-back: first line of preceding pages ---
+  p64: Sample Performed
+  p65: Variable details
+  p66: Sample Performed
+  p67: Variable details
+  p68: Sample Performed
+  p69: Variable details
+  p70: Sample Performed
+  p71: Variable details
+  p72: Sample Performed
+  p73: Variable details
+  p74: Screening EEG Performed
+  p75: Variable details
+  p76: Attendant Session Performed
+  p77: Variable details
+  p78: Sleep EEG Performed
+  p79: Variable details
+  p80: Visit:
+  p81: Visit Date
+  p82: Variable details
+  p83: All Eligibility Criteria Met
+  p84: Variable details
+  p85: HAM-D Performed
+  p86: 14. Genital Symptoms
+  p87: Variable details
+  p88: [19]
+  p89: MADRS Performed
+  p90: Variable details
+  p91: CGI-S Performed
+  p92: Variable details
+  p93: CGI-I Performed
+  p94: Variable details
+  p95: Physical Examination Performed
+  p96: Variable details
+  p97: Neurological Examination Performed
+  p98: Variable details
+  p99: Assessment Performed
+  p100: Variable details
+  p101: Breath Alcohol Screen and Urine Cotinine
+  p102: Variable details
+  p103: Sample Performed
+--- page text ---
+Variable details 
+ 
+Name
+Export Name
+Type
+Max length
+Categories
+[1]
+Sample Performed
+ABUPERF
+Categorical yes/no (dichotomous)
+3
+[2]
+Reason Not Performed
+ABUREASND
+Text or Any Value
+4000
+[3]
+Sample Date
+ABUDAT
+Date
+11
+[4]
+Sample Time
+ABUTIM
+Time
+5
+[5]
+DOA TEST
+ABUTEST
+Categorical select one (nominal)
+15
+Amphetamines
+Barbiturates
+Benzodiazepines
+Cannabinoids
+Cocaine
+Opiates
+[6]
+Result
+ABUORRES
+Categorical select one (nominal)
+8
+[7]
+Comments (If Positive)
+ABUCOM
+Text or Any Value
+4000
+MAC186_X11_201_00001_eCRF_v1_10_form_tracker_v1_6_06Mar2025
+
+
+======================================================================
+=== PAGE 208 (cluster 1) ===
+--- look-back: first line of preceding pages ---
+  p168: Variable details
+  p169: Awake Resting State EEG Performed
+  p170: Variable details
+  p171: PK Sampling - Multi Time Point - Part 1
+  p172: Variable details
+  p173: PK Sampling - Multi Time Point - Part 2
+  p174: Variable details
+  p175: Prolactin - Multi Time Point
+  p176: Variable details
+  p177: Plasma samples (PD) - Multi Time Point
+  p178: Variable details
+  p179: Blood sample for PGx
+  p180: Variable details
+  p181: IMP Administered
+  p182: Variable details
+  p183: Awake Resting State EEG Performed
+  p184: Variable details
+  p185: Subjective Drug Intensity (SDI)  - Day 1
+  p186: 19
+  p187: Variable details
+  p188: Sample Performed
+  p189: Parameter  [5]
+  p190: Variable details
+  p191: Sample Performed
+  p192: Variable details
+  p193: Sample Performed
+  p194: Variable details
+  p195: C-SSRS Performed
+  p196: Since Last Visit - Most Severe Ideation
+  p197: Preparatory Acts or Behaviour
+  p198: Variable details
+  p199: [31]
+  p200: PANSS Performed
+  p201: Variable details
+  p202: MEQ-30 Performed
+  p203: 17
+  p204: Variable details
+  p205: CEQ Performed
+  p206: 17
+  p207: Variable details
+--- page text ---
+ STAI Performed
+ Reason Not Performed
+ STAI Date
+ STAI Time
+ 1. I feel calm
+ 2. I am tense
+ 3. I feel at ease
+ 4. I am presently worrying over possible
+misfortunes
+ 5. I feel frightened
+ 6. I feel nervous
+ 7. I am jittery
+ 8. I am relaxed
+ 9. I am worried
+ 10. I feel steady
+ 11. I feel nervous and restless
+ 12. I feel satisfied with myself
+ 13. I wish I could be as happy as others
+seem to be
+ 14. I feel like a failure
+Spielberger State-Trait Anxiety Inventory
+Spielberger State-Trait Anxiety Inventory
+Version date: 16Jul2024
+Yes  [1]
+No
+  [2]
+  [3]
+  [4]
+  [5]
+  [6]
+  [7]
+  [8]
+  [9]
+  [10]
+  [11]
+  [12]
+  [13]
+  [14]
+  [15]
+  [16]
+  [17]
+  [18]
+MAC186_X11_201_00001_eCRF_v1_10_form_tracker_v1_6_06Mar2025
+
+
+======================================================================
+=== PAGE 286 (cluster 0) ===
+--- look-back: first line of preceding pages ---
+  p246: Prolactin - Single Time Point
+  p247: Variable details
+  p248: Plasma samples (PD) - Single Time Point
+  p249: Variable details
+  p250: Subjective Drug Intensity (SDI)  - Post
+  p251: Variable details
+  p252: Sample Performed
+  p253: Parameter  [5]
+  p254: Variable details
+  p255: Sample Performed
+  p256: Variable details
+  p257: Sample Performed
+  p258: Variable details
+  p259: C-SSRS Performed
+  p260: Since Last Visit - Most Severe Ideation
+  p261: Preparatory Acts or Behaviour
+  p262: Variable details
+  p263: [31]
+  p264: PANSS Performed
+  p265: Variable details
+  p266: MEQ-30 Performed
+  p267: 17
+  p268: Variable details
+  p269: CEQ Performed
+  p270: 17
+  p271: Variable details
+  p272: Attendant Session Performed
+  p273: Variable details
+  p274: Sleep EEG Performed
+  p275: Variable details
+  p276: Visit:
+  p277: Visit Date
+  p278: Variable details
+  p279: MADRS Performed
+  p280: Variable details
+  p281: CGI-S Performed
+  p282: Variable details
+  p283: CGI-I Performed
+  p284: Variable details
+  p285: Physical Examination Performed
+--- page text ---
+Variable details 
+ 
+Name
+Export Name
+Type
+Max length
+Categories
+[1]
+Physical Examination Performed
+PEPERF
+Categorical yes/no (dichotomous)
+3
+[2]
+Reason Not Performed
+PEREASND
+Text or Any Value
+4000
+[3]
+Examination Date
+PEDAT
+Date
+11
+[4]
+Examination Time
+PETIM
+Time
+5
+[5]
+Body System Examined
+PETEST
+Categorical select one (nominal)
+33
+Head, Eyes, Ears, Nose and Throat
+Thorax
+Abdomen
+Skin and Mucosae
+Neurological System
+Extremities
+Other
+[6]
+Other, Please Specify
+PETESTOTH
+Text or Any Value
+4000
+[7]
+Not Done
+PEND
+Categorical yes/no (dichotomous)
+3
+[8]
+Reason Not Done
+PEREASND2
+Text or Any Value
+4000
+[9]
+Interpretation
+PEORRES
+Categorical select one (nominal)
+12
+Normal
+Abnormal NCS
+Abnormal CS
+[10]
+Abnormal Findings
+PEDESC
+Text or Any Value
+4000
+MAC186_X11_201_00001_eCRF_v1_10_form_tracker_v1_6_06Mar2025
+
+
+======================================================================
+=== PAGE 300 (cluster 3) ===
+--- look-back: first line of preceding pages ---
+  p260: Since Last Visit - Most Severe Ideation
+  p261: Preparatory Acts or Behaviour
+  p262: Variable details
+  p263: [31]
+  p264: PANSS Performed
+  p265: Variable details
+  p266: MEQ-30 Performed
+  p267: 17
+  p268: Variable details
+  p269: CEQ Performed
+  p270: 17
+  p271: Variable details
+  p272: Attendant Session Performed
+  p273: Variable details
+  p274: Sleep EEG Performed
+  p275: Variable details
+  p276: Visit:
+  p277: Visit Date
+  p278: Variable details
+  p279: MADRS Performed
+  p280: Variable details
+  p281: CGI-S Performed
+  p282: Variable details
+  p283: CGI-I Performed
+  p284: Variable details
+  p285: Physical Examination Performed
+  p286: Variable details
+  p287: Neurological Examination Performed
+  p288: Variable details
+  p289: Dipstick Performed
+  p290: Sent for Microscopy
+  p291: Variable details
+  p292: Vital Signs Performed
+  p293: Variable details
+  p294: ECG Performed
+  p295: Variable details
+  p296: FERT Performed
+  p297: Variable details
+  p298: DSST Performed
+  p299: Variable details
+--- page text ---
+ Pupillometry Assessment Performed
+ Reason Not Performed
+Pupillometry - Single Time Point
+Pupillometry - Single Time Point
+Yes  [1]
+No
+  [2]
+Eye  [3]
+Repeat
+ [4]
+Not
+Done
+ [5]
+Reason Not Done  [6]
+Pupillometry
+Date  [7]
+Position
+Rest Time
+ [8]
+Pupillometry
+Start Time
+ [9]
+Readings downloaded onto a
+spreadsheet via Bluetooth from the
+pupilometer device.  [10]
+Reviewed, signed
+and dated by a
+physician  [11]
+Reason not review, signed
+and dated  [12]
+PLR
+diameter
+init  [13]
+PLR MAX
+constriction
+velocity  [14]
+PLR
+dilation
+velocity
+ [15]
+PLR T75
+ [16]
+Pupil Area
+(Calculated)
+ [17]
+ACA
+(Calculated)
+ [18]
+Dilation
+Velocity at
+T75
+(Calculated)
+ [19]
+1
+Left
+1
+Yes
+No
+Yes
+No
+2
+Left
+2
+Yes
+No
+Yes
+No
+3
+Right
+1
+Yes
+No
+Yes
+No
+4
+Right
+2
+Yes
+No
+Yes
+No
+MAC186_X11_201_00001_eCRF_v1_10_form_tracker_v1_6_06Mar2025
+
+
+======================================================================
+=== PAGE 317 (cluster 1) ===
+--- look-back: first line of preceding pages ---
+  p277: Visit Date
+  p278: Variable details
+  p279: MADRS Performed
+  p280: Variable details
+  p281: CGI-S Performed
+  p282: Variable details
+  p283: CGI-I Performed
+  p284: Variable details
+  p285: Physical Examination Performed
+  p286: Variable details
+  p287: Neurological Examination Performed
+  p288: Variable details
+  p289: Dipstick Performed
+  p290: Sent for Microscopy
+  p291: Variable details
+  p292: Vital Signs Performed
+  p293: Variable details
+  p294: ECG Performed
+  p295: Variable details
+  p296: FERT Performed
+  p297: Variable details
+  p298: DSST Performed
+  p299: Variable details
+  p300: Pupillometry Assessment Performed
+  p301: Variable details
+  p302: PK Sampling - Single Time Point
+  p303: Variable details
+  p304: Plasma samples (PD) - Single Time Point
+  p305: Variable details
+  p306: Subjective Drug Intensity (SDI)  - Post
+  p307: Variable details
+  p308: Sample Performed
+  p309: Parameter  [5]
+  p310: Variable details
+  p311: Sample Performed
+  p312: Variable details
+  p313: Sample Performed
+  p314: Variable details
+  p315: C-SSRS Performed
+  p316: Since Last Visit - Most Severe Ideation
+--- page text ---
+Preparatory Acts or Behaviour
+ 
+Yes  [33]
+No
+ 
+  [34]
+Suicidal Behaviour
+ 
+Yes  [35]
+No
+Suicide
+ 
+Yes  [36]
+No
+Answer for Actual Attempts Only
+Most Lethal
+Attempt
+Date
+ 
+  [37]
+Enter Code
+Actual Lethality/Medical Damage
+ 
+  [38]
+Potential Lethality
+ 
+  [39]
+MAC186_X11_201_00001_eCRF_v1_10_form_tracker_v1_6_06Mar2025
+
+
+======================================================================
+=== PAGE 358 (cluster 2) ===
+--- look-back: first line of preceding pages ---
+  p318: Variable details
+  p319: [31]
+  p320: PANSS Performed
+  p321: Variable details
+  p322: Discharged From Clinic
+  p323: Variable details
+  p324: Sleep EEG Performed
+  p325: Variable details
+  p326: Visit:
+  p327: Visit Date
+  p328: Variable details
+  p329: MADRS Performed
+  p330: Variable details
+  p331: CGI-S Performed
+  p332: Variable details
+  p333: CGI-I Performed
+  p334: Variable details
+  p335: Physical Examination Performed
+  p336: Variable details
+  p337: Neurological Examination Performed
+  p338: Variable details
+  p339: Assessment Performed
+  p340: Variable details
+  p341: Breath Alcohol Screen and Urine Cotinine
+  p342: Variable details
+  p343: Sample Performed
+  p344: Variable details
+  p345: Dipstick Performed
+  p346: Sent for Microscopy
+  p347: Variable details
+  p348: Vital Signs Performed
+  p349: Variable details
+  p350: ECG Performed
+  p351: Variable details
+  p352: FERT Performed
+  p353: Variable details
+  p354: DSST Performed
+  p355: Variable details
+  p356: Pupillometry Assessment Performed
+  p357: Variable details
+--- page text ---
+Plasma samples (PD) - Single Time Point
+Plasma samples (PD) - Single Time Point
+Sample Performed  [1] Reason Not Done  [2]
+Sample Date  [3] Sample Time  [4] Primary Sample Accession Number  [5] Back Up Sample Accession Number  [6]
+1
+Yes
+No
+MAC186_X11_201_00001_eCRF_v1_10_form_tracker_v1_6_06Mar2025
+
+
+======================================================================
+=== PAGE 359 (cluster 0) ===
+--- look-back: first line of preceding pages ---
+  p319: [31]
+  p320: PANSS Performed
+  p321: Variable details
+  p322: Discharged From Clinic
+  p323: Variable details
+  p324: Sleep EEG Performed
+  p325: Variable details
+  p326: Visit:
+  p327: Visit Date
+  p328: Variable details
+  p329: MADRS Performed
+  p330: Variable details
+  p331: CGI-S Performed
+  p332: Variable details
+  p333: CGI-I Performed
+  p334: Variable details
+  p335: Physical Examination Performed
+  p336: Variable details
+  p337: Neurological Examination Performed
+  p338: Variable details
+  p339: Assessment Performed
+  p340: Variable details
+  p341: Breath Alcohol Screen and Urine Cotinine
+  p342: Variable details
+  p343: Sample Performed
+  p344: Variable details
+  p345: Dipstick Performed
+  p346: Sent for Microscopy
+  p347: Variable details
+  p348: Vital Signs Performed
+  p349: Variable details
+  p350: ECG Performed
+  p351: Variable details
+  p352: FERT Performed
+  p353: Variable details
+  p354: DSST Performed
+  p355: Variable details
+  p356: Pupillometry Assessment Performed
+  p357: Variable details
+  p358: Plasma samples (PD) - Single Time Point
+--- page text ---
+Variable details 
+ 
+Name
+Export Name
+Type
+Max length
+Categories
+[1]
+Sample Performed
+PDPERF
+Categorical yes/no (dichotomous)
+3
+[2]
+Reason Not Done
+PDREASND
+Text or Any Value
+4000
+[3]
+Sample Date
+PDDAT
+Date
+11
+[4]
+Sample Time
+PDTIM
+Time
+5
+[5]
+Primary Sample Accession Number
+PDACCNO
+Number (continuous)
+15
+[6]
+Back Up Sample Accession Number
+PDACCNO2
+Number (continuous)
+15
+MAC186_X11_201_00001_eCRF_v1_10_form_tracker_v1_6_06Mar2025

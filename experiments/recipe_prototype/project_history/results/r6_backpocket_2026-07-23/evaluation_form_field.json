@@ -1,0 +1,106 @@
+{
+ "extraction_vs_ground_truth_rave": {
+  "gt_distinct_pairs": 914,
+  "extracted_distinct_pairs": 1206,
+  "pair_recall_pct": 87,
+  "pair_precision_pct": 66,
+  "precision_breakdown": {
+   "unmatched_total": 407,
+   "appendix_code_rows": 277,
+   "appendix_examples": [
+    "12-Lead ECG Triplicate | EGABN",
+    "12-Lead ECG Triplicate | EGCLSIG",
+    "12-Lead ECG Triplicate | EGDTTM",
+    "12-Lead ECG Triplicate | INTP_EGOR"
+   ],
+   "field_wording_gaps": 130,
+   "field_wording_examples": [
+    "12-Lead ECG Triplicate | At all post screening visits, any new or worsening clinically significant abnormality, as",
+    "12-Lead ECG Triplicate - 3 Hour Postdose | At all post screening visits, any new or worsening clinically significant abnormality, as",
+    "12-Lead ECG Triplicate Log | At all post screening visits, any new or worsening clinically significant abnormality, as",
+    "20-Item Physician Withdrawal Checklist (PWC-20) | 16. Weakness"
+   ],
+   "forms_not_in_truth": 0,
+   "excluding_appendix": {
+    "pair_precision_pct": 86,
+    "pair_recall_pct": 87
+   }
+  },
+  "recall_breakdown": {
+   "missed_total": 118,
+   "no_oid_in_truth": 78,
+   "no_oid_in_truth_examples": [
+    "12 lead ecg triplicate | 025 gmk",
+    "12 lead ecg triplicate 3 hour postdose | 025 gmk",
+    "12 lead ecg triplicate log | 025 gmk",
+    "20 item physician withdrawal checklist | 025 gmk"
+   ],
+   "different_form": 1,
+   "different_form_examples": [
+    "imp administration | units"
+   ],
+   "near_miss_wording": 15,
+   "near_miss_wording_examples": [
+    "20 item physician withdrawal checklist | increased acuity for sound smell touch or pain 0 not present 22",
+    "20 item physician withdrawal checklist | weakness",
+    "abnormal involuntary movement scale | jaw",
+    "abnormal involuntary movement scale | lower"
+   ],
+   "printed_not_extracted": 24,
+   "printed_not_extracted_examples": [
+    "12 lead ecg triplicate 3 hour postdose | 5 hours predose",
+    "12 lead ecg triplicate 3 hour postdose | predose",
+    "12 lead ecg triplicate log | 5 hours predose",
+    "12 lead ecg triplicate log | predose"
+   ],
+   "label_not_printed": 0,
+   "oid_bearing_truth_pairs": 830,
+   "oid_bearing_found": 790,
+   "oid_bearing_recall_pct": 95
+  }
+ },
+ "name_to_oid_mapping": [
+  {
+   "doc": "384-201-00002_Annotated_Unique_CRF_04Nov2024",
+   "distinct_pairs": 1206,
+   "mapped": 18,
+   "mapped_by": {
+    "ranker-confirm": 14,
+    "ranker-pick": 4
+   },
+   "abstained_unresolved": 0,
+   "mapped_pct": 1,
+   "checkable_against_truth": 17,
+   "mapped_but_uncheckable": 1,
+   "mapping_accuracy_pct": 94,
+   "accuracy_note": "accuracy over the truth-checkable subset of mapped pairs, not over all mappings",
+   "mismatch_examples": [
+    "'specify other race' -> mapped QVAL_RACEOTH via ranker-confirm, printed truth RACEOTH"
+   ]
+  },
+  {
+   "doc": "MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06",
+   "distinct_pairs": 857,
+   "mapped": 12,
+   "mapped_by": {
+    "ranker-confirm": 10,
+    "ranker-pick": 2
+   },
+   "abstained_unresolved": 0,
+   "mapped_pct": 1
+  },
+  {
+   "doc": "QSC302573_Final_AnnotatedCRFs_16Oct2024-326-201-0000",
+   "distinct_pairs": 1271,
+   "mapped": 15,
+   "mapped_by": {
+    "ranker-confirm": 13,
+    "ranker-pick": 2
+   },
+   "abstained_unresolved": 0,
+   "mapped_pct": 1
+  }
+ ],
+ "mapping_logic_note": "form-first funnel (oid_mapping.py): form scoping at partial_ratio>=70 as in review_table.get_standard_crf, field>=85 within the form, every candidate-bearing pair judged by the LLM ranker (pick a listed OID or refuse)",
+ "library_size_note": "ecs_index_data has only 286 Standard rows; mapping coverage is bounded by library breadth, not extraction quality."
+}

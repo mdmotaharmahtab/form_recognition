@@ -1,0 +1,474 @@
+{
+ "stop_reason": "plateau",
+ "versions": 5,
+ "best_version": 4,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 3719,
+    "pages_total": 489,
+    "pages_with_fields": 483,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 96,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 9,
+    "fields_per_form": 413.2,
+    "forms_per_100_pages": 1.8,
+    "pages_covered_pct": 99
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 21,
+   "audit_pages": [
+    1,
+    3,
+    33,
+    122,
+    247,
+    376
+   ],
+   "audit_partial": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [
+      "Admission Restrictions: Photo ID #1",
+      "participant's wrist?",
+      "Admission Restrictions: Bag Search #1",
+      "Admission Restrictions: Bag Search Items Removed #1",
+      "Admission Restrictions: ICF Check #1",
+      "Admission Restrictions: ICF Version/Date #1",
+      "(Version must be checked against ICF present in the CSF \u2013 escalate any discrepancies)"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 3,
+     "missed": [],
+     "false": [
+      "Admission Restrictions: Grapefruit #1",
+      "Admission Restrictions: Poppy seeds #1",
+      "Admission visit?",
+      "Admission Restrictions: Activity #1",
+      "visit?",
+      "Admission Restrictions: Smoking #1",
+      "Prompts: PD Prompt #1",
+      "Admission Restrictions: Adverse Event #1"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 33,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 122,
+     "missed": [],
+     "false": [
+      "C-SSRS Since Last Visit: 19. Most Lethal Attempt Date #1",
+      "C-SSRS Since Last Visit: 19. Actual Lethality Most Lethal Attempt #1"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 247,
+     "missed": [],
+     "false": [
+      "ECG Difference Calculation - a participant will be withdrawn where there is an increase in QTcF",
+      "Vital Signs: Vital Signs Supine Full Set #5",
+      "(Supine for at least 3 minutes)",
+      "Vital Signs: Clinical Significance #5"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 376,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "score": [
+    0,
+    21,
+    0,
+    -483
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 2015,
+    "pages_total": 489,
+    "pages_with_fields": 483,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 93,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 9,
+    "fields_per_form": 223.9,
+    "forms_per_100_pages": 1.8,
+    "pages_covered_pct": 99
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 11,
+   "audit_pages": [
+    1,
+    3,
+    33,
+    122,
+    247,
+    376
+   ],
+   "audit_partial": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [
+      "Bag search performed?"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 3,
+     "missed": [
+      "Admission visit?",
+      "visit?"
+     ],
+     "false": [
+      "Has participant consumed food or beverages containing pomelo, grapefruit, grapefruit juice,",
+      "Seville oranges, Seville orange juice, blueberry juice, or cranberry juice within 48 hours (72hrs prior to dosing) prior to Admission visit? (If 'Yes' exclude per exclusion criteria #24)",
+      "Has the participant consumed any food containing poppy seeds within 48 hours prior to",
+      "Has the participant had strenuous activity (e.g. weightlifting) within 72 hours prior to Admission",
+      "Has the participant use of tobacco products or experience daily exposure to second-hand",
+      "smoke since Screening?  (If 'Yes' exclude per exclusion criteria #14)"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 33,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 122,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 247,
+     "missed": [
+      "(Supine for at least 3 minutes)"
+     ],
+     "false": [
+      "interval of >60 msec from baseline (confirmed following a repeat ECG)"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 376,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "score": [
+    0,
+    11,
+    0,
+    -483
+   ],
+   "became_best": true
+  },
+  {
+   "version": 3,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 2055,
+    "pages_total": 489,
+    "pages_with_fields": 483,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 93,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 9,
+    "fields_per_form": 228.3,
+    "forms_per_100_pages": 1.8,
+    "pages_covered_pct": 99
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 10,
+   "audit_pages": [
+    1,
+    3,
+    33,
+    122,
+    247,
+    376
+   ],
+   "audit_partial": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [
+      "Bag search performed?"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 3,
+     "missed": [
+      "Admission visit?",
+      "visit?"
+     ],
+     "false": [
+      "Has participant consumed food or beverages containing pomelo, grapefruit, grapefruit juice,",
+      "Seville oranges, Seville orange juice, blueberry juice, or cranberry juice within 48 hours (72hrs prior to dosing) prior to Admission visit? (If 'Yes' exclude per exclusion criteria #24)",
+      "Has the participant consumed any food containing poppy seeds within 48 hours prior to",
+      "Has the participant had strenuous activity (e.g. weightlifting) within 72 hours prior to Admission",
+      "Has the participant use of tobacco products or experience daily exposure to second-hand",
+      "smoke since Screening?  (If 'Yes' exclude per exclusion criteria #14)"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 33,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 122,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 247,
+     "missed": [],
+     "false": [
+      "(Supine for at least 3 minutes)"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 376,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "score": [
+    0,
+    10,
+    0,
+    -483
+   ],
+   "became_best": true
+  },
+  {
+   "version": 4,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 1998,
+    "pages_total": 489,
+    "pages_with_fields": 483,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 93,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 9,
+    "fields_per_form": 222.0,
+    "forms_per_100_pages": 1.8,
+    "pages_covered_pct": 99
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 9,
+   "audit_pages": [
+    1,
+    3,
+    33,
+    122,
+    247,
+    376
+   ],
+   "audit_partial": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [
+      "Bag search performed?"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 3,
+     "missed": [
+      "Admission visit?"
+     ],
+     "false": [
+      "Has participant consumed food or beverages containing pomelo, grapefruit, grapefruit juice,",
+      "Seville oranges, Seville orange juice, blueberry juice, or cranberry juice within 48 hours (72hrs prior to dosing) prior to Admission visit? (If 'Yes' exclude per exclusion criteria #24)",
+      "Has the participant consumed any food containing poppy seeds within 48 hours prior to",
+      "Has the participant had strenuous activity (e.g. weightlifting) within 72 hours prior to Admission",
+      "Has the participant use of tobacco products or experience daily exposure to second-hand",
+      "smoke since Screening?  (If 'Yes' exclude per exclusion criteria #14)"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 33,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 122,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 247,
+     "missed": [
+      "ECG Difference Calculation - a participant will be withdrawn where there is an increase in QTcF interval of >60 msec from baseline (confirmed following a repeat ECG)"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 376,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "score": [
+    0,
+    9,
+    0,
+    -483
+   ],
+   "became_best": true
+  },
+  {
+   "version": 5,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 2040,
+    "pages_total": 489,
+    "pages_with_fields": 483,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 93,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 9,
+    "fields_per_form": 226.7,
+    "forms_per_100_pages": 1.8,
+    "pages_covered_pct": 99
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 9,
+   "audit_pages": [
+    1,
+    3,
+    33,
+    122,
+    247,
+    376
+   ],
+   "audit_partial": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [
+      "Has the participant's photographic and wristband ID been verified and wristband applied to",
+      "participant's wrist?"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 3,
+     "missed": [
+      "Has participant consumed food or beverages containing pomelo, grapefruit, grapefruit juice, Seville oranges, Seville orange juice, blueberry juice, or cranberry juice within 48 hours (72hrs prior to dosing) prior to Admission visit? (If 'Yes' exclude per exclusion criteria #24)",
+      "Has the participant consumed any food containing poppy seeds within 48 hours prior to Admission visit?",
+      "Has the participant had strenuous activity (e.g. weightlifting) within 72 hours prior to Admission visit?",
+      "Has the participant use of tobacco products or experience daily exposure to second-hand smoke since Screening?  (If 'Yes' exclude per exclusion criteria #14)"
+     ],
+     "false": [
+      "prior to dosing) prior to Admission visit? (If 'Yes' exclude per exclusion criteria #24)"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 33,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 122,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 247,
+     "missed": [],
+     "false": [
+      "ECG Difference Calculation - a participant will be withdrawn where there is an increase in QTcF",
+      "interval of >60 msec from baseline (confirmed following a repeat ECG)"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 376,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "score": [
+    0,
+    9,
+    0,
+    -483
+   ],
+   "became_best": false
+  }
+ ]
+}

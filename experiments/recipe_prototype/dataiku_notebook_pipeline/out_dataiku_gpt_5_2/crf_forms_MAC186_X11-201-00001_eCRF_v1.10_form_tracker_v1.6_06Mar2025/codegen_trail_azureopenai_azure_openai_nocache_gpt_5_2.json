@@ -1,0 +1,359 @@
+{
+ "stop_reason": "plateau",
+ "versions": 5,
+ "best_version": 4,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "confirm",
+   "metrics": {
+    "engine": "codegen",
+    "records": 961,
+    "pages_total": 913,
+    "pages_with_fields": 125,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 78,
+    "fields_per_form": 12.3,
+    "forms_per_100_pages": 8.5,
+    "pages_covered_pct": 14
+   },
+   "problems": [],
+   "outcome": "extended_program"
+  },
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 961,
+    "pages_total": 913,
+    "pages_with_fields": 123,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 78,
+    "fields_per_form": 12.3,
+    "forms_per_100_pages": 8.5,
+    "pages_covered_pct": 13
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_verdicts": null,
+   "score": [
+    0,
+    "not_audited",
+    0,
+    -123
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "confirm_extension",
+   "metrics": {
+    "engine": "codegen",
+    "records": 961,
+    "pages_total": 913,
+    "pages_with_fields": 125,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 78,
+    "fields_per_form": 12.3,
+    "forms_per_100_pages": 8.5,
+    "pages_covered_pct": 14
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 11,
+   "audit_pages": [
+    1,
+    2,
+    4,
+    6,
+    129,
+    511
+   ],
+   "audit_partial": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [],
+     "false": [
+      "Informed Consent"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 4,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 6,
+     "missed": [],
+     "false": [
+      "Demographics",
+      "American Indian or Alaska Native"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 129,
+     "missed": [
+      "Most Lethal Attempt Date",
+      "Actual Lethality/Medical Damage Enter Code",
+      "Potential Lethality Enter Code"
+     ],
+     "false": [
+      "Answer for Actual Attempts Only",
+      "Most Lethal",
+      "Attempt",
+      "Date",
+      "Enter Code"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 511,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "score": [
+    0,
+    11,
+    0,
+    -125
+   ],
+   "became_best": true
+  },
+  {
+   "version": 3,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 927,
+    "pages_total": 913,
+    "pages_with_fields": 123,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 78,
+    "fields_per_form": 11.9,
+    "forms_per_100_pages": 8.5,
+    "pages_covered_pct": 13
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 5,
+   "audit_pages": [
+    1,
+    2,
+    4,
+    6,
+    129,
+    511
+   ],
+   "audit_partial": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 4,
+     "missed": [
+      "Visit Date"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 6,
+     "missed": [],
+     "false": [
+      "American Indian or Alaska Native"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 129,
+     "missed": [
+      "Potential Lethality",
+      "Most Lethal Attempt Date",
+      "Enter Code"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 511,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "score": [
+    0,
+    5,
+    0,
+    -123
+   ],
+   "became_best": true
+  },
+  {
+   "version": 4,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 938,
+    "pages_total": 913,
+    "pages_with_fields": 125,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 78,
+    "fields_per_form": 12.0,
+    "forms_per_100_pages": 8.5,
+    "pages_covered_pct": 14
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 4,
+   "audit_pages": [
+    1,
+    2,
+    4,
+    6,
+    129,
+    511
+   ],
+   "audit_partial": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 4,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 6,
+     "missed": [
+      "Other, Please Specify"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 129,
+     "missed": [
+      "Most Lethal Attempt Date",
+      "Enter Code",
+      "Potential Lethality"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 511,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "score": [
+    0,
+    4,
+    0,
+    -125
+   ],
+   "became_best": true
+  },
+  {
+   "version": 5,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 0,
+    "pages_total": 913,
+    "pages_with_fields": 0,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 0,
+    "labels_look_human_pct": 0,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 0,
+    "fields_per_form": 0.0,
+    "forms_per_100_pages": 0.0,
+    "pages_covered_pct": 0
+   },
+   "problems": [
+    "The program extracted ZERO records from the document."
+   ],
+   "warnings": [
+    "form_name empty for 100% of records - if the document does print form/section names, fix the form_name strategy (consider carrying the last seen title forward).",
+    "Only 0% of field_name values look like human labels (they look like codes/dates/junk) - fix label selection."
+   ],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_partial": null,
+   "audit_verdicts": null,
+   "score": [
+    1,
+    "not_audited",
+    2,
+    0
+   ],
+   "became_best": false
+  }
+ ]
+}

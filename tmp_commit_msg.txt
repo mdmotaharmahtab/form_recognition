@@ -1,0 +1,13 @@
+Initialize repository and reconstruct project history
+
+Track pipeline source going forward and capture the full code+results
+timeline that was previously only in ad-hoc data/outputs backups.
+
+- Add project_history/ with:
+  - code_versions/ : recovered source snapshots (three 07-22 folder_code
+    bundles, four notebooks, current live scripts) + inter-version diffs
+  - results/ : per-stage summaries, scored.json snapshots, cost/error
+    reports, and eval reports, one folder per run stage
+  - README.md : central doc mapping each stage to its change, results,
+    and location, with open follow-ups and the go-forward git workflow
+- Add .gitignore excluding data, generated outputs, archives, and binaries

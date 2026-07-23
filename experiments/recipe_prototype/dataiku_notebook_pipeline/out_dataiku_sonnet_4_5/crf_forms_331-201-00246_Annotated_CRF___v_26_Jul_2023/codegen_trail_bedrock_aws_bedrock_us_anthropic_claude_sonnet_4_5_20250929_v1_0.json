@@ -1,0 +1,305 @@
+{
+ "stop_reason": "plateau",
+ "versions": 4,
+ "best_version": 3,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "confirm",
+   "metrics": {
+    "engine": "codegen",
+    "records": 3567,
+    "pages_total": 1085,
+    "pages_with_fields": 917,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 99,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 121,
+    "fields_per_form": 29.5,
+    "forms_per_100_pages": 11.2,
+    "pages_covered_pct": 85
+   },
+   "problems": [],
+   "outcome": "extended_program"
+  },
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 1870,
+    "pages_total": 1085,
+    "pages_with_fields": 640,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 114,
+    "fields_per_form": 16.4,
+    "forms_per_100_pages": 10.5,
+    "pages_covered_pct": 59
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_verdicts": null,
+   "score": [
+    0,
+    "not_audited",
+    0,
+    -640
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "confirm_extension",
+   "metrics": {
+    "engine": "codegen",
+    "records": 3567,
+    "pages_total": 1085,
+    "pages_with_fields": 917,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 99,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 121,
+    "fields_per_form": 29.5,
+    "forms_per_100_pages": 11.2,
+    "pages_covered_pct": 85
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 5,
+   "audit_pages": [
+    1,
+    17,
+    159,
+    374,
+    386,
+    566
+   ],
+   "audit_partial": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 17,
+     "missed": [],
+     "false": [
+      "ed to be Titrated ? = Yes"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 159,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 374,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 386,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 566,
+     "missed": [
+      "Hematology clinically significant abnormal assay # 3"
+     ],
+     "false": [
+      "Platelet count",
+      "Red blood cell count",
+      "White blood cell count (absolute and differential)"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "score": [
+    0,
+    5,
+    0,
+    -917
+   ],
+   "became_best": true
+  },
+  {
+   "version": 3,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 3645,
+    "pages_total": 1085,
+    "pages_with_fields": 923,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 99,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 120,
+    "fields_per_form": 30.4,
+    "forms_per_100_pages": 11.1,
+    "pages_covered_pct": 85
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 1,
+   "audit_pages": [
+    1,
+    17,
+    159,
+    374,
+    386,
+    566
+   ],
+   "audit_partial": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 17,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 159,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 374,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 386,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 566,
+     "missed": [
+      "Hematology clinically significant abnormal assay # 2"
+     ],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "score": [
+    0,
+    1,
+    0,
+    -923
+   ],
+   "became_best": true
+  },
+  {
+   "version": 4,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 3645,
+    "pages_total": 1085,
+    "pages_with_fields": 923,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 99,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 120,
+    "fields_per_form": 30.4,
+    "forms_per_100_pages": 11.1,
+    "pages_covered_pct": 85
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 1,
+   "audit_pages": [
+    1,
+    17,
+    159,
+    374,
+    386,
+    566
+   ],
+   "audit_partial": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 17,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 159,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 374,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 386,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 566,
+     "missed": [
+      "Hematology clinically significant abnormal assay # 2"
+     ],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "score": [
+    0,
+    1,
+    0,
+    -923
+   ],
+   "became_best": false
+  }
+ ]
+}

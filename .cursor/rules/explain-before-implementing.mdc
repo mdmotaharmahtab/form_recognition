@@ -1,0 +1,26 @@
+---
+description: Explain the approach and get user confirmation before implementing non-trivial changes
+alwaysApply: true
+---
+
+# Explain the approach before implementing
+
+Before writing or changing code for any non-trivial task (new pipeline stages, algorithm changes,
+multi-file edits, redesigns), first explain the approach in plain language and wait for the user's
+go-ahead. Do not jump straight into implementation.
+
+The explanation must cover:
+
+1. **What problem this solves** — one or two sentences, concrete, tied to evidence we have
+   (metrics, failure examples), not abstractions.
+2. **The idea** — how the approach works conceptually, step by step, before any code. Use a worked
+   example with real data from this repo where possible (e.g. a real form/field pair, a real page).
+3. **What changes where** — which files/stages are touched, what the inputs and outputs of each
+   piece are.
+4. **What it does NOT do** — scope boundaries and known limitations, so expectations are set.
+5. **How we'll verify it** — the measurement or test that tells us it worked.
+
+Then stop and let the user confirm or redirect before implementing.
+
+Exceptions: trivial fixes (typos, one-line bugs, formatting), or when the user explicitly says to
+go ahead and implement.

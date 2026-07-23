@@ -1,0 +1,315 @@
+{
+ "stop_reason": "plateau",
+ "versions": 4,
+ "best_version": 3,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "confirm",
+   "metrics": {
+    "engine": "codegen",
+    "records": 511,
+    "pages_total": 246,
+    "pages_with_fields": 129,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 96,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 60,
+    "fields_per_form": 8.5,
+    "forms_per_100_pages": 24.4,
+    "pages_covered_pct": 52
+   },
+   "problems": [],
+   "outcome": "extended_program"
+  },
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 454,
+    "pages_total": 246,
+    "pages_with_fields": 121,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 96,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 59,
+    "fields_per_form": 7.7,
+    "forms_per_100_pages": 24.0,
+    "pages_covered_pct": 49
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_verdicts": null,
+   "score": [
+    0,
+    "not_audited",
+    0,
+    -121
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "confirm_extension",
+   "metrics": {
+    "engine": "codegen",
+    "records": 511,
+    "pages_total": 246,
+    "pages_with_fields": 129,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 96,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 60,
+    "fields_per_form": 8.5,
+    "forms_per_100_pages": 24.4,
+    "pages_covered_pct": 52
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 9,
+   "audit_pages": [
+    1,
+    2,
+    8,
+    55,
+    81,
+    186
+   ],
+   "audit_partial": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 8,
+     "missed": [
+      "Lunch Start",
+      "Lunch End"
+     ],
+     "false": [
+      "Urine Collection - PK - Active Interval Collection (8-12)",
+      "Urine Collection - PK - Interval End (4-8) \u2013 LAB USE ONLY",
+      "Dinner Start",
+      "Dinner End",
+      "Urine Collection - PK - Active Interval Collection (12-24)",
+      "Urine Collection - PK - Interval End (8-12) \u2013 LAB USE ONLY"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 55,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 81,
+     "missed": [
+      "Abnormality Reason"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 186,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "score": [
+    0,
+    9,
+    0,
+    -129
+   ],
+   "became_best": true
+  },
+  {
+   "version": 3,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 505,
+    "pages_total": 246,
+    "pages_with_fields": 129,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 96,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 60,
+    "fields_per_form": 8.4,
+    "forms_per_100_pages": 24.4,
+    "pages_covered_pct": 52
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 2,
+   "audit_pages": [
+    1,
+    2,
+    8,
+    55,
+    81,
+    186
+   ],
+   "audit_partial": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 8,
+     "missed": [
+      "Vital Signs - Orthostatic"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 55,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 81,
+     "missed": [
+      "Abnormality Reason"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 186,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "score": [
+    0,
+    2,
+    0,
+    -129
+   ],
+   "became_best": true
+  },
+  {
+   "version": 4,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 505,
+    "pages_total": 246,
+    "pages_with_fields": 129,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 96,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 60,
+    "fields_per_form": 8.4,
+    "forms_per_100_pages": 24.4,
+    "pages_covered_pct": 52
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 4,
+   "audit_pages": [
+    1,
+    2,
+    8,
+    55,
+    81,
+    186
+   ],
+   "audit_partial": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 8,
+     "missed": [
+      "Blood Collection - PK SEP",
+      "Lunch Start",
+      "Lunch End"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 55,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 81,
+     "missed": [
+      "Abnormality Reason"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 186,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "score": [
+    0,
+    4,
+    0,
+    -129
+   ],
+   "became_best": false
+  }
+ ]
+}

@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ECS Generation Pipeline — Detailed Walkthrough</title>
+<style>
+  :root{
+    --bg:#0f1420; --panel:#161d2e; --panel2:#1d2740; --ink:#e8ecf5; --muted:#9fb0cc;
+    --line:#2a3550; --accent:#5aa7ff; --accent2:#8b7dff; --green:#57d38c; --amber:#f4bf5f;
+    --pink:#ff8bb0; --code:#0b1020; --chip:#233150;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.62;font-size:15.5px}
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{display:grid;grid-template-columns:280px 1fr;max-width:1500px;margin:0 auto}
+  /* Sidebar */
+  nav{position:sticky;top:0;align-self:start;height:100vh;overflow:auto;
+    background:var(--panel);border-right:1px solid var(--line);padding:22px 18px}
+  nav h2{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:18px 0 8px}
+  nav a{display:block;color:var(--ink);padding:5px 10px;border-radius:7px;font-size:14px;margin:1px 0}
+  nav a:hover{background:var(--panel2);text-decoration:none}
+  nav .lead{font-weight:700;font-size:16px;color:#fff;margin-bottom:2px}
+  nav .sub{color:var(--muted);font-size:12px;margin-bottom:8px}
+  /* Content */
+  main{padding:38px 52px 120px;min-width:0}
+  h1{font-size:30px;margin:0 0 6px;letter-spacing:-.01em}
+  h2{font-size:23px;margin:46px 0 12px;padding-top:14px;border-top:1px solid var(--line)}
+  h3{font-size:18px;margin:26px 0 8px;color:#dbe6ff}
+  h4{font-size:15px;margin:18px 0 6px;color:var(--accent2);letter-spacing:.02em}
+  p{margin:10px 0}
+  .subtitle{color:var(--muted);font-size:16px;margin-top:0}
+  code{background:var(--code);border:1px solid var(--line);border-radius:5px;padding:1px 6px;
+    font-family:"JetBrains Mono",Consolas,monospace;font-size:13px;color:#cfe0ff}
+  pre{background:var(--code);border:1px solid var(--line);border-radius:10px;padding:14px 16px;
+    overflow:auto;font-family:Consolas,monospace;font-size:13px;color:#cfe0ff}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px 22px;margin:16px 0}
+  .grid{display:grid;gap:14px}
+  .g2{grid-template-columns:1fr 1fr}
+  .g3{grid-template-columns:1fr 1fr 1fr}
+  @media(max-width:1100px){.g2,.g3{grid-template-columns:1fr}}
+  .chip{display:inline-block;background:var(--chip);border:1px solid var(--line);border-radius:999px;
+    padding:2px 11px;font-size:12px;color:var(--muted);margin:2px 4px 2px 0}
+  .tag{display:inline-block;border-radius:6px;padding:1px 8px;font-size:12px;font-weight:600}
+  .t-in{background:#123; color:var(--accent);border:1px solid #24507e}
+  .t-store{background:#1a2a1e;color:var(--green);border:1px solid #2e5b3f}
+  .t-llm{background:#241f38;color:var(--accent2);border:1px solid #43397a}
+  .t-file{background:#2a2438;color:var(--pink);border:1px solid #5c3a52}
+  table{border-collapse:collapse;width:100%;margin:12px 0;font-size:14px}
+  th,td{border:1px solid var(--line);padding:8px 11px;text-align:left;vertical-align:top}
+  th{background:var(--panel2);color:#cfe0ff;font-weight:600}
+  tr:nth-child(even) td{background:rgba(255,255,255,.015)}
+  .callout{border-left:4px solid var(--accent);background:var(--panel);border-radius:0 12px 12px 0;
+    padding:12px 18px;margin:16px 0}
+  .callout.warn{border-color:var(--amber)}
+  .callout.tip{border-color:var(--green)}
+  .callout .lbl{font-weight:700;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  /* Flow steps */
+  .flow{counter-reset:step;margin:18px 0}
+  .step{position:relative;padding:14px 18px 14px 60px;border:1px solid var(--line);
+    border-radius:12px;background:var(--panel);margin:10px 0}
+  .step::before{counter-increment:step;content:counter(step);position:absolute;left:16px;top:14px;
+    width:30px;height:30px;border-radius:50%;background:var(--accent);color:#04101f;
+    font-weight:800;display:flex;align-items:center;justify-content:center}
+  .step h4{margin:0 0 4px;color:#fff}
+  .step .fn{font-family:Consolas,monospace;font-size:12.5px;color:var(--amber)}
+  /* pipeline banner */
+  .pipe{display:flex;flex-wrap:wrap;gap:10px;align-items:stretch;margin:18px 0}
+  .pbox{flex:1;min-width:190px;border:1px solid var(--line);border-radius:12px;padding:14px;background:var(--panel2)}
+  .pbox .n{font-size:12px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase}
+  .pbox .t{font-weight:700;font-size:16px;margin:4px 0}
+  .arrow{display:flex;align-items:center;color:var(--accent);font-size:26px;font-weight:700}
+  .muted{color:var(--muted)}
+  .fn{font-family:Consolas,monospace;font-size:12.5px;color:var(--amber)}
+  .kbd{font-family:Consolas,monospace;color:var(--green)}
+  ul.tight{margin:8px 0}
+  ul.tight li{margin:4px 0}
+  .legend span{margin-right:16px;font-size:13px}
+  hr{border:none;border-top:1px solid var(--line);margin:30px 0}
+  .toc-pill{font-size:12px;color:var(--muted)}
+  details{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:6px 14px;margin:10px 0}
+  summary{cursor:pointer;font-weight:600;color:#dbe6ff;padding:6px 0}
+  .num{color:var(--amber);font-weight:700}
+  /* figures / screenshots */
+  figure{margin:16px 0}
+  figure img{width:100%;display:block;border:1px solid var(--line);border-radius:10px;background:#fff}
+  figcaption{color:var(--muted);font-size:12.5px;margin-top:6px}
+  .figrow{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0}
+  @media(max-width:1100px){.figrow{grid-template-columns:1fr}}
+  .figrow figure{margin:0}
+  .shot-lbl{font-size:12px;font-weight:700;color:#dbe6ff;margin-bottom:4px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav>
+  <div class="lead">ECS Pipeline</div>
+  <div class="sub">Detailed walkthrough of the code</div>
+  <a href="#tldr">The 60-second version</a>
+  <a href="#mentalmodel">Five key words</a>
+  <a href="#players">The moving parts</a>
+
+  <h2>Phase 1 · Digitize the CRF</h2>
+  <a href="#p1-what">What this phase does</a>
+  <a href="#p1-crf">How the digitizer reads a form</a>
+  <a href="#p1-record">What it hands to Phase 2</a>
+
+  <h2>Phase 2 · Match &amp; Generate</h2>
+  <a href="#p2-what">The three steps</a>
+  <a href="#p2-entry">How Phase 2 starts</a>
+  <a href="#p2-fuzzy">Step 1 · Find similar forms</a>
+  <a href="#p2-reuse">Step 2 · Reuse rules that fit</a>
+  <a href="#p2-llm">Step 3 · Fill gaps with AI</a>
+
+  <h2>Reference</h2>
+  <a href="#api">The API endpoints &amp; call order</a>
+  <a href="#stores">Data stores &amp; tables</a>
+  <a href="#filemap">File / module map</a>
+  <a href="#output">The review table (output)</a>
+  <a href="#gotchas">Quirks worth knowing</a>
+</nav>
+
+<main>
+  <h1>The ECS Generation Pipeline, explained end-to-end</h1>
+  <p class="subtitle">How a pile of <b>annotated / historical CRFs</b> becomes an <b>Edit Check Specification</b> — the list of data-validation rules for a study's Case Report Forms — walked through gradually, without asking you to read the code.</p>
+
+  <div class="callout tip">
+    <div class="lbl">How to read this doc</div>
+    Read it <b>top to bottom</b> — each section builds on the one before it, and you never need to open the code to follow along.
+    We'll keep coming back to one running example: a study's <b>Visit Date</b> and <b>Adverse Events</b> forms. Watch those two travel through every step.
+    <p style="margin:8px 0 0">Two small reading aids:</p>
+    <ul class="tight" style="margin-top:4px">
+      <li>Names in <span class="fn">orange monospace</span> are the exact function in the code, in case you want to go find it later. You can ignore them and still follow the story.</li>
+      <li>Little coloured tags tell you what kind of thing is being talked about:</li>
+    </ul>
+    <div class="legend" style="margin-top:8px">
+      <span><span class="tag t-in">INPUT/DOC</span> a document or file</span>
+      <span><span class="tag t-store">STORE</span> a database / index</span>
+      <span><span class="tag t-llm">LLM</span> an AI model call</span>
+      <span><span class="tag t-file">CODE</span> a source file</span>
+    </div>
+  </div>
+
+  <!-- ============================================================= -->
+  <h2 id="tldr">The 60-second version</h2>
+  <p>Think of a clinical study as a stack of <b>forms</b> that a hospital site fills in for each patient: Demographics, Adverse Events, Vital Signs, and so on. Every form has <b>fields</b> (boxes to type into), like "Visit Date" or "AE End Date".</p>
+
+  <p>Someone has to write the <b>rules</b> that catch bad data in those boxes — for example, <i>"a visit date can't be in the future"</i>, or <i>"if you pick <b>Other</b>, you must fill in the specify box"</i>. That list of rules is called the <b>Edit Check Specification (ECS)</b>. Writing it by hand is slow and repetitive.</p>
+
+  <p>This tool does most of that work automatically. It lives inside <b>Dataiku</b> (a data-science platform), in a project called <code>ECSGENERATION</code>. You give it a study's CRF forms; it gives you back a table of rules, ready for a human to review.</p>
+
+  <div class="callout tip">
+    <div class="lbl">Scope of this document</div>
+    This walkthrough covers the <b>one path that actually runs in production</b>: a user uploads <b>CRF forms</b>, they are digitized, and each form is matched against the edit-check library (reusing rules where possible and generating the rest with an LLM). The Protocol-digitizer and the older vector-search matcher are <i>not</i> part of this path and are intentionally left out.
+  </div>
+
+  <figure style="max-width:340px">
+    <img src="images/frontend_upload_panel.png" alt="AI Writing Assistant upload panel with Indication, Molecule and Therapeutic Area">
+    <figcaption>The entry point: a user uploads a CRF in the "AI Writing Assistant" panel and sets the study attributes (<code>Indication</code>, <code>Molecule</code>, <code>Therapeutic Area</code>). The <code>Molecule</code> value here is what later filters the Historical edit checks.</figcaption>
+  </figure>
+
+  <p>It works in two big moves:</p>
+
+  <div class="pipe">
+    <div class="pbox">
+      <div class="n">Phase 1 — once per upload</div>
+      <div class="t">Digitize the CRF</div>
+      <div class="muted">Read the uploaded PDF and turn it into a tidy list: which forms exist, which fields each has, and each field's ID code.</div>
+    </div>
+    <div class="arrow">→</div>
+    <div class="pbox">
+      <div class="n">Phase 2 — per form</div>
+      <div class="t">Match &amp; Generate</div>
+      <div class="muted">For each form, look up rules we've used before in a shared library, reuse the ones that fit, and only ask an AI to write rules for whatever's left over.</div>
+    </div>
+  </div>
+
+  <p>The two phases are joined by one <b>library</b> of previously-approved rules (a search index called <code>ecs_opensearch</code>). Phase 2 reads from it.</p>
+
+  <div class="callout tip">
+    <div class="lbl">The one thing to remember</div>
+    The output is a <b>table of rules for a human to review</b>. Most of those rules are <b>reused</b> from the library, not invented — the AI only fills the gaps. So the tool is more "smart librarian" than "creative writer".
+  </div>
+
+  <!-- ============================================================= -->
+  <h2 id="mentalmodel">Five words you'll see everywhere</h2>
+  <p>Learn these five and the rest of the doc reads easily. Each has a plain-English meaning and a one-line example.</p>
+
+  <table>
+    <tr><th>Word</th><th>What it means</th><th>Example</th></tr>
+    <tr><td><b>CRF</b></td><td>Case Report Form. One of the forms a hospital site fills in for a patient. A study is just a stack of these.</td><td>"Adverse Events", "Vital Signs"</td></tr>
+    <tr><td><b>Field</b></td><td>One box on a form that someone types into.</td><td>"Visit Date", "AE End Date"</td></tr>
+    <tr><td><b>Field OID</b></td><td>A short code that names a field. Unlike the human label, this code stays the same across studies — so it's the reliable way to tell if two forms have "the same" field.</td><td><code>VISDAT</code> (Visit Date), <code>AEENDAT</code> (AE End Date)</td></tr>
+    <tr><td><b>Annotated CRF</b></td><td>An <span class="tag t-in">INPUT</span>. A PDF of a past study's forms, marked up so every field shows its OID. This is what you upload.</td><td><code>384-201-00002_Annotated…pdf</code></td></tr>
+    <tr><td><b>Edit check</b><br>(validation rule)</td><td>The <span class="tag t-in">OUTPUT</span> unit. One rule on one field: what to check, why, and what to tell the user when it fails. The full set of them is the ECS.</td><td>"End Date can't be before Start Date"</td></tr>
+  </table>
+
+  <div class="callout">
+    <div class="lbl">Wait — why "digitize" a PDF that's already on a computer?</div>
+    Because a PDF is just pixels and text to a computer, not <b>structured data</b>. It can't answer "which forms are in here, and what fields do they have?" by looking at a PDF any more than you could answer it from a photo. Digitizing = reading the PDF and rewriting it as neat rows the next step can actually search.
+  </div>
+
+  <!-- ============================================================= -->
+  <h2 id="players">The moving parts (the cast)</h2>
+  <p>Only a handful of things do all the work. Here's the whole cast in plain terms — you can skim this and refer back later.</p>
+
+  <div class="grid g2">
+    <div class="card">
+      <h4>Places that store things</h4>
+      <ul class="tight">
+        <li><span class="tag t-store">The library</span> — an <b>OpenSearch</b> search index (<code>ecs_opensearch</code>) holding every rule we've approved before. Each rule is tagged <b>Standard</b> (applies to any study) or <b>Historical</b> (came from a specific past study). This is what Phase 2 shops in.</li>
+        <li><span class="tag t-store">The notebook</span> — a couple of <b>Snowflake</b> tables that just track progress ("this file is 40% digitized") and cost ("this run used N tokens"). Bookkeeping, nothing clever.</li>
+        <li><span class="tag t-store">The inbox</span> — <b>folders</b> where uploaded files land (<code>file_upload</code> for CRFs).</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Tools that do the work</h4>
+      <ul class="tight">
+        <li><span class="tag t-llm">The AI</span> — the <b>ECS generation agent</b>. Only used at the end, to write rules for fields the library didn't cover. (In the code: <span class="fn">MyLLM.process()</span> in <code>ecs_generation_agent.py</code>.)</li>
+        <li><b>PDF readers</b> (pdfplumber, PyMuPDF) — read the text <i>and the geometry</i> of the CRF PDF. The geometry matters: it's how the tool tells the "field number" column from the "field OID" column by their position on the page.</li>
+        <li><b>rapidfuzz</b> — a fuzzy text matcher. Lets "Conmeds" still find "Concomitant Medications" even though they're spelled differently.</li>
+        <li><b>LibreOffice</b> — if you upload a Word <code>.docx</code>, it quietly converts it to PDF first (everything downstream expects a PDF).</li>
+      </ul>
+    </div>
+  </div>
+  <p class="muted">One security note: the AI is reached through Dataiku's "LLM Mesh", so no API keys are hard-coded — credentials come from a stored secret (<span class="fn">connection.get_dataiku_host_and_api_key(...)</span>).</p>
+
+  <!-- ============================================================================ -->
+  <!-- PHASE 1 -->
+  <!-- ============================================================================ -->
+  <h2 id="p1-what">Phase 1 · Digitize the CRF — <span class="muted" style="font-weight:400">read the PDF, write neat rows</span></h2>
+
+  <p><b>Goal of this phase:</b> take the CRF PDF you uploaded and produce a simple list — for every form, its fields, and each field's OID. Nothing is matched or generated yet; we're just turning a PDF into data.</p>
+
+  <div class="callout">
+    <div class="lbl">First, how the file gets in</div>
+    When you upload a file, the tool saves it to a folder and writes a "0% done" row in a progress table so the UI can show a progress bar. If you uploaded a Word doc, it's converted to PDF first. Each upload gets an id (<code>crf_file_id</code>) that follows it through the rest of the pipeline.
+    <div class="muted" style="margin-top:6px">In the code: <span class="fn">file_upload()</span> in <code>ecs_utils.py</code> → folder <code>file_upload</code>, table <code>ecs_file_upload</code>.</div>
+  </div>
+
+  <!-- ---------------------------------------------------------------- -->
+  <h3 id="p1-crf">How the digitizer reads a form</h3>
+  <p>The digitizer walks through the PDF page by page. Its whole job is to answer, for each form: <i>what are its fields, and what OID does each field have?</i> Here's how it does that in three steps.</p>
+  <p class="muted">In the code: <span class="fn">extract_crf_new()</span> → the <span class="fn">HistoricalCRF</span> class in <code>crf_extraction.py</code>.</p>
+
+  <div class="flow">
+    <div class="step">
+      <h4>Read the pages (and nudge the progress bar)</h4>
+      <span class="muted">It opens the PDF and goes page by page. Every so often it updates the "% done" in the progress table so you see movement in the UI. That's all this step does.</span>
+    </div>
+
+    <div class="step">
+      <h4>Notice that there are two kinds of page</h4>
+      <p style="margin:4px 0">An annotated CRF prints two views of each form, and the digitizer treats them differently. It tells them apart by a simple tell: a page with the words <code>"field name"</code> on it is an <b>OID page</b>; everything else is a <b>data page</b>.</p>
+      <ul class="tight">
+        <li><b>Data page</b> — shows the human field <i>labels</i> and a small number next to each. From here it grabs the <b>field name</b> and its <b>field number</b>.</li>
+        <li><b>OID page</b> — a lookup table that lists each <b>field number</b> next to its <b>OID code</b>. From here it grabs the <b>field number → OID</b> pairing. (It uses each word's position on the page to know which column is which.)</li>
+      </ul>
+
+      <div class="figrow">
+        <figure>
+          <div class="shot-lbl">Data page — field labels + numbers</div>
+          <img src="images/crf_visit_date_data_page.png" alt="Visit Date data page showing field names and numbers">
+        </figure>
+        <figure>
+          <div class="shot-lbl">OID page — numbers + OID codes</div>
+          <img src="images/crf_visit_date_oid_page.png" alt="Visit Date OID page showing field OIDs">
+        </figure>
+      </div>
+      <span class="muted">Both pages above are the <b>Visit Date</b> form from our example CRF. Notice the <b>field number</b> is the thing they share: the data page says field <b>3</b> is labelled "<i>Visit Date</i>", and the OID page says field <b>3</b> is <code>VISDAT</code>. That shared number is the glue for the next step.</span>
+    </div>
+
+    <div class="step">
+      <h4>Stitch the two views together</h4>
+      <p style="margin:4px 0">Now it joins them <b>by field number</b>: field 3's label ("Visit Date") + field 3's code (<code>VISDAT</code>) → one complete record. Do that for every field, drop exact duplicates, and Phase 1 is done.</p>
+      <p style="margin:4px 0">For our example the Visit Date form comes out as:</p>
+<pre>{ "form_name": "Visit Date", "field_name": "Visit Date", "field_oid": "VISDAT" }</pre>
+      <span class="muted">In the code: <span class="fn">merge_sections_per_file()</span>, then a join on <code>field_number</code>, then de-dup on <code>(form_name, field_name)</code>.</span>
+    </div>
+  </div>
+
+  <div class="callout warn">
+    <div class="lbl">Heads-up: three digitizer files look alike</div>
+    The repo has three similar files (<code>crf_extraction.py</code>, <code>thread_digitization.py</code>, <code>digitization.py</code>). Only <code>crf_extraction.py</code> is the live one used here. If you go editing, make sure it's that one.
+  </div>
+
+  <h3 id="p1-record">What Phase 1 hands to Phase 2</h3>
+  <p>The end product is just a plain list of little records, one per field. This is the "data" version of your PDF — here are the <b>real</b> records for the <b>Visit Date</b> form from the <code>384-201-00002</code> run:</p>
+<pre>[
+  { "form_name": "Visit Date", "field_name": "Was visit performed?",         "field_oid": "VISPERF"    },
+  { "form_name": "Visit Date", "field_name": "If No, please provide reason", "field_oid": "VISREASND"  },
+  { "form_name": "Visit Date", "field_name": "Visit Date",                   "field_oid": "VISDAT"     },
+  { "form_name": "Visit Date", "field_name": "Folder OID (auto-populated)",  "field_oid": "FOLDER_OID" },
+  ...
+]</pre>
+  <p>That's the whole output of Phase 1. Every field now has a stable <b>OID code</b> next to it — and as we'll see next, those codes (like <code>VISDAT</code>) are exactly what Phase 2 uses to find matching rules.</p>
+
+  <div class="callout">
+    <div class="lbl">Where this list is parked between phases</div>
+    The <code>extract-crf</code> endpoint (<span class="fn">extract_crf()</span>) is what runs the digitizer. It groups the records by form (skipping any field with no OID), saves the whole thing as JSON into the Snowflake <code>ctl_crf_output</code> table keyed by <code>crf_file_id</code>, and flips the progress row to <code>100%</code>. Phase 2 later reads that same row back out — so Snowflake, not memory, is the hand-off between the two phases.
+  </div>
+
+  <div class="callout tip">
+    <div class="lbl">The real numbers for this run</div>
+    Digitizing <code>384-201-00002_Annotated Unique CRF</code> produced <span class="num">76</span> forms and <span class="num">915</span> field records, <span class="num">831</span> of which carried an OID code. The handful without one are section labels / page noise (e.g. a stray <code>"025 GMK (432)"</code>) — Phase 2 simply skips any form that has no OIDs.
+  </div>
+
+  <!-- ============================================================================ -->
+  <!-- PHASE 2 -->
+  <!-- ============================================================================ -->
+  <h2 id="p2-what">Phase 2 · Match &amp; Generate — <span class="muted" style="font-weight:400">turn that list into a table of rules</span></h2>
+
+  <p>Phase 2 takes the list from Phase 1 and handles it <b>one form at a time</b>. For each form it does the same three things, in order:</p>
+
+  <div class="pipe">
+    <div class="pbox"><div class="n">step 1</div><div class="t">Find similar forms</div><div class="muted">Look in the library for forms with a similar name.</div></div>
+    <div class="arrow">→</div>
+    <div class="pbox"><div class="n">step 2</div><div class="t">Reuse rules that fit</div><div class="muted">Keep the library rules whose fields this study actually has.</div></div>
+    <div class="arrow">→</div>
+    <div class="pbox"><div class="n">step 3</div><div class="t">Fill the gaps with AI</div><div class="muted">Only for fields nothing covered, ask the AI to draft a rule.</div></div>
+  </div>
+
+  <p>Most forms get most of their rules from step 2 (reuse). Step 3 (AI) is the fallback, not the star. The code that runs steps 1–2 is <span class="fn">CRFFuzzyMatcher</span> in <code>review_table.py</code>; step 3 is the generation agent.</p>
+
+  <div class="callout tip">
+    <div class="lbl">No "AI search" here — it's simpler than that</div>
+    A common assumption is that matching uses AI/semantic search. It doesn't. Step 1 is plain <b>fuzzy text matching</b> on form names, and step 2 is a plain <b>set comparison</b> of OID codes. The AI only shows up in step 3, to write brand-new rules. Keep that in mind as you read the steps below.
+  </div>
+
+  <h3 id="p2-entry">How Phase 2 gets started</h3>
+  <p>The front-end kicks off Phase 2 by calling the <code>generate-review-table</code> endpoint (<span class="fn">review_table()</span>). That function reads Phase 1's saved output for this <code>file_id</code> back out of Snowflake (the <code>ctl_crf_output</code> table), then runs steps 1–2 with <span class="fn">CRFFuzzyMatcher</span> (fit threshold <code>0.62</code>) and returns the assembled rows.</p>
+  <p>Step 3 — the AI fill — is a <b>separate</b> endpoint. Only for the forms/fields nothing matched does the front-end call <span class="fn">generate_ecs_llm()</span>, which hands the work to a pre-built Dataiku <b>agent</b> and logs the token cost. So "start matching" and "call the AI" are two different calls; we'll unpack the agent in step 3.</p>
+
+  <div class="callout warn">
+    <div class="lbl">Gotcha for future editors: the AI prompt is copy-pasted in 3 places</div>
+    The exact same "Edit Check Specification Specialist" prompt lives in three files and they've drifted apart. The one that actually runs is in <code>ecs_generation_agent.py</code>. If you want to change how the AI writes rules, change that copy.
+  </div>
+
+  <h3 id="p2-fuzzy">Step 1 — find library forms with a similar name</h3>
+  <p>For each study form, the tool searches the library for forms whose <i>name</i> looks similar — using fuzzy text matching, not exact spelling. So the study's "Conmeds" form still finds the library's "Concomitant Medications".</p>
+  <p>This is a deliberately loose first pass. It's just narrowing down "which library forms are worth looking at" — the real decision happens in step 2.</p>
+  <p class="muted">In the code: <span class="fn">get_standard_crf()</span> using rapidfuzz, similarity cutoff 70.</p>
+
+  <h3 id="p2-reuse">Step 2 — reuse the rules whose fields this study has</h3>
+  <p>Now the important bit. For each similar library form, the tool pulls its rules and asks one question per rule:</p>
+  <div class="callout" style="border-left-color:var(--green)">
+    <b>"Does this study have all the fields this rule needs?"</b><br>
+    If yes → reuse the rule. If no → skip it.
+  </div>
+  <p>It answers by comparing <b>OID codes</b>, not names. Every library rule lists the OIDs it needs. If those OIDs are all present in the study (a <i>subset</i> of the study's OIDs), the rule fits and is copied into the output.</p>
+
+  <p><b>Example.</b> The library has a rule <code>AE_002</code>: <i>"End Date can't be before Start Date."</i> It needs the fields <code>AEENDAT</code> and <code>AESTDAT</code>. Our study's Adverse Events form (from Phase 1) has both of those OIDs → the rule fits → it's reused, word for word, tagged with the study's own form name.</p>
+
+  <div class="callout" style="border-left-color:var(--green)">
+    <div class="lbl">The "fits / doesn't fit" call on real data</div>
+    <p style="margin:4px 0">In the <code>384-201-00002</code> run, the study's <b>Visit Date</b> form fuzzy-matched the library's Visit Date rules — <b>13</b> Historical candidates. The tool then compared each rule's OIDs to the study's OIDs:</p>
+    <table style="margin:8px 0">
+      <tr><th>Library rule</th><th>OIDs it needs</th><th>Study has them all?</th><th>Result</th></tr>
+      <tr><td><code>VISDAT_901</code></td><td><code>['VISDAT','DSSTDAT_IC','DSSTDAT']</code></td><td>No — the study has <code>VISDAT</code> but not all three</td><td><b>skipped</b></td></tr>
+      <tr><td>the other 12 (e.g. <code>VISDAT_902</code>)</td><td><code>['VISDAT']</code></td><td>Yes</td><td><b>reused</b></td></tr>
+    </table>
+    <p style="margin:4px 0">So twelve Visit Date rules were reused verbatim and one was dropped — and in the final output the Visit Date form carries exactly those <span class="num">12</span> Historical rules, with <b>zero</b> AI needed. That single-OID pattern (<code>['VISDAT']</code>) is why almost all of them fit.</p>
+  </div>
+
+  <p>The tool does this for two flavours of library rule:</p>
+  <ul class="tight">
+    <li><b>Standard</b> rules — generic, apply to any study (e.g. "this date field can't be blank").</li>
+    <li><b>Historical</b> rules — from a specific past study, narrowed to ones tagged with this study's <b>molecule</b> (falling back to indication, then therapeutic area).</li>
+  </ul>
+
+  <div class="callout">
+    <div class="lbl">Why match on OID codes instead of field names?</div>
+    Because names are unreliable — one study writes "AE End Date", another writes "End date of adverse event". The OID code <code>AEENDAT</code> is the same in both. Comparing codes lets the tool safely say "yes, this study really does have the field this rule needs", which sloppy name-matching could get wrong.
+  </div>
+
+  <div class="callout tip">
+    <div class="lbl">Where this lives in Dataiku</div>
+    The matcher reads the index named by the <code>ecs_opensearch</code> project variable — <code>${projectKey}_ecs_index</code> → <code>ecsgeneration_ecs_index</code> — browsable as the Dataiku dataset <b><code>ecs_index</code></b> (~4,800 rows, 17 columns). Each row is one rule, and it carries the columns that matter here: <code>form_field_value</code>, <code>validation_logic</code>, <code>reasoning</code>, <code>action</code>/<code>action_details</code>, <code>validation_id</code>, <code>ecs_id</code>, <b><code>field_oids</code></b> (an array, populated for ~100% of rows), <code>source</code>, and the study tags <code>indication</code>/<code>molecule</code>/<code>ta</code>. Filter on <b><code>source</code></b> to switch between <code>Standard</code> (study-agnostic boilerplate) and <code>Historical</code>/<code>Historic</code> (study-specific). The <code>field_oids</code> column is the one the <span class="fn">is_subset()</span> check reads.
+  </div>
+  <div class="callout warn">
+    <div class="lbl">Don't confuse it with <code>ecs_index_data</code></div>
+    There is a second, similarly-named dataset <code>ecs_index_data</code> (the <code>standard_index</code> = <code>${projectKey}_ecs_index_data</code>). It holds <b>only Standard</b> rows, has <b>no <code>field_oids</code></b> column (it carries <code>form_name_vector</code>/<code>form_field_vector</code> embeddings instead), and is <b>not</b> what the live matcher queries. Use <code>ecs_index</code> for anything OID-related.
+  </div>
+
+  <h4>What a library record looks like</h4>
+  <p>Real rows from the <code>ecs_index</code> dataset. The tell is the study tags: <b>Standard</b> rows leave <code>indication</code>/<code>molecule</code>/<code>ta</code> empty (they apply to any study), while <b>Historical</b> rows carry them (they came from a specific past study):</p>
+  <table>
+    <tr><th>source</th><th>form_name</th><th>field_oids</th><th>indication / molecule / ta</th><th>validation_id</th><th>the rule</th></tr>
+    <tr>
+      <td><span class="tag t-in">Standard</span></td>
+      <td>Demographics</td>
+      <td><code>['BRTHDAT']</code></td>
+      <td class="muted">— / — / —</td>
+      <td><code>MVAL_DM008</code></td>
+      <td>(DM.BRTHDAT is an invalid date) → "query the field for invalid date"</td>
+    </tr>
+    <tr>
+      <td><span class="tag t-in">Standard</span></td>
+      <td>Demographics</td>
+      <td><code>['AGE']</code></td>
+      <td class="muted">— / — / —</td>
+      <td><code>MVAL_DM016</code></td>
+      <td>(DM.AGE is enterable and missing) → prompt if missing</td>
+    </tr>
+    <tr>
+      <td><span class="tag t-store">Historical</span></td>
+      <td>Adverse Events</td>
+      <td><code>['AEENDAT','AESTDAT']</code></td>
+      <td>Treatment-Resistant Depression / <b>MSP-2020</b> / Neurology</td>
+      <td><code>AE_002</code></td>
+      <td>AEENDAT (End Date) &lt; AESTDAT (Start Date) → "End Date is before Start Date"</td>
+    </tr>
+    <tr>
+      <td><span class="tag t-store">Historical</span></td>
+      <td>Visit Date</td>
+      <td><code>['VISDAT']</code></td>
+      <td>Treatment-Resistant Depression / <b>MSP-2020</b> / Neurology</td>
+      <td><code>VISDAT_902</code></td>
+      <td>Screening VISDAT must be −28 to −2 days before Day 1 → "Out of range"</td>
+    </tr>
+  </table>
+
+  <div class="callout tip">
+    <div class="lbl">A puzzle this explains: "why is my IgA study full of depression rules?"</div>
+    The library mixes rules from <b>many</b> past studies. Our example study uses molecule <b>MSP-2020</b>, and the only past study with that molecule happened to be a <i>Treatment-Resistant Depression</i> study. So when the tool keeps the MSP-2020 Historical rules, they carry that old study's tags (TRD / Neurology) — even though your new study is IgA Nephropathy. The rules still fit (they're matched by OID codes, which don't care about indication), the tags just reveal where they came from. That's why <code>tool_output.csv</code> shows depression tags on an IgA run — it's expected, not a bug.
+  </div>
+
+  <h3 id="p2-llm">Step 3 — ask the AI for whatever's left</h3>
+  <p>Some fields won't match any library rule. For those — and only those — the tool asks the AI to write a rule. It sends the AI the form name and the leftover field names, with one firm instruction: <i>don't make things up; if you're unsure, just say the field can't be blank.</i></p>
+  <p>The AI returns, for each field, a plain rule: what to check, why, and the message to show. If it skips a field or the call fails, the tool falls back to a safe default ("must not be blank"). These rules are tagged <b>LLM Generated</b> so a reviewer knows they weren't reused from the approved library and deserve a closer look.</p>
+  <p class="muted">In the code: <span class="fn">make_llm_call_batch()</span> → <span class="fn">parse_llm_batch_output()</span>, with <span class="fn">create_default_validation()</span> as the fallback. Temperature 0 (as deterministic as possible).</p>
+
+  <div class="callout tip">
+    <div class="lbl">Phase 2 in one breath</div>
+    For each form: find similar library forms → reuse every rule whose OID codes fit this study → ask the AI to write rules only for the fields nothing covered → collect it all into one review table.
+  </div>
+
+  <!-- ============================================================================ -->
+  <!-- REFERENCE -->
+  <!-- ============================================================================ -->
+  <h2 id="api">Reference · The API endpoints &amp; call order</h2>
+  <p>Everything above is driven by <b>six HTTP endpoints</b>, split across two Dataiku API services (defined in <code>api_designer/</code>). The front-end calls them in a fixed order for one upload:</p>
+
+  <div class="flow">
+    <div class="step">
+      <h4>Upload the file</h4>
+      <span class="kbd">POST /file-upload/run</span> → <span class="fn">file_upload(user_id, file_b64, file_name)</span><br>
+      <span class="muted">Saves the file, converts docx→pdf, opens the progress row, and returns the <code>crf_file_id</code> everything else keys off.</span>
+    </div>
+    <div class="step">
+      <h4>Digitize it (Phase 1)</h4>
+      <span class="kbd">POST /extract-crf/run</span> → <span class="fn">extract_crf(file_path, file_id, created_by)</span><br>
+      <span class="muted">Runs the digitizer, writes the form/field/OID JSON to <code>ctl_crf_output</code>, sets progress to 100%.</span>
+    </div>
+    <div class="step">
+      <h4>Poll the progress bar</h4>
+      <span class="kbd">POST /digitization-percent/run</span> → <span class="fn">digitization_percent(file_id)</span><br>
+      <span class="muted">Reads <code>digitization_percent</code> + <code>description</code> from <code>ecs_file_upload</code>; returns e.g. <code>{"response":"40%","message":"…"}</code>. Called repeatedly by the UI while digitization runs.</span>
+    </div>
+    <div class="step">
+      <h4>Fill the study-filter dropdowns</h4>
+      <span class="kbd">POST /get-indication/run</span> → <span class="fn">get_indication()</span><br>
+      <span class="muted">Returns the distinct <code>indication</code> / <code>molecule</code> / <code>therapeutic_area</code> values present in the library index (minus "Not Found"/"nan"), so the user can pick which to match against.</span>
+    </div>
+    <div class="step">
+      <h4>Match &amp; reuse (Phase 2, steps 1–2)</h4>
+      <span class="kbd">POST /generate-review-table/run</span> → <span class="fn">review_table(file_path, file_id, indication, molecule, ta)</span><br>
+      <span class="muted">Reads <code>ctl_crf_output</code> for the file, runs <span class="fn">CRFFuzzyMatcher</span> (threshold <code>0.62</code>), returns the reused/placeholder rows.</span>
+    </div>
+    <div class="step">
+      <h4>Generate the leftovers (Phase 2, step 3)</h4>
+      <span class="kbd">POST /ecs-generation/run</span> → <span class="fn">generate_ecs_llm(form_name, fields, file_id, user_id)</span><br>
+      <span class="muted">Sends the unmatched form + fields to the generation agent and logs token usage. This is the only endpoint in the separate <code>ecs-platform-agent</code> service.</span>
+    </div>
+  </div>
+
+  <table>
+    <tr><th>Service</th><th>Endpoint</th><th>Function</th><th>Phase</th></tr>
+    <tr><td rowspan="5"><code>ecs-utils</code></td><td><code>/file-upload/run</code></td><td><span class="fn">file_upload</span></td><td>0 · upload</td></tr>
+    <tr><td><code>/extract-crf/run</code></td><td><span class="fn">extract_crf</span></td><td>1 · digitize</td></tr>
+    <tr><td><code>/digitization-percent/run</code></td><td><span class="fn">digitization_percent</span></td><td>1 · progress poll</td></tr>
+    <tr><td><code>/get-indication/run</code></td><td><span class="fn">get_indication</span></td><td>2 · filter options</td></tr>
+    <tr><td><code>/generate-review-table/run</code></td><td><span class="fn">review_table</span></td><td>2 · match &amp; reuse</td></tr>
+    <tr><td><code>ecs-platform-agent</code></td><td><code>/ecs-generation/run</code></td><td><span class="fn">generate_ecs_llm</span></td><td>2 · AI fill</td></tr>
+  </table>
+  <p class="muted">All endpoints are <code>PY_FUNCTION</code> services with <code>authMethod: PUBLIC</code>, pinned to the <code>CRF_ICF_UseCase</code> code environment. Each rebuilds its own Dataiku client from the stored secret rather than sharing one.</p>
+
+  <h2 id="stores">Reference · Data stores &amp; tables</h2>
+  <table>
+    <tr><th>Store</th><th>What it holds</th><th>Written by</th><th>Read by</th></tr>
+    <tr><td><span class="tag t-store">OpenSearch</span> <code>ecs_opensearch</code> (+ <code>${projectKey}_ecs_index_data</code>)</td><td>Edit-check library: one record per known form-field rule + <code>field_oids</code>, tagged <code>Standard</code>/<code>Historical</code>.</td><td>(pre-loaded / ingestion)</td><td>Phase 2 (matcher)</td></tr>
+    <tr><td><span class="tag t-store">Snowflake</span> <code>ecs_file_upload</code></td><td>CRF-file digitization progress keyed by <code>crf_file_id</code>.</td><td>Phase 0/1</td><td>Front-end (progress bar)</td></tr>
+    <tr><td><span class="tag t-store">Snowflake</span> <code>ctl_crf_output</code></td><td>The digitized form/field/OID JSON — the Phase 1 → Phase 2 hand-off, keyed by <code>crf_file_id</code>.</td><td>Phase 1 (<span class="fn">extract_crf</span>)</td><td>Phase 2 (<span class="fn">review_table</span>)</td></tr>
+    <tr><td><span class="tag t-store">Snowflake</span> <code>llmtokenusagelog</code></td><td>Per-request input/output token counts &amp; execution time.</td><td>Phase 1 &amp; 2</td><td>Cost / audit reporting</td></tr>
+    <tr><td><span class="tag t-store">S3 folders</span> <code>file_upload</code>, <code>R_and_D_folder</code></td><td>Uploaded CRFs and shared docs respectively.</td><td>Front-end</td><td>Phase 1</td></tr>
+  </table>
+  <p class="muted">Config lives in Dataiku <b>project variables</b> (<code>proj.get_variables()["local"]</code>): index names (<code>ecs_opensearch</code>), connection names (<code>opensearch_connection</code>, <code>snowflake_connection_string</code>), model ids (<code>default_llm_model</code>), the generation agent id (<code>ecs_generation_agent_id</code>), the token-log table (<code>llm_token_usage</code>), folder ids, and the nested <code>ecs</code>/<code>crf</code>/<code>common_tables</code> table maps.</p>
+
+  <h2 id="filemap">Reference · File / module map</h2>
+  <p>Paths are under <code>python/</code> unless noted (<code>api.py</code> lives at the project root; the endpoint wrappers live in <code>api_designer/*.json</code>).</p>
+  <table>
+    <tr><th>Path</th><th>Role</th><th>Phase</th></tr>
+    <tr><td><code>api_designer/ecs-utils.json</code></td><td>Service bundling five endpoints: <span class="fn">file_upload</span>, <span class="fn">extract_crf</span>, <span class="fn">review_table</span>, <span class="fn">digitization_percent</span>, <span class="fn">get_indication</span>.</td><td>0–2</td></tr>
+    <tr><td><code>api_designer/ecs-platfrom-agent.json</code></td><td>Service exposing the one generation endpoint (<span class="fn">generate_ecs_llm</span>). <span class="muted">(Filename is misspelled "platfrom".)</span></td><td>2</td></tr>
+    <tr><td><code>ecs_utils.py</code></td><td><b>Upload entry point</b> — <span class="fn">file_upload()</span>: base64 → managed folder, docx→pdf, and the initial <code>ecs_file_upload</code> tracking row.</td><td>0</td></tr>
+    <tr><td><code>api.py</code></td><td><b>API entry point for generation</b> — <span class="fn">generate_ecs_llm()</span>: calls the Dataiku LLM Mesh agent (<code>ecs_generation_agent_id</code>) and logs token usage.</td><td>2</td></tr>
+    <tr><td><code>ecs_generation_agent.py</code></td><td><b>The generation agent itself</b> — <span class="fn">MyLLM(BaseLLM).process()</span> plus in-file copies of <span class="fn">make_llm_call_batch</span> / <span class="fn">parse_llm_batch_output</span> / <span class="fn">create_default_validation</span>.</td><td>2</td></tr>
+    <tr><td><code>crf_extraction_module/crf_extraction.py</code></td><td><b>CRF digitizer (current)</b> — <span class="fn">GenericFormFieldExtractor</span>, <span class="fn">HistoricalCRF</span>, <span class="fn">extract_crf_new()</span>: fields, field numbers, field OIDs per form.</td><td>1</td></tr>
+    <tr><td><code>crf_extraction_module/review_table.py</code></td><td><b>Phase 2 matcher</b> — <span class="fn">CRFFuzzyMatcher</span>: fuzzy form match + OID-subset reuse + LLM placeholders.</td><td>2</td></tr>
+    <tr><td><code>crf_extraction_module/opensearch_utils.py</code></td><td><span class="fn">OpensearchUtil</span> — OpenSearch client, bulk insert, and the form/field lookups the matcher uses.</td><td>1 &amp; 2</td></tr>
+    <tr><td><code>crf_extraction_module/calculate_tokens.py</code></td><td><span class="fn">count_tokens()</span> via <code>tiktoken</code>.</td><td>1 &amp; 2</td></tr>
+    <tr><td><code>utilities/llm.py</code></td><td>Edit-check generation: <span class="fn">make_llm_call_batch</span>, <span class="fn">parse_llm_batch_output</span>, <span class="fn">create_default_validation</span>.</td><td>2</td></tr>
+    <tr><td><code>utilities/variables.py</code></td><td>Project constants: <code>RD_PROJECT_NAME=ECSGENERATION</code>, <code>SECRET_NAME</code>, <code>TOKEN_KEY</code>.</td><td>—</td></tr>
+    <tr><td><code>utilities/logging_config.py</code></td><td>Rotating file logging setup.</td><td>—</td></tr>
+  </table>
+
+  <h2 id="output">Reference · The review table (the output)</h2>
+  <p>This is what you get back: one row per rule. A person then reviews it, keeps the good rows, and fixes the rest. Internally each row carries these fields:</p>
+<pre>[
+  "original_form_name",  // what the study's form was called
+  "original_field",      // the study's field name
+  "source",              // "Standard" | "Historical" | "LLM Generated"
+  "form_name",           // matched library form
+  "form_field_value",    // matched library field
+  "score",               // match confidence
+  "form_domain_name",    // e.g. AE, DM, VS
+  "variable_name",       // UPPER_SNAKE_CASE
+  "validation_logic",    // the edit-check rule
+  "reasoning",           // why the rule exists
+  "action",              // what fires
+  "action_details"       // the exact instruction / message
+]</pre>
+  <p class="muted">The most useful column for a reviewer is <code>source</code>. It's the honesty flag: <b>Standard/Historical</b> means "reused from the approved library, probably fine"; <b>LLM Generated</b> means "the AI wrote this, read it carefully".</p>
+
+  <h3>What the exported CSV actually looks like</h3>
+  <p>The internal shape above gets flattened into the delivered spreadsheet with these column headers: <code>VALIDATION ID</code>, <code>INDICATION</code>, <code>MOLECULE</code>, <code>THERAPEUTIC AREA</code>, <code>DOMAIN NAME</code>, <code>FIELD OIDS</code>, <code>VARIABLE TEXT</code>, <code>SOURCE</code>, <code>VALIDATION LOGIC</code>, <code>REASONING</code>, <code>ACTION</code>, <code>ACTION DETAILS</code>, <code>ECS ID</code>. Real rows from the <code>384-201-00002</code> run, one per source:</p>
+
+  <table>
+    <tr><th>Source</th><th>Domain</th><th>Field OIDs</th><th>Validation logic</th><th>Reasoning</th><th>Action details</th></tr>
+    <tr>
+      <td><span class="tag t-store">Historical</span></td>
+      <td>Adverse Events</td>
+      <td><code>['AEENDAT','AESTDAT']</code></td>
+      <td>AEENDAT (End Date) &lt; AESTDAT (Start Date)</td>
+      <td>End Date is less than Start Date.</td>
+      <td>End Date is recorded as being before Start Date. Please review and update.</td>
+    </tr>
+    <tr>
+      <td><span class="tag t-in">Standard</span></td>
+      <td>Demographics</td>
+      <td><code>['BRTHDAT']</code></td>
+      <td>(DM.BRTHDAT is an invalid date)</td>
+      <td>Field must not be an invalid date such as 31Feb2025</td>
+      <td>&lt;query the field for invalid date&gt;</td>
+    </tr>
+    <tr>
+      <td><span class="tag t-llm">LLM Generated</span></td>
+      <td>Body Measurements</td>
+      <td class="muted">— (none)</td>
+      <td>Field must not be blank AND must be a valid calendar date AND must not be a future date</td>
+      <td>Date field must be complete, valid, and not in the future</td>
+      <td>Please enter a valid date that is not in the future</td>
+    </tr>
+  </table>
+  <p class="muted">Note the tells: <b>Historical/Standard</b> rows carry real <code>FIELD OIDS</code> and a specific <code>VALIDATION ID</code> (e.g. <code>AE_002</code>, <code>MVAL_DM008</code>) because they were reused from the library; <b>LLM Generated</b> rows have no OIDs and no validation ID, and their logic reads like prose — that's the row a reviewer should read most carefully. In the <code>384-201-00002</code> output the split is <span class="num">697</span> LLM Generated, <span class="num">140</span> Standard, <span class="num">73</span> Historical — 910 rows total.</p>
+
+  <h2 id="gotchas">Reference · Quirks worth knowing</h2>
+  <p class="muted">Small surprises that will save you time if you ever dig into the code or the data.</p>
+  <ul class="tight">
+    <li><b>Matching is by OID codes, not field names.</b> If you remember one thing about Phase 2, remember this.</li>
+    <li><b>The "does it fit?" check pools OIDs across <i>all</i> forms, not per form.</b> It compares a rule's OIDs against every OID in the whole study at once (variable <code>fecthed_all_field_oids</code>). A per-form version exists in the code but is commented out.</li>
+    <li><b><code>field_oids</code> is stored as a string</b> in the index and parsed back with <code>ast.literal_eval</code> before comparison.</li>
+    <li><b>The "source" tag is spelled inconsistently across files</b> — the current matcher uses <code>Standard</code>/<code>Historical</code>. Check which spelling the target index actually uses before changing a filter.</li>
+    <li><b>Three CRF digitizers coexist in the repo</b> (<code>crf_extraction.py</code>, <code>thread_digitization.py</code>, <code>digitization.py</code>); only <code>extract_crf_new</code> in <code>crf_extraction.py</code> is the live OID-aware path used here.</li>
+    <li><b>Token usage is logged from <code>api.py</code></b> into the table named by the <code>llm_token_usage</code> project var, keyed by <code>crf_file_id</code> under workflow <code>"ECS Generation Agent"</code>.</li>
+    <li><b>The generation prompt is duplicated three times.</b> The live copy is inside the agent (<code>ecs_generation_agent.py</code> → <span class="fn">MyLLM.process</span>); near-identical copies live in <code>utilities/llm.py</code> and in <span class="fn">CRFFuzzyMatcher</span> (<code>review_table.py</code>). They have drifted — change the agent copy for the <code>api.py</code> path, and beware the others going stale.</li>
+    <li><b>Two API entry points, two ids.</b> <code>ecs_utils.py file_upload</code> mints a <code>uuid</code> it calls <code>protocol_id</code> internally but stores as <code>crf_file_id</code>; <code>api.py</code> then uses that same id as <code>file_id</code>/<code>user_id</code> in places. Trace the id carefully — the naming isn't consistent across files.</li>
+  </ul>
+
+  <hr>
+  <p class="muted">This document describes the <b>CRF-upload path</b> of the pipeline as implemented in the <code>python/</code> tree of the ECS project — the one path that runs in production. Function and file names are given so any claim here can be traced back to source. The tool runs inside Dataiku (project <code>ECSGENERATION</code>); the stores referenced are a Dataiku-managed OpenSearch index and Snowflake tables, with uploads in S3 managed folders.</p>
+</main>
+</div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+---
+description: Verify plans with the user before executing multi-step work; communicate findings as they happen
+alwaysApply: true
+---
+
+# Keep the user in the loop
+
+The user wants to steer the work, not read a report of what already happened.
+
+## Before doing work
+
+- Before any multi-step effort (implementing a set of fixes, running pipelines
+  or benchmarks, updating docs/notebooks, refactors): present the plan as a
+  short todo list and WAIT for a go-ahead.
+- The only things to do without asking: the single change the user explicitly
+  requested, and read-only investigation needed to answer their question.
+- Do not silently expand scope. Extra doc edits, cleanups, renames, new probe
+  scripts, "while I'm here" fixes - name them first, do them after approval.
+
+## While working
+
+- Announce each phase in one plain sentence before starting it
+  ("Now updating the stop rule in the loop controller").
+- When something important is discovered (a bug, a surprising measurement, a
+  changed assumption), surface it to the user BEFORE building further work on
+  top of it.
+- If a step fails or a result contradicts the plan, stop and say so rather
+  than quietly working around it.
+
+## Example
+
+❌ BAD: user asks a question -> agent answers it, then also reruns tests,
+edits three docs, renames a probe script, and reports it all at the end.
+
+✅ GOOD: agent answers the question, then: "This also affects the stop-rule
+description in the deep-dive doc and the notebook bundle. Want me to update
+those two now?"

@@ -1,0 +1,284 @@
+{
+ "stop_reason": "plateau",
+ "versions": 3,
+ "best_version": 2,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "confirm",
+   "outcome": "confirmed_no_fields"
+  },
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 571,
+    "pages_total": 246,
+    "pages_with_fields": 118,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 98,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 60,
+    "fields_per_form": 9.5,
+    "forms_per_100_pages": 24.4,
+    "pages_covered_pct": 48
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 6,
+   "audit_pages": [
+    1,
+    2,
+    21,
+    88,
+    92,
+    183
+   ],
+   "audit_partial": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 21,
+     "missed": [
+      "Were any adverse events experienced?"
+     ],
+     "false": [
+      "Role Restriction: Data Collector: Adverse Events Were any adverse events experienced?",
+      "Is this an Immediately Reportable Event (IRE)?"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 88,
+     "missed": [
+      "Abnormality Reason"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 92,
+     "missed": [],
+     "false": [
+      "Aliases: Body system",
+      "Aliases:"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 183,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "score": [
+    0,
+    6,
+    0,
+    -118
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 816,
+    "pages_total": 246,
+    "pages_with_fields": 121,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 96,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 60,
+    "fields_per_form": 13.6,
+    "forms_per_100_pages": 24.4,
+    "pages_covered_pct": 49
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 6,
+   "audit_pages": [
+    1,
+    2,
+    21,
+    88,
+    92,
+    183
+   ],
+   "audit_partial": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 21,
+     "missed": [
+      "Is this a treatment emergent adv"
+     ],
+     "false": [
+      "Is this a treatment emergent adverse event?",
+      "Is this an Immediately Reportable Event (IRE)?",
+      "Role Restriction",
+      "Data Collector: Adverse Events"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 88,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 92,
+     "missed": [],
+     "false": [
+      "Aliases"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 183,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "score": [
+    0,
+    6,
+    0,
+    -121
+   ],
+   "became_best": true
+  },
+  {
+   "version": 3,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 625,
+    "pages_total": 246,
+    "pages_with_fields": 125,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 94,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 60,
+    "fields_per_form": 10.4,
+    "forms_per_100_pages": 24.4,
+    "pages_covered_pct": 51
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 15,
+   "audit_pages": [
+    1,
+    2,
+    21,
+    88,
+    92,
+    183
+   ],
+   "audit_partial": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 21,
+     "missed": [
+      "Start date and time",
+      "End date and time",
+      "Adverse event term",
+      "Is this a treatment emergent adv"
+     ],
+     "false": [
+      "Start date and time Ongoing?",
+      "End date and time Adverse event term",
+      "Is this a treatment emergent adverse event?",
+      "Is this an Immediately Reportable Event (IRE)?"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 88,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 92,
+     "missed": [
+      "Date and time performed",
+      "Body system",
+      "Abnormal findings"
+     ],
+     "false": [
+      "Date and time performed Body system",
+      "Clinical significance Abnormal findings",
+      "Body system Examination result",
+      "Clinical significance Body system"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 183,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "score": [
+    0,
+    15,
+    0,
+    -125
+   ],
+   "became_best": false
+  }
+ ]
+}

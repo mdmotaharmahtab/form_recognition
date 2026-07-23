@@ -1,0 +1,11 @@
+Line counts of core files per code version:
+file                           c1       c2       c3       c4
+codegen.py                    611      611      611     1274
+common.py                     193      193      194      272
+generic_profile.py            449      449      449      712
+induction.py                  317      317      317      507
+oid_mapping.py                243      249      249      249
+replay.py                     468      468      468      468
+run_cli_induction.py          471      605      605     1010
+sandbox_runner.py             149      149      149      156
+stage0_cluster.py              99      106      106      135

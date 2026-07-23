@@ -1,0 +1,422 @@
+You are writing a deterministic extraction program for one specific clinical Case Report Form (CRF) PDF document. Below you will find a small sample of REPRESENTATIVE PAGES (one or two per page-layout cluster) from a document that is 1083 pages long. The document is highly repetitive: the sampled pages cover its layouts, but the unsampled pages contain different content in the same layouts.
+
+Each sampled page is shown as structured text lines with geometry:
+    x=<left> y=<top> sz=<font-size> <color-hex or 'black'> <B if bold> | <text>
+
+# Your task
+
+Write a Python function that will run UNCHANGED over all 1083 pages and extract every data-entry field of the CRF:
+  - form_name : the CRF form/section the field belongs to
+  - field_name: the human-readable field label/question
+
+That is the complete output. Some CRFs also print machine codes or technical
+annotations near fields - do NOT return those (they are resolved downstream by a
+separate system). You may still USE such markings as structural landmarks if that
+helps you locate fields reliably.
+
+# Runtime contract
+
+def extract(pages):
+    # pages: list of (page_index_0based, lines) tuples for the ENTIRE document, in
+    #        page order. lines is a list of Line objects sorted by y, then x.
+    #        NOTE: y-then-x order is NOT reading order on multi-column pages; if the
+    #        layout has side-by-side columns, use x coordinates to separate them.
+    #        For right-to-left scripts the within-row order is right-to-left, and
+    #        vertical text yields an arbitrary line order - reconstruct reading
+    #        order from the coordinates when the script needs it.
+    # Line attributes:
+    #   .text  (str, stripped visible text of one visual line)
+    #   .x0 .y0 .x1 .y1  (floats; PDF points; origin = top-left of the page)
+    #   .size  (float; font size in points; the largest span on the line)
+    #   .bold  (bool)
+    #   .non_black  (bool; True if any text on the line is printed in color)
+    # returns: list of dicts, one per extracted field occurrence:
+    #   {"form_name": str, "field_name": str, "page": int_1based}
+
+# Hard constraints
+
+- Pure computation only. These modules are already available: re, math, collections,
+  itertools, functools, string, unicodedata, bisect, statistics, json. You may not
+  import anything else, access files/network, or print.
+- Deterministic, fast, simple: loops, regexes, coordinate arithmetic. It must
+  process all 1083 pages in seconds.
+- Generalize from STRUCTURE, not content. The unsampled pages contain questions,
+  values and section names you have never seen. Never key your logic on specific
+  question wording from the samples; key it on geometry (x positions, font sizes,
+  color, boldness), on repeated marker/header patterns, and on the SHAPE of text
+  (regexes over character classes). The document may be in any language.
+- You may keep state across pages (the function receives the whole document) -
+  e.g. a form name announced once may govern many following pages.
+
+# Quality bar (your program's output is machine-checked before acceptance)
+
+- It must extract from every page that carries fields, not just the sampled ones.
+- form_name should be non-empty for the large majority of records. If the document
+  genuinely prints no form/section names, use the best available section context;
+  leave it empty only as a last resort.
+- field_name values must be human-readable label text - not machine codes, bare
+  numbers, dates, or page furniture (headers/footers/page numbers/legends).
+- Answer OPTIONS are not fields: choice values (e.g. Yes / No / Unknown / list
+  items - examples here are English, apply the concept in the document's language)
+  belong to a field, they are not field_name records themselves.
+- No duplicate records for the same (form_name, field_name) pair beyond what the
+  document itself repeats.
+
+# Reply format
+
+Reply with ONLY Python source code (no prose outside code comments). Start with a
+comment block (3-6 lines) stating what layout you observed in the samples and the
+extraction strategy you chose. Then define extract(pages) plus any helpers.
+
+# Representative pages of this document
+
+--- page 1 of 1083 (layout cluster covers ~1 pages) ---
+x= 510.9 y= 117.2 sz= 9.0 black   B | Pack Version
+x= 554.4 y= 131.3 sz= 9.0 black   B | 7.0
+x= 507.4 y= 152.9 sz= 9.0 black   B | Paul Mostioru
+x= 518.9 y= 167.0 sz= 9.0 black   B | 04July2023
+x= 224.5 y= 204.8 sz=24.0 black   B | Annotated CRF
+x= 119.2 y= 284.8 sz=14.0 #1d60a4   | CHANGE HISTORY
+x= 101.2 y= 286.3 sz=15.0 #1d60a4 B | 1
+x= 119.2 y= 314.9 sz=14.0 #1d60a4   | SCHEDULE OF ASSESSMENT
+x= 101.2 y= 316.4 sz=15.0 #1d60a4 B | 2
+x= 119.2 y= 345.0 sz=14.0 #1d60a4   | PAGES
+x= 101.2 y= 346.5 sz=15.0 #1d60a4 B | 3
+x= 159.2 y= 375.1 sz=15.0 #2477cc   | 3.1. Visit Date
+x= 159.2 y= 392.3 sz=15.0 #2477cc   | 3.2. Informed Consent
+x= 159.2 y= 409.6 sz=15.0 #2477cc   | 3.3. FBR Consent
+x= 159.2 y= 426.8 sz=15.0 #2477cc   | 3.4. Demography
+x= 159.2 y= 444.1 sz=15.0 #2477cc   | 3.5. Reproductive Status - Female
+x= 159.2 y= 461.3 sz=15.0 #2477cc   | 3.6. Reproductive Status - Male
+x= 159.2 y= 478.6 sz=15.0 #2477cc   | 3.7. Medical/Psychiatric History
+x= 159.2 y= 495.8 sz=15.0 #2477cc   | 3.8. Body Temperature and Respiratory Rate
+x= 159.2 y= 513.1 sz=15.0 #2477cc   | 3.9. Triplicate Orthostatic BP and HR - Central
+x= 159.2 y= 530.3 sz=15.0 #2477cc   | 3.10. Height and Weight
+x= 159.2 y= 547.6 sz=15.0 #2477cc   | 3.11. Physical Exam
+x= 159.2 y= 564.8 sz=15.0 #2477cc   | 3.12. Triplicate ECG Assessments
+x= 159.2 y= 582.1 sz=15.0 #2477cc   | 3.13. Serology
+x= 159.2 y= 599.3 sz=15.0 #2477cc   | 3.14. Glycated Hemoglobin
+x= 159.2 y= 616.6 sz=15.0 #2477cc   | 3.15. Clinical Laboratory Assessments
+x= 159.2 y= 633.8 sz=15.0 #2477cc   | 3.16. Laboratory results review
+x= 159.2 y= 651.1 sz=15.0 #2477cc   | 3.17. FSH Blood Sample
+x= 159.2 y= 668.3 sz=15.0 #2477cc   | 3.18. Pregnancy test
+x= 159.2 y= 685.6 sz=15.0 #2477cc   | 3.19. Tobacco Use
+x= 159.2 y= 702.8 sz=15.0 #2477cc   | 3.20. Alcohol Use
+x= 271.1 y= 798.3 sz=12.0 black     | Page 1 of 1083
+
+--- page 2 of 1083 (layout cluster covers ~1 pages) ---
+x= 159.2 y= 147.3 sz=15.0 #2477cc   | 3.21. Alcohol Screen - Urine or Breath
+x= 159.2 y= 164.5 sz=15.0 #2477cc   | 3.22. Urine Drug Screen
+x= 159.2 y= 181.8 sz=15.0 #2477cc   | 3.23. Cotinine Screen
+x= 159.2 y= 199.0 sz=15.0 #2477cc   | 3.24. C-SSRS - Screening/Baseline
+x= 159.2 y= 216.3 sz=15.0 #2477cc   | 3.25. C-SSRS - Screening/Baseline - Page 1
+x= 159.2 y= 233.5 sz=15.0 #2477cc   | 3.26. C-SSRS - Screening/Baseline - Page 2
+x= 159.2 y= 250.8 sz=15.0 #2477cc   | 3.27. C-SSRS - Screening/Baseline - Page 3
+x= 159.2 y= 268.0 sz=15.0 #2477cc   | 3.28. C-SSRS - Screening/Baseline - Page 4
+x= 159.2 y= 285.3 sz=15.0 #2477cc   | 3.29. AE and CM prompt
+x= 159.2 y= 302.5 sz=15.0 #2477cc   | 3.30. Inclusion criteria
+x= 159.2 y= 319.8 sz=15.0 #2477cc   | 3.31. Exclusion criteria
+x= 159.2 y= 337.0 sz=15.0 #2477cc   | 3.32. Inclusion criteria
+x= 159.2 y= 354.3 sz=15.0 #2477cc   | 3.33. Exclusion criteria
+x= 159.2 y= 371.5 sz=15.0 #2477cc   | 3.34. Sertraline Titration
+x= 159.2 y= 388.8 sz=15.0 #2477cc   | 3.35. Washout and Sertraline Titration
+x= 159.2 y= 406.0 sz=15.0 #2477cc   | 3.36. End of Screening
+x= 159.2 y= 423.3 sz=15.0 #2477cc   | 3.37. Visit Date
+x= 159.2 y= 440.5 sz=15.0 #2477cc   | 3.38. Drug dispensation- Titration period
+x= 159.2 y= 457.8 sz=15.0 #2477cc   | 3.39. Visit Date
+x= 159.2 y= 475.0 sz=15.0 #2477cc   | 3.40. Drug dispensation- Titration period
+x= 159.2 y= 492.3 sz=15.0 #2477cc   | 3.41. Visit Date
+x= 159.2 y= 509.5 sz=15.0 #2477cc   | 3.42. Triplicate Orthostatic BP and HR - Central
+x= 159.2 y= 526.8 sz=15.0 #2477cc   | 3.43. PK Blood Draw - Sertraline
+x= 159.2 y= 544.0 sz=15.0 #2477cc   | 3.44. Aicure Device - Distribution
+x= 159.2 y= 561.3 sz=15.0 #2477cc   | 3.45. Water Restriction Start Prompt
+x= 159.2 y= 578.5 sz=15.0 #2477cc   | 3.46. Drug administration- Titration Period
+x= 159.2 y= 595.8 sz=15.0 #2477cc   | 3.47. ADT Washout
+x= 159.2 y= 613.0 sz=15.0 #2477cc   | 3.48. IMP Administration - Sertraline
+x= 159.2 y= 630.3 sz=15.0 #2477cc   | 3.49. Water Restriction End Prompt
+x= 159.2 y= 647.5 sz=15.0 #2477cc   | 3.50. AE and CM prompt
+x= 159.2 y= 664.8 sz=15.0 #2477cc   | 3.51. End of Screening
+x= 159.2 y= 682.0 sz=15.0 #2477cc   | 3.52. Visit Date
+x= 159.2 y= 699.2 sz=15.0 #2477cc   | 3.53. Triplicate Orthostatic BP and HR - Central
+x= 271.1 y= 798.3 sz=12.0 black     | Page 2 of 1083
+
+--- page 159 of 1083 (layout cluster covers ~90 pages) ---
+x=  61.2 y= 124.0 sz=10.5 black     | Criteria
+x= 607.6 y= 124.0 sz=10.5 black     | Met/Not Met
+x= 617.7 y= 154.0 sz=10.5 #999999   | Met
+x= 653.4 y= 154.0 sz=10.5 #999999   | Not Met
+x=  61.6 y= 158.6 sz= 9.0 black     | \17.\ Subjects who have a positive urine alcohol or drug screen that, in the judgment of the investigator with concurrence of the medical monitor,
+x=  61.6 y= 171.4 sz= 9.0 black     | indicates substance abuse that could compromise the subject’s safety or ability to comply with the trial procedures that could interfere with the
+x= 607.9 y= 177.7 sz= 9.0 #ff0000   | [IEORRES]
+x=  61.6 y= 184.3 sz= 9.0 black     | interpretation of trial results. Legal cannabis use is permissible if the amount used has remained stable for the last 3 months, the subject agrees to
+x= 607.9 y= 194.4 sz= 9.0 #ff0000   | [TYPE: enumeration (values: Met, Not Met)]
+x=  61.6 y= 197.1 sz= 9.0 black     | continue using cannabis in the same amount and frequency throughout the trial, and the investigator determines that no cannabis use disorder is
+x=  61.6 y= 210.0 sz= 9.0 black     | present. If these criteria are not met and the potential occasional or intermittent legal user requires washout, please refer to the list of medications
+x=  61.6 y= 222.9 sz= 9.0 black     | with a required washout period.
+x=  61.6 y= 255.5 sz= 9.0 black   B | Row 19
+x= 617.7 y= 283.6 sz=10.5 #999999   | Met
+x= 653.4 y= 283.6 sz=10.5 #999999   | Not Met
+x=  61.6 y= 288.2 sz= 9.0 black     | \18.\ Urine cotinine concentrations > 200 ng/mL or serum cotinine concentrations > 20 ng/mL at the screening visit or at check-in to the trial site.
+x= 607.9 y= 307.4 sz= 9.0 #ff0000   | [IEORRES]
+x= 607.9 y= 324.0 sz= 9.0 #ff0000   | [TYPE: enumeration (values: Met, Not Met)]
+x=  61.6 y= 346.6 sz= 9.0 black   B | Row 20
+x= 617.7 y= 374.7 sz=10.5 #999999   | Met
+x= 653.4 y= 374.7 sz=10.5 #999999   | Not Met
+x=  61.6 y= 379.3 sz= 9.0 black     | \19.\ Subjects having taken an investigational drug within 30 days prior to the screening visit.
+x= 607.9 y= 398.5 sz= 9.0 #ff0000   | [IEORRES]
+x= 607.9 y= 415.1 sz= 9.0 #ff0000   | [TYPE: enumeration (values: Met, Not Met)]
+x=  61.6 y= 437.7 sz= 9.0 black   B | Row 21
+x= 617.7 y= 465.8 sz=10.5 #999999   | Met
+x= 653.4 y= 465.8 sz=10.5 #999999   | Not Met
+x=  61.6 y= 470.4 sz= 9.0 black     | \20.\ Subjects who would be likely to require prohibited concomitant therapy during the trial. The investigator with concurrence of the medical
+x=  61.6 y= 483.2 sz= 9.0 black     | monitor may allow exceptions if the medication’s administration is deemed unlikely to impact the results of the trial.
+x= 607.9 y= 489.5 sz= 9.0 #ff0000   | [IEORRES]
+x= 607.9 y= 506.2 sz= 9.0 #ff0000   | [TYPE: enumeration (values: Met, Not Met)]
+x= 373.6 y= 565.9 sz=12.0 black     | Page 159 of 1083
+
+--- page 249 of 1083 (layout cluster covers ~88 pages) ---
+x=  61.2 y= 124.0 sz=10.5 black     | Sample
+x= 226.2 y= 124.0 sz=10.5 black     | Timepoint
+x= 348.1 y= 124.0 sz=10.5 black     | Sample Status
+x= 491.6 y= 124.0 sz=10.5 black     | Time of Collection
+x= 646.2 y= 124.0 sz=10.5 black     | Barcode Number
+x=  62.3 y= 149.2 sz= 9.0 #999999   | FBR Sample
+x= 227.3 y= 149.2 sz= 9.0 #999999   | N/A
+x= 594.9 y= 154.0 sz=10.5 #999999   | Scan
+x= 585.2 y= 177.7 sz= 9.0 #ff0000   | [SCANNER]
+x=  61.6 y= 179.2 sz= 9.0 #ff0000   | [LBCAT9]
+x= 226.5 y= 179.2 sz= 9.0 #ff0000   | [LBTPT9]
+x= 491.9 y= 179.2 sz= 9.0 #ff0000   | [LBTIM9]
+x= 646.6 y= 179.2 sz= 9.0 #ff0000   | [LBREQ9]
+x= 422.8 y= 189.2 sz=10.5 black     | Collected
+x= 585.2 y= 194.4 sz= 9.0 #ff0000   | [TYPE:
+x=  61.6 y= 195.9 sz= 9.0 #ff0000   | [TYPE: text]
+x= 226.5 y= 195.9 sz= 9.0 #ff0000   | [TYPE: text]
+x= 491.9 y= 195.9 sz= 9.0 #ff0000   | [TYPE: partialtime
+x= 646.6 y= 195.9 sz= 9.0 #ff0000   | [TYPE: text]
+x= 422.8 y= 204.2 sz=10.5 black     | Not Collected
+x= 585.2 y= 207.2 sz= 9.0 #ff0000   | enumeration
+x= 491.9 y= 208.7 sz= 9.0 #ff0000   | (hour, minutes)]
+x=  61.6 y= 212.5 sz= 9.0 #ff0000   | [Read-only field]
+x= 226.5 y= 212.5 sz= 9.0 #ff0000   | [Read-only field]
+x= 585.2 y= 220.1 sz= 9.0 #ff0000   | (values:
+x= 348.5 y= 223.5 sz= 9.0 #ff0000   | [LBSTAT9]
+x= 585.2 y= 232.9 sz= 9.0 #ff0000   | Scan)]
+x= 348.5 y= 240.1 sz= 9.0 #ff0000   | [TYPE: enumeration (values:
+x= 585.2 y= 249.5 sz= 9.0 #ff0000   | [VISIBILITY:
+x= 348.5 y= 253.0 sz= 9.0 #ff0000   | Collected, Not Collected)]
+x= 585.2 y= 262.4 sz= 9.0 #ff0000   | site only]
+x= 373.6 y= 565.9 sz=12.0 black     | Page 249 of 1083
+
+--- page 300 of 1083 (layout cluster covers ~90 pages) ---
+x=  61.2 y= 124.0 sz=10.5 black     | Criteria
+x= 607.6 y= 124.0 sz=10.5 black     | Met/Not Met
+x= 617.7 y= 154.0 sz=10.5 #999999   | Met
+x= 653.4 y= 154.0 sz=10.5 #999999   | Not Met
+x=  61.6 y= 158.6 sz= 9.0 black     | \10.\ Subjects with a primary DSM-5 diagnosis of:
+x=  61.6 y= 171.4 sz= 9.0 black     | - Schizophrenia spectrum and other psychotic disorders
+x= 607.9 y= 177.7 sz= 9.0 #ff0000   | [IEORRES]
+x=  61.6 y= 184.3 sz= 9.0 black     | - Bipolar and related disorders
+x= 607.9 y= 194.4 sz= 9.0 #ff0000   | [TYPE: enumeration (values: Met, Not Met)]
+x=  61.6 y= 197.1 sz= 9.0 black     | - Feeding and eating disorders (including anorexia nervosa or bulimia)
+x=  61.6 y= 210.0 sz= 9.0 black     | - Neurocognitive disorders (including but not limited to delirium, major or mild neurocognitive disorder due to Alzheimer’s, Parkinson’s, or
+x=  61.6 y= 222.9 sz= 9.0 black     | traumatic brain injury)
+x=  61.6 y= 255.5 sz= 9.0 black   B | Row 12
+x= 617.7 y= 283.6 sz=10.5 #999999   | Met
+x= 653.4 y= 283.6 sz=10.5 #999999   | Not Met
+x=  61.6 y= 288.2 sz= 9.0 black     | \11.\ Subjects who have a significant risk of committing suicide based on history, routine psychiatric status examination, investigator’s judgment, or
+x=  61.6 y= 301.1 sz= 9.0 black     | who have an answer of “yes” on suicidal ideation questions 4 or 5 (current or over the last 3 months) on the Baseline/Screening Version of the
+x= 607.9 y= 307.4 sz= 9.0 #ff0000   | [IEORRES]
+x=  61.6 y= 313.9 sz= 9.0 black     | Columbia-Suicide Severity Rating Scale (C-SSRS) or subjects with any suicidal behavior during the 6 months prior to the screening visit.
+x= 607.9 y= 324.0 sz= 9.0 #ff0000   | [TYPE: enumeration (values: Met, Not Met)]
+x=  61.6 y= 346.6 sz= 9.0 black   B | Row 13
+x= 617.7 y= 374.7 sz=10.5 #999999   | Met
+x= 653.4 y= 374.7 sz=10.5 #999999   | Not Met
+x=  61.6 y= 379.3 sz= 9.0 black     | \12.\ History of serious mental disorders that, in the opinion of the investigator, renders the subject a poor fit for the trial..
+x= 607.9 y= 398.5 sz= 9.0 #ff0000   | [IEORRES]
+x= 607.9 y= 415.1 sz= 9.0 #ff0000   | [TYPE: enumeration (values: Met, Not Met)]
+x=  61.6 y= 437.7 sz= 9.0 black   B | Row 14
+x= 617.7 y= 465.8 sz=10.5 #999999   | Met
+x= 653.4 y= 465.8 sz=10.5 #999999   | Not Met
+x=  61.6 y= 470.4 sz= 9.0 black     | \13.\ History of diabetes mellitus (type 1 or type 2) OR subjects without a history of diabetes mellitus but screening glycated hemoglobin ≥ 6.5%
+x=  61.6 y= 483.3 sz= 9.0 black     | and glucose > 125 mg/dL (fasting) or > 200 mg/dL (nonfasting). Nonfasting screening glucose may be repeated once in the fasted state and the
+x= 607.9 y= 489.6 sz= 9.0 #ff0000   | [IEORRES]
+x=  61.6 y= 496.1 sz= 9.0 black     | retest value must be < 125 mg/dL for inclusion in the trial. Subjects with well-controlled diabetes may be permitted at the discretion of the
+x= 607.9 y= 506.2 sz= 9.0 #ff0000   | [TYPE: enumeration (values: Met, Not Met)]
+x= 373.6 y= 565.9 sz=12.0 black     | Page 300 of 1083
+
+--- page 324 of 1083 (layout cluster covers ~85 pages) ---
+x=  61.2 y= 124.0 sz=10.5 black     | Suicidal Ideation
+x= 498.3 y= 124.0 sz=10.5 black     | Since Last Visit
+x=  61.6 y= 158.6 sz= 9.0 black     | If Yes, describe
+x= 498.7 y= 179.2 sz= 9.0 #ff0000   | [CSS0202A]
+x= 498.7 y= 195.9 sz= 9.0 #ff0000   | [TYPE: text]
+x=  61.6 y= 218.5 sz= 9.0 black   B | Row 5
+x=  61.6 y= 251.1 sz= 9.0 black   B | 3. Active suicidal ideation with any methods (not plan) without intent to act
+x=  61.6 y= 274.1 sz= 9.0 black     | Subject endorses thoughts of suicide and has thought of at least one method during the assessment period. This is
+x= 498.7 y= 280.8 sz= 9.0 #ff0000   | [CSS0203]
+x= 729.3 y= 281.8 sz=10.5 black     | Yes
+x=  61.6 y= 286.9 sz= 9.0 black     | different than a specific plan with a time, place or method details worked out (e.g. thought of method to kill self but
+x= 729.3 y= 296.8 sz=10.5 black     | No
+x= 498.7 y= 297.4 sz= 9.0 #ff0000   | [TYPE: enumeration (values: Yes, No)]
+x=  61.6 y= 299.8 sz= 9.0 black     | not a specific plan). Includes a person who would say: "I thought about taking an overdose but i never made a specific
+x=  61.6 y= 312.7 sz= 9.0 black     | plan as to when, where or how I would actually do it. . . and I would never go through with it"
+x=  61.6 y= 335.6 sz= 9.0 black   B | Have you been thinking about how you might do this?
+x=  61.6 y= 368.3 sz= 9.0 black   B | Row 6
+x=  61.6 y= 401.0 sz= 9.0 black     | If Yes, describe
+x= 498.7 y= 421.6 sz= 9.0 #ff0000   | [CSS0203A]
+x= 498.7 y= 438.2 sz= 9.0 #ff0000   | [TYPE: text]
+x=  61.6 y= 460.8 sz= 9.0 black   B | Row 7
+x=  61.6 y= 493.5 sz= 9.0 black   B | 4. Active suicidal ideation with some intent to act, without specific plan
+x= 373.6 y= 565.9 sz=12.0 black     | Page 324 of 1083
+
+--- page 358 of 1083 (layout cluster covers ~419 pages) ---
+x=  64.2 y= 134.1 sz= 9.0 black     | Time of Vitals Measurement #1
+x=  64.2 y= 160.0 sz= 9.0 #ff0000   | [VSSTVTIM1]
+x=  64.2 y= 174.1 sz= 9.0 #ff0000   | [TYPE: partialtime (hour, minutes)]
+x=  64.2 y= 205.0 sz= 9.0 black     | Time of Vitals Measurement #2
+x=  64.2 y= 230.9 sz= 9.0 #ff0000   | [VSSTVTIM2]
+x=  64.2 y= 245.0 sz= 9.0 #ff0000   | [TYPE: partialtime (hour, minutes)]
+x=  64.2 y= 276.0 sz= 9.0 black     | Time of Vitals Measurement #3
+x=  64.2 y= 301.9 sz= 9.0 #ff0000   | [VSSTVTIM]
+x=  64.2 y= 316.0 sz= 9.0 #ff0000   | [TYPE: partialtime (hour, minutes)]
+x= 264.4 y= 798.3 sz=12.0 black     | Page 358 of 1083
+
+--- page 374 of 1083 (layout cluster covers ~190 pages) ---
+x=  64.2 y= 153.6 sz=16.5 #004c99   | Triplicate Orthostatic BP and HR - 8h Postdose
+x= 502.8 y= 210.0 sz=10.5 #999999   | Yes
+x= 536.8 y= 210.0 sz=10.5 #999999   | No
+x=  64.2 y= 211.8 sz= 9.0 black     | Were Vital Signs Collected?
+x=  64.2 y= 236.3 sz= 9.0 #ff0000   | [VSPERF]
+x=  64.2 y= 250.4 sz= 9.0 #ff0000   | [TYPE: enumeration (values: Yes, No)]
+x=  64.2 y= 281.3 sz= 9.0 black     | If not collected, reason:
+x=  64.2 y= 307.2 sz= 9.0 #ff0000   | [VSREAS]
+x=  64.2 y= 321.3 sz= 9.0 #ff0000   | [TYPE: text]
+x=  64.2 y= 352.2 sz= 9.0 black     | Collection Date
+x=  64.2 y= 378.2 sz= 9.0 #ff0000   | [VSDAT]
+x=  64.2 y= 392.3 sz= 9.0 #ff0000   | [TYPE: date]
+x= 470.1 y= 421.4 sz=10.5 #999999   | 8h Postdose
+x=  64.2 y= 423.2 sz= 9.0 black     | Planned Timepoint
+x= 442.4 y= 461.9 sz=10.5 black     | N/A
+x= 442.4 y= 487.4 sz=10.5 black     | Predose
+x= 442.4 y= 512.9 sz=10.5 black     | 1h postdose
+x= 442.4 y= 538.4 sz=10.5 black     | 1.5h postdose
+x= 442.4 y= 563.9 sz=10.5 black     | 2h postdose
+x= 442.4 y= 589.4 sz=10.5 black     | 2.5h postdose
+x= 442.4 y= 614.9 sz=10.5 black     | 3h postdose
+x= 442.4 y= 640.4 sz=10.5 black     | 4h postdose
+x= 442.4 y= 665.9 sz=10.5 black     | 6h postdose
+x= 442.4 y= 691.4 sz=10.5 black     | 8h postdose
+x=  64.2 y= 722.1 sz= 9.0 #ff0000   | [VSTPT]
+x=  64.2 y= 736.2 sz= 9.0 #ff0000   | [TYPE: enumeration (values: N/A, Predose, 1h postdose, 1.5h postdose, 2h postdose, 2.5h postdose, 3h postdose, 4h postdose, 6h
+x= 264.4 y= 798.3 sz=12.0 black     | Page 374 of 1083
+
+--- page 554 of 1083 (layout cluster covers ~88 pages) ---
+x=  61.2 y= 124.0 sz=10.5 black     | Sample
+x= 204.7 y= 124.0 sz=10.5 black     | Status
+x= 312.2 y= 124.0 sz=10.5 black     | Reason not done
+x= 419.8 y= 124.0 sz=10.5 black     | Date of Collection
+x= 541.8 y= 124.0 sz=10.5 black     | Time of Collection
+x= 635.0 y= 124.0 sz=10.5 black     | Scan
+x= 696.4 y= 124.0 sz=10.5 black     | Barcode Number
+x=  61.6 y= 152.2 sz= 9.0 #ff0000   | [Read-only field]
+x= 542.2 y= 152.2 sz= 9.0 #ff0000   | (hour, minutes)]
+x= 635.4 y= 152.2 sz= 9.0 #ff0000   | enumeration
+x= 214.8 y= 153.2 sz=10.5 #999999   | Not Applicable
+x= 635.4 y= 165.1 sz= 9.0 #ff0000   | (values:
+x= 205.0 y= 177.0 sz= 9.0 #ff0000   | [LBSTAT1]
+x= 635.4 y= 178.0 sz= 9.0 #ff0000   | Scan)]
+x= 205.0 y= 193.6 sz= 9.0 #ff0000   | [TYPE: enumeration
+x= 635.4 y= 194.6 sz= 9.0 #ff0000   | [VISIBILITY:
+x= 205.0 y= 206.5 sz= 9.0 #ff0000   | (values: Collected, Not
+x= 635.4 y= 207.4 sz= 9.0 #ff0000   | site only]
+x= 205.0 y= 219.3 sz= 9.0 #ff0000   | Collected, Not
+x= 205.0 y= 232.2 sz= 9.0 #ff0000   | Applicable)]
+x= 373.6 y= 565.9 sz=12.0 black     | Page 554 of 1083
+
+--- page 579 of 1083 (layout cluster covers ~85 pages) ---
+x=  61.2 y= 124.0 sz=10.5 black     | Test
+x= 425.4 y= 124.0 sz=10.5 black     | Result
+x=  61.6 y= 152.2 sz= 9.0 #ff0000   | [LBTEST3]
+x= 425.8 y= 152.2 sz= 9.0 #ff0000   | [LBORRES3]
+x=  61.6 y= 168.9 sz= 9.0 #ff0000   | [TYPE: text]
+x= 425.8 y= 168.9 sz= 9.0 #ff0000   | [TYPE: enumeration (values: Positive, Negative, Not Done)]
+x=  61.6 y= 185.5 sz= 9.0 #ff0000   | [Read-only field]
+x=  62.3 y= 208.8 sz= 9.0 #999999   | Methadone
+x= 435.6 y= 213.6 sz=10.5 #999999   | Positive
+x= 488.2 y= 213.6 sz=10.5 #999999   | Negative
+x= 544.8 y= 213.6 sz=10.5 #999999   | Not Done
+x= 425.8 y= 237.3 sz= 9.0 #ff0000   | [LBORRES3]
+x=  61.6 y= 238.8 sz= 9.0 #ff0000   | [LBTEST3]
+x= 425.8 y= 253.9 sz= 9.0 #ff0000   | [TYPE: enumeration (values: Positive, Negative, Not Done)]
+x=  61.6 y= 255.4 sz= 9.0 #ff0000   | [TYPE: text]
+x=  61.6 y= 272.0 sz= 9.0 #ff0000   | [Read-only field]
+x=  62.3 y= 295.4 sz= 9.0 #999999   | Opiates
+x= 435.6 y= 300.1 sz=10.5 #999999   | Positive
+x= 488.2 y= 300.1 sz=10.5 #999999   | Negative
+x= 544.8 y= 300.1 sz=10.5 #999999   | Not Done
+x= 425.8 y= 323.9 sz= 9.0 #ff0000   | [LBORRES3]
+x=  61.6 y= 325.4 sz= 9.0 #ff0000   | [LBTEST3]
+x= 425.8 y= 340.5 sz= 9.0 #ff0000   | [TYPE: enumeration (values: Positive, Negative, Not Done)]
+x=  61.6 y= 342.0 sz= 9.0 #ff0000   | [TYPE: text]
+x=  61.6 y= 358.6 sz= 9.0 #ff0000   | [Read-only field]
+x=  62.3 y= 382.0 sz= 9.0 #999999   | Phencyclidine
+x= 435.6 y= 386.7 sz=10.5 #999999   | Positive
+x= 488.2 y= 386.7 sz=10.5 #999999   | Negative
+x= 544.8 y= 386.7 sz=10.5 #999999   | Not Done
+x= 425.8 y= 410.5 sz= 9.0 #ff0000   | [LBORRES3]
+x=  61.6 y= 412.0 sz= 9.0 #ff0000   | [LBTEST3]
+x= 425.8 y= 427.1 sz= 9.0 #ff0000   | [TYPE: enumeration (values: Positive, Negative, Not Done)]
+x=  61.6 y= 428.6 sz= 9.0 #ff0000   | [TYPE: text]
+x=  61.6 y= 445.2 sz= 9.0 #ff0000   | [Read-only field]
+x=  62.3 y= 468.5 sz= 9.0 #999999   | Propoxyphene
+x= 435.6 y= 473.3 sz=10.5 #999999   | Positive
+x= 488.2 y= 473.3 sz=10.5 #999999   | Negative
+x= 544.8 y= 473.3 sz=10.5 #999999   | Not Done
+x= 425.8 y= 497.0 sz= 9.0 #ff0000   | [LBORRES3]
+x=  61.6 y= 498.5 sz= 9.0 #ff0000   | [LBTEST3]
+x= 425.8 y= 513.6 sz= 9.0 #ff0000   | [TYPE: enumeration (values: Positive, Negative, Not Done)]
+x=  61.6 y= 515.1 sz= 9.0 #ff0000   | [TYPE: text]
+x= 373.6 y= 565.9 sz=12.0 black     | Page 579 of 1083
+
+--- page 590 of 1083 (layout cluster covers ~419 pages) ---
+x=  64.2 y= 153.6 sz=16.5 #004c99   | Water Restriction End Prompt
+x=  64.2 y= 221.9 sz= 9.0 black   B | Procedures Specifications:
+x=  64.2 y= 234.5 sz= 9.0 black   B | Water should not be restricted post dose.
+x=  64.2 y= 280.5 sz= 9.0 black     | Date subject ended water restriction
+x=  64.2 y= 306.4 sz= 9.0 #ff0000   | [WSENDAT1]
+x=  64.2 y= 320.5 sz= 9.0 #ff0000   | [TYPE: date]
+x=  64.2 y= 351.4 sz= 9.0 black     | Time subject ended water restriction
+x=  64.2 y= 377.3 sz= 9.0 #ff0000   | [WSENTIM1]
+x=  64.2 y= 391.4 sz= 9.0 #ff0000   | [TYPE: partialtime (hour, minutes)]
+x= 264.4 y= 798.3 sz=12.0 black     | Page 590 of 1083
+
+--- page 598 of 1083 (layout cluster covers ~190 pages) ---
+x=  64.2 y= 153.6 sz=16.5 #004c99   | Body Temperature and Respiratory Rate - Predose
+x= 502.8 y= 210.0 sz=10.5 #999999   | Yes
+x= 536.8 y= 210.0 sz=10.5 #999999   | No
+x=  64.2 y= 211.8 sz= 9.0 black     | Were Vital Signs Collected?
+x=  64.2 y= 236.3 sz= 9.0 #ff0000   | [VSPERF]
+x=  64.2 y= 250.4 sz= 9.0 #ff0000   | [TYPE: enumeration (values: Yes, No)]
+x=  64.2 y= 281.3 sz= 9.0 black     | If not collected, reason:
+x=  64.2 y= 307.2 sz= 9.0 #ff0000   | [VSREAS]
+x=  64.2 y= 321.3 sz= 9.0 #ff0000   | [TYPE: text]
+x=  64.2 y= 352.2 sz= 9.0 black     | Collection Date
+x=  64.2 y= 378.2 sz= 9.0 #ff0000   | [VSDAT]
+x=  64.2 y= 392.3 sz= 9.0 #ff0000   | [TYPE: date]
+x= 478.7 y= 421.4 sz=10.5 #999999   | Predose
+x=  64.2 y= 423.2 sz= 9.0 black     | Planned Timepoint
+x= 442.4 y= 461.9 sz=10.5 black     | N/A
+x= 442.4 y= 487.4 sz=10.5 black     | Predose
+x= 442.4 y= 512.9 sz=10.5 black     | 1h postdose
+x= 442.4 y= 538.4 sz=10.5 black     | 1.5h postdose
+x= 442.4 y= 563.9 sz=10.5 black     | 2h postdose
+x= 442.4 y= 589.4 sz=10.5 black     | 2.5h postdose
+x= 442.4 y= 614.9 sz=10.5 black     | 3h postdose
+x= 442.4 y= 640.4 sz=10.5 black     | 4h postdose
+x= 442.4 y= 665.9 sz=10.5 black     | 6h postdose
+x= 442.4 y= 691.4 sz=10.5 black     | 8h postdose
+x=  64.2 y= 722.1 sz= 9.0 #ff0000   | [VSTPT]
+x=  64.2 y= 736.2 sz= 9.0 #ff0000   | [TYPE: enumeration (values: N/A, Predose, 1h postdose, 1.5h postdose, 2h postdose, 2.5h postdose, 3h postdose, 4h postdose, 6h
+x= 264.4 y= 798.3 sz=12.0 black     | Page 598 of 1083
+

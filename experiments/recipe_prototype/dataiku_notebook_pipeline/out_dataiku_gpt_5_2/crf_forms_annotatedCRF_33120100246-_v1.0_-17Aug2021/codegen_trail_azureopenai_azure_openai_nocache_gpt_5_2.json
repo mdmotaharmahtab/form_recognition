@@ -1,0 +1,251 @@
+{
+ "stop_reason": "plateau",
+ "versions": 3,
+ "best_version": 2,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "confirm",
+   "metrics": {
+    "engine": "codegen",
+    "records": 816,
+    "pages_total": 596,
+    "pages_with_fields": 199,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 99,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 108,
+    "fields_per_form": 7.6,
+    "forms_per_100_pages": 18.1,
+    "pages_covered_pct": 33
+   },
+   "problems": [],
+   "outcome": "extended_program"
+  },
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 782,
+    "pages_total": 596,
+    "pages_with_fields": 196,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 99,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 108,
+    "fields_per_form": 7.2,
+    "forms_per_100_pages": 18.1,
+    "pages_covered_pct": 33
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_verdicts": null,
+   "score": [
+    0,
+    "not_audited",
+    0,
+    -196
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "confirm_extension",
+   "metrics": {
+    "engine": "codegen",
+    "records": 816,
+    "pages_total": 596,
+    "pages_with_fields": 199,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 99,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 108,
+    "fields_per_form": 7.6,
+    "forms_per_100_pages": 18.1,
+    "pages_covered_pct": 33
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 12,
+   "audit_pages": [
+    1,
+    19,
+    20,
+    265,
+    299,
+    312
+   ],
+   "audit_partial": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 19,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 20,
+     "missed": [
+      "Protocol Version for Consent",
+      "Consent Obtained?",
+      "Was Informed Consent signed prior to any study procedures being performed?"
+     ],
+     "false": [
+      "Amendment 7, Amendment 8, Amendment 9, Amendment 10)] Consent Obtained?"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 265,
+     "missed": [],
+     "false": [
+      "[SCANNE [SCANNE R] R] Brexpiprazole/Sertraline",
+      "[SCANNE [SCANNE R] R] Brexpiprazole/Sertraline partialtime",
+      "Sertraline PK field] minutes)] Propranolol PK (values: (values: Prazosin PK",
+      "Scan)] Scan)] enumeration [VISIBILIT [VISIBILIT (values: Y: site Y: site"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 299,
+     "missed": [
+      "Hematology clinically significant abnormal assay # 5",
+      "Hematology abnormal assay # 5 Investigator comment",
+      "Are there any clinically significant abnormal hematology results to be entered?",
+      "Were there any clinically significant abnormal urinalysis results?"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 312,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "score": [
+    0,
+    12,
+    0,
+    -199
+   ],
+   "became_best": true
+  },
+  {
+   "version": 3,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 900,
+    "pages_total": 596,
+    "pages_with_fields": 198,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 98,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 108,
+    "fields_per_form": 8.3,
+    "forms_per_100_pages": 18.1,
+    "pages_covered_pct": 33
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 14,
+   "audit_pages": [
+    1,
+    19,
+    20,
+    265,
+    299,
+    312
+   ],
+   "audit_partial": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 19,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 20,
+     "missed": [
+      "Protocol Version for Consent",
+      "Consent Obtained?",
+      "Was Informed Consent signed prior to any study procedures being performed?"
+     ],
+     "false": [
+      "Amendment 9 Amendment 10",
+      "Amendment 7,Amendment 8,Amendment 9,Amendment 10)] Consent Obtained?"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 265,
+     "missed": [],
+     "false": [
+      "Propranolol PK R] R] Brexpiprazole/Sertraline",
+      "Propranolol PK R] R] Brexpiprazole/Sertraline Collected",
+      "R] R] Brexpiprazole/Sertraline Collected partialtime",
+      "enumerati enumerati (hour,Sertraline PK Collected field] minutes)] Propranolol PK (values: (values: Prazosin PK",
+      "Prazosin PK Scan)] Scan)] enumeration (values: Y: site Y: site"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 299,
+     "missed": [
+      "Hematology clinically significant abnormal assay # 5",
+      "Hematology abnormal assay # 5 Investigator comment",
+      "Are there any clinically significant abnormal hematology results to be entered?",
+      "Were there any clinically significant abnormal urinalysis results?"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 312,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "score": [
+    0,
+    14,
+    0,
+    -198
+   ],
+   "became_best": false
+  }
+ ]
+}

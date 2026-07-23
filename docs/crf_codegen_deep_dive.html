@@ -1,0 +1,1911 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Unknown-Format CRF Digitizer — How Every Part Works</title>
+<style>
+  :root{
+    --ink:#1c2430; --muted:#5b6472; --faint:#8b93a0;
+    --paper:#ffffff; --bg:#f7f6f2; --line:#e4e1d8;
+    --py:#0f7b4d;   --py-bg:#e9f5ef;  --py-line:#bfe0cf;
+    --ai:#1d5fbf;   --ai-bg:#eaf1fc;  --ai-line:#c4d7f3;
+    --loop:#b0680e; --loop-bg:#fdf3e3;--loop-line:#eed9b4;
+    --bad:#b3382e;  --bad-bg:#fbeceb;
+    --mono:ui-monospace,'Cascadia Code',Consolas,Menlo,monospace;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+       font:16px/1.65 -apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;}
+  main{max-width:980px;margin:0 auto;padding:0 24px 90px}
+
+  /* ---------- nav ---------- */
+  nav{position:sticky;top:0;z-index:50;background:rgba(247,246,242,.95);backdrop-filter:blur(4px);
+      border-bottom:1px solid var(--line);padding:10px 24px;display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
+  nav a{font-size:12.5px;color:var(--muted);text-decoration:none;padding:4px 10px;border:1px solid var(--line);
+        border-radius:999px;background:#fff;white-space:nowrap}
+  nav a:hover{color:var(--ink);border-color:#c9c5b8}
+
+  /* ---------- hero ---------- */
+  .hero{max-width:980px;margin:0 auto;padding:56px 24px 8px}
+  .hero h1{font-size:31px;line-height:1.25;margin:0 0 14px;letter-spacing:-.02em}
+  .hero p.lede{font-size:17.5px;color:var(--muted);max-width:56em;margin:0 0 22px}
+  .legend{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:8px}
+  .legend span{font-size:12.5px;padding:4px 12px;border-radius:999px;border:1px solid}
+  .lg-py{color:var(--py);background:var(--py-bg);border-color:var(--py-line)}
+  .lg-ai{color:var(--ai);background:var(--ai-bg);border-color:var(--ai-line)}
+  .lg-loop{color:var(--loop);background:var(--loop-bg);border-color:var(--loop-line)}
+
+  /* ---------- sections ---------- */
+  section{margin-top:64px}
+  .snum{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:8px;
+        background:var(--ink);color:#fff;font-size:14.5px;font-weight:700;margin-right:12px;flex:none}
+  h2{font-size:23px;margin:0;display:flex;align-items:center;letter-spacing:-.01em}
+  .one-liner{margin:10px 0 22px 42px;font-size:15.5px;color:var(--muted);border-left:3px solid var(--line);padding-left:12px}
+  .one-liner b{color:var(--ink)}
+  h3{font-size:16.5px;margin:30px 0 10px}
+  .concept{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:22px 0 6px;font-weight:700}
+  p{max-width:60em}
+  p.note{font-size:14px;color:var(--muted)}
+  li{margin:4px 0;max-width:56em}
+
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin:16px 0}
+  .card h4{margin:0 0 8px;font-size:14px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+  @media(max-width:840px){.grid2,.grid3{grid-template-columns:1fr}}
+
+  .tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
+       padding:2px 9px;border-radius:999px;border:1px solid;margin-bottom:8px}
+  .tag.py{color:var(--py);background:var(--py-bg);border-color:var(--py-line)}
+  .tag.ai{color:var(--ai);background:var(--ai-bg);border-color:var(--ai-line)}
+  .tag.loop{color:var(--loop);background:var(--loop-bg);border-color:var(--loop-line)}
+
+  pre{background:#101418;color:#dbe2ea;border-radius:10px;padding:14px 16px;overflow-x:auto;
+      font:12.5px/1.55 var(--mono);margin:12px 0}
+  pre .c{color:#7d8b9d}  pre .k{color:#7cc4ff}  pre .s{color:#a8d08d} pre .hl{background:#2a3a22;display:inline-block;width:100%}
+  code{font:.92em var(--mono);background:#eeece5;padding:1px 5px;border-radius:5px}
+  details{margin:10px 0}
+  summary{cursor:pointer;font-size:14px;color:var(--ai);font-weight:600}
+
+  table{border-collapse:collapse;width:100%;font-size:14px;background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+  th,td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+  th{background:#f3f1ea;font-size:12.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
+  tr:last-child td{border-bottom:none}
+
+  /* dump rows */
+  .dump{font:11.5px/1.75 var(--mono);background:#101418;color:#c7cfd9;border-radius:10px;padding:12px 14px;overflow-x:auto;white-space:pre}
+  .dump .lab{color:#a8d08d}
+  .dump .aux{color:#6a7684}
+  .dump .b{color:#7cc4ff;font-weight:700}
+
+  /* fingerprint chips */
+  .fp-arrow{align-self:center;color:var(--faint);font-size:20px}
+  .chip{display:inline-block;font:11.5px var(--mono);background:#f3f1ea;border:1px solid var(--line);border-radius:6px;padding:2px 8px;margin:2px 3px 2px 0}
+  .sig{font:600 13px var(--mono);color:var(--py);background:var(--py-bg);border:1px solid var(--py-line);border-radius:8px;padding:6px 12px;display:inline-block}
+
+  /* cluster bars */
+  .bars{display:grid;grid-template-columns:max-content 1fr max-content;gap:6px 12px;align-items:center;font-size:12.5px}
+  .bar{height:16px;border-radius:4px;background:linear-gradient(90deg,#9db8dd,#7ea3d4);min-width:3px}
+  .bar.dark{background:#d7d3c7}
+  .bar-note{color:var(--muted);font-size:12px;white-space:nowrap}
+  .rep-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--ai);margin-left:6px;vertical-align:middle}
+
+  /* coverage bars */
+  .cov .bar{background:#cfd6df}
+  .cov .bar.zero{background:#e7b6b1}
+
+  /* audit side-by-side */
+  .audit-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:14px}
+  @media(max-width:840px){.audit-grid{grid-template-columns:1fr}}
+  .verdict{background:var(--bad-bg);border:1px solid #eccfcb;border-radius:10px;padding:12px 14px;font:12px/1.6 var(--mono)}
+  .verdict b{color:var(--bad)}
+
+  /* trace strip */
+  .trace{display:flex;gap:0;flex-wrap:wrap;margin:16px 0}
+  .t-step{flex:1;min-width:150px;background:#fff;border:1px solid var(--line);padding:12px 14px;position:relative}
+  .t-step:first-child{border-radius:10px 0 0 10px}
+  .t-step:last-child{border-radius:0 10px 10px 0}
+  .t-step+.t-step{border-left:none}
+  .t-step .who{font-size:10.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;margin-bottom:4px}
+  .t-step .who.ai{color:var(--ai)} .t-step .who.py{color:var(--py)}
+  .t-step .what{font-size:13px;font-weight:600}
+  .t-step .out{font-size:12px;color:var(--muted);margin-top:4px}
+
+  .stop-chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+  .stop-chips span{font-size:12.5px;padding:5px 12px;border-radius:8px;border:1px solid var(--loop-line);background:var(--loop-bg);color:var(--loop)}
+
+  .callout{border-left:4px solid var(--ai);background:var(--ai-bg);border-radius:0 10px 10px 0;padding:12px 16px;margin:18px 0;max-width:56em}
+  .callout.amber{border-color:var(--loop);background:var(--loop-bg)}
+  .callout.green{border-color:var(--py);background:var(--py-bg)}
+
+  /* ---------- input/output strip per stage ---------- */
+  .io{display:grid;grid-template-columns:1fr 26px 1fr;gap:0 8px;align-items:stretch;
+      margin:0 0 24px 42px;max-width:58em;font-size:13px}
+  .io .in,.io .out{background:#fff;border:1px solid var(--line);border-radius:10px;padding:8px 13px;line-height:1.55;color:var(--ink)}
+  .io .out{border-color:var(--py-line)}
+  .io .arr{align-self:center;color:var(--faint);font-size:18px;text-align:center}
+  .io .k{display:block;font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;margin-bottom:2px}
+  .io .in .k{color:var(--muted)}
+  .io .out .k{color:var(--py)}
+  .io.flush{margin-left:0;margin-top:8px}
+  @media(max-width:840px){.io{grid-template-columns:1fr;gap:6px}.io .arr{display:none}}
+
+  footer{max-width:980px;margin:70px auto 0;padding:18px 24px 40px;border-top:1px solid var(--line);
+         font-size:12.5px;color:var(--faint)}
+  footer code{background:#efede6}
+  .x{color:var(--bad);font-weight:700}
+  .ok{color:var(--py);font-weight:700}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#problem">1 Problem</a><a href="#lines">2 What the machine sees</a><a href="#clustering">3 Clustering</a>
+  <a href="#codegen">4 AI writes a parser</a><a href="#sandbox">5 Sandbox</a><a href="#gates">6 Gates &amp; coverage</a>
+  <a href="#review">7 AI reviews itself</a><a href="#loop">8 The loop</a><a href="#output">9 Output</a>
+  <a href="#deploy">10 Running it</a><a href="#faq">11 Design choices</a>
+</nav>
+
+<header class="hero">
+  <h1>The unknown-format CRF digitizer, explained end to end</h1>
+  <p class="lede">
+    Given <em>any</em> CRF PDF — annotated or not, any vendor, any layout, up to 1000&nbsp;pages — the pipeline
+    extracts every data-entry field as <code>(form_name, field_name, page)</code>. It does this with a handful of
+    <b>LLM calls per document (the Rave book took 7; hard cap ≈16, regardless of page count)</b>, because the LLM
+    never reads the document. It <b>writes a small parser for it</b>, and plain Python runs that parser over
+    every page.
+  </p>
+  <div class="legend">
+    <span class="lg-py">■ deterministic Python — runs on all pages, costs nothing</span>
+    <span class="lg-ai">■ LLM call — Claude Sonnet 4.5 via Dataiku LLM Mesh</span>
+    <span class="lg-loop">■ feedback loop — bounded, self-stopping</span>
+  </div>
+  <p class="note">Every example below is taken verbatim from a real run on a 404-page Medidata Rave CRF
+  (study 384-201-00002). Two other formats — a 609-page eSource layout and a 913-page form tracker — went
+  through the identical pipeline with zero code changes.</p>
+</header>
+
+<main>
+
+<!-- ================================================================ -->
+<section id="problem">
+  <h2><span class="snum">1</span>The problem: parse a format you have never seen</h2>
+  <p class="one-liner"><b>In one sentence:</b> CRFs arrive in endless visual formats, and the only thing we know in advance is “this is a CRF”.</p>
+
+  <p>Our production digitizer understands one format: annotated Medidata Rave, where every field prints its
+  machine ID (OID) in brackets next to it. Real studies send everything else — eSource exports, form trackers,
+  scanned questionnaires, vendor-specific books. Three real examples from the test set:</p>
+
+  <img src="assets/crf_three_formats.png" alt="one real page from each of the three test books: a Rave entry form, a QSC eSource activity page, a MAC186 tracker table"
+       style="width:100%;border:1px solid var(--line);border-radius:8px">
+  <p class="note" style="margin:8px 0 0">Real pages, rendered from the PDFs. Left: Rave prints one field per
+  ruled row with a numbered circle at the right edge. Middle: the eSource book prints numbered activities on a
+  blue boilerplate template with date/initials placeholders. Right: the form tracker is a landscape table, one
+  field per row. Three unrelated visual languages — and the pipeline may not assume <em>any</em> of them,
+  because book #4 will look different again.</p>
+
+  <h3>Two obvious approaches, and why both die</h3>
+  <div class="grid2">
+    <div class="card"><h4><span class="x">✕</span> Write a template per format</h4>
+      <p style="margin:0;font-size:14.5px">Somebody has to notice each new format, study it, and hand-code a parser.
+      The format space is unbounded — the three books above already use three unrelated layouts. This is a
+      permanent engineering backlog, not a pipeline.</p></div>
+    <div class="card"><h4><span class="x">✕</span> Let an LLM read every page</h4>
+      <p style="margin:0;font-size:14.5px">The test books are 404–913 pages. Per-page LLM extraction means
+      ~900 calls per document, minutes of latency, real money, and a different answer every run — with no way
+      to audit <em>why</em> a field appeared. Non-deterministic extraction can’t back a regulated pipeline.</p></div>
+  </div>
+
+  <div class="callout">
+    <b>The insight the whole pipeline is built on:</b> inside one document, layouts repeat massively.
+    A 404-page CRF book is not 404 novel pages — it’s a handful of page <em>skeletons</em> (5 for this book),
+    stamped over and over with different words. So: show an LLM one example of each skeleton (6 pages here),
+    have it <b>write code</b> that parses those skeletons, then let cheap deterministic Python run that code
+    over all 404 pages. The LLM is used as a <b>programmer, not a reader</b>.
+  </div>
+</section>
+
+<!-- ================================================================ -->
+<section id="lines">
+  <h2><span class="snum">2</span>What the machine sees: text + geometry, not pixels</h2>
+  <p class="one-liner"><b>In one sentence:</b> each PDF page is reduced to a list of <code>Line</code> objects — the text plus where it sits and how it’s styled — which is cheap, exact, and language-agnostic.</p>
+
+  <div class="io">
+    <div class="in"><span class="k">in</span>the document as received — <code>384-201-00002_Annotated Unique CRF_04Nov2024.pdf</code>,
+      404 pages. No template, no config, no metadata.</div>
+    <div class="arr">→</div>
+    <div class="out"><span class="k">out</span>one <code>Line</code> list per page (text, x/y, size, bold, color) —
+      404 lists; page 133 → 25 lines. Encrypted or scanned books exit here with
+      <code>skipped_encrypted</code> / <code>skipped_no_text_layer</code>, before any LLM spend.</div>
+  </div>
+
+  <p>Born-digital PDFs carry a text layer, so no OCR and no vision model is needed. PyMuPDF gives us every text
+  span with coordinates; we merge spans into lines and keep five things per line: <b>text, x/y position, font size,
+  boldness, color</b>. Here is real page 133 of the Rave book — left as a human sees it, right as the pipeline sees it:</p>
+
+  <div class="grid2">
+    <div>
+      <img src="assets/rave_p133.png" alt="page 133 of the Rave book rendered from the PDF"
+           style="width:100%;border:1px solid #d8d4c8;border-radius:6px;box-shadow:0 2px 8px rgba(0,0,0,.07)">
+      <p class="note" style="margin:8px 0 0">Page 133 as printed (rendered straight from the PDF). The form
+      title, one field label per ruled row, answer options at the right, a numbered circle per field.</p>
+    </div>
+    <div>
+      <div class="dump"><span class="b">x=  90.0 y= 104.0 sz=10.0 black B | Form: PK Plasma Samples: 24 Hours</span>
+<span class="lab">x=  90.0 y= 155.0 sz=10.0 black   | Time Point</span>
+<span class="aux">x= 527.0 y= 157.0 sz=10.0 black   | 1</span>
+<span class="lab">x=  90.0 y= 190.0 sz=10.0 black   | Was Sample Collected?</span>
+<span class="aux">x= 489.0 y= 190.0 sz=10.0 black   | Yes</span>
+<span class="aux">x= 492.7 y= 206.0 sz=10.0 black   | No</span>
+<span class="lab">x=  90.0 y= 245.0 sz=10.0 black   | If No, provide reason not done</span>
+<span class="lab">x=  90.0 y= 280.0 sz=10.0 black   | Collection Date</span>
+<span class="lab">x=  90.0 y= 315.0 sz=10.0 black   | Collection Time</span>
+<span class="aux">x= 423.7 y= 315.0 sz=10.0 black   | Fixed Unit: (24 HR)</span>
+<span class="lab">x=  90.0 y= 403.0 sz=10.0 black   | Specimen Type</span>
+<span class="aux">x= 474.0 y= 403.0 sz=10.0 black   | Serum</span>
+<span class="aux">x= 468.7 y= 693.2 sz=10.0 black   | 132 of 403</span></div>
+      <p class="note" style="margin-top:8px">Real dump (abridged) of page 133, in the exact format the
+      <code>rep_p*.txt</code> page dumps use. Notice the machine
+      can already “see” structure: labels live at <code>x≈90</code>, answer options at <code>x≈470–490</code>,
+      field numbers at <code>x=527</code>, the form title is <b>bold</b>. That geometry is the raw material for
+      everything that follows.</p>
+    </div>
+  </div>
+
+  <p class="note">Scanned or encrypted PDFs have no text layer. Stage 0 detects that immediately
+  (<code>skipped_encrypted</code> / <code>skipped_no_text_layer</code> status) and never spends an LLM call on them — OCR is a separate,
+  pluggable front-door (e.g. Textract) if we ever need it.</p>
+</section>
+
+<!-- ================================================================ -->
+<section id="clustering">
+  <h2><span class="snum">3</span>Layout clustering: 404 pages → 6 pages worth reading</h2>
+  <p class="one-liner"><b>In one sentence:</b> every line becomes a small <em>typography token</em> that ignores the words; a page is its set of tokens; the document’s own boilerplate is discovered and discounted; pages stack by similarity — with the one threshold picked <em>by the document itself</em>.</p>
+
+  <div class="io">
+    <div class="in"><span class="k">in</span>the 404 per-page <code>Line</code> lists from §2 — the PDF itself
+      is never re-read.</div>
+    <div class="arr">→</div>
+    <div class="out"><span class="k">out</span><code>clusters.json</code> — 5 stacks, θ*=0.35, and the
+      representative pages <b>p1, p2, p91, p116, p193, p214</b>, each dumped as
+      <code>rep_p&lt;N&gt;.txt</code> (+ a PNG for humans). Those 6 dumps are the LLM’s entire view of the book.</div>
+  </div>
+
+  <p>Clustering has one job: sort pages into piles that <em>print the same way</em> — like sorting mail by
+  envelope shape without reading the letters. Everything that changes between two pages of the same layout
+  (the words) is ignored; everything that stays constant (position, size, styling, the <em>kind</em> of text)
+  is kept. Five steps, all pure Python, no AI involved.</p>
+
+  <h3>Step A — turn every line into a typography token</h3>
+  <p>A <b>token</b> is a 5-part description of how one line is printed:
+  <span class="chip">(x-band, size, bold, color, character-class)</span>.
+  For example <span class="chip">(5, =, ·, ·, num)</span> reads: <em>starts in the right-most sixth of the
+  page, normal font size, not bold, black ink, digits only</em> — that is a field-number column, and the
+  description stays true whatever the numbers are. Here is page 133 of the Rave book (the page from §2),
+  tokenized:</p>
+
+  <table style="margin:14px 0">
+    <tr><th>line on page 133</th><th style="width:9%">x</th><th style="width:9%">style</th><th style="width:21%">token</th><th style="width:19%">visual role</th></tr>
+    <tr><td><code>Form: PK Plasma Samples: 24 Hours</code></td><td>90</td><td>bold</td><td><span class="chip">(0, =, B, ·, prose)</span></td><td>form title</td></tr>
+    <tr><td><code>Time Point</code> · <code>Collection Date</code> · <code>Specimen Type</code></td><td>90</td><td>—</td><td><span class="chip">(0, =, ·, ·, word)</span></td><td>short field labels</td></tr>
+    <tr><td><code>Was Sample Collected?</code> · <code>If No, provide reason not done</code></td><td>90</td><td>—</td><td><span class="chip">(0, =, ·, ·, prose)</span></td><td>question-style labels</td></tr>
+    <tr><td><code>Yes</code> · <code>No</code> · <code>Serum</code></td><td>~480</td><td>—</td><td><span class="chip">(4, =, ·, ·, word)</span></td><td>answer options</td></tr>
+    <tr><td><code>1</code> <code>2</code> … <code>8</code></td><td>527</td><td>—</td><td><span class="chip">(5, =, ·, ·, num)</span></td><td>field-number column</td></tr>
+    <tr><td><code>132 of 403</code></td><td>469</td><td>—</td><td><span class="chip">(4, =, ·, ·, prose)</span></td><td>page footer</td></tr>
+  </table>
+
+  <p>Each of the five slots can only take a handful of values:</p>
+
+  <table style="margin:14px 0">
+    <tr><th style="width:13%">slot</th><th style="width:20%">possible values</th><th>meaning</th><th style="width:28%">on page 133</th></tr>
+    <tr><td><b>x-band</b></td><td><code>0</code> <code>1</code> <code>2</code> <code>3</code> <code>4</code> <code>5</code></td>
+        <td>which sixth of the page width the line <em>starts</em> in: 0 = left edge, 5 = right-most sixth
+            (<code>int(x ÷ width × 6)</code>)</td>
+        <td>labels at x=90 → <code>0</code>; the number column at x=527 on this 612-pt page → <code>5</code></td></tr>
+    <tr><td><b>size</b></td><td><code>−</code> <code>=</code> <code>+</code></td>
+        <td>font size relative to the page’s <em>most common</em> size: below 0.9× → <code>−</code>,
+            0.9–1.15× → <code>=</code>, above 1.15× → <code>+</code>. Relative, so it survives any font choice</td>
+        <td>every line prints at 10 pt, the page’s most common size → <code>=</code></td></tr>
+    <tr><td><b>bold</b></td><td><code>B</code> <code>·</code></td>
+        <td>the font is bold / it isn’t</td>
+        <td>only the <code>Form:</code> title line → <code>B</code></td></tr>
+    <tr><td><b>color</b></td><td><code>C</code> <code>·</code></td>
+        <td>the ink is anything other than black / it’s black</td>
+        <td>all black here → <code>·</code> (the QSC book’s steel-blue template labels → <code>C</code>)</td></tr>
+    <tr><td><b>char-class</b></td><td><code>num</code> <code>sym</code> <code>code</code> <code>word</code> <code>prose</code></td>
+        <td>what characters the text is made of — see the table below</td>
+        <td><code>1</code> → <code>num</code>; <code>Time Point</code> → <code>word</code></td></tr>
+  </table>
+
+  <p>The character class looks at composition, not vocabulary, so it works in any language. The five values,
+  checked in this order:</p>
+
+  <table style="margin:14px 0">
+    <tr><th style="width:13%">value</th><th>rule</th><th style="width:36%">examples</th></tr>
+    <tr><td><code>num</code></td><td>digits (plus punctuation) but no letters</td><td><code>3</code> · <code>19.0</code> · <code>12/04/2024</code></td></tr>
+    <tr><td><code>sym</code></td><td>no letters and no digits</td><td><code>____</code> · <code>---</code> · <code>|</code></td></tr>
+    <tr><td><code>code</code></td><td>a single space-less run containing digits or written in ALL CAPS</td><td><code>[AESEV]</code> · <code>SAS_NAME</code> · <code>F14</code></td></tr>
+    <tr><td><code>word</code></td><td>1–2 words</td><td><code>Severity</code> · <code>Collection Date</code></td></tr>
+    <tr><td><code>prose</code></td><td>3 or more words</td><td><code>Was Sample Collected?</code> · <code>132 of 403</code></td></tr>
+  </table>
+  <p class="note">Caseless scripts (CJK, Thai, Arabic, Hebrew…) have no upper/lower case and often no word
+  spaces, so for them <code>word</code> vs <code>prose</code> is decided by word count where spaces exist,
+  else by text length.</p>
+
+  <p>That is the entire vocabulary: 6 × 3 × 2 × 2 × 5 = <b>360 possible tokens</b>, of which a real book
+  prints only a few dozen distinct ones (the QSC book: 25 across 609 pages).</p>
+
+  <p>So the 25 lines of page 133 collapse into just <b>6 distinct tokens</b> — one per visual role in the
+  page-133 table — and that <em>set</em> of six is the page’s entire profile. Two details make the profile stable
+  across pages of the same template. It records which token kinds exist, not how many: a form asking 3
+  questions and one asking 5 produce the same set (<code>count_transform_sweep.py</code> measured
+  set-membership beating counts on every book). And it skips vertical position: y tells you how <em>full</em>
+  a page is, not which template printed it.</p>
+
+  <div class="callout green">
+    <b>Why ignoring the words is the whole trick:</b> page 133 is <i>“PK Plasma Samples: 24 Hours”</i>. The other
+    149 pages of its stack — <i>Fluid Biomarkers, Drug Screen Test, Central Laboratory…</i> — ask completely
+    different questions, but print them with the same skeleton: labels starting in band 0, answer options in
+    band 4, a number column in band 5. Same token set → same stack, all 150 of them.
+    Teach the parser <em>one</em> of these pages and you have parsed all 150.
+  </div>
+
+  <h3>Step B — discover the document’s own boilerplate (“chrome”)</h3>
+  <p>Some tokens say nothing about which template printed a page — because the document prints them on
+  <em>every</em> page: its own headers, footers, form frames. The pipeline discovers these per document and
+  discounts them smoothly:</p>
+  <p style="text-align:center"><span class="sig">weight(token) = 1 − (pages containing it / all pages)³</span></p>
+  <p>A token on every page weighs <b>0</b>; on half the pages ≈ 0.88; a rare one ≈ 1. “Chrome” is simply
+  whatever <em>this</em> document repeats everywhere — its headers, footers, form frames — so the list is
+  rediscovered from scratch for each document. A real example of why the discount matters: the QSC eSource
+  book prints only 25 distinct tokens in total, and <b>11 of them appear on all 609 pages</b>. Before damping,
+  that chrome carried 85–94% of every page’s weight, so <em>every</em> pair of pages looked ≥50% alike and the
+  whole book fused into one pile (diagnosed in <code>qsc_merge_diag.py</code>). After damping, similarity is
+  computed on what remains — the tokens that actually distinguish templates:</p>
+
+  <img src="assets/gen_chrome.png" alt="QSC page 10 with chrome lines boxed gray and discriminative lines boxed green"
+       style="width:100%;border:1px solid var(--line);border-radius:8px">
+  <p class="note" style="margin:8px 0 0">QSC eSource, page 10 — every line boxed by its token’s discovered weight.
+  <b>63 of 71 lines are chrome</b> (gray): the blue template labels, date placeholders, “Staff Initials:”,
+  “Answer(s):” — printed identically on essentially every page, weight ≈ 0. The 8 green lines carry the
+  discriminative mass (here: the numbered activity lines and their option marks). Two pages are compared on
+  their green residue, not their shared frame. Rendered by <code>make_generic_snippets.py</code>.</p>
+
+  <h3>Step C — stack pages by weighted similarity</h3>
+  <p>Step A gave every page a profile (its set of tokens) and Step B gave every token a weight. Two pieces are
+  still missing: a <em>number</em> that says how alike two pages are, and a <em>procedure</em> that turns those
+  numbers into piles. Both are standard tools — here is each concept first, then what the pipeline does with it.</p>
+
+  <h4 class="concept">Concept 1 · Jaccard similarity — what fraction of the combined set is shared?</h4>
+  <p>The classic way to compare two <em>sets</em>: divide what they share by everything either one has.
+  The sets {▲ ● ■} and {● ■ ◆} share 2 of the 4 distinct symbols, so J = 2⁄4 = <b>0.5</b>; identical sets
+  score 1.0, sets with nothing in common 0.0. The <b>weighted</b> version lets each symbol count its Step-B
+  weight instead of 1 — a shared token that lives on every page (chrome, weight ≈ 0) adds almost nothing to
+  the score, so similarity is decided by the tokens that actually distinguish templates. Two real
+  comparisons from the Rave book:</p>
+
+  <div class="grid2">
+    <div class="card">
+      <h4>same stack — J = 1.000</h4>
+      <p style="margin:0;font-size:14px">Page 133 <i>(“PK Plasma Samples: 24 Hours”)</i> vs page 2
+      <i>(“Visit Date”)</i>. Completely different questions — but both pages produce <b>exactly the same
+      6 tokens</b> from Step A. Shared weight 1.97 ÷ union weight 1.97 = <b>1.000</b> ≥ θ → same stack.</p>
+    </div>
+    <div class="card">
+      <h4>different stacks — J = 0.108</h4>
+      <p style="margin:0;font-size:14px">Page 133 vs page 214, a <i>data-dictionary</i> page (“PANSS” appendix).
+      p214 prints 14 tokens — mid-page columns of <span class="chip">code</span> and
+      <span class="chip">num</span> lines that p133 doesn’t have. They share 5 tokens, but mostly featherweight
+      ones: shared weight 1.02 ÷ union weight 9.46 = <b>0.108</b> &lt; θ → different stacks.
+      (Unweighted Jaccard would say 0.33 — uncomfortably close to θ=0.35. The Step-B weights make the call
+      decisive.)</p>
+    </div>
+  </div>
+
+  <h4 class="concept">Concept 2 · Leader clustering — one pass, piles grow around anchor pages</h4>
+  <p>With the similarity defined, the piles are built in a <b>single pass</b>: take the next page, compare it
+  to the founding page (“leader”) of every existing pile, and either join the best match — if that similarity
+  clears the threshold θ — or found a new pile. Pages are processed densest-profile-first, because a dense page
+  is the best anchor for its template (the order is computed from content, never from position in the PDF, so
+  shuffling the document changes nothing — audit T4, Rand 1.000). The real pass over the Rave book — only
+  <b>11 of 404 pages</b> ever founded a pile; everyone else joined one:</p>
+
+  <div class="dump" style="margin:12px 0">p75   17 tokens   founds pile 1            ← densest page in the book (a data-dictionary page)
+p311  16 tokens   joins  pile 1   J=0.65
+p70   16 tokens   joins  pile 1   J=0.79
+p98   16 tokens   joins  pile 1   J=0.91
+      … 210 more dictionary-family pages join pile 1 …
+p162  10 tokens   founds pile 2            ← first entry-form page (“Barnes Akathisia Rating Scale”):
+      …                                      best existing match was J=0.27, below θ — new pile
+result of the pass: 11 piles, sizes 214 · 77 · 57 · 27 · 13 · 6 · 3 · 2 · 2 · 2 · 1</div>
+
+  <h4 class="concept">Concept 3 · Centroids — a pile’s average profile, used to clean up the greed</h4>
+  <p>A one-pass algorithm over-splits: above, the entry-form family ended up scattered across four piles
+  (77 + 57 + 13 + 3 pages), because each pile is anchored to one founding page, and a single page carries
+  noise — one odd token can hold two halves of the same family apart. The fix is to compare piles by their
+  <b>centroid</b>: the average of the members’ profiles, where a token on every member counts 1.0 and one on
+  half the members 0.5. Averaging washes out per-page noise. Two cleanup passes run: <b>(i)</b> merge piles
+  whose centroids clear θ, <b>(ii)</b> one sweep re-homing each page to its best-matching centroid (a page that
+  joined early, while its pile was still forming, gets a second look). On the Rave book the merge snaps the
+  fragments back together:</p>
+
+  <div class="dump" style="margin:12px 0">greedy piles:    214 + 27 + 6 + 2        77 + 57 + 13 + 3        2      2      1
+                  └────────┬───────┘      └────────┬───────┘
+centroid merge:      249 data-dictionary      150 entry forms       2      2      1   →  5 stacks</div>
+
+  <p style="margin-top:14px"><b>“Is this k-means?”</b> Same family — centroid-based partitioning — and cleanup
+  pass (ii) is literally one k-means assignment step, just with weighted Jaccard in place of Euclidean
+  distance. Three things are deliberately different, each forced by a requirement:</p>
+
+  <table style="margin:10px 0">
+    <tr><th style="width:22%"></th><th style="width:37%">k-means</th><th>this step</th></tr>
+    <tr><td>cluster count</td>
+        <td>k must be chosen up front</td>
+        <td>emerges from the similarity bar θ — an unknown book may have 2 templates or 35 (this corpus has
+        both), so no count can be preset. Step D picks θ, which is where k-means users reach for
+        elbow/silhouette heuristics</td></tr>
+    <tr><td>procedure</td>
+        <td>iterate assign → update from a <b>random</b> start until convergence; different seeds, different
+        answers</td>
+        <td>three fixed passes — greedy build, centroid merge, one reassignment sweep — fully deterministic:
+        same PDF, same stacks, forever</td></tr>
+    <tr><td>data &amp; distance</td>
+        <td>points in a vector space, cluster mean</td>
+        <td>weighted token <em>sets</em> and Jaccard — the k-means cousins for such data are
+        k-medoids / k-modes</td></tr>
+  </table>
+
+  <p class="note">One assignment pass instead of looping to convergence is enough here because clustering only
+  steers <em>sampling</em> (§3E): a slightly suboptimal pile costs a prompt slot, never a field.</p>
+
+  <p class="note">Where this comes from: Jaccard-over-shingles is the textbook technique for “were these two
+  documents produced from the same template?” — Broder’s near-duplicate detection that de-duplicated the early
+  web. At web scale it is approximated with MinHash; at ≤1000 pages the pipeline just computes it exactly,
+  keeping determinism and zero dependencies.</p>
+
+  <h3>Step D — the document picks its own θ</h3>
+  <p>Everything above used one number: θ, the similarity a page must reach to join a pile. Set it too high and
+  one template splits into fragments; too low and different templates fuse. Any fixed value shipped in the code
+  would be a guess tuned to somebody’s sample documents — so instead, the pipeline measures <em>which θ the
+  document itself is indifferent to</em>. Two ideas make that work: first <em>why</em> a document can be
+  indifferent to θ at all, then a way to test that indifference.</p>
+
+  <h4 class="concept">Concept · the similarity gap — why nudging θ usually changes nothing</h4>
+  <p>Put the six real scores from Concepts 1–2 on a line. Pages of the <em>same</em> template score high
+  (0.65–1.00); pages of <em>different</em> templates score low (0.11, 0.27). Between the two groups: a wide
+  empty stretch where no score falls at all —</p>
+
+  <svg viewBox="0 0 940 168" style="width:100%;max-width:940px;display:block;margin:10px auto" font-family="inherit">
+    <rect x="287" y="38" width="319" height="84" rx="8" fill="#fdf3e3" stroke="#eed9b4"/>
+    <line x1="60" y1="104" x2="900" y2="104" stroke="#8b93a0" stroke-width="1.5"/>
+    <g font-size="11.5" fill="#5b6472" text-anchor="middle">
+      <line x1="60"  y1="100" x2="60"  y2="108" stroke="#8b93a0"/><text x="60"  y="124">0.00</text>
+      <line x1="270" y1="100" x2="270" y2="108" stroke="#8b93a0"/><text x="270" y="124">0.25</text>
+      <line x1="480" y1="100" x2="480" y2="108" stroke="#8b93a0"/><text x="480" y="124">0.50</text>
+      <line x1="690" y1="100" x2="690" y2="108" stroke="#8b93a0"/><text x="690" y="124">0.75</text>
+      <line x1="900" y1="100" x2="900" y2="108" stroke="#8b93a0"/><text x="900" y="124">1.00</text>
+    </g>
+    <g text-anchor="middle">
+      <circle cx="151" cy="104" r="6" fill="#b2483d"/><text x="151" y="88"  font-size="11.5" fill="#b2483d">0.11</text>
+      <circle cx="287" cy="104" r="6" fill="#b2483d"/><text x="287" y="88"  font-size="11.5" fill="#b2483d">0.27</text>
+      <circle cx="606" cy="104" r="6" fill="#0f7b4d"/><text x="606" y="88"  font-size="11.5" fill="#0f7b4d">0.65</text>
+      <circle cx="724" cy="104" r="6" fill="#0f7b4d"/><text x="724" y="88"  font-size="11.5" fill="#0f7b4d">0.79</text>
+      <circle cx="824" cy="104" r="6" fill="#0f7b4d"/><text x="824" y="88"  font-size="11.5" fill="#0f7b4d">0.91</text>
+      <circle cx="900" cy="104" r="6" fill="#0f7b4d"/><text x="893" y="88"  font-size="11.5" fill="#0f7b4d">1.00</text>
+      <text x="200" y="152" font-size="12.5" fill="#b2483d" font-weight="700">pages from different templates</text>
+      <text x="753" y="152" font-size="12.5" fill="#0f7b4d" font-weight="700">pages from the same template</text>
+      <text x="446" y="58" font-size="12.5" fill="#b0680e" font-weight="700">the gap</text>
+      <text x="446" y="75" font-size="12" fill="#b0680e">every θ in here separates the two groups</text>
+      <text x="446" y="91" font-size="12" fill="#b0680e">identically → the same piles come out</text>
+    </g>
+  </svg>
+
+  <p>θ’s whole job is to fall <em>between</em> the two groups. For these pages, θ = 0.30 and θ = 0.60 make
+  every decision identically — the piles are a fact about the similarities, and θ only has to land somewhere in
+  the hole between them. That is the signal being hunted: like tuning a radio, the station holds steady across
+  a stretch of the dial while static changes with every nudge — <b>a real structure is exactly the thing that
+  does not depend on the knob’s precise position</b>.</p>
+
+  <p>At 404 pages the picture blurs: a few borderline pages land inside the gap, so the full book’s answer
+  won’t stay identical across the <em>entire</em> stretch — where it stops holding has to be measured, not
+  eyeballed. And “the same piles came out” needs a precise meaning when comparing two 404-page clusterings.
+  That measuring stick is the second concept:</p>
+
+  <h4 class="concept">Concept · the Rand index — do two clusterings agree?</h4>
+  <p>Take every pair of pages. Ask both clusterings the same yes/no question about each pair: <i>“are these two
+  pages in the same pile?”</i> The <b>Rand index</b> is the fraction of pairs where the two answers match —
+  1.0 means the clusterings are the same partition in different clothes. A worked example with 4 pages,
+  clustering X = {1,2}{3,4} vs clustering Y = {1,2,3}{4}:</p>
+
+  <table style="margin:12px 0">
+    <tr><th>page pair</th><th>same pile in X?</th><th>same pile in Y?</th><th>agree?</th></tr>
+    <tr><td>1–2</td><td>yes</td><td>yes</td><td>✓</td></tr>
+    <tr><td>1–3</td><td>no</td><td>yes</td><td>✕</td></tr>
+    <tr><td>1–4</td><td>no</td><td>no</td><td>✓</td></tr>
+    <tr><td>2–3</td><td>no</td><td>yes</td><td>✕</td></tr>
+    <tr><td>2–4</td><td>no</td><td>no</td><td>✓</td></tr>
+    <tr><td>3–4</td><td>yes</td><td>no</td><td>✕</td></tr>
+  </table>
+  <p style="margin:6px 0 0">3 agreements out of 6 pairs → Rand = <b>0.50</b>. X and Y disagree about half
+  their pairs — clearly different partitions.</p>
+
+  <h4 class="concept">The selection — sweep θ, find where the answer stops changing</h4>
+  <p>The pipeline clusters the document at <em>every</em> θ on a fixed grid (0.30 to 0.60 in steps of 0.05),
+  computes the Rand index between each pair of neighbouring partitions, and marks a pair <b>stable</b> when
+  Rand ≥ 0.97 — statistically the same partition. The longest run of stable pairs is the document’s
+  <b>plateau</b>: the part of the similarity gap that survives contact with all 404 pages. θ* is the middle of
+  that plateau — the spot farthest from both cliffs (fragmenting above, fusing below). The reasoning is the
+  radio dial again: structure that survives a range of thresholds belongs to the document; structure that
+  appears at exactly one setting is an artifact of the knob. The real sweep on the Rave book:</p>
+
+  <table style="margin:12px 0">
+    <tr><th>θ</th><th>0.30</th><th>0.35</th><th>0.40</th><th>0.45</th><th>0.50</th><th>0.55</th><th>0.60</th></tr>
+    <tr><td>stacks found</td><td>5</td><td>5</td><td>6</td><td>8</td><td>10</td><td>9</td><td>11</td></tr>
+    <tr><td>Rand vs previous θ</td><td>—</td><td>1.000</td><td>0.976</td><td>0.960</td><td>0.889</td><td>0.948</td><td>0.930</td></tr>
+    <tr><td>stable pair? (≥ 0.97)</td><td>—</td><td>✓</td><td>✓</td><td>✕</td><td>✕</td><td>✕</td><td>✕</td></tr>
+  </table>
+  <p style="margin:6px 0 0">The plateau is <b>0.30–0.40</b> — three settings, one partition. Its middle,
+  <b>θ* = 0.35</b>, is chosen. Beyond 0.40 the partition keeps shifting with every step (8 → 10 → 9 → 11
+  stacks): that region reflects the knob, not the book.</p>
+
+  <img src="assets/gen_theta.png" alt="stacks vs theta for the QSC book with the stable plateau shaded and theta*=0.35 marked"
+       style="width:100%;max-width:860px;display:block;margin:14px auto 0;border:1px solid var(--line);border-radius:8px">
+  <p class="note" style="margin:8px 0 0">The same selection on the QSC book, drawn: partitions at θ=0.30–0.45
+  are statistically identical (Rand ≥ 0.97, green band) — that plateau is the book’s own answer, and its
+  middle, <b>θ*=0.35</b>, is chosen. The 0.55–0.60 shelf is shorter and loses: a saturated grid end can look
+  stable by accident, which is why whole runs are compared, never single points. Two boundary rules: ties
+  prefer the <em>looser</em> plateau (over-merging is the repairable miss — a hidden layout resurfaces as a
+  zero-record stack on the §6 coverage map — while over-splitting silently burns representative slots), and
+  the grid ends at 0.30/0.60 because below 0.30 “same layout” would mean sharing under a third of structural
+  mass, while above 0.60 it would demand a near-identity that per-page content jitter never allows.</p>
+
+  <h3>Step E — pick the representatives the LLM will read</h3>
+  <p>Representatives are picked biggest-stack-first until 95% of pages are represented (at most 10 stack picks);
+  a dominant stack (&gt;50 pages) contributes two examples; pages 1–2 are always added on top because they carry
+  the document’s identity (title, TOC) — so a heterogeneous book can reach 12 representatives. Stacks made
+  entirely of blank pages never get a representative at all — an empty dump is a prompt slot the LLM can’t
+  learn from, even when slots are left over. The real Rave book collapsed from <b>404 pages to 5 stacks</b>:</p>
+
+  <div class="card">
+    <h4>Real clustering of the 404-page Rave book (θ*=0.35) &nbsp;·&nbsp; blue dot = representative chosen</h4>
+    <div class="bars">
+      <span>stack 1</span><div><div class="bar" style="width:100%"></div></div><span class="bar-note">249 pp · data-dictionary family · reps p116, p214 <span class="rep-dot"></span><span class="rep-dot"></span></span>
+      <span>stack 2</span><div><div class="bar" style="width:60%"></div></div><span class="bar-note">150 pp · entry forms (p133 lives here) · reps p91, p193 <span class="rep-dot"></span><span class="rep-dot"></span></span>
+      <span>stack 3</span><div><div class="bar" style="width:1.2%"></div></div><span class="bar-note">2 pp · no rep (95% already covered)</span>
+      <span>stack 4</span><div><div class="bar" style="width:1.2%"></div></div><span class="bar-note">2 pp · no rep</span>
+      <span>stack 5</span><div><div class="bar" style="width:0.8%"></div></div><span class="bar-note">1 pp · no rep</span>
+    </div>
+    <p class="note" style="margin:10px 0 0">Plus pages 1–2 always → <b>6 representative pages = 1.5% of the book</b>
+    is everything the LLM will ever see. Each stack also gets a human-readable signature — stack 2’s most
+    discriminative token is <code>(5, =, ·, ·, num)</code>, the field-number column — handy when reading
+    <code>clusters.json</code>.</p>
+  </div>
+
+  <p>These are the six pages themselves — the LLM’s entire view of the 404-page book:</p>
+  <img src="assets/rave_reps.png" alt="the six representative pages chosen for the Rave book, rendered"
+       style="width:100%;border:1px solid var(--line);border-radius:8px">
+  <p class="note" style="margin:8px 0 0">Rendered from the run’s own <code>rep_p*.png</code> artifacts. Notice
+  what the sample achieves: both dictionary variants (p116 dense table, p214 rating-scale definitions), both
+  entry-form flavours (p91 date/time fields, p193 questionnaire with numeric scale options), and the two
+  always-included identity pages. The LLM sees each as a <em>text dump</em> (<code>rep_p&lt;N&gt;.txt</code>) —
+  the PNGs exist for humans.</p>
+
+  <p>Everything this stage decided is written to one artifact, <code>clusters.json</code> — the §4 prompt
+  builder and the §6 coverage map both read it, never the PDF. Abridged, verbatim:</p>
+
+<pre>{
+ "file": "384-201-00002_Annotated Unique CRF_04Nov2024.pdf",
+ "status": "ok",
+ "pages": 404,
+ "text_layer_pct": 100,             <span class="c">// born-digital - no OCR needed</span>
+ "theta": 0.35,                     <span class="c">// picked by the Step-D sweep</span>
+ "theta_selection": {"grid": [0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6],
+                     "n_stacks": [5, 5, 6, 8, 10, 9, 11],
+                     "adjacent_rand": [1.0, 0.9763, 0.9604, 0.8885, 0.9477, 0.9305],
+                     "marked": [true, true, false, false, false, false],
+                     "runs": [[0, 1]], "chosen_index": 1},
+ "n_clusters": 5,
+ "representative_pages_1based": [1, 2, 91, 116, 193, 214],
+ "clusters": [
+  {"n_pages": 249, "pages": [2, 5, 6, 8, ...],   <span class="c">// 0-based internally</span>
+   "representatives": [115, 213], "header": "top:(2, '=', '.', '.', 'word')"},
+  {"n_pages": 150, "pages": [1, 3, 4, 7, ...],
+   "representatives": [90, 192],  "header": "top:(5, '=', '.', '.', 'num')"},
+  {"n_pages": 2, "pages": [49, 57], "representatives": []},
+  {"n_pages": 2, "pages": [53, 61], "representatives": []},
+  {"n_pages": 1, "pages": [0],      "representatives": []}
+ ]
+}</pre>
+
+  <div class="card">
+    <h4>The same code, untouched, across the corpus — and on documents that are nothing like CRFs</h4>
+    <table>
+      <tr><th>document</th><th>pages</th><th>θ*</th><th>stacks</th><th>reps</th><th>pages in repped stacks</th></tr>
+      <tr><td>Rave “Unique CRF” 384-201-00002</td><td>404</td><td>0.35</td><td>5</td><td>6</td><td>98%</td></tr>
+      <tr><td>aCRF 384-201-00004 (16 Jan)</td><td>206</td><td>0.35</td><td>5</td><td>7</td><td>96%</td></tr>
+      <tr><td>aCRF 384-201-00004 v2.0</td><td>246</td><td>0.30</td><td>6</td><td>7</td><td>96%</td></tr>
+      <tr><td>eSource QSC302573</td><td>609</td><td>0.35</td><td>3</td><td>4</td><td>99%</td></tr>
+      <tr><td>Form tracker MAC186</td><td>913</td><td>0.35</td><td>9</td><td>11</td><td>96%</td></tr>
+      <tr><td>326-201-00007 v1.0</td><td>112</td><td>0.30</td><td>2</td><td>4</td><td>97%</td></tr>
+      <tr><td>331-201-00246 (26 Jul)</td><td>1085</td><td>0.40</td><td>26</td><td>12</td><td>80%</td></tr>
+      <tr><td>clinical protocols / legal contracts / CJK scan (6 docs, other projects)</td><td>1–135</td><td>0.35–0.50</td><td>1–20</td><td>≤12</td><td>85–100%</td></tr>
+    </table>
+    <p class="note" style="margin:10px 0 0">Whole corpus: 5,989 pages → <b>87 representative pages (1.5%)</b> go to
+    the LLM. The 1085-page book is genuinely heterogeneous — 26 stacks, 80% repped — and that is the accepted cost:
+    layouts left unrepresented surface as zero-record stacks on the §6 coverage map and get their own confirmation
+    round in §7. Clustering only decides <em>what the LLM gets to look at</em>, never what is extracted.
+    Probes: <code>generic_cluster_probe.py</code>, <code>ood_cluster_probe.py</code>.</p>
+  </div>
+
+  <div class="callout amber">
+    <b>“Isn’t this just hardcoded to your sample books?” — the audit that says no.</b>
+    <code>generalization_audit.py</code> checks the properties hardcoding would break, on CRF books <em>and</em>
+    foreign documents:
+    <ul style="margin:8px 0 0;padding-left:20px;font-size:14.5px">
+      <li><b>Word-blindness, proven:</b> replace every word on every page with garbage of the same shape —
+      profiles are bit-identical, the partition doesn’t move (Rand 1.000, all 7 documents).</li>
+      <li><b>No magic numbers:</b> the damping exponent works identically from 2 through 5 (a plateau, not a
+      knife-edge); grid endpoints are structural properties of Jaccard; θ itself is selected per document.</li>
+      <li><b>Chrome adapts:</b> concatenate two different books into one “document” and cluster — every large
+      stack stays 100% single-book. Chrome discovery keys on each document’s own repetition, not on anything
+      learned from ours.</li>
+      <li><b>Order-invariant:</b> feeding pages in reverse produces the identical partition (canonical
+      processing order).</li>
+      <li><b>Tiny documents degrade gracefully:</b> a 2-page “book” just sends both pages to the LLM.</li>
+      <li><b>Labels are tests, never inputs:</b> the known page pairs (“3 and 10 are the same template”,
+      “title ≠ form ≠ dictionary”) are used to <em>check</em> the selected θ — they never influence it.</li>
+    </ul>
+  </div>
+
+  <details><summary>History — the five-signal fingerprint v1 this replaced, and why</summary>
+  <div class="card" style="margin-top:10px">
+    <p style="font-size:14.5px;margin:6px 0 10px">The first front-end hashed five hand-picked page statistics into
+    a tuple — % bracket-only lines, % integer-only lines, % colored lines, a line-count band, and a 4-bin
+    x-histogram — and stacked pages with <em>exactly equal</em> tuples. It worked (23 stacks / 88% repped on the
+    Rave book) and even survived out-of-domain stress tests on protocols and contracts (8–24 stacks, 78–100%
+    repped, <code>ood_cluster_probe.py</code>). But it had an honesty problem we ourselves documented: two of the
+    five signals were <em>corpus-scented</em> — “bracket-only lines” encodes the Rave OID annotation convention,
+    “integer-only lines” the numbered-form convention. Inert on documents without those conventions, but a
+    reviewer who works with CRFs daily would rightly call them learned from our five sample books.</p>
+    <p style="font-size:14.5px;margin:6px 0 10px">The generic profile above removes the objection at the root —
+    no named convention anywhere — and then beat v1 on its own metric on every book:</p>
+    <table>
+      <tr><th>book</th><th>v1 five-signal: stacks / repped</th><th>generic, θ self-selected</th></tr>
+      <tr><td>Rave Unique CRF · 404 pp</td><td>23 / 88%</td><td><b>5 / 98%</b></td></tr>
+      <tr><td>aCRF 16JAN · 206 pp</td><td>29 / 76%</td><td><b>5 / 96%</b></td></tr>
+      <tr><td>aCRF v2.0 · 246 pp</td><td>48 / 63%</td><td><b>6 / 96%</b></td></tr>
+      <tr><td>eSource QSC · 609 pp</td><td>20 / 95%</td><td><b>3 / 99%</b></td></tr>
+      <tr><td>MAC186 tracker · 913 pp</td><td>38 / 61%</td><td><b>9 / 96%</b></td></tr>
+      <tr><td>331-201-00246 · 1085 pp</td><td>60 / 52%</td><td><b>26 / 80%</b></td></tr>
+    </table>
+    <p class="note" style="margin:10px 0 8px">Fewer, fatter stacks = fewer prompt pages with better coverage.
+    v1 remains in <code>common.py</code> as the reference baseline the comparison probes run against
+    (<code>generic_cluster_probe.py</code> prints both side by side). Its per-signal visual walkthrough
+    (<code>assets/sig_*.png</code>) is kept below for the record.</p>
+
+    <h4 style="margin-top:14px">v1 signal walkthrough (historical)</h4>
+    <img src="assets/sig_brackets.png" alt="aCRF page with bracketed OID codes boxed"
+         style="width:100%;border:1px solid var(--line);border-radius:8px">
+    <p class="note" style="margin:8px 0 14px">1 · bracket-only lines — the OID annotation convention
+    (<code>[AESEV]</code>, <code>[AEREL]</code>…). The signal that made v1 corpus-scented; the generic
+    <code>code</code> character class covers the same lines without naming the convention.</p>
+    <img src="assets/sig_integers.png" alt="Unique CRF p133 with the bare-integer field numbers boxed"
+         style="width:100%;border:1px solid var(--line);border-radius:8px">
+    <p class="note" style="margin:8px 0 14px">2 · integer-only lines — the field-number column; generalized by the
+    <code>num</code> character class plus the x-band.</p>
+    <img src="assets/sig_colored.png" alt="QSC eSource page with steel-blue template labels boxed"
+         style="width:100%;border:1px solid var(--line);border-radius:8px">
+    <p class="note" style="margin:8px 0 14px">3 · colored lines — template chrome ink; generalized by the color bit,
+    and the chrome itself is now handled head-on by ubiquity damping (Step B).</p>
+    <img src="assets/sig_density.png" alt="four page thumbnails of increasing density"
+         style="width:100%;border:1px solid var(--line);border-radius:8px">
+    <p class="note" style="margin:8px 0 14px">4 · line-count bands — density families; superseded by set-of-tokens
+    similarity (a dense dictionary page and a sparse form page share few tokens to begin with).</p>
+    <div style="max-width:560px;margin:0 auto">
+      <img src="assets/sig_xhist.png" alt="page 133 divided into 4 columns with line-start markers"
+           style="width:100%;border:1px solid var(--line);border-radius:8px">
+    </div>
+    <p class="note" style="margin:8px 0 0">5 · the 4-bin x-histogram — column footprint; generalized to the 6-band
+    x component carried inside every token.</p>
+  </div>
+  </details>
+</section>
+
+<!-- ================================================================ -->
+<section id="codegen">
+  <h2><span class="snum">4</span>The AI writes a parser — code, not answers</h2>
+  <p class="one-liner"><b>In one sentence:</b> the LLM receives the handful of representative page dumps (6 for the Rave book) plus a strict contract, and must reply with a Python function <code>extract(pages)</code> that parses this document’s layouts.</p>
+
+  <div class="io">
+    <div class="in"><span class="k">in</span><code>codegen_prompt.txt</code> (16&nbsp;kB): the contract + the 6
+      representative page dumps from §3, each tagged with its stack size (“this layout covers ~249 pages”).</div>
+    <div class="arr">→</div>
+    <div class="out"><span class="k">out</span>a single Python function <code>extract(pages)</code> — v1 was
+      119 lines (<code>codegen_reply_claude_4_5_sonnet_1.py</code>). Code only; no records exist yet.</div>
+  </div>
+
+  <div class="grid2">
+    <div class="card"><span class="tag ai">LLM call #1 — the prompt</span>
+      <ul style="font-size:14px;padding-left:18px;margin:6px 0">
+        <li><b>The contract:</b> reply with one function <code>def extract(pages)</code>; input is every page’s
+            Line list; return <code>{form_name, field_name, page}</code> dicts.</li>
+        <li><b>The evidence:</b> the 6 page dumps from §3, each tagged with its stack size
+            (“this layout covers ~249 pages”) so the model knows what matters.</li>
+        <li><b>Hard rules:</b> key on <em>structure</em> (position, boldness, size, patterns), never on
+            specific question wording — the code must work on the 398 pages it hasn’t seen.
+            Standard library only. No I/O.</li>
+        <li><b>Quality bar:</b> labels must be human-readable; every record must carry the real 1-based page number.</li>
+      </ul>
+    </div>
+    <div class="card"><span class="tag ai">The reply — ~120 lines of document-specific Python</span>
+      <p style="font-size:14px;margin:6px 0">Sonnet 4.5 studied the dumps and chose its own landmarks for
+      <em>this</em> book — none of these rules exist anywhere in our codebase:</p>
+      <ul style="font-size:14px;padding-left:18px;margin:6px 0">
+        <li>form name = <b>bold</b> line matching <code>Form: …</code> in the header band
+            (<code>y ≈ 100–120</code>), carried across pages</li>
+        <li>pages containing <code>Field Name Data Type</code> are the data-dictionary appendix → skip</li>
+        <li>field labels live at <code>x = 90–100</code>, font size ≈10, between the header and footer bands;
+            right-column answers (<code>x &gt; 350</code>) are dropped</li>
+        <li>~15 noise filters it invented: page numbers, answer options, machine-code prefixes,
+            time-point lists, signature-page legal words (<i>pursuant / certify / attest</i>)</li>
+      </ul>
+    </div>
+  </div>
+
+<details><summary>The actual prompt, verbatim (codegen_prompt.txt, 16.6 kB — abridged where marked)</summary>
+<pre>You are writing a deterministic extraction program for one specific clinical Case
+Report Form (CRF) PDF document. Below you will find a small sample of
+REPRESENTATIVE PAGES (one or two per page-layout cluster) from a document that is
+404 pages long. The document is highly repetitive: the sampled pages cover its
+layouts, but the unsampled pages contain different content in the same layouts.
+
+Each sampled page is shown as structured text lines with geometry:
+    x=&lt;left&gt; y=&lt;top&gt; sz=&lt;font-size&gt; &lt;color-hex or 'black'&gt; &lt;B if bold&gt; | &lt;text&gt;
+
+# Your task
+
+Write a Python function that will run UNCHANGED over all 404 pages and extract
+every data-entry field of the CRF:
+  - form_name : the CRF form/section the field belongs to
+  - field_name: the human-readable field label/question
+
+That is the complete output. Some CRFs also print machine codes or technical
+annotations near fields - do NOT return those (they are resolved downstream by a
+separate system). You may still USE such markings as structural landmarks if that
+helps you locate fields reliably.
+
+# Runtime contract
+
+def extract(pages):
+    # pages: list of (page_index_0based, lines) tuples for the ENTIRE document, in
+    #        page order. lines is a list of Line objects sorted by y, then x.
+    <span class="c"># ... Line attributes (.text .x0 .y0 .x1 .y1 .size .bold .non_black),</span>
+    <span class="c"># multi-column and RTL-script guidance ...</span>
+    # returns: list of dicts, one per extracted field occurrence:
+    #   {"form_name": str, "field_name": str, "page": int_1based}
+
+# Hard constraints
+
+- Pure computation only. These modules are already available: re, math, collections,
+  itertools, functools, string, unicodedata, bisect, statistics, json. You may not
+  import anything else, access files/network, or print.
+- Deterministic, fast, simple: loops, regexes, coordinate arithmetic.
+- Generalize from STRUCTURE, not content. The unsampled pages contain questions,
+  values and section names you have never seen. Never key your logic on specific
+  question wording from the samples; key it on geometry (x positions, font sizes,
+  color, boldness), on repeated marker/header patterns, and on the SHAPE of text
+  (regexes over character classes). The document may be in any language.
+- You may keep state across pages (the function receives the whole document) -
+  e.g. a form name announced once may govern many following pages.
+
+# Quality bar (your program's output is machine-checked before acceptance)
+
+- It must extract from every page that carries fields, not just the sampled ones.
+- form_name should be non-empty for the large majority of records.
+- field_name values must be human-readable label text - not machine codes, bare
+  numbers, dates, or page furniture (headers/footers/page numbers/legends).
+- Answer OPTIONS are not fields: choice values (e.g. Yes / No / Unknown) belong
+  to a field, they are not field_name records themselves.
+
+# Reply format
+
+Reply with ONLY Python source code (no prose outside code comments). Start with a
+comment block (3-6 lines) stating what layout you observed in the samples and the
+extraction strategy you chose. Then define extract(pages) plus any helpers.
+
+# Representative pages of this document
+
+--- page 1 of 404 (layout cluster covers ~1 pages) ---
+<span class="c">... the signature-page dump you saw in §7b ...</span>
+
+--- page 2 of 404 (layout cluster covers ~1 pages) ---
+<span class="c">... the Visit Date form dump ...</span>
+
+--- page 91 of 404 (layout cluster covers ~150 pages) ---
+x=  90.0 y=  90.0 sz=10.0 black   B | 01.025 GMK: Unique CRF
+x=  90.0 y= 104.0 sz=10.0 black   B | Form: Holter ECG - Day 14
+x=  90.0 y= 118.0 sz=10.0 black   B | Generated On: 04 Nov 2024 15:26:21 (GMT)
+x=  90.0 y= 155.0 sz=10.0 black     | Was Holter ECG Time Point performed?
+x= 489.0 y= 155.0 sz=10.0 black     | Yes
+x= 527.0 y= 157.0 sz=10.0 black     | 1
+x= 492.7 y= 171.0 sz=10.0 black     | No
+x=  90.0 y= 210.0 sz=10.0 black     | If No, please specify reason
+x= 527.0 y= 212.0 sz=10.0 black     | 2
+<span class="c">... and so on - 6 page dumps total (pages 1, 2, 91, 116, 193, 214), each tagged</span>
+<span class="c">with how many pages its layout covers ...</span></pre>
+</details>
+
+  <p>This is how the reply actually begins — the model’s own strategy comment and its first two rules,
+  quoted verbatim from <code>codegen_reply_claude_4_5_sonnet_1.py</code> (the model even wrote the comments):</p>
+
+<pre><span class="c"># Layout observation:</span>
+<span class="c"># - Page 1: title/signature page (no fields)</span>
+<span class="c"># - Pages 2+: standard CRF forms with bold "Form: &lt;name&gt;" header at y~104</span>
+<span class="c"># - Field questions appear at x=90-95 (left-aligned), y increasing down the page</span>
+<span class="c"># - Answer options (Yes/No, radio choices) appear at x=408-492, not fields themselves</span>
+<span class="c"># - Small numbers at x=527 are field codes (not field_name)</span>
+<span class="c"># - Pages 116, 214: data dictionary layouts with "Field Name Data Type" header (skip these)</span>
+<span class="c"># - form_name persists across pages until a new "Form:" line appears</span>
+
+import re
+from collections import namedtuple
+
+def extract(pages):
+    results = []
+    current_form = ""
+
+    for page_idx, lines in pages:
+        page_num = page_idx + 1
+
+<span class="c">        # Check if this is a data dictionary page (has "Field Name Data Type" header)</span>
+        is_dict_page = any(
+            line.text.strip() == "Field Name Data Type"
+            for line in lines
+        )
+        if is_dict_page:
+            continue
+
+<span class="c">        # Look for form name in bold "Form: &lt;name&gt;" pattern at y~104-118</span>
+        for line in lines:
+            if line.bold and line.y0 &gt;= 100 and line.y0 &lt;= 120:
+                match = re.match(r'Form:\s*(.+)', line.text.strip())
+                if match:
+                    current_form = match.group(1).strip()
+                    break
+        <span class="c"># ... 85 more lines: the field tests and ~15 noise filters - full program below ...</span></pre>
+
+<details><summary>The complete v1 program, exactly as the model replied (119 lines)</summary>
+<pre><span class="c"># Layout observation:</span>
+<span class="c"># - Page 1: title/signature page (no fields)</span>
+<span class="c"># - Pages 2+: standard CRF forms with bold "Form: &lt;name&gt;" header at y~104</span>
+<span class="c"># - Field questions appear at x=90-95 (left-aligned), y increasing down the page</span>
+<span class="c"># - Answer options (Yes/No, radio choices) appear at x=408-492, not fields themselves</span>
+<span class="c"># - Small numbers at x=527 are field codes (not field_name)</span>
+<span class="c"># - Pages 116, 214: data dictionary layouts with "Field Name Data Type" header (skip these)</span>
+<span class="c"># - form_name persists across pages until a new "Form:" line appears</span>
+
+import re
+from collections import namedtuple
+
+def extract(pages):
+    results = []
+    current_form = ""
+    
+    for page_idx, lines in pages:
+        page_num = page_idx + 1
+        
+<span class="c">        # Check if this is a data dictionary page (has "Field Name Data Type" header)</span>
+        is_dict_page = any(
+            line.text.strip() == "Field Name Data Type" 
+            for line in lines
+        )
+        if is_dict_page:
+            continue
+        
+<span class="c">        # Look for form name in bold "Form: &lt;name&gt;" pattern at y~104-118</span>
+        for line in lines:
+            if line.bold and line.y0 &gt;= 100 and line.y0 &lt;= 120:
+                match = re.match(r'Form:\s*(.+)', line.text.strip())
+                if match:
+                    current_form = match.group(1).strip()
+                    break
+        
+<span class="c">        # Extract fields: left-aligned questions at x=90-100</span>
+        for i, line in enumerate(lines):
+            text = line.text.strip()
+            
+<span class="c">            # Skip empty, headers, footers, page numbers</span>
+            if not text:
+                continue
+            if line.y0 &lt; 140:  # Skip header area
+                continue
+            if line.y0 &gt; 680:  # Skip footer area
+                continue
+            
+<span class="c">            # Field questions are at x=90-100, size=10, not bold typically</span>
+            if line.x0 &gt;= 90 and line.x0 &lt;= 100 and line.size &gt;= 9.5 and line.size &lt;= 10.5:
+<span class="c">                # Skip known non-field patterns</span>
+                if re.match(r'^\d+$', text):  # bare numbers
+                    continue
+                if re.match(r'^\d+\s+of\s+\d+$', text, re.IGNORECASE):  # page numbers
+                    continue
+                if text in ['Yes', 'No', 'If No', 'If Yes']:  # answer options
+                    continue
+                if re.match(r'^(Fixed Unit|Units|Values|Pre-Filled|Include|Field Name|Data Type|Field OID)', text):
+                    continue
+                
+<span class="c">                # Skip answer option patterns at x~408-492</span>
+                if line.x0 &gt; 350:
+                    continue
+                
+<span class="c">                # Skip lines that are continuations (check if previous line at similar x was a field)</span>
+<span class="c">                # Multi-line questions: only take first line, or merge intelligently</span>
+<span class="c">                # For simplicity, if this line starts with lowercase or common continuation words, skip</span>
+                if i &gt; 0:
+                    prev = lines[i-1]
+<span class="c">                    # If previous line was very close in y and x, this might be continuation</span>
+                    if (abs(prev.y0 - line.y0) &lt; 15 and abs(prev.x0 - line.x0) &lt; 10 
+                        and prev.x0 &gt;= 90 and prev.x0 &lt;= 100):
+<span class="c">                        # Merge with previous field if possible</span>
+<span class="c">                        # For now, skip to avoid duplication (simplistic approach)</span>
+                        if text[0].islower() or text.startswith('assessed'):
+                            continue
+                
+<span class="c">                # Valid field question</span>
+                field_name = text
+                
+<span class="c">                # Clean up field_name: remove trailing punctuation except '?'</span>
+<span class="c">                # Keep the question mark if present</span>
+                
+<span class="c">                # Skip if it looks like an answer value or option</span>
+                if re.match(r'^\d+[=:]', text):  # "1=", "2:", etc.
+                    continue
+                if text.startswith('PANSS') or text.startswith('LB'):  # field codes
+                    continue
+                
+<span class="c">                # Additional filters for answer options</span>
+                answer_patterns = [
+                    r'^\d+=\w+',  # "1=Absent"
+                    r'^(Absent|Minimal|Mild|Moderate|Severe|Extreme)$',
+                    r'^\d+\.\d+\s+(Hours?|Minutes?)',  # time points
+                    r'^(Predose|Post Dose)',
+                    r'^\w+\s+(Lead|Continuous|Recording)',
+                ]
+                if any(re.match(p, text, re.IGNORECASE) for p in answer_patterns):
+                    continue
+                
+<span class="c">                # Check if there's a number at x~527 on same/nearby line (field code indicator)</span>
+<span class="c">                # This helps confirm it's a real field</span>
+                has_code = False
+                for other in lines:
+                    if abs(other.y0 - line.y0) &lt; 20 and other.x0 &gt;= 520 and other.x0 &lt;= 535:
+                        if re.match(r'^\d+$', other.text.strip()):
+                            has_code = True
+                            break
+                
+<span class="c">                # Only include if we have a form name and field looks valid</span>
+                if current_form and len(text) &gt; 2 and not text.startswith('$'):
+<span class="c">                    # Final check: skip if line is part of a multi-line instruction block</span>
+                    if not re.search(r'\b(pursuant|certify|attest|supplying)\b', text, re.IGNORECASE):
+                        results.append({
+                            "form_name": current_form,
+                            "field_name": field_name,
+                            "page": page_num
+                        })
+    
+    return results</pre>
+<p class="note" style="margin-top:8px">Note two of its choices — they become §7’s story. There is
+no filter for the checklist instruction <i>“Check all that apply”</i>, so it is extracted as a field; and its
+own answer-option pattern <code>^\w+\s+(Lead|Continuous|Recording)</code> — written to drop right-column
+option text like <i>“Holter Continuous Ecg Recording”</i> — also matches real field labels that begin with
+<i>“ECG Recording …”</i>, silently deleting four fields on every Holter ECG page. Both mistakes pass every
+mechanical gate; both get caught by the page-grounded audit.</p>
+</details>
+
+  <div class="callout">
+    <b>Why code instead of answers?</b> An answer (“here are the fields on this page”) is consumed once and
+    can’t be checked. A <b>program</b> is an inspectable artifact: we can run it on all 404 pages for free,
+    measure exactly what it caught and where it’s blind, diff two versions of it, re-run it bit-identically
+    next month, and read it line by line in a validation review. Determinism and auditability come for free.
+  </div>
+</section>
+
+<!-- ================================================================ -->
+<section id="sandbox">
+  <h2><span class="snum">5</span>The sandbox: running code an AI just wrote</h2>
+  <p class="one-liner"><b>In one sentence:</b> generated code executes in a throwaway subprocess with an import allow-list, a hard timeout, and a JSON-only channel back — a hang or crash costs one verdict, never the pipeline.</p>
+
+  <div class="io">
+    <div class="in"><span class="k">in</span>the generated source + the PDF path; the subprocess rebuilds all
+      404 pages as <code>Line</code> lists and calls <code>extract(pages)</code> on them.</div>
+    <div class="arr">→</div>
+    <div class="out"><span class="k">out</span>one JSON object: <code>{records: [{form_name, field_name, page}…]}</code>
+      or <code>{error: traceback}</code>. Rave v1 → <b>954 records from 153 pages</b>; a broken program
+      becomes a gate verdict (example below) instead of taking the pipeline down.</div>
+  </div>
+
+  <div class="grid3">
+    <div class="card"><h4>Isolation</h4><p style="font-size:14px;margin:0">Fresh Python subprocess per run
+      (<code>sandbox_runner.py</code>). No shared interpreter state, killable from outside on timeout,
+      memory-capped. The parent only ever parses a JSON result — never imports the generated module.</p></div>
+    <div class="card"><h4>Allowed</h4><p style="font-size:14px;margin:0"><code>re</code>, <code>math</code>,
+      <code>collections</code>, <code>itertools</code>, <code>statistics</code>, <code>string</code>,
+      <code>unicodedata</code>, <code>json</code>, <code>functools</code>… — pure computation over the
+      Line lists it was handed.</p></div>
+    <div class="card"><h4>Blocked</h4><p style="font-size:14px;margin:0">No <code>os</code>, no file access, no
+      network, no subprocess, no dynamic import tricks. A parser that tries is rejected with the reason fed
+      back into the revision loop.</p></div>
+  </div>
+  <p>The channel back to the pipeline is a single JSON object on stdout — here is what it actually looked like
+  for the accepted v2 parser, and for a broken program (a v3 from an earlier run of this same pipeline, which
+  “simplified” its records from dicts to tuples while revising — archived, replayed verbatim):</p>
+
+<pre><span class="c"># v2 over all 404 pages -> one 134 kB JSON object (abridged head and tail):</span>
+{"records": [{"form_name": "Visit Date", "field_name": "Was visit performed?", "page": 2},
+             {"form_name": "Visit Date", "field_name": "If No, please provide reason", "page": 2},
+             {"form_name": "Visit Date", "field_name": "Visit Date", "page": 2},
+             ...
+             {"form_name": "Consent Document Status - Paper Consent",
+              "field_name": "Witness Signature", "page": 403}], "n_pages": 404}
+
+<span class="c"># the tuple-returning program: non-dict records serialize as null, and the</span>
+<span class="c"># parent's contract check turns that into a gate blocker - not a crash:</span>
+{"records": [null, null, null, null, ...], "n_pages": 404}
+<span class="c">#   -> "Program failed to run: 933 of 933 returned records were malformed</span>
+<span class="c">#       (not a dict, or empty field_name)"</span></pre>
+
+  <p class="note">Same runner everywhere: the local CLI harness and the Dataiku notebook execute generated code
+  through the identical sandbox, so a parser accepted in testing behaves identically in production.</p>
+</section>
+
+<!-- ================================================================ -->
+<section id="gates">
+  <h2><span class="snum">6</span>Mechanical gates and the coverage map</h2>
+  <p class="one-liner"><b>In one sentence:</b> before any AI review, plain Python replays the parser over <em>all</em> pages and checks facts that need no judgment — did it crash, did it return real records, and which layout stacks got nothing.</p>
+
+  <div class="io">
+    <div class="in"><span class="k">in</span>the sandbox records from §5 + the §3 stacks (<code>clusters.json</code>).</div>
+    <div class="arr">→</div>
+    <div class="out"><span class="k">out</span>a blockers list, a warnings list, and the per-stack coverage map.
+      Rave v1 → 0 blockers, 0 warnings — but stack&nbsp;1 (249&nbsp;pp) = <b>0 records</b>, a question only
+      §7 can answer.</div>
+  </div>
+
+  <div class="grid2">
+    <div class="card"><span class="tag py">Blockers — always rejected, fix required</span>
+      <ul style="font-size:14px;padding-left:18px;margin:6px 0">
+        <li>crashed / timed out in the sandbox</li>
+        <li>zero records — or fewer than 5 from a ≥20-page document (a 2-page CRF can
+            legitimately carry 3 fields, so tiny documents get a warning instead)</li>
+        <li>records carry no valid 1-based page numbers (unverifiable output is worthless;
+            pages outside the document are dropped as invalid, never counted as coverage)</li>
+      </ul></div>
+    <div class="card"><span class="tag loop">Warnings — fed to the loop, may be legitimate</span>
+      <ul style="font-size:14px;padding-left:18px;margin:6px 0">
+        <li>&lt;70% of records have a form name</li>
+        <li>&lt;60% of labels look human (codes/dates/junk instead of words)</li>
+        <li>implausibly many distinct form names (title detection grabbing body text)</li>
+      </ul></div>
+  </div>
+
+  <p>The gates work on a small metrics dict computed from the full-document replay. For Rave v1, verbatim from
+  <code>codegen_trail_claude_4_5_sonnet.json</code>:</p>
+
+<pre>"metrics": {
+  "records": 954,                <span class="c">// >= 5 for a 404-page doc: pass</span>
+  "pages_total": 404,
+  "pages_with_fields": 153,      <span class="c">// every record carries a valid page number: pass</span>
+  "forms_nonempty_pct": 100,     <span class="c">// warning threshold &lt;70: pass</span>
+  "labels_look_human_pct": 100,  <span class="c">// warning threshold &lt;60: pass</span>
+  "distinct_forms": 76,          <span class="c">// vs 18.8 forms per 100 pages: plausible</span>
+  "fields_per_form": 12.6,
+  "pages_covered_pct": 38        <span class="c">// not a gate - becomes the coverage map below</span>
+},
+"problems": [],                  <span class="c">// no blockers -></span>
+"warnings": []                   <span class="c">// v1 sails through the gates...</span></pre>
+
+  <p>The most valuable mechanical signal is the <b>per-stack coverage map</b>: join the parser’s output back to
+  the §3 clusters. Version 1 of the Rave parser passed every blocker — and the map still showed this:</p>
+
+  <div class="card cov">
+    <h4>v1 coverage by layout stack (real run)</h4>
+    <div class="bars">
+      <span>stack 1 · 249 pp</span><div><div class="bar zero" style="width:100%"></div></div><span class="bar-note"><b>0 records</b> — the whole dominant stack is dark</span>
+      <span>stack 2 · 150 pp</span><div><div class="bar" style="width:60%;background:#8fc3a8"></div></div><span class="bar-note">nearly all with records</span>
+      <span>stacks 3–5 · 5 pp</span><div><div class="bar" style="width:2%;background:#8fc3a8"></div></div><span class="bar-note">4 of 5 pp with records</span>
+    </div>
+    <p class="note" style="margin:10px 0 0">The 249-page dominant stack — 62% of the book — produced nothing. Python can
+    <em>localize</em> the blindness precisely, but it cannot tell a parser bug from a genuinely field-free
+    layout (a table of contents has no fields either). That judgment call is exactly what goes back to the AI in §7.</p>
+  </div>
+</section>
+
+<!-- ================================================================ -->
+<section id="review">
+  <h2><span class="snum">7</span>The AI reviews its own work — three questions, three calls</h2>
+  <p class="one-liner"><b>In one sentence:</b> the parser is interrogated with three narrow questions — 7a:
+  <em>“you extracted nothing from these layouts — really field-free?”</em> · 7b: <em>“here are 6 real pages next
+  to what you extracted from each — what’s wrong?”</em> · 7c: <em>“fix exactly these findings”</em> — each a
+  separate LLM call with the evidence pasted in.</p>
+
+  <p>Section 6 ended with facts Python can measure but not judge. The v1 parser runs, returns 954
+  plausible-looking records — and one 249-page layout stack produced <em>nothing</em>. Is that a parser hole,
+  or a genuinely field-free appendix? And are the “plausible-looking” records actually right? Both questions
+  require <b>reading pages</b>, so both go back to the model. Crucially, it is never asked “was your code
+  good?” (the answer would be yes). Each question is narrow, comes with the raw evidence in the prompt, and
+  forces a checkable answer format:</p>
+
+  <svg viewBox="0 0 940 180" style="width:100%;max-width:940px;display:block;margin:12px auto" font-family="inherit">
+    <defs><marker id="ar7" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L8,4.5 L0,9" fill="none" stroke="#8b93a0" stroke-width="1.4"/></marker></defs>
+    <g font-size="12.5">
+      <rect x="8"   y="44" width="150" height="56" rx="10" fill="#e9f5ef" stroke="#bfe0cf"/>
+      <text x="83"  y="67" text-anchor="middle" fill="#0f7b4d" font-weight="700">from §6 (Py)</text>
+      <text x="83"  y="84" text-anchor="middle" fill="#0f7b4d">v1 + coverage map</text>
+      <rect x="196" y="44" width="160" height="56" rx="10" fill="#eaf1fc" stroke="#c4d7f3"/>
+      <text x="276" y="67" text-anchor="middle" fill="#1d5fbf" font-weight="700">7a confirm (AI)</text>
+      <text x="276" y="84" text-anchor="middle" fill="#1d5fbf">empty stacks real?</text>
+      <rect x="394" y="44" width="160" height="56" rx="10" fill="#eaf1fc" stroke="#c4d7f3"/>
+      <text x="474" y="67" text-anchor="middle" fill="#1d5fbf" font-weight="700">7b audit (AI)</text>
+      <text x="474" y="84" text-anchor="middle" fill="#1d5fbf">6 pages vs records</text>
+      <rect x="592" y="44" width="160" height="56" rx="10" fill="#eaf1fc" stroke="#c4d7f3"/>
+      <text x="672" y="67" text-anchor="middle" fill="#1d5fbf" font-weight="700">7c revise (AI)</text>
+      <text x="672" y="84" text-anchor="middle" fill="#1d5fbf">fix list in → v2 out</text>
+      <rect x="790" y="44" width="142" height="56" rx="10" fill="#e9f5ef" stroke="#bfe0cf"/>
+      <text x="861" y="67" text-anchor="middle" fill="#0f7b4d" font-weight="700">rerun (Py)</text>
+      <text x="861" y="84" text-anchor="middle" fill="#0f7b4d">+ re-audit, same 6</text>
+      <line x1="158" y1="72" x2="190" y2="72" stroke="#8b93a0" stroke-width="1.4" marker-end="url(#ar7)"/>
+      <line x1="356" y1="72" x2="388" y2="72" stroke="#8b93a0" stroke-width="1.4" marker-end="url(#ar7)"/>
+      <line x1="554" y1="72" x2="586" y2="72" stroke="#8b93a0" stroke-width="1.4" marker-end="url(#ar7)"/>
+      <line x1="752" y1="72" x2="784" y2="72" stroke="#8b93a0" stroke-width="1.4" marker-end="url(#ar7)"/>
+      <path d="M 897 100 L 897 142 L 545 142 L 545 106" fill="none" stroke="#b0680e" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#ar7)"/>
+      <text x="668" y="136" text-anchor="middle" fill="#b0680e" font-size="12">issues left? §8 decides: another 7b→7c round, or stop</text>
+      <text x="276" y="118" text-anchor="middle" fill="#5b6472" font-size="11.5">Rave: CONFIRM_NO_FIELDS</text>
+      <text x="474" y="118" text-anchor="middle" fill="#5b6472" font-size="11.5">v1 → 8 issues</text>
+      <text x="672" y="118" text-anchor="middle" fill="#5b6472" font-size="11.5">v2 · 1,242 records</text>
+      <text x="861" y="118" text-anchor="middle" fill="#5b6472" font-size="11.5">v2 → 4 issues</text>
+    </g>
+  </svg>
+
+  <!-- ------------------------------------------------------------ 7a -->
+  <h3>7a — Confirm: “you extracted nothing from 249 pages — look at two of them” <span class="tag ai" style="margin-left:8px">LLM call</span></h3>
+  <div class="io flush">
+    <div class="in"><span class="k">in</span>its own program + the §6 coverage table + dumps of 2 <em>never-shown</em>
+      pages from the zero-record stack (<code>coverage_confirm_prompt.txt</code>).</div>
+    <div class="arr">→</div>
+    <div class="out"><span class="k">out</span>either the token <code>CONFIRM_NO_FIELDS</code> or a full extended
+      program. Rave → confirmed field-free; MAC186 → extension written, then <b>rejected</b> by a regression check.</div>
+  </div>
+
+  <p><b>Why this question exists.</b> Zero records from 62% of the book is either the worst possible bug or
+  completely correct — a table of contents has no fields, and neither does a reference appendix. Python located
+  the dark stack (§6) but cannot tell which case it is. So the model is shown two concrete pages from that stack
+  — pages it has <em>never</em> seen, picked from deep inside it — and must commit to one of exactly two answers:</p>
+
+  <div class="grid2">
+    <div class="card"><h4>The model is shown</h4>
+      <ul style="font-size:14px;padding-left:18px;margin:6px 0">
+        <li>its own program, full source</li>
+        <li>the per-layout coverage table (below)</li>
+        <li>line dumps of pages <b>154</b> and <b>276</b> — two samples from the 249-page zero-record stack</li>
+      </ul></div>
+    <div class="card"><h4>It must reply with exactly one of</h4>
+      <ul style="font-size:14px;padding-left:18px;margin:6px 0">
+        <li><code>CONFIRM_NO_FIELDS</code> — “these layouts genuinely carry no fields; my program is complete”</li>
+        <li>the <b>full extended program</b> — “I missed a layout; here is the version that handles it”</li>
+      </ul>
+      <p class="note" style="margin:6px 0 0">The token only counts as a standalone reply — a sentence merely
+      mentioning it doesn’t. An extension is replayed on the whole book and must not lose records or coverage,
+      or it is discarded.</p></div>
+  </div>
+
+  <p>The actual Rave prompt, abridged to its skeleton:</p>
+
+<div class="dump" style="margin:12px 0">It passed the aggregate quality gates, but entire layout clusters of the document
+produced ZERO records. Below are sample pages from those clusters (you have not
+seen these pages before).
+
+Your current program:
+<span class="aux">... the full §4 program ...</span>
+
+# Per-layout coverage
+  cluster   0:  249 pages,    0 with records (0%), 0 records      <span class="lab">&lt;- the question</span>
+  cluster   1:  150 pages,  149 with records (99%), 948 records
+  cluster   2:    2 pages,    2 with records (100%), 4 records
+  cluster   3:    2 pages,    2 with records (100%), 2 records
+
+--- page 154 (cluster 0, 249 pages like this, 0% covered) ---
+x=  90.0 y= 104.0 sz=10.0 black   B | Form: MINI For Psychotic Disorders 7.0.2
+x= 110.0 y= 155.0 sz=10.0 black     | Field Name Data Type   <span class="lab">&lt;- spec-table headers,</span>
+x= 230.0 y= 155.0 sz=10.0 black     | Units                  <span class="lab">   nothing to fill in</span>
+x= 290.0 y= 155.0 sz=10.0 black     | Values
+x= 410.0 y= 167.0 sz=10.0 black     | Field OID
+<span class="aux">... + page 276, same layout ...</span>
+
+Reply with EXACTLY one of:
+- the single line: CONFIRM_NO_FIELDS, or
+- the FULL updated Python program that ADDS handling for the missed layouts.</div>
+
+  <p>Its answer — correct — was that the dark stack is the book’s <b>data-dictionary appendix</b>: specification
+  tables its own code deliberately skips. The end of the actual reply, verbatim
+  (<code>codegen_reply_claude_4_5_sonnet_confirm.txt</code>):</p>
+
+  <div class="verdict" style="background:#f2f7f3;border-color:#cfe2d4">Looking at the sample pages, I can see
+  they are <b>data dictionary pages</b> with the header "Field Name Data Type" at y~155. These pages show
+  metadata about fields (field names, data types, units, values, pre-filled info, field OIDs) but are NOT
+  data-entry forms themselves. [...] These 249 pages in cluster 0 are data dictionary/metadata pages that
+  should produce zero records.<br><br>
+  CONFIRM_NO_FIELDS</div>
+
+  <p style="margin-top:10px"><b>Outcome, both flavors.</b> Rave: verdict recorded as
+  <code>confirmed_no_fields</code>, no code change. MAC186 went the other way — the model <em>did</em> reply
+  with an extended program for its four uncovered layouts, and a deterministic check threw it away
+  (<code>extension_rejected</code> in the trail): the extension’s full-book replay returned <em>fewer</em>
+  records than the program it replaced (4,800 vs 4,852), and an “extension” may only add layouts, never break
+  covered ones. The missed layouts were recovered one cycle later through the normal 7b→7c path. Trust nothing,
+  replay everything.</p>
+
+  <!-- ------------------------------------------------------------ 7b -->
+  <h3>7b — Audit: “six real pages, next to what you extracted from each” <span class="tag ai" style="margin-left:8px">LLM call</span></h3>
+  <div class="io flush">
+    <div class="in"><span class="k">in</span>6 sampled pages (1, 2, 4, 91, 184, 213) as line dumps, each followed by
+      the records the parser produced <em>for that page</em>.</div>
+    <div class="arr">→</div>
+    <div class="out"><span class="k">out</span>one JSON verdict per page — <code>missed</code> / <code>false</code> /
+      <code>wrong_form</code> lists. Rave v1 → <b>8 issues</b>.</div>
+  </div>
+
+  <p><b>Why this question exists.</b> Passing gates ≠ correct. v1’s 954 records all <em>look</em> like fields —
+  whether they <em>are</em> the fields printed on the pages can only be checked by reading pages. The audit
+  makes that mechanical: page and extraction side by side, and three specific things to look for:</p>
+
+  <table>
+    <tr><th style="width:16%">verdict</th><th>meaning</th><th>v1 example</th></tr>
+    <tr><td><code>missed</code></td><td>a fill-in field printed on the page that has no record</td>
+        <td>“ECG Recording Start Date” (p91)</td></tr>
+    <tr><td><code>false</code></td><td>a record that is not actually a field — instructions, answer options, page furniture</td>
+        <td>“Check all that apply” (p4)</td></tr>
+    <tr><td><code>wrong_form</code></td><td>a real field filed under the wrong form name</td>
+        <td>none in this run</td></tr>
+  </table>
+
+  <p style="margin-top:12px"><b>How the six pages are picked</b> — deterministically, and <em>once</em>: the same
+  six pages re-audit every later version, so “8 issues” vs “4 issues” is a fair comparison, never a re-roll.
+  Uncovered pages get slots <em>in proportion to how much of the document is uncovered</em> (with at least one
+  whenever any exists, and at least two covered pages kept for precision checking) — a parser reading 15% of a
+  book is audited mostly on the pages it skipped, so under-coverage shows up in the very issue count that
+  drives revision and stopping. For this well-covered Rave run that proportion came to two:</p>
+  <ul style="font-size:14.5px;padding-left:20px;margin:6px 0">
+    <li>pages <b>2, 91</b> — representatives the model saw at induction (the sanity floor);</li>
+    <li>pages <b>4, 184</b> — covered pages it has <em>never</em> seen (does the code generalize?);</li>
+    <li>pages <b>1, 213</b> — pages where the parser extracted <em>nothing</em> (the signature page and a
+        dictionary page), so every “field-free” claim — including 7a’s — gets a second, independent look.</li>
+  </ul>
+
+  <p>Here is the exchange for page 91, exactly as the model saw it. The four highlighted lines are real fields
+  its program deleted — v1’s own answer-option filter <code>^\w+\s+(Lead|Continuous|Recording)</code>, written
+  to drop right-column option text like <i>“Holter Continuous Ecg Recording”</i>, also matches any field label
+  that begins with <i>“ECG Recording …”</i>:</p>
+
+<div class="dump" style="margin:12px 0">--- page 91 ---
+x=  90.0 y= 104.0 sz=10.0 black   B | Form: Holter ECG - Day 14
+x=  90.0 y= 155.0 sz=10.0 black     | Was Holter ECG Time Point performed?
+x= 489.0 y= 155.0 sz=10.0 black     | Yes
+x=  90.0 y= 210.0 sz=10.0 black     | If No, please specify reason
+<span class="lab">x=  90.0 y= 245.0 sz=10.0 black     | ECG Recording Start Date</span>
+<span class="lab">x=  90.0 y= 280.0 sz=10.0 black     | ECG Recording Start Time</span>
+<span class="lab">x=  90.0 y= 315.0 sz=10.0 black     | ECG Recording End Date</span>
+<span class="lab">x=  90.0 y= 350.0 sz=10.0 black     | ECG Recording End Time</span>
+x=  90.0 y= 385.0 sz=10.0 black     | Method
+x= 408.0 y= 385.0 sz=10.0 black     | 12 Lead Unspecified
+x= 397.8 y= 401.0 sz=10.0 black     | Holter Continuous Ecg
+<span class="aux">... Was Time Point Completed?, Time Point + its option list ...</span>
+
+Records the program extracted from page 91:
+  extracted: Holter ECG - Day 14 | Was Holter ECG Time Point performed?
+  extracted: Holter ECG - Day 14 | If No, please specify reason
+  extracted: Holter ECG - Day 14 | Method
+  extracted: Holter ECG - Day 14 | Was Time Point Completed?
+  extracted: Holter ECG - Day 14 | Time Point
+<span class="lab">  (the four ECG Recording fields are nowhere in this list)</span></div>
+
+  <p>The auditor reads all six such pairs and files findings only where the page contradicts the extraction:</p>
+
+  <div class="audit-grid">
+    <div class="card" style="margin:0">
+      <h4>the v1 audit, page by page (8 issues total)</h4>
+      <div style="font:12px/1.8 var(--mono)">
+        <div><b>page 1</b> (signature page, zero-record pick)</div>
+        <div><span class="ok">✓</span> clean — extracting nothing here is correct</div>
+        <div style="margin-top:6px"><b>page 2</b> (Visit Date form, representative)</div>
+        <div><span class="ok">✓</span> clean — all four fields extracted</div>
+        <div style="margin-top:6px"><b>page 4</b> (Unscheduled Visit, never seen)</div>
+        <div><span class="x">✗</span> 1 false: “Check all that apply” — an instruction, not a field</div>
+        <div style="margin-top:6px"><b>page 91</b> (Holter ECG form, representative)</div>
+        <div><span class="x">✗</span> 4 missed: the ECG Recording Start/End Date/Time fields above</div>
+        <div style="margin-top:6px"><b>page 184</b> (never seen at induction)</div>
+        <div><span class="ok">✓</span> clean — the code generalized</div>
+        <div style="margin-top:6px"><b>page 213</b> (dictionary page, zero-record pick)</div>
+        <div><span class="x">✗</span> 3 missed: “33 PANSS127_RSORRES” score rows — the auditor <em>disputes</em>
+          7a’s field-free verdict for this page</div>
+      </div>
+    </div>
+    <div>
+      <div class="verdict"><b>the reply, verbatim (from <code>codegen_trail_claude_4_5_sonnet.json</code>) —
+      pages with empty lists omitted here:</b><br><br>
+{"page": 4, "missed": [],<br>
+&nbsp;"false": ["Check all that apply"], "wrong_form": []}<br><br>
+{"page": 91,<br>
+&nbsp;"missed": ["ECG Recording Start Date", "ECG Recording Start Time",<br>
+&nbsp;&nbsp;"ECG Recording End Date", "ECG Recording End Time"],<br>
+&nbsp;"false": [], "wrong_form": []}<br><br>
+{"page": 213,<br>
+&nbsp;"missed": ["33 PANSS127_RSORRES", "34 PANSS128_RSORRES",<br>
+&nbsp;&nbsp;"35 PANSS129_RSORRES"],<br>
+&nbsp;"false": [], "wrong_form": []}</div>
+      <p class="note" style="margin-top:8px">No mechanical gate could catch any of these — each needed a page
+      read. A reply that skips pages or isn’t valid JSON is reprompted once; a “0 issues” verdict only counts
+      if every sampled page was explicitly covered — silence is not a pass.</p>
+    </div>
+  </div>
+
+  <!-- ------------------------------------------------------------ 7c -->
+  <h3>7c — Revise: “fix exactly these findings” <span class="tag ai" style="margin-left:8px">LLM call</span></h3>
+  <div class="io flush">
+    <div class="in"><span class="k">in</span>its own source + the replay metrics + the 7b findings as a
+      literal issue list.</div>
+    <div class="arr">→</div>
+    <div class="out"><span class="k">out</span>the next version’s source. Rave v2 → 1,242 records; re-audited on
+      the <em>same</em> six pages: 8 → 4 issues.</div>
+  </div>
+
+  <p>No open-ended “do better” — the revision prompt contains the code, the numbers, and the exact findings.
+  The v2 reply opens by restating them as a plan (<i>“1. Filter out instruction text like ‘Check all that
+  apply’. 2. Handle data dictionary pages (page 213) — don’t skip them entirely, extract the field codes.
+  3. Better field detection for pages like 91 with ECG timing fields”</i>) and every fix maps one-to-one onto
+  an audit finding (all verbatim from <code>codegen_reply_claude_4_5_sonnet_2.py</code>):</p>
+
+  <table>
+    <tr><th style="width:38%">7b finding on v1</th><th>the fix in v2</th></tr>
+    <tr><td>p4 · false: “Check all that apply”</td>
+        <td><code>if text in ['Check all that apply', 'Select all that apply', 'Check one']: continue</code></td></tr>
+    <tr><td>p91 · 4 missed “ECG Recording …” fields</td>
+        <td>the trigger-happy option pattern is anchored (<code>…Recording)$</code>) so it no longer matches
+        field labels; the field window widens to <code>x 85–110</code></td></tr>
+    <tr><td>p213 · 3 missed dictionary score rows</td>
+        <td>dictionary pages are no longer skipped — a new branch extracts their
+        <code>"&lt;n&gt; &lt;CODE&gt;"</code> rows (left column, <code>x &lt; 200</code>)</td></tr>
+  </table>
+
+  <p style="margin-top:12px">v2 replayed: <b>1,242 records over 263 pages</b> (the new dictionary branch lit up
+  110 pages of the 249-page appendix) — re-audited on the same six pages, <b>8 → 4 issues</b>, new best version.
+  But look closely at <em>which</em> four survived — two of the three findings flip-flopped:</p>
+
+  <table>
+    <tr><th>finding</th><th>v1 auditor said</th><th>v2 did</th><th>v2 auditor said</th></tr>
+    <tr><td>“Check all that apply” (p4)</td><td><code>false</code> — remove it</td><td>removed it</td>
+        <td><code>missed</code> — it <em>is</em> a field ⟲</td></tr>
+    <tr><td>PANSS127_/128_/129_ rows (p213)</td><td><code>missed</code> — extract them</td><td>extracted them</td>
+        <td><code>false</code> — machine codes, not fields ⟲</td></tr>
+    <tr><td>ECG Recording ×4 (p91)</td><td><code>missed</code> — extract them</td><td>extracted them</td>
+        <td>✓ accepted</td></tr>
+  </table>
+
+  <p class="note" style="margin-top:10px">That instability is not a bug in this pipeline — it is what review by
+  judgment looks like on genuinely borderline items (is a checklist instruction a field? is a dictionary score
+  row?). One real fix landed and stayed fixed; the two judgment calls oscillated. Chasing them further burns
+  budget without converging — which is exactly why the loop in §8 stops on <em>diminishing returns</em>, keeps
+  the <em>best</em> version rather than the last, and refuses any “improvement” that quietly drops coverage.</p>
+</section>
+
+<!-- ================================================================ -->
+<section id="loop">
+  <h2><span class="snum">8</span>The loop, the score, and when it stops</h2>
+  <p class="one-liner"><b>In one sentence:</b> generate → run → gate → confirm → audit → score, at most 5 parser versions, stopping early on convergence or on two non-improving versions — and the <em>best</em> version is exported, never the last.</p>
+
+  <div class="io">
+    <div class="in"><span class="k">in</span>per version: the gates verdict (§6) + audit issue count (§7) + page
+      coverage — the raw material of the score tuple.</div>
+    <div class="arr">→</div>
+    <div class="out"><span class="k">out</span>a decision — continue (targeted revision prompt back to §7c) or stop
+      (<code>converged</code> / <code>plateau</code> / <code>budget</code> / <code>error</code>) — plus the
+      <b>best version</b>; every cycle logged in <code>codegen_trail_claude_4_5_sonnet.json</code>.</div>
+  </div>
+
+  <svg viewBox="0 0 940 210" style="width:100%;max-width:940px;display:block;margin:8px auto" font-family="inherit">
+    <defs><marker id="ar" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L8,4.5 L0,9" fill="none" stroke="#8b93a0" stroke-width="1.4"/></marker></defs>
+    <g font-size="12.5">
+      <rect x="8"   y="52" width="130" height="52" rx="10" fill="#eaf1fc" stroke="#c4d7f3"/>
+      <text x="73"  y="74" text-anchor="middle" fill="#1d5fbf" font-weight="700">write / revise</text>
+      <text x="73"  y="91" text-anchor="middle" fill="#1d5fbf">parser (AI)</text>
+      <rect x="178" y="52" width="130" height="52" rx="10" fill="#e9f5ef" stroke="#bfe0cf"/>
+      <text x="243" y="74" text-anchor="middle" fill="#0f7b4d" font-weight="700">run on ALL pages</text>
+      <text x="243" y="91" text-anchor="middle" fill="#0f7b4d">sandbox (Py)</text>
+      <rect x="348" y="52" width="130" height="52" rx="10" fill="#e9f5ef" stroke="#bfe0cf"/>
+      <text x="413" y="74" text-anchor="middle" fill="#0f7b4d" font-weight="700">gates + coverage</text>
+      <text x="413" y="91" text-anchor="middle" fill="#0f7b4d">map (Py)</text>
+      <rect x="518" y="52" width="130" height="52" rx="10" fill="#eaf1fc" stroke="#c4d7f3"/>
+      <text x="583" y="74" text-anchor="middle" fill="#1d5fbf" font-weight="700">confirm + audit</text>
+      <text x="583" y="91" text-anchor="middle" fill="#1d5fbf">on real pages (AI)</text>
+      <rect x="688" y="52" width="120" height="52" rx="10" fill="#fdf3e3" stroke="#eed9b4"/>
+      <text x="748" y="74" text-anchor="middle" fill="#b0680e" font-weight="700">score &amp;</text>
+      <text x="748" y="91" text-anchor="middle" fill="#b0680e">decide</text>
+      <rect x="838" y="52" width="94" height="52" rx="10" fill="#1c2430"/>
+      <text x="885" y="74" text-anchor="middle" fill="#fff" font-weight="700">export</text>
+      <text x="885" y="91" text-anchor="middle" fill="#fff">best version</text>
+      <line x1="138" y1="78" x2="172" y2="78" stroke="#8b93a0" stroke-width="1.4" marker-end="url(#ar)"/>
+      <line x1="308" y1="78" x2="342" y2="78" stroke="#8b93a0" stroke-width="1.4" marker-end="url(#ar)"/>
+      <line x1="478" y1="78" x2="512" y2="78" stroke="#8b93a0" stroke-width="1.4" marker-end="url(#ar)"/>
+      <line x1="648" y1="78" x2="682" y2="78" stroke="#8b93a0" stroke-width="1.4" marker-end="url(#ar)"/>
+      <line x1="808" y1="78" x2="832" y2="78" stroke="#8b93a0" stroke-width="1.4" marker-end="url(#ar)"/>
+      <path d="M 748 104 L 748 150 L 73 150 L 73 110" fill="none" stroke="#b0680e" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#ar)"/>
+      <text x="410" y="144" text-anchor="middle" fill="#b0680e" font-size="12">not converged → revise with the concrete fix list (≤5 versions total)</text>
+    </g>
+  </svg>
+
+  <div class="grid2">
+    <div class="card"><h4>The score — one tuple, compared left to right</h4>
+      <pre style="margin:8px 0">( blockers,  audit_issues,  warnings,  −pages_covered )</pre>
+      <p style="font-size:14px;margin:0">Lower is better. A version that fixes a blocker always beats one that
+      adds coverage; audit issues outrank warnings; coverage breaks ties. A never-audited version scores its
+      audit slot as infinity — it can be <em>kept</em>, but it can never look better than an audited one.</p></div>
+    <div class="card"><h4>Guards that keep the comparison honest</h4>
+      <ul style="font-size:14px;padding-left:18px;margin:6px 0">
+        <li>re-audits reuse the <b>same fixed page sample</b> — no lucky re-rolls</li>
+        <li>a version that keeps less than 90% of the previously covered <b>page set</b> is never “an
+            improvement”, however clean its audit — and it’s the set, not the count: covering the same
+            <em>number</em> of pages while swapping <em>which</em> pages still counts as losing them</li>
+        <li>the <b>best-scoring</b> version is exported, not the most recent one — a bad v4 can’t destroy a good v2</li>
+      </ul></div>
+  </div>
+
+  <div class="stop-chips">
+    <span><b>converged</b> — gates pass, audit finds 0 issues, and it’s the new best</span>
+    <span><b>plateau</b> — <em>two consecutive</em> versions fail to beat their predecessor: diminishing
+      returns over two runs, stop. One stall is tolerated — audit counts come from a small page sample, so a
+      single noisy count must not end a document. (Exception: two crashed versions in a row aren’t
+      “diminishing” returns, they’re zero — the loop keeps revising until the cap)</span>
+    <span><b>budget</b> — hard cap of 5 versions (≈ 16 LLM calls worst case, audit reprompts included)</span>
+    <span><b>error</b> — transport/audit failure: stop loudly, keep what’s banked</span>
+  </div>
+
+  <h3>The real Rave trace — 7 LLM calls, start to finish</h3>
+  <div class="trace">
+    <div class="t-step"><div class="who ai">AI</div><div class="what">v1 written</div>
+      <div class="out">954 records · gates pass · dominant stack dark</div></div>
+    <div class="t-step"><div class="who ai">AI</div><div class="what">confirm dark stack</div>
+      <div class="out">“data-dictionary appendix” → CONFIRM_NO_FIELDS</div></div>
+    <div class="t-step"><div class="who ai">AI</div><div class="what">audit v1</div>
+      <div class="out">8 issues — instruction on p4, deleted fields on p91, disputed dictionary rows on p213</div></div>
+    <div class="t-step"><div class="who ai">AI</div><div class="what">v2 + re-audit, same pages</div>
+      <div class="out">1,242 records over 263 pages · 4 issues · new best</div></div>
+    <div class="t-step"><div class="who ai">AI</div><div class="what">v3 + re-audit</div>
+      <div class="out">1 issue — but coverage fell 263 → 206 pages · guard refuses ·
+      plateau → stop · <b>exported: v2, 1,242 fields / 76 forms</b>
+      <span style="color:#8a8f98">(this trace predates the current two-stall patience rule, which would have
+      granted v3’s regression one more retry before stopping)</span></div></div>
+  </div>
+  <p>The last cycle is the guards earning their keep, live. Asked to fix the four remaining findings, the model
+  produced its cleanest-auditing version yet — v3 came back with a single open issue. It got there by
+  <em>retreating</em>: chasing the auditor’s “PANSS codes are false positives” flip, it re-narrowed its rules
+  and silently gave up 57 covered pages. The trail records the collision, verbatim:</p>
+
+<pre><span class="c">// v2, the incumbent best:</span>
+"metrics": { "records": 1242, "pages_with_fields": 263, ... }, "score": [0, 4, 0, -263]
+
+<span class="c">// v3, one audit issue - but:</span>
+"metrics": { "records": 1105, "pages_with_fields": 206, ... }, "score": [0, 1, 0, -206],
+"became_best": false</pre>
+
+  <p>Lexicographically <code>[0,1,0,−206]</code> beats <code>[0,4,0,−263]</code> — fewer audit issues. The
+  coverage guard vetoes it anyway: v3 retains at most 206 of v2’s 263 covered pages, below the 90% retention
+  floor — and audit issues are counted on six pages while coverage is measured on all 404. A “fix” that
+  darkens whole layouts must never win on a cleaner sample. Not an improvement → <b>plateau</b> → stop and export the best version, v2. A bad late
+  version cannot destroy a good earlier one. Between the seven LLM calls, deterministic Python replayed each
+  parser over all 404 pages — for free.</p>
+</section>
+
+<!-- ================================================================ -->
+<section id="output">
+  <h2><span class="snum">9</span>What comes out, and where it goes</h2>
+  <p class="one-liner"><b>In one sentence:</b> a deterministic CSV of <code>(form_name, field_name, page)</code> per document, which then joins the existing OID library by <em>name</em> — the downstream rule-generation pipeline doesn’t change.</p>
+
+  <div class="io">
+    <div class="in"><span class="k">in</span>the accepted parser (v2 for Rave, <code>generated_extractor_claude_4_5_sonnet.py</code>)
+      replayed once, deterministically, over all 404 pages.</div>
+    <div class="arr">→</div>
+    <div class="out"><span class="k">out</span><code>fields_codegen_claude_4_5_sonnet.csv</code> — <b>1,242 rows</b> of
+      <code>(form_name, field_name, page)</code>, feeding the name→OID join below.</div>
+  </div>
+
+  <pre><span class="c"># fields_codegen_claude_4_5_sonnet.csv - real rows</span>
+form_name,                    field_name,                                    page
+Unscheduled Visit,            Vital Signs,                                   4
+Unscheduled Visit,            Physical Exam,                                 4
+Unscheduled Visit,            12-Lead ECG Triplicate,                        4
+PK Plasma Samples: 24 Hours,  Time Point,                                    133
+PK Plasma Samples: 24 Hours,  Was Sample Collected?,                         133
+PK Plasma Samples: 24 Hours,  If No, provide reason not done,                133
+PK Plasma Samples: 24 Hours,  Collection Date,                               133
+PK Plasma Samples: 24 Hours,  Specimen Type,                                 133</pre>
+
+  <table>
+    <tr><th>document (real runs, same code, zero per-format changes)</th><th>pages</th><th>stacks</th><th>AI sees</th><th>LLM calls</th><th>extracted</th></tr>
+    <tr><td>Rave “Unique CRF” 384-201-00002</td><td>404</td><td>5</td><td>6 pages</td><td>7</td><td>1,242 fields · 76 forms</td></tr>
+    <tr><td>eSource book QSC302573 (326-201-00007)</td><td>609</td><td>3</td><td>4 pages</td><td>10</td><td>1,823 fields · 16 forms</td></tr>
+    <tr><td>Form tracker MAC186 X11-201-00001</td><td>913</td><td>9</td><td>11 pages</td><td>7</td><td>6,165 fields · 73 forms</td></tr>
+  </table>
+
+  <h3>Measured against production ground truth</h3>
+  <p><b>What is compared here: names, and nothing else.</b> The Rave book is the one document with an
+  independent answer key. The production annotated-Rave digitizer processed it by reading the <em>printed
+  OIDs</em> and produced <code>digitized.csv</code>: <b>914</b> distinct <code>(form, field)</code> pairs.
+  This pipeline never reads those OIDs — it handled the book as if it were unannotated, which is the whole
+  point of the benchmark. The evaluation (<code>eval_form_field.py</code>) fuzzy-matches the two <em>name</em>
+  lists against each other. The name→OID mapping of the next subsection plays no part in these two numbers:</p>
+
+<pre>"extraction_vs_ground_truth_rave": {
+  "gt_distinct_pairs": 914,         <span class="c">// answer key (production tool, printed OIDs)</span>
+  "extracted_distinct_pairs": 1206, <span class="c">// this pipeline, OID-blind</span>
+  "pair_recall_pct": 87,            <span class="c">// 796 of the 914 truth pairs found (the</span>
+                                    <span class="c">//   missing 118 are dissected below too)</span>
+  "pair_precision_pct": 66          <span class="c">// 799 of our 1,206 pairs are in the truth -</span>
+}                                   <span class="c">//   so 407 are not. what are they?</span></pre>
+
+  <p>Those 407 unmatched pairs are <em>not</em> 407 misread fields. The artifact’s
+  <code>precision_breakdown</code> sorts every one of them into three buckets:</p>
+
+  <table>
+    <tr><th style="width:20%">bucket</th><th style="width:13%">pairs</th><th>what they are</th></tr>
+    <tr><td>appendix code rows</td><td><b>277</b> (68%)</td>
+        <td>rows the v2 parser extracts from the 249-page <b>data-dictionary appendix</b> — the scope decision
+        from §7 (the v1 audit demanded these rows, the v2 audit disowned them). Their “field names” are machine
+        codes — <code>EGABN</code>, <code>QTCFAG_E</code> — which match no human label in the answer key; 54 of
+        them are literally printed OID strings.</td></tr>
+    <tr><td>wording gaps</td><td><b>130</b> (32%)</td>
+        <td>real fields on real form pages whose label doesn’t clear the 85% fuzzy bar: “<i>16. Weakness</i>”
+        vs truth “<i>Weakness</i>”, instruction-length labels, and lab panels the production tool splits into
+        per-analyte fields where the page prints one label.</td></tr>
+    <tr><td>invented forms</td><td><b>0</b></td>
+        <td>every unmatched pair sits under a form name the truth also knows — the parser invented no forms.</td></tr>
+  </table>
+
+  <p class="note" style="margin-top:10px"><b>So 66% is one decision plus fuzzy-match noise — not weak
+  extraction.</b> Drop the appendix-only pairs and the same export measures <b>86% precision / 87% recall</b>
+  (<code>excluding_appendix</code> in the artifact): the appendix rows cost 20 precision points and buy nothing
+  under this name-based metric. The archived run — whose model kept the appendix skipped — measured 79% / 84%;
+  its lower recall came from its weaker form-page parser, not from skipping the appendix. “Is a dictionary row
+  a field?” has two defensible answers; the trail records which one each run took, and a one-line export filter
+  (drop pairs seen only on the appendix cluster) switches between them. On the two books without ground truth,
+  quality rests on the §7 audits (3 and 2 open issues respectively) — which is exactly why the audit exists.</p>
+
+  <p style="margin-top:16px">And the mirror question — why only 796 of 914, i.e. <b>what are the 118 truth
+  pairs the export lacks?</b> The artifact’s <code>recall_breakdown</code> classifies each one:</p>
+
+  <table>
+    <tr><th style="width:22%">bucket</th><th style="width:13%">pairs</th><th>what they are</th></tr>
+    <tr><td>truth rows with <b>no OID</b></td><td><b>78</b> (66%)</td>
+        <td>76 are the page footer “<i>01.025 GMK (432)</i>” — the study stamp printed at the bottom of every
+        page, which the answer key recorded once per form <em>with an empty OID field</em> (+2 similar OID-less
+        rows). Not fill-in fields; the parser is right to drop them — the answer key has noise of its own.</td></tr>
+    <tr><td>option rows filtered out</td><td><b>24</b> (20%)</td>
+        <td>lines a page prints as answer choices but the answer key counts as fields: time-point options
+        (“<i>Predose</i>”, “<i>5 Hours Predose</i>” → OID <code>EGTPT</code>) and questionnaire score rows
+        (“<i>3=Severe - Daily wakes 1</i>”). v2’s answer-option filter deletes exactly these — the same
+        borderline family the §7 auditors flip-flopped on.</td></tr>
+    <tr><td>wording near-misses</td><td><b>15</b> (13%)</td>
+        <td>extracted, but just under the 85% fuzzy bar — truth “<i>Weakness</i>” vs export
+        “<i>16. Weakness</i>” scores 84; the truth often embeds numbering or option text in the field name.</td></tr>
+    <tr><td>filed under wrong form</td><td><b>1</b></td>
+        <td>“Units” — captured, but attributed to the neighboring medication form.</td></tr>
+  </table>
+
+  <p class="note" style="margin-top:10px"><b>Read the 87% as “95% of real fields.”</b> The 84 truth pairs
+  without an OID are answer-key noise, not fields (76 of them are the footer stamp) — against the <b>830</b>
+  pairs that carry one, the export holds <b>790: 95% recall</b> (<code>oid_bearing_recall_pct</code>). To be
+  precise about why the split is fair: it is about what counts as a <em>field</em>, not about downstream
+  usefulness — a field that never resolves to an OID still gets rules, because production writes them with the
+  LLM from the names alone (see the mapping note below). Extraction recall therefore matters for <em>every</em>
+  real field, and the real gaps are exactly the 24 option-row judgment calls and 15 threshold near-misses
+  above — no field was overlooked outright.</p>
+
+  <h3>Name → OID mapping (the downstream join)</h3>
+  <p><b>This is a different question from the 87% / 66% above.</b> Those numbers measured how well the parser
+  <em>read the pages</em>. This step takes the names it read and looks each one up in the <code>ecs_index</code>
+  library of known forms/fields/OIDs — unannotated CRFs print no OIDs, so a library lookup by name is the only
+  way to get one. One framing fact first: <b>production has no such step to reuse.</b> Annotated Rave books
+  carry printed OIDs, so the production matcher (<code>review_table.fuzzy_match_fields</code>) starts from OIDs
+  it already has — it fuzzy-matches <em>form names</em> (<code>get_standard_crf</code>,
+  <code>partial_ratio ≥ 70</code>) and then reuses library rules whose OID sets the book covers. The name→OID
+  mapper is the <em>new</em> component that reconstructs the missing link for unannotated books and feeds that
+  same downstream. Its design was chosen by measurement, not taste — five strategies head-to-head on this book,
+  each checked against the printed truth (<code>oid_matching_experiment.py</code>):</p>
+
+  <table>
+    <tr><th style="width:44%">strategy</th><th>maps</th><th>accuracy of what it maps*</th></tr>
+    <tr><td><b>A</b> · naive field-first blend (field ≥85 anywhere in the library, form only 25% of the
+        score) — the strawman, never shipped</td><td>94 pairs (8%)</td><td><b>17%</b></td></tr>
+    <tr><td><b>B</b> · hard form-scoping first (form ≥75 required, then field ≥85 within that form)</td>
+        <td>18 pairs (1%)</td><td><b>76%</b></td></tr>
+    <tr><td><b>C</b> · form-scoping + abstain when two candidate OIDs score within 5 points</td>
+        <td>14 pairs (1%)</td><td><b>92%</b></td></tr>
+    <tr><td><b>D0</b> · the shipped funnel’s deterministic layers only (production’s form scoping,
+        <code>partial_ratio ≥ 70</code> → field ≥85 in-form; clear leaders map, ties abstain)</td>
+        <td>15 pairs (1%)</td><td><b>86%</b></td></tr>
+    <tr><td><b>D</b> · <b>the shipped funnel</b> (<code>oid_mapping.py</code>): D0’s layers, then <b>every</b>
+        candidate judged by an LLM ranker (Claude Sonnet 4.5) that picks a listed OID or refuses</td>
+        <td>18 pairs (1%)</td><td><b>94%</b></td></tr>
+  </table>
+
+  <p class="note" style="margin-top:8px">*accuracy over the truth-checkable subset of what each strategy maps
+  (17 of D’s 18 mapped pairs appear in the printed truth; the artifact reports the uncheckable remainder as
+  <code>mapped_but_uncheckable</code>).</p>
+
+  <p class="note" style="margin-top:10px">Reading the ladder: scoping to the matched form kills the cross-form
+  errors — A’s worst failures were generic labels like <i>“Collection Date”</i> on the Central Laboratory form
+  mapping to <code>DMDAT</code>, the <em>Demographics</em> date (17% → 76%). Refusing to string-guess between
+  near-tied candidates kills most of the rest (76% → 92%). D0 isolates the scoping change from the ranker: its
+  looser production-convention scope admits one more perfect-label impostor, and that is precisely the lesson —
+  <i>“Contact Method”</i> scored 100 against a library row from the <em>wrong</em> follow-up form. The ranker
+  (D0 → D) then vetoed that impostor and re-mapped all four abstained ties correctly (<code>AGE</code> not
+  <code>AGE_DV</code>, <code>AEACN</code> not <code>QVAL_AEACN&lt;TRTCD&gt;</code>), which is why D judges even
+  single candidates instead of auto-accepting them. String scores generate candidates; they never certify
+  them.</p>
+
+  <p class="note">D’s one remaining miss is unwinnable with this library: the book prints truth OID
+  <code>RACEOTH</code>, but the 286-row extract only contains the variant <code>QVAL_RACEOTH</code> under the
+  same label — the right answer isn’t on the shelf. Which is the general story of the <b>maps</b> column too:
+  coverage falls from 8% to 1% under scoping because the extract rarely contains the form at all. The binding
+  constraint on coverage is <b>library breadth</b> (production’s full <code>ecs_index</code> plus its stored
+  field embeddings widen candidate <em>generation</em>; the funnel judges whatever candidates exist). On the
+  other two books — no truth available — the funnel behaves identically: MAC186 mapped 12 of 857 pairs, QSC 15
+  of 1,271, every one ranker-judged, zero left ambiguous.</p>
+
+  <p class="note">The asymmetry that decides the whole design: an unmapped field is <b>not dropped</b> — the
+  production generator writes brand-new rules with the LLM from the form and field names alone, tagged
+  <code>source: "LLM Generated"</code> for reviewer scrutiny (<code>review_table.fuzzy_match_fields</code> →
+  <code>make_llm_call_batch</code>). That path is the workhorse, not the exception: on this very book the
+  production output split was <b>697 LLM-generated</b> rules vs 140 Standard + 73 Historical reused from the
+  library. A <em>mismapped</em> OID, by contrast, silently attaches the wrong form’s library rules. So the
+  funnel is built to prefer silence over guessing at every layer — the OID join exists to <em>reuse</em>
+  curated rules where it can; it was never a gate on rule generation.</p>
+</section>
+
+<!-- ================================================================ -->
+<section id="deploy">
+  <h2><span class="snum">10</span>Where it runs</h2>
+  <p class="one-liner"><b>In one sentence:</b> the same pipeline modules run in two harnesses — a local CLI for development, and a standalone Dataiku notebook (LLM Mesh → Claude Sonnet 4.5) for the real environment.</p>
+
+  <div class="io">
+    <div class="in"><span class="k">in</span>a folder of PDFs (a Dataiku managed folder, or <code>data/crf_forms</code>
+      locally) + an LLM Mesh model id. Nothing else.</div>
+    <div class="arr">→</div>
+    <div class="out"><span class="k">out</span>per document: the full artifact set from §§3–9 in
+      <code>out/&lt;doc&gt;/</code> + one row each in <code>induction_summary_&lt;model&gt;.json</code> with a
+      loud status.</div>
+  </div>
+
+  <div class="grid2">
+    <div class="card"><h4>Local CLI harness (development)</h4>
+      <p style="font-size:14px;margin:0"><code>experiments/recipe_prototype/run_cli_induction.py</code> drives the
+      loop with any chat LLM as transport. All artifacts land in <code>out/&lt;doc&gt;/</code>: cluster map, rep-page
+      dumps, every prompt and reply, every parser version, the decision trail JSON, and the final CSV.</p></div>
+    <div class="card"><h4>Dataiku notebook (production shape)</h4>
+      <p style="font-size:14px;margin:0">One notebook (<code>dataiku/CRF_codegen_induction.ipynb</code>) — no repo
+      checkout needed: the pipeline modules live in the managed folder under <code>code/</code> (uploaded once from
+      <code>dataiku/folder_code/</code>) and the bootstrap cell downloads them. Cells: config → bootstrap modules →
+      fetch PDFs from the same managed folder → stage 0 → induction loop via LLM Mesh → upload artifacts →
+      optional name→OID mapping. Each run uploads under a fresh <code>runs/&lt;RUN_ID&gt;/</code> prefix
+      (UTC timestamp + model tag), so re-runs never overwrite each other.
+      Per-document status: <code>ok</code>, <code>ok_audit_issues</code>, <code>needs_manual_template</code>,
+      <code>skipped_no_text_layer</code>, <code>export_failed</code>, <code>error</code> — failures are loud,
+      never silent. A partially scanned book (some pages with no text layer) additionally carries
+      <code>text_layer_pct</code> in its summary row: those pages are unreachable by design.</p></div>
+  </div>
+
+  <h3>Run instrumentation — time, cost, and error provenance</h3>
+  <p>Both harnesses profile themselves as they run; nothing here costs LLM budget. Three artifact families
+  answer the three operational questions:</p>
+  <table>
+    <tr><th style="width:30%">question</th><th style="width:34%">artifact</th><th>contents</th></tr>
+    <tr><td>Where did the time go?</td>
+        <td><code>timings_&lt;tag&gt;.json</code> per document; <code>elapsed_s / llm_s / llm_calls /
+        stage0_s</code> columns in the run summary</td>
+        <td>wall time split by pipeline part — stage-0 clustering, each LLM call (labeled
+        <code>generate</code> / <code>revise</code> / <code>confirm</code> / <code>audit</code>), sandbox
+        validation runs, final export replay, total. In practice virtually all wall time is LLM calls.</td></tr>
+    <tr><td>What did it cost?</td>
+        <td><code>llm_calls_&lt;tag&gt;.jsonl</code> per document → <code>cost_report.py</code> (local)</td>
+        <td>every LLM call verbatim — kind, version, seconds, and the full prompt/reply text. Download a run
+        and <code>python cost_report.py --tag &lt;tag&gt; --run-dir &lt;dir&gt;</code> tokenizes it (tiktoken,
+        a ~±10–15% proxy for Claude’s tokenizer) and prices it per MTok, per document and per call kind.
+        The JSONL doubles as the full conversation trace — audit prompts and replies included, which the
+        per-version <code>.py</code> artifacts alone don’t capture.</td></tr>
+    <tr><td>Where do errors come from?</td>
+        <td><code>error_events_&lt;tag&gt;.csv</code> + <code>error_summary_&lt;tag&gt;.json</code> at the run
+        root (module: <code>run_report.py</code>)</td>
+        <td>one row per finding — <code>doc, stage, version, severity, code, detail</code> — derived
+        post-hoc from the decision trails and summary rows, so past runs can be re-analyzed. Stages:
+        <code>stage0 / generate / revise / confirm / audit / gates / export / mapping / driver</code>;
+        severities: <code>fatal</code> (document unusable), <code>blocking</code> (a version rejected, loop
+        recovered), <code>quality</code> (audit findings, soft warnings). <code>groupby(stage)</code> is the
+        improvement roadmap: it says which part of the pipeline to work on next.</td></tr>
+  </table>
+
+  <p>What a finished document looks like in the summary — the real MAC186 row, verbatim from
+  <code>cli_induction_summary_claude_4_5_sonnet.json</code>:</p>
+
+<pre>{
+  "doc": "MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025",
+  "versions": 3,                 <span class="c">// three parser versions were tried</span>
+  "stop_reason": "plateau",      <span class="c">// no improvement -> stop (today's rule waits for</span>
+                                 <span class="c">//   two consecutive stalls before stopping)</span>
+  "status": "ok_audit_issues",   <span class="c">// exported, but carries open audit findings -</span>
+  "best_version": 2,             <span class="c">//   a review queue, not a silent pass</span>
+  "fields": 6165,
+  "forms": 73,
+  "pages_with_fields": 842,
+  "audit_issues": 2,
+  "warnings": []
+}</pre>
+
+  <h3 id="testbench">The test bench — every input, and where it lives</h3>
+  <p>Every number, prompt, and code excerpt in this document comes from real runs over real files. This is the
+  complete inventory of what those runs read and where each artifact lands, so any result here can be
+  reproduced or spot-checked.</p>
+
+  <p style="margin-top:12px"><b>1 · The CRF corpus</b> — 11 annotated CRF books in <code>data/crf_forms/</code>
+  (the Dataiku notebook reads the same PDFs from a managed folder). All eleven are born-digital (100% text
+  layer). Stage 0 clusters all of them; three — one per major layout family — get the full end-to-end
+  induction with Claude Sonnet 4.5:</p>
+
+  <table>
+    <tr><th>document</th><th>pages</th><th>stacks · θ</th><th>used for</th></tr>
+    <tr><td>384-201-00002_Annotated Unique CRF_04Nov2024</td><td>404</td><td>5 · 0.35</td>
+        <td><b>e2e benchmark</b> — the walkthrough book of §§3–9, and the only one with production ground truth</td></tr>
+    <tr><td>QSC302573 Final AnnotatedCRFs 16Oct2024-326-201-00007 (1)</td><td>609</td><td>3 · 0.35</td>
+        <td><b>e2e benchmark</b> — eSource layout (the chrome-damping case of §3B)</td></tr>
+    <tr><td>MAC186_X11-201-00001_eCRF v1.10_form tracker v1.6_06Mar2025</td><td>913</td><td>9 · 0.35</td>
+        <td><b>e2e benchmark</b> — form-tracker layout (the <code>extension_rejected</code> case of §7a)</td></tr>
+    <tr><td>326-201-00007 Annotated CRF v1.0 30 Sep 2024 <span class="aux">(+ its 489-page “(1)” variant)</span></td>
+        <td>112 / 489</td><td>2 · 0.30 / 2 · 0.35</td><td>stage-0 clustering corpus</td></tr>
+    <tr><td>331-201-00246 Annotated CRF v 04 Jul / 26 Jul 2023</td><td>1083 / 1085</td><td>26 · 0.40 both</td>
+        <td>stage-0 corpus; the 26 Jul book is <code>book1085</code> in the generalization audit</td></tr>
+    <tr><td>384-201-00004 Annotated CRF v1.0 / v2.0 <span class="aux">(+ aCRF_16JAN2025)</span></td>
+        <td>246 / 246 / 206</td><td>12 · 0.40 / 6 · 0.30 / 5 · 0.35</td>
+        <td>stage-0 corpus; the 206-page aCRF is <code>acrf206</code> — two of its labeled θ-invariant pairs
+        (§3D) live here</td></tr>
+    <tr><td>annotatedCRF_33120100246- v1.0 -17Aug2021</td><td>596</td><td>35 · 0.50</td>
+        <td>stage-0 corpus — the most heterogeneous book (35 stacks), the stress case for representative capping</td></tr>
+  </table>
+
+  <p style="margin-top:14px"><b>2 · Supporting datasets</b> — the answer keys and libraries the evaluation
+  steps join against:</p>
+
+  <table>
+    <tr><th style="width:26%">dataset</th><th style="width:38%">where</th><th>role</th></tr>
+    <tr><td>production digitizer output for the Rave book</td>
+        <td><code style="word-break:break-all">data/outputs/outputs_from_384_201_00002_annotated_unique_crf/digitized.csv</code></td>
+        <td>ground truth for §9 — 914 distinct <code>(form, field)</code> pairs read from the printed OIDs by the
+        existing annotated-Rave tool</td></tr>
+    <tr><td>OID library extract (286 usable Standard rows)</td>
+        <td><code>data/index/ecs_index_data.csv</code></td>
+        <td>the name→OID funnel of §9 (in production this is the <code>ecs_index</code> OpenSearch index;
+        <code>data/index/ecs_index.csv</code> is the full ~10k-row snapshot)</td></tr>
+    <tr><td>6 out-of-domain PDFs: 2 clinical protocols, an MSA, a license agreement, a blind-test doc,
+        a synthetic CJK document</td>
+        <td>sibling project folders outside this repo (absolute paths in <code>ood_cluster_probe.py</code>)</td>
+        <td>prove clustering degrades gracefully on documents that are <em>not</em> CRFs — nothing in stage 0 may
+        assume “CRF”</td></tr>
+    <tr><td>synthetic edge-case PDFs (1–3 pages, built in-memory with fitz)</td>
+        <td>constructed inside <code>stage0_edge_test.py</code> at run time — nothing stored</td>
+        <td>tiny-document degeneracy: no-plateau fallback, single blank page, 2-page books</td></tr>
+  </table>
+
+  <p style="margin-top:14px"><b>3 · Which test reads what.</b> All test scripts live in
+  <code>experiments/recipe_prototype/</code> and run offline except the first row:</p>
+
+  <table>
+    <tr><th>script</th><th>inputs</th><th>what it establishes</th></tr>
+    <tr><td><code>run_cli_induction.py</code> <span class="tag ai">LLM</span></td>
+        <td>the 3 benchmark PDFs</td>
+        <td>every end-to-end number in §§4–10 (prompts, parser versions, audits, trail, final CSVs)</td></tr>
+    <tr><td><code>stage0_cluster.py</code></td><td>all 11 corpus PDFs</td>
+        <td>the cluster maps of §3 (<code>clusters.json</code>, rep dumps + PNGs per document)</td></tr>
+    <tr><td><code>generalization_audit.py</code></td>
+        <td>5 CRFs + protocol + contract, each also word-scrambled / digit-swapped</td>
+        <td>word-blindness, damping-exponent plateau, page-order invariance, mixture purity, tiny-doc behavior (§3)</td></tr>
+    <tr><td><code>theta_sanity_sweep.py</code></td><td>3 books, 5 labeled page pairs</td>
+        <td>the θ-plateau invariants of §3D (must-merge / must-split pairs hold across the grid)</td></tr>
+    <tr><td><code>ood_cluster_probe.py</code></td><td>the 6 out-of-domain PDFs</td>
+        <td>off-CRF behavior: sane stack counts on protocols/contracts, no crash on CJK</td></tr>
+    <tr><td><code>eval_form_field.py</code></td>
+        <td>the exported CSVs + <code>digitized.csv</code> + <code>ecs_index_data.csv</code>
+        (<code>--ranker-model</code> adds the live LLM ranker)</td>
+        <td>§9 — 87% recall / 66% precision vs ground truth, plus the name→OID funnel run
+        (<code>evaluation_form_field.json</code>)</td></tr>
+    <tr><td><code>oid_matching_experiment.py</code></td>
+        <td>the Rave export + <code>digitized.csv</code> + <code>ecs_index_data.csv</code> +
+        <code>oid_mapping.py</code></td>
+        <td>§9’s strategy ladder: naive 17% → form-scoped 76% → +abstain 92% → funnel deterministic-only 86% →
+        funnel + ranker <b>94%</b></td></tr>
+    <tr><td><code>stop_policy_test.py</code></td><td>no PDFs — scripted fake LLM transports</td>
+        <td>§8 stop rules: converged / plateau / budget / error and best-version export, unit-checked</td></tr>
+    <tr><td><code>stage0_shape_smoke.py</code> · <code>stage0_edge_test.py</code></td>
+        <td>1 small CRF + the CJK doc · in-memory synthetic PDFs</td>
+        <td>artifact-shape contract (JSON round-trip, encrypted-doc early return) and stage-0 edge cases</td></tr>
+    <tr><td><code>cost_report.py</code></td>
+        <td><code>llm_calls_*.jsonl</code> / <code>timings_*.json</code> from any run dir</td>
+        <td>token + $ estimates per document and call kind (tiktoken locally; never runs in Dataiku)</td></tr>
+  </table>
+
+  <p class="note" style="margin-top:12px"><b>Where results land.</b> Each document writes its complete artifact
+  set to <code>experiments/recipe_prototype/out/&lt;doc&gt;/</code> — cluster map, rep-page dumps and PNGs, every
+  prompt and reply verbatim (<code>llm_calls_*.jsonl</code>), every parser version, the decision trail, time
+  profile (<code>timings_*.json</code>), sandbox output, and the final <code>fields_codegen_*.csv</code>.
+  Corpus-level summaries (<code>cli_induction_summary_*.json</code>, <code>cli_error_events_*.csv</code>,
+  <code>evaluation_form_field.json</code>) sit at the root of <code>out/</code>; superseded runs are archived in
+  <code>out_v1_backup/</code> and <code>out_v2_backup/</code>. The Dataiku notebook uploads the same tree to the
+  managed folder under <code>runs/&lt;RUN_ID&gt;/</code>. Every artifact named in this document is one of these
+  files.</p>
+</section>
+
+<!-- ================================================================ -->
+<section id="faq">
+  <h2><span class="snum">11</span>Design choices, quickly</h2>
+  <p class="one-liner"><b>In one sentence:</b> every choice optimizes for the same three things — bounded cost, determinism, and refusing to hardcode any format knowledge.</p>
+
+  <table>
+    <tr><th style="width:34%">Question</th><th>Answer</th></tr>
+    <tr><td>Why doesn’t the pipeline “know” any CRF formats?</td>
+        <td>Because the format space is unbounded. The only shipped knowledge is <em>generic</em>: PDFs have lines
+        with geometry, layouts repeat within a document, and a parser can be validated by running it. Everything
+        format-specific is discovered per document and thrown away after.</td></tr>
+    <tr><td>Why generated code instead of LLM answers?</td>
+        <td>Code is auditable (read it), deterministic (same input → same output), free to re-run (404 pages,
+        no tokens), and diffable across versions. Answers are none of those.</td></tr>
+    <tr><td>Why not a vision model on page images?</td>
+        <td>The text layer already gives exact strings and coordinates for ~0 cost. Vision adds price and noise
+        for born-digital PDFs. Scanned documents are flagged at stage 0 and would get an OCR front-door
+        (e.g. Textract) that feeds the same Line interface.</td></tr>
+    <tr><td>What if one document needs two different parsers?</td>
+        <td>That’s what the coverage-confirmation cycle is for: dark stacks go back to the model, which either
+        proves they’re field-free or extends the program with another branch — the extension consumes loop budget
+        like any other version.</td></tr>
+    <tr><td>What if the model just can’t crack a format?</td>
+        <td>The loop stops on plateau or budget and the document is flagged
+        <code>needs_manual_template</code> with its full trail attached. A wrong-but-confident output is never
+        exported silently.</td></tr>
+    <tr><td>Does it depend on English?</td>
+        <td>No. The layout tokens and the prompt contract are structural (geometry, boldness, character
+        classes), not lexical;
+        label “human-ness” checks accept non-Latin scripts.</td></tr>
+    <tr><td>What does a 1000-page document cost?</td>
+        <td>The same as a 100-page one: LLM cost scales with the number of <em>layout stacks</em> (4–12 rep
+        pages; 7–10 calls in the benchmark runs, hard-capped at ~16 with every audit reprompt counted), not
+        the number of pages. Page count only adds cheap deterministic replay time.</td></tr>
+  </table>
+</section>
+
+</main>
+
+<footer>
+  Artifacts backing every number in this page (all under <code>experiments/recipe_prototype/out/384-201-00002_…/</code>
+  unless noted): <code>clusters.json</code> · <code>rep_p*.txt/png</code> · <code>codegen_prompt.txt</code> ·
+  <code>codegen_reply_claude_4_5_sonnet_{1,2,3,confirm}</code> ·
+  <code>generated_extractor_claude_4_5_sonnet.py</code> ·
+  <code>codegen_trail_claude_4_5_sonnet.json</code> ·
+  <code>fields_codegen_claude_4_5_sonnet.csv</code> ·
+  <code>out/cli_induction_summary_claude_4_5_sonnet.json</code> ·
+  <code>out/evaluation_form_field.json</code> —
+  loop policy in <code>run_cli_induction.py</code> / <code>codegen.py</code> (tested by
+  <code>stop_policy_test.py</code>), clustering in <code>generic_profile.py</code>
+  (v1 reference: <code>common.py</code>; audit: <code>generalization_audit.py</code>; edge cases:
+  <code>stage0_edge_test.py</code>, <code>stage0_shape_smoke.py</code>), notebook generator in
+  <code>build_dataiku_notebook.py</code>.
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,43 @@
+{
+ "generated_at": "2026-07-23T23:18:30Z",
+ "documents": 11,
+ "events": 1503,
+ "by_severity": {
+  "quality": 1496,
+  "blocking": 7
+ },
+ "by_stage": {
+  "audit": 1471,
+  "loop": 11,
+  "gates": 19,
+  "confirm": 2
+ },
+ "by_code": {
+  "audit_wrong_form": 214,
+  "audit_missed": 683,
+  "audit_false_positive": 573,
+  "stopped_with_open_issues": 11,
+  "warn_furniture_candidates": 5,
+  "gate_other": 1,
+  "confirm_extension_rejected": 2,
+  "gate_zero_records": 3,
+  "warn_form_names_empty": 3,
+  "warn_labels_not_human": 3,
+  "gate_crash": 2,
+  "warn_form_explosion": 2,
+  "transport_error": 1
+ },
+ "by_doc": {
+  "326-201-00007_Annotated_CRF___v1.0_30_Sep_2024": 113,
+  "326-201-00007_Annotated_CRF___v1.0_30_Sep_2024_1_": 349,
+  "331-201-00246_Annotated_CRF___v_04_Jul_2023": 144,
+  "331-201-00246_Annotated_CRF___v_26_Jul_2023": 104,
+  "384-201-00002_Annotated_Unique_CRF_04Nov2024": 40,
+  "384-201-00004_Annotated_CRF___v1.0_05_Mar_2025": 52,
+  "384-201-00004_Annotated_CRF___v2.0_20_May_2025": 8,
+  "384-201-00004_aCRF_16JAN2025": 104,
+  "MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025": 304,
+  "QSC302573_Final_AnnotatedCRFs_16Oct2024-326-201-00007_1_": 72,
+  "annotatedCRF_33120100246-_v1.0_-17Aug2021": 213
+ }
+}

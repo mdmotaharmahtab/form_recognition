@@ -1,0 +1,44 @@
+---
+description: How to explain things - intuitive first, details second
+alwaysApply: true
+---
+
+# Explain for understanding, not completeness
+
+When explaining how something works (pipeline mechanics, design decisions,
+trade-offs), the first job is that the reader GETS IT. Details come after.
+
+## Structure every explanation like this
+
+1. **One-sentence answer first.** Plain words, no jargon.
+2. **An analogy or concrete mini-example** if the concept is abstract.
+3. **Then the mechanics**, in small steps - one idea per sentence.
+4. **Details, caps, edge cases go last** (or get dropped if not needed).
+
+## Rules of thumb
+
+- Short sentences. One idea each. If a sentence has two commas and a dash,
+  split it.
+- No dense parentheticals like "(≥4 pages, <30% coverage, biggest-first)".
+  Either say it in words or leave it out of the first pass.
+- Prefer "the model that checks the output" over a symbol name; introduce
+  the code name once, after the concept is clear.
+- A table only AFTER the prose explanation, never as the explanation.
+- When the user asks "what's the difference between X and Y", answer with
+  the one key difference first, then elaborate.
+- Numbers and file/function references belong in the detail section, not in
+  the opening.
+
+## Example
+
+❌ BAD: "The reviser gets audit conclusions as text (page + quoted labels,
+`audit_problem_lines`), plus cluster feedback: a coverage table over clusters
+≥2 pages and 3,200-char dumps of 2 pages from each of the 2 weakest clusters
+(≥4 pages, <30% coverage), excluding rep pages."
+
+✅ GOOD: "The checker and the fixer see different things. The checker looks
+at a few pages side-by-side with what the program extracted from them, and
+writes down what's wrong. The fixer gets that list of complaints, its own
+code, and a few example pages from the parts of the document it's been
+skipping. (Details: the complaint list quotes the exact labels; the example
+pages come from the worst-covered layout clusters.)"

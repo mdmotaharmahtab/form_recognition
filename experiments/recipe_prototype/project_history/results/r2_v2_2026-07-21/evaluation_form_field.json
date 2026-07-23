@@ -1,0 +1,38 @@
+{
+ "extraction_vs_ground_truth_rave": {
+  "gt_distinct_pairs": 914,
+  "extracted_distinct_pairs": 861,
+  "pair_recall_pct": 79,
+  "pair_precision_pct": 84
+ },
+ "name_to_oid_mapping": [
+  {
+   "doc": "384-201-00002_Annotated_Unique_CRF_04Nov2024",
+   "distinct_pairs": 861,
+   "mapped_pct": 11,
+   "checkable_against_truth": 90,
+   "mapping_accuracy_pct": 17,
+   "mismatch_examples": [
+    "'collection date' -> mapped DMDAT, printed truth LBDAT",
+    "'collection date time' -> mapped DMDAT, printed truth LBDTTM",
+    "'collection time' -> mapped DMDAT, printed truth LBTIM",
+    "'collection date' -> mapped MHDAT, printed truth LBDAT",
+    "'collection date time' -> mapped MHDAT, printed truth LBDTTM",
+    "'collection time' -> mapped MHDAT, printed truth LBTIM",
+    "'if other specify' -> mapped QVAL_RACEOTH, printed truth DOCOTH",
+    "'collection date' -> mapped DMDAT, printed truth DDDAT"
+   ]
+  },
+  {
+   "doc": "MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06",
+   "distinct_pairs": 773,
+   "mapped_pct": 3
+  },
+  {
+   "doc": "QSC302573_Final_AnnotatedCRFs_16Oct2024-326-201-0000",
+   "distinct_pairs": 1240,
+   "mapped_pct": 1
+  }
+ ],
+ "library_size_note": "ecs_index_data has only 286 Standard rows; mapping coverage is bounded by library breadth, not extraction quality."
+}

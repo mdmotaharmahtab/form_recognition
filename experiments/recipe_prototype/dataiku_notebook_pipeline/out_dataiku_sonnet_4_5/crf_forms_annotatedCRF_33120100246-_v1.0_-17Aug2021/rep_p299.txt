@@ -1,0 +1,28 @@
+x=  47.8 y=  50.5 sz= 7.8 black     | Hematology clinically significant abnormal assay # 5
+x= 351.2 y=  88.5 sz= 9.2 black     | Hematocrit
+x= 351.2 y= 110.7 sz= 9.2 black     | Hemoglobin
+x= 351.2 y= 133.0 sz= 9.2 black     | Mean corpuscular hemoglobin concentration
+x= 351.2 y= 155.2 sz= 9.2 black     | Mean corpuscular volume
+x= 351.2 y= 177.4 sz= 9.2 black     | Platelet count
+x= 351.2 y= 199.7 sz= 9.2 black     | Red blood cell count
+x= 351.2 y= 221.9 sz= 9.2 black     | White blood cell count (absolute and differential)
+x= 351.2 y= 244.1 sz= 9.2 black     | Glycated Hemoglobin
+x=  47.8 y= 270.8 sz= 7.8 #ff0000   | [LBHCS5]
+x=  47.8 y= 283.2 sz= 7.8 #ff0000   | [TYPE: enumeration (values: Hematocrit, Hemoglobin, Mean corpuscular hemoglobin concentration, Mean corpuscular volume, Platelet count,
+x=  47.8 y= 292.4 sz= 7.8 #ff0000   | Red blood cell count, White blood cell count (absolute and differential), Glycated Hemoglobin)]
+x=  47.8 y= 319.2 sz= 7.8 black     | Hematology abnormal assay # 5 Investigator comment
+x=  47.8 y= 342.0 sz= 7.8 #ff0000   | [LBRR46]
+x=  47.8 y= 354.5 sz= 7.8 #ff0000   | [TYPE: text (max_length: 200)]
+x=  47.8 y= 366.9 sz= 7.8 #ff0000   | [VISIBILITY: site only]
+x= 494.9 y= 392.5 sz= 9.2 #454545   | Yes
+x= 527.0 y= 392.5 sz= 9.2 #454545   | No
+x=  47.8 y= 393.7 sz= 7.8 black     | Are there any clinically significant abnormal hematology results to be entered?
+x=  47.8 y= 415.3 sz= 7.8 #ff0000   | [LBRR47]
+x=  47.8 y= 427.7 sz= 7.8 #ff0000   | [TYPE: enumeration (values: Yes, No)]
+x=  47.8 y= 454.5 sz= 7.8 black     | Please go to Add-On Forms and select Additional Local Lab Results Review form to add to this visit.
+x= 463.3 y= 489.3 sz= 9.2 #454545   | Yes
+x= 495.4 y= 489.3 sz= 9.2 #454545   | No
+x= 523.5 y= 489.3 sz= 9.2 #454545   | N/A
+x=  47.8 y= 490.4 sz= 7.8 black     | Were there any clinically significant abnormal urinalysis results?
+x=  47.8 y= 512.0 sz= 7.8 #ff0000   | [LBUCSYN]
+x=  47.8 y= 524.4 sz= 7.8 #ff0000   | [TYPE: enumeration (values: Yes, No, N/A)]

@@ -1,0 +1,310 @@
+You are writing a deterministic extraction program for one specific clinical Case Report Form (CRF) PDF document. Below you will find a small sample of REPRESENTATIVE PAGES (one or two per page-layout cluster) from a document that is 404 pages long. The document is highly repetitive: the sampled pages cover its layouts, but the unsampled pages contain different content in the same layouts.
+
+Each sampled page is shown as structured text lines with geometry:
+    x=<left> y=<top> sz=<font-size> <color-hex or 'black'> <B if bold> | <text>
+
+# Your task
+
+Write a Python function that will run UNCHANGED over all 404 pages and extract every data-entry field of the CRF:
+  - form_name : the CRF form/section the field belongs to
+  - field_name: the human-readable field label/question
+
+That is the complete output. Some CRFs also print machine codes or technical
+annotations near fields - do NOT return those (they are resolved downstream by a
+separate system). You may still USE such markings as structural landmarks if that
+helps you locate fields reliably.
+
+# Runtime contract
+
+def extract(pages):
+    # pages: list of (page_index_0based, lines) tuples for the ENTIRE document, in
+    #        page order. lines is a list of Line objects sorted by y, then x.
+    #        NOTE: y-then-x order is NOT reading order on multi-column pages; if the
+    #        layout has side-by-side columns, use x coordinates to separate them.
+    #        For right-to-left scripts the within-row order is right-to-left, and
+    #        vertical text yields an arbitrary line order - reconstruct reading
+    #        order from the coordinates when the script needs it.
+    # Line attributes:
+    #   .text  (str, stripped visible text of one visual line)
+    #   .x0 .y0 .x1 .y1  (floats; PDF points; origin = top-left of the page)
+    #   .size  (float; font size in points; the largest span on the line)
+    #   .bold  (bool)
+    #   .non_black  (bool; True if any text on the line is printed in color)
+    # returns: list of dicts, one per extracted field occurrence:
+    #   {"form_name": str, "field_name": str, "page": int_1based}
+
+# Hard constraints
+
+- Pure computation only. These modules are already available: re, math, collections,
+  itertools, functools, string, unicodedata, bisect, statistics, json. You may not
+  import anything else, access files/network, or print.
+- Deterministic, fast, simple: loops, regexes, coordinate arithmetic. It must
+  process all 404 pages in seconds.
+- Generalize from STRUCTURE, not content. The unsampled pages contain questions,
+  values and section names you have never seen. Never key your logic on specific
+  question wording from the samples; key it on geometry (x positions, font sizes,
+  color, boldness), on repeated marker/header patterns, and on the SHAPE of text
+  (regexes over character classes). The document may be in any language.
+- You may keep state across pages (the function receives the whole document) -
+  e.g. a form name announced once may govern many following pages.
+
+# Quality bar (your program's output is machine-checked before acceptance)
+
+- It must extract from every page that carries fields, not just the sampled ones.
+- form_name should be non-empty for the large majority of records. If the document
+  genuinely prints no form/section names, use the best available section context;
+  leave it empty only as a last resort.
+- field_name values must be human-readable label text - not machine codes, bare
+  numbers, dates, or page furniture (headers/footers/page numbers/legends).
+- Answer OPTIONS are not fields: choice values (e.g. Yes / No / Unknown / list
+  items - examples here are English, apply the concept in the document's language)
+  belong to a field, they are not field_name records themselves.
+- No duplicate records for the same (form_name, field_name) pair beyond what the
+  document itself repeats.
+
+# Reply format
+
+Reply with ONLY Python source code (no prose outside code comments). Start with a
+comment block (3-6 lines) stating what layout you observed in the samples and the
+extraction strategy you chose. Then define extract(pages) plus any helpers.
+
+# Representative pages of this document
+
+--- page 1 of 404 (layout cluster covers ~1 pages) ---
+x= 239.6 y=  90.0 sz=10.0 black     | Subject Case Report Forms
+x= 242.0 y= 108.0 sz=10.0 black     | 01.025 GMK - Unique CRF
+x=  95.3 y= 126.0 sz=10.0 black     | Signature Prompt: By entering my password, I attest that the data entries in this case
+x=  96.2 y= 138.0 sz=10.0 black     | book are complete, accurate, and compatible with source documents. All entries were
+x=  90.1 y= 150.0 sz=10.0 black     | made either by me or a person under my supervision who had signed the Site Signature
+x=  90.9 y= 162.0 sz=10.0 black     | Log. Pursuant to Section 11.100 of Title 21 of the Code of Federal Regulations, this is to
+x=  94.7 y= 174.0 sz=10.0 black     | certify that I intend that this electronic signature is to be the legally binding equivalent
+x= 121.2 y= 186.0 sz=10.0 black     | of my handwritten signature. To this I do attest by supplying my password.
+
+--- page 2 of 404 (layout cluster covers ~1 pages) ---
+x=  90.0 y=  90.0 sz=10.0 black   B | 01.025 GMK: Unique CRF
+x=  90.0 y= 104.0 sz=10.0 black   B | Form: Visit Date
+x=  90.0 y= 118.0 sz=10.0 black   B | Generated On: 04 Nov 2024 15:26:21 (GMT)
+x=  90.0 y= 155.0 sz=10.0 black     | Was visit performed?
+x= 489.0 y= 155.0 sz=10.0 black     | Yes
+x= 527.0 y= 157.0 sz=10.0 black     | 1
+x= 492.7 y= 171.0 sz=10.0 black     | No
+x=  95.0 y= 210.0 sz=10.0 black     | If No, please provide reason
+x= 527.0 y= 212.0 sz=10.0 black     | 2
+x=  90.0 y= 245.0 sz=10.0 black     | Visit Date
+x= 527.0 y= 247.0 sz=10.0 black     | 3
+x=  90.0 y= 280.0 sz=10.0 black     | Folder OID (auto-populated)
+x= 527.0 y= 282.0 sz=10.0 black     | 4
+x=  90.0 y= 692.0 sz=10.0 black     | 01.025 GMK (432)
+x= 481.1 y= 693.2 sz=10.0 black     | 1 of 403
+
+--- page 91 of 404 (layout cluster covers ~150 pages) ---
+x=  90.0 y=  90.0 sz=10.0 black   B | 01.025 GMK: Unique CRF
+x=  90.0 y= 104.0 sz=10.0 black   B | Form: Holter ECG - Day 14
+x=  90.0 y= 118.0 sz=10.0 black   B | Generated On: 04 Nov 2024 15:26:21 (GMT)
+x=  90.0 y= 155.0 sz=10.0 black     | Was Holter ECG Time Point performed?
+x= 489.0 y= 155.0 sz=10.0 black     | Yes
+x= 527.0 y= 157.0 sz=10.0 black     | 1
+x= 492.7 y= 171.0 sz=10.0 black     | No
+x=  90.0 y= 210.0 sz=10.0 black     | If No, please specify reason
+x= 527.0 y= 212.0 sz=10.0 black     | 2
+x=  90.0 y= 245.0 sz=10.0 black     | ECG Recording Start Date
+x= 527.0 y= 247.0 sz=10.0 black     | 3
+x=  90.0 y= 280.0 sz=10.0 black     | ECG Recording Start Time
+x= 527.0 y= 282.0 sz=10.0 black     | 4
+x=  90.0 y= 315.0 sz=10.0 black     | ECG Recording End Date
+x= 527.0 y= 317.0 sz=10.0 black     | 5
+x=  90.0 y= 350.0 sz=10.0 black     | ECG Recording End Time
+x= 527.0 y= 352.0 sz=10.0 black     | 6
+x=  90.0 y= 385.0 sz=10.0 black     | Method
+x= 408.0 y= 385.0 sz=10.0 black     | 12 Lead Unspecified
+x= 527.0 y= 387.0 sz=10.0 black     | 7
+x= 397.8 y= 401.0 sz=10.0 black     | Holter Continuous Ecg
+x= 457.4 y= 413.0 sz=10.0 black     | Recording
+x=  90.0 y= 448.0 sz=10.0 black     | Was Time Point Completed?
+x= 489.0 y= 448.0 sz=10.0 black     | Yes
+x= 527.0 y= 450.0 sz=10.0 black     | 8
+x= 492.7 y= 464.0 sz=10.0 black     | No
+x=  90.0 y= 503.0 sz=10.0 black     | Time Point
+x= 409.8 y= 503.0 sz=10.0 black     | 0.75 Hours Predose
+x= 527.0 y= 505.0 sz=10.0 black     | 9
+x= 416.0 y= 519.0 sz=10.0 black     | 0.5 Hours Predose
+x= 409.8 y= 535.0 sz=10.0 black     | 0.25 Hours Predose
+x= 467.4 y= 551.0 sz=10.0 black     | Predose
+x= 421.1 y= 567.0 sz=10.0 black     | 1 Hour Post Dose
+x= 416.2 y= 583.0 sz=10.0 black     | 2 Hours Post Dose
+x= 416.2 y= 599.0 sz=10.0 black     | 3 Hours Post Dose
+x= 416.2 y= 615.0 sz=10.0 black     | 4 Hours Post Dose
+x= 416.2 y= 631.0 sz=10.0 black     | 6 Hours Post Dose
+x= 416.2 y= 647.0 sz=10.0 black     | 8 Hours Post Dose
+x=  90.0 y= 692.0 sz=10.0 black     | 01.025 GMK (432)
+x= 474.9 y= 693.2 sz=10.0 black     | 90 of 403
+
+--- page 116 of 404 (layout cluster covers ~249 pages) ---
+x=  90.0 y=  90.0 sz=10.0 black   B | 01.025 GMK: Unique CRF
+x=  90.0 y= 104.0 sz=10.0 black   B | Form: Central Laboratory
+x=  90.0 y= 118.0 sz=10.0 black   B | Generated On: 04 Nov 2024 15:26:21 (GMT)
+x= 110.0 y= 155.0 sz=10.0 black     | Field Name Data Type
+x= 230.0 y= 155.0 sz=10.0 black     | Units
+x= 290.0 y= 155.0 sz=10.0 black     | Values
+x= 350.0 y= 155.0 sz=10.0 black     | Pre-Filled
+x= 410.0 y= 155.0 sz=10.0 black     | Include
+x= 350.0 y= 167.0 sz=10.0 black     | Values
+x= 410.0 y= 167.0 sz=10.0 black     | Field OID
+x= 110.0 y= 202.0 sz=10.0 black     | LBCAT
+x= 170.0 y= 202.0 sz=10.0 black     | $25
+x= 290.0 y= 202.0 sz=10.0 black     | CHEMISTRY
+x= 350.0 y= 202.0 sz=10.0 black     | 1: Serum
+x= 410.0 y= 202.0 sz=10.0 black     | LBCAT
+x=  95.5 y= 205.0 sz=10.0 black     | 1
+x= 290.0 y= 214.0 sz=10.0 black     | = Serum
+x= 350.0 y= 214.0 sz=10.0 black     | Chemistry
+x= 290.0 y= 226.0 sz=10.0 black     | Chemistry
+x= 350.0 y= 226.0 sz=10.0 black     | 2:
+x= 290.0 y= 238.0 sz=10.0 black     | HEMATOLO
+x= 350.0 y= 238.0 sz=10.0 black     | Hematology
+x= 290.0 y= 250.0 sz=10.0 black     | GY =
+x= 350.0 y= 250.0 sz=10.0 black     | 3:
+x= 290.0 y= 262.0 sz=10.0 black     | Hematology
+x= 350.0 y= 262.0 sz=10.0 black     | Urinalysis
+x= 290.0 y= 274.0 sz=10.0 black     | URINALYSI
+x= 350.0 y= 274.0 sz=10.0 black     | 4:
+x= 290.0 y= 286.0 sz=10.0 black     | S =
+x= 350.0 y= 286.0 sz=10.0 black     | Coagulation
+x= 290.0 y= 298.0 sz=10.0 black     | Urinalysis
+x= 290.0 y= 310.0 sz=10.0 black     | COAGULATI
+x= 290.0 y= 322.0 sz=10.0 black     | ON =
+x= 290.0 y= 334.0 sz=10.0 black     | Coagulation
+x= 290.0 y= 346.0 sz=10.0 black     | LIPID
+x= 290.0 y= 358.0 sz=10.0 black     | PANEL =
+x= 290.0 y= 370.0 sz=10.0 black     | Lipid Panel
+x= 290.0 y= 382.0 sz=10.0 black     | THYROID
+x= 290.0 y= 394.0 sz=10.0 black     | PANEL =
+x= 290.0 y= 406.0 sz=10.0 black     | Thyroid
+x= 290.0 y= 418.0 sz=10.0 black     | Panel
+x= 290.0 y= 430.0 sz=10.0 black     | SERUM
+x= 290.0 y= 442.0 sz=10.0 black     | PROLACTIN
+x= 290.0 y= 454.0 sz=10.0 black     | = Serum
+x= 290.0 y= 466.0 sz=10.0 black     | Prolactin
+x= 290.0 y= 478.0 sz=10.0 black     | HBA1C =
+x= 290.0 y= 490.0 sz=10.0 black     | Hemoglobin
+x= 290.0 y= 502.0 sz=10.0 black     | A1c
+x= 290.0 y= 514.0 sz=10.0 black     | FSH = FSH
+x= 110.0 y= 549.0 sz=10.0 black     | LBPERF
+x= 170.0 y= 549.0 sz=10.0 black     | $1
+x= 290.0 y= 549.0 sz=10.0 black     | Y = Yes
+x= 410.0 y= 549.0 sz=10.0 black     | LBPERF
+x=  95.5 y= 552.0 sz=10.0 black     | 2
+x= 290.0 y= 561.0 sz=10.0 black     | N = No
+x= 110.0 y= 596.0 sz=10.0 black     | LBREASND $200
+x= 410.0 y= 596.0 sz=10.0 black     | LBREASND
+x=  95.5 y= 599.0 sz=10.0 black     | 3
+x= 110.0 y= 631.0 sz=10.0 black     | LBDAT
+x= 170.0 y= 631.0 sz=10.0 black     | dd MMM
+x= 410.0 y= 631.0 sz=10.0 black     | LBDAT
+x=  95.5 y= 634.0 sz=10.0 black     | 4
+x= 170.0 y= 643.0 sz=10.0 black     | yyyy
+x=  90.0 y= 692.0 sz=10.0 black     | 01.025 GMK (432)
+x= 468.7 y= 693.2 sz=10.0 black     | 115 of 403
+
+--- page 193 of 404 (layout cluster covers ~150 pages) ---
+x=  90.0 y=  90.0 sz=10.0 black   B | 01.025 GMK: Unique CRF
+x=  90.0 y= 104.0 sz=10.0 black   B | Form: Positive and Negative Syndrome Scale (PANSS)
+x=  90.0 y= 118.0 sz=10.0 black   B | Generated On: 04 Nov 2024 15:26:21 (GMT)
+x=  90.0 y= 155.0 sz=10.0 black     | Category
+x= 489.2 y= 155.0 sz=10.0 black     | PANSS
+x= 527.0 y= 157.0 sz=10.0 black     | 1
+x=  90.0 y= 190.0 sz=10.0 black     | the Positive and Negative Syndrome Scale (PANSS) Manual (SR Kay, LA Opler, A
+x=  90.0 y= 202.0 sz=10.0 black     | Fiszbein. Published by Multi-Health Systems, Inc., North Tonawanda, NY, 1986)
+x=  90.0 y= 237.0 sz=10.0 black     | Was Positive and Negative Syndrome Scale(PANSS)
+x= 489.0 y= 237.0 sz=10.0 black     | Yes
+x= 527.0 y= 239.0 sz=10.0 black     | 3
+x=  90.0 y= 249.0 sz=10.0 black     | assessed?
+x= 492.7 y= 253.0 sz=10.0 black     | No
+x=  90.0 y= 292.0 sz=10.0 black     | Assessment Date
+x= 527.0 y= 294.0 sz=10.0 black     | 4
+x=  90.0 y= 327.0 sz=10.0 black     | Assessment Time
+x= 423.7 y= 327.0 sz=10.0 black     | Fixed Unit: (24 HR)
+x= 527.0 y= 329.0 sz=10.0 black     | 5
+x=  90.0 y= 380.0 sz=10.0 black     | Date/Time (auto-populated)
+x= 527.0 y= 382.0 sz=10.0 black     | 6
+x=  90.0 y= 415.0 sz=10.0 black     | P1-Delusions
+x= 458.2 y= 415.0 sz=10.0 black     | 1=Absent
+x= 527.0 y= 417.0 sz=10.0 black     | 7
+x= 454.3 y= 431.0 sz=10.0 black     | 2=Minimal
+x= 472.3 y= 447.0 sz=10.0 black     | 3=Mild
+x= 446.2 y= 463.0 sz=10.0 black     | 4=Moderate
+x= 408.3 y= 479.0 sz=10.0 black     | 5=Moderate/Severe
+x= 458.3 y= 495.0 sz=10.0 black     | 6=Severe
+x= 451.0 y= 511.0 sz=10.0 black     | 7=Extreme
+x=  90.0 y= 550.0 sz=10.0 black     | P2-Conceptual Disorganization
+x= 458.2 y= 550.0 sz=10.0 black     | 1=Absent
+x= 527.0 y= 552.0 sz=10.0 black     | 8
+x= 454.3 y= 566.0 sz=10.0 black     | 2=Minimal
+x= 472.3 y= 582.0 sz=10.0 black     | 3=Mild
+x= 446.2 y= 598.0 sz=10.0 black     | 4=Moderate
+x= 408.3 y= 614.0 sz=10.0 black     | 5=Moderate/Severe
+x= 458.3 y= 630.0 sz=10.0 black     | 6=Severe
+x= 451.0 y= 646.0 sz=10.0 black     | 7=Extreme
+x=  90.0 y= 692.0 sz=10.0 black     | 01.025 GMK (432)
+x= 468.7 y= 693.2 sz=10.0 black     | 192 of 403
+
+--- page 214 of 404 (layout cluster covers ~249 pages) ---
+x=  90.0 y=  90.0 sz=10.0 black   B | 01.025 GMK: Unique CRF
+x=  90.0 y= 104.0 sz=10.0 black   B | Form: Positive and Negative Syndrome Scale (PANSS)
+x=  90.0 y= 118.0 sz=10.0 black   B | Generated On: 04 Nov 2024 15:26:21 (GMT)
+x= 110.0 y= 155.0 sz=10.0 black     | Field Name Data Type
+x= 230.0 y= 155.0 sz=10.0 black     | Units
+x= 290.0 y= 155.0 sz=10.0 black     | Values
+x= 350.0 y= 155.0 sz=10.0 black     | Pre-Filled
+x= 410.0 y= 155.0 sz=10.0 black     | Include
+x= 350.0 y= 167.0 sz=10.0 black     | Values
+x= 410.0 y= 167.0 sz=10.0 black     | Field OID
+x= 290.0 y= 202.0 sz=10.0 black     | 5 =
+x= 290.0 y= 214.0 sz=10.0 black     | 5=Moderate
+x= 290.0 y= 226.0 sz=10.0 black     | /Severe
+x= 290.0 y= 238.0 sz=10.0 black     | 6 =
+x= 290.0 y= 250.0 sz=10.0 black     | 6=Severe
+x= 290.0 y= 262.0 sz=10.0 black     | 7 =
+x= 290.0 y= 274.0 sz=10.0 black     | 7=Extreme
+x=  93.0 y= 309.0 sz=10.0 black     | 36 PANSS130_
+x= 170.0 y= 309.0 sz=10.0 black     | 1
+x= 290.0 y= 309.0 sz=10.0 black     | 1 =
+x= 410.0 y= 309.0 sz=10.0 black     | PANSS130_
+x= 110.0 y= 321.0 sz=10.0 black     | RSORRES
+x= 290.0 y= 321.0 sz=10.0 black     | 1=Absent
+x= 410.0 y= 321.0 sz=10.0 black     | RSORRES
+x= 290.0 y= 333.0 sz=10.0 black     | 2 =
+x= 290.0 y= 345.0 sz=10.0 black     | 2=Minimal
+x= 290.0 y= 357.0 sz=10.0 black     | 3 = 3=Mild
+x= 290.0 y= 369.0 sz=10.0 black     | 4 =
+x= 290.0 y= 381.0 sz=10.0 black     | 4=Moderate
+x= 290.0 y= 393.0 sz=10.0 black     | 5 =
+x= 290.0 y= 405.0 sz=10.0 black     | 5=Moderate
+x= 290.0 y= 417.0 sz=10.0 black     | /Severe
+x= 290.0 y= 429.0 sz=10.0 black     | 6 =
+x= 290.0 y= 441.0 sz=10.0 black     | 6=Severe
+x= 290.0 y= 453.0 sz=10.0 black     | 7 =
+x= 290.0 y= 465.0 sz=10.0 black     | 7=Extreme
+x=  93.0 y= 500.0 sz=10.0 black     | 37 PANSS_PTO
+x= 170.0 y= 500.0 sz=10.0 black     | 2
+x= 410.0 y= 500.0 sz=10.0 black     | PANSS_PTO
+x= 110.0 y= 512.0 sz=10.0 black     | TAL
+x= 410.0 y= 512.0 sz=10.0 black     | TAL
+x=  93.0 y= 547.0 sz=10.0 black     | 38 PANSS_NT
+x= 170.0 y= 547.0 sz=10.0 black     | 2
+x= 410.0 y= 547.0 sz=10.0 black     | PANSS_NT
+x= 110.0 y= 559.0 sz=10.0 black     | OTAL
+x= 410.0 y= 559.0 sz=10.0 black     | OTAL
+x=  93.0 y= 594.0 sz=10.0 black     | 39 PANSS_GT
+x= 170.0 y= 594.0 sz=10.0 black     | 3
+x= 410.0 y= 594.0 sz=10.0 black     | PANSS_GT
+x= 110.0 y= 606.0 sz=10.0 black     | OTAL
+x= 410.0 y= 606.0 sz=10.0 black     | OTAL
+x=  93.0 y= 641.0 sz=10.0 black     | 40 PANSS_TOT
+x= 170.0 y= 641.0 sz=10.0 black     | 3
+x= 410.0 y= 641.0 sz=10.0 black     | PANSS_TOT
+x= 110.0 y= 653.0 sz=10.0 black     | AL
+x= 410.0 y= 653.0 sz=10.0 black     | AL
+x=  90.0 y= 692.0 sz=10.0 black     | 01.025 GMK (432)
+x= 468.7 y= 693.2 sz=10.0 black     | 213 of 403
+

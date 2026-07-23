@@ -1,0 +1,117 @@
+{
+  "doc_key": "384-201-00004_Annotated_CRF___v1.0_05_Mar_2025",
+  "annotator_notes": "ClinSpark/DrVince annotated CRF, 246 physical pages (printed footer counts 238; a +3 physical offset applies but form names come from the PDF bookmark tree whose targets are physical pages, verified: bookmark 'Height / Weight / BMI p90' == the banner printed on physical page 90). Field = human-readable prompt line followed by '[OID]' + '[SAS Field Name: X]' + input widget. Interview questions under a label, item-group headers (Odm OID = IG.*), Help Text, Comment, and all metadata keys are NOT fields. Repeated identical labels on a page collapse. Back matter (Units of Measure / Code Lists) and the Study Events schedule matrix are not data-entry forms.",
+  "pages": [
+    {
+      "page": 14,
+      "form_name": null,
+      "form_source": "none",
+      "fields": [],
+      "acceptable_extras": [],
+      "notes": "Study Events schedule matrix (Form:/Study Event:/Timepoint: rows and a Day-by-Day activity timeline). No [OID] field markers - zero data-entry fields."
+    },
+    {
+      "page": 41,
+      "form_name": "C-SSRS - Baseline/Screening",
+      "form_source": "carryover",
+      "fields": [
+        "If yes, describe:",
+        "Have you been thinking about how you might do this? (Lifetime).",
+        "Have you been thinking about how you might do this? (Past 12 Months).",
+        "Have you had these thoughts and had some intention of acting on them? (Lifetime)."
+      ],
+      "acceptable_extras": [
+        "3. Active Suicidal Ideation with Any Methods (Not Plan) without Intent to Act",
+        "4. Active Suicidal Ideation with Some Intent to Act without Specific Plan"
+      ],
+      "notes": "Top of page is [QSCSS0302B] with no label (continuation from p40); bottom CSS0304B has metadata only. 'If yes, describe:' collapses (appears twice)."
+    },
+    {
+      "page": 61,
+      "form_name": "Disposition",
+      "form_source": "carryover",
+      "fields": [
+        "Why was the volunteer not needed?",
+        "Other, Specify:",
+        "How was the volunteer non-compliant with the study drug?",
+        "How was the volunteer non-compliant with the study schedule?",
+        "Reason for physician decision",
+        "What withdrawal criteria was met?",
+        "Why was the volunteer discontinued at sponsor request?"
+      ],
+      "acceptable_extras": [],
+      "notes": "DSREAS10 label cut off at page bottom."
+    },
+    {
+      "page": 65,
+      "form_name": "ECG (RScribe)",
+      "form_source": "carryover",
+      "fields": [
+        "Abnormality Reason"
+      ],
+      "acceptable_extras": [],
+      "notes": "Page opens with metadata tail of the prior field; only one labelled field ([EG_ABNORMAL REASON]) on the page."
+    },
+    {
+      "page": 90,
+      "form_name": "Height / Weight / BMI",
+      "form_source": "printed",
+      "fields": [
+        "Date and time of collection",
+        "Height",
+        "Weight",
+        "BMI"
+      ],
+      "acceptable_extras": [],
+      "notes": "Form banner 'Height / Weight / BMI' printed (F.1200 / IG.1566)."
+    },
+    {
+      "page": 102,
+      "form_name": "Physical Examination - Screening",
+      "form_source": "carryover",
+      "fields": [
+        "Body system",
+        "Examination result",
+        "Clinical significance",
+        "Abnormal findings"
+      ],
+      "acceptable_extras": [
+        "Gastrointestinal",
+        "Neurological"
+      ],
+      "notes": "Body system/Examination result/Clinical significance/Abnormal findings repeat per body-system item group; distinct labels collapse."
+    },
+    {
+      "page": 143,
+      "form_name": "Urine Collection - Screening",
+      "form_source": "carryover",
+      "fields": [],
+      "acceptable_extras": [],
+      "notes": "Page shows only an edit-check template + metadata tail of a field started on the previous page - zero new labelled fields."
+    },
+    {
+      "page": 168,
+      "form_name": "AE Severity",
+      "form_source": "printed",
+      "fields": [],
+      "acceptable_extras": [],
+      "notes": "Code list (Coded/Decode) in Code Lists back matter - not a data-entry form."
+    },
+    {
+      "page": 173,
+      "form_name": "CM Dose Units",
+      "form_source": "printed",
+      "fields": [],
+      "acceptable_extras": [],
+      "notes": "Code list (Coded/Decode) - not a data-entry form."
+    },
+    {
+      "page": 208,
+      "form_name": "PE HEENT",
+      "form_source": "printed",
+      "fields": [],
+      "acceptable_extras": [],
+      "notes": "Code list (Coded/Decode) - not a data-entry form."
+    }
+  ]
+}

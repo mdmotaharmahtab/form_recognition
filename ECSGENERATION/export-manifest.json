@@ -1,0 +1,290 @@
+{
+  "exportedWithOptions": {
+    "exportUploads": true,
+    "exportManagedFS": false,
+    "exportAnalysisModels": true,
+    "exportSavedModels": true,
+    "exportManagedFolders": false,
+    "exportModelEvaluationStores": false,
+    "exportProjectResources": true,
+    "exportLabelingTasks": false,
+    "exportAllInputDatasets": false,
+    "exportAllDatasets": false,
+    "exportAllInputManagedFolders": false,
+    "exportGitRepository": true,
+    "exportInsightsData": false,
+    "useManualPluginsInfo": false,
+    "exportSavedModelsRequiredVersions": false,
+    "exportNotebooksWithOutputs": true,
+    "exportForNewBranch": false,
+    "exportKnowledgeBanks": false,
+    "exportEditableDatasets": true,
+    "exportPromptStudioHistories": false,
+    "exportNotebooks": true,
+    "includedDatasetsData": [],
+    "includedSavedModels": [],
+    "includedModelEvaluationStores": [],
+    "includedManagedFolders": [],
+    "includedCodeStudios": [],
+    "includedKnowledgeBanks": [],
+    "includedLabelingTasks": [],
+    "includedPromptStudiosHistories": [],
+    "shareAllInputDatasets": false,
+    "exportForeignObjectsReferences": true
+  },
+  "actualContent": {
+    "includedDatasets": [],
+    "includedSavedModels": [
+      {
+        "id": "24Xsfa9R",
+        "name": "ecs_generation_agent_test",
+        "size": 583609
+      },
+      {
+        "id": "4NRmRXIB",
+        "name": "ecs_generation_agent",
+        "size": 808872
+      },
+      {
+        "id": "RmZ9gSje",
+        "name": "ecs_agent_test",
+        "size": 642177
+      }
+    ],
+    "includedManagedFolders": [],
+    "includedModelEvaluationStores": [],
+    "includedCodeStudios": [],
+    "includedKnowledgeBanks": [],
+    "includedLabelingTasks": [],
+    "includedPromptStudiosHistories": [],
+    "allAnalysisData": true,
+    "insightsData": false
+  },
+  "originalProjectKey": "ECSGENERATION",
+  "manifestVersion": 3,
+  "generatedWithDSSVersion": "13.5.4",
+  "generatedWithDSSConfVersion": "13530",
+  "foreignObjects": [],
+  "exportedWithPlugins": [
+    {
+      "pluginId": "genai-agentverse",
+      "version": "0.0.1"
+    },
+    {
+      "pluginId": "genai-data-digitizer",
+      "version": "0.0.1"
+    },
+    {
+      "pluginId": "crf-automation-testing",
+      "version": "0.0.1"
+    },
+    {
+      "pluginId": "local-r-dev-setup",
+      "version": "1.0.0"
+    },
+    {
+      "pluginId": "llm-evaluation",
+      "version": "0.0.1"
+    },
+    {
+      "pluginId": "graphrag",
+      "version": "1.0.4"
+    },
+    {
+      "pluginId": "code-studio-blocks",
+      "version": "1.0.0"
+    },
+    {
+      "pluginId": "otsuka-knowledge-metadata-extractor",
+      "version": "0.0.1"
+    },
+    {
+      "pluginId": "skai-llm-utilities",
+      "version": "0.0.1"
+    },
+    {
+      "pluginId": "query-responder",
+      "version": "0.0.1"
+    },
+    {
+      "pluginId": "skai-developer-data-digitization",
+      "version": "0.0.1"
+    },
+    {
+      "pluginId": "agent-connect",
+      "version": "1.6.0"
+    },
+    {
+      "pluginId": "genai-srd-data-usecase",
+      "version": "0.0.1"
+    },
+    {
+      "pluginId": "testconnection",
+      "version": "0.0.1"
+    },
+    {
+      "pluginId": "icf-execution-plugins",
+      "version": "0.0.1"
+    },
+    {
+      "pluginId": "crf-opensearch-mapping-creation",
+      "version": "0.0.1"
+    },
+    {
+      "pluginId": "genai-usecase-sit",
+      "version": "0.0.1"
+    },
+    {
+      "pluginId": "skai-data-ingestion",
+      "version": "0.0.1"
+    },
+    {
+      "pluginId": "vectordatabase-1",
+      "version": "0.0.1"
+    },
+    {
+      "pluginId": "otai-entity-creator",
+      "version": "0.0.1"
+    },
+    {
+      "pluginId": "sage",
+      "version": "1.6.2"
+    },
+    {
+      "pluginId": "genai-file-conversion",
+      "version": "0.0.1"
+    },
+    {
+      "pluginId": "test-plugin-delete",
+      "version": "0.0.1"
+    },
+    {
+      "pluginId": "colorbrewer-palettes",
+      "version": "0.0.1"
+    },
+    {
+      "pluginId": "eks-clusters",
+      "version": "1.4.6"
+    },
+    {
+      "pluginId": "agentverse-genai",
+      "version": "0.0.1"
+    },
+    {
+      "pluginId": "skai-developer-data-ingestion",
+      "version": "0.0.1"
+    },
+    {
+      "pluginId": "builtin-macros",
+      "version": "1.0.0"
+    },
+    {
+      "pluginId": "aiwa-eval",
+      "version": "0.0.1"
+    },
+    {
+      "pluginId": "skai-agents",
+      "version": "0.0.1"
+    },
+    {
+      "pluginId": "k8s-metrics-utils",
+      "version": "1.0.0"
+    },
+    {
+      "pluginId": "genai-data-digitization",
+      "version": "0.0.1"
+    },
+    {
+      "pluginId": "data-ingestion",
+      "version": "0.0.1"
+    },
+    {
+      "pluginId": "sharepoint-online",
+      "version": "1.1.9"
+    },
+    {
+      "pluginId": "servicenow",
+      "version": "0.0.9"
+    },
+    {
+      "pluginId": "skai-data-digitization",
+      "version": "0.0.1"
+    },
+    {
+      "pluginId": "ask-ai",
+      "version": "0.0.1"
+    },
+    {
+      "pluginId": "skai-developer-llm-utilities",
+      "version": "0.0.1"
+    },
+    {
+      "pluginId": "toolbox",
+      "version": "0.0.1"
+    },
+    {
+      "pluginId": "llm-agents",
+      "version": "0.0.1"
+    },
+    {
+      "pluginId": "data-digitization",
+      "version": "0.0.1"
+    },
+    {
+      "pluginId": "tesseract-ocr",
+      "version": "2.4.0"
+    }
+  ],
+  "exportedWithCodeStudioTemplates": [
+    {
+      "templateId": "Test_connection",
+      "templateLabel": "Test_connection"
+    },
+    {
+      "templateId": "VS_Code",
+      "templateLabel": "VS_Code"
+    },
+    {
+      "templateId": "vscode_rwda_designer",
+      "templateLabel": "vscode_rwda_designer"
+    }
+  ],
+  "requiredCodeStudioTemplates": [],
+  "requiredConnections": {
+    "inkling-s3": {
+      "name": "inkling-s3",
+      "type": "EC2",
+      "isMissing": false
+    },
+    "dataiku-genai-opensearch": {
+      "name": "dataiku-genai-opensearch",
+      "type": "ElasticSearch",
+      "isMissing": false
+    },
+    "filesystem_folders": {
+      "name": "filesystem_folders",
+      "type": "Filesystem",
+      "isMissing": false
+    },
+    "aiwriter_crf_dev": {
+      "name": "aiwriter_crf_dev",
+      "type": "Snowflake",
+      "isMissing": false
+    },
+    "s3-genai-platform": {
+      "name": "s3-genai-platform",
+      "type": "EC2",
+      "isMissing": false
+    }
+  },
+  "allowedMissingConnections": [],
+  "usedCodeEnvRefs": [
+    {
+      "envLang": "PYTHON",
+      "envName": "CRF_ICF_UseCase"
+    }
+  ],
+  "allowedMissingCodeEnvs": [],
+  "usedContainerExecConfs": [],
+  "hasPartitionedDataset": false
+}

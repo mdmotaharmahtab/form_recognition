@@ -1,0 +1,817 @@
+form_name,field_name,page
+Visit Date,Visit Date,19
+Informed Consent,ICF Version Date,20
+Informed Consent,"Amendment 7, Amendment 8, Amendment 9, Amendment 10)] Consent Obtained?",20
+Informed Consent,Date of Consent,20
+Informed Consent,Time of Consent,20
+Informed Consent,Was a signed copy of the Informed Consent given to the subject for his/her records?,20
+Informed Consent,ICF was reviewed and verified and the original ICF has been filed in with subject's source documents,21
+Informed Consent,Signed by,21
+Informed Consent,Clinician Consent Sign Date,21
+Informed Consent,Clinician Consent Sign Time,21
+Informed Consent,Subject Consent Sign Date UTC,21
+Informed Consent,Clinician Consent Sign Date UTC,21
+FBR Consent,"Amendment 7, Amendment 8, Amendment 9, Amendment 10)] Consent Obtained?",22
+FBR Consent,Date of Consent,22
+FBR Consent,Time of Consent,22
+FBR Consent,Was a signed copy of the FBR consent given to the subject for his/her records?,22
+FBR Consent,Signed by,22
+Demography,Date of Birth,24
+Demography,Age (Derived),24
+Demography,Address,24
+Demography,What is the sex of the subject at the time of birth?,24
+Demography,"to answer)] If None of the above, Specify",24
+Demography,"White, Other)] Specify other race",25
+Demography,Specify other ethnicity,25
+Demography,Was the subject re-screened?,25
+Demography,Prior screened number,25
+Reproductive Status - Female,Date of Last Menstrual Cycle (All Females),26
+Reproductive Status - Female,Years Since Last Cycle,26
+Reproductive Status - Female,Post Menopausal? (for at least 12 months (1 year) prior to screening),26
+Reproductive Status - Female,Abstinence (must remain abstinent from the time of screening until at least 90 days after the last dose of study drug),26
+Reproductive Status - Female,Sexually Active?,27
+Reproductive Status - Female,If sexually active does the subject commit to utilizing 2 different approved methods of birth control during the trial and for 30 days after the last dose of IMP?- mark the selected methods below,27
+Reproductive Status - Female,Vasectomy,27
+Reproductive Status - Female,Tubal ligation,27
+Reproductive Status - Female,Nonhormonal intrauterine device,27
+Reproductive Status - Female,Condom with spermicide,27
+Reproductive Status - Female,Sponge with spermicide,27
+Reproductive Status - Female,Occlusive cap (vaginal diaphragm or cervical/vault cap) with spermicide,27
+Reproductive Status - Female,Has any applicable reproductive status and/or medications been transcribed to the Medical History Page and/or Con Med Page?,27
+Reproductive Status - Female,"If no, reason not transcribed to medical history",27
+Reproductive Status - Male,Surgically Sterile(bilateral orchidectomy)? (please add to Surgeries and Medical Procedures log),29
+Reproductive Status - Male,Abstinence (must remain abstinent from the time of screening until at least 180 days after the last dose of study drug),29
+Reproductive Status - Male,Sexually Active?,29
+Reproductive Status - Male,**If sexually active does the subject commit to utilizing 2 different approved methods of birth control during the trial and for 90 days after the last dose of IMP?- mark the selected methods below **,29
+Reproductive Status - Male,Vasectomy,29
+Reproductive Status - Male,Tubal ligation,29
+Reproductive Status - Male,Intrauterine device,29
+Reproductive Status - Male,Birth control implant,30
+Reproductive Status - Male,Birth control depot injection,30
+Reproductive Status - Male,Condom with spermicide,30
+Reproductive Status - Male,Sponge with spermicide,30
+Reproductive Status - Male,Occlusive cap (vaginal diaphragm or cervical/vault cap) with spermicide,30
+Reproductive Status - Male,Does the subject agree to refrain from sperm donation from the screening visit through 30 days after the last dose of IMP?,30
+Reproductive Status - Male,Has any applicable reproductive status and/or medications been transcribed to the Medical History Page and/or Con Med Page?,30
+Reproductive Status - Male,"If no, reason not transcribed to medical history",30
+Medical/Psychiatric History,Has the subject experienced any past and/or concomitant diseases?,31
+Medical/Psychiatric History,Record,31
+Medical/Psychiatric History,Medical or Psychiatric History Term,31
+Medical/Psychiatric History,Category of Medical or Psychiatric History Term,31
+Medical/Psychiatric History,Start Date,31
+Medical/Psychiatric History,Is the Medical or Psychiatric History Disease/Condition or Event Still Ongoing?,31
+Medical/Psychiatric History,End Date,31
+Medical/Psychiatric History,Medication Taken?,31
+Body Temperature and Respiratory Rate,Were Vital Signs Collected?,32
+Body Temperature and Respiratory Rate,"If not collected, reason:",32
+Body Temperature and Respiratory Rate,Collection Date,32
+Body Temperature and Respiratory Rate,Respiratory Rate (breaths/min),32
+Body Temperature and Respiratory Rate,Body Temperature (celsius),32
+Triplicate Orthostatic BP and HR - Central,Were Vital Signs Collected?,33
+Triplicate Orthostatic BP and HR - Central,"If not collected, reason:",33
+Triplicate Orthostatic BP and HR - Central,Collection Date,33
+Triplicate Orthostatic BP and HR - Central,Time Placed in Position,33
+Standing,Time Placed in Position,34
+Standing,Time of Vitals Measurement #3,34
+Height and Weight,Were Body Measurements Collected?,35
+Height and Weight,"If not collected, reason:",35
+Height and Weight,Collection Date,35
+Height and Weight,Weight,35
+Height and Weight,Weight Unit,35
+Height and Weight,Height,35
+Height and Weight,Height Unit,35
+Height and Weight,BMI Unit,35
+Physical Exam,Was the physical examination performed?,36
+Physical Exam,Planned Timepoint,36
+Physical Exam,Examination Date,36
+Physical Exam,Examination Time,36
+Physical Exam,Evaluator,36
+Physical Exam,Region/Body System HEENT,36
+Physical Exam,Done)] Thorax,36
+Physical Exam,Done)] Abdomen,36
+Physical Exam,Done)] Skin and Mucosae,37
+Physical Exam,Done)] Neurological,37
+Physical Exam,Done)] Extremities,37
+Triplicate ECG Assessments,Were ECG measurements performed?,38
+Triplicate ECG Assessments,"If no, Reason not done",38
+Triplicate ECG Assessments,Date of ECG,38
+Triplicate ECG Assessments,Time subject became supine:,38
+Triplicate ECG Assessments,Time of ECG assessment # 1:,38
+Triplicate ECG Assessments,Time of ECG assessment # 2:,38
+Triplicate ECG Assessments,Time of ECG assessment # 3:,38
+Triplicate ECG Assessments,Abnormal Findings,39
+Triplicate ECG Assessments,Was the ECG abnormality clinically significant?,39
+Triplicate ECG Assessments,Are additional ECG assessments required?,39
+Serology,Timepoint,40
+Serology,Comments,40
+Serology,[SCANNE R],40
+Serology,[SCANNE R] partialtime,40
+Serology,(values: Scan)],40
+Glycated Hemoglobin,Reason not done,42
+Glycated Hemoglobin,[SCANNE R],42
+Glycated Hemoglobin,[SCANNE R] minutes)],42
+Clinical Laboratory Assessments,Timepoint,43
+Clinical Laboratory Assessments,Comments,43
+Clinical Laboratory Assessments,[SCANNE R],43
+Clinical Laboratory Assessments,[SCANNE R] partialtime,43
+Clinical Laboratory Assessments,(values: Scan)],43
+Laboratory results review,Laboratory collection date,45
+Laboratory results review,Laboratory results review date,45
+Laboratory results review,Has the investigator reviewed all laboratory results from this visit and assessed abnormal results clinical significance?,45
+Laboratory results review,Were there any clinically significant abnormal results?,45
+Laboratory results review,Were there any clinically significant abnormal chemistry results?,45
+Laboratory results review,"Magnesium, Phosphorus, Potassium, Prolactin, Total bilirubin, Total protein, Triglycerides, Sodium, Urea nitrogen, Uric acid)] Chemistry abnormal assay # 1 Investigator comment",46
+Laboratory results review,"Magnesium, Phosphorus, Potassium, Prolactin, Total bilirubin, Total protein, Triglycerides, Sodium, Urea nitrogen, Uric acid)] Chemistry abnormal assay # 2 Investigator comment",47
+Laboratory results review,"Magnesium, Phosphorus, Potassium, Prolactin, Total bilirubin, Total protein, Triglycerides, Sodium, Urea nitrogen, Uric acid)] Chemistry abnormal assay # 3 Investigator comment",48
+Laboratory results review,"Magnesium, Phosphorus, Potassium, Prolactin, Total bilirubin, Total protein, Triglycerides, Sodium, Urea nitrogen, Uric acid)] Chemistry abnormal assay # 4 Investigator comment",49
+Laboratory results review,"Magnesium, Phosphorus, Potassium, Prolactin, Total bilirubin, Total protein, Triglycerides, Sodium, Urea nitrogen, Uric acid)] Chemistry abnormal assay # 5 Investigator comment",50
+Laboratory results review,Are there any additional clinically significant abnormal chemistry results to be entered?,50
+Laboratory results review,Were there any clinically significant abnormal hematology results?,51
+Laboratory results review,"Red blood cell count, White blood cell count (absolute and differential), Glycated Hemoglobin)] Hematology abnormal assay # 1 Investigator comment",51
+Laboratory results review,"Red blood cell count, White blood cell count (absolute and differential), Glycated Hemoglobin)] Hematology abnormal assay # 2 Investigator comment",51
+Laboratory results review,"Red blood cell count, White blood cell count (absolute and differential), Glycated Hemoglobin)] Hematology abnormal assay # 3 Investigator comment",52
+Laboratory results review,"Red blood cell count, White blood cell count (absolute and differential), Glycated Hemoglobin)] Hematology abnormal assay # 4 Investigator comment",52
+Laboratory results review,"Red blood cell count, White blood cell count (absolute and differential), Glycated Hemoglobin)] Hematology abnormal assay # 5 Investigator comment",53
+Laboratory results review,Are there any clinically significant abnormal hematology results to be entered?,53
+Laboratory results review,Were there any clinically significant abnormal urinalysis results?,53
+Laboratory results review,"Urobilinogen, Microscopic analysis if indicated)] Urinalysis abnormal assay # 1 Investigator comment",54
+Laboratory results review,"Urobilinogen, Microscopic analysis if indicated)] Urinalysis abnormal assay # 2 Investigator comment",55
+Laboratory results review,"Urobilinogen, Microscopic analysis if indicated)] Urinalysis abnormal assay # 3 Investigator comment",56
+Laboratory results review,"Urobilinogen, Microscopic analysis if indicated)] Urinalysis abnormal assay # 4 Investigator comment",57
+Laboratory results review,"Urobilinogen, Microscopic analysis if indicated)] Urinalysis abnormal assay # 5 Investigator comment",58
+Laboratory results review,Are there additional urinalysis clinically significant abnormal results to be entered?,58
+Laboratory results review,Investigator`s signature for Local Laboratory Results Review,58
+FSH Blood Sample,Timepoint,59
+FSH Blood Sample,Comments,59
+FSH Blood Sample,[SCANNE R],59
+FSH Blood Sample,[SCANNE R] partialtime,59
+FSH Blood Sample,(values: Scan)],59
+Pregnancy test,Was a Pregnancy Test Performed?,60
+Pregnancy test,If not done reason,60
+Pregnancy test,Type of pregnancy test,60
+Pregnancy test,Barcode Number,60
+Pregnancy test,Kit Expiration Date,60
+Pregnancy test,Kit Batch Number,60
+Pregnancy test,Date of Sample,60
+Pregnancy test,Time of Sample,60
+Pregnancy test,Result,60
+Tobacco Use,Substance Use Category,61
+Tobacco Use,Substance Type Cigarettes,61
+Tobacco Use,"(Unknown Day, (Unknown Day, integer (allow Unknown Month)] Unknown Month)] zero)]",61
+Tobacco Use,"enumeration (values: Per Day, enumeration",61
+Tobacco Use,None)] Cigar,61
+Tobacco Use,"Former, Never)] Cigar, Cartridge, None)]",61
+Tobacco Use,Current,62
+Alcohol Use,Substance Use Category,63
+Alcohol Use,Substance Type,63
+Alcohol Use,"(Unknown Day, (Unknown Day, (allow zero)] Unknown Month)] Unknown Month)]",63
+Alcohol Use,enumeration,63
+Alcohol Use,"(values: Per Day, enumeration enumeration Per Week)] (values: Current, (values: Bottle, Former, Never)] Can, Cup)]",63
+Alcohol Use,"Former, Never)] Can, Cup)] Spirits",63
+Alcohol Screen - Urine or Breath,Was Test Performed?,64
+Alcohol Screen - Urine or Breath,"If no, Reason Not Done",64
+Alcohol Screen - Urine or Breath,Date of Test,64
+Alcohol Screen - Urine or Breath,Time of Test,64
+Alcohol Screen - Urine or Breath,Result,64
+Alcohol Screen - Urine or Breath,Was a Repeat test performed?,64
+Alcohol Screen - Urine or Breath,Time of Repeat Test,64
+Alcohol Screen - Urine or Breath,Result of Repeat Test,65
+Urine Drug Screen,Was Urine Drug Screen Performed?,66
+Urine Drug Screen,If not done reason,66
+Urine Drug Screen,Manufacturer,66
+Urine Drug Screen,Item #,66
+Urine Drug Screen,Expiration Date,66
+Urine Drug Screen,Date of Sample,66
+Urine Drug Screen,Time of Sample,66
+Urine Drug Screen,Amphetamines,66
+Urine Drug Screen,Benzodiazepines,67
+Urine Drug Screen,Cannabinoids,67
+Urine Drug Screen,Cocaine,67
+Urine Drug Screen,Methadone,67
+Urine Drug Screen,Opiates,67
+Urine Drug Screen,Phencyclidine,67
+Urine Drug Screen,Propoxyphene,67
+Cotinine Screen,Was Cotinine Screen Performed?,68
+Cotinine Screen,If not done reason,68
+Cotinine Screen,Sample Type,68
+Cotinine Screen,Manufacturer,68
+Cotinine Screen,Item #,68
+Cotinine Screen,Expiration Date,68
+Cotinine Screen,Date of Sample,68
+Cotinine Screen,Time of Sample,68
+C-SSRS - Screening/Baseline - Page 1,Was the Questionnaire Administered?,71
+C-SSRS - Screening/Baseline - Page 1,Date of completion,71
+C-SSRS - Screening/Baseline - Page 1,Rater's initials,71
+C-SSRS - Screening/Baseline - Page 1,fall asleep and not wake up. Have you wished you were dead or wished you could go to sleep and not wake,71
+C-SSRS - Screening/Baseline - Page 1,"If Yes, describe",71
+C-SSRS - Screening/Baseline - Page 1,"General non-specific thoughts of wanting to end one's life/commit suicide (e.g. ""I've thought about killing myself"") without thoughts of way to kill oneself/associated methods,intent or plan during the assessment period.",71
+C-SSRS - Screening/Baseline - Page 1,"Includes person who would say: ""I thought about taking an overdose but I never made",72
+C-SSRS - Screening/Baseline - Page 1,"Active suicidal thoughts of killing oneself and subject reports having some intent to act on such thoughts, as opposed to ""I have thoughts but I definitely will not do anything about them""",72
+C-SSRS - Screening/Baseline - Page 1,has some intent to carry it out. Have you started to work out or worked out the details of how to kill yourself?,72
+C-SSRS - Screening/Baseline - Page 2,(values: (1) Wish to be,74
+C-SSRS - Screening/Baseline - Page 2,Description of Ideation,74
+C-SSRS - Screening/Baseline - Page 2,(values: (1) Less than,75
+C-SSRS - Screening/Baseline - Page 2,(values: (1) Fleeting few,75
+C-SSRS - Screening/Baseline - Page 2,(values: (1) Easily able to,75
+C-SSRS - Screening/Baseline - Page 2,(values: (1) Deterrents,76
+C-SSRS - Screening/Baseline - Page 2,(values: (1) Completely to get attention/ revenge or a,77
+C-SSRS - Screening/Baseline - Page 3,"be 100%. If there is any intent/desire to die associated with the act, then it can be",78
+C-SSRS - Screening/Baseline - Page 3,"If Yes, Total number of attempts",78
+C-SSRS - Screening/Baseline - Page 3,"If Yes, describe",78
+C-SSRS - Screening/Baseline - Page 3,"(values: Yes, No)]",79
+C-SSRS - Screening/Baseline - Page 3,"When the person is interrupted (by an outside circumstance) from starting the potentially self-injurious act (if not for that, actual attempt would have occurred).",79
+C-SSRS - Screening/Baseline - Page 3,"If Yes, Total number of interrupted attempts",79
+C-SSRS - Screening/Baseline - Page 3,"Examples are similar to interrupted attempts, except that the individual stops",79
+C-SSRS - Screening/Baseline - Page 3,"If Yes, Total number of aborted attempts",79
+C-SSRS - Screening/Baseline - Page 3,"(e.g., buying pills, purchasing a gun) or preparing for one's death by suicide (e.g.,",80
+C-SSRS - Screening/Baseline - Page 3,Suicidal behavior: Suicidal behaviour was present during the assessment period?,80
+C-SSRS - Screening/Baseline - Page 4,Date of Attempt,81
+C-SSRS - Screening/Baseline - Page 4,"(e.g. surface scratches) 1) Minor physical damage (e.g. lethargic speech, first-",81
+C-SSRS - Screening/Baseline - Page 4,"(the following examples, while having no actual medical damage, had potential for very serious lethality: put gun in mouth and pulled the trigger but gun fails to fire so no",81
+AE and CM prompt,Has the subject had any changes to their health since previous visit?,82
+AE and CM prompt,Are there any changes in concomitant medications including dose changes to be reported?,82
+Inclusion criteria,at the time of screening visit 2.,83
+Inclusion criteria,\2.\ Male or female subjects between 18 and 65 years of age (inclusive).,83
+Inclusion criteria,\3.\ Body mass index (BMI) between 19.0 to 35.0 kg/m2 (inclusive).,83
+Inclusion criteria,b) Physical examination c) Vital signs d) Electrocardiogram (ECG),83
+Inclusion criteria,"\5.\ Ability to provide written, informed consent prior to initiation of any trial-related procedures, and ability, in the opinion of the investigator, to comply with all the requirements of the trial.",83
+Exclusion criteria,\1.\Females who are breast-feeding and/or who have a positive pregnancy test result prior to receiving IMP.,84
+Exclusion criteria,"ligation, nonhormonal intrauterine device, condom with spermicide, sponge with spermicide, or occlusive",84
+Exclusion criteria,\3.\ Male subjects who do not agree to not donate sperm from trial screening through 30 days after the last dose of IMP.,84
+Exclusion criteria,"hematologic, and immunologic disease.",84
+Exclusion criteria,assessments or ECG results at screening must be excluded from the trial:,84
+Exclusion criteria,development of symptoms. Note: Blood pressure measurements may be repeated once to,85
+Exclusion criteria,"\7.\ Supine HR, after resting for at least 5 minutes, outside the range of 40 to 90 beats per minute (bpm). The sponsor may allow exceptions if the results are not considered to be clinically significant.",85
+Exclusion criteria,"\8.\ Subjects with epilepsy or a history of seizures, except for a single seizure episode; for instance childhood febrile seizure, a post-traumatic seizure episode, or an alcohol withdrawal seizure.",85
+Exclusion criteria,\9.\ Subjects with a history of neuroleptic malignant syndrome or serotonin syndrome.,85
+Exclusion criteria,- Schizophrenia spectrum and other psychotic disorders - Bipolar and related disorders - Feeding and eating disorders (including anorexia nervosa or bulimia),85
+Exclusion criteria,visit.,85
+Exclusion criteria,"\12.\ History of serious mental disorders that, in the opinion of the investigator, renders the subject a poor fit for the trial..",85
+Exclusion criteria,mg/dL for inclusion in the trial.,85
+Exclusion criteria,recovered and are experiencing no liver sequelae.,85
+Exclusion criteria,\15.\ Any history of difficulty in donating blood.,86
+Exclusion criteria,\16.\ History of drug and/or alcohol abuse within 2 years prior to the screening visit based on investigator judgment.,86
+Exclusion criteria,or ability to comply with the trial procedures that could interfere with the interpretation of trial results.,86
+Exclusion criteria,\19.\ Subjects having taken an investigational drug within 30 days prior to the screening visit.,86
+Exclusion criteria,trial.,86
+Exclusion criteria,within 7 days prior to Day -14.,86
+Exclusion criteria,"\22.\ History of any medically significant drug allergy or known or suspected hypersensitivity to antipsychotics or adrenergic antagonists, in particular brexpiprazole, prazosin, or propranolol.",86
+Exclusion criteria,"\23.\ Exposure to any substances known to stimulate hepatic microsomal enzymes within 30 days prior to the screening visit (eg, occupational exposure to pesticides, organic solvents).",87
+Exclusion criteria,screening visit.,87
+Exclusion criteria,\25.\ Subjects who fail to capture daily dosing of sertraline during the sertraline steady-state assurance period on Days -14 to -2.,87
+Exclusion criteria,\26.\ Subjects without a permanent physical residence.,87
+Exclusion criteria,"\27.\ Any subject who, in the opinion of the investigator, should not participate in the trial.",87
+Sertraline Titration,Is the Subject required to be Titrated ?,88
+End of Screening,Does the Subject Remain Eligible to Continue participation in the Study?,89
+End of Screening,Date of Screen Failure,89
+End of Screening,"Deviation, Terminated by Sponsor, Withdrawal by subject, Other)] Specify if: Adverse Event, Physician Decision, Protocol Deviation, Other",89
+Visit Date,Skip to next visit,90
+Drug dispensation- Titration period,Was sertraline dispensed for Titration period?,91
+Drug dispensation- Titration period,"If no, Reason",91
+Drug dispensation- Titration period,Date of dispensation,91
+PK Blood Draw - Sertraline,Was PK Collection Performed?,95
+PK Blood Draw - Sertraline,"If not performed, Reason:",95
+PK Blood Draw - Sertraline,Date of Collection,95
+PK Blood Draw - Sertraline,[SCANNE [SCANNE R] R] Brexpiprazole/Sertraline,95
+PK Blood Draw - Sertraline,[SCANNE [SCANNE R] R] Brexpiprazole/Sertraline partialtime,95
+PK Blood Draw - Sertraline,Sertraline PK field] minutes)] Propranolol PK (values: (values: Prazosin PK,95
+PK Blood Draw - Sertraline,Scan)] Scan)] enumeration [VISIBILIT [VISIBILIT (values: Y: site Y: site,95
+Aicure Device - Distribution,Has the Aicure device been distributed?,96
+Aicure Device - Distribution,Date of distribution,96
+Drug administration- Titration Period,"Confirm, if the drug was taken as specified in last five days",97
+Drug administration- Titration Period,"If No, Reason",97
+IMP Administration - Sertraline,Has subject been fasting (no food) for a minimum of 10 hours prior to the scheduled dosing?,98
+IMP Administration - Sertraline,Was Sertraline administered?,98
+IMP Administration - Sertraline,"If no, reason",98
+IMP Administration - Sertraline,Treatment,98
+IMP Administration - Sertraline,Dose Unit,98
+IMP Administration - Sertraline,Dose Form,98
+IMP Administration - Sertraline,Date of Administration,98
+IMP Administration - Sertraline,Time of Administration,98
+IMP Administration - Sertraline,Dose amount administered,98
+IMP Administration - Sertraline,Dose Strength,99
+IMP Administration - Sertraline,Number of Tablets,99
+IMP Administration - Sertraline,Physician decision)] Dosing Comments (optional),99
+PGx Blood Sample,Was PGx Blood Collection Performed?,131
+PGx Blood Sample,"If not performed, Reason:",131
+PGx Blood Sample,Date of Collection,131
+PGx Blood Sample,[SCANNE R],131
+PGx Blood Sample,[SCANNE R] partialtime,131
+PGx Blood Sample,"R] partialtime enumerati (hour, minutes)]",131
+FBR Blood Sample,Was FBR Blood Collection Performed?,132
+FBR Blood Sample,"If not performed, Reason:",132
+FBR Blood Sample,Date of Collection,132
+FBR Blood Sample,[SCANNE R],132
+FBR Blood Sample,[SCANNE R] partialtime,132
+FBR Blood Sample,"R] partialtime enumerati (hour, minutes)]",132
+C-SSRS since last visit - Page 1,Was the questionnaire administered?,134
+C-SSRS since last visit - Page 1,Date of completion,134
+C-SSRS since last visit - Page 1,Rater's initials,134
+C-SSRS since last visit - Page 1,fall asleep and not wake up. Have you wished you were dead or wished you could go to sleep and not wake,134
+C-SSRS since last visit - Page 1,"If Yes, describe",134
+C-SSRS since last visit - Page 1,"General non-specific thoughts of wanting to end one's life/commit suicide (e.g. ""I've thought about killing myself"") without thoughts of way to kill oneself/associated methods,intent or plan during the assessment period.",134
+C-SSRS since last visit - Page 1,"Includes a person who would say: ""I thought about taking an overdose but i never",135
+C-SSRS since last visit - Page 1,"Active suicidal thoughts of killing oneself and subject reports having some intent to act on such thoughts, as opposed to ""I have thoughts but I definitely will not do anything about them""",135
+C-SSRS since last visit - Page 1,has some intent to carry it out. Have you started to work out or worked out the details of how to kill yourself?,135
+C-SSRS since last visit - Page 2,Description of Ideation,136
+C-SSRS since last visit - Page 2,Frequency How many times have you had these thoughts?,136
+C-SSRS since last visit - Page 3,"intent/desire to die associated with the act, then it can be considered an actual suicide attempt.",139
+C-SSRS since last visit - Page 3,"If Yes, Total number of attempts",139
+C-SSRS since last visit - Page 3,"If Yes, describe",139
+C-SSRS since last visit - Page 3,Has subject engaged in Non-Suicidal self-injurious behavior?,139
+C-SSRS since last visit - Page 3,"Overdose: Person has pills in hand but is stopped from ingesting. Once they ingest any pills,",140
+C-SSRS since last visit - Page 3,"If Yes, Total number of interrupted attempts",140
+C-SSRS since last visit - Page 3,"attempts, except that the individual stops him/herself, instead of being stopped by something else.",140
+C-SSRS since last visit - Page 3,"If Yes, Total number of aborted attempts",140
+C-SSRS since last visit - Page 3,"gun) or preparing for one's death by suicide (e.g., giving things away, writing a suicide note)",140
+C-SSRS since last visit - Page 3,Suicidal behavior: Suicidal behavior was present during the assessment period?,141
+C-SSRS since last visit - Page 3,Suicide:,141
+C-SSRS since last visit - Page 4,Date of Attempt,142
+C-SSRS since last visit - Page 4,"sleepy; somewhat responsive, second-degree burns; bleeding of major vessel \3.\",142
+C-SSRS since last visit - Page 4,tracks with oncoming train but pulled away before run over).,142
+Body Temperature and Respiratory Rate - Predose,Were Vital Signs Collected?,154
+Body Temperature and Respiratory Rate - Predose,"If not collected, reason:",154
+Body Temperature and Respiratory Rate - Predose,Collection Date,154
+Body Temperature and Respiratory Rate - Predose,Respiratory Rate (breaths/min),154
+Body Temperature and Respiratory Rate - Predose,Body Temperature (celsius),154
+Triplicate Orthostatic BP and HR - Predose,Were Vital Signs Collected?,155
+Triplicate Orthostatic BP and HR - Predose,"If not collected, reason:",155
+Triplicate Orthostatic BP and HR - Predose,Collection Date,155
+Triplicate Orthostatic BP and HR - Predose,Time Placed in Position,155
+Triplicate ECG Assessments - Predose,Were ECG measurements performed?,157
+Triplicate ECG Assessments - Predose,"If no, Reason not done",157
+Triplicate ECG Assessments - Predose,Date of ECG,157
+Triplicate ECG Assessments - Predose,Time subject became supine:,157
+Triplicate ECG Assessments - Predose,Time of ECG assessment # 1:,157
+Triplicate ECG Assessments - Predose,Time of ECG assessment # 2:,157
+Triplicate ECG Assessments - Predose,Time of ECG assessment # 3:,157
+Triplicate ECG Assessments - Predose,Abnormal Findings,158
+Triplicate ECG Assessments - Predose,Was the ECG abnormality clinically significant?,158
+Triplicate ECG Assessments - Predose,Are additional ECG assessments required?,158
+Triplicate Orthostatic BP and HR - 1h Postdose,Were Vital Signs Collected?,173
+Triplicate Orthostatic BP and HR - 1h Postdose,"If not collected, reason:",173
+Triplicate Orthostatic BP and HR - 1h Postdose,Collection Date,173
+Triplicate Orthostatic BP and HR - 1h Postdose,Time Placed in Position,173
+Triplicate Orthostatic BP and HR - 1.5h Postdose,Were Vital Signs Collected?,175
+Triplicate Orthostatic BP and HR - 1.5h Postdose,"If not collected, reason:",175
+Triplicate Orthostatic BP and HR - 1.5h Postdose,Collection Date,175
+Triplicate Orthostatic BP and HR - 1.5h Postdose,Time Placed in Position,175
+Triplicate Orthostatic BP and HR - 2h Postdose,Were Vital Signs Collected?,177
+Triplicate Orthostatic BP and HR - 2h Postdose,"If not collected, reason:",177
+Triplicate Orthostatic BP and HR - 2h Postdose,Collection Date,177
+Triplicate Orthostatic BP and HR - 2h Postdose,Time Placed in Position,177
+Triplicate Orthostatic BP and HR - 2.5h Postdose,Were Vital Signs Collected?,179
+Triplicate Orthostatic BP and HR - 2.5h Postdose,"If not collected, reason:",179
+Triplicate Orthostatic BP and HR - 2.5h Postdose,Collection Date,179
+Triplicate Orthostatic BP and HR - 2.5h Postdose,Time Placed in Position,179
+Triplicate Orthostatic BP and HR - 3h Postdose,Were Vital Signs Collected?,181
+Triplicate Orthostatic BP and HR - 3h Postdose,"If not collected, reason:",181
+Triplicate Orthostatic BP and HR - 3h Postdose,Collection Date,181
+Triplicate Orthostatic BP and HR - 3h Postdose,Time Placed in Position,181
+Triplicate Orthostatic BP and HR - 4h Postdose,Were Vital Signs Collected?,183
+Triplicate Orthostatic BP and HR - 4h Postdose,"If not collected, reason:",183
+Triplicate Orthostatic BP and HR - 4h Postdose,Collection Date,183
+Triplicate Orthostatic BP and HR - 4h Postdose,Time Placed in Position,183
+Triplicate Orthostatic BP and HR - 6h Postdose,Were Vital Signs Collected?,185
+Triplicate Orthostatic BP and HR - 6h Postdose,"If not collected, reason:",185
+Triplicate Orthostatic BP and HR - 6h Postdose,Collection Date,185
+Triplicate Orthostatic BP and HR - 6h Postdose,Time Placed in Position,185
+Triplicate Orthostatic BP and HR - 8h Postdose,Were Vital Signs Collected?,187
+Triplicate Orthostatic BP and HR - 8h Postdose,"If not collected, reason:",187
+Triplicate Orthostatic BP and HR - 8h Postdose,Collection Date,187
+Triplicate Orthostatic BP and HR - 8h Postdose,Time Placed in Position,187
+Visit Date,Skip to Early Termination visit,189
+IMP Administration - Sertraline and Prazosin,Has subject been fasting (no food) for a minimum of 10 hours prior to the scheduled dosing?,204
+IMP Administration - Sertraline and Prazosin,Was Sertraline administered?,204
+IMP Administration - Sertraline and Prazosin,"If no, reason",204
+IMP Administration - Sertraline and Prazosin,Treatment,204
+IMP Administration - Sertraline and Prazosin,Dose Unit,204
+IMP Administration - Sertraline and Prazosin,Dose Form,204
+IMP Administration - Sertraline and Prazosin,Date of Administration,204
+IMP Administration - Sertraline and Prazosin,Time of Administration,204
+IMP Administration - Sertraline and Prazosin,Physician decision)] Dosing Comments (optional),205
+IMP Administration - Sertraline and Prazosin,Was Prazosin administered?,205
+PK Blood Draw - Prazosin,Was PK Collection Performed?,209
+PK Blood Draw - Prazosin,"If not performed, Reason:",209
+PK Blood Draw - Prazosin,Date of Collection,209
+PK Blood Draw - Prazosin,[SCANNE [SCANNE R] R] Brexpiprazole/Sertraline,209
+PK Blood Draw - Prazosin,[SCANNE [SCANNE R] R] Brexpiprazole/Sertraline partialtime,209
+PK Blood Draw - Prazosin,Sertraline PK field] minutes)] Propranolol PK (values: (values: Prazosin PK,209
+PK Blood Draw - Prazosin,Scan)] Scan)] enumeration [VISIBILIT [VISIBILIT (values: Y: site Y: site,209
+12-lead ECG - Discharge,Timepoint,232
+12-lead ECG - Discharge,Was 12 Lead ECG Performed?,232
+12-lead ECG - Discharge,"If no, Reason not done",232
+12-lead ECG - Discharge,Date of ECG,232
+12-lead ECG - Discharge,Time subject became supine:,232
+12-lead ECG - Discharge,Time of ECG assessment,232
+12-lead ECG - Discharge,Abnormal Findings,232
+12-lead ECG - Discharge,Was the ECG abnormality clinically significant?,232
+IMP Administration - Sertraline and Propranolol,Has subject been fasting (no food) for a minimum of 10 hours prior to the scheduled dosing?,260
+IMP Administration - Sertraline and Propranolol,Was Sertraline administered?,260
+IMP Administration - Sertraline and Propranolol,"If no, reason",260
+IMP Administration - Sertraline and Propranolol,Treatment,260
+IMP Administration - Sertraline and Propranolol,Dose Unit,260
+IMP Administration - Sertraline and Propranolol,Dose Form,260
+IMP Administration - Sertraline and Propranolol,Date of Administration,260
+IMP Administration - Sertraline and Propranolol,Time of Administration,260
+IMP Administration - Sertraline and Propranolol,Physician decision)] Dosing Comments (optional),261
+IMP Administration - Sertraline and Propranolol,Was Propranol administered?,261
+PK Blood Draw - Propranolol,Was PK Collection Performed?,265
+PK Blood Draw - Propranolol,"If not performed, Reason:",265
+PK Blood Draw - Propranolol,Date of Collection,265
+PK Blood Draw - Propranolol,[SCANNE [SCANNE R] R] Brexpiprazole/Sertraline,265
+PK Blood Draw - Propranolol,[SCANNE [SCANNE R] R] Brexpiprazole/Sertraline partialtime,265
+PK Blood Draw - Propranolol,Sertraline PK field] minutes)] Propranolol PK (values: (values: Prazosin PK,265
+PK Blood Draw - Propranolol,Scan)] Scan)] enumeration [VISIBILIT [VISIBILIT (values: Y: site Y: site,265
+IMP Administration - Sertraline and Brexpiprazole,Has subject been fasting (no food) for a minimum of 10 hours prior to the scheduled dosing?,312
+IMP Administration - Sertraline and Brexpiprazole,Was Sertraline administered?,312
+IMP Administration - Sertraline and Brexpiprazole,"If no, reason",312
+IMP Administration - Sertraline and Brexpiprazole,Treatment,312
+IMP Administration - Sertraline and Brexpiprazole,Dose Unit,312
+IMP Administration - Sertraline and Brexpiprazole,Dose Form,312
+IMP Administration - Sertraline and Brexpiprazole,Date of Administration,312
+IMP Administration - Sertraline and Brexpiprazole,Time of Administration,312
+IMP Administration - Sertraline and Brexpiprazole,Physician decision)] Dosing Comments (optional),313
+IMP Administration - Sertraline and Brexpiprazole,Was Brexpiprazole administered?,313
+PK Blood Draw - Brexpiprazole/Sertraline,Was PK Collection Performed?,315
+PK Blood Draw - Brexpiprazole/Sertraline,"If not performed, Reason:",315
+PK Blood Draw - Brexpiprazole/Sertraline,Date of Collection,315
+PK Blood Draw - Brexpiprazole/Sertraline,[SCANNE [SCANNE R] R] Brexpiprazole/Sertraline PK,315
+PK Blood Draw - Brexpiprazole/Sertraline,[SCANNE [SCANNE R] R] Brexpiprazole/Sertraline PK partialtime,315
+PK Blood Draw - Brexpiprazole/Sertraline,"enumerati enumerati (hour, Propranolol PK field] minutes)] Prazosin PK (values: (values:",315
+PK Blood Draw - Brexpiprazole/Sertraline,minutes)] Prazosin PK (values: (values: Scan)] Scan)],315
+12-lead ECG - 4h Postdose,Timepoint,348
+12-lead ECG - 4h Postdose,Was 12 Lead ECG Performed?,348
+12-lead ECG - 4h Postdose,"If no, Reason not done",348
+12-lead ECG - 4h Postdose,Date of ECG,348
+12-lead ECG - 4h Postdose,Time subject became supine:,348
+12-lead ECG - 4h Postdose,Time of ECG assessment,348
+12-lead ECG - 4h Postdose,Abnormal Findings,348
+12-lead ECG - 4h Postdose,Was the ECG abnormality clinically significant?,348
+"IMP Administration - Sertraline, Brexpiprazole and Prazosin",Has subject been fasting (no food) for a minimum of 10 hours prior to the scheduled dosing?,369
+"IMP Administration - Sertraline, Brexpiprazole and Prazosin",Was Sertraline administered?,369
+"IMP Administration - Sertraline, Brexpiprazole and Prazosin","If no, reason",369
+"IMP Administration - Sertraline, Brexpiprazole and Prazosin",Treatment,369
+"IMP Administration - Sertraline, Brexpiprazole and Prazosin",Dose Unit,369
+"IMP Administration - Sertraline, Brexpiprazole and Prazosin",Dose Form,369
+"IMP Administration - Sertraline, Brexpiprazole and Prazosin",Date of Administration,369
+"IMP Administration - Sertraline, Brexpiprazole and Prazosin",Time of Administration,369
+"IMP Administration - Sertraline, Brexpiprazole and Prazosin",Physician decision)] Dosing Comments (optional),370
+"IMP Administration - Sertraline, Brexpiprazole and Prazosin",Was Brexpiprazole administered?,370
+"IMP Administration - Sertraline, Brexpiprazole and Prazosin",Was Prazosin administered?,371
+Aicure Device - Return,Has the Aicure device been returned?,419
+Aicure Device - Return,Date of return,419
+"IMP Administration - Sertraline, Brexpiprazole and Propranolol",Has subject been fasting (no food) for a minimum of 10 hours prior to the scheduled dosing?,430
+"IMP Administration - Sertraline, Brexpiprazole and Propranolol",Was Sertraline administered?,430
+"IMP Administration - Sertraline, Brexpiprazole and Propranolol","If no, reason",430
+"IMP Administration - Sertraline, Brexpiprazole and Propranolol",Treatment,430
+"IMP Administration - Sertraline, Brexpiprazole and Propranolol",Dose Unit,430
+"IMP Administration - Sertraline, Brexpiprazole and Propranolol",Dose Form,430
+"IMP Administration - Sertraline, Brexpiprazole and Propranolol",Date of Administration,430
+"IMP Administration - Sertraline, Brexpiprazole and Propranolol",Time of Administration,430
+"IMP Administration - Sertraline, Brexpiprazole and Propranolol",Physician decision)] Dosing Comments (optional),431
+"IMP Administration - Sertraline, Brexpiprazole and Propranolol",Was Brexpiprazole administered?,431
+"IMP Administration - Sertraline, Brexpiprazole and Propranolol",Was Propranolol administered?,432
+End of Study,Did the Subject complete the Study?,454
+End of Study,Date of Study Completion/Discontinuation,454
+End of Study,"Deviation, Terminated by Sponsor, Withdrawal by subject, Other)] Specify if: Adverse Event, Physician Decision, Protocol Deviation, Other",454
+12-lead ECG,Timepoint,461
+12-lead ECG,Was 12 Lead ECG Performed?,461
+12-lead ECG,"If no, Reason not done",461
+12-lead ECG,Date of ECG,461
+12-lead ECG,Time subject became supine:,461
+12-lead ECG,Time of ECG assessment,461
+12-lead ECG,Abnormal Findings,461
+12-lead ECG,Was the ECG abnormality clinically significant?,461
+"IMP Administration - Sertraline,Brexpiprazole and Propranolol",Has subject been fasting (no food) for a minimum of 10 hours prior to the scheduled dosing?,493
+"IMP Administration - Sertraline,Brexpiprazole and Propranolol",Was Sertraline administered?,493
+"IMP Administration - Sertraline,Brexpiprazole and Propranolol","If no, reason",493
+"IMP Administration - Sertraline,Brexpiprazole and Propranolol",Treatment,493
+"IMP Administration - Sertraline,Brexpiprazole and Propranolol",Dose Unit,493
+"IMP Administration - Sertraline,Brexpiprazole and Propranolol",Dose Form,493
+"IMP Administration - Sertraline,Brexpiprazole and Propranolol",Date of Administration,493
+"IMP Administration - Sertraline,Brexpiprazole and Propranolol",Time of Administration,493
+"IMP Administration - Sertraline,Brexpiprazole and Propranolol",Physician decision)] Dosing Comments (optional),494
+"IMP Administration - Sertraline,Brexpiprazole and Propranolol",Was Brexpiprazole administered?,494
+"IMP Administration - Sertraline,Brexpiprazole and Propranolol",Was Propranolol administered?,495
+Orthostatic BP and HR - ET,Were Vital Signs Collected?,497
+Orthostatic BP and HR - ET,"If not collected, reason:",497
+Orthostatic BP and HR - ET,Collection Date,497
+Orthostatic BP and HR - ET,Time Placed in Position,497
+Orthostatic BP and HR - ET,Time of Vitals Measurement,498
+Orthostatic BP and HR - ET,Systolic Blood Pressure (mmHg),498
+Orthostatic BP and HR - ET,Diastolic Blood Pressure (mmHg),498
+Orthostatic BP and HR - ET,Heart Rate (bpm),498
+Follow-Up Phone Call,Were you able to contact the Subject?,502
+Follow-Up Phone Call,Date of Contact/Attempt,502
+Follow-Up Phone Call,Method of Contact,502
+Follow-Up Phone Call,Specify Contact if Other,502
+Follow-Up Phone Call,Was the subject reminded of the birth control restrictions for 30 days postdose?,502
+Follow-Up Phone Call,Has the subject had any adverse events since the last visit?,502
+Follow-Up Phone Call,Comments,503
+Adverse Events,Are There any Adverse Events to Report?,504
+Adverse Events,Record,504
+Adverse Events,Event Term,504
+Adverse Events,Event Onset Date,504
+Adverse Events,Event Onset Time,504
+Adverse Events,Is the event serious?,504
+Adverse Events,Date SAE Reported,504
+Adverse Events,SAE Given to Regulatory for IRB Submission?,504
+Adverse Events,"If no, Specify",504
+Adverse Events,Death,505
+Adverse Events,Life Threatening,505
+Adverse Events,Requires or Prolongs Hospitalization,505
+Adverse Events,Significant Disability,505
+Adverse Events,Congenital Anomaly or Birth Defect,505
+Adverse Events,Other Medically Important Serious Event,505
+Adverse Events,Relationship to drug,505
+Adverse Events,Is this AE an Event of Special Interest?,505
+Adverse Events,Event Stop Time,506
+Adverse Events,Ongoing,506
+Adverse Events,Notes,507
+Adverse Events,Investigator: By clicking - Confirm,507
+Prior and Concomitant Medications,Are There any Prior/Concomitant Medications to Report?,508
+Prior and Concomitant Medications,Record,508
+Prior and Concomitant Medications,Drug Name,508
+Prior and Concomitant Medications,"Other Unit, specify",508
+Prior and Concomitant Medications,"Ring, Rinse, Shampoo, Soap, Solution, Spray, Strip, Suppository, Suspension, Syrup, Tablet, Tampon, Tincture, Troche, Wafer)] Other Dose Form",510
+Prior and Concomitant Medications,"Needed, Once, Continuous, Intermittent, Unknown, Other)] Other Frequency, Specify",510
+Prior and Concomitant Medications,"Intrapulmonary, Endotracheal, Intra-arterial, Intra-articular, Intravesicle, Intrapleural, Intrathecal, Parenteral, Percutaneous, Other)] Other Route, Specify",512
+Prior and Concomitant Medications,Indication,512
+Prior and Concomitant Medications,Start Date,512
+Prior and Concomitant Medications,Start Time,512
+Prior and Concomitant Medications,Ongoing,512
+Prior and Concomitant Medications,Stop Date,512
+Prior and Concomitant Medications,Stop Time,512
+Prior and Concomitant Medications,"If the medication is to treat adverse event, please provide the AE#",512
+Prior and Concomitant Medications,"If the medication is to treat existing medical or psychiatric history, please provide the MH/PH#",512
+Surgeries and medical procedures,"Are There any Surgeries, Non-Drug Procedures to Report?",513
+Surgeries and medical procedures,Record,513
+Surgeries and medical procedures,Procedure/Surgery Name,513
+Surgeries and medical procedures,Start Date,513
+Surgeries and medical procedures,End Date,513
+Withdrawal of Informed Consent,Consent Withdrawn?,514
+Withdrawal of Informed Consent,Date Consent Withdrawn,514
+Withdrawal of Informed Consent,Time consent Withdrawn,514
+Withdrawal of Informed Consent,Standardized Disposition Term,514
+IMP Missed Dose,Start date,515
+IMP Missed Dose,Stop date,515
+IMP Missed Dose,"Steady-state Attainment Period Day 18, Treatment Period Day 19, Treatment Period Day 20, Treatment Period Day 21, ET)] Total Number of Tab taken",515
+IMP Missed Dose,Non-Compliance reason other specify,516
+IMP Missed Dose,Number of tablets of Sertraline taken,516
+IMP Missed Dose,Number of tablets of Brexpiprazole taken,516
+IMP Missed Dose,Number of tablets of Prazosin taken,516
+IMP Missed Dose,Number of tablets of Propranolol taken,516
+Protocol Deviation,Were there any protocol deviations?,517
+Protocol Deviation,"outcome variables), Met withdrawal criteria but was not withdrawn)] Is this deviation due to COVID-19?",517
+Protocol Deviation,Description of Deviation,517
+Protocol Deviation,Start Date,517
+Protocol Deviation,Start Time (if applicable),517
+Protocol Deviation,End Date (if applicable),518
+Protocol Deviation,End Time (if applicable),518
+Admission to clinic,Date of Admission in clinic,519
+Admission to clinic,Time of Admission in clinic,519
+Discharge from clinic,Date of Discharge,520
+Discharge from clinic,Time of Discharge,520
+Death,Date of Death,521
+Death,Primary Cause of Death,521
+Death,Autopsy Performed?,521
+Death,Date of Autopsy,521
+Death,Death Related to IMP?,521
+Drug Accountability,Date Bottles Dispensed,522
+Drug Accountability,Bottle Number(s) Sertraline - 50 mg,522
+Drug Accountability,Number of Sertraline - 50 mg bottles Dispensed,522
+Drug Accountability,Number of Sertraline - 50 mg Capsules Dispensed (total),522
+Drug Accountability,Bottle Number(s) Brexpiprazole - 1 mg,522
+Drug Accountability,Number of Brexpiprazole - 1 mg bottles Dispensed,522
+Drug Accountability,Number of Brexpiprazole - 1 mg Capsules Dispensed (total),522
+Drug Accountability,Number of Brexpiprazole - 2 mg bottles Dispensed,523
+Drug Accountability,Number of Brexpiprazole - 2 mg Capsules Dispensed (total),523
+Drug Accountability,Bottle Number(s) Brexpiprazole - 3 mg,523
+Drug Accountability,Number of Brexpiprazole - 3 mg bottles Dispensed,523
+Drug Accountability,Number of Brexpiprazole - 3 mg Capsules Dispensed (total),523
+Drug Accountability,Date Bottles Returned,523
+Drug Accountability,Number of Sertraline - 50 mg Capsules Returned,523
+Drug Accountability,Number of Brexpiprazole - 1 mg Capsules Returned,523
+Drug Accountability,Number of Brexpiprazole - 2 mg Capsules Returned,523
+Drug Accountability,Number of Brexpiprazole - 3 mg Capsules Returned,523
+12-lead ECG - Repeat,Date of ECG,524
+12-lead ECG - Repeat,Time subject became supine:,524
+12-lead ECG - Repeat,Time of ECG assessment,524
+12-lead ECG - Repeat,Abnormal Findings,524
+12-lead ECG - Repeat,Was the ECG abnormality clinically significant?,524
+12-lead ECG - Repeat,Are additional ECG assessments required?,524
+Urine drug screen - Repeat,Was Urine Drug Screen Performed?,525
+Urine drug screen - Repeat,If not done reason,525
+Urine drug screen - Repeat,Manufacturer,525
+Urine drug screen - Repeat,Item #,525
+Urine drug screen - Repeat,Expiration Date,525
+Urine drug screen - Repeat,Date of Sample,525
+Urine drug screen - Repeat,Time of Sample,525
+Urine drug screen - Repeat,Amphetamines,525
+Urine drug screen - Repeat,Benzodiazepines,526
+Urine drug screen - Repeat,Cannabinoids,526
+Urine drug screen - Repeat,Cocaine,526
+Urine drug screen - Repeat,Methadone,526
+Urine drug screen - Repeat,Opiates,526
+Urine drug screen - Repeat,Phencyclidine,526
+Urine drug screen - Repeat,Propoxyphene,526
+Cotinine Screen - Repeat,Was Cotinine Screen Performed?,527
+Cotinine Screen - Repeat,If not done reason,527
+Cotinine Screen - Repeat,Sample Type,527
+Cotinine Screen - Repeat,Manufacturer,527
+Cotinine Screen - Repeat,Item #,527
+Cotinine Screen - Repeat,Expiration Date,527
+Cotinine Screen - Repeat,Date of Sample,527
+Cotinine Screen - Repeat,Time of Sample,527
+Clinical Laboratory Assessments - Repeat,Timepoint,529
+Clinical Laboratory Assessments - Repeat,Comments,529
+Clinical Laboratory Assessments - Repeat,[SCANNE R],529
+Clinical Laboratory Assessments - Repeat,[SCANNE R] partialtime,529
+Clinical Laboratory Assessments - Repeat,(values: Scan)],529
+Laboratory Results Review - Repeat,Laboratory collection date,531
+Laboratory Results Review - Repeat,Laboratory results review date,531
+Laboratory Results Review - Repeat,Has the investigator reviewed all laboratory results from this visit and assessed abnormal results clinical significance?,531
+Laboratory Results Review - Repeat,Were there any clinically significant abnormal results?,531
+Laboratory Results Review - Repeat,Were there any clinically significant abnormal chemistry results?,531
+Laboratory Results Review - Repeat,"Magnesium, Phosphorus, Potassium, Prolactin, Total bilirubin, Total protein, Triglycerides, Sodium, Urea nitrogen, Uric acid)] Chemistry abnormal assay # 1 Investigator comment",532
+Laboratory Results Review - Repeat,"Magnesium, Phosphorus, Potassium, Prolactin, Total bilirubin, Total protein, Triglycerides, Sodium, Urea nitrogen, Uric acid)] Chemistry abnormal assay # 2 Investigator comment",533
+Laboratory Results Review - Repeat,"Magnesium, Phosphorus, Potassium, Prolactin, Total bilirubin, Total protein, Triglycerides, Sodium, Urea nitrogen, Uric acid)] Chemistry abnormal assay # 3 Investigator comment",534
+Laboratory Results Review - Repeat,"Magnesium, Phosphorus, Potassium, Prolactin, Total bilirubin, Total protein, Triglycerides, Sodium, Urea nitrogen, Uric acid)] Chemistry abnormal assay # 4 Investigator comment",535
+Laboratory Results Review - Repeat,"Magnesium, Phosphorus, Potassium, Prolactin, Total bilirubin, Total protein, Triglycerides, Sodium, Urea nitrogen, Uric acid)] Chemistry abnormal assay # 5 Investigator comment",536
+Laboratory Results Review - Repeat,Are there any additional clinically significant abnormal chemistry results to be entered?,536
+Laboratory Results Review - Repeat,Were there any clinically significant abnormal hematology results?,537
+Laboratory Results Review - Repeat,"Red blood cell count, White blood cell count (absolute and differential), Glycated Hemoglobin)] Hematology abnormal assay # 1 Investigator comment",537
+Laboratory Results Review - Repeat,"Red blood cell count, White blood cell count (absolute and differential), Glycated Hemoglobin)] Hematology abnormal assay # 2 Investigator comment",537
+Laboratory Results Review - Repeat,"Red blood cell count, White blood cell count (absolute and differential), Glycated Hemoglobin)] Hematology abnormal assay # 3 Investigator comment",538
+Laboratory Results Review - Repeat,"Red blood cell count, White blood cell count (absolute and differential), Glycated Hemoglobin)] Hematology abnormal assay # 4 Investigator comment",538
+Laboratory Results Review - Repeat,"Red blood cell count, White blood cell count (absolute and differential), Glycated Hemoglobin)] Hematology abnormal assay # 5 Investigator comment",539
+Laboratory Results Review - Repeat,Are there any clinically significant abnormal hematology results to be entered?,539
+Laboratory Results Review - Repeat,Were there any clinically significant abnormal urinalysis results?,539
+Laboratory Results Review - Repeat,"Urobilinogen, Microscopic analysis if indicated)] Urinalysis abnormal assay # 1 Investigator comment",540
+Laboratory Results Review - Repeat,"Urobilinogen, Microscopic analysis if indicated)] Urinalysis abnormal assay # 2 Investigator comment",541
+Laboratory Results Review - Repeat,"Urobilinogen, Microscopic analysis if indicated)] Urinalysis abnormal assay # 3 Investigator comment",542
+Laboratory Results Review - Repeat,"Urobilinogen, Microscopic analysis if indicated)] Urinalysis abnormal assay # 4 Investigator comment",543
+Laboratory Results Review - Repeat,"Urobilinogen, Microscopic analysis if indicated)] Urinalysis abnormal assay # 5 Investigator comment",544
+Laboratory Results Review - Repeat,Are there additional urinalysis clinically significant abnormal results to be entered?,544
+Laboratory Results Review - Repeat,Investigator`s signature for Local Laboratory Results Review,544
+Triplicate Orthostatic BP and HR - Repeat,Were Vital Signs Collected?,545
+Triplicate Orthostatic BP and HR - Repeat,"If not collected, reason:",545
+Triplicate Orthostatic BP and HR - Repeat,Collection Date,545
+Triplicate Orthostatic BP and HR - Repeat,Time Placed in Position,545
+Glycated Hemoglobin - Repeat,Reason not done,547
+Glycated Hemoglobin - Repeat,[SCANNE R],547
+Glycated Hemoglobin - Repeat,[SCANNE R] minutes)],547
+Orthostatic BP and HR - Unscheduled,Were Vital Signs Collected?,548
+Orthostatic BP and HR - Unscheduled,"If not collected, reason:",548
+Orthostatic BP and HR - Unscheduled,Collection Date,548
+Orthostatic BP and HR - Unscheduled,Time Placed in Position,548
+Orthostatic BP and HR - Unscheduled,Time of Vitals Measurement,549
+Orthostatic BP and HR - Unscheduled,Systolic Blood Pressure (mmHg),549
+Orthostatic BP and HR - Unscheduled,Diastolic Blood Pressure (mmHg),549
+Orthostatic BP and HR - Unscheduled,Heart Rate (bpm),549
+12-lead ECG - Unscheduled,Timepoint,551
+12-lead ECG - Unscheduled,Was 12 Lead ECG Performed?,551
+12-lead ECG - Unscheduled,"If no, Reason not done",551
+12-lead ECG - Unscheduled,Date of ECG,551
+12-lead ECG - Unscheduled,Time subject became supine:,551
+12-lead ECG - Unscheduled,Time of ECG assessment,551
+12-lead ECG - Unscheduled,Abnormal Findings,551
+12-lead ECG - Unscheduled,Was the ECG abnormality clinically significant?,551
+Pregnancy test - Unscheduled,Was a Pregnancy Test Performed?,553
+Pregnancy test - Unscheduled,If not done reason,553
+Pregnancy test - Unscheduled,Type of pregnancy test,553
+Pregnancy test - Unscheduled,Barcode Number,553
+Pregnancy test - Unscheduled,Kit Expiration Date,553
+Pregnancy test - Unscheduled,Kit Batch Number,553
+Pregnancy test - Unscheduled,Date of Sample,553
+Pregnancy test - Unscheduled,Time of Sample,553
+Pregnancy test - Unscheduled,Result,553
+Physical examination - Unscheduled,Was the physical examination performed?,554
+Physical examination - Unscheduled,Planned Timepoint,554
+Physical examination - Unscheduled,Examination Date,554
+Physical examination - Unscheduled,Examination Time,554
+Physical examination - Unscheduled,Evaluator,554
+Physical examination - Unscheduled,Region/Body System HEENT,554
+Physical examination - Unscheduled,Done)] Thorax,554
+Physical examination - Unscheduled,Done)] Abdomen,554
+Physical examination - Unscheduled,Done)] Skin and Mucosae,555
+Physical examination - Unscheduled,Done)] Neurological,555
+Physical examination - Unscheduled,Done)] Extremities,555
+Urine drug screen - Unscheduled,Was Urine Drug Screen Performed?,556
+Urine drug screen - Unscheduled,If not done reason,556
+Urine drug screen - Unscheduled,Manufacturer,556
+Urine drug screen - Unscheduled,Item #,556
+Urine drug screen - Unscheduled,Expiration Date,556
+Urine drug screen - Unscheduled,Date of Sample,556
+Urine drug screen - Unscheduled,Time of Sample,556
+Urine drug screen - Unscheduled,Amphetamines,556
+Urine drug screen - Unscheduled,Benzodiazepines,557
+Urine drug screen - Unscheduled,Cannabinoids,557
+Urine drug screen - Unscheduled,Cocaine,557
+Urine drug screen - Unscheduled,Methadone,557
+Urine drug screen - Unscheduled,Opiates,557
+Urine drug screen - Unscheduled,Phencyclidine,557
+Urine drug screen - Unscheduled,Propoxyphene,557
+Reconsent - Unscheduled,"Amendment 7, Amendment 8, Amendment 9, Amendment 10)] Consent Obtained?",558
+Reconsent - Unscheduled,Date of Consent,558
+Reconsent - Unscheduled,Time of Consent,558
+Reconsent - Unscheduled,Subject given a copy of the fully executed ICF form(s),558
+Reconsent - Unscheduled,ICF was reviewed and verified and the original ICF has been filed in with subject's source documents,559
+Reconsent - Unscheduled,Signed by,559
+Cotinine Screen - Unscheduled,Was Cotinine Screen Performed?,560
+Cotinine Screen - Unscheduled,If not done reason,560
+Cotinine Screen - Unscheduled,Sample Type,560
+Cotinine Screen - Unscheduled,Manufacturer,560
+Cotinine Screen - Unscheduled,Item #,560
+Cotinine Screen - Unscheduled,Expiration Date,560
+Cotinine Screen - Unscheduled,Date of Sample,560
+Cotinine Screen - Unscheduled,Time of Sample,560
+FSH Blood Sample- Unscheduled,Timepoint,562
+FSH Blood Sample- Unscheduled,Comments,562
+FSH Blood Sample- Unscheduled,[SCANNE R],562
+FSH Blood Sample- Unscheduled,[SCANNE R] partialtime,562
+FSH Blood Sample- Unscheduled,(values: Scan)],562
+Clinical Laboratory Assessments - Unscheduled,Timepoint,563
+Clinical Laboratory Assessments - Unscheduled,Comments,563
+Clinical Laboratory Assessments - Unscheduled,[SCANNE R],563
+Clinical Laboratory Assessments - Unscheduled,[SCANNE R] partialtime,563
+Clinical Laboratory Assessments - Unscheduled,(values: Scan)],563
+Laboratory Results Review - Unscheduled,Laboratory collection date,565
+Laboratory Results Review - Unscheduled,Laboratory results review date,565
+Laboratory Results Review - Unscheduled,Has the investigator reviewed all laboratory results from this visit and assessed abnormal results clinical significance?,565
+Laboratory Results Review - Unscheduled,Were there any clinically significant abnormal results?,565
+Laboratory Results Review - Unscheduled,Were there any clinically significant abnormal chemistry results?,565
+Laboratory Results Review - Unscheduled,"Magnesium, Phosphorus, Potassium, Prolactin, Total bilirubin, Total protein, Triglycerides, Sodium, Urea nitrogen, Uric acid)] Chemistry abnormal assay # 1 Investigator comment",566
+Laboratory Results Review - Unscheduled,"Magnesium, Phosphorus, Potassium, Prolactin, Total bilirubin, Total protein, Triglycerides, Sodium, Urea nitrogen, Uric acid)] Chemistry abnormal assay # 2 Investigator comment",567
+Laboratory Results Review - Unscheduled,"Magnesium, Phosphorus, Potassium, Prolactin, Total bilirubin, Total protein, Triglycerides, Sodium, Urea nitrogen, Uric acid)] Chemistry abnormal assay # 3 Investigator comment",568
+Laboratory Results Review - Unscheduled,"Magnesium, Phosphorus, Potassium, Prolactin, Total bilirubin, Total protein, Triglycerides, Sodium, Urea nitrogen, Uric acid)] Chemistry abnormal assay # 4 Investigator comment",569
+Laboratory Results Review - Unscheduled,"Magnesium, Phosphorus, Potassium, Prolactin, Total bilirubin, Total protein, Triglycerides, Sodium, Urea nitrogen, Uric acid)] Chemistry abnormal assay # 5 Investigator comment",570
+Laboratory Results Review - Unscheduled,Are there any additional clinically significant abnormal chemistry results to be entered?,570
+Laboratory Results Review - Unscheduled,Were there any clinically significant abnormal hematology results?,571
+Laboratory Results Review - Unscheduled,"Red blood cell count, White blood cell count (absolute and differential), Glycated Hemoglobin)] Hematology abnormal assay # 1 Investigator comment",571
+Laboratory Results Review - Unscheduled,"Red blood cell count, White blood cell count (absolute and differential), Glycated Hemoglobin)] Hematology abnormal assay # 2 Investigator comment",571
+Laboratory Results Review - Unscheduled,"Red blood cell count, White blood cell count (absolute and differential), Glycated Hemoglobin)] Hematology abnormal assay # 3 Investigator comment",572
+Laboratory Results Review - Unscheduled,"Red blood cell count, White blood cell count (absolute and differential), Glycated Hemoglobin)] Hematology abnormal assay # 4 Investigator comment",572
+Laboratory Results Review - Unscheduled,"Red blood cell count, White blood cell count (absolute and differential), Glycated Hemoglobin)] Hematology abnormal assay # 5 Investigator comment",573
+Laboratory Results Review - Unscheduled,Are there any clinically significant abnormal hematology results to be entered?,573
+Laboratory Results Review - Unscheduled,Were there any clinically significant abnormal urinalysis results?,573
+Laboratory Results Review - Unscheduled,"Urobilinogen, Microscopic analysis if indicated)] Urinalysis abnormal assay # 1 Investigator comment",574
+Laboratory Results Review - Unscheduled,"Urobilinogen, Microscopic analysis if indicated)] Urinalysis abnormal assay # 2 Investigator comment",575
+Laboratory Results Review - Unscheduled,"Urobilinogen, Microscopic analysis if indicated)] Urinalysis abnormal assay # 3 Investigator comment",576
+Laboratory Results Review - Unscheduled,"Urobilinogen, Microscopic analysis if indicated)] Urinalysis abnormal assay # 4 Investigator comment",577
+Laboratory Results Review - Unscheduled,"Urobilinogen, Microscopic analysis if indicated)] Urinalysis abnormal assay # 5 Investigator comment",578
+Laboratory Results Review - Unscheduled,Are there additional urinalysis clinically significant abnormal results to be entered?,578
+Laboratory Results Review - Unscheduled,Investigator`s signature for Local Laboratory Results Review,578
+CSSRS - Since Last Visit part 1 - Unscheduled,Was the questionnaire administered?,580
+CSSRS - Since Last Visit part 1 - Unscheduled,Date of completion,580
+CSSRS - Since Last Visit part 1 - Unscheduled,Rater's initials,580
+CSSRS - Since Last Visit part 1 - Unscheduled,fall asleep and not wake up. Have you wished you were dead or wished you could go to sleep and not wake,580
+CSSRS - Since Last Visit part 1 - Unscheduled,"If Yes, describe",580
+CSSRS - Since Last Visit part 1 - Unscheduled,"General non-specific thoughts of wanting to end one's life/commit suicide (e.g. ""I've thought about killing myself"") without thoughts of way to kill oneself/associated methods,intent or plan during the assessment period.",580
+CSSRS - Since Last Visit part 1 - Unscheduled,"Includes a person who would say: ""I thought about taking an overdose but i never",581
+CSSRS - Since Last Visit part 1 - Unscheduled,"Active suicidal thoughts of killing oneself and subject reports having some intent to act on such thoughts, as opposed to ""I have thoughts but I definitely will not do anything about them""",581
+CSSRS - Since Last Visit part 1 - Unscheduled,has some intent to carry it out. Have you started to work out or worked out the details of how to kill yourself?,581
+CSSRS - Since Last Visit part 2 - Unscheduled,Description of Ideation,582
+CSSRS - Since Last Visit part 2 - Unscheduled,Frequency How many times have you had these thoughts?,582
+CSSRS - Since Last Visit part 3 - Unscheduled,"intent/desire to die associated with the act, then it can be considered an actual suicide attempt.",585
+CSSRS - Since Last Visit part 3 - Unscheduled,"If Yes, Total number of attempts",585
+CSSRS - Since Last Visit part 3 - Unscheduled,"If Yes, describe",585
+CSSRS - Since Last Visit part 3 - Unscheduled,Has subject engaged in Non-Suicidal self-injurious behavior?,585
+CSSRS - Since Last Visit part 3 - Unscheduled,"Overdose: Person has pills in hand but is stopped from ingesting. Once they ingest any pills,",586
+CSSRS - Since Last Visit part 3 - Unscheduled,"If Yes, Total number of interrupted attempts",586
+CSSRS - Since Last Visit part 3 - Unscheduled,"attempts, except that the individual stops him/herself, instead of being stopped by something else.",586
+CSSRS - Since Last Visit part 3 - Unscheduled,"If Yes, Total number of aborted attempts",586
+CSSRS - Since Last Visit part 3 - Unscheduled,"gun) or preparing for one's death by suicide (e.g., giving things away, writing a suicide note)",586
+CSSRS - Since Last Visit part 3 - Unscheduled,Suicidal behavior: Suicidal behavior was present during the assessment period?,587
+CSSRS - Since Last Visit part 3 - Unscheduled,Suicide:,587
+CSSRS - Since Last Visit part 4 - Unscheduled,Date of Attempt,588
+CSSRS - Since Last Visit part 4 - Unscheduled,"sleepy; somewhat responsive, second-degree burns; bleeding of major vessel \3.\",588
+CSSRS - Since Last Visit part 4 - Unscheduled,tracks with oncoming train but pulled away before run over).,588
+Pgx Blood draw - Unscheduled,Date of Collection,589
+Pgx Blood draw - Unscheduled,[SCANNE R],589
+Pgx Blood draw - Unscheduled,"[SCANNE R] (hour, minutes)]",589
+PK Blood draw - Unscheduled,Date of Collection,590
+PK Blood draw - Unscheduled,[SCANNE [SCANNE R] R] Brexpiprazole/Sertraline PK,590
+PK Blood draw - Unscheduled,[SCANNE [SCANNE R] R] Brexpiprazole/Sertraline PK partialtime,590
+PK Blood draw - Unscheduled,"partialtime Sertraline PK enumerati enumerati (hour, Propranolol PK minutes)] Prazosin PK",590
+FBR Blood draw - Unscheduled,Was FBR Blood Collection Performed?,591
+FBR Blood draw - Unscheduled,"If not performed, Reason:",591
+FBR Blood draw - Unscheduled,Date of Collection,591
+FBR Blood draw - Unscheduled,[SCANNE R],591
+FBR Blood draw - Unscheduled,[SCANNE R] partialtime,591
+FBR Blood draw - Unscheduled,"R] partialtime enumerati (hour, minutes)]",591
+Triplicate Orthostatic BP and HR - Unscheduled,Were Vital Signs Collected?,592
+Triplicate Orthostatic BP and HR - Unscheduled,"If not collected, reason:",592
+Triplicate Orthostatic BP and HR - Unscheduled,Collection Date,592
+Triplicate Orthostatic BP and HR - Unscheduled,Time Placed in Position,592
+Lost to Follow-up Details - Unscheduled,Initial contact attempt - date,594
+Lost to Follow-up Details - Unscheduled,Initial contact attempt notes (outcome):,594
+Lost to Follow-up Details - Unscheduled,Second contact attempt notes:,594
+Lost to Follow-up Details - Unscheduled,Third contact attempt notes:,594
+Lost to Follow-up Details - Unscheduled,Certified letter sent date:,594
+Lost to Follow-up Details - Unscheduled,Certified letter sent notes:,594
+Lost to Follow-up Details - Unscheduled,Certified letter confirmation return notes (including date):,594
+Glycated Hemoglobin - Unscheduled,Reason not done,595
+Glycated Hemoglobin - Unscheduled,[SCANNE R],595
+Glycated Hemoglobin - Unscheduled,[SCANNE R] minutes)],595

@@ -1,0 +1,373 @@
+You are writing a deterministic extraction program for one specific clinical Case Report Form (CRF) PDF document. Below you will find a small sample of REPRESENTATIVE PAGES (one or two per page-layout cluster) from a document that is 206 pages long. The document is highly repetitive: the sampled pages cover its layouts, but the unsampled pages contain different content in the same layouts.
+
+Each sampled page is shown as structured text lines with geometry:
+    x=<left> y=<top> sz=<font-size> <color-hex or 'black'> <B if bold> | <text>
+
+# Your task
+
+Write a Python function that will run UNCHANGED over all 206 pages and extract every data-entry field of the CRF:
+  - form_name : the CRF form/section the field belongs to
+  - field_name: the human-readable field label/question
+
+That is the complete output. Some CRFs also print machine codes or technical
+annotations near fields - do NOT return those (they are resolved downstream by a
+separate system). You may still USE such markings as structural landmarks if that
+helps you locate fields reliably.
+
+# Runtime contract
+
+def extract(pages):
+    # pages: list of (page_index_0based, lines) tuples for the ENTIRE document, in
+    #        page order. lines is a list of Line objects sorted by y, then x.
+    #        NOTE: y-then-x order is NOT reading order on multi-column pages; if the
+    #        layout has side-by-side columns, use x coordinates to separate them.
+    #        For right-to-left scripts the within-row order is right-to-left, and
+    #        vertical text yields an arbitrary line order - reconstruct reading
+    #        order from the coordinates when the script needs it.
+    # Line attributes:
+    #   .text  (str, stripped visible text of one visual line)
+    #   .x0 .y0 .x1 .y1  (floats; PDF points; origin = top-left of the page)
+    #   .size  (float; font size in points; the largest span on the line)
+    #   .bold  (bool)
+    #   .non_black  (bool; True if any text on the line is printed in color)
+    # returns: list of dicts, one per extracted field occurrence:
+    #   {"form_name": str, "field_name": str, "page": int_1based}
+
+# Hard constraints
+
+- Pure computation only. These modules are already available: re, math, collections,
+  itertools, functools, string, unicodedata, bisect, statistics, json. You may not
+  import anything else, access files/network, or print.
+- Deterministic, fast, simple: loops, regexes, coordinate arithmetic. It must
+  process all 206 pages in seconds.
+- Generalize from STRUCTURE, not content. The unsampled pages contain questions,
+  values and section names you have never seen. Never key your logic on specific
+  question wording from the samples; key it on geometry (x positions, font sizes,
+  color, boldness), on repeated marker/header patterns, and on the SHAPE of text
+  (regexes over character classes). The document may be in any language.
+- You may keep state across pages (the function receives the whole document) -
+  e.g. a form name announced once may govern many following pages.
+
+# Quality bar (your program's output is machine-checked before acceptance)
+
+- It must extract from every page that carries fields, not just the sampled ones.
+- form_name should be non-empty for the large majority of records. If the document
+  genuinely prints no form/section names, use the best available section context;
+  leave it empty only as a last resort.
+- field_name values must be human-readable label text - not machine codes, bare
+  numbers, dates, or page furniture (headers/footers/page numbers/legends).
+- Answer OPTIONS are not fields: choice values (e.g. Yes / No / Unknown / list
+  items - examples here are English, apply the concept in the document's language)
+  belong to a field, they are not field_name records themselves.
+- No duplicate records for the same (form_name, field_name) pair beyond what the
+  document itself repeats.
+
+# Reply format
+
+Reply with ONLY Python source code (no prose outside code comments). Start with a
+comment block (3-6 lines) stating what layout you observed in the samples and the
+extraction strategy you chose. Then define extract(pages) plus any helpers.
+
+# Representative pages of this document
+
+--- page 1 of 206 (layout cluster covers ~1 pages) ---
+x=  36.0 y=  11.5 sz= 9.0 black     | 384-201-00004
+x=  87.0 y= 244.8 sz=30.0 black   B | 384-201-00004
+x=  87.0 y= 323.3 sz=15.0 black     | A Phase 1, Open-label, Single-sequence Pharmacokinetic
+x=  87.0 y= 355.4 sz=15.0 black     | Trial to Assess the Effect of a Single Oral Dose of SEP-
+x=  87.0 y= 387.6 sz=15.0 black     | 380135 on the Potential for Cytochrome P450 2D6 Mediated
+x=  87.0 y= 419.7 sz=15.0 black     | Drug-drug Interactions in Healthy Adults
+x= 143.4 y= 468.6 sz=15.0 black     | Prepared by: Dr. Vince Clinical Research, LLC
+x= 162.1 y= 517.6 sz=15.0 black     | Generated on: 16Jan2025 14:44:24 CST
+x= 257.3 y= 647.8 sz=12.0 #0000ff   | CDISC Legend
+x=  63.5 y= 665.2 sz=10.5 black   B | Scheduled Activities Study Events Forms Item Groups Items Measurement Units Code Lists
+x=  36.0 y= 817.4 sz= 9.0 black     | Annotated CRF
+x= 281.4 y= 817.4 sz= 9.0 black     | 1 of 206
+x= 445.8 y= 817.4 sz= 9.0 black     | https://drvince.clinspark.com
+
+--- page 2 of 206 (layout cluster covers ~1 pages) ---
+x=  36.0 y=  11.5 sz= 9.0 black     | 384-201-00004
+x=  42.0 y=  34.8 sz=12.0 #ffffff   | Study Events
+x= 477.4 y=  55.9 sz=10.5 #666677 B | Category Visit
+x=  44.2 y=  62.1 sz=10.5 #666677 B | Name
+x= 216.8 y=  62.1 sz=10.5 #666677 B | Forms
+x= 387.6 y=  62.1 sz=10.5 #666677 B | Type
+x= 525.9 y=  68.4 sz=10.5 #666677 B | No
+x= 218.3 y=  93.8 sz= 9.0 #0000ff   | AE / CM
+x= 218.3 y= 104.3 sz= 9.0 #0000ff   | Genomic ICF
+x= 218.3 y= 114.7 sz= 9.0 #0000ff   | Protocol Deviations
+x= 218.3 y= 125.1 sz= 9.0 #0000ff   | Subject Eligibility
+x= 218.3 y= 135.5 sz= 9.0 #0000ff   | Subject Informed Consent
+x= 218.3 y= 146.0 sz= 9.0 #0000ff   | Urine Collection - PK - Interval Start (0-2)
+x= 218.3 y= 156.4 sz= 9.0 #0000ff   | Urine Collection - PK - Interval Start (12-
+x= 218.3 y= 166.8 sz= 9.0 #0000ff   | 24)
+x= 218.3 y= 177.2 sz= 9.0 #0000ff   | Urine Collection - PK - Interval Start (2-4)
+x=  44.2 y= 187.7 sz= 9.0 black     | Subject
+x= 218.3 y= 187.7 sz= 9.0 #0000ff   | Urine Collection - PK - Interval Start (4-8)
+x= 387.6 y= 189.3 sz= 6.8 black     | Common
+x= 218.3 y= 198.1 sz= 9.0 #0000ff   | Urine Collection - PK - Interval Start (8-
+x= 218.3 y= 208.5 sz= 9.0 #0000ff   | 12)
+x= 218.3 y= 218.9 sz= 9.0 #0000ff   | Urine Collection - PK - Interval Stop (0-2)
+x= 218.3 y= 229.4 sz= 9.0 #0000ff   | Urine Collection - PK - Interval Stop (12-
+x= 218.3 y= 239.8 sz= 9.0 #0000ff   | 24)
+x= 218.3 y= 250.2 sz= 9.0 #0000ff   | Urine Collection - PK - Interval Stop (2-4)
+x= 218.3 y= 260.6 sz= 9.0 #0000ff   | Urine Collection - PK - Interval Stop (4-8)
+x= 218.3 y= 271.1 sz= 9.0 #0000ff   | Urine Collection - PK - Interval Stop (8-
+x= 218.3 y= 281.5 sz= 9.0 #0000ff   | 12)
+x=  44.2 y= 305.0 sz= 9.0 black     | Unscheduled
+x= 387.6 y= 306.7 sz= 6.8 black     | Unscheduled
+x= 218.3 y= 328.5 sz= 9.0 #0000ff   | AE / CM
+x= 218.3 y= 338.9 sz= 9.0 #0000ff   | Genomic ICF
+x= 218.3 y= 349.4 sz= 9.0 #0000ff   | Protocol Deviations
+x= 218.3 y= 359.8 sz= 9.0 #0000ff   | Subject Eligibility
+x= 218.3 y= 370.2 sz= 9.0 #0000ff   | Subject Informed Consent
+x= 218.3 y= 380.6 sz= 9.0 #0000ff   | Urine Collection - PK - Interval Start (0-2)
+x= 218.3 y= 391.1 sz= 9.0 #0000ff   | Urine Collection - PK - Interval Start (12-
+x= 218.3 y= 401.5 sz= 9.0 #0000ff   | 24)
+x= 218.3 y= 411.9 sz= 9.0 #0000ff   | Urine Collection - PK - Interval Start (2-4)
+x=  44.2 y= 422.3 sz= 9.0 black     | AE/CM / Protocol Deviation
+x= 218.3 y= 422.3 sz= 9.0 #0000ff   | Urine Collection - PK - Interval Start (4-8)
+x= 387.6 y= 424.0 sz= 6.8 black     | Common
+x= 218.3 y= 432.8 sz= 9.0 #0000ff   | Urine Collection - PK - Interval Start (8-
+x= 218.3 y= 443.2 sz= 9.0 #0000ff   | 12)
+x= 218.3 y= 453.6 sz= 9.0 #0000ff   | Urine Collection - PK - Interval Stop (0-2)
+x= 218.3 y= 464.0 sz= 9.0 #0000ff   | Urine Collection - PK - Interval Stop (12-
+x= 218.3 y= 474.5 sz= 9.0 #0000ff   | 24)
+x= 218.3 y= 484.9 sz= 9.0 #0000ff   | Urine Collection - PK - Interval Stop (2-4)
+x= 218.3 y= 495.3 sz= 9.0 #0000ff   | Urine Collection - PK - Interval Stop (4-8)
+x= 218.3 y= 505.7 sz= 9.0 #0000ff   | Urine Collection - PK - Interval Stop (8-
+x= 218.3 y= 516.2 sz= 9.0 #0000ff   | 12)
+x=  44.2 y= 539.7 sz= 9.0 black     | Day -28 to Day -3
+x= 387.6 y= 541.3 sz= 6.8 black     | Scheduled
+x=  44.2 y= 553.1 sz= 9.0 black     | Day -2
+x= 387.6 y= 554.8 sz= 6.8 black     | Scheduled
+x=  44.2 y= 566.5 sz= 9.0 black     | Day -1
+x= 387.6 y= 568.2 sz= 6.8 black     | Scheduled
+x=  44.2 y= 579.9 sz= 9.0 black     | Day 1
+x= 387.6 y= 581.6 sz= 6.8 black     | Scheduled
+x=  44.2 y= 593.4 sz= 9.0 black     | Day 2
+x= 387.6 y= 595.0 sz= 
+<...page truncated...>
+
+--- page 37 of 206 (layout cluster covers ~118 pages) ---
+x=  36.0 y=  11.5 sz= 9.0 black     | 384-201-00004
+x= 453.5 y=  35.2 sz= 5.6 black     | Conditionally Visible
+x=  46.5 y=  36.7 sz= 7.5 black     | Why was the study terminated by sponsor?
+x= 453.5 y=  41.8 sz= 5.6 black     | Conditional Item: DSDECOD
+x= 453.5 y=  48.3 sz= 5.6 black     | Visible If Value: STUDY
+x= 249.2 y=  53.1 sz= 7.5 black     | [____________________]
+x=  46.5 y=  54.1 sz= 7.5 black     | [DSREAS10]
+x= 453.5 y=  54.8 sz= 5.6 black     | TERMINATED BY SPONSOR =
+x= 453.5 y=  61.3 sz= 5.6 black     | Study terminated by sponsor
+x=  46.5 y=  62.8 sz= 7.5 black     | [SAS Field Name: DSREAS10]
+x= 453.5 y=  67.9 sz= 5.6 black     | Aliases:
+x= 456.5 y=  74.4 sz= 5.6 black     | Odm OID = I.5862
+x= 453.5 y=  80.9 sz= 5.6 black     | Description: Why was the study
+x= 453.5 y=  87.4 sz= 5.6 black     | terminated by sponsor?
+x= 453.5 y=  94.0 sz= 5.6 black     | Mandatory?: Yes
+x= 453.5 y= 100.5 sz= 5.6 black     | Disallow Future Date: Yes
+x= 453.5 y= 122.7 sz= 5.6 black   B | DSREAS11
+x= 453.5 y= 129.3 sz= 5.6 black     | Format: $200
+x= 453.5 y= 135.8 sz= 5.6 black     | Data Type: text
+x= 453.5 y= 142.4 sz= 5.6 black     | Origin: CRF
+x= 453.5 y= 148.9 sz= 5.6 black     | Conditionally Visible
+x=  46.5 y= 150.6 sz= 7.5 black     | Reason volunteer withdrew consent
+x= 453.5 y= 155.4 sz= 5.6 black     | Conditional Item: DSDECOD
+x= 453.5 y= 161.9 sz= 5.6 black     | Visible If Value: WITHDRAWAL OF
+x= 249.2 y= 163.7 sz= 7.5 black     | [____________________]
+x=  46.5 y= 168.0 sz= 7.5 black     | [DSREAS11]
+x= 453.5 y= 168.5 sz= 5.6 black     | CONSENT = Withdrawal of consent
+x= 453.5 y= 175.0 sz= 5.6 black     | Aliases:
+x=  46.5 y= 176.7 sz= 7.5 black     | [SAS Field Name: DSREAS11]
+x= 456.5 y= 181.5 sz= 5.6 black     | Odm OID = I.5863
+x= 453.5 y= 188.0 sz= 5.6 black     | Description: Reason volunteer
+x= 453.5 y= 194.6 sz= 5.6 black     | withdrew consent
+x= 453.5 y= 201.1 sz= 5.6 black     | Mandatory?: Yes
+x= 453.5 y= 207.6 sz= 5.6 black     | Disallow Future Date: Yes
+x= 453.5 y= 229.9 sz= 5.6 black   B | DSREAS12
+x= 453.5 y= 236.5 sz= 5.6 black     | Format: $200
+x= 453.5 y= 243.0 sz= 5.6 black     | Data Type: string
+x= 453.5 y= 249.5 sz= 5.6 black     | Origin: CRF
+x=  46.5 y= 251.3 sz= 7.5 black     | Why was the subject screen failed?
+x= 453.5 y= 256.0 sz= 5.6 black     | Conditionally Visible
+x= 453.5 y= 262.6 sz= 5.6 black     | Conditional Item: DSDECOD
+x= 249.2 y= 264.3 sz= 7.5 black     | [____________________]
+x=  46.5 y= 268.7 sz= 7.5 black     | [DSREAS12]
+x= 453.5 y= 269.1 sz= 5.6 black     | Visible If Value: SCREEN FAILURE =
+x= 453.5 y= 275.6 sz= 5.6 black     | Screen failure
+x=  46.5 y= 277.4 sz= 7.5 black     | [SAS Field Name: DSREAS12]
+x= 453.5 y= 282.1 sz= 5.6 black     | Description: Why was the subject
+x= 453.5 y= 288.7 sz= 5.6 black     | screen failed?
+x= 453.5 y= 295.2 sz= 5.6 black     | Mandatory?: Yes
+x= 453.5 y= 301.7 sz= 5.6 black     | Disallow Future Date: Yes
+x=  36.0 y= 817.4 sz= 9.0 black     | Annotated CRF
+x= 278.9 y= 817.4 sz= 9.0 black     | 37 of 206
+x= 445.8 y= 817.4 sz= 9.0 black     | https://drvince.clinspark.com
+
+--- page 71 of 206 (layout cluster covers ~118 pages) ---
+x=  36.0 y=  11.5 sz= 9.0 black     | 384-201-00004
+x= 453.5 y=  35.4 sz= 5.6 black   B | PEDESC
+x= 453.5 y=  41.9 sz= 5.6 black     | Format: $200
+x= 453.5 y=  48.5 sz= 5.6 black     | Data Type: text
+x= 453.5 y=  55.0 sz= 5.6 black     | Origin: CRF
+x=  46.5 y=  55.2 sz= 7.5 black     | Abnormal findings
+x= 453.5 y=  61.5 sz= 5.6 black     | Conditionally Visible
+x= 453.5 y=  68.0 sz= 5.6 black     | Conditional Item: PEORRES
+x= 249.2 y=  70.1 sz= 7.5 black     | [____________________]
+x=  46.5 y=  72.6 sz= 7.5 black     | [PEDESC]
+x= 453.5 y=  74.6 sz= 5.6 black     | Visible If Value: ABNORMAL =
+x= 453.5 y=  81.1 sz= 5.6 black     | Abnormal
+x=  46.5 y=  81.3 sz= 7.5 black     | [SAS Field Name: PEDESC]
+x= 453.5 y=  87.6 sz= 5.6 black     | Aliases:
+x= 456.5 y=  94.1 sz= 5.6 black     | Odm OID = I.6775
+x= 453.5 y= 100.7 sz= 5.6 black     | Description: Abnormal Description PE
+x= 453.5 y= 107.2 sz= 5.6 black     | Mandatory?: Yes
+x= 453.5 y= 113.7 sz= 5.6 black     | Disallow Future Date: Yes
+x=  43.5 y= 134.1 sz=10.5 #31708f   | Musculoskeletal/Extremities
+x= 315.1 y= 134.6 sz= 8.4 #31708f B | Origin: CRF; Repeating: No; Conditionally Visible; Domain: PE
+x=  49.5 y= 149.2 sz= 6.8 #808080 B | Aliases:
+x=  75.7 y= 149.2 sz= 6.8 #808080   | Odm OID = IG.1781
+x= 297.9 y= 149.2 sz= 6.8 #808080 B | Role Restriction:
+x= 352.5 y= 149.2 sz= 6.8 #808080   | Investigator
+x= 453.5 y= 172.0 sz= 5.6 black   B | PETEST
+x= 453.5 y= 178.6 sz= 5.6 black     | Format: $27
+x= 453.5 y= 185.1 sz= 5.6 black     | Data Type: string
+x= 453.5 y= 191.6 sz= 5.6 black     | Origin: CRF
+x=  46.5 y= 193.4 sz= 7.5 black     | Body system
+x= 453.5 y= 198.2 sz= 5.6 black     | Default Item Value:
+x= 249.2 y= 200.9 sz= 7.5 black     | O Musculoskeletal /Extremities
+x= 453.5 y= 204.7 sz= 5.6 black     | MUSCULOSKELETAL/EXTREMITIES
+x=  46.5 y= 210.8 sz= 7.5 black     | [PETEST_EXTREMITIES]
+x= 453.5 y= 211.2 sz= 5.6 black     | Aliases:
+x= 253.0 y= 213.5 sz= 6.4 #808080   | Code List: PE Musculoskeletal / Extremities
+x= 456.5 y= 217.7 sz= 5.6 black     | Odm OID = I.6781
+x=  46.5 y= 219.5 sz= 7.5 black     | [SAS Field Name: PETEST]
+x= 453.5 y= 224.3 sz= 5.6 black     | Description: Body system -
+x= 453.5 y= 230.8 sz= 5.6 black     | EXTREMITIES
+x= 453.5 y= 237.3 sz= 5.6 black     | Mandatory?: Yes
+x= 453.5 y= 243.8 sz= 5.6 black     | Disallow Future Date: Yes
+x= 453.5 y= 266.1 sz= 5.6 black   B | PEORRES
+x= 453.5 y= 272.7 sz= 5.6 black     | Format: $200
+x=  46.5 y= 277.7 sz= 7.5 black     | Examination result
+x= 453.5 y= 279.2 sz= 5.6 black     | Data Type: string
+x= 249.2 y= 280.8 sz= 7.5 black     | O Normal
+x= 453.5 y= 285.7 sz= 5.6 black     | Origin: CRF
+x= 249.2 y= 289.5 sz= 7.5 black     | O Abnormal
+x= 453.5 y= 292.3 sz= 5.6 black     | Aliases:
+x=  46.5 y= 295.1 sz= 7.5 black     | [PEORRES]
+x= 456.5 y= 298.8 sz= 5.6 black     | Odm OID = I.6774
+x= 253.0 y= 302.2 sz= 6.4 #808080   | Code List: PE_RESULT
+x=  46.5 y= 303.8 sz= 7.5 black     | [SAS Field Name: PEORRES]
+x= 453.5 y= 305.3 sz= 5.6 black     | Description: Examination result
+x= 453.5 y= 311.8 sz= 5.6 black     | Mandatory?: Yes
+x= 453.5 y= 318.4 sz= 5.6 black     | Disallow Future Date: Yes
+x= 453.5 y= 340.6 sz= 5.6 black   B | PECLSIG
+x= 453.5 y= 347.2 sz= 5.6 black     | Format: $3
+x= 453.5 y= 353.7 sz= 5.6 black     | Data Type: string
+x= 453.5 y= 360.2 sz= 5.6 black     | Origin: CRF
+x= 453.5 y= 366.8 sz= 5.6 black     | Conditionally Visible
+x= 453.5 y= 373.3 sz= 5.6 black     | Conditional Item: PEORRES
+x=  46.5 y= 378.5 sz= 7.5 black     | Clinical significance
+x= 453.5 y= 379.8 sz= 5.6 b
+<...page truncated...>
+
+--- page 86 of 206 (layout cluster covers ~9 pages) ---
+x=  36.0 y=  11.5 sz= 9.0 black     | 384-201-00004
+x=  42.0 y=  34.8 sz=12.0 #ffffff   | Protocol Deviations
+x= 498.9 y=  36.6 sz= 9.6 #ffffff   | Origin: CRF
+x=  48.0 y=  55.2 sz= 7.8 #ffffff B | Aliases:
+x=  77.9 y=  55.3 sz= 7.8 #ffffff   | Odm OID = F.1335
+x=  43.5 y=  72.8 sz=10.5 #31708f   | Protocol Deviations
+x= 394.5 y=  73.4 sz= 8.4 #31708f B | Origin: CRF; Repeating: No; Domain: DV
+x=  49.5 y=  88.0 sz= 6.8 #808080 B | Aliases:
+x=  75.7 y=  88.0 sz= 6.8 #808080   | Odm OID = IG.1760
+x= 453.5 y= 110.8 sz= 5.6 black   B | DVDTC
+x= 453.5 y= 117.4 sz= 5.6 black     | Format: dd-MMM-yyyy
+x=  46.5 y= 122.4 sz= 7.5 black     | Deviation Date
+x= 453.5 y= 123.9 sz= 5.6 black     | Data Type: date
+x= 453.5 y= 130.4 sz= 5.6 black     | Origin: CRF
+x= 249.2 y= 133.5 sz= 7.5 black     | [_|_]-[_|_|_]-[_|_|_|_]
+x= 453.5 y= 136.9 sz= 5.6 black     | Aliases:
+x=  46.5 y= 139.8 sz= 7.5 black     | [DVDTC]
+x= 456.5 y= 143.5 sz= 5.6 black     | Odm OID = I.6735
+x=  46.5 y= 148.5 sz= 7.5 black     | [SAS Field Name: DVDTC]
+x= 453.5 y= 150.0 sz= 5.6 black     | Description: Deviation Date
+x= 453.5 y= 156.5 sz= 5.6 black     | Mandatory?: Yes
+x= 453.5 y= 163.0 sz= 5.6 black     | Disallow Future Date: Yes
+x= 249.2 y= 178.5 sz= 7.5 black     | O Screening
+x= 249.2 y= 187.2 sz= 7.5 black     | O Day -2
+x= 249.2 y= 195.9 sz= 7.5 black     | O Day -1
+x= 249.2 y= 204.6 sz= 7.5 black     | O Day 1
+x= 249.2 y= 213.3 sz= 7.5 black     | O Day 2
+x= 249.2 y= 222.0 sz= 7.5 black     | O Day 3
+x= 453.5 y= 229.0 sz= 5.6 black   B | DVVISIT
+x= 249.2 y= 230.7 sz= 7.5 black     | O Day 4
+x= 453.5 y= 235.6 sz= 5.6 black     | Format: $
+x= 249.2 y= 239.4 sz= 7.5 black     | O Day 5
+x=  46.5 y= 240.6 sz= 7.5 black     | Deviation visit
+x= 453.5 y= 242.2 sz= 5.6 black     | Data Type: string
+x= 249.2 y= 248.1 sz= 7.5 black     | O Day 6
+x= 453.5 y= 248.7 sz= 5.6 black     | Origin: CRF
+x= 453.5 y= 255.2 sz= 5.6 black     | Aliases:
+x= 249.2 y= 256.8 sz= 7.5 black     | O Day 7
+x=  46.5 y= 258.0 sz= 7.5 black     | [DVVISIT]
+x= 456.5 y= 261.7 sz= 5.6 black     | Odm OID = I.6739
+x= 249.2 y= 265.5 sz= 7.5 black     | O Day 8
+x=  46.5 y= 266.7 sz= 7.5 black     | [SAS Field Name: DVVISIT]
+x= 453.5 y= 268.3 sz= 5.6 black     | Description: Deviation visit
+x= 249.2 y= 274.2 sz= 7.5 black     | O Day 9
+x= 453.5 y= 274.8 sz= 5.6 black     | Mandatory?: Yes
+x= 453.5 y= 281.3 sz= 5.6 black     | Disallow Future Date: Yes
+x= 249.2 y= 282.9 sz= 7.5 black     | O Day 10
+x= 249.2 y= 291.6 sz= 7.5 black     | O Day 11
+x= 249.2 y= 300.3 sz= 7.5 black     | O Follow Up Day 37
+x= 249.2 y= 309.0 sz= 7.5 black     | O Unscheduled
+x= 249.2 y= 317.7 sz= 7.5 black     | O Early Termination
+x= 253.0 y= 330.4 sz= 6.4 #808080   | Code List: Deviation Visits
+x= 249.2 y= 340.6 sz= 7.5 black     | O 0
+x= 249.2 y= 349.3 sz= 7.5 black     | O 1
+x= 249.2 y= 358.0 sz= 7.5 black     | O 1.5
+x= 249.2 y= 366.7 sz= 7.5 black     | O 2
+x= 249.2 y= 375.4 sz= 7.5 black     | O 3
+x= 249.2 y= 384.1 sz= 7.5 black     | O 4
+x= 249.2 y= 392.8 sz= 7.5 black     | O 5
+x= 453.5 y= 395.4 sz= 5.6 black   B | DVTPT2
+x= 249.2 y= 401.5 sz= 7.5 black     | O 6
+x= 453.5 y= 402.0 sz= 5.6 black     | Format: $
+x=  46.5 y= 407.0 sz= 7.5 black     | Deviation timepoint
+x= 453.5 y= 408.5 sz= 5.6 black     | Data Type: string
+x= 249.2 y= 410.2 sz= 7.5 black     | O 8
+x= 453.5 y= 415.1 sz= 5.6 black     | Origin: CRF
+x= 249.2 y= 418.9 sz= 7.5 black     | O 12
+x= 453.5 y= 421.6 sz= 5.6 black     | Aliases:
+x=  46.5 y= 424.4 sz= 7.5 black     | [DVTPT]
+x= 249.2 y= 427.6 sz= 7.5 black     | O 24
+x= 456.5 y= 428.1 sz= 5.6 black
+<...page truncated...>
+
+--- page 153 of 206 (layout cluster covers ~71 pages) ---
+x=  36.0 y=  11.5 sz= 9.0 black     | 384-201-00004
+x=  42.0 y=  34.8 sz=12.0 #ffffff   | CSSRS Potential Lethality
+x=  45.8 y=  59.6 sz=10.5 #666677 B | Coded
+x= 299.9 y=  59.6 sz=10.5 #666677 B | Decode
+x=  45.8 y=  75.0 sz= 9.0 black     | 0
+x= 299.9 y=  75.0 sz= 9.0 black     | Behavior not likely to result in injury
+x=  45.8 y=  88.4 sz= 9.0 black     | 1
+x= 299.9 y=  88.4 sz= 9.0 black     | Behavior likely to result in injury but not likely to cause death
+x=  45.8 y= 101.8 sz= 9.0 black     | 2
+x= 299.9 y= 101.8 sz= 9.0 black     | Behavior likely to result in death despite available medical care
+x=  36.0 y= 817.4 sz= 9.0 black     | Annotated CRF
+x= 276.3 y= 817.4 sz= 9.0 black     | 153 of 206
+x= 445.8 y= 817.4 sz= 9.0 black     | https://drvince.clinspark.com
+
+--- page 171 of 206 (layout cluster covers ~71 pages) ---
+x=  36.0 y=  11.5 sz= 9.0 black     | 384-201-00004
+x=  42.0 y=  34.8 sz=12.0 #ffffff   | Drug Name - Study Drug Admin - Quinidine
+x=  45.8 y=  59.6 sz=10.5 #666677 B | Coded
+x= 299.9 y=  59.6 sz=10.5 #666677 B | Decode
+x=  45.8 y=  75.0 sz= 9.0 black     | Quinidine Gluconate
+x= 299.9 y=  75.0 sz= 9.0 black     | Quinidine Gluconate
+x=  36.0 y= 817.4 sz= 9.0 black     | Annotated CRF
+x= 276.3 y= 817.4 sz= 9.0 black     | 171 of 206
+x= 445.8 y= 817.4 sz= 9.0 black     | https://drvince.clinspark.com
+

@@ -1,0 +1,125 @@
+{
+  "doc_key": "384-201-00004_Annotated_CRF___v2.0_20_May_2025",
+  "annotator_notes": "ClinSpark/DrVince annotated CRF, 246 physical pages (footer counts 238; +3 offset). Form names from the physical-page bookmark tree. Field = human-readable prompt with '[OID]' + '[SAS Field Name: X]' + widget. Item-group headers (Odm OID = IG.*), interviewer scripts under a short label, Help Text, Comment, metadata keys are NOT fields. Repeated labels collapse. Code Lists and Study Lab Panels back matter are reference tables (zero data-entry fields).",
+  "pages": [
+    {
+      "page": 30,
+      "form_name": "Blood Collection - PK Quinidine",
+      "form_source": "printed",
+      "fields": [
+        "Was the sample collected?",
+        "PK Quinidine collection date and time"
+      ],
+      "acceptable_extras": [],
+      "notes": "Form banner printed (F.1177 / IG.1535)."
+    },
+    {
+      "page": 44,
+      "form_name": "C-SSRS - Baseline/Screening",
+      "form_source": "carryover",
+      "fields": [
+        "Reasons for Ideation (Lifetime)",
+        "Reasons for Ideation (Past 12 Months)",
+        "Actual Attempt"
+      ],
+      "acceptable_extras": [
+        "Deterrents (Past 12 Months)",
+        "SUICIDAL BEHAVIOR",
+        "Actual Attempt: Have you made a suicide attempt? Have you done anything to harm yourself? Have you done anything dangerous where you could have died? What did you do?",
+        "What sort of reasons did you have for thinking about wanting to die or killing yourself?"
+      ],
+      "notes": "Top [QSCSS0310B] is a continuation (short label 'Deterrents (Past 12 Months)' was on p43). 'Actual Attempt' precedes a very long interview script for CSS0312; either short lead-in or full text acceptable. SUICIDAL BEHAVIOR is an item-group header."
+    },
+    {
+      "page": 79,
+      "form_name": "ECG Triplicate (RScribe)",
+      "form_source": "carryover",
+      "fields": [
+        "Abnormality Reason",
+        "PR",
+        "QRS",
+        "QT",
+        "QTcF",
+        "QTcB"
+      ],
+      "acceptable_extras": [
+        "Electrocardiogram 3"
+      ],
+      "notes": "Reading-block header 'Electrocardiogram 3' groups the PR/QRS/QT... measurements."
+    },
+    {
+      "page": 113,
+      "form_name": "Study Drug Administration - Combined",
+      "form_source": "carryover",
+      "fields": [
+        "Comments",
+        "Route of administration",
+        "Date and time of administration",
+        "Drug name given",
+        "Total dose",
+        "Unit",
+        "Formulation of study drug",
+        "Quantity administered"
+      ],
+      "acceptable_extras": [
+        "Study Drug Administration - Quinidine Combined"
+      ]
+    },
+    {
+      "page": 133,
+      "form_name": "Urine Collection - PK - Active Interval Collection (4-8)",
+      "form_source": "printed",
+      "fields": [
+        "Collection start date and time"
+      ],
+      "acceptable_extras": [],
+      "notes": "Form banner printed ('...(4-8)' then subtitle 'Interval PK Start (4-8)')."
+    },
+    {
+      "page": 155,
+      "form_name": "Vital Signs - Unscheduled",
+      "form_source": "carryover",
+      "fields": [
+        "Clinical significance",
+        "Heart Rate",
+        "Is heart rate out of range?",
+        "Temperature",
+        "Is temperature out of range?"
+      ],
+      "acceptable_extras": [],
+      "notes": "OID suffix _UNSCHEDULED confirms the form. 'Clinical significance' repeats (DIABPSIG/HRSIG); collapses. TEMPSIG at bottom has metadata only."
+    },
+    {
+      "page": 212,
+      "form_name": "PE Other",
+      "form_source": "printed",
+      "fields": [],
+      "acceptable_extras": [],
+      "notes": "Code list (Coded/Decode) - not a data-entry form."
+    },
+    {
+      "page": 215,
+      "form_name": "PE Urogenital",
+      "form_source": "printed",
+      "fields": [],
+      "acceptable_extras": [],
+      "notes": "Code list (Coded/Decode) - not a data-entry form."
+    },
+    {
+      "page": 219,
+      "form_name": "Total Dose",
+      "form_source": "printed",
+      "fields": [],
+      "acceptable_extras": [],
+      "notes": "Code list (Coded/Decode) - not a data-entry form."
+    },
+    {
+      "page": 229,
+      "form_name": "Chemistry Non-Stat Panel",
+      "form_source": "printed",
+      "fields": [],
+      "acceptable_extras": [],
+      "notes": "Study Lab Panel reference table (Name/Order ID/Container/Units/Sex) - not a data-entry form."
+    }
+  ]
+}

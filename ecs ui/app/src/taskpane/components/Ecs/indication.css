@@ -1,0 +1,30 @@
+/* Truncate long selected value text */
+.ant-select-selector {
+  display: flex !important;
+  align-items: center;
+  overflow: hidden !important;
+}
+
+.ant-select-selection-item,
+.ant-select-selection-placeholder {
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+/* Prevent table cell stretching in Word Add-in */
+.ant-table-cell {
+  max-width: 1px;   /* forces shrink properly */
+}
+
+/* Prevent dropdown from breaking layout */
+.ant-select-dropdown {
+  max-width: 280px !important; /* optional but recommended */
+  word-break: break-word;
+}
+
+.ant-select-selection-item {
+  white-space: normal !important;
+  font-size: 11px !important;
+  line-height: 12px !important;
+}

@@ -1,0 +1,365 @@
+{
+ "stop_reason": "plateau",
+ "versions": 3,
+ "best_version": 2,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 1478,
+    "pages_total": 609,
+    "pages_with_fields": 465,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 90,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 16,
+    "fields_per_form": 92.4,
+    "forms_per_100_pages": 2.6,
+    "pages_covered_pct": 76
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 45,
+   "audit_pages": [
+    1,
+    2,
+    3,
+    58,
+    281,
+    332
+   ],
+   "audit_partial": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [
+      "Staff Initials:",
+      "Comment:",
+      "Staff Initials:",
+      "Comment:",
+      "Staff Initials:",
+      "Comment:",
+      "Staff Initials:",
+      "Comment:",
+      "Staff Initials:",
+      "Comment:"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [
+      "Staff Initials:",
+      "Comment:",
+      "Time Study ICF was signed by participant",
+      "Staff Initials:",
+      "Comment:",
+      "Staff Initials:",
+      "Comment:",
+      "Staff Initials:",
+      "Comment:"
+     ],
+     "false": [
+      "Study ICF Version Number (Version must be checked against ICF present in the RSF \u2013 escalate any discrepancies)"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 3,
+     "missed": [
+      "Staff Initials:",
+      "Comment:",
+      "Staff Initials:",
+      "Comment:",
+      "Staff Initials:",
+      "Comment:",
+      "Staff Initials:",
+      "Comment:",
+      "Staff Initials:",
+      "Comment:"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 58,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 281,
+     "missed": [
+      "Staff Initials:",
+      "Comment:",
+      "Staff Initials:",
+      "Comment:",
+      "Staff Initials:",
+      "Randomisation Number",
+      "Treatment",
+      "Dose Level",
+      "Number of tablets/capsules to be administered",
+      "Batch Number",
+      "Container Number",
+      "Comment:"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 332,
+     "missed": [
+      "What was the nitrite result? (Perform urinalysis and read results)",
+      "Staff Initials:",
+      "Comment:"
+     ],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "score": [
+    0,
+    45,
+    0,
+    -465
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 1632,
+    "pages_total": 609,
+    "pages_with_fields": 464,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 91,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 16,
+    "fields_per_form": 102.0,
+    "forms_per_100_pages": 2.6,
+    "pages_covered_pct": 76
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 28,
+   "audit_pages": [
+    1,
+    2,
+    3,
+    58,
+    281,
+    332
+   ],
+   "audit_partial": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [
+      "Study, Site:",
+      "Slot:",
+      "Schedule Category & Name:",
+      "Study ICF Signed and Dated by the participant?",
+      "Date Study ICF was signed by participant",
+      "Time Study ICF was signed by participant",
+      "Did participant complete group information or remote information session?",
+      "Record who held Group Information Session (full name)",
+      "Does the Anju study number match the study number in the participants' paper PIS/ICF?",
+      "Does the participant have a valid photo ID?"
+     ],
+     "false": [
+      "Group, Visit:",
+      "Staff Initials:",
+      "Answer(s):",
+      "Comment:"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 3,
+     "missed": [],
+     "false": [
+      "research?"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 58,
+     "missed": [
+      "Staff Initials:",
+      "Comment:"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 281,
+     "missed": [
+      "Staff Initials:",
+      "Comment:",
+      "Randomisation Number",
+      "Treatment",
+      "Dose Level",
+      "Number of tablets/capsules to be administered",
+      "Batch Number",
+      "Container Number"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 332,
+     "missed": [
+      "What was the nitrite result? (Perform urinalysis and read results)",
+      "Staff Initials:",
+      "Comment:"
+     ],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "score": [
+    0,
+    28,
+    0,
+    -464
+   ],
+   "became_best": true
+  },
+  {
+   "version": 3,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 1549,
+    "pages_total": 609,
+    "pages_with_fields": 464,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 91,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 16,
+    "fields_per_form": 96.8,
+    "forms_per_100_pages": 2.6,
+    "pages_covered_pct": 76
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 31,
+   "audit_pages": [
+    1,
+    2,
+    3,
+    58,
+    281,
+    332
+   ],
+   "audit_partial": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [
+      "Group, Visit:",
+      "Staff Initials:",
+      "Comment:",
+      "Study ICF Signed and Dated by the participant?"
+     ],
+     "false": [
+      "Study, Site:",
+      "Slot:",
+      "Schedule Category & Name:"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [
+      "Study, Site:",
+      "Group, Visit:",
+      "Slot:",
+      "Schedule Category & Name:",
+      "Staff Initials:",
+      "Comment:",
+      "Study ICF Version Number"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 3,
+     "missed": [
+      "Study, Site:",
+      "Group, Visit:",
+      "Slot:",
+      "Schedule Category & Name:",
+      "Staff Initials:",
+      "Comment:",
+      "Has the participant read, understood and signed the consent for the Future Use Sub Study, where a DNA sample will be taken and other data collected may be used for potential future research?"
+     ],
+     "false": [
+      "Has the participant read, understood and signed the consent for the Future Use Sub Study, where a DNA sample will be taken and other data collected may be used for potential future"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 58,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 281,
+     "missed": [
+      "Randomisation Number",
+      "Treatment",
+      "Dose Level",
+      "Batch Number",
+      "Container Number"
+     ],
+     "false": [
+      "Number of tablets/capsules to be administered _ _ (#0)"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 332,
+     "missed": [
+      "What was the nitrite result? (Perform urinalysis and read results)",
+      "Staff Initials:",
+      "Comment:"
+     ],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "score": [
+    0,
+    31,
+    0,
+    -464
+   ],
+   "became_best": false
+  }
+ ]
+}

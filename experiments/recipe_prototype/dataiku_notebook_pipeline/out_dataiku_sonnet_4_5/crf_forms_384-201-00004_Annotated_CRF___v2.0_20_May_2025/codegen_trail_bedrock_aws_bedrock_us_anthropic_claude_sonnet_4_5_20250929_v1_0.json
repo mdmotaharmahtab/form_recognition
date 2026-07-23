@@ -1,0 +1,252 @@
+{
+ "stop_reason": "plateau",
+ "versions": 3,
+ "best_version": 2,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "confirm",
+   "outcome": "confirmed_no_fields"
+  },
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 567,
+    "pages_total": 246,
+    "pages_with_fields": 121,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 99,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 52,
+    "fields_per_form": 10.9,
+    "forms_per_100_pages": 21.1,
+    "pages_covered_pct": 49
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 1,
+   "audit_pages": [
+    1,
+    21,
+    55,
+    91,
+    92,
+    184
+   ],
+   "audit_partial": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 21,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 55,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 91,
+     "missed": [
+      "Is condition ongoing?"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 92,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 184,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "score": [
+    0,
+    1,
+    0,
+    -121
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 605,
+    "pages_total": 246,
+    "pages_with_fields": 135,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 99,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 57,
+    "fields_per_form": 10.6,
+    "forms_per_100_pages": 23.2,
+    "pages_covered_pct": 55
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 1,
+   "audit_pages": [
+    1,
+    21,
+    55,
+    91,
+    92,
+    184
+   ],
+   "audit_partial": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 21,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 55,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 91,
+     "missed": [
+      "Is condition ongoing?"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 92,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 184,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "score": [
+    0,
+    1,
+    0,
+    -135
+   ],
+   "became_best": true
+  },
+  {
+   "version": 3,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 605,
+    "pages_total": 246,
+    "pages_with_fields": 135,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 99,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 57,
+    "fields_per_form": 10.6,
+    "forms_per_100_pages": 23.2,
+    "pages_covered_pct": 55
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 1,
+   "audit_pages": [
+    1,
+    21,
+    55,
+    91,
+    92,
+    184
+   ],
+   "audit_partial": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 21,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 55,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 91,
+     "missed": [
+      "Is condition ongoing?"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 92,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 184,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "score": [
+    0,
+    1,
+    0,
+    -135
+   ],
+   "became_best": false
+  }
+ ]
+}

@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CRF extraction accuracy &mdash; Dataiku runs</title>
+<style>
+:root { --ink:#1c2733; --mut:#5b6b7b; --line:#dbe3ea; --card:#ffffff;
+        --bg:#f4f7fa; --navy:#1f4e79; --teal:#0f766e; --red:#b3372f;
+        --amber:#9a6700; --green:#1a7f37; }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--ink);
+       font:15px/1.55 "Segoe UI",system-ui,-apple-system,sans-serif; }
+.wrap { max-width:1180px; margin:0 auto; padding:28px 32px 80px; }
+h1 { font-size:26px; margin:6px 0 4px; }
+h2 { font-size:20px; margin:42px 0 6px; color:var(--navy);
+     border-bottom:2px solid var(--line); padding-bottom:6px; }
+h3 { font-size:16px; margin:22px 0 6px; }
+p  { max-width:960px; }
+.sub { color:var(--mut); margin:0 0 18px; }
+.muted { color:var(--mut); }
+.small { font-size:13px; }
+code, .mono { font-family:Consolas,Menlo,monospace; font-size:13px; }
+code { background:#eef2f6; padding:1px 5px; border-radius:4px; }
+.cards { display:flex; gap:14px; flex-wrap:wrap; margin:18px 0; }
+.card { flex:1 1 300px; background:var(--card); border:1px solid var(--line);
+        border-radius:10px; padding:16px 18px; }
+.card h3 { margin:0 0 2px; font-size:15px; }
+.card .who { color:var(--mut); font-size:13px; margin-bottom:10px; }
+.kpis { display:flex; gap:18px; flex-wrap:wrap; }
+.kpi  { min-width:86px; }
+.kpi b { display:block; font-size:24px; font-weight:650; }
+.kpi span { font-size:12px; color:var(--mut); }
+.verdict { margin-top:10px; font-size:13.5px; border-top:1px dashed var(--line);
+           padding-top:8px; }
+table { border-collapse:collapse; width:100%; background:var(--card);
+        border:1px solid var(--line); border-radius:8px; overflow:hidden;
+        font-size:13.5px; }
+th { background:var(--navy); color:#fff; text-align:left; padding:7px 10px;
+     font-weight:600; }
+td { padding:6px 10px; border-top:1px solid var(--line); vertical-align:top; }
+tr:nth-child(even) td { background:#fafcfe; }
+.bar { position:relative; background:#e8edf2; border-radius:4px; height:18px;
+       min-width:110px; }
+.bar-fill { height:100%; border-radius:4px; }
+.bar span { position:absolute; inset:0; font-size:11.5px; line-height:18px;
+            padding-left:6px; color:#132; font-weight:600; }
+.tag { display:inline-block; font-size:11px; font-weight:600; padding:1px 8px;
+       border-radius:10px; margin-right:6px; white-space:nowrap; }
+.tag.red { background:#fdecea; color:var(--red); }
+.tag.amber { background:#fff4d6; color:var(--amber); }
+.tag.green { background:#e6f4ea; color:var(--green); }
+.tag.gray { background:#eef2f6; color:var(--mut); }
+.ex { background:#fbfcfd; border:1px solid var(--line); border-left:4px solid var(--navy);
+      border-radius:6px; padding:10px 14px; margin:10px 0; font-size:13.5px; }
+.ex .loc { color:var(--mut); font-size:12px; margin-bottom:4px; }
+.ex ul { margin:4px 0 2px 18px; padding:0; }
+.ex li { margin:1px 0; }
+.fp   { color:var(--red); }
+.miss { color:var(--amber); }
+.ok   { color:var(--green); }
+details { margin:8px 0; }
+summary { cursor:pointer; font-weight:600; color:var(--navy); }
+.gapcard { background:var(--card); border:1px solid var(--line);
+           border-left:5px solid var(--red); border-radius:8px;
+           padding:14px 18px; margin:14px 0; }
+.gapcard.amber { border-left-color:var(--amber); }
+.gapcard.green { border-left-color:var(--green); }
+.gapcard h4 { margin:0 0 6px; font-size:15px; }
+.note { background:#eef6ff; border:1px solid #cfe3f7; border-radius:8px;
+        padding:12px 16px; font-size:13.5px; margin:14px 0; }
+.footer { margin-top:60px; color:var(--mut); font-size:12.5px; }
+</style></head><body><div class="wrap">
+
+<h1>CRF extraction accuracy &mdash; Dataiku runs</h1>
+<p class="sub">Ground-truth audit of the code-generation extraction pipeline on
+11 CRF documents (5 vendor formats, 2,847 pages). Two Dataiku runs are compared,
+with the local CLI run as a reference baseline.</p>
+
+<h2>1. The headline numbers</h2>
+<p>We hand-checked <b>110 sampled pages</b> (10 per document, spread across
+layout clusters) by reading the raw PDF text and writing down every real
+data-entry field &mdash; <b>375 truth fields</b> in total. Each run's
+export was then matched page by page against that truth (fuzzy matching, so
+wording variants still count).</p>
+
+<div class="cards">
+
+<div class="card" style="border-top:4px solid #0f766e">
+  <h3>Claude Sonnet 4.5 (Dataiku)</h3>
+  <div class="who">production model, LLM Mesh</div>
+  <div class="kpis">
+    <div class="kpi"><b>75%</b><span>precision</span></div>
+    <div class="kpi"><b>73%</b><span>recall (page)</span></div>
+    <div class="kpi"><b>86%</b><span>recall (doc)</span></div>
+    <div class="kpi"><b>98%</b><span>form names</span></div>
+  </div>
+  <div class="verdict">Matches the local CLI run on 10 of 11 documents; one document failed outright (zero records, flagged needs_manual_review) and drags recall down ~8 points.</div>
+</div>
+
+<div class="card" style="border-top:4px solid #7c5cb0">
+  <h3>GPT 5.2 (Dataiku)</h3>
+  <div class="who">alternative model, LLM Mesh</div>
+  <div class="kpis">
+    <div class="kpi"><b>74%</b><span>precision</span></div>
+    <div class="kpi"><b>62%</b><span>recall (page)</span></div>
+    <div class="kpi"><b>94%</b><span>recall (doc)</span></div>
+    <div class="kpi"><b>100%</b><span>form names</span></div>
+  </div>
+  <div class="verdict">Cleaner names than its raw numbers suggest, but stops too early: whole pages return empty on two documents. Finds fields, loses their page.</div>
+</div>
+
+<div class="card" style="border-top:4px solid #5b8bb8">
+  <h3>Claude Sonnet 4.5 (local CLI)</h3>
+  <div class="who">reference baseline, local API</div>
+  <div class="kpis">
+    <div class="kpi"><b>81%</b><span>precision</span></div>
+    <div class="kpi"><b>81%</b><span>recall (page)</span></div>
+    <div class="kpi"><b>92%</b><span>recall (doc)</span></div>
+    <div class="kpi"><b>96%</b><span>form names</span></div>
+  </div>
+  <div class="verdict">Reference baseline (same pipeline, local Anthropic API). Best balance of precision and recall.</div>
+</div>
+</div>
+
+<div class="note"><b>How to read the four numbers.</b>
+<b>Precision</b>: of the fields the model extracted on the sampled pages, how many
+are real fields. <b>Recall (page)</b>: of the real fields on those pages, how many
+the model extracted <i>on that page</i>. <b>Recall (doc)</b>: same, but a miss is
+forgiven if the field appears somewhere else in the document's export &mdash; the
+gap between the two recalls measures wrong-page attribution, not lost content.
+<b>Form names</b>: pages whose printed form title the run reproduced correctly.
+Named answer slots (e.g. &ldquo;Systolic&rdquo; under a vital-signs prompt) are counted
+as neither correct nor wrong.</div>
+
+<h2>2. Results per document</h2>
+<p>Each document is one vendor format/version. The pattern to notice: Sonnet's
+weak spots are isolated (one failed document, one noisy C-SSRS page), while
+GPT&nbsp;5.2's recall erodes broadly on the two longest, most repetitive books.</p>
+<table><tr><th rowspan='2'>document</th><th colspan='2'>Claude Sonnet 4.5 (Dataiku)</th><th colspan='2'>GPT 5.2 (Dataiku)</th><th colspan='2'>Claude Sonnet 4.5 (local CLI)</th></tr><tr><th class='small'>recall</th><th class='small'>precision</th><th class='small'>recall</th><th class='small'>precision</th><th class='small'>recall</th><th class='small'>precision</th></tr><tr><td class='mono small'>326-201-00007 CRF v1.0 30 Sep 2024<br><span class='muted'>33 truth fields on 10 sampled pages</span></td><td><div class='bar'><div class='bar-fill' style='width:100%;background:#0f766e'></div><span>100%</span></div></td><td><div class='bar'><div class='bar-fill' style='width:77%;background:#5b8bb8'></div><span>77%</span></div></td><td><div class='bar'><div class='bar-fill' style='width:100%;background:#7c5cb0'></div><span>100%</span></div></td><td><div class='bar'><div class='bar-fill' style='width:59%;background:#5b8bb8'></div><span>59%</span></div></td><td><div class='bar'><div class='bar-fill' style='width:100%;background:#0f766e'></div><span>100%</span></div></td><td><div class='bar'><div class='bar-fill' style='width:80%;background:#5b8bb8'></div><span>80%</span></div></td></tr><tr><td class='mono small'>326-201-00007 CRF v1.0 30 Sep 2024 1 <br><span class='muted'>27 truth fields on 10 sampled pages</span></td><td><div class='bar'><div class='bar-fill' style='width:96%;background:#0f766e'></div><span>96%</span></div></td><td><div class='bar'><div class='bar-fill' style='width:90%;background:#5b8bb8'></div><span>90%</span></div></td><td><div class='bar'><div class='bar-fill' style='width:100%;background:#7c5cb0'></div><span>100%</span></div></td><td><div class='bar'><div class='bar-fill' style='width:56%;background:#5b8bb8'></div><span>56%</span></div></td><td><div class='bar'><div class='bar-fill' style='width:100%;background:#0f766e'></div><span>100%</span></div></td><td><div class='bar'><div class='bar-fill' style='width:46%;background:#5b8bb8'></div><span>46%</span></div></td></tr><tr><td class='mono small'>331-201-00246 CRF v 04 Jul 2023<br><span class='muted'>28 truth fields on 10 sampled pages</span></td><td><div class='bar'><div class='bar-fill' style='width:54%;background:#0f766e'></div><span>54%</span></div></td><td><div class='bar'><div class='bar-fill' style='width:79%;background:#5b8bb8'></div><span>79%</span></div></td><td><div class='bar'><div class='bar-fill' style='width:71%;background:#7c5cb0'></div><span>71%</span></div></td><td><div class='bar'><div class='bar-fill' style='width:77%;background:#5b8bb8'></div><span>77%</span></div></td><td><div class='bar'><div class='bar-fill' style='width:68%;background:#0f766e'></div><span>68%</span></div></td><td><div class='bar'><div class='bar-fill' style='width:100%;background:#5b8bb8'></div><span>100%</span></div></td></tr><tr><td class='mono small'>331-201-00246 CRF v 26 Jul 2023<br><span class='muted'>28 truth fields on 10 sampled pages</span></td><td><div class='bar'><div class='bar-fill' style='width:75%;background:#0f766e'></div><span>75%</span></div></td><td><div class='bar'><div class='bar-fill' style='width:66%;background:#5b8bb8'></div><span>66%</span></div></td><td><div class='bar'><div class='bar-fill' style='width:75%;background:#7c5cb0'></div><span>75%</span></div></td><td><div class='bar'><div class='bar-fill' style='width:95%;background:#5b8bb8'></div><span>95%</span></div></td><td><div class='bar'><div class='bar-fill' style='width:54%;background:#0f766e'></div><span>54%</span></div></td><td><div class='bar'><div class='bar-fill' style='width:100%;background:#5b8bb8'></div><span>100%</span></div></td></tr><tr><td class='mono small'>384-201-00002 unique CRF 04Nov2024<br><span class='muted'>31 truth fields on 10 sampled pages</span></td><td><div class='bar'><div class='bar-fill' style='width:94%;background:#0f766e'></div><span>94%</span></div></td><td><div class='bar'><div class='bar-fill' style='width:59%;background:#5b8bb8'></div><span>59%</span></div></td><td><div class='bar'><div class='bar-fill' style='width:100%;background:#7c5cb0'></div><span>100%</span></div></td><td><div class='bar'><div class='bar-fill' style='width:66%;background:#5b8bb8'></div><span>66%</span></div></td><td><div class='bar'><div class='bar-fill' style='width:100%;background:#0f766e'></div><span>100%</span></div></td><td><div class='bar'><div class='bar-fill' style='width:100%;background:#5b8bb8'></div><span>100%</span></div></td></tr><tr><td class='mono small'>384-201-00004 CRF v1.0 05 Mar 2025<br><span class='muted'>20 truth fields on 10 sampled pages</span></td><td colspan='2'><span class='tag red'>no usable output</span> <span class='muted small'>needs_manual_template</span></td><td><div class='bar'><div class='bar-fill' style='width:70%;background:#7c5cb0'></div><span>70%</span></div></td><td><div class='bar'><div class='bar-fill' style='width:93%;background:#5b8bb8'></div><span>93%</span></div></td><td><div class='bar'><div class='bar-fill' style='width:95%;background:#0f766e'></div><span>95%</span></div></td><td><div class='bar'><div class='bar-fill' style='width:83%;background:#5b8bb8'></div><span>83%</span></div></td></tr><tr><td class='mono small'>384-201-00004 CRF v2.0 20 May 2025<br><span class='muted'>25 truth fields on 10 sampled pages</span></td><td><div class='bar'><div class='bar-fill' style='width:72%;background:#0f766e'></div><span>72%</span></div></td><td><div class='bar'><div class='bar-fill' style='width:95%;background:#5b8bb8'></div><span>95%</span></div></td><td><div class='bar'><div class='bar-fill' style='width:44%;background:#7c5cb0'></div><span>44%</span></div></td><td><div class='bar'><div class='bar-fill' style='width:58%;background:#5b8bb8'></div><span>58%</span></div></td><td><div class='bar'><div class='bar-fill' style='width:88%;background:#0f766e'></div><span>88%</span></div></td><td><div class='bar'><div class='bar-fill' style='width:63%;background:#5b8bb8'></div><span>63%</span></div></td></tr><tr><td class='mono small'>384-201-00004 aCRF 16JAN2025<br><span class='muted'>27 truth fields on 10 sampled pages</span></td><td><div class='bar'><div class='bar-fill' style='width:96%;background:#0f766e'></div><span>96%</span></div></td><td><div class='bar'><div class='bar-fill' style='width:84%;background:#5b8bb8'></div><span>84%</span></div></td><td><div class='bar'><div class='bar-fill' style='width:85%;background:#7c5cb0'></div><span>85%</span></div></td><td><div class='bar'><div class='bar-fill' style='width:100%;background:#5b8bb8'></div><span>100%</span></div></td><td><div class='bar'><div class='bar-fill' style='width:85%;background:#0f766e'></div><span>85%</span></div></td><td><div class='bar'><div class='bar-fill' style='width:82%;background:#5b8bb8'></div><span>82%</span></div></td></tr><tr><td class='mono small'>MAC186 X11-201-00001 eCRF v1.10 form tracker v1.6 06Mar2025<br><span class='muted'>101 truth fields on 10 sampled pages</span></td><td><div class='bar'><div class='bar-fill' style='width:58%;background:#0f766e'></div><span>58%</span></div></td><td><div class='bar'><div class='bar-fill' style='width:89%;background:#5b8bb8'></div><span>89%</span></div></td><td><div class='bar'><div class='bar-fill' style='width:31%;background:#7c5cb0'></div><span>31%</span></div></td><td><div class='bar'><div class='bar-fill' style='width:89%;background:#5b8bb8'></div><span>89%</span></div></td><td><div class='bar'><div class='bar-fill' style='width:67%;background:#0f766e'></div><span>67%</span></div></td><td><div class='bar'><div class='bar-fill' style='width:97%;background:#5b8bb8'></div><span>97%</span></div></td></tr><tr><td class='mono small'>QSC302573 Final CRFs 16Oct2024-326-201-00007 1 <br><span class='muted'>23 truth fields on 10 sampled pages</span></td><td><div class='bar'><div class='bar-fill' style='width:87%;background:#0f766e'></div><span>87%</span></div></td><td><div class='bar'><div class='bar-fill' style='width:100%;background:#5b8bb8'></div><span>100%</span></div></td><td><div class='bar'><div class='bar-fill' style='width:61%;background:#7c5cb0'></div><span>61%</span></div></td><td><div class='bar'><div class='bar-fill' style='width:88%;background:#5b8bb8'></div><span>88%</span></div></td><td><div class='bar'><div class='bar-fill' style='width:91%;background:#0f766e'></div><span>91%</span></div></td><td><div class='bar'><div class='bar-fill' style='width:91%;background:#5b8bb8'></div><span>91%</span></div></td></tr><tr><td class='mono small'>annotatedCRF 33120100246- v1.0 -17Aug2021<br><span class='muted'>32 truth fields on 10 sampled pages</span></td><td><div class='bar'><div class='bar-fill' style='width:81%;background:#0f766e'></div><span>81%</span></div></td><td><div class='bar'><div class='bar-fill' style='width:45%;background:#5b8bb8'></div><span>45%</span></div></td><td><div class='bar'><div class='bar-fill' style='width:19%;background:#7c5cb0'></div><span>19%</span></div></td><td><div class='bar'><div class='bar-fill' style='width:100%;background:#5b8bb8'></div><span>100%</span></div></td><td><div class='bar'><div class='bar-fill' style='width:81%;background:#0f766e'></div><span>81%</span></div></td><td><div class='bar'><div class='bar-fill' style='width:81%;background:#5b8bb8'></div><span>81%</span></div></td></tr></table>
+<p class="small muted">10 pages sampled per document, so each per-document cell
+carries roughly &plusmn;10&ndash;15&nbsp;percentage points of sampling error. Corpus
+totals above are the steadier signal. &ldquo;no usable output&rdquo; = the run produced
+zero records for the document.</p>
+
+<h2>3. Cross-check against production ground truth (Rave book)</h2>
+<p>For <b>384-201-00002 unique CRF</b> we also have the production digitized
+output (915 form+field pairs) as an independent, full-document ground truth
+&mdash; no sampling involved:</p>
+<table>
+<tr><th>run</th><th>extracted pairs</th><th>matched</th><th>recall</th><th>precision</th></tr>
+<tr><td>Claude Sonnet 4.5 (Dataiku)</td><td class='mono'>1,495</td><td class='mono'>776 / 915</td><td><div class='bar'><div class='bar-fill' style='width:85%;background:#0f766e'></div><span>85%</span></div></td><td><div class='bar'><div class='bar-fill' style='width:52%;background:#5b8bb8'></div><span>52%</span></div></td></tr><tr><td>GPT 5.2 (Dataiku)</td><td class='mono'>1,358</td><td class='mono'>852 / 915</td><td><div class='bar'><div class='bar-fill' style='width:93%;background:#7c5cb0'></div><span>93%</span></div></td><td><div class='bar'><div class='bar-fill' style='width:63%;background:#5b8bb8'></div><span>63%</span></div></td></tr><tr><td>Claude Sonnet 4.5 (local CLI)</td><td class='mono'>1,213</td><td class='mono'>810 / 915</td><td><div class='bar'><div class='bar-fill' style='width:89%;background:#5b8bb8'></div><span>89%</span></div></td><td><div class='bar'><div class='bar-fill' style='width:67%;background:#5b8bb8'></div><span>67%</span></div></td></tr>
+</table>
+<p class="small muted">Precision here is stricter than in the page sample: the
+production file lists one row per field while the runs also export answer-slot
+rows, so &ldquo;extra&rdquo; rows are penalized even when they are defensible. Use this
+table for recall comparisons; use the page sample for precision.</p>
+
+<h2>4. Claude Sonnet 4.5 (Dataiku): where it goes wrong</h2>
+
+<div class="gapcard">
+ <h4>1. One document produced no output at all (the run's biggest gap)</h4>
+ <p><b>384-201-00004 CRF v1.0 (05&nbsp;Mar&nbsp;2025)</b> &mdash; all five generated
+ code versions extracted <b>zero records</b>, so every sampled field on this
+ document is missed (0% recall, 20 truth fields). The pipeline correctly refused
+ to ship it: the run is flagged <code>needs_manual_review</code> and the trail
+ shows <code>stop_reason=budget</code> with &ldquo;The program extracted ZERO
+ records&rdquo; on every cycle. The same document works in the other two runs
+ (CLI Sonnet 95% recall, GPT&nbsp;5.2 70%), so this is a per-run induction
+ failure &mdash; a rerun with a fresh seed prompt would very likely fix it.</p>
+</div>
+<div class="gapcard amber">
+ <h4>2. Answer options and rating-scale anchors leak in as &ldquo;fields&rdquo;</h4>
+ <p>The most common precision mistake: rows that are <i>answer choices</i>, not
+ questions. Worst case in the sample is the Rave C-SSRS page, where the rating
+ anchors of three real fields were emitted as 19 extra fields:</p>
+ <div class="ex">
+  <div class="loc">384-201-00002 unique CRF, page 341 &mdash; truth fields are only
+  &ldquo;Controllability&rdquo;, &ldquo;Deterrents&rdquo;, &ldquo;Reasons for Ideation&rdquo;</div>
+  <ul>
+   <li class="fp">&ldquo;1 = Easily able to control&rdquo;, &ldquo;2 = Can control thoughts&rdquo; &hellip; (scale anchors)</li>
+   <li class="fp">&ldquo;attention, revenge or a&rdquo;, &ldquo;how you were feeling)&rdquo; (anchor text split across lines)</li>
+  </ul>
+ </div>
+ <p>The same pattern shows up on the Viedoc-style 2021 book, where lab analyte
+ enumerations (&ldquo;Platelet count&rdquo;, &ldquo;Sodium&rdquo;, &ldquo;Urobilinogen&rdquo;&hellip;) and even
+ fragments of the OID annotation dump (&ldquo;&hellip;Microscopic analysis if indicated)]&rdquo;)
+ were emitted as fields &mdash; precision on that document drops to 45%.</p>
+</div>
+<div class="gapcard amber">
+ <h4>3. Line-wrap fragments become fields</h4>
+ <p>When a prompt wraps across lines, the generated parser sometimes emits each
+ line as its own field:</p>
+ <div class="ex">
+  <div class="loc">annotatedCRF 2021, page 484 (C-SSRS)</div>
+  <ul>
+   <li class="fp">&ldquo;fall asleep and not wake up.&rdquo;</li>
+   <li class="fp">&ldquo;up?&rdquo;</li>
+   <li class="ok">truth: &ldquo;Have you wished you were dead or wished you could go to sleep and not wake up?&rdquo; (missed as one field)</li>
+  </ul>
+ </div>
+</div>
+<div class="gapcard amber">
+ <h4>4. Split-line labels are missed</h4>
+ <p>Labels whose text is broken across lines in the PDF text layer (the number
+ lives on its own line) are skipped, e.g. the lab-review rows
+ &ldquo;Hematology clinically significant abnormal assay # 3&rdquo; /
+ &ldquo;&hellip;# 4&rdquo; on the 2021 book, and &ldquo;Planned Timepoint&rdquo; on vitals grids.
+ These account for most of the missed fields outside the failed document.</p>
+</div>
+<div class="gapcard green">
+ <h4>What works well</h4>
+ <p>Form names are essentially solved where a title is printed on the page
+ (47/48 sampled printed-title pages correct, including carried-forward titles).
+ QSC schedule books and the ClinSpark/DrVince books score 77&ndash;100% recall with
+ good precision, matching the local CLI run. Doc-level recall of 86% shows most
+ &ldquo;missed&rdquo; fields on a page are found elsewhere in the export rather than
+ being absent.</p>
+</div>
+<h3>Full mistake list (Sonnet 4.5, Dataiku)</h3>
+<details><summary>326-201-00007 CRF v1.0 30 Sep 2024 <span class='muted small'>(0 missed, 10 false positives on the sample)</span></summary><table><tr><th style='width:60px'>page</th><th>detail</th></tr><tr><td class='mono'>p9</td><td><b class='fp'>false positives:</b> For sexually active males and their female partners of childbearing potential, there must be a documented agreement that the participant and their partner will take measures (ie, 2 different approved methods of birth control or remain abstinent from sexual activity).; documented agreement that the participant and their partner will take measures (ie, 2 different approved methods of birth control or remain abstinent from sexual activity).; approved methods of birth control or remain abstinent from sexual activity).; External condoms must be used in addition to hormonal contraception.</td></tr><tr><td class='mono'>p11</td><td><b class='fp'>false positives:</b> Does the participant smoke, use e-cigarettes or any nicotine replacement products? (If yes,; Does the participant have any clinically relevant medical/surgical history? (If &#x27;Yes&#x27; complete</td></tr><tr><td class='mono'>p23</td><td><b class='fp'>false positives:</b> &gt;200 msec.  (Supine for a minimum 3 minutes)</td></tr><tr><td class='mono'>p95</td><td><b class='fp'>false positives:</b> 5) (**OPERATOR TO COMPLETE** - SWITCH USER)</td></tr><tr><td class='mono'>p99</td><td><b class='fp'>false positives:</b> 7) (**OPERATOR TO COMPLETE** - SWITCH USER)</td></tr><tr><td class='mono'>p102</td><td><b class='fp'>false positives:</b> 8) (**OPERATOR TO COMPLETE** - SWITCH USER)</td></tr></table></details><details><summary>326-201-00007 CRF v1.0 30 Sep 2024 1  <span class='muted small'>(1 missed, 3 false positives on the sample)</span></summary><table><tr><th style='width:60px'>page</th><th>detail</th></tr><tr><td class='mono'>p156</td><td><b class='fp'>false positives:</b> Confirm an AE and Conmed check has been performed (Record any AE and Conmeds if</td></tr><tr><td class='mono'>p332</td><td><b class='miss'>missed:</b> What was the protein result?<br><b class='fp'>false positives:</b> IF PROTEIN ≥ 30mg/dl:  Repeat urinalysis as soon as possible, ensuring a clean catch specimen. If protein remains ≥ 30mg/dl on repeat, then inform PI/medic. (Perform urinalysis and read results)</td></tr><tr><td class='mono'>p425</td><td><b class='fp'>false positives:</b> Is participant female and menstruating? (If &#x27;Yes&#x27;, DO NOT send sample for Microscopy. If &#x27;No&#x27;,</td></tr></table></details><details><summary>331-201-00246 CRF v 04 Jul 2023 <span class='muted small'>(13 missed, 4 false positives on the sample)</span></summary><table><tr><th style='width:60px'>page</th><th>detail</th></tr><tr><td class='mono'>p288</td><td><b class='miss'>missed:</b> 11. Subjects who have a significant risk of committing suicide based on history, routine psychiatric status examination, investigator&#x27;s judgment, or who have an answer of yes on suicidal ideation questions 4 or 5; 13. History of diabetes mellitus (type 1 or type 2)</td></tr><tr><td class='mono'>p486</td><td><b class='miss'>missed:</b> Most severe ideation; Description of Ideation<br><b class='fp'>false positives:</b> being the least severe and 5 being the most severe). Ask about time he/she was feeling the most suicidal.</td></tr><tr><td class='mono'>p516</td><td><b class='miss'>missed:</b> Sample Timepoint; Sample Status; Barcode Number; Backup Barcode Number<br><b class='fp'>false positives:</b> partialtime (hour,; (values:; (values: Collected, Not</td></tr><tr><td class='mono'>p663</td><td><b class='miss'>missed:</b> Skip to next visit; Skip to Early Termination visit</td></tr><tr><td class='mono'>p910</td><td><b class='miss'>missed:</b> Dose Unit; Dose Form; Reason</td></tr></table></details><details><summary>331-201-00246 CRF v 26 Jul 2023 <span class='muted small'>(7 missed, 11 false positives on the sample)</span></summary><table><tr><th style='width:60px'>page</th><th>detail</th></tr><tr><td class='mono'>p74</td><td><b class='fp'>false positives:</b> Lactate dehydrogenase; Magnesium; Phosphorus</td></tr><tr><td class='mono'>p149</td><td><b class='miss'>missed:</b> 25. Subjects who fail to capture daily dosing of sertraline during the sertraline steady-state assurance period on Days -14 to -2.; 26. Subjects without a permanent physical residence.; 27. Any subject who, in the opinion of the investigator, should not participate in the trial.; 28. Subjects taking multiple medications deemed necessary to maintain psychiatric stability or those taking medication regimens where wash out is impractical should not be enrolled<br><b class='fp'>false positives:</b> Criteria; Met/Not Met</td></tr><tr><td class='mono'>p487</td><td><b class='miss'>missed:</b> Frequency; Duration<br><b class='fp'>false positives:</b> Since Last Visit; (1) Less than once a week</td></tr><tr><td class='mono'>p551</td><td><b class='miss'>missed:</b> Result<br><b class='fp'>false positives:</b> Abnormal Findings</td></tr><tr><td class='mono'>p938</td><td><b class='fp'>false positives:</b> Emulsion; Gel; Graft</td></tr></table></details><details><summary>384-201-00002 unique CRF 04Nov2024 <span class='muted small'>(2 missed, 20 false positives on the sample)</span></summary><table><tr><th style='width:60px'>page</th><th>detail</th></tr><tr><td class='mono'>p45</td><td><b class='miss'>missed:</b> Date; Time participant placed in position</td></tr><tr><td class='mono'>p49</td><td><b class='fp'>false positives:</b> Head / Eyes / Ears / Nose /</td></tr><tr><td class='mono'>p341</td><td><b class='fp'>false positives:</b> 1 = Easily able to control; 2 = Can control thoughts; 3 = Can control thoughts; 4 = Can control thoughts; 0 = Does not attempt to; Deterrents; 1 = Deterrents definitely; 2 = Deterrents probably; deterrents stopped you; 4 = Deterrents most likely; 1 = Completely to get; attention, revenge or a; 2 = Mostly to get attention,; revenge or a reaction from; reaction from others and to; 4 = Mostly to end or stop; the pain (you couldn&#x27;t go; on living with the pain or; how you were feeling)</td></tr></table></details><details><summary>384-201-00004 CRF v1.0 05 Mar 2025 <span class='muted small'>(20 missed, 0 false positives on the sample)</span></summary><table><tr><th style='width:60px'>page</th><th>detail</th></tr><tr><td class='mono'>p41</td><td><b class='miss'>missed:</b> If yes, describe:; Have you been thinking about how you might do this? (Lifetime).; Have you been thinking about how you might do this? (Past 12 Months).; Have you had these thoughts and had some intention of acting on them? (Lifetime).</td></tr><tr><td class='mono'>p61</td><td><b class='miss'>missed:</b> Why was the volunteer not needed?; Other, Specify:; How was the volunteer non-compliant with the study drug?; How was the volunteer non-compliant with the study schedule?; Reason for physician decision; What withdrawal criteria was met?; Why was the volunteer discontinued at sponsor request?</td></tr><tr><td class='mono'>p65</td><td><b class='miss'>missed:</b> Abnormality Reason</td></tr><tr><td class='mono'>p90</td><td><b class='miss'>missed:</b> Date and time of collection; Height; Weight; BMI</td></tr><tr><td class='mono'>p102</td><td><b class='miss'>missed:</b> Body system; Examination result; Clinical significance; Abnormal findings</td></tr></table></details><details><summary>384-201-00004 CRF v2.0 20 May 2025 <span class='muted small'>(7 missed, 1 false positives on the sample)</span></summary><table><tr><th style='width:60px'>page</th><th>detail</th></tr><tr><td class='mono'>p44</td><td><b class='fp'>false positives:</b> If yes, describe:</td></tr><tr><td class='mono'>p79</td><td><b class='miss'>missed:</b> PR; QRS; QT; QTcF; QTcB</td></tr><tr><td class='mono'>p155</td><td><b class='miss'>missed:</b> Heart Rate; Temperature</td></tr></table></details><details><summary>384-201-00004 aCRF 16JAN2025 <span class='muted small'>(1 missed, 5 false positives on the sample)</span></summary><table><tr><th style='width:60px'>page</th><th>detail</th></tr><tr><td class='mono'>p24</td><td><b class='fp'>false positives:</b> Have you had these thoughts and had some intention of; Have you started to work out or worked out the details of; how to kill yourself since your last visit? Do you intend to</td></tr><tr><td class='mono'>p36</td><td><b class='miss'>missed:</b> Why was the volunteer not needed?<br><b class='fp'>false positives:</b> How was the volunteer non-compliant with the study drug?</td></tr><tr><td class='mono'>p85</td><td><b class='fp'>false positives:</b> I acknowledge that I have reviewed and approved all data</td></tr></table></details><details><summary>MAC186 X11-201-00001 eCRF v1.10 form tracker v1.6 06Mar2025 <span class='muted small'>(42 missed, 7 false positives on the sample)</span></summary><table><tr><th style='width:60px'>page</th><th>detail</th></tr><tr><td class='mono'>p63</td><td><b class='miss'>missed:</b> Sample Performed; Reason Not Performed; Sample Date; Sample Time</td></tr><tr><td class='mono'>p89</td><td><b class='miss'>missed:</b> 1. Reported Sadness; 2. Apparent Sadness; 3. Inner Tension; 4. Reduced Sleep; 5. Reduced appetite; 6. Concentration Difficulties; 7. Lassitude; 8. Inability To Feel; 9. Pessimistic Thoughts; 10. Suicidal Thoughts</td></tr><tr><td class='mono'>p104</td><td><b class='miss'>missed:</b> Sample Performed; Reason Not Performed; Sample Date; Sample Time; DOA TEST; Result; Comments (If Positive)</td></tr><tr><td class='mono'>p208</td><td><b class='fp'>false positives:</b> 4. I am presently worrying over possible; 13. I wish I could be as happy as others</td></tr><tr><td class='mono'>p286</td><td><b class='miss'>missed:</b> Physical Examination Performed; Reason Not Performed; Examination Date; Examination Time; Body System Examined; Other, Please Specify</td></tr><tr><td class='mono'>p300</td><td><b class='miss'>missed:</b> Eye; Repeat; Not Done; PLR diameter init; PLR MAX constriction velocity; PLR dilation velocity; PLR T75; Pupil Area (Calculated); ACA (Calculated); Dilation Velocity at T75 (Calculated)<br><b class='fp'>false positives:</b> Pupillometry - Single Time Point; Reason not review, signed</td></tr><tr><td class='mono'>p317</td><td><b class='miss'>missed:</b> Suicide<br><b class='fp'>false positives:</b> Answer for Actual Attempts Only; Enter Code</td></tr><tr><td class='mono'>p358</td><td><b class='miss'>missed:</b> Sample Performed; Sample Date; Sample Time; Primary Sample Accession Number<br><b class='fp'>false positives:</b> Plasma samples (PD) - Single Time Point</td></tr></table></details><details><summary>QSC302573 Final CRFs 16Oct2024-326-201-00007 1  <span class='muted small'>(3 missed, 0 false positives on the sample)</span></summary><table><tr><th style='width:60px'>page</th><th>detail</th></tr><tr><td class='mono'>p219</td><td><b class='miss'>missed:</b> Targeted Neurological Examination: Does the participant require a targeted neurological examination? (If yes, please specify the reason)</td></tr><tr><td class='mono'>p384</td><td><b class='miss'>missed:</b> Vital Signs</td></tr><tr><td class='mono'>p453</td><td><b class='miss'>missed:</b> Targeted Physical Examination: Does the participant require a targeted physical examination? (If yes, please specify the reason)</td></tr></table></details><details><summary>annotatedCRF 33120100246- v1.0 -17Aug2021 <span class='muted small'>(6 missed, 32 false positives on the sample)</span></summary><table><tr><th style='width:60px'>page</th><th>detail</th></tr><tr><td class='mono'>p39</td><td><b class='fp'>false positives:</b> Normal; Abnormal; Not Evaluable</td></tr><tr><td class='mono'>p223</td><td><b class='miss'>missed:</b> Planned Timepoint<br><b class='fp'>false positives:</b> 3h postdose; 4h postdose; 6h postdose; 8h postdose; position for 3 minutes.<br><b class='fp'>form name wrong:</b> got &ldquo;Supine&rdquo;, expected &ldquo;Triplicate Orthostatic BP and HR - 6h Postdose&rdquo;</td></tr><tr><td class='mono'>p243</td><td><b class='miss'>missed:</b> Hematology clinically significant abnormal assay # 3; Hematology clinically significant abnormal assay # 4<br><b class='fp'>false positives:</b> Platelet count; Red blood cell count; White blood cell count (absolute and differential); Glycated Hemoglobin; Red blood cell count, White blood cell count (absolute and differential), Glycated Hemoglobin)]</td></tr><tr><td class='mono'>p264</td><td><b class='fp'>false positives:</b> Sertraline PK; minutes)]; Propranolol PK; Scan)]; enumeration</td></tr><tr><td class='mono'>p301</td><td><b class='miss'>missed:</b> Urinalysis clinically significant abnormal assay # 2<br><b class='fp'>false positives:</b> Protein; Specific gravity; Urobilinogen; Microscopic analysis if indicated; Urobilinogen, Microscopic analysis if indicated)]</td></tr><tr><td class='mono'>p484</td><td><b class='miss'>missed:</b> Have you wished you were dead or wished you could go to sleep and not wake up?<br><b class='fp'>false positives:</b> fall asleep and not wake up.; No; up?</td></tr><tr><td class='mono'>p566</td><td><b class='miss'>missed:</b> Chemistry clinically significant abnormal assay # 1:<br><b class='fp'>false positives:</b> Triglycerides; Sodium; Urea nitrogen; Uric acid; lipoprotein;and; high density lipoprotein), Creatine phosphokinase, Creatinine, Gamma glutamyl transferase, Glucose, Lactate dehydrogenase,; Magnesium, Phosphorus, Potassium, Prolactin, Total bilirubin, Total protein, Triglycerides, Sodium, Urea nitrogen, Uric acid)]</td></tr></table></details>
+
+<h2>5. GPT 5.2 (Dataiku): where it goes wrong</h2>
+
+<div class="gapcard">
+ <h4>1. Under-extraction: whole pages come back empty</h4>
+ <p>GPT&nbsp;5.2's main gap is coverage. Its parsers stop at a quality plateau
+ while large parts of the document are still unparsed, so many sampled pages
+ have <i>no rows at all</i>:</p>
+ <ul>
+  <li><b>MAC186 form tracker: 31% page recall.</b> The generated code reads
+  the &ldquo;Variable details&rdquo; dictionary pages but skips most form layout pages
+  &mdash; MADRS, Physical Examination, Pupillometry, C-SSRS and PD-sample pages
+  returned zero rows (938 rows exported vs 6,165 by CLI Sonnet on the same
+  document).</li>
+  <li><b>annotatedCRF 2021 (596 pages): 19% page recall.</b> Only 816 rows
+  exported; lab-review, orthostatic-vitals and C-SSRS pages in the sample are
+  empty.</li>
+ </ul>
+ <p>Document-level recall is high (94% across the corpus): the field <i>names</i>
+ usually exist somewhere in the export (often from a twin page), but they are
+ attributed to the wrong pages &mdash; a real problem if page provenance matters
+ downstream.</p>
+</div>
+<div class="gapcard amber">
+ <h4>2. Page furniture exported as fields on the Rave book</h4>
+ <p>On <b>384-201-00002 unique CRF</b> the parser emits the footer artifact
+ &ldquo;01.025 GMK (432)&rdquo; and the column header &ldquo;Units&rdquo; as fields on
+ essentially every page &mdash; including 6 annotation-dictionary pages that
+ contain no real fields at all (the false-positive pages in the scorecard).
+ Recall on this document is still 100%, but precision drops to 66%.</p>
+</div>
+<div class="gapcard amber">
+ <h4>3. Instructions and questionnaire guidance extracted as fields</h4>
+ <p>On the QSC schedule books and ClinSpark C-SSRS pages, option rows and
+ interviewer guidance paragraphs come back as fields, e.g. a 500-character
+ C-SSRS definition paragraph (&ldquo;A potentially self-injurious act committed
+ with at least some wish to die&hellip;&rdquo;) on 384-201-00004 CRF v2.0 page 44.
+ These inflate the false-positive count on otherwise well-parsed pages.</p>
+</div>
+<div class="gapcard amber">
+ <h4>4. Form names carry an invented study prefix</h4>
+ <p>GPT&nbsp;5.2 prefixes form names with the study ID (&ldquo;S_QSC302573, 03 -
+ Screening Final v1.0&rdquo; instead of the printed &ldquo;QSC302573, 03 - Screening
+ Final v1.0&rdquo;). The scorer accepts this as a match, and it is cosmetic, but
+ downstream joins on form name would need the same tolerance.</p>
+</div>
+<div class="gapcard green">
+ <h4>What works well</h4>
+ <p>Where GPT&nbsp;5.2 does parse a page, output is clean: corpus precision is 74%
+ and several documents (ClinSpark aCRF 16JAN2025, Viedoc 26&nbsp;Jul&nbsp;2023) score
+ 95&ndash;100% precision. Form-name accuracy is perfect on the sample (47/47), and
+ on the Rave book it actually achieves the highest full-document recall of the
+ three runs (93% of the 915 production ground-truth pairs).</p>
+</div>
+<h3>Full mistake list (GPT 5.2, Dataiku)</h3>
+<details><summary>326-201-00007 CRF v1.0 30 Sep 2024 <span class='muted small'>(0 missed, 23 false positives on the sample)</span></summary><table><tr><th style='width:60px'>page</th><th>detail</th></tr><tr><td class='mono'>p9</td><td><b class='fp'>false positives:</b> For sexually active males and their female partners of childbearing potential, there must be a documented agreement that the participant and their partner will take measures (ie, 2 different approved methods of birth control or remain abstinent from sexual activity). External condoms must be used in addition to hormonal contraception. External condom and internal condom should not be used together.; Staff Initials; Comment</td></tr><tr><td class='mono'>p11</td><td><b class='fp'>false positives:</b> Does the participant smoke, use e-cigarettes or any nicotine replacement products? (If yes,; Staff Initials; Comment; Does the participant have any clinically relevant medical/surgical history? (If &#x27;Yes&#x27; complete</td></tr><tr><td class='mono'>p21</td><td><b class='fp'>false positives:</b> Staff Initials; Comment</td></tr><tr><td class='mono'>p23</td><td><b class='fp'>false positives:</b> Staff Initials; Comment</td></tr><tr><td class='mono'>p24</td><td><b class='fp'>false positives:</b> Staff Initials; Comment</td></tr><tr><td class='mono'>p95</td><td><b class='fp'>false positives:</b> 5) (**OPERATOR TO COMPLETE** - SWITCH USER); Comment</td></tr><tr><td class='mono'>p96</td><td><b class='fp'>false positives:</b> Comment; Staff Initials</td></tr><tr><td class='mono'>p99</td><td><b class='fp'>false positives:</b> Comment; 7) (**OPERATOR TO COMPLETE** - SWITCH USER)</td></tr><tr><td class='mono'>p102</td><td><b class='fp'>false positives:</b> 8) (**OPERATOR TO COMPLETE** - SWITCH USER); Comment</td></tr><tr><td class='mono'>p107</td><td><b class='fp'>false positives:</b> Staff Initials; Comment</td></tr></table></details><details><summary>326-201-00007 CRF v1.0 30 Sep 2024 1  <span class='muted small'>(0 missed, 21 false positives on the sample)</span></summary><table><tr><th style='width:60px'>page</th><th>detail</th></tr><tr><td class='mono'>p72</td><td><b class='fp'>false positives:</b> Comment:; Staff Initials:</td></tr><tr><td class='mono'>p98</td><td><b class='fp'>false positives:</b> Comment:; Staff Initials:</td></tr><tr><td class='mono'>p101</td><td><b class='fp'>false positives:</b> Staff Initials:; Comment:</td></tr><tr><td class='mono'>p156</td><td><b class='fp'>false positives:</b> Staff Initials:; Comment:</td></tr><tr><td class='mono'>p229</td><td><b class='fp'>false positives:</b> Staff Initials:; Comment:</td></tr><tr><td class='mono'>p332</td><td><b class='fp'>false positives:</b> Comment:; Staff Initials:; IF PROTEIN ≥ 30mg/dl: Repeat urinalysis as soon as possible, ensuring a clean catch specimen. If protein remains ≥ 30mg/dl on repeat, then inform PI/medic. (Perform urinalysis and read results)</td></tr><tr><td class='mono'>p425</td><td><b class='fp'>false positives:</b> Staff Initials:; Comment:</td></tr><tr><td class='mono'>p431</td><td><b class='fp'>false positives:</b> Staff Initials:; Comment:</td></tr><tr><td class='mono'>p448</td><td><b class='fp'>false positives:</b> Staff Initials:; Comment:</td></tr><tr><td class='mono'>p464</td><td><b class='fp'>false positives:</b> Staff Initials:; Comment:</td></tr></table></details><details><summary>331-201-00246 CRF v 04 Jul 2023 <span class='muted small'>(8 missed, 6 false positives on the sample)</span></summary><table><tr><th style='width:60px'>page</th><th>detail</th></tr><tr><td class='mono'>p356</td><td><b class='miss'>missed:</b> Planned Timepoint</td></tr><tr><td class='mono'>p486</td><td><b class='miss'>missed:</b> Most severe ideation<br><b class='fp'>false positives:</b> specific plan</td></tr><tr><td class='mono'>p516</td><td><b class='miss'>missed:</b> Sample Timepoint; Sample Status; Time of Collection; Barcode Number; Backup Barcode Number<br><b class='fp'>false positives:</b> Brexpiprazole/Sertraline PK Sertraline PK Propranolol PK Prazosin PK; Prazosin PK; Collected</td></tr><tr><td class='mono'>p910</td><td><b class='miss'>missed:</b> Reason<br><b class='fp'>false positives:</b> Physician decision</td></tr><tr><td class='mono'>p918</td><td><b class='fp'>false positives:</b> Other</td></tr></table></details><details><summary>331-201-00246 CRF v 26 Jul 2023 <span class='muted small'>(7 missed, 1 false positives on the sample)</span></summary><table><tr><th style='width:60px'>page</th><th>detail</th></tr><tr><td class='mono'>p74</td><td><b class='miss'>missed:</b> Chemistry clinically significant abnormal assay # 3<br><b class='fp'>false positives:</b> Urea nitrogen</td></tr><tr><td class='mono'>p149</td><td><b class='miss'>missed:</b> 25. Subjects who fail to capture daily dosing of sertraline during the sertraline steady-state assurance period on Days -14 to -2.; 26. Subjects without a permanent physical residence.; 27. Any subject who, in the opinion of the investigator, should not participate in the trial.; 28. Subjects taking multiple medications deemed necessary to maintain psychiatric stability or those taking medication regimens where wash out is impractical should not be enrolled</td></tr><tr><td class='mono'>p467</td><td><b class='miss'>missed:</b> Chemistry clinically significant abnormal assay # 4</td></tr><tr><td class='mono'>p551</td><td><b class='miss'>missed:</b> Result</td></tr></table></details><details><summary>384-201-00002 unique CRF 04Nov2024 <span class='muted small'>(0 missed, 16 false positives on the sample)</span></summary><table><tr><th style='width:60px'>page</th><th>detail</th></tr><tr><td class='mono'>p16</td><td><b class='fp'>false positives:</b> 01.025 GMK (432)</td></tr><tr><td class='mono'>p45</td><td><b class='fp'>false positives:</b> 01.025 GMK (432)</td></tr><tr><td class='mono'>p49</td><td><b class='fp'>false positives:</b> 01.025 GMK (432)</td></tr><tr><td class='mono'>p66</td><td><b class='fp'>false positives:</b> Units; 01.025 GMK (432)</td></tr><tr><td class='mono'>p166</td><td><b class='fp'>false positives:</b> Units; 01.025 GMK (432)</td></tr><tr><td class='mono'>p208</td><td><b class='fp'>false positives:</b> Units; 01.025 GMK (432)</td></tr><tr><td class='mono'>p259</td><td><b class='fp'>false positives:</b> Units; 01.025 GMK (432)</td></tr><tr><td class='mono'>p292</td><td><b class='fp'>false positives:</b> Units; 01.025 GMK (432)</td></tr><tr><td class='mono'>p341</td><td><b class='fp'>false positives:</b> 01.025 GMK (432)</td></tr><tr><td class='mono'>p369</td><td><b class='fp'>false positives:</b> Units; 01.025 GMK (432)</td></tr></table></details><details><summary>384-201-00004 CRF v1.0 05 Mar 2025 <span class='muted small'>(6 missed, 1 false positives on the sample)</span></summary><table><tr><th style='width:60px'>page</th><th>detail</th></tr><tr><td class='mono'>p14</td><td><b class='fp'>false positives:</b> Weight / BMI</td></tr><tr><td class='mono'>p41</td><td><b class='miss'>missed:</b> If yes, describe:</td></tr><tr><td class='mono'>p90</td><td><b class='miss'>missed:</b> BMI</td></tr><tr><td class='mono'>p102</td><td><b class='miss'>missed:</b> Body system; Examination result; Clinical significance; Abnormal findings</td></tr></table></details><details><summary>384-201-00004 CRF v2.0 20 May 2025 <span class='muted small'>(14 missed, 8 false positives on the sample)</span></summary><table><tr><th style='width:60px'>page</th><th>detail</th></tr><tr><td class='mono'>p30</td><td><b class='fp'>false positives:</b> Aliases</td></tr><tr><td class='mono'>p44</td><td><b class='fp'>false positives:</b> feeling (in other words you couldn&#x27;t go on living with this pain or; how you were feeling) or was it to get attention, revenge or a; reaction from others? Or both? (Lifetime).; end your life when you ___? Or Did you think it was; possible you could have died from ___? Or did you do it</td></tr><tr><td class='mono'>p79</td><td><b class='miss'>missed:</b> Abnormality Reason; PR; QRS; QT; QTcF; QTcB<br><b class='fp'>false positives:</b> Comment: Reading 3</td></tr><tr><td class='mono'>p113</td><td><b class='miss'>missed:</b> Route of administration; Date and time of administration; Drug name given; Total dose; Unit; Formulation of study drug; Quantity administered<br><b class='fp'>false positives:</b> Dose is swallowed whole, and a hand and mouth check are performed.</td></tr><tr><td class='mono'>p155</td><td><b class='miss'>missed:</b> Clinical significance</td></tr></table></details><details><summary>384-201-00004 aCRF 16JAN2025 <span class='muted small'>(4 missed, 0 false positives on the sample)</span></summary><table><tr><th style='width:60px'>page</th><th>detail</th></tr><tr><td class='mono'>p78</td><td><b class='miss'>missed:</b> Abnormal findings; Body system; Examination result; Clinical significance</td></tr></table></details><details><summary>MAC186 X11-201-00001 eCRF v1.10 form tracker v1.6 06Mar2025 <span class='muted small'>(70 missed, 4 false positives on the sample)</span></summary><table><tr><th style='width:60px'>page</th><th>detail</th></tr><tr><td class='mono'>p74</td><td><b class='fp'>false positives:</b> Screening EEG</td></tr><tr><td class='mono'>p89</td><td><b class='miss'>missed:</b> MADRS Performed; Reason Not Performed; MADRS Date; MADRS Time; Rater Initials; Total MADRS Scale Score; 1. Reported Sadness; 2. Apparent Sadness; 3. Inner Tension; 4. Reduced Sleep; 5. Reduced appetite; 6. Concentration Difficulties; 7. Lassitude; 8. Inability To Feel; 9. Pessimistic Thoughts; 10. Suicidal Thoughts</td></tr><tr><td class='mono'>p104</td><td><b class='miss'>missed:</b> Sample Performed; Reason Not Performed; Sample Date; Sample Time; DOA TEST; Result; Comments (If Positive)</td></tr><tr><td class='mono'>p208</td><td><b class='fp'>false positives:</b> Spielberger State-Trait Anxiety Inventory; 4. I am presently worrying over possible; 13. I wish I could be as happy as others</td></tr><tr><td class='mono'>p286</td><td><b class='miss'>missed:</b> Physical Examination Performed; Reason Not Performed; Examination Date; Examination Time; Body System Examined; Other, Please Specify; Not Done; Reason Not Done; Interpretation; Abnormal Findings</td></tr><tr><td class='mono'>p300</td><td><b class='miss'>missed:</b> Pupillometry Assessment Performed; Reason Not Performed; Eye; Repeat; Not Done; Reason Not Done; Pupillometry Date; Position Rest Time; Pupillometry Start Time; Readings downloaded onto a spreadsheet via Bluetooth from the pupilometer device.; Reviewed, signed and dated by a physician; Reason not review, signed and dated; PLR diameter init; PLR MAX constriction velocity; PLR dilation velocity; PLR T75; Pupil Area (Calculated); ACA (Calculated); Dilation Velocity at T75 (Calculated)</td></tr><tr><td class='mono'>p317</td><td><b class='miss'>missed:</b> Preparatory Acts or Behaviour; Suicidal Behaviour; Suicide; Most Lethal Attempt Date; Actual Lethality/Medical Damage; Potential Lethality</td></tr><tr><td class='mono'>p358</td><td><b class='miss'>missed:</b> Sample Performed; Reason Not Done; Sample Date; Sample Time; Primary Sample Accession Number; Back Up Sample Accession Number</td></tr><tr><td class='mono'>p359</td><td><b class='miss'>missed:</b> Sample Performed; Reason Not Done; Sample Date; Sample Time; Primary Sample Accession Number; Back Up Sample Accession Number</td></tr></table></details><details><summary>QSC302573 Final CRFs 16Oct2024-326-201-00007 1  <span class='muted small'>(9 missed, 2 false positives on the sample)</span></summary><table><tr><th style='width:60px'>page</th><th>detail</th></tr><tr><td class='mono'>p57</td><td><b class='fp'>false positives:</b> (What sort of reasons did you have for thinking about wanting to die or killing yourself? Was it to end the pain or stop the way you were feeling (in other words you couldn&#x27;t go on living with this pain or how you were feeling) or was it to get attention, revenge or a reaction from others? Or both?); this pain or how you were feeling) or was it to get attention, revenge or a reaction from others?</td></tr><tr><td class='mono'>p219</td><td><b class='miss'>missed:</b> If yes, were there any clinically significant abnormal findings?</td></tr><tr><td class='mono'>p226</td><td><b class='miss'>missed:</b> Is there a drop in SYSTOLIC BP from supine to standing?; Is there a drop in DIASTOLIC BP from supine to standing?; Vital Signs Difference for SYSTOLIC Drop</td></tr><tr><td class='mono'>p256</td><td><b class='miss'>missed:</b> Vital Signs Difference for SYSTOLIC Drop; Vital Signs Difference for DIASTOLIC Drop; Clinical Assessment of Standing Vital Signs (Medic or Nurse to assess vital signs); Vital Sign Findings</td></tr><tr><td class='mono'>p355</td><td><b class='miss'>missed:</b> Detailed findings of Physical Examination</td></tr></table></details><details><summary>annotatedCRF 33120100246- v1.0 -17Aug2021 <span class='muted small'>(26 missed, 0 false positives on the sample)</span></summary><table><tr><th style='width:60px'>page</th><th>detail</th></tr><tr><td class='mono'>p39</td><td><b class='miss'>missed:</b> Overall ECG interpretation</td></tr><tr><td class='mono'>p223</td><td><b class='miss'>missed:</b> Were Vital Signs Collected?; If not collected, reason:; Collection Date; Planned Timepoint; Time Placed in Position</td></tr><tr><td class='mono'>p243</td><td><b class='miss'>missed:</b> Hematology clinically significant abnormal assay # 3; Hematology abnormal assay # 3 Investigator comment; Hematology clinically significant abnormal assay # 4; Hematology abnormal assay # 4 Investigator comment</td></tr><tr><td class='mono'>p301</td><td><b class='miss'>missed:</b> Urinalysis clinically significant abnormal assay # 2; Urinalysis abnormal assay # 2 Investigator comment</td></tr><tr><td class='mono'>p466</td><td><b class='miss'>missed:</b> Laboratory collection date; Laboratory results review date; Has the investigator reviewed all laboratory results from this visit and assessed abnormal results clinical significance?; Were there any clinically significant abnormal results?; Were there any clinically significant abnormal chemistry results?</td></tr><tr><td class='mono'>p484</td><td><b class='miss'>missed:</b> Was the questionnaire administered?; Date of completion; Rater&#x27;s initials; Have you wished you were dead or wished you could go to sleep and not wake up?; If Yes, describe; Have you actually had any thoughts of killing yourself?</td></tr><tr><td class='mono'>p566</td><td><b class='miss'>missed:</b> Chemistry clinically significant abnormal assay # 1:</td></tr><tr><td class='mono'>p593</td><td><b class='miss'>missed:</b> Time Placed in Position; Time of Vitals Measurement #3</td></tr></table></details>
+
+<h2>6. What would move the numbers</h2>
+<ul>
+ <li><b>Retry zero-record documents automatically.</b> The Sonnet run already
+ flags them (<code>needs_manual_review</code>); one fresh induction attempt with a
+ different seed page sample would likely recover the failed ClinSpark v1.0 book
+ (+8 points corpus recall for the Sonnet run).</li>
+ <li><b>Don't stop on a plateau while coverage is low.</b> GPT&nbsp;5.2 plateaus
+ with large page ranges unparsed (MAC186, 2021 book). Making the stopping rule
+ require a minimum pages-covered share before &ldquo;diminishing returns&rdquo; counts
+ would directly attack its 62% &rarr; 94% page/doc recall gap.</li>
+ <li><b>Filter option anchors and page furniture in the audit gates.</b> Rows
+ matching &ldquo;<code>N = &hellip;</code>&rdquo; anchors, footer stamps
+ (&ldquo;01.025 GMK&rdquo;), and bare column headers (&ldquo;Units&rdquo;) are the two runs'
+ dominant false-positive patterns and are cheap to detect deterministically.</li>
+ <li><b>Stitch wrapped labels before parsing.</b> Line-fragment fields
+ (&ldquo;up?&rdquo;) and missed split-line labels (&ldquo;&hellip; abnormal assay # 3&rdquo;) share one
+ root cause: parsing line-by-line instead of joining wrapped text blocks.</li>
+</ul>
+
+<h2>7. Method, in one minute</h2>
+<p><b>Sample.</b> 10 pages per document, stratified over Stage-0 layout clusters
+with a fixed seed &mdash; 110 pages, 375 truth fields. <b>Truth.</b> A human-readable
+data-entry prompt is a field; options, section headers, instructions, OID
+annotations and code lists are not. Defensible extras (named answer slots such
+as &ldquo;Systolic&rdquo;) are recorded and excluded from both hit and false-positive
+counts. <b>Matching.</b> Names are normalized (case, punctuation) and matched
+fuzzily (token-sort &ge; 80 or partial &ge; 90), one-to-one per page. Form names
+are scored only on pages that print their title. <b>Artifacts.</b> Per-run Excel
+scorecards (summary, page detail, record verdicts, method) sit in each run's
+output folder; truth JSONs and the scorer live in
+<code>experiments/recipe_prototype/accuracy_audit/</code> and
+<code>experiments/recipe_prototype/scripts/accuracy_audit.py</code>.</p>
+
+<table>
+<tr><th>run</th><th>output folder</th><th>Excel scorecard</th></tr>
+<tr><td>Claude Sonnet 4.5 (Dataiku)</td><td class="mono small">experiments/recipe_prototype/dataiku_notebook_pipeline/out_dataiku_sonnet_4_5</td>
+    <td class="mono small">accuracy_audit_bedrock_&hellip;_claude_sonnet_4_5_&hellip;.xlsx</td></tr>
+<tr><td>GPT 5.2 (Dataiku)</td><td class="mono small">experiments/recipe_prototype/dataiku_notebook_pipeline/out_dataiku_gpt_5_2</td>
+    <td class="mono small">accuracy_audit_azureopenai_azure_openai_nocache_gpt_5_2.xlsx</td></tr>
+<tr><td>Claude Sonnet 4.5 (local CLI)</td><td class="mono small">experiments/recipe_prototype/data/outputs/out</td>
+    <td class="mono small">accuracy_audit_claude_4_5_sonnet.xlsx</td></tr>
+</table>
+
+<div class="footer">Generated by <span class="mono">scripts/accuracy_audit.py report</span>
+&mdash; ground truth in <span class="mono">accuracy_audit/truth/</span>, scores in
+<span class="mono">accuracy_audit/scored.json</span>.</div>
+</div></body></html>

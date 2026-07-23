@@ -1,0 +1,337 @@
+{
+ "stop_reason": "plateau",
+ "versions": 4,
+ "best_version": 3,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 3101,
+    "pages_total": 609,
+    "pages_with_fields": 570,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 16,
+    "fields_per_form": 193.8,
+    "forms_per_100_pages": 2.6,
+    "pages_covered_pct": 94
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 5,
+   "audit_pages": [
+    1,
+    3,
+    58,
+    152,
+    285,
+    308
+   ],
+   "audit_partial": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 3,
+     "missed": [],
+     "false": [
+      "where a DNA sample will be taken and other data collected may be used for potential future",
+      "research?"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 58,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 152,
+     "missed": [],
+     "false": [
+      "protect the sample from light (4 mL K2EDTA)",
+      "applicable)",
+      "(Supine for at least 3 minutes)"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 285,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 308,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "score": [
+    0,
+    5,
+    0,
+    -570
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 1943,
+    "pages_total": 609,
+    "pages_with_fields": 546,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 16,
+    "fields_per_form": 121.4,
+    "forms_per_100_pages": 2.6,
+    "pages_covered_pct": 90
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 3,
+   "audit_pages": [
+    1,
+    3,
+    58,
+    152,
+    285,
+    308
+   ],
+   "audit_partial": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 3,
+     "missed": [
+      "Has the participant read, understood and signed the consent for the Future Use Sub Study, where a DNA sample will be taken and other data collected may be used for potential future research?"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 58,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 152,
+     "missed": [],
+     "false": [
+      "PK Sample for Bioanalysis - Gently invert tube 8-10 times immediately after collection and",
+      "Confirm an AE and Conmed check has been performed (Record any AE and Conmeds if"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 285,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 308,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "score": [
+    0,
+    3,
+    0,
+    -546
+   ],
+   "became_best": true
+  },
+  {
+   "version": 3,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 1891,
+    "pages_total": 609,
+    "pages_with_fields": 546,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 16,
+    "fields_per_form": 118.2,
+    "forms_per_100_pages": 2.6,
+    "pages_covered_pct": 90
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 2,
+   "audit_pages": [
+    1,
+    3,
+    58,
+    152,
+    285,
+    308
+   ],
+   "audit_partial": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 3,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 58,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 152,
+     "missed": [
+      "Confirm an AE and Conmed check has been performed (Record any AE and Conmeds if applicable)",
+      "Vital Signs"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 285,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 308,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "score": [
+    0,
+    2,
+    0,
+    -546
+   ],
+   "became_best": true
+  },
+  {
+   "version": 4,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 2493,
+    "pages_total": 609,
+    "pages_with_fields": 577,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 16,
+    "fields_per_form": 155.8,
+    "forms_per_100_pages": 2.6,
+    "pages_covered_pct": 95
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 3,
+   "audit_pages": [
+    1,
+    3,
+    58,
+    152,
+    285,
+    308
+   ],
+   "audit_partial": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 3,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 58,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 152,
+     "missed": [
+      "Confirm an AE and Conmed check has been performed (Record any AE and Conmeds if applicable)"
+     ],
+     "false": [
+      "PK Sample for Bioanalysis - Gently invert tube 8-10 times immediately after collection and",
+      "(Supine for at least 3 minutes)"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 285,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 308,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "score": [
+    0,
+    3,
+    0,
+    -577
+   ],
+   "became_best": false
+  }
+ ]
+}

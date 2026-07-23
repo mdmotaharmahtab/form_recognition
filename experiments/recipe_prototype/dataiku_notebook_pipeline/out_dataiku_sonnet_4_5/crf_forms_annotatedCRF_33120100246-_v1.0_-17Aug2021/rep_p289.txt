@@ -1,0 +1,97 @@
+x=  47.8 y=  66.1 sz=14.4 #004c99   | Clinical Laboratory Assessments
+x= 462.9 y= 114.1 sz=10.5 #454545   | N/A
+x=  47.8 y= 116.5 sz= 7.8 black     | Timepoint
+x=  47.8 y= 139.4 sz= 7.8 #ff0000   | [LBTPT1]
+x=  47.8 y= 151.8 sz= 7.8 #ff0000   | [TYPE: text]
+x=  47.8 y= 164.2 sz= 7.8 #ff0000   | [Read-only field]
+x=  47.8 y= 191.0 sz= 7.8 black     | Comments
+x=  47.8 y= 213.9 sz= 7.8 #ff0000   | [LBCOM1]
+x=  47.8 y= 226.3 sz= 7.8 #ff0000   | [TYPE: text]
+x=  47.8 y= 238.8 sz= 7.8 #ff0000   | [VISIBILITY: site only]
+x=  47.8 y= 265.6 sz= 7.8 black     | Was subject in fasting state?
+x= 445.2 y= 303.6 sz= 9.2 black     | Yes
+x= 445.2 y= 325.8 sz= 9.2 black     | No
+x= 445.2 y= 348.0 sz= 9.2 black     | NA
+x=  47.8 y= 374.7 sz= 7.8 #ff0000   | [LBFAST1]
+x=  47.8 y= 387.1 sz= 7.8 #ff0000   | [TYPE: enumeration (values: Yes, No, NA)]
+x=  45.2 y= 441.5 sz= 9.2 black     | Sample
+x= 143.2 y= 441.5 sz= 9.2 black     | Status
+x= 219.1 y= 441.5 sz= 9.2 black     | Reason not
+x= 294.2 y= 441.5 sz= 9.2 black     | Date of Collection
+x= 379.2 y= 441.5 sz= 9.2 black     | Time of
+x= 445.2 y= 441.5 sz= 9.2 black     | Scan
+x= 491.7 y= 441.5 sz= 9.2 black     | Barcode
+x= 219.1 y= 454.6 sz= 9.2 black     | done
+x= 379.2 y= 454.6 sz= 9.2 black     | Collection
+x= 491.7 y= 454.6 sz= 9.2 black     | Number
+x=  46.5 y= 476.1 sz= 7.8 #454545   | Hematology
+x= 158.5 y= 480.8 sz= 9.2 #454545   | Collected
+x= 454.4 y= 480.8 sz= 9.2 #454545   | Scan
+x= 445.9 y= 500.9 sz= 7.8 #ff0000   | [SCANNE
+x=  45.8 y= 502.2 sz= 7.8 #ff0000   | [LBTEST1]
+x= 219.7 y= 502.2 sz= 7.8 #ff0000   | [LBRSN1]
+x= 294.9 y= 502.2 sz= 7.8 #ff0000   | [LBDAT1]
+x= 379.9 y= 502.2 sz= 7.8 #ff0000   | [LBTIM1]
+x= 492.3 y= 502.2 sz= 7.8 #ff0000   | [LBREQ1]
+x= 170.4 y= 502.3 sz= 9.2 #454545   | Not
+x= 445.9 y= 512.0 sz= 7.8 #ff0000   | R]
+x= 158.5 y= 515.4 sz= 9.2 #454545   | Collected
+x=  45.8 y= 516.6 sz= 7.8 #ff0000   | [TYPE: text]
+x= 219.7 y= 516.6 sz= 7.8 #ff0000   | [TYPE: text]
+x= 294.9 y= 516.6 sz= 7.8 #ff0000   | [TYPE: date]
+x= 379.9 y= 516.6 sz= 7.8 #ff0000   | [TYPE:
+x= 492.3 y= 516.6 sz= 7.8 #ff0000   | [TYPE: text]
+x= 445.9 y= 526.4 sz= 7.8 #ff0000   | [TYPE:
+x= 379.9 y= 527.7 sz= 7.8 #ff0000   | partialtime
+x=  45.8 y= 531.0 sz= 7.8 #ff0000   | [Read-only field]
+x= 170.4 y= 537.0 sz= 9.2 #454545   | Not
+x= 445.9 y= 537.5 sz= 7.8 #ff0000   | enumerati
+x= 379.9 y= 538.8 sz= 7.8 #ff0000   | (hour, minutes)]
+x= 445.9 y= 548.6 sz= 7.8 #ff0000   | on
+x= 156.4 y= 550.1 sz= 9.2 #454545   | Applicable
+x= 445.9 y= 559.7 sz= 7.8 #ff0000   | (values:
+x= 143.9 y= 570.2 sz= 7.8 #ff0000   | [LBSTAT1]
+x= 445.9 y= 570.9 sz= 7.8 #ff0000   | Scan)]
+x= 143.9 y= 584.6 sz= 7.8 #ff0000   | [TYPE:
+x= 445.9 y= 585.2 sz= 7.8 #ff0000   | [VISIBILIT
+x= 143.9 y= 595.7 sz= 7.8 #ff0000   | enumeration
+x= 445.9 y= 596.4 sz= 7.8 #ff0000   | Y: site
+x= 143.9 y= 606.8 sz= 7.8 #ff0000   | (values: Collected,
+x= 445.9 y= 607.5 sz= 7.8 #ff0000   | only]
+x= 143.9 y= 617.9 sz= 7.8 #ff0000   | Not Collected, Not
+x= 143.9 y= 629.0 sz= 7.8 #ff0000   | Applicable)]
+x=  46.5 y= 649.3 sz= 7.8 #454545   | Chemistry
+x= 158.5 y= 654.0 sz= 9.2 #454545   | Collected
+x= 454.4 y= 654.0 sz= 9.2 #454545   | Scan
+x= 445.9 y= 674.1 sz= 7.8 #ff0000   | [SCANNE
+x=  45.8 y= 675.5 sz= 7.8 #ff0000   | [LBTEST1]
+x= 219.7 y= 675.5 sz= 7.8 #ff0000   | [LBRSN1]
+x= 294.9 y= 675.5 sz= 7.8 #ff0000   | [LBDAT1]
+x= 379.9 y= 675.5 sz= 7.8 #ff0000   | [LBTIM1]
+x= 492.3 y= 675.5 sz= 7.8 #ff0000   | [LBREQ1]
+x= 170.4 y= 675.6 sz= 9.2 #454545   | Not
+x= 445.9 y= 685.3 sz= 7.8 #ff0000   | R]
+x= 158.5 y= 688.7 sz= 9.2 #454545   | Collected
+x=  45.8 y= 689.8 sz= 7.8 #ff0000   | [TYPE: text]
+x= 219.7 y= 689.8 sz= 7.8 #ff0000   | [TYPE: text]
+x= 294.9 y= 689.8 sz= 7.8 #ff0000   | [TYPE: date]
+x= 379.9 y= 689.8 sz= 7.8 #ff0000   | [TYPE:
+x= 492.3 y= 689.8 sz= 7.8 #ff0000   | [TYPE: text]
+x= 445.9 y= 699.6 sz= 7.8 #ff0000   | [TYPE:
+x= 379.9 y= 700.9 sz= 7.8 #ff0000   | partialtime
+x=  45.8 y= 704.2 sz= 7.8 #ff0000   | [Read-only field]
+x= 170.4 y= 710.2 sz= 9.2 #454545   | Not
+x= 445.9 y= 710.8 sz= 7.8 #ff0000   | enumerati
+x= 379.9 y= 712.1 sz= 7.8 #ff0000   | (hour, minutes)]
+x= 445.9 y= 721.9 sz= 7.8 #ff0000   | on
+x= 156.4 y= 723.3 sz= 9.2 #454545   | Applicable
+x= 445.9 y= 733.0 sz= 7.8 #ff0000   | (values:
+x= 143.9 y= 743.4 sz= 7.8 #ff0000   | [LBSTAT1]
+x= 445.9 y= 744.1 sz= 7.8 #ff0000   | Scan)]
+x= 143.9 y= 757.8 sz= 7.8 #ff0000   | [TYPE:
+x= 445.9 y= 758.5 sz= 7.8 #ff0000   | [VISIBILIT
+x= 143.9 y= 768.9 sz= 7.8 #ff0000   | enumeration
+x= 445.9 y= 769.6 sz= 7.8 #ff0000   | Y: site
+x= 143.9 y= 780.1 sz= 7.8 #ff0000   | (values: Collected,
+x= 445.9 y= 780.7 sz= 7.8 #ff0000   | only]
+x= 143.9 y= 791.2 sz= 7.8 #ff0000   | Not Collected, Not

@@ -1,0 +1,1009 @@
+{
+ "sonnet-cli": {
+  "label": "Claude Sonnet 4.5",
+  "current": {
+   "tp": 276,
+   "fp": 101,
+   "missed": 99,
+   "truth": 375,
+   "precision": 0.7320954907161804,
+   "recall_page": 0.736,
+   "recall_doc": 0.9386666666666666,
+   "f1": 0.7340425531914893,
+   "form_pages": 51,
+   "form_ok": 50,
+   "form_accuracy": 0.9803921568627451
+  },
+  "baseline": {
+   "tp": 235,
+   "fp": 68,
+   "missed": 140,
+   "truth": 375,
+   "precision": 0.7755775577557755,
+   "recall_page": 0.6266666666666667,
+   "recall_doc": 0.912,
+   "f1": 0.6932153392330384,
+   "form_pages": 45,
+   "form_ok": 43,
+   "form_accuracy": 0.9555555555555556
+  },
+  "delta": {
+   "tp": 41,
+   "fp": 33,
+   "missed": -41,
+   "truth": 0,
+   "precision": -0.04348206703959512,
+   "recall_page": 0.10933333333333328,
+   "recall_doc": 0.026666666666666616,
+   "f1": 0.0408272139584509,
+   "form_pages": 6,
+   "form_ok": 7,
+   "form_accuracy": 0.024836601307189454
+  },
+  "runtime": {
+   "documents": 11,
+   "fields": 27037,
+   "pages_with_fields": 4893,
+   "versions": 70,
+   "llm_calls": 125,
+   "llm_s": 4737.226,
+   "audit_issues": 285,
+   "statuses": {
+    "needs_manual_template": 1,
+    "ok_audit_issues": 10
+   }
+  },
+  "rave_current": {
+   "gt_pairs": 915,
+   "extracted_pairs": 907,
+   "matched": 775,
+   "precision": 0.8544652701212789,
+   "recall": 0.8469945355191257
+  },
+  "rave_baseline": {
+   "gt_pairs": 915,
+   "extracted_pairs": 869,
+   "matched": 757,
+   "precision": 0.8711162255466053,
+   "recall": 0.8273224043715847
+  },
+  "documents": {
+   "326-201-00007_Annotated_CRF___v1.0_30_Sep_2024": {
+    "current": {
+     "status": "ok_audit_issues",
+     "precision": 0.5357142857142857,
+     "recall_page": 0.9090909090909091,
+     "recall_doc": 1.0,
+     "f1": 0.6741573033707865,
+     "tp": 30,
+     "fp": 26,
+     "missed": 3,
+     "form_ok": 10,
+     "form_pages": 10
+    },
+    "baseline": {
+     "status": "ok_audit_issues",
+     "precision": 0.8,
+     "recall_page": 0.9696969696969697,
+     "recall_doc": 0.9696969696969697,
+     "f1": 0.8767123287671234,
+     "tp": 32,
+     "fp": 8,
+     "missed": 1,
+     "form_ok": 10,
+     "form_pages": 10
+    },
+    "delta": {
+     "status": null,
+     "precision": -0.26428571428571435,
+     "recall_page": -0.06060606060606066,
+     "recall_doc": 0.030303030303030276,
+     "f1": -0.20255502539633685,
+     "tp": -2,
+     "fp": 18,
+     "missed": 2,
+     "form_ok": 0,
+     "form_pages": 0
+    }
+   },
+   "326-201-00007_Annotated_CRF___v1.0_30_Sep_2024_1_": {
+    "current": {
+     "status": "ok_audit_issues",
+     "precision": 0.8928571428571429,
+     "recall_page": 0.9259259259259259,
+     "recall_doc": 0.9629629629629629,
+     "f1": 0.9090909090909091,
+     "tp": 25,
+     "fp": 3,
+     "missed": 2,
+     "form_ok": 8,
+     "form_pages": 8
+    },
+    "baseline": {
+     "status": "ok_audit_issues",
+     "precision": 0.8709677419354839,
+     "recall_page": 1.0,
+     "recall_doc": 1.0,
+     "f1": 0.9310344827586207,
+     "tp": 27,
+     "fp": 4,
+     "missed": 0,
+     "form_ok": 10,
+     "form_pages": 10
+    },
+    "delta": {
+     "status": null,
+     "precision": 0.02188940092165903,
+     "recall_page": -0.07407407407407407,
+     "recall_doc": -0.03703703703703709,
+     "f1": -0.021943573667711602,
+     "tp": -2,
+     "fp": -1,
+     "missed": 2,
+     "form_ok": -2,
+     "form_pages": -2
+    }
+   },
+   "331-201-00246_Annotated_CRF___v_04_Jul_2023": {
+    "current": {
+     "status": "ok_audit_issues",
+     "precision": 0.5283018867924528,
+     "recall_page": 1.0,
+     "recall_doc": 1.0,
+     "f1": 0.6913580246913581,
+     "tp": 28,
+     "fp": 25,
+     "missed": 0,
+     "form_ok": 3,
+     "form_pages": 3
+    },
+    "baseline": {
+     "status": "ok_audit_issues",
+     "precision": 1.0,
+     "recall_page": 0.03571428571428571,
+     "recall_doc": 0.9642857142857143,
+     "f1": 0.0689655172413793,
+     "tp": 1,
+     "fp": 0,
+     "missed": 27,
+     "form_ok": 0,
+     "form_pages": 1
+    },
+    "delta": {
+     "status": null,
+     "precision": -0.4716981132075472,
+     "recall_page": 0.9642857142857143,
+     "recall_doc": 0.0357142857142857,
+     "f1": 0.6223925074499788,
+     "tp": 27,
+     "fp": 25,
+     "missed": -27,
+     "form_ok": 3,
+     "form_pages": 2
+    }
+   },
+   "331-201-00246_Annotated_CRF___v_26_Jul_2023": {
+    "current": {
+     "status": "ok_audit_issues",
+     "precision": 0.9473684210526315,
+     "recall_page": 0.6428571428571429,
+     "recall_doc": 1.0,
+     "f1": 0.7659574468085106,
+     "tp": 18,
+     "fp": 1,
+     "missed": 10,
+     "form_ok": 0,
+     "form_pages": 0
+    },
+    "baseline": {
+     "status": "ok_audit_issues",
+     "precision": 0.92,
+     "recall_page": 0.8214285714285714,
+     "recall_doc": 0.8928571428571429,
+     "f1": 0.8679245283018867,
+     "tp": 23,
+     "fp": 2,
+     "missed": 5,
+     "form_ok": 0,
+     "form_pages": 0
+    },
+    "delta": {
+     "status": null,
+     "precision": 0.027368421052631486,
+     "recall_page": -0.1785714285714285,
+     "recall_doc": 0.1071428571428571,
+     "f1": -0.10196708149337608,
+     "tp": -5,
+     "fp": -1,
+     "missed": 5,
+     "form_ok": 0,
+     "form_pages": 0
+    }
+   },
+   "384-201-00002_Annotated_Unique_CRF_04Nov2024": {
+    "current": {
+     "status": "ok_audit_issues",
+     "precision": 1.0,
+     "recall_page": 0.8709677419354839,
+     "recall_doc": 0.9354838709677419,
+     "f1": 0.9310344827586207,
+     "tp": 27,
+     "fp": 0,
+     "missed": 4,
+     "form_ok": 4,
+     "form_pages": 4
+    },
+    "baseline": {
+     "status": "ok_audit_issues",
+     "precision": 1.0,
+     "recall_page": 1.0,
+     "recall_doc": 1.0,
+     "f1": 1.0,
+     "tp": 31,
+     "fp": 0,
+     "missed": 0,
+     "form_ok": 4,
+     "form_pages": 4
+    },
+    "delta": {
+     "status": null,
+     "precision": 0.0,
+     "recall_page": -0.12903225806451613,
+     "recall_doc": -0.06451612903225812,
+     "f1": -0.06896551724137934,
+     "tp": -4,
+     "fp": 0,
+     "missed": 4,
+     "form_ok": 0,
+     "form_pages": 0
+    }
+   },
+   "384-201-00004_Annotated_CRF___v1.0_05_Mar_2025": {
+    "current": {
+     "status": "ok_audit_issues",
+     "precision": 1.0,
+     "recall_page": 0.6,
+     "recall_doc": 0.9,
+     "f1": 0.7499999999999999,
+     "tp": 12,
+     "fp": 0,
+     "missed": 8,
+     "form_ok": 1,
+     "form_pages": 1
+    },
+    "baseline": {
+     "status": "ok_audit_issues",
+     "precision": 0.6666666666666666,
+     "recall_page": 1.0,
+     "recall_doc": 1.0,
+     "f1": 0.8,
+     "tp": 20,
+     "fp": 10,
+     "missed": 0,
+     "form_ok": 0,
+     "form_pages": 1
+    },
+    "delta": {
+     "status": null,
+     "precision": 0.33333333333333337,
+     "recall_page": -0.4,
+     "recall_doc": -0.09999999999999998,
+     "f1": -0.050000000000000155,
+     "tp": -8,
+     "fp": -10,
+     "missed": 8,
+     "form_ok": 1,
+     "form_pages": 0
+    }
+   },
+   "384-201-00004_Annotated_CRF___v2.0_20_May_2025": {
+    "current": {
+     "status": "ok_audit_issues",
+     "precision": 0.2972972972972973,
+     "recall_page": 0.44,
+     "recall_doc": 0.92,
+     "f1": 0.3548387096774193,
+     "tp": 11,
+     "fp": 26,
+     "missed": 14,
+     "form_ok": 5,
+     "form_pages": 6
+    },
+    "baseline": {
+     "status": "ok_audit_issues",
+     "precision": 0.9615384615384616,
+     "recall_page": 1.0,
+     "recall_doc": 1.0,
+     "f1": 0.9803921568627451,
+     "tp": 25,
+     "fp": 1,
+     "missed": 0,
+     "form_ok": 2,
+     "form_pages": 2
+    },
+    "delta": {
+     "status": null,
+     "precision": -0.6642411642411643,
+     "recall_page": -0.56,
+     "recall_doc": -0.07999999999999996,
+     "f1": -0.6255534471853257,
+     "tp": -14,
+     "fp": 25,
+     "missed": 14,
+     "form_ok": 3,
+     "form_pages": 4
+    }
+   },
+   "384-201-00004_aCRF_16JAN2025": {
+    "current": {
+     "status": "ok_audit_issues",
+     "precision": 0.6666666666666666,
+     "recall_page": 0.07407407407407407,
+     "recall_doc": 0.7037037037037037,
+     "f1": 0.13333333333333333,
+     "tp": 2,
+     "fp": 1,
+     "missed": 25,
+     "form_ok": 2,
+     "form_pages": 2
+    },
+    "baseline": {
+     "status": "ok_audit_issues",
+     "precision": 0.5,
+     "recall_page": 0.07407407407407407,
+     "recall_doc": 0.5185185185185185,
+     "f1": 0.12903225806451613,
+     "tp": 2,
+     "fp": 2,
+     "missed": 25,
+     "form_ok": 3,
+     "form_pages": 3
+    },
+    "delta": {
+     "status": null,
+     "precision": 0.16666666666666663,
+     "recall_page": 0.0,
+     "recall_doc": 0.18518518518518523,
+     "f1": 0.004301075268817206,
+     "tp": 0,
+     "fp": -1,
+     "missed": 0,
+     "form_ok": -1,
+     "form_pages": -1
+    }
+   },
+   "MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025": {
+    "current": {
+     "status": "ok_audit_issues",
+     "precision": 0.9135802469135802,
+     "recall_page": 0.7326732673267327,
+     "recall_doc": 0.9405940594059405,
+     "f1": 0.8131868131868133,
+     "tp": 74,
+     "fp": 7,
+     "missed": 27,
+     "form_ok": 5,
+     "form_pages": 5
+    },
+    "baseline": {
+     "status": "ok_audit_issues",
+     "precision": 0.9230769230769231,
+     "recall_page": 0.2376237623762376,
+     "recall_doc": 0.8613861386138614,
+     "f1": 0.3779527559055118,
+     "tp": 24,
+     "fp": 2,
+     "missed": 77,
+     "form_ok": 2,
+     "form_pages": 2
+    },
+    "delta": {
+     "status": null,
+     "precision": -0.009496676163342932,
+     "recall_page": 0.49504950495049505,
+     "recall_doc": 0.07920792079207917,
+     "f1": 0.4352340572813015,
+     "tp": 50,
+     "fp": 5,
+     "missed": -50,
+     "form_ok": 3,
+     "form_pages": 3
+    }
+   },
+   "QSC302573_Final_AnnotatedCRFs_16Oct2024-326-201-00007_1_": {
+    "current": {
+     "status": "ok_audit_issues",
+     "precision": 0.71875,
+     "recall_page": 1.0,
+     "recall_doc": 1.0,
+     "f1": 0.8363636363636363,
+     "tp": 23,
+     "fp": 9,
+     "missed": 0,
+     "form_ok": 10,
+     "form_pages": 10
+    },
+    "baseline": {
+     "status": "ok_audit_issues",
+     "precision": 0.8518518518518519,
+     "recall_page": 1.0,
+     "recall_doc": 1.0,
+     "f1": 0.92,
+     "tp": 23,
+     "fp": 4,
+     "missed": 0,
+     "form_ok": 10,
+     "form_pages": 10
+    },
+    "delta": {
+     "status": null,
+     "precision": -0.13310185185185186,
+     "recall_page": 0.0,
+     "recall_doc": 0.0,
+     "f1": -0.08363636363636373,
+     "tp": 0,
+     "fp": 5,
+     "missed": 0,
+     "form_ok": 0,
+     "form_pages": 0
+    }
+   },
+   "annotatedCRF_33120100246-_v1.0_-17Aug2021": {
+    "current": {
+     "status": "needs_manual_template",
+     "precision": 0.896551724137931,
+     "recall_page": 0.8125,
+     "recall_doc": 0.9375,
+     "f1": 0.8524590163934426,
+     "tp": 26,
+     "fp": 3,
+     "missed": 6,
+     "form_ok": 2,
+     "form_pages": 2
+    },
+    "baseline": {
+     "status": "ok_audit_issues",
+     "precision": 0.43548387096774194,
+     "recall_page": 0.84375,
+     "recall_doc": 0.96875,
+     "f1": 0.5744680851063829,
+     "tp": 27,
+     "fp": 35,
+     "missed": 5,
+     "form_ok": 2,
+     "form_pages": 2
+    },
+    "delta": {
+     "status": null,
+     "precision": 0.4610678531701891,
+     "recall_page": -0.03125,
+     "recall_doc": -0.03125,
+     "f1": 0.27799093128705965,
+     "tp": -1,
+     "fp": -32,
+     "missed": 1,
+     "form_ok": 0,
+     "form_pages": 0
+    }
+   }
+  }
+ },
+ "gpt52-cli": {
+  "label": "GPT 5.2",
+  "current": {
+   "tp": 310,
+   "fp": 76,
+   "missed": 65,
+   "truth": 375,
+   "precision": 0.8031088082901554,
+   "recall_page": 0.8266666666666667,
+   "recall_doc": 0.9653333333333334,
+   "f1": 0.8147174770039421,
+   "form_pages": 57,
+   "form_ok": 44,
+   "form_accuracy": 0.7719298245614035
+  },
+  "baseline": {
+   "tp": 319,
+   "fp": 111,
+   "missed": 56,
+   "truth": 375,
+   "precision": 0.7418604651162791,
+   "recall_page": 0.8506666666666667,
+   "recall_doc": 0.96,
+   "f1": 0.7925465838509317,
+   "form_pages": 51,
+   "form_ok": 18,
+   "form_accuracy": 0.35294117647058826
+  },
+  "delta": {
+   "tp": -9,
+   "fp": -35,
+   "missed": 9,
+   "truth": 0,
+   "precision": 0.061248343173876285,
+   "recall_page": -0.02400000000000002,
+   "recall_doc": 0.005333333333333412,
+   "f1": 0.022170893153010462,
+   "form_pages": 6,
+   "form_ok": 26,
+   "form_accuracy": 0.4189886480908152
+  },
+  "runtime": {
+   "documents": 11,
+   "fields": 24945,
+   "pages_with_fields": 5249,
+   "versions": 59,
+   "llm_calls": 113,
+   "llm_s": 18742.956,
+   "audit_issues": 290,
+   "statuses": {
+    "ok_audit_issues": 11
+   }
+  },
+  "rave_current": {
+   "gt_pairs": 915,
+   "extracted_pairs": 1628,
+   "matched": 773,
+   "precision": 0.4748157248157248,
+   "recall": 0.8448087431693989
+  },
+  "rave_baseline": {
+   "gt_pairs": 915,
+   "extracted_pairs": 792,
+   "matched": 772,
+   "precision": 0.9747474747474747,
+   "recall": 0.8437158469945355
+  },
+  "documents": {
+   "326-201-00007_Annotated_CRF___v1.0_30_Sep_2024": {
+    "current": {
+     "status": "ok_audit_issues",
+     "precision": 1.0,
+     "recall_page": 1.0,
+     "recall_doc": 1.0,
+     "f1": 1.0,
+     "tp": 33,
+     "fp": 0,
+     "missed": 0,
+     "form_ok": 10,
+     "form_pages": 10
+    },
+    "baseline": {
+     "status": "ok_audit_issues",
+     "precision": 0.66,
+     "recall_page": 1.0,
+     "recall_doc": 1.0,
+     "f1": 0.7951807228915663,
+     "tp": 33,
+     "fp": 17,
+     "missed": 0,
+     "form_ok": 0,
+     "form_pages": 10
+    },
+    "delta": {
+     "status": null,
+     "precision": 0.33999999999999997,
+     "recall_page": 0.0,
+     "recall_doc": 0.0,
+     "f1": 0.20481927710843373,
+     "tp": 0,
+     "fp": -17,
+     "missed": 0,
+     "form_ok": 10,
+     "form_pages": 0
+    }
+   },
+   "326-201-00007_Annotated_CRF___v1.0_30_Sep_2024_1_": {
+    "current": {
+     "status": "ok_audit_issues",
+     "precision": 0.48717948717948717,
+     "recall_page": 0.7037037037037037,
+     "recall_doc": 0.9629629629629629,
+     "f1": 0.5757575757575758,
+     "tp": 19,
+     "fp": 20,
+     "missed": 8,
+     "form_ok": 0,
+     "form_pages": 10
+    },
+    "baseline": {
+     "status": "ok_audit_issues",
+     "precision": 0.5531914893617021,
+     "recall_page": 0.9629629629629629,
+     "recall_doc": 1.0,
+     "f1": 0.7027027027027027,
+     "tp": 26,
+     "fp": 21,
+     "missed": 1,
+     "form_ok": 0,
+     "form_pages": 10
+    },
+    "delta": {
+     "status": null,
+     "precision": -0.06601200218221498,
+     "recall_page": -0.2592592592592592,
+     "recall_doc": -0.03703703703703709,
+     "f1": -0.12694512694512694,
+     "tp": -7,
+     "fp": -1,
+     "missed": 7,
+     "form_ok": 0,
+     "form_pages": 0
+    }
+   },
+   "331-201-00246_Annotated_CRF___v_04_Jul_2023": {
+    "current": {
+     "status": "ok_audit_issues",
+     "precision": 0.9130434782608695,
+     "recall_page": 0.75,
+     "recall_doc": 1.0,
+     "f1": 0.8235294117647057,
+     "tp": 21,
+     "fp": 2,
+     "missed": 7,
+     "form_ok": 3,
+     "form_pages": 3
+    },
+    "baseline": {
+     "status": "ok_audit_issues",
+     "precision": 0.72,
+     "recall_page": 0.6428571428571429,
+     "recall_doc": 0.9642857142857143,
+     "f1": 0.6792452830188679,
+     "tp": 18,
+     "fp": 7,
+     "missed": 10,
+     "form_ok": 3,
+     "form_pages": 3
+    },
+    "delta": {
+     "status": null,
+     "precision": 0.19304347826086954,
+     "recall_page": 0.1071428571428571,
+     "recall_doc": 0.0357142857142857,
+     "f1": 0.14428412874583785,
+     "tp": 3,
+     "fp": -5,
+     "missed": -3,
+     "form_ok": 0,
+     "form_pages": 0
+    }
+   },
+   "331-201-00246_Annotated_CRF___v_26_Jul_2023": {
+    "current": {
+     "status": "ok_audit_issues",
+     "precision": 0.9565217391304348,
+     "recall_page": 0.7857142857142857,
+     "recall_doc": 0.9642857142857143,
+     "f1": 0.8627450980392156,
+     "tp": 22,
+     "fp": 1,
+     "missed": 6,
+     "form_ok": 0,
+     "form_pages": 0
+    },
+    "baseline": {
+     "status": "ok_audit_issues",
+     "precision": 0.9047619047619048,
+     "recall_page": 0.6785714285714286,
+     "recall_doc": 0.8571428571428571,
+     "f1": 0.7755102040816326,
+     "tp": 19,
+     "fp": 2,
+     "missed": 9,
+     "form_ok": 0,
+     "form_pages": 0
+    },
+    "delta": {
+     "status": null,
+     "precision": 0.051759834368530044,
+     "recall_page": 0.1071428571428571,
+     "recall_doc": 0.1071428571428572,
+     "f1": 0.08723489395758299,
+     "tp": 3,
+     "fp": -1,
+     "missed": -3,
+     "form_ok": 0,
+     "form_pages": 0
+    }
+   },
+   "384-201-00002_Annotated_Unique_CRF_04Nov2024": {
+    "current": {
+     "status": "ok_audit_issues",
+     "precision": 1.0,
+     "recall_page": 1.0,
+     "recall_doc": 1.0,
+     "f1": 1.0,
+     "tp": 31,
+     "fp": 0,
+     "missed": 0,
+     "form_ok": 9,
+     "form_pages": 9
+    },
+    "baseline": {
+     "status": "ok",
+     "precision": 1.0,
+     "recall_page": 1.0,
+     "recall_doc": 1.0,
+     "f1": 1.0,
+     "tp": 31,
+     "fp": 0,
+     "missed": 0,
+     "form_ok": 4,
+     "form_pages": 4
+    },
+    "delta": {
+     "status": null,
+     "precision": 0.0,
+     "recall_page": 0.0,
+     "recall_doc": 0.0,
+     "f1": 0.0,
+     "tp": 0,
+     "fp": 0,
+     "missed": 0,
+     "form_ok": 5,
+     "form_pages": 5
+    }
+   },
+   "384-201-00004_Annotated_CRF___v1.0_05_Mar_2025": {
+    "current": {
+     "status": "ok_audit_issues",
+     "precision": 0.8571428571428571,
+     "recall_page": 0.6,
+     "recall_doc": 0.75,
+     "f1": 0.7058823529411764,
+     "tp": 12,
+     "fp": 2,
+     "missed": 8,
+     "form_ok": 1,
+     "form_pages": 1
+    },
+    "baseline": {
+     "status": "ok_audit_issues",
+     "precision": 0.48717948717948717,
+     "recall_page": 0.95,
+     "recall_doc": 1.0,
+     "f1": 0.6440677966101694,
+     "tp": 19,
+     "fp": 20,
+     "missed": 1,
+     "form_ok": 1,
+     "form_pages": 1
+    },
+    "delta": {
+     "status": null,
+     "precision": 0.3699633699633699,
+     "recall_page": -0.35,
+     "recall_doc": -0.25,
+     "f1": 0.061814556331006965,
+     "tp": -7,
+     "fp": -18,
+     "missed": 7,
+     "form_ok": 0,
+     "form_pages": 0
+    }
+   },
+   "384-201-00004_Annotated_CRF___v2.0_20_May_2025": {
+    "current": {
+     "status": "ok_audit_issues",
+     "precision": 0.96,
+     "recall_page": 0.96,
+     "recall_doc": 1.0,
+     "f1": 0.96,
+     "tp": 24,
+     "fp": 1,
+     "missed": 1,
+     "form_ok": 2,
+     "form_pages": 2
+    },
+    "baseline": {
+     "status": "ok_audit_issues",
+     "precision": 0.9130434782608695,
+     "recall_page": 0.84,
+     "recall_doc": 1.0,
+     "f1": 0.8749999999999999,
+     "tp": 21,
+     "fp": 2,
+     "missed": 4,
+     "form_ok": 2,
+     "form_pages": 2
+    },
+    "delta": {
+     "status": null,
+     "precision": 0.04695652173913045,
+     "recall_page": 0.12,
+     "recall_doc": 0.0,
+     "f1": 0.08500000000000008,
+     "tp": 3,
+     "fp": -1,
+     "missed": -3,
+     "form_ok": 0,
+     "form_pages": 0
+    }
+   },
+   "384-201-00004_aCRF_16JAN2025": {
+    "current": {
+     "status": "ok_audit_issues",
+     "precision": 0.896551724137931,
+     "recall_page": 0.9629629629629629,
+     "recall_doc": 0.9629629629629629,
+     "f1": 0.9285714285714286,
+     "tp": 26,
+     "fp": 3,
+     "missed": 1,
+     "form_ok": 2,
+     "form_pages": 5
+    },
+    "baseline": {
+     "status": "ok_audit_issues",
+     "precision": 0.7105263157894737,
+     "recall_page": 1.0,
+     "recall_doc": 1.0,
+     "f1": 0.8307692307692308,
+     "tp": 27,
+     "fp": 11,
+     "missed": 0,
+     "form_ok": 2,
+     "form_pages": 5
+    },
+    "delta": {
+     "status": null,
+     "precision": 0.18602540834845738,
+     "recall_page": -0.03703703703703709,
+     "recall_doc": -0.03703703703703709,
+     "f1": 0.09780219780219779,
+     "tp": -1,
+     "fp": -8,
+     "missed": 1,
+     "form_ok": 0,
+     "form_pages": 0
+    }
+   },
+   "MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025": {
+    "current": {
+     "status": "ok_audit_issues",
+     "precision": 0.875,
+     "recall_page": 0.7623762376237624,
+     "recall_doc": 1.0,
+     "f1": 0.8148148148148149,
+     "tp": 77,
+     "fp": 11,
+     "missed": 24,
+     "form_ok": 5,
+     "form_pages": 5
+    },
+    "baseline": {
+     "status": "ok_audit_issues",
+     "precision": 1.0,
+     "recall_page": 0.8118811881188119,
+     "recall_doc": 0.9801980198019802,
+     "f1": 0.8961748633879781,
+     "tp": 82,
+     "fp": 0,
+     "missed": 19,
+     "form_ok": 4,
+     "form_pages": 4
+    },
+    "delta": {
+     "status": null,
+     "precision": -0.125,
+     "recall_page": -0.04950495049504955,
+     "recall_doc": 0.01980198019801982,
+     "f1": -0.08136004857316326,
+     "tp": -5,
+     "fp": 11,
+     "missed": 5,
+     "form_ok": 1,
+     "form_pages": 1
+    }
+   },
+   "QSC302573_Final_AnnotatedCRFs_16Oct2024-326-201-00007_1_": {
+    "current": {
+     "status": "ok_audit_issues",
+     "precision": 0.4772727272727273,
+     "recall_page": 0.9130434782608695,
+     "recall_doc": 0.9130434782608695,
+     "f1": 0.6268656716417911,
+     "tp": 21,
+     "fp": 23,
+     "missed": 2,
+     "form_ok": 10,
+     "form_pages": 10
+    },
+    "baseline": {
+     "status": "ok_audit_issues",
+     "precision": 0.42857142857142855,
+     "recall_page": 0.6521739130434783,
+     "recall_doc": 0.6956521739130435,
+     "f1": 0.5172413793103448,
+     "tp": 15,
+     "fp": 20,
+     "missed": 8,
+     "form_ok": 0,
+     "form_pages": 10
+    },
+    "delta": {
+     "status": null,
+     "precision": 0.048701298701298745,
+     "recall_page": 0.26086956521739124,
+     "recall_doc": 0.21739130434782605,
+     "f1": 0.10962429233144633,
+     "tp": 6,
+     "fp": 3,
+     "missed": -6,
+     "form_ok": 10,
+     "form_pages": 0
+    }
+   },
+   "annotatedCRF_33120100246-_v1.0_-17Aug2021": {
+    "current": {
+     "status": "ok_audit_issues",
+     "precision": 0.6486486486486487,
+     "recall_page": 0.75,
+     "recall_doc": 0.90625,
+     "f1": 0.6956521739130435,
+     "tp": 24,
+     "fp": 13,
+     "missed": 8,
+     "form_ok": 2,
+     "form_pages": 2
+    },
+    "baseline": {
+     "status": "ok_audit_issues",
+     "precision": 0.717948717948718,
+     "recall_page": 0.875,
+     "recall_doc": 0.96875,
+     "f1": 0.7887323943661971,
+     "tp": 28,
+     "fp": 11,
+     "missed": 4,
+     "form_ok": 2,
+     "form_pages": 2
+    },
+    "delta": {
+     "status": null,
+     "precision": -0.06930006930006927,
+     "recall_page": -0.125,
+     "recall_doc": -0.0625,
+     "f1": -0.09308022045315367,
+     "tp": -4,
+     "fp": 2,
+     "missed": 4,
+     "form_ok": 0,
+     "form_pages": 0
+    }
+   }
+  }
+ },
+ "hybrid": {
+  "label": "Sonnet generation + GPT audit",
+  "tag": "claude_4_5_sonnet_audit_gpt_5_2",
+  "documents": {
+   "326-201-00007_Annotated_CRF___v1.0_30_Sep_2024_1_": {
+    "status": null,
+    "precision": 0.6842105263157895,
+    "recall_page": 0.9629629629629629,
+    "recall_doc": 0.9629629629629629,
+    "f1": 0.7999999999999999,
+    "tp": 26,
+    "fp": 12,
+    "missed": 1,
+    "form_ok": 10,
+    "form_pages": 10
+   },
+   "384-201-00004_aCRF_16JAN2025": {
+    "status": null,
+    "precision": 0.8333333333333334,
+    "recall_page": 0.9259259259259259,
+    "recall_doc": 0.9629629629629629,
+    "f1": 0.8771929824561403,
+    "tp": 25,
+    "fp": 5,
+    "missed": 2,
+    "form_ok": 2,
+    "form_pages": 2
+   }
+  }
+ }
+}

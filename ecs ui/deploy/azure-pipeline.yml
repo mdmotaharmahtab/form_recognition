@@ -1,0 +1,135 @@
+name: "ECSWriter - App deployment"
+trigger: none
+# Uncomment the following lines to enable automatic triggers for specific branches
+#   branches:
+#     include:
+#       - poc
+#       - dev
+#       - test
+#       - main
+
+resources:
+  repositories:
+    - repository: terraform-modules
+      type: git
+      name: Reusable Code/terraform-modules
+      ref: main
+      endpoint: IOS-CloudSupport_CrossOrg-ServiceConnection
+    - repository: manifest-repo
+      type: git
+      name: Otsuka AI Writing Assistant/Infrastructure
+      ref: main  # default branch; overridden via manifestBranch parameter
+
+pool:
+  vmImage: "ubuntu-latest"
+
+variables:
+  - ${{ if eq(variables['Build.SourceBranchName'], 'poc') }}:
+      - group: "ecs-variables-poc"
+  - ${{ if eq(variables['Build.SourceBranchName'], 'dev') }}:
+      - group: "ecs-variables-dev"
+  - ${{ if eq(variables['Build.SourceBranchName'], 'test') }}:
+      - group: "ecs-variables-test"
+  - ${{ if eq(variables['Build.SourceBranchName'], 'main') }}:
+      - group: "ecs-variables-prod"
+  - name: ENV_NAME
+    value: $(Build.SourceBranchName)
+  - name: EKS_CLUSTER
+    ${{ if or(eq(variables['Build.SourceBranchName'], 'poc'), eq(variables['Build.SourceBranchName'], 'dev')) }}:
+      value: "aiwriter-non-prod"
+    ${{ if or(eq(variables['Build.SourceBranchName'], 'test'), eq(variables['Build.SourceBranchName'], 'main')) }}:
+      value: "aiwriter-prod"
+  - name: AWS_ECR_FRONTEND_REPOSITORY_NAME
+    ${{ if eq(variables['Build.SourceBranchName'], 'poc') }}:
+      value: "ecs-$(Build.SourceBranchName)"
+    ${{ if or(eq(variables['Build.SourceBranchName'], 'test'), eq(variables['Build.SourceBranchName'], 'main'), eq(variables['Build.SourceBranchName'], 'dev')) }}:
+      value: "ecswriter-$(Build.SourceBranchName)"
+  - name: EKS_APP_NAMESPACE
+    value: "app-frontend-$(Build.SourceBranchName)"
+  - name: AWS_ASSUME_ROLE
+    ${{ if or(eq(variables['Build.SourceBranchName'], 'poc'), eq(variables['Build.SourceBranchName'], 'dev')) }}:
+      value: "ecs-$(ENV_NAME)-user_app_deploy_role"
+    ${{ if or(eq(variables['Build.SourceBranchName'], 'test'), eq(variables['Build.SourceBranchName'], 'main')) }}:
+      value: "ct-296297841195-ecswriter-$(ENV_NAME)-user_app_deploy_role"
+  - name: AWS_REGION
+    value: "us-east-1"
+  - name: IMAGE_TAG
+    value: v$(MAJOR).$(MINOR).$(Build.BuildId)
+  - name: FRONTEND_MANIFEST_PATH
+    value: "manifests/ecs/$(ENV_NAME)/frontend_deployment.yaml"
+
+stages:
+  - stage: BuildAndDeployFrontend
+    displayName: "Build and Deploy Frontend (Node.js)"
+    jobs:
+      - job: BuildPushDeployFrontend
+        displayName: "Build, Push, and Deploy Frontend"
+        pool:
+          vmImage: "ubuntu-latest"
+        steps:
+          - checkout: self
+            persistCredentials: true
+            fetchDepth: 0
+            path: s/ecs-ui
+          - checkout: manifest-repo
+            persistCredentials: true
+            fetchDepth: 0
+          - task: Docker@2
+            displayName: "Build ECSWriter app image"
+            inputs:
+              command: "build"
+              Dockerfile: "$(Agent.BuildDirectory)/s/ecs-ui/app/Dockerfile"
+              tags: |
+                $(IMAGE_TAG)
+                $(Build.SourceVersion)
+                latest
+              buildContext: "$(Agent.BuildDirectory)/s/ecs-ui"
+              repository: "$(AWS_ECR_FRONTEND_REPOSITORY_NAME)"
+              arguments: >
+                --no-cache
+                --build-arg ENV_NAME="$(ENV_NAME)"
+                --build-arg REACT_APP_BASE_URL="$(REACT_APP_BASE_URL)"
+                --build-arg REACT_API_BASE_URL="$(REACT_API_BASE_URL)"
+                --build-arg REACT_APP_ECS_PLATFORM_TOKEN="$(REACT_APP_ECS_PLATFORM_TOKEN)"
+                --build-arg REACT_APP_ECS_PLATFORM_URL="$(REACT_APP_ECS_PLATFORM_URL)"
+                --build-arg REACT_APP_ECS_UTILS_TOKEN="$(REACT_APP_ECS_UTILS_TOKEN)"
+                --build-arg REACT_APP_ECS_UTILS_URL="$(REACT_APP_ECS_UTILS_URL)"
+                --build-arg REACT_ASK_BASE_URL="$(REACT_ASK_BASE_URL)"
+                --build-arg REACT_ASK_URL_PATH="$(REACT_ASK_URL_PATH)"
+                --build-arg REACT_ASK_URL_TOKEN="$(REACT_ASK_URL_TOKEN)"
+                --build-arg REACT_APP_CCM_URL_TOKEN="$(REACT_APP_CCM_URL_TOKEN)"
+                --build-arg BUILD_NUMBER="$(Build.BuildId)"
+                --build-arg REACT_APP_CCM_UTILS_TOKEN="$(REACT_APP_CCM_UTILS_TOKEN)"
+
+          - task: ECRPushImage@1
+            displayName: "Push ECSWriter app image(with TAG:version) into ECR"
+            inputs:
+              awsCredentials: "$(AWS_ECR_SERVICE_CONNECTION)"
+              sourceImageName: "$(AWS_ECR_FRONTEND_REPOSITORY_NAME)"
+              sourceImageTag: $(IMAGE_TAG)
+              pushTag: $(IMAGE_TAG)
+              repositoryName: "$(AWS_ECR_FRONTEND_REPOSITORY_NAME)"
+              regionName: "$(AWS_REGION)"
+              logResponse: true
+          - task: ECRPushImage@1
+            displayName: "Push ECSWriter app image(with TAG:SourceVersion) into ECR"
+            inputs:
+              awsCredentials: "$(AWS_ECR_SERVICE_CONNECTION)"
+              sourceImageName: "$(AWS_ECR_FRONTEND_REPOSITORY_NAME)"
+              sourceImageTag: $(Build.SourceVersion)
+              pushTag: $(Build.SourceVersion)
+              repositoryName: "$(AWS_ECR_FRONTEND_REPOSITORY_NAME)"
+              regionName: "$(AWS_REGION)"
+              logResponse: true
+          - template: "azure/pipeline_templates/update-manifest.yaml@terraform-modules"
+            parameters:
+              manifestPath: $(Agent.BuildDirectory)/s/Infrastructure/$(FRONTEND_MANIFEST_PATH)
+              awsRegion: $(AWS_REGION)
+              ecrRepo: $(AWS_ECR_FRONTEND_REPOSITORY_NAME)
+              accountId: $(ACCOUNT_ID)
+              imageTag: $(IMAGE_TAG)
+              repoPath: $(Agent.BuildDirectory)/s/Infrastructure
+              manifestBranch: main
+              createPR: false
+              manifestRepoId: $(MANIFEST_REPO_ID)
+              manifestProject: $(MANIFEST_PROJECT)

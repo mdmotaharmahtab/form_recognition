@@ -1,0 +1,68 @@
+.ant-upload-wrapper .ant-upload-drag .ant-upload {
+  padding: 0 !important;
+  line-height: initial;
+}
+
+.custom-dragger {
+  min-height: 100px !important;
+  margin-top: 14px;
+}
+
+.custom-dragger .ant-upload-text,
+.custom-dragger .ant-upload-hint {
+  margin: 6px !important;
+  font-size: 14px !important;
+}
+
+.ant-upload-drag-icon {
+  margin: 5px !important ;
+}
+
+.ant-table-container {
+  font-size: 12px;
+}
+
+.ant-table-wrapper .ant-table-container {
+  border-start-start-radius: 0px;
+  border-start-end-radius: 0px;
+}
+
+.ant-table-wrapper .ant-table-cell,
+.ant-table-wrapper .ant-table-tbody > tr > th,
+.ant-table-wrapper .ant-table-tbody > tr > td {
+  padding: 10px 6px;
+}
+
+.ant-table-wrapper .ant-table-thead > tr > th,
+.ant-table-wrapper tfoot > tr > th,
+.ant-table-wrapper tfoot > tr > td {
+  padding: 5px 5px;
+}
+
+.ant-popconfirm-buttons button {
+  border-radius: 0px;
+  font-size: 12px;
+}
+
+.ant-popover .ant-popover-title {
+  margin-bottom: auto;
+  border-radius: 5px;
+}
+
+.ant-collapse .ant-collapse-content .ant-collapse-content-box {
+  padding: 5px 5px;
+  background: linear-gradient(20deg, rgb(247, 250, 255) 25%, rgb(240, 245, 255) 50%, rgb(227, 236, 255) 100%);
+}
+
+.ant-collapse .ant-collapse-item .ant-collapse-header {
+  padding: 5px 16px;
+}
+
+.custom-select .ant-select-selection-placeholder {
+  color: #000000 !important;
+}
+
+.ant-select-outlined .ant-select-selector {
+  border-color: #bcbcbc !important;
+  border: 1px solid #bcbcbc !important;
+}

@@ -1,0 +1,224 @@
+{
+ "stop_reason": "converged",
+ "versions": 3,
+ "best_version": 3,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "confirm",
+   "metrics": {
+    "engine": "codegen",
+    "records": 2502,
+    "pages_total": 1083,
+    "pages_with_fields": 828,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 117,
+    "fields_per_form": 21.4,
+    "forms_per_100_pages": 10.8,
+    "pages_covered_pct": 76
+   },
+   "problems": [],
+   "outcome": "extended_program"
+  },
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 1563,
+    "pages_total": 1083,
+    "pages_with_fields": 649,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 108,
+    "fields_per_form": 14.5,
+    "forms_per_100_pages": 10.0,
+    "pages_covered_pct": 60
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_verdicts": null,
+   "score": [
+    0,
+    "not_audited",
+    0,
+    -649
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "confirm_extension",
+   "metrics": {
+    "engine": "codegen",
+    "records": 2502,
+    "pages_total": 1083,
+    "pages_with_fields": 828,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 117,
+    "fields_per_form": 21.4,
+    "forms_per_100_pages": 10.8,
+    "pages_covered_pct": 76
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 5,
+   "audit_pages": [
+    1,
+    3,
+    159,
+    358,
+    542,
+    545
+   ],
+   "audit_partial": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 3,
+     "missed": [],
+     "false": [
+      "3.55. Clinical Laboratory Assessments",
+      "3.78. Visit Date",
+      "3.82. Triplicate ECG Assessments - Predose"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 159,
+     "missed": [],
+     "false": [
+      "indicates substance abuse that could compromise the subject's safety or ability to comply with the trial procedures that could interfere with the",
+      "interpretation of trial results. Legal cannabis use is permissible if the amount used has remained stable for the last 3 months, the subject agrees to"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 358,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 542,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 545,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "score": [
+    0,
+    5,
+    0,
+    -828
+   ],
+   "became_best": true
+  },
+  {
+   "version": 3,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 2359,
+    "pages_total": 1083,
+    "pages_with_fields": 808,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 115,
+    "fields_per_form": 20.5,
+    "forms_per_100_pages": 10.6,
+    "pages_covered_pct": 75
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 0,
+   "audit_pages": [
+    1,
+    3,
+    159,
+    358,
+    542,
+    545
+   ],
+   "audit_partial": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 3,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 159,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 358,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 542,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 545,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "score": [
+    0,
+    0,
+    0,
+    -808
+   ],
+   "became_best": true
+  }
+ ]
+}

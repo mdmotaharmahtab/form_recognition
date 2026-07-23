@@ -1,0 +1,189 @@
+{
+ "stop_reason": "plateau",
+ "versions": 2,
+ "best_version": 1,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 1871,
+    "pages_total": 404,
+    "pages_with_fields": 403,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 99,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 76,
+    "fields_per_form": 24.6,
+    "forms_per_100_pages": 18.8,
+    "pages_covered_pct": 100
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 11,
+   "audit_pages": [
+    1,
+    2,
+    3,
+    116,
+    137,
+    272
+   ],
+   "audit_partial": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [],
+     "false": [
+      "01.025 GMK (432)"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 3,
+     "missed": [],
+     "false": [
+      "Units",
+      "VISREASND $200",
+      "01.025 GMK (432)"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 116,
+     "missed": [],
+     "false": [
+      "Units",
+      "LBREASND $200",
+      "01.025 GMK (432)"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 137,
+     "missed": [],
+     "false": [
+      "01.025 GMK (432)"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 272,
+     "missed": [],
+     "false": [
+      "VIII. SUICIDE",
+      "IX. OBSERVED DEPRESSION",
+      "01.025 GMK (432)"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "score": [
+    0,
+    11,
+    0,
+    -403
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 1113,
+    "pages_total": 404,
+    "pages_with_fields": 272,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 99,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 76,
+    "fields_per_form": 14.6,
+    "forms_per_100_pages": 18.8,
+    "pages_covered_pct": 67
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 5,
+   "audit_pages": [
+    1,
+    2,
+    3,
+    116,
+    137,
+    272
+   ],
+   "audit_partial": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [
+      "If No, please provide reason",
+      "Folder OID (auto-populated)"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 3,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 116,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 137,
+     "missed": [
+      "If No, provide reason not done"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 272,
+     "missed": [
+      "VIII. SUICIDE",
+      "IX. OBSERVED DEPRESSION"
+     ],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "score": [
+    0,
+    5,
+    0,
+    -272
+   ],
+   "became_best": false
+  }
+ ]
+}

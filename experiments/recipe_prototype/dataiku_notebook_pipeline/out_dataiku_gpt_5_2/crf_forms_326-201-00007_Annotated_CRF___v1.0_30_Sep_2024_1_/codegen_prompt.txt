@@ -1,0 +1,317 @@
+You are writing a deterministic extraction program for one specific clinical Case Report Form (CRF) PDF document. Below you will find a small sample of REPRESENTATIVE PAGES (one or two per page-layout cluster) from a document that is 489 pages long. The document is highly repetitive: the sampled pages cover its layouts, but the unsampled pages contain different content in the same layouts.
+
+Each sampled page is shown as structured text lines with geometry:
+    x=<left> y=<top> sz=<font-size> <color-hex or 'black'> <B if bold> | <text>
+
+# Your task
+
+Write a Python function that will run UNCHANGED over all 489 pages and extract every data-entry field of the CRF:
+  - form_name : the CRF form/section the field belongs to
+  - field_name: the human-readable field label/question
+
+That is the complete output. Some CRFs also print machine codes or technical
+annotations near fields - do NOT return those (they are resolved downstream by a
+separate system). You may still USE such markings as structural landmarks if that
+helps you locate fields reliably.
+
+# Runtime contract
+
+def extract(pages):
+    # pages: list of (page_index_0based, lines) tuples for the ENTIRE document, in
+    #        page order. lines is a list of Line objects sorted by y, then x.
+    #        NOTE: y-then-x order is NOT reading order on multi-column pages; if the
+    #        layout has side-by-side columns, use x coordinates to separate them.
+    #        For right-to-left scripts the within-row order is right-to-left, and
+    #        vertical text yields an arbitrary line order - reconstruct reading
+    #        order from the coordinates when the script needs it.
+    # Line attributes:
+    #   .text  (str, stripped visible text of one visual line)
+    #   .x0 .y0 .x1 .y1  (floats; PDF points; origin = top-left of the page)
+    #   .size  (float; font size in points; the largest span on the line)
+    #   .bold  (bool)
+    #   .non_black  (bool; True if any text on the line is printed in color)
+    # returns: list of dicts, one per extracted field occurrence:
+    #   {"form_name": str, "field_name": str, "page": int_1based}
+
+# Hard constraints
+
+- Pure computation only. These modules are already available: re, math, collections,
+  itertools, functools, string, unicodedata, bisect, statistics, json. You may not
+  import anything else, access files/network, or print.
+- Deterministic, fast, simple: loops, regexes, coordinate arithmetic. It must
+  process all 489 pages in seconds.
+- Generalize from STRUCTURE, not content. The unsampled pages contain questions,
+  values and section names you have never seen. Never key your logic on specific
+  question wording from the samples; key it on geometry (x positions, font sizes,
+  color, boldness), on repeated marker/header patterns, and on the SHAPE of text
+  (regexes over character classes). The document may be in any language.
+- You may keep state across pages (the function receives the whole document) -
+  e.g. a form name announced once may govern many following pages.
+
+# Quality bar (your program's output is machine-checked before acceptance)
+
+- It must extract from every page that carries fields, not just the sampled ones.
+- form_name should be non-empty for the large majority of records. If the document
+  genuinely prints no form/section names, use the best available section context;
+  leave it empty only as a last resort.
+- field_name values must be human-readable label text - not machine codes, bare
+  numbers, dates, or page furniture (headers/footers/page numbers/legends).
+- Answer OPTIONS are not fields: choice values (e.g. Yes / No / Unknown / list
+  items - examples here are English, apply the concept in the document's language)
+  belong to a field, they are not field_name records themselves.
+- No duplicate records for the same (form_name, field_name) pair beyond what the
+  document itself repeats.
+
+# Reply format
+
+Reply with ONLY Python source code (no prose outside code comments). Start with a
+comment block (3-6 lines) stating what layout you observed in the samples and the
+extraction strategy you chose. Then define extract(pages) plus any helpers.
+
+# Representative pages of this document
+
+--- page 1 of 489 (layout cluster covers ~1 pages) ---
+x= 235.9 y=  39.1 sz=20.0 #4682b4 B | Annotated CRF
+x=  29.9 y=  76.4 sz=11.0 black   B | Study, Site:
+x= 238.7 y=  76.4 sz=11.0 black   B | Group, Visit:
+x= 445.2 y=  76.4 sz=11.0 black   B | Slot:
+x=  29.9 y=  99.1 sz=11.0 black   B | Schedule Category & Name:
+x= 167.7 y=  99.1 sz=11.0 black     | QSC302573, 04 - Admission/Predose Draft v0.1
+x=  29.9 y= 121.6 sz=10.0 #4682b4 B | Timepoint
+x= 167.7 y= 121.6 sz=10.0 #4682b4 B | Activity
+x= 488.4 y= 121.6 sz=10.0 #4682b4 B | Line #
+x=  29.9 y= 138.7 sz=10.0 black     | Day 0 (0), -00:00.00
+x= 167.7 y= 138.7 sz=10.0 black   B | Admission Restrictions: Photo ID #1
+x= 488.4 y= 138.7 sz=10.0 black     | 1.0
+x=  29.9 y= 155.6 sz=10.0 black     | _ _ - _ _ _ - _ _ _ _
+x= 116.7 y= 155.6 sz=10.0 black     | _ _ : _ _
+x= 167.7 y= 155.6 sz=10.0 black   B | Has the participant's photographic and wristband ID been verified and wristband applied to
+x=  29.9 y= 167.8 sz=10.0 black     | dd - MMM - yyyy
+x= 116.7 y= 167.8 sz=10.0 black     | HH:mm
+x= 167.7 y= 167.8 sz=10.0 black   B | participant's wrist?
+x=  30.9 y= 182.9 sz=10.0 #4682b4 B | Staff Initials:
+x= 167.7 y= 199.0 sz=10.0 #4682b4 B | Answer(s):
+x= 238.7 y= 199.0 sz=10.0 black     | O Yes
+x= 238.7 y= 216.0 sz=10.0 black     | O No (Comment Required)
+x=  29.9 y= 233.0 sz=10.0 #4682b4 B | Comment:
+x=  29.9 y= 255.7 sz=10.0 black     | Day 0 (0), -00:00.00
+x= 167.7 y= 255.7 sz=10.0 black   B | Admission Restrictions: Bag Search #1
+x= 488.4 y= 255.7 sz=10.0 black     | 2.0
+x=  29.9 y= 272.6 sz=10.0 black     | _ _ - _ _ _ - _ _ _ _
+x= 116.7 y= 272.6 sz=10.0 black     | _ _ : _ _
+x= 167.7 y= 272.6 sz=10.0 black   B | Bag search performed?
+x=  29.9 y= 284.8 sz=10.0 black     | dd - MMM - yyyy
+x= 116.7 y= 284.8 sz=10.0 black     | HH:mm
+x=  30.9 y= 300.0 sz=10.0 #4682b4 B | Staff Initials:
+x= 167.7 y= 316.0 sz=10.0 #4682b4 B | Answer(s):
+x= 238.7 y= 316.0 sz=10.0 black     | O Yes
+x= 238.7 y= 333.1 sz=10.0 black     | O No (Comment Required)
+x=  29.9 y= 350.0 sz=10.0 #4682b4 B | Comment:
+x=  29.9 y= 372.7 sz=10.0 black     | Day 0 (0), -00:00.00
+x= 167.7 y= 372.7 sz=10.0 black   B | Admission Restrictions: Bag Search Items Removed #1
+x= 488.4 y= 372.7 sz=10.0 black     | 3.0
+x=  29.9 y= 389.7 sz=10.0 black     | _ _ - _ _ _ - _ _ _ _
+x= 116.7 y= 389.7 sz=10.0 black     | _ _ : _ _
+x= 167.7 y= 389.7 sz=10.0 black   B | If restricted items removed, record items here
+x=  29.9 y= 401.9 sz=10.0 black     | dd - MMM - yyyy
+x= 116.7 y= 401.9 sz=10.0 black     | HH:mm
+x=  30.9 y= 417.1 sz=10.0 #4682b4 B | Staff Initials:
+x= 167.7 y= 433.1 sz=10.0 #4682b4 B | Answer(s):
+x= 238.7 y= 433.1 sz=10.0 black     | O N/A
+x= 238.7 y= 450.1 sz=10.0 black     | ______________________________ (9999 char. max.)
+x=  29.9 y= 467.1 sz=10.0 #4682b4 B | Comment:
+x=  29.9 y= 489.7 sz=10.0 black     | Day 0 (0), -00:00.00
+x= 167.7 y= 489.7 sz=10.0 black   B | Admission Restrictions: ICF Check #1
+x= 488.4 y= 489.7 sz=10.0 black     | 4.0
+x=  29.9 y= 506.8 sz=10.0 black     | _ _ - _ _ _ - _ _ _ _
+x= 116.7 y= 506.8 sz=10.0 black     | _ _ : _ _
+x= 167.7 y= 506.8 sz=10.0 black   B | Has the ICF version been checked?
+x=  29.9 y= 519.0 sz=10.0 black     | dd - MMM - yyyy
+x= 116.7 y= 519.0 sz=10.0 black     | HH:mm
+x=  30.9 y= 534.1 sz=10.0 #4682b4 B | Staff Initials:
+x= 167.7 y= 550.1 sz=10.0 #4682b4 B | Answer(s):
+x= 238.7 y= 550.1 sz=10.0 black     | O Yes
+x= 238.7 y= 567.1 sz=10.0 black     | O No (Comment Required)
+x=  29.9 y= 584.1 sz=10.0 #4682b4 B | Comment:
+x=  29.9 y= 606.8 sz=10.0 black     | Day 0 (0), -00:00.00
+x= 167.7 y= 606.8 sz=10.0 black   B | Admission Restrictio
+<...page truncated...>
+
+--- page 2 of 489 (layout cluster covers ~1 pages) ---
+x= 235.9 y=  39.1 sz=20.0 #4682b4 B | Annotated CRF
+x=  29.9 y=  71.2 sz=11.0 black   B | Study, Site:
+x= 238.7 y=  71.2 sz=11.0 black   B | Group, Visit:
+x= 445.2 y=  71.2 sz=11.0 black   B | Slot:
+x=  29.9 y=  93.9 sz=11.0 black   B | Schedule Category & Name:
+x= 167.7 y=  93.9 sz=11.0 black     | QSC302573, 04 - Admission/Predose Draft v0.1
+x=  29.9 y= 116.4 sz=10.0 #4682b4 B | Timepoint
+x= 167.7 y= 116.4 sz=10.0 #4682b4 B | Activity
+x= 488.4 y= 116.4 sz=10.0 #4682b4 B | Line #
+x=  29.9 y= 133.4 sz=10.0 black     | Day 0 (0), -00:00.00
+x= 167.7 y= 133.4 sz=10.0 black   B | Admission Restrictions: Screening #1
+x= 488.4 y= 133.4 sz=10.0 black     | 6.0
+x=  29.9 y= 150.4 sz=10.0 black     | _ _ - _ _ _ - _ _ _ _
+x= 116.7 y= 150.4 sz=10.0 black     | _ _ : _ _
+x= 167.7 y= 150.4 sz=10.0 black   B | Has it been more than 20 days since the Screening visit?
+x=  29.9 y= 162.6 sz=10.0 black     | dd - MMM - yyyy
+x= 116.7 y= 162.6 sz=10.0 black     | HH:mm
+x=  30.9 y= 177.7 sz=10.0 #4682b4 B | Staff Initials:
+x= 167.7 y= 193.7 sz=10.0 #4682b4 B | Answer(s):
+x= 238.7 y= 193.7 sz=10.0 black     | O No
+x= 238.7 y= 210.7 sz=10.0 black     | O Yes (Activates Line  14)
+x=  29.9 y= 227.8 sz=10.0 #4682b4 B | Comment:
+x=  29.9 y= 250.5 sz=10.0 black     | Day 0 (0), -00:00.00
+x= 167.7 y= 250.5 sz=10.0 black   B | Admission Restrictions: Alcohol #1
+x= 488.4 y= 250.5 sz=10.0 black     | 7.0
+x=  29.9 y= 267.5 sz=10.0 black     | _ _ - _ _ _ - _ _ _ _
+x= 116.7 y= 267.5 sz=10.0 black     | _ _ : _ _
+x= 167.7 y= 267.5 sz=10.0 black   B | Has the participant consumed any alcohol within 48 hours (72hrs prior to dosing) prior to
+x=  29.9 y= 279.6 sz=10.0 black     | dd - MMM - yyyy
+x= 116.7 y= 279.6 sz=10.0 black     | HH:mm
+x= 167.7 y= 279.6 sz=10.0 black   B | Admission visit?  (If 'Yes' exclude per exclusion criteria #24)
+x=  30.9 y= 294.8 sz=10.0 #4682b4 B | Staff Initials:
+x= 167.7 y= 310.8 sz=10.0 #4682b4 B | Answer(s):
+x= 238.7 y= 310.8 sz=10.0 black     | O No
+x= 238.7 y= 327.8 sz=10.0 black     | O Yes (Comment Required) (Activates Line  8)
+x=  29.9 y= 344.8 sz=10.0 #4682b4 B | Comment:
+x=  29.9 y= 367.5 sz=10.0 black     | Day 0 (0), -00:00.00
+x= 167.7 y= 367.5 sz=10.0 black   B | Admission Restrictions: Alcohol Units #1
+x= 488.4 y= 367.5 sz=10.0 black     | 8.0 (hidden)
+x=  29.9 y= 384.5 sz=10.0 black     | _ _ - _ _ _ - _ _ _ _
+x= 116.7 y= 384.5 sz=10.0 black     | _ _ : _ _
+x= 167.7 y= 384.5 sz=10.0 black   B | If consumed; date, time and number of units
+x=  29.9 y= 396.6 sz=10.0 black     | dd - MMM - yyyy
+x= 116.7 y= 396.6 sz=10.0 black     | HH:mm
+x=  30.9 y= 411.8 sz=10.0 #4682b4 B | Staff Initials:
+x= 167.7 y= 427.9 sz=10.0 #4682b4 B | Answer(s):
+x= 238.7 y= 427.9 sz=10.0 black     | Date _  _  -  _  _  _  -  _  _  _  _ (dd-MMM-yyyy)
+x= 238.7 y= 444.9 sz=10.0 black     | Time _  _  :  _  _ (HH:mm)
+x= 238.7 y= 461.9 sz=10.0 black     | No of Units  _  _  units (##)
+x=  29.9 y= 478.9 sz=10.0 #4682b4 B | Comment:
+x=  29.9 y= 501.5 sz=10.0 black     | Day 0 (0), -00:00.00
+x= 167.7 y= 501.5 sz=10.0 black   B | Admission Restrictions: Caffeine #1
+x= 488.4 y= 501.5 sz=10.0 black     | 9.0
+x=  29.9 y= 518.5 sz=10.0 black     | _ _ - _ _ _ - _ _ _ _
+x= 116.7 y= 518.5 sz=10.0 black     | _ _ : _ _
+x= 167.7 y= 518.5 sz=10.0 black   B | Has the participant consumed food and beverages containing methylxanthines (caffeinated
+x=  29.9 y= 530.7 sz=10.0 black     | dd - MMM - yyyy
+x= 116.7 y= 530.7 sz=10.0 black     | HH:mm
+x= 167.7 y= 530.7 sz=10.0 black   B | coffee, caffeinated tea, caffeinated soda, and chocolate) within 48 hours (72hrs prior to dosing)
+x
+<...page truncated...>
+
+--- page 122 of 489 (layout cluster covers ~486 pages) ---
+x= 235.9 y=  39.1 sz=20.0 #4682b4 B | Annotated CRF
+x=  29.9 y=  71.2 sz=11.0 black   B | Study, Site:
+x= 238.7 y=  71.2 sz=11.0 black   B | Group, Visit:
+x= 445.2 y=  71.2 sz=11.0 black   B | Slot:
+x=  29.9 y=  93.9 sz=11.0 black   B | Schedule Category & Name:
+x= 167.7 y=  93.9 sz=11.0 black     | QSC302573, 05a - Period 1 Draft v0.2
+x=  29.9 y= 116.4 sz=10.0 #4682b4 B | Timepoint
+x= 167.7 y= 116.4 sz=10.0 #4682b4 B | Activity
+x= 488.4 y= 116.4 sz=10.0 #4682b4 B | Line #
+x=  29.9 y= 133.4 sz=10.0 black     | Day 3 (0), +48:00.00
+x= 167.7 y= 133.4 sz=10.0 black   B | C-SSRS Since Last Visit: 19. Most Lethal Attempt Date #1
+x= 488.4 y= 133.4 sz=10.0 black     | 198.0 (hidden)
+x=  29.9 y= 150.4 sz=10.0 black     | _ _ - _ _ _ - _ _ _ _
+x= 116.7 y= 150.4 sz=10.0 black     | _ _ : _ _
+x= 167.7 y= 150.4 sz=10.0 black   B | Most Lethal Attempt Date
+x=  29.9 y= 162.6 sz=10.0 black     | dd - MMM - yyyy
+x= 116.7 y= 162.6 sz=10.0 black     | HH:mm
+x=  30.9 y= 177.7 sz=10.0 #4682b4 B | Staff Initials:
+x= 167.7 y= 193.7 sz=10.0 #4682b4 B | Answer(s):
+x= 238.7 y= 193.7 sz=10.0 black     | Date _  _  -  _  _  _  -  _  _  _  _ (dd-MMM-yyyy)
+x= 238.7 y= 210.7 sz=10.0 black     | [QSDAT2] SAS:[Name=QSDAT2, Length=50, DataType=Char]
+x=  29.9 y= 227.8 sz=10.0 #4682b4 B | Comment:
+x=  29.9 y= 250.5 sz=10.0 black     | Day 3 (0), +48:00.00
+x= 167.7 y= 250.5 sz=10.0 black   B | C-SSRS Since Last Visit: 19. Actual Lethality Most Lethal Attempt #1
+x= 488.4 y= 250.5 sz=10.0 black     | 199.0 (hidden)
+x=  29.9 y= 267.5 sz=10.0 black     | _ _ - _ _ _ - _ _ _ _
+x= 116.7 y= 267.5 sz=10.0 black     | _ _ : _ _
+x= 167.7 y= 267.5 sz=10.0 black   B | Actual Lethality/Medical Damage - Most Lethal Attempt
+x=  29.9 y= 279.6 sz=10.0 black     | dd - MMM - yyyy
+x= 116.7 y= 279.6 sz=10.0 black     | HH:mm
+x=  30.9 y= 294.8 sz=10.0 #4682b4 B | Staff Initials:
+x= 167.7 y= 310.8 sz=10.0 #4682b4 B | Answer(s):
+x= 238.7 y= 310.8 sz=10.0 black     | O 0 - No physical damage or very minor physical damage (eg surface scratches)
+x= 238.7 y= 327.8 sz=10.0 black     | [QSORRES] SAS:[Name=QSORRES, Length=500, DataType=Char]
+x= 238.7 y= 344.8 sz=10.0 black     | O 1 - Minor physical damage (eg lethargic speech, first degree burns, mild
+x= 238.7 y= 357.0 sz=10.0 black     | bleeding, sprains)
+x= 238.7 y= 371.1 sz=10.0 black     | [QSORRES] SAS:[Name=QSORRES, Length=500, DataType=Char]
+x= 238.7 y= 388.1 sz=10.0 black     | O 2 - Moderate physical damage - medical attention needed (eg conscious but
+x= 238.7 y= 400.3 sz=10.0 black     | sleepy, somewhat responsive, second degree burns, bleeding of major vessel)
+x= 238.7 y= 414.5 sz=10.0 black     | [QSORRES] SAS:[Name=QSORRES, Length=500, DataType=Char]
+x= 238.7 y= 431.5 sz=10.0 black     | O 3 - Moderately severe physical damage; medical hospitalisation and likely
+x= 238.7 y= 443.6 sz=10.0 black     | intensive care required (e.g. comatose with reflexes intact, third degree burns
+x= 238.7 y= 455.8 sz=10.0 black     | less than 20 percent of body, extensive blood
+x= 238.7 y= 470.0 sz=10.0 black     | [QSORRES] SAS:[Name=QSORRES, Length=500, DataType=Char]
+x= 238.7 y= 487.0 sz=10.0 black     | O 4 - Severe physical damage - medical hospitalisation with intensive care
+x= 238.7 y= 499.2 sz=10.0 black     | required (eg comatose without reflexes, third degree burns over 20 percent of
+x= 238.7 y= 511.3 sz=10.0 black     | body, extensive blood loss with unstable vital si
+x= 238.7 y= 525.5 sz=10.0 black     | [QSORRES] SAS:[Name=QSORRES, Length=500, DataType=Char]
+x= 238.7 y= 542.5 sz=10.0 black     | O 5 - Death
+x= 238.7 y= 559.6 sz=10.0 bla
+<...page truncated...>
+
+--- page 246 of 489 (layout cluster covers ~486 pages) ---
+x= 235.9 y=  39.1 sz=20.0 #4682b4 B | Annotated CRF
+x=  29.9 y=  71.2 sz=11.0 black   B | Study, Site:
+x= 238.7 y=  71.2 sz=11.0 black   B | Group, Visit:
+x= 445.2 y=  71.2 sz=11.0 black   B | Slot:
+x=  29.9 y=  93.9 sz=11.0 black   B | Schedule Category & Name:
+x= 167.7 y=  93.9 sz=11.0 black     | QSC302573, 05c - Period 3 Parts 1 and 2 Draft v0.1
+x=  29.9 y= 116.4 sz=10.0 #4682b4 B | Timepoint
+x= 167.7 y= 116.4 sz=10.0 #4682b4 B | Activity
+x= 488.4 y= 116.4 sz=10.0 #4682b4 B | Line #
+x=  29.9 y= 133.4 sz=10.0 black     | _ _ - _ _ _ - _ _ _ _
+x= 116.7 y= 133.4 sz=10.0 black     | _ _ : _ _
+x= 167.7 y= 133.4 sz=10.0 black   B | ECG Rhythm assessment and interpretation
+x=  29.9 y= 145.6 sz=10.0 black     | dd - MMM - yyyy
+x= 116.7 y= 145.6 sz=10.0 black     | HH:mm
+x=  30.9 y= 160.8 sz=10.0 #4682b4 B | Staff Initials:
+x= 167.7 y= 176.7 sz=10.0 #4682b4 B | Answer(s):
+x= 238.7 y= 176.7 sz=10.0 black     | O Normal, Sinus Rhythm
+x= 238.7 y= 193.7 sz=10.0 black     | [EGORRES] SAS:[Name=EGORRES, Length=50, DataType=Char]
+x= 238.7 y= 210.7 sz=10.0 black     | O Abnormal, Sinus Rhythm (Activates Line  170, 171)
+x= 238.7 y= 227.8 sz=10.0 black     | [EGORRES] SAS:[Name=EGORRES, Length=50, DataType=Char]
+x= 238.7 y= 244.8 sz=10.0 black     | O Abnormal, Non-Sinus Rhythm (Activates Line  170, 172)
+x= 238.7 y= 261.8 sz=10.0 black     | [EGORRES] SAS:[Name=EGORRES, Length=50, DataType=Char]
+x= 238.7 y= 278.8 sz=10.0 black     | O Unevaluable (Comment Required)
+x= 238.7 y= 295.8 sz=10.0 black     | [EGORRES] SAS:[Name=EGORRES, Length=50, DataType=Char]
+x=  29.9 y= 312.8 sz=10.0 #4682b4 B | Comment:
+x=  29.9 y= 335.5 sz=10.0 black     | Day 8 (0), +24:00.00 (-10mins)
+x= 167.7 y= 335.5 sz=10.0 black   B | ECG: ECG Significance #3
+x= 488.4 y= 335.5 sz=10.0 black     | 170.0 (hidden)
+x=  29.9 y= 352.5 sz=10.0 black     | _ _ - _ _ _ - _ _ _ _
+x= 116.7 y= 352.5 sz=10.0 black     | _ _ : _ _
+x= 167.7 y= 352.5 sz=10.0 black   B | Was the ECG clinically significant? (Medic to assess)
+x=  29.9 y= 364.7 sz=10.0 black     | dd - MMM - yyyy
+x= 116.7 y= 364.7 sz=10.0 black     | HH:mm
+x=  30.9 y= 379.9 sz=10.0 #4682b4 B | Staff Initials:
+x= 167.7 y= 395.8 sz=10.0 #4682b4 B | Answer(s):
+x= 238.7 y= 395.8 sz=10.0 black     | O No
+x= 238.7 y= 412.8 sz=10.0 black     | [EGCLSIG] SAS:[Name=EGCLSIG, Length=50, DataType=Char]
+x= 238.7 y= 429.8 sz=10.0 black     | O Yes
+x= 238.7 y= 446.9 sz=10.0 black     | [EGCLSIG] SAS:[Name=EGCLSIG, Length=50, DataType=Char]
+x=  29.9 y= 463.9 sz=10.0 #4682b4 B | Comment:
+x=  29.9 y= 486.6 sz=10.0 black     | Day 8 (0), +24:00.00 (-10mins)
+x= 167.7 y= 486.6 sz=10.0 black   B | ECG: ECG Findings #3
+x= 488.4 y= 486.6 sz=10.0 black     | 171.0 (hidden)
+x=  29.9 y= 503.5 sz=10.0 black     | _ _ - _ _ _ - _ _ _ _
+x= 116.7 y= 503.5 sz=10.0 black     | _ _ : _ _
+x= 167.7 y= 503.5 sz=10.0 black   B | ECG Findings
+x=  29.9 y= 515.7 sz=10.0 black     | dd - MMM - yyyy
+x= 116.7 y= 515.7 sz=10.0 black     | HH:mm
+x=  30.9 y= 530.9 sz=10.0 #4682b4 B | Staff Initials:
+x= 167.7 y= 546.9 sz=10.0 #4682b4 B | Answer(s):
+x= 238.7 y= 546.9 sz=10.0 black     | ______________________________ (500 char. max.)
+x= 238.7 y= 563.9 sz=10.0 black     | [EGABNFND] SAS:[Name=EGABNFND, Length=500, DataType=Char]
+x=  29.9 y= 580.9 sz=10.0 #4682b4 B | Comment:
+x=  29.9 y= 603.6 sz=10.0 black     | Day 8 (0), +24:00.00 (-10mins)
+x= 167.7 y= 603.6 sz=10.0 black   B | ECG: ECG Findings inc Rhythm #3
+x= 488.4 y= 603.6 sz=10.0 black     | 172.0 (hidden)
+x=  29.9 y= 620.6 sz=10.0 black     | _ _ - _ _ _ - _ _ _ _
+x= 116.7 y= 620.6 sz=10.0 black     | _ _ : _ _
+x= 167.7 
+<...page truncated...>
+

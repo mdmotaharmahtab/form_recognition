@@ -1,0 +1,33 @@
+{
+  "reportType": [
+    {
+      "label": "Clinical Study Report",
+      "value": "clinical_study_report",
+      "templates": [
+        { "label": "New Template", "value": "new_template" },
+        { "label": "ICH E3 Template", "value": "ich_e3_template" },
+        { "label": "Abbreviated CSR", "value": "abbreviated_csr" }
+      ]
+    },
+    {
+      "label": "Global Value Dossier",
+      "value": "global_value_dossier",
+      "templates": [{ "label": "New template", "value": "new_template" }]
+    },
+    {
+      "label": "Informed Content Form",
+      "value": "informed_content_form",
+      "templates": [{ "label": "New template", "value": "new_template" }]
+    },
+    {
+      "label": "Patient Lay Summary",
+      "value": "patient_lay_summary",
+      "templates": [{ "label": "New template", "value": "new_template" }]
+    },
+    {
+      "label": "Protocol Study Report",
+      "value": "protocol_study",
+      "templates": [{ "label": "New template", "value": "new_template" }]
+    }
+  ]
+}

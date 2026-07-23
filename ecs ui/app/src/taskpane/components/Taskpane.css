@@ -1,0 +1,125 @@
+html,
+body {
+  scroll-behavior: smooth;
+}
+
+.ant-tabs .ant-tabs-tab .ant-tabs-tab-btn {
+  font-size: smaller;
+}
+
+.ant-tabs .ant-tabs-tab:hover {
+  color: #27a6a4;
+}
+
+.ant-tabs .ant-tabs-ink-bar {
+  background: #27a6a4;
+}
+
+.ant-tabs .ant-tabs-tab + .ant-tabs-tab {
+  margin: 0 0 0 12px;
+}
+
+.ant-tabs .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: #27a6a4 !important;
+}
+
+.ant-table-container {
+  font-size: 10px;
+}
+
+.sortable-handle {
+  cursor: grab;
+  margin-right: 8px;
+}
+
+.ant-table-wrapper .ant-table-container {
+  border-start-start-radius: 0px;
+  border-start-end-radius: 0px;
+}
+
+.ant-table-wrapper .ant-table.ant-table-small .ant-table-title,
+.ant-table-wrapper .ant-table.ant-table-small .ant-table-footer,
+.ant-table-wrapper .ant-table.ant-table-small .ant-table-cell,
+.ant-table-wrapper .ant-table.ant-table-small .ant-table-thead > tr > th,
+.ant-table-wrapper .ant-table.ant-table-small .ant-table-tbody > tr > th,
+.ant-table-wrapper .ant-table.ant-table-small .ant-table-tbody > tr > td,
+.ant-table-wrapper .ant-table.ant-table-small tfoot > tr > th,
+.ant-table-wrapper .ant-table.ant-table-small tfoot > tr > td {
+  padding: 6px 4px;
+}
+
+.previewmodel .ant-typography {
+  color: #4b5563;
+}
+
+.previewmodel .ant-btn-primary {
+  background-color: #ff7a45;
+  border-color: #ff7a45;
+}
+
+.previewmodel .ant-btn-primary:hover {
+  background-color: #ff4a00;
+  border-color: #ff4a00;
+}
+
+.stepColor {
+  color: "#ee801a";
+}
+
+.ant-collapse-borderless > .ant-collapse-item > .ant-collapse-content > .ant-collapse-content-box {
+  padding: 10px 10px 1px 10px;
+}
+
+.ant-collapse-borderless > .ant-collapse-item:last-child .ant-collapse-header {
+  margin-top: 9px;
+}
+
+.ant-collapse > .ant-collapse-item > .ant-collapse-header .ant-collapse-expand-icon {
+  height: 20px;
+  padding-inline-end: 0px;
+}
+
+.ant-tabs-nav-list {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.ant-popover {
+  width: 66vw !important;
+  font-size: 12px;
+}
+
+.ant-popconfirm-buttons button {
+  border-radius: 0px;
+  font-size: 12px;
+}
+
+.mode .ant-select .ant-select-arrow {
+  color: #ffffff;
+}
+
+.mode .ant-select-outlined:not(.ant-select-customize-input) .ant-select-selector {
+  border: 1px solid #d9d9d9;
+  background: #ee801a;
+  color: #ffffff;
+  font-size: 13px;
+}
+
+.ant-popover .ant-popover-title {
+  margin-bottom: auto;
+  border-radius: 5px;
+}
+
+.ant-select-single .ant-select-selector .ant-select-selection-item,
+.ant-select-single .ant-select-selector .ant-select-selection-placeholder {
+  margin-bottom: 2px;
+}
+
+.ant-radio-group.selectiontoggle {
+  display: flex;
+  margin-bottom: 10px;
+}
+.selectiontoggle .ant-radio-wrapper {
+  font-size: 10.5px;
+}

@@ -1,0 +1,270 @@
+{
+ "stop_reason": "plateau",
+ "versions": 3,
+ "best_version": 2,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "confirm",
+   "outcome": "confirmed_no_fields"
+  },
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 390,
+    "pages_total": 206,
+    "pages_with_fields": 108,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 59,
+    "fields_per_form": 6.6,
+    "forms_per_100_pages": 28.6,
+    "pages_covered_pct": 52
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 7,
+   "audit_pages": [
+    1,
+    3,
+    37,
+    67,
+    71,
+    158
+   ],
+   "audit_partial": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 3,
+     "missed": [],
+     "false": [
+      "Is this a treatment emergent adverse event?",
+      "Is this an adverse event of special interest?"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 37,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 67,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 71,
+     "missed": [
+      "Abnormal findings"
+     ],
+     "false": [],
+     "wrong_form": [
+      "Abnormal findings",
+      "Body system",
+      "Examination result",
+      "Clinical significance"
+     ]
+    },
+    {
+     "page": 158,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "score": [
+    0,
+    7,
+    0,
+    -108
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 397,
+    "pages_total": 206,
+    "pages_with_fields": 108,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 63,
+    "fields_per_form": 6.3,
+    "forms_per_100_pages": 30.6,
+    "pages_covered_pct": 52
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 5,
+   "audit_pages": [
+    1,
+    3,
+    37,
+    67,
+    71,
+    158
+   ],
+   "audit_partial": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 3,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 37,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 67,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 71,
+     "missed": [
+      "Abnormal findings"
+     ],
+     "false": [],
+     "wrong_form": [
+      "Abnormal findings",
+      "Body system",
+      "Examination result",
+      "Clinical significance"
+     ]
+    },
+    {
+     "page": 158,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "score": [
+    0,
+    5,
+    0,
+    -108
+   ],
+   "became_best": true
+  },
+  {
+   "version": 3,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 343,
+    "pages_total": 206,
+    "pages_with_fields": 95,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 55,
+    "fields_per_form": 6.2,
+    "forms_per_100_pages": 26.7,
+    "pages_covered_pct": 46
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 5,
+   "audit_pages": [
+    1,
+    3,
+    37,
+    67,
+    71,
+    158
+   ],
+   "audit_partial": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 3,
+     "missed": [
+      "Is this a treatment emergent adv"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 37,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 67,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 71,
+     "missed": [
+      "Abnormal findings",
+      "Body system",
+      "Examination result",
+      "Clinical significance"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 158,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "score": [
+    0,
+    5,
+    0,
+    -95
+   ],
+   "became_best": false
+  }
+ ]
+}

@@ -1,0 +1,53 @@
+x=  36.0 y=  11.5 sz= 9.0 black     | 384-201-00004
+x= 453.5 y=  35.2 sz= 5.6 black     | Conditionally Visible
+x=  46.5 y=  36.7 sz= 7.5 black     | Why was the study terminated by sponsor?
+x= 453.5 y=  41.8 sz= 5.6 black     | Conditional Item: DSDECOD
+x= 453.5 y=  48.3 sz= 5.6 black     | Visible If Value: STUDY
+x= 249.2 y=  53.1 sz= 7.5 black     | [____________________]
+x=  46.5 y=  54.1 sz= 7.5 black     | [DSREAS10]
+x= 453.5 y=  54.8 sz= 5.6 black     | TERMINATED BY SPONSOR =
+x= 453.5 y=  61.3 sz= 5.6 black     | Study terminated by sponsor
+x=  46.5 y=  62.8 sz= 7.5 black     | [SAS Field Name: DSREAS10]
+x= 453.5 y=  67.9 sz= 5.6 black     | Aliases:
+x= 456.5 y=  74.4 sz= 5.6 black     | Odm OID = I.5862
+x= 453.5 y=  80.9 sz= 5.6 black     | Description: Why was the study
+x= 453.5 y=  87.4 sz= 5.6 black     | terminated by sponsor?
+x= 453.5 y=  94.0 sz= 5.6 black     | Mandatory?: Yes
+x= 453.5 y= 100.5 sz= 5.6 black     | Disallow Future Date: Yes
+x= 453.5 y= 122.7 sz= 5.6 black   B | DSREAS11
+x= 453.5 y= 129.3 sz= 5.6 black     | Format: $200
+x= 453.5 y= 135.8 sz= 5.6 black     | Data Type: text
+x= 453.5 y= 142.4 sz= 5.6 black     | Origin: CRF
+x= 453.5 y= 148.9 sz= 5.6 black     | Conditionally Visible
+x=  46.5 y= 150.6 sz= 7.5 black     | Reason volunteer withdrew consent
+x= 453.5 y= 155.4 sz= 5.6 black     | Conditional Item: DSDECOD
+x= 453.5 y= 161.9 sz= 5.6 black     | Visible If Value: WITHDRAWAL OF
+x= 249.2 y= 163.7 sz= 7.5 black     | [____________________]
+x=  46.5 y= 168.0 sz= 7.5 black     | [DSREAS11]
+x= 453.5 y= 168.5 sz= 5.6 black     | CONSENT = Withdrawal of consent
+x= 453.5 y= 175.0 sz= 5.6 black     | Aliases:
+x=  46.5 y= 176.7 sz= 7.5 black     | [SAS Field Name: DSREAS11]
+x= 456.5 y= 181.5 sz= 5.6 black     | Odm OID = I.5863
+x= 453.5 y= 188.0 sz= 5.6 black     | Description: Reason volunteer
+x= 453.5 y= 194.6 sz= 5.6 black     | withdrew consent
+x= 453.5 y= 201.1 sz= 5.6 black     | Mandatory?: Yes
+x= 453.5 y= 207.6 sz= 5.6 black     | Disallow Future Date: Yes
+x= 453.5 y= 229.9 sz= 5.6 black   B | DSREAS12
+x= 453.5 y= 236.5 sz= 5.6 black     | Format: $200
+x= 453.5 y= 243.0 sz= 5.6 black     | Data Type: string
+x= 453.5 y= 249.5 sz= 5.6 black     | Origin: CRF
+x=  46.5 y= 251.3 sz= 7.5 black     | Why was the subject screen failed?
+x= 453.5 y= 256.0 sz= 5.6 black     | Conditionally Visible
+x= 453.5 y= 262.6 sz= 5.6 black     | Conditional Item: DSDECOD
+x= 249.2 y= 264.3 sz= 7.5 black     | [____________________]
+x=  46.5 y= 268.7 sz= 7.5 black     | [DSREAS12]
+x= 453.5 y= 269.1 sz= 5.6 black     | Visible If Value: SCREEN FAILURE =
+x= 453.5 y= 275.6 sz= 5.6 black     | Screen failure
+x=  46.5 y= 277.4 sz= 7.5 black     | [SAS Field Name: DSREAS12]
+x= 453.5 y= 282.1 sz= 5.6 black     | Description: Why was the subject
+x= 453.5 y= 288.7 sz= 5.6 black     | screen failed?
+x= 453.5 y= 295.2 sz= 5.6 black     | Mandatory?: Yes
+x= 453.5 y= 301.7 sz= 5.6 black     | Disallow Future Date: Yes
+x=  36.0 y= 817.4 sz= 9.0 black     | Annotated CRF
+x= 278.9 y= 817.4 sz= 9.0 black     | 37 of 206
+x= 445.8 y= 817.4 sz= 9.0 black     | https://drvince.clinspark.com

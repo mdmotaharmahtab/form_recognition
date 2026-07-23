@@ -1,0 +1,301 @@
+{
+ "stop_reason": "plateau",
+ "versions": 2,
+ "best_version": 1,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 645,
+    "pages_total": 112,
+    "pages_with_fields": 111,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 94,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 6,
+    "fields_per_form": 107.5,
+    "forms_per_100_pages": 5.4,
+    "pages_covered_pct": 99
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 36,
+   "audit_pages": [
+    1,
+    3,
+    28,
+    39,
+    76,
+    108
+   ],
+   "audit_partial": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [
+      "Study, Site:",
+      "Group, Visit:",
+      "Slot:",
+      "Study ICF Signed and Dated by the participant?",
+      "Date Additional ICF was signed by participant"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 3,
+     "missed": [
+      "Study, Site:",
+      "Group, Visit:",
+      "Slot:",
+      "Has the participant read, understood and signed the consent for the Future Use Sub Study, where a DNA sample will be taken and other data collected may be used for potential future research?"
+     ],
+     "false": [
+      "where a DNA sample will be taken and other data collected may be used for potential future research?"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 28,
+     "missed": [
+      "Study, Site:",
+      "Group, Visit:",
+      "Slot:",
+      "Barcode:"
+     ],
+     "false": [
+      "Chemistry and Virology (Including Serum Pregnancy Test) \u2013 Mix tube gently by inverting 5\u20136",
+      "times (5 mL SST)"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 39,
+     "missed": [
+      "Study, Site:",
+      "Group, Visit:",
+      "Slot:"
+     ],
+     "false": [
+      "Exclusion 24. Consumption of alcohol and/or food and beverages containing methylxanthines",
+      "(caffeinated coffee, caffeinated tea, caffeinated soda, and chocolate), pomelo, grapefruit, grapefruit juice, Seville oranges, Seville orange juice, blueberry juice, or cranberry juice within 72 hours prior to dosing.",
+      "Exclusion 25. Participants with active suicidal ideation or suicidal behavior within the last 6",
+      "months, at the screening visit (Baseline/Screening version), and/or prior to dosing (as evidenced by clinical examination or an answer of \u201cyes\u201d on Questions 4 or 5 of the C SSRS Since Last Visit version) or suicidal behavior is present in the C-SSRS.",
+      "Exclusion 26. Not able to consume the FDA HFM (High Fat Meal) for Part 2 and Part 3 within 20",
+      "minutes.",
+      "Exclusion 27. Participant has any significant primary sleep disorder. Participants with known",
+      "untreated moderate or severe sleep apnea, other major untreated sleep disorders, or a known diagnosis of a circadian rhythm disorder. Participants adequately treated for obstructive sleep apnea are not excluded."
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 76,
+     "missed": [
+      "Study, Site:",
+      "Group, Visit:",
+      "Slot:",
+      "Study, Site:",
+      "Group, Visit:",
+      "Slot:",
+      "Staff Initials:",
+      "Comment:"
+     ],
+     "false": [],
+     "wrong_form": [
+      "Affected Body System"
+     ]
+    },
+    {
+     "page": 108,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "score": [
+    0,
+    36,
+    0,
+    -111
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 825,
+    "pages_total": 112,
+    "pages_with_fields": 112,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 96,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 6,
+    "fields_per_form": 137.5,
+    "forms_per_100_pages": 5.4,
+    "pages_covered_pct": 100
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 79,
+   "audit_pages": [
+    1,
+    3,
+    28,
+    39,
+    76,
+    108
+   ],
+   "audit_partial": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [
+      "Study, Site:",
+      "Schedule Category & Name:",
+      "Comment:",
+      "Study ICF Signed and Dated by the participant?",
+      "Comment:",
+      "Does the participant have a valid photo ID?",
+      "Comment:",
+      "Did participant complete group information or remote information session?",
+      "Comment:",
+      "Record who held Group Information Session (full name)",
+      "Comment:",
+      "Does the Anju study number match the study number in the participants' paper PIS/ICF?",
+      "Comment:"
+     ],
+     "false": [
+      "Group, Visit:",
+      "Slot:"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 3,
+     "missed": [
+      "Study, Site:",
+      "Schedule Category & Name:",
+      "Comment:",
+      "Study ICF signed and dated by the physician/nurse?",
+      "Comment:",
+      "Was a copy of the Study ICF given to the participant?",
+      "Comment:",
+      "Has the participant read, understood and signed the consent for the Future Use Sub Study, where a DNA sample will be taken and other data collected may be used for potential future research?",
+      "Comment:",
+      "Additional ICF Signed and Dated by the Participant?",
+      "Comment:",
+      "Date Additional ICF was signed by participant",
+      "Comment:"
+     ],
+     "false": [
+      "Group, Visit:",
+      "Slot:",
+      "Has the participant read, understood and signed the consent for the Future Use Sub Study,",
+      "where a DNA sample will be taken and other data collected may be used for potential future research?"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 28,
+     "missed": [
+      "Study, Site:",
+      "Schedule Category & Name:",
+      "Haematology \u2013 Mix tube gently by inverting 8\u201310 times (2 mL K3EDTA)",
+      "Barcode:",
+      "Comment:",
+      "Has there been a medic review of the Haematology blood results?",
+      "Comment:",
+      "Chemistry and Virology \u2013 Mix tube gently by inverting 5\u20136 times (5 mL SST)",
+      "Barcode:",
+      "Comment:",
+      "Has there been a medic review of the Clinical Chemistry and Virology blood results?",
+      "Comment:",
+      "Chemistry and Virology (Including Serum Pregnancy Test) \u2013 Mix tube gently by inverting 5\u20136 times (5 mL SST)",
+      "Barcode:",
+      "Comment:"
+     ],
+     "false": [
+      "Group, Visit:",
+      "Slot:"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 39,
+     "missed": [
+      "Study, Site:",
+      "Schedule Category & Name:",
+      "Exclusion 24. Consumption of alcohol and/or food and beverages containing methylxanthines (caffeinated coffee, caffeinated tea, caffeinated soda, and chocolate), pomelo, grapefruit, grapefruit juice, Seville oranges, Seville orange juice, blueberry juice, or cranberry juice within 72 hours prior to dosing.",
+      "Comment:",
+      "Exclusion 25. Participants with active suicidal ideation or suicidal behavior within the last 6 months, at the screening visit (Baseline/Screening version), and/or prior to dosing (as evidenced by clinical examination or an answer of \u201cyes\u201d on Questions 4 or 5 of the C SSRS Since Last Visit version) or suicidal behavior is present in the C-SSRS.",
+      "Comment:",
+      "Exclusion 26. Not able to consume the FDA HFM (High Fat Meal) for Part 2 and Part 3 within 20 minutes.",
+      "Comment:",
+      "Exclusion 27. Participant has any significant primary sleep disorder. Participants with known untreated moderate or severe sleep apnea, other major untreated sleep disorders, or a known diagnosis of a circadian rhythm disorder. Participants adequately treated for obstructive sleep apnea are not excluded."
+     ],
+     "false": [
+      "Group, Visit:",
+      "Slot:",
+      "(caffeinated coffee, caffeinated tea, caffeinated soda, and chocolate), pomelo, grapefruit, grapefruit juice, Seville oranges, Seville orange juice, blueberry juice, or cranberry juice within 72 hours prior to dosing.",
+      "months, at the screening visit (Baseline/Screening version), and/or prior to dosing (as evidenced by clinical examination or an answer of \u201cyes\u201d on Questions 4 or 5 of the C SSRS Since Last Visit version) or suicidal behavior is present in the C-SSRS.",
+      "minutes.",
+      "untreated moderate or severe sleep apnea, other major untreated sleep disorders, or a known diagnosis of a circadian rhythm disorder. Participants adequately treated for obstructive sleep apnea are not excluded."
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 76,
+     "missed": [
+      "Study, Site:",
+      "Schedule Category & Name:",
+      "Progress Notes (Progress Notes)",
+      "Comment:",
+      "Study, Site:",
+      "Group, Visit:",
+      "Slot:",
+      "Schedule Category & Name:",
+      "Affected Body System"
+     ],
+     "false": [
+      "Group, Visit:",
+      "Slot:"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 108,
+     "missed": [
+      "Study, Site:",
+      "Schedule Category & Name:"
+     ],
+     "false": [
+      "Group, Visit:",
+      "Slot:"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "score": [
+    0,
+    79,
+    0,
+    -112
+   ],
+   "became_best": false
+  }
+ ]
+}

@@ -1,0 +1,119 @@
+x=  36.0 y=  11.5 sz= 9.0 black     | 384-201-00004
+x= 249.2 y=  34.9 sz= 7.5 black     | O SYRUP
+x= 249.2 y=  43.6 sz= 7.5 black     | O UNKNOWN
+x= 249.2 y=  52.3 sz= 7.5 black     | O VAGINAL RING
+x= 253.0 y=  65.0 sz= 6.4 #808080   | Code List: CM Dose Form
+x= 249.2 y=  75.2 sz= 7.5 black     | O mg
+x= 249.2 y=  83.9 sz= 7.5 black     | O DROP
+x= 249.2 y=  92.6 sz= 7.5 black     | O g
+x= 453.5 y=  95.2 sz= 5.6 black   B | CMDOSU
+x= 249.2 y= 101.3 sz= 7.5 black     | O IU
+x= 453.5 y= 101.8 sz= 5.6 black     | Format: $8
+x=  46.5 y= 106.8 sz= 7.5 black     | Dose unit
+x= 453.5 y= 108.3 sz= 5.6 black     | Data Type: string
+x= 249.2 y= 110.0 sz= 7.5 black     | O mL
+x= 453.5 y= 114.8 sz= 5.6 black     | Origin: CRF
+x= 249.2 y= 118.7 sz= 7.5 black     | O oz
+x= 453.5 y= 121.4 sz= 5.6 black     | Aliases:
+x=  46.5 y= 124.2 sz= 7.5 black     | [CMDOSU]
+x= 249.2 y= 127.4 sz= 7.5 black     | O %
+x= 456.5 y= 127.9 sz= 5.6 black     | Odm OID = I.5742
+x=  46.5 y= 132.9 sz= 7.5 black     | [SAS Field Name: CMDOSU]
+x= 453.5 y= 134.4 sz= 5.6 black     | Description: Dose Units
+x= 249.2 y= 136.1 sz= 7.5 black     | O SCOOPFUL
+x= 453.5 y= 140.9 sz= 5.6 black     | Mandatory?: Yes
+x= 249.2 y= 144.8 sz= 7.5 black     | O mcg
+x= 453.5 y= 147.5 sz= 5.6 black     | Disallow Future Date: Yes
+x= 249.2 y= 153.5 sz= 7.5 black     | O UNKNOWN
+x= 253.0 y= 166.1 sz= 6.4 #808080   | Code List: CM Dose Units
+x= 249.2 y= 176.3 sz= 7.5 black     | O 1 TIME PER WEEK
+x= 249.2 y= 185.0 sz= 7.5 black     | O 1 TIME PER YEAR
+x= 249.2 y= 193.7 sz= 7.5 black     | O 4 TIMES PER YEAR
+x= 249.2 y= 202.4 sz= 7.5 black     | O BID
+x= 249.2 y= 211.1 sz= 7.5 black     | O EVERY 3 YEARS
+x= 249.2 y= 219.8 sz= 7.5 black     | O EVERY 5 YEARS
+x= 249.2 y= 228.5 sz= 7.5 black     | O EVERY 4 WEEKS
+x= 453.5 y= 232.2 sz= 5.6 black   B | CMDOSFRQ
+x= 249.2 y= 237.2 sz= 7.5 black     | O EVERY WEEK
+x= 453.5 y= 238.8 sz= 5.6 black     | Format: $16
+x= 453.5 y= 245.3 sz= 5.6 black     | Data Type: string
+x= 249.2 y= 245.9 sz= 7.5 black     | O ONCE
+x=  46.5 y= 247.1 sz= 7.5 black     | Frequency
+x= 453.5 y= 251.9 sz= 5.6 black     | Origin: CRF
+x= 249.2 y= 254.6 sz= 7.5 black     | O PA
+x= 453.5 y= 258.4 sz= 5.6 black     | Aliases:
+x= 249.2 y= 263.3 sz= 7.5 black     | O PRN
+x=  46.5 y= 264.5 sz= 7.5 black     | [CMDOSFRQ]
+x= 456.5 y= 264.9 sz= 5.6 black     | Odm OID = I.5743
+x= 453.5 y= 271.4 sz= 5.6 black     | Description: Dosing Frequency per
+x= 249.2 y= 272.0 sz= 7.5 black     | O Q3M
+x=  46.5 y= 273.2 sz= 7.5 black     | [SAS Field Name: CMDOSFRQ]
+x= 453.5 y= 278.0 sz= 5.6 black     | Interval
+x= 249.2 y= 280.7 sz= 7.5 black     | O QD
+x= 453.5 y= 284.5 sz= 5.6 black     | Mandatory?: Yes
+x= 249.2 y= 289.4 sz= 7.5 black     | O QID
+x= 453.5 y= 291.0 sz= 5.6 black     | Disallow Future Date: Yes
+x= 249.2 y= 298.1 sz= 7.5 black     | O QOD
+x= 249.2 y= 306.8 sz= 7.5 black     | O QM
+x= 249.2 y= 315.5 sz= 7.5 black     | O QS
+x= 249.2 y= 324.2 sz= 7.5 black     | O TID
+x= 249.2 y= 332.9 sz= 7.5 black     | O UNKNOWN
+x= 253.0 y= 345.5 sz= 6.4 #808080   | Code List: CM Dose Frequency
+x= 453.5 y= 362.5 sz= 5.6 black   B | CMSTDTC
+x= 453.5 y= 369.1 sz= 5.6 black     | Format: dd-MMM-yyyy HH:mm:ss
+x= 453.5 y= 375.6 sz= 5.6 black     | Data Type: partialDatetime
+x=  46.5 y= 377.3 sz= 7.5 black     | Administration start date and time
+x= 453.5 y= 382.1 sz= 5.6 black     | Origin: CRF
+x= 249.2 y= 384.8 sz= 7.5 black     | [_|_] - [_|_|_] - [_|_|_|_] [_|_] : [_|_] : [_|_]
+x= 453.5 y= 388.6 sz= 5.6 black     | Aliases:
+x=  46.5 y= 394.7 sz= 7.5 black     | [CMSTDTC]
+x= 456.5 y= 395.2 sz= 5.6 black     | Odm OID = I.5716
+x= 253.0 y= 397.5 sz= 6.4 #808080   | dd-MMM-yyyy HH:mm:ss
+x= 453.5 y= 401.7 sz= 5.6 black     | Description: Start Date/Time of
+x=  46.5 y= 403.4 sz= 7.5 black     | [SAS Field Name: CMSTDTC]
+x= 453.5 y= 408.2 sz= 5.6 black     | Medication
+x= 453.5 y= 414.7 sz= 5.6 black     | Mandatory?: Yes
+x= 453.5 y= 421.3 sz= 5.6 black     | Disallow Future Date: Yes
+x= 453.5 y= 443.5 sz= 5.6 black   B | CMONGO
+x= 453.5 y= 450.1 sz= 5.6 black     | Format: $3
+x= 453.5 y= 456.6 sz= 5.6 black     | Data Type: string
+x=  46.5 y= 458.4 sz= 7.5 black     | Administration ongoing?
+x= 249.2 y= 461.5 sz= 7.5 black     | O Yes
+x= 453.5 y= 463.1 sz= 5.6 black     | Origin: CRF
+x= 453.5 y= 469.7 sz= 5.6 black     | Aliases:
+x= 249.2 y= 470.2 sz= 7.5 black     | O No
+x=  46.5 y= 475.8 sz= 7.5 black     | [CMONGO]
+x= 456.5 y= 476.2 sz= 5.6 black     | Odm OID = I.5717
+x= 453.5 y= 482.7 sz= 5.6 black     | Description: Ongoing Concomitant
+x= 253.0 y= 482.9 sz= 6.4 #808080   | Code List: Yes/No
+x=  46.5 y= 484.5 sz= 7.5 black     | [SAS Field Name: CMONGO]
+x= 453.5 y= 489.2 sz= 5.6 black     | Meds
+x= 453.5 y= 495.8 sz= 5.6 black     | Mandatory?: Yes
+x= 453.5 y= 502.3 sz= 5.6 black     | Disallow Future Date: Yes
+x= 453.5 y= 524.5 sz= 5.6 black   B | CMENDTC
+x= 453.5 y= 531.1 sz= 5.6 black     | Format: dd-MMM-yyyy HH:mm:ss
+x= 453.5 y= 537.7 sz= 5.6 black     | Data Type: partialDatetime
+x= 453.5 y= 544.2 sz= 5.6 black     | Origin: CRF
+x= 453.5 y= 550.7 sz= 5.6 black     | Conditionally Visible
+x= 453.5 y= 557.2 sz= 5.6 black     | Conditional Item: CMONGO
+x= 453.5 y= 563.8 sz= 5.6 black     | Visible If Value: N = No
+x=  46.5 y= 568.9 sz= 7.5 black     | Administration end date and time
+x= 453.5 y= 570.3 sz= 5.6 black     | Aliases:
+x= 249.2 y= 576.3 sz= 7.5 black     | [_|_] - [_|_|_] - [_|_|_|_] [_|_] : [_|_] : [_|_]
+x= 456.5 y= 576.8 sz= 5.6 black     | Odm OID = I.5718
+x= 453.5 y= 583.3 sz= 5.6 black     | Description: End Date/Time of
+x=  46.5 y= 586.3 sz= 7.5 black     | [CMENDTC]
+x= 253.0 y= 589.0 sz= 6.4 #808080   | dd-MMM-yyyy HH:mm:ss
+x= 453.5 y= 589.9 sz= 5.6 black     | Medication
+x=  46.5 y= 595.0 sz= 7.5 black     | [SAS Field Name: CMENDTC]
+x= 453.5 y= 596.4 sz= 5.6 black     | Edit Checks:
+x= 456.5 y= 603.0 sz= 5.6 black   B | Name: TEMPLATE_CMENDTC:
+x= 456.5 y= 609.6 sz= 5.6 black     | Formal Expression; Context: Formal
+x= 456.5 y= 616.1 sz= 5.6 black     | Expression
+x= 456.5 y= 622.7 sz= 5.6 black     | Description: Query if CM Start Date
+x= 456.5 y= 629.2 sz= 5.6 black     | /Time is after CM End Date/Time.
+x= 453.5 y= 635.7 sz= 5.6 black     | Mandatory?: Yes
+x= 453.5 y= 642.2 sz= 5.6 black     | Disallow Future Date: Yes
+x=  36.0 y= 817.4 sz= 9.0 black     | Annotated CRF
+x= 278.9 y= 817.4 sz= 9.0 black     | 52 of 238
+x= 445.8 y= 817.4 sz= 9.0 black     | https://drvince.clinspark.com

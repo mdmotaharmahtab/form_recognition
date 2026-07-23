@@ -1,0 +1,235 @@
+{
+ "stop_reason": "plateau",
+ "versions": 3,
+ "best_version": 2,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "confirm",
+   "outcome": "confirmed_no_fields"
+  },
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 3663,
+    "pages_total": 1085,
+    "pages_with_fields": 881,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 98,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 117,
+    "fields_per_form": 31.3,
+    "forms_per_100_pages": 10.8,
+    "pages_covered_pct": 81
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 14,
+   "audit_pages": [
+    1,
+    33,
+    159,
+    374,
+    392,
+    570
+   ],
+   "audit_partial": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 33,
+     "missed": [
+      "Protocol Version for Consent",
+      "Date of Consent"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 159,
+     "missed": [
+      "\\17.\\ Subjects who have a positive urine alcohol or drug screen that, in the judgment of the investigator with concurrence of the medical monitor, indicates substance abuse that could compromise the subject\u2019s safety or ability to comply with the trial procedures that could interfere with the interpretation of trial results. Legal cannabis use is permissible if the amount used has remained stable for the last 3 months, the subject agrees to continue using cannabis in the same amount and frequency throughout the trial, and the investigator determines that no cannabis use disorder is present. If these criteria are not met and the potential occasional or intermittent legal user requires washout, please refer to the list of medications with a required washout period.",
+      "\\18.\\ Urine cotinine concentrations > 200 ng/mL or serum cotinine concentrations > 20 ng/mL at the screening visit or at check-in to the trial site.",
+      "\\19.\\ Subjects having taken an investigational drug within 30 days prior to the screening visit.",
+      "\\20.\\ Subjects who would be likely to require prohibited concomitant therapy during the trial. The investigator with concurrence of the medical monitor may allow exceptions if the medication\u2019s administration is deemed unlikely to impact the results of the trial."
+     ],
+     "false": [
+      "Met/Not Met",
+      "\\ Subjects who have a positive urine alcohol or drug screen that, in the judgment of the investigator with concurrence of the medical monitor, indicates substance abuse that could compromise the subject\u2019s safety or ability to comply with the trial procedures that could interfere with the",
+      "\\ Urine cotinine concentrations > 200 ng/mL or serum cotinine concentrations > 20 ng/mL at the screening visit or at check-in to the trial site.",
+      "\\ Subjects having taken an investigational drug within 30 days prior to the screening visit.",
+      "\\ Subjects who would be likely to require prohibited concomitant therapy during the trial. The investigator with concurrence of the medical monitor may allow exceptions if the medication\u2019s administration is deemed unlikely to impact the results of the trial."
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 374,
+     "missed": [
+      "Planned Timepoint"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 392,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 570,
+     "missed": [
+      "Urinalysis clinically significant abnormal assay # 3"
+     ],
+     "false": [
+      "Microscopic analysis if indicated"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "score": [
+    0,
+    14,
+    0,
+    -881
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 5541,
+    "pages_total": 1085,
+    "pages_with_fields": 848,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 119,
+    "fields_per_form": 46.6,
+    "forms_per_100_pages": 11.0,
+    "pages_covered_pct": 78
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 6,
+   "audit_pages": [
+    1,
+    33,
+    159,
+    374,
+    392,
+    570
+   ],
+   "audit_partial": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 33,
+     "missed": [
+      "Protocol Version for Consent",
+      "Date of Consent"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 159,
+     "missed": [
+      "Subjects who have a positive urine alcohol or drug screen that, in the judgment of the investigator with concurrence of the medical monitor, indicates substance abuse that could compromise the subject\u2019s safety or ability to comply with the trial procedures that could interfere with the interpretation of trial results. Legal cannabis use is permissible if the amount used has remained stable for the last 3 months, the subject agrees to continue using cannabis in the same amount and frequency throughout the trial, and the investigator determines that no cannabis use disorder is present. If these criteria are not met and the potential occasional or intermittent legal user requires washout, please refer to the list of medications with a required washout period.",
+      "Urine cotinine concentrations > 200 ng/mL or serum cotinine concentrations > 20 ng/mL at the screening visit or at check-in to the trial site.",
+      "Subjects having taken an investigational drug within 30 days prior to the screening visit.",
+      "Subjects who would be likely to require prohibited concomitant therapy during the trial. The investigator with concurrence of the medical monitor may allow exceptions if the medication\u2019s administration is deemed unlikely to impact the results of the trial."
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 374,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 392,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 570,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "score": [
+    0,
+    6,
+    0,
+    -848
+   ],
+   "became_best": true
+  },
+  {
+   "version": 3,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 0,
+    "pages_total": 1085,
+    "pages_with_fields": 0,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 0,
+    "labels_look_human_pct": 0,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 0,
+    "fields_per_form": 0.0,
+    "forms_per_100_pages": 0.0,
+    "pages_covered_pct": 0
+   },
+   "problems": [
+    "The program extracted ZERO records from the document."
+   ],
+   "warnings": [
+    "form_name empty for 100% of records - if the document does print form/section names, fix the form_name strategy (consider carrying the last seen title forward).",
+    "Only 0% of field_name values look like human labels (they look like codes/dates/junk) - fix label selection."
+   ],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_partial": null,
+   "audit_verdicts": null,
+   "score": [
+    1,
+    "not_audited",
+    2,
+    0
+   ],
+   "became_best": false
+  }
+ ]
+}

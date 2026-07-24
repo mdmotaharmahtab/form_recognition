@@ -1,0 +1,521 @@
+{
+ "stop_reason": "budget",
+ "versions": 5,
+ "best_version": 5,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 339,
+    "pages_total": 104,
+    "pages_with_fields": 94,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 21,
+    "labels_look_human_pct": 97,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 2,
+    "fields_per_form": 169.5,
+    "forms_per_100_pages": 1.9,
+    "form_same_page_evidence_records": 72,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 90
+   },
+   "problems": [
+    "Extreme content-fitted blocklist. The program filters by 32 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "warnings": [
+    "form_name empty for 79% of records - if the document does print form/section names, fix the form_name strategy (consider carrying the last seen title forward)."
+   ],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    1,
+    "not_audited",
+    1,
+    -94
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "revise_gates",
+   "metrics": {
+    "engine": "codegen",
+    "records": 588,
+    "pages_total": 104,
+    "pages_with_fields": 104,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 98,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 8,
+    "fields_per_form": 73.5,
+    "forms_per_100_pages": 7.7,
+    "form_same_page_evidence_records": 585,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 100
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 17,
+   "audit_pages": [
+    46,
+    47,
+    52,
+    84,
+    241,
+    427
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 46,
+     "missed": [],
+     "false": [
+      "Uric acid"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 47,
+     "missed": [],
+     "false": [
+      "Uric acid"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 52,
+     "missed": [],
+     "false": [
+      "Glycated Hemoglobin"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 84,
+     "missed": [],
+     "false": [
+      "or withdrawal are not acceptable methods of contraception) during the trial and for 30 days after the last",
+      "dose of IMP.",
+      "\\4.\\ Clinically significant abnormality in past medical history, or at the screening physical examination, that in",
+      "including absorption, distribution, metabolism, and excretion of the IMP. This includes, but is not limited to,",
+      "the safety of the subject or the interpretation of the trial results. The medical monitor should be contacted to",
+      "hypotension which is defined as a decrease of"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 241,
+     "missed": [],
+     "false": [
+      "Uric acid"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 427,
+     "missed": [],
+     "false": [
+      "Overdose: Person has pills in hand but is stopped from ingesting. Once they ingest any pills,",
+      "something stopped you before you actually did anything?",
+      "When person begins to take steps toward making a suicide attempt, but stops themselves before",
+      "they actually have engaged in any self destructive behaviour. Examples are similar to interrupted",
+      "stopped yourself before you actually did anything?",
+      "Acts or preparation towards imminently making a suicide attempt. This can include anything beyond",
+      "a verbalization or thought such as assembling a specific method (e.g., buying pills, purchasing a"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    17,
+    0,
+    -104
+   ],
+   "became_best": true
+  },
+  {
+   "version": 3,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 482,
+    "pages_total": 104,
+    "pages_with_fields": 104,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 8,
+    "fields_per_form": 60.2,
+    "forms_per_100_pages": 7.7,
+    "form_same_page_evidence_records": 477,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 100
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 28,
+   "audit_pages": [
+    46,
+    47,
+    48,
+    52,
+    83,
+    84,
+    241,
+    427
+   ],
+   "audit_partial": null,
+   "audit_promoted": [
+    48
+   ],
+   "audit_verdicts": [
+    {
+     "page": 46,
+     "missed": [],
+     "false": [
+      "Uric acid"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 47,
+     "missed": [],
+     "false": [
+      "Uric acid"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 48,
+     "missed": [],
+     "false": [
+      "Uric acid"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 52,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 83,
+     "missed": [
+      "\\1.\\ Diagnosis of MDD, as determined by the Diagnostic and Statistical Manual of Mental Disorders, Fifth Edition (DSM-5) criteria, and are considered clinically stable per investigator's judgment while currently receiving sertraline for at least 90 days and maintained on stable sertraline doses of \u2265 100 mg/day for at least 30 days at the time of screening visit 1 and stable sertraline doses of \u2265 150 mg/day for at least 5 days at the time of screening visit 2.",
+      "\\2.\\ Male or female subjects between 18 and 65 years of age (inclusive).",
+      "\\3.\\ Body mass index (BMI) between 19.0 to 35.0 kg/m2 (inclusive).",
+      "\\4.\\ In good health as determined by: a) Medical history b) Physical examination c) Vital signs d) Electrocardiogram (ECG) e) Serum/urine chemistry, hematology, and serology tests",
+      "\\5.\\ Ability to provide written, informed consent prior to initiation of any trial-related procedures, and ability, in the opinion of the investigator, to comply with all the requirements of the trial."
+     ],
+     "false": [
+      "c) Vital signs"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 84,
+     "missed": [
+      "\\1.\\Females who are breast-feeding and/or who have a positive pregnancy test result prior to receiving IMP.",
+      "\\2.\\ Heterosexually active males or females of childbearing potential (FOCBP), or their partners, who do not agree to practice 2 different approved methods of birth control or remain fully abstinent (periodic abstinence or withdrawal are not acceptable methods of contraception) during the trial and for 30 days after the last dose of IMP. If employing birth control, 2 of the following methods must be used: vasectomy, bilateral tubal ligation, nonhormonal intrauterine device, condom with spermicide, sponge with spermicide, or occlusive cap (vaginal diaphragm or cervical/vault cap) with spermicide.",
+      "\\3.\\ Male subjects who do not agree to not donate sperm from trial screening through 30 days after the last dose of IMP.",
+      "\\4.\\ Clinically significant abnormality in past medical history, or at the screening physical examination, that in the investigator's or sponsor's opinion may place the subject at risk or interfere with outcome variables including absorption, distribution, metabolism, and excretion of the IMP. This includes, but is not limited to, history of or concurrent cardiac, hepatic, renal, neurologic, endocrine, gastrointestinal, respiratory, hematologic, and immunologic disease.",
+      "\\5.\\ Subjects with abnormal clinical laboratory assessment results, vital signs results, or ECG findings, unless, based on the investigator's judgment, the findings are not medically significant and would not impact the safety of the subject or the interpretation of the trial results. The medical monitor should be contacted to discuss individual cases, as needed. In addition, subjects with any of the following clinical laboratory assessments or ECG results at screening must be excluded from the trial: - Platelets <= 75000/mm3 - Hemoglobin <= 9 g/dL - Neutrophils, absolute <= 1000/mm3 - Aspartate aminotransferase (AST) > 2 \u00d7 upper limit or normal (ULN) - Alanine aminotransferase (ALT) > 2 \u00d7 ULN - Creatinine phosphokinase > 3 \u00d7 ULN, unless discussed with and approved by the medical monitor - Creatinine >= 2 mg/dL - QT interval corrected for heart rate using Friedericia formula (QTcF)>= 450 msec in men and >= 470 msec in women, unless due to ventricular pacing Tests with exclusionary results should be repeated once to ensure reproducibility of the abnormality before excluding a subject based on the criteria noted above.",
+      "\\6.\\ Subjects with diagnosed hypertension (including treated or untreated hypertension), or orthostatic hypotension which is defined as a decrease of"
+     ],
+     "false": [
+      "dose of IMP.",
+      "hypotension which is defined as a decrease of"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 241,
+     "missed": [],
+     "false": [
+      "Uric acid"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 427,
+     "missed": [
+      "Has there been a time when you started to do something to end your life but someone or something stopped you before you actually did anything?",
+      "If Yes, describe",
+      "Has there been a time when you started to do something to try to end your life but you stopped yourself before you actually did anything?",
+      "If Yes, describe",
+      "Have you taken any step towards making a suicide attempt or preparing to kill yourself (such as collecting pills, getting a gun, giving valuables away or writing a suicide note?)",
+      "If Yes, describe"
+     ],
+     "false": [
+      "Overdose: Person has pills in hand but is stopped from ingesting. Once they ingest any pills,",
+      "When person begins to take steps toward making a suicide attempt, but stops themselves before",
+      "stopped yourself before you actually did anything?",
+      "Acts or preparation towards imminently making a suicide attempt. This can include anything beyond"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    28,
+    0,
+    -104
+   ],
+   "became_best": false
+  },
+  {
+   "version": 4,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 438,
+    "pages_total": 104,
+    "pages_with_fields": 102,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 7,
+    "fields_per_form": 62.6,
+    "forms_per_100_pages": 6.7,
+    "form_same_page_evidence_records": 433,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 98
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 17,
+   "audit_pages": [
+    46,
+    47,
+    48,
+    52,
+    84,
+    146,
+    241,
+    427
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 46,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 47,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 48,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 52,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 84,
+     "missed": [
+      "\\1.\\Females who are breast-feeding and/or who have a positive pregnancy test result prior to receiving IMP.",
+      "\\2.\\ Heterosexually active males or females of childbearing potential (FOCBP), or their partners, who do not agree to practice 2 different approved methods of birth control or remain fully abstinent (periodic abstinence or withdrawal are not acceptable methods of contraception) during the trial and for 30 days after the last dose of IMP. If employing birth control, 2 of the following methods must be used: vasectomy, bilateral tubal ligation, nonhormonal intrauterine device, condom with spermicide, sponge with spermicide, or occlusive cap (vaginal diaphragm or cervical/vault cap) with spermicide.",
+      "\\3.\\ Male subjects who do not agree to not donate sperm from trial screening through 30 days after the last dose of IMP.",
+      "\\4.\\ Clinically significant abnormality in past medical history, or at the screening physical examination, that in the investigator's or sponsor's opinion may place the subject at risk or interfere with outcome variables including absorption, distribution, metabolism, and excretion of the IMP. This includes, but is not limited to, history of or concurrent cardiac, hepatic, renal, neurologic, endocrine, gastrointestinal, respiratory, hematologic, and immunologic disease.",
+      "\\5.\\ Subjects with abnormal clinical laboratory assessment results, vital signs results, or ECG findings, unless, based on the investigator's judgment, the findings are not medically significant and would not impact the safety of the subject or the interpretation of the trial results. The medical monitor should be contacted to discuss individual cases, as needed. In addition, subjects with any of the following clinical laboratory assessments or ECG results at screening must be excluded from the trial: - Platelets <= 75000/mm3 - Hemoglobin <= 9 g/dL - Neutrophils, absolute <= 1000/mm3 - Aspartate aminotransferase (AST) > 2 \u00d7 upper limit or normal (ULN) - Alanine aminotransferase (ALT) > 2 \u00d7 ULN - Creatinine phosphokinase > 3 \u00d7 ULN, unless discussed with and approved by the medical monitor - Creatinine >= 2 mg/dL - QT interval corrected for heart rate using Friedericia formula (QTcF)>= 450 msec in men and >= 470 msec in women, unless due to ventricular pacing Tests with exclusionary results should be repeated once to ensure reproducibility of the abnormality before excluding a subject based on the criteria noted above.",
+      "\\6.\\ Subjects with diagnosed hypertension (including treated or untreated hypertension), or orthostatic hypotension which is defined as a decrease of"
+     ],
+     "false": [
+      "dose of IMP."
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 146,
+     "missed": [
+      "\\1.\\ Diagnosis of MDD, as determined by the Diagnostic and Statistical Manual of Mental Disorders, Fifth Edition (DSM-5) criteria, and are considered clinically stable per investigator's judgment while currently receiving sertraline for at least 90 days and maintained on stable sertraline doses of \u2265 100 mg/day for at least 30 days at the time of screening visit 1 and stable sertraline doses of \u2265 150 mg/day for at least 5 days at the time of screening visit 2.",
+      "\\2.\\ Male or female subjects between 18 and 65 years of age (inclusive).",
+      "\\3.\\ Body mass index (BMI) between 19.0 to 35.0 kg/m2 (inclusive).",
+      "\\4.\\ In good health as determined by: a) Medical history b) Physical examination c) Vital signs d) Electrocardiogram (ECG) e) Serum/urine chemistry, hematology, and serology tests",
+      "\\5.\\ Ability to provide written, informed consent prior to initiation of any trial-related procedures, and ability, in the opinion of the investigator, to comply with all the requirements of the trial."
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 241,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 427,
+     "missed": [
+      "If Yes, describe"
+     ],
+     "false": [
+      "Overdose: Person has pills in hand but is stopped from ingesting. Once they ingest any pills,",
+      "When person begins to take steps toward making a suicide attempt, but stops themselves before",
+      "stopped yourself before you actually did anything?",
+      "Acts or preparation towards imminently making a suicide attempt. This can include anything beyond"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    17,
+    0,
+    -102
+   ],
+   "became_best": true
+  },
+  {
+   "version": 5,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 441,
+    "pages_total": 104,
+    "pages_with_fields": 98,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 98,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 7,
+    "fields_per_form": 63.0,
+    "forms_per_100_pages": 6.7,
+    "form_same_page_evidence_records": 436,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 94
+   },
+   "problems": [],
+   "warnings": [
+    "The program filters by 25 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": 11,
+   "audit_pages": [
+    46,
+    47,
+    48,
+    51,
+    52,
+    84,
+    241,
+    427
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 46,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 47,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 48,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 51,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 52,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 84,
+     "missed": [
+      "\\1.\\Females who are breast-feeding and/or who have a positive pregnancy test result prior to receiving IMP.",
+      "\\2.\\ Heterosexually active males or females of childbearing potential (FOCBP), or their partners, who do not agree to practice 2 different approved methods of birth control or remain fully abstinent (periodic abstinence or withdrawal are not acceptable methods of contraception) during the trial and for 30 days after the last dose of IMP. If employing birth control, 2 of the following methods must be used: vasectomy, bilateral tubal ligation, nonhormonal intrauterine device, condom with spermicide, sponge with spermicide, or occlusive cap (vaginal diaphragm or cervical/vault cap) with spermicide.",
+      "\\3.\\ Male subjects who do not agree to not donate sperm from trial screening through 30 days after the last dose of IMP.",
+      "\\4.\\ Clinically significant abnormality in past medical history, or at the screening physical examination, that in the investigator's or sponsor's opinion may place the subject at risk or interfere with outcome variables including absorption, distribution, metabolism, and excretion of the IMP. This includes, but is not limited to, history of or concurrent cardiac, hepatic, renal, neurologic, endocrine, gastrointestinal, respiratory, hematologic, and immunologic disease.",
+      "\\5.\\ Subjects with abnormal clinical laboratory assessment results, vital signs results, or ECG findings, unless, based on the investigator's judgment, the findings are not medically significant and would not impact the safety of the subject or the interpretation of the trial results. The medical monitor should be contacted to discuss individual cases, as needed. In addition, subjects with any of the following clinical laboratory assessments or ECG results at screening must be excluded from the trial: - Platelets <= 75000/mm3 - Hemoglobin <= 9 g/dL - Neutrophils, absolute <= 1000/mm3 - Aspartate aminotransferase (AST) > 2 \u00d7 upper limit or normal (ULN) - Alanine aminotransferase (ALT) > 2 \u00d7 ULN - Creatinine phosphokinase > 3 \u00d7 ULN, unless discussed with and approved by the medical monitor - Creatinine >= 2 mg/dL - QT interval corrected for heart rate using Friedericia formula (QTcF)>= 450 msec in men and >= 470 msec in women, unless due to ventricular pacing Tests with exclusionary results should be repeated once to ensure reproducibility of the abnormality before excluding a subject based on the criteria noted above.",
+      "\\6.\\ Subjects with diagnosed hypertension (including treated or untreated hypertension), or orthostatic hypotension which is defined as a decrease of"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 241,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 427,
+     "missed": [
+      "If Yes, describe",
+      "If Yes, describe"
+     ],
+     "false": [
+      "Overdose: Person has pills in hand but is stopped from ingesting. Once they ingest any pills,",
+      "When person begins to take steps toward making a suicide attempt, but stops themselves before",
+      "Acts or preparation towards imminently making a suicide attempt. This can include anything beyond"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    11,
+    1,
+    -98
+   ],
+   "became_best": true
+  }
+ ]
+}

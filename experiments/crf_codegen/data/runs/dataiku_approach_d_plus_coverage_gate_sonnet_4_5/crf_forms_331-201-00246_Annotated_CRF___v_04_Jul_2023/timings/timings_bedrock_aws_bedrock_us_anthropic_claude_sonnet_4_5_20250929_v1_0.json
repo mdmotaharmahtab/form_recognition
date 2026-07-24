@@ -1,0 +1,365 @@
+{
+ "stage0_s": 13.411,
+ "llm_s": 989.291,
+ "llm_calls": 40,
+ "llm_prompt_chars": 1017598,
+ "llm_reply_chars": 235386,
+ "llm_by_kind": {
+  "generate": {
+   "calls": 5,
+   "s": 163.338,
+   "prompt_chars": 204841,
+   "reply_chars": 31236
+  },
+  "confirm": {
+   "calls": 4,
+   "s": 78.927,
+   "prompt_chars": 48285,
+   "reply_chars": 22252
+  },
+  "audit": {
+   "calls": 17,
+   "s": 118.686,
+   "prompt_chars": 500261,
+   "reply_chars": 21859
+  },
+  "revise_audit": {
+   "calls": 13,
+   "s": 605.976,
+   "prompt_chars": 253645,
+   "reply_chars": 151309
+  },
+  "revise_gates": {
+   "calls": 1,
+   "s": 22.364,
+   "prompt_chars": 10566,
+   "reply_chars": 8730
+  }
+ },
+ "sandbox_validate_s": 53.342,
+ "sandbox_validate_calls": 22,
+ "export_s": null,
+ "total_s": 1056.921,
+ "calls": [
+  {
+   "seq": 1,
+   "kind": "generate",
+   "version": 1,
+   "s": 28.757,
+   "prompt_chars": 36554,
+   "reply_chars": 5811
+  },
+  {
+   "seq": 2,
+   "kind": "confirm",
+   "version": 1,
+   "s": 33.971,
+   "prompt_chars": 16183,
+   "reply_chars": 8066
+  },
+  {
+   "seq": 3,
+   "kind": "audit",
+   "version": 2,
+   "s": 9.797,
+   "prompt_chars": 28695,
+   "reply_chars": 1864
+  },
+  {
+   "seq": 4,
+   "kind": "revise_audit",
+   "version": 3,
+   "s": 45.365,
+   "prompt_chars": 19696,
+   "reply_chars": 11334
+  },
+  {
+   "seq": 5,
+   "kind": "audit",
+   "version": 3,
+   "s": 9.76,
+   "prompt_chars": 34800,
+   "reply_chars": 1811
+  },
+  {
+   "seq": 6,
+   "kind": "revise_audit",
+   "version": 4,
+   "s": 49.579,
+   "prompt_chars": 25195,
+   "reply_chars": 13080
+  },
+  {
+   "seq": 7,
+   "kind": "audit",
+   "version": 4,
+   "s": 7.2,
+   "prompt_chars": 35260,
+   "reply_chars": 1335
+  },
+  {
+   "seq": 8,
+   "kind": "revise_audit",
+   "version": 5,
+   "s": 58.245,
+   "prompt_chars": 25425,
+   "reply_chars": 14857
+  },
+  {
+   "seq": 9,
+   "kind": "audit",
+   "version": 5,
+   "s": 7.175,
+   "prompt_chars": 36968,
+   "reply_chars": 1237
+  },
+  {
+   "seq": 10,
+   "kind": "revise_audit",
+   "version": 6,
+   "s": 58.919,
+   "prompt_chars": 26088,
+   "reply_chars": 15295
+  },
+  {
+   "seq": 11,
+   "kind": "audit",
+   "version": 6,
+   "s": 10.906,
+   "prompt_chars": 36652,
+   "reply_chars": 1900
+  },
+  {
+   "seq": 1,
+   "kind": "generate",
+   "version": 1,
+   "s": 35.803,
+   "prompt_chars": 41882,
+   "reply_chars": 7386
+  },
+  {
+   "seq": 2,
+   "kind": "confirm",
+   "version": 1,
+   "s": 26.325,
+   "prompt_chars": 11820,
+   "reply_chars": 8425
+  },
+  {
+   "seq": 3,
+   "kind": "audit",
+   "version": 2,
+   "s": 7.364,
+   "prompt_chars": 26697,
+   "reply_chars": 1304
+  },
+  {
+   "seq": 4,
+   "kind": "revise_audit",
+   "version": 3,
+   "s": 40.961,
+   "prompt_chars": 19383,
+   "reply_chars": 9019
+  },
+  {
+   "seq": 5,
+   "kind": "revise_gates",
+   "version": 4,
+   "s": 22.364,
+   "prompt_chars": 10566,
+   "reply_chars": 8730
+  },
+  {
+   "seq": 6,
+   "kind": "audit",
+   "version": 4,
+   "s": 7.494,
+   "prompt_chars": 31747,
+   "reply_chars": 1362
+  },
+  {
+   "seq": 7,
+   "kind": "revise_audit",
+   "version": 5,
+   "s": 49.449,
+   "prompt_chars": 12689,
+   "reply_chars": 14107
+  },
+  {
+   "seq": 8,
+   "kind": "audit",
+   "version": 5,
+   "s": 6.605,
+   "prompt_chars": 30758,
+   "reply_chars": 930
+  },
+  {
+   "seq": 9,
+   "kind": "revise_audit",
+   "version": 6,
+   "s": 51.015,
+   "prompt_chars": 16824,
+   "reply_chars": 16159
+  },
+  {
+   "seq": 1,
+   "kind": "generate",
+   "version": 1,
+   "s": 31.651,
+   "prompt_chars": 52233,
+   "reply_chars": 5725
+  },
+  {
+   "seq": 2,
+   "kind": "confirm",
+   "version": 1,
+   "s": 12.762,
+   "prompt_chars": 7225,
+   "reply_chars": 5007
+  },
+  {
+   "seq": 3,
+   "kind": "audit",
+   "version": 2,
+   "s": 11.79,
+   "prompt_chars": 28785,
+   "reply_chars": 2971
+  },
+  {
+   "seq": 4,
+   "kind": "revise_audit",
+   "version": 3,
+   "s": 31.255,
+   "prompt_chars": 11981,
+   "reply_chars": 7992
+  },
+  {
+   "seq": 5,
+   "kind": "audit",
+   "version": 3,
+   "s": 7.462,
+   "prompt_chars": 32730,
+   "reply_chars": 1518
+  },
+  {
+   "seq": 6,
+   "kind": "revise_audit",
+   "version": 4,
+   "s": 46.293,
+   "prompt_chars": 19307,
+   "reply_chars": 10653
+  },
+  {
+   "seq": 7,
+   "kind": "audit",
+   "version": 4,
+   "s": 4.29,
+   "prompt_chars": 32069,
+   "reply_chars": 667
+  },
+  {
+   "seq": 1,
+   "kind": "generate",
+   "version": 1,
+   "s": 34.974,
+   "prompt_chars": 47557,
+   "reply_chars": 6574
+  },
+  {
+   "seq": 2,
+   "kind": "confirm",
+   "version": 1,
+   "s": 5.869,
+   "prompt_chars": 13057,
+   "reply_chars": 754
+  },
+  {
+   "seq": 3,
+   "kind": "audit",
+   "version": 1,
+   "s": 4.564,
+   "prompt_chars": 21056,
+   "reply_chars": 596
+  },
+  {
+   "seq": 4,
+   "kind": "revise_audit",
+   "version": 2,
+   "s": 36.156,
+   "prompt_chars": 17565,
+   "reply_chars": 8086
+  },
+  {
+   "seq": 5,
+   "kind": "audit",
+   "version": 2,
+   "s": 8.483,
+   "prompt_chars": 29183,
+   "reply_chars": 1387
+  },
+  {
+   "seq": 6,
+   "kind": "revise_audit",
+   "version": 3,
+   "s": 51.938,
+   "prompt_chars": 17456,
+   "reply_chars": 10902
+  },
+  {
+   "seq": 7,
+   "kind": "audit",
+   "version": 3,
+   "s": 5.391,
+   "prompt_chars": 31657,
+   "reply_chars": 964
+  },
+  {
+   "seq": 8,
+   "kind": "revise_audit",
+   "version": 4,
+   "s": 44.868,
+   "prompt_chars": 20758,
+   "reply_chars": 10624
+  },
+  {
+   "seq": 9,
+   "kind": "audit",
+   "version": 4,
+   "s": 5.782,
+   "prompt_chars": 27613,
+   "reply_chars": 994
+  },
+  {
+   "seq": 10,
+   "kind": "revise_audit",
+   "version": 5,
+   "s": 41.933,
+   "prompt_chars": 21278,
+   "reply_chars": 9201
+  },
+  {
+   "seq": 11,
+   "kind": "audit",
+   "version": 5,
+   "s": 4.603,
+   "prompt_chars": 25981,
+   "reply_chars": 759
+  },
+  {
+   "seq": 1,
+   "kind": "generate",
+   "version": 1,
+   "s": 32.153,
+   "prompt_chars": 26615,
+   "reply_chars": 5740
+  },
+  {
+   "seq": 2,
+   "kind": "audit",
+   "version": 1,
+   "s": 0.02,
+   "prompt_chars": 9610,
+   "reply_chars": 260
+  }
+ ]
+}

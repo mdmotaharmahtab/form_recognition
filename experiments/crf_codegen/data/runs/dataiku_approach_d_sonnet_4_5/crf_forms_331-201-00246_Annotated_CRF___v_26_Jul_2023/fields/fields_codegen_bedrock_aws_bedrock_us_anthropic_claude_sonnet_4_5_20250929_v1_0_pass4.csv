@@ -1,0 +1,74 @@
+form_name,field_name,page
+Change History,0.5,12
+Change History,27Jul2021,12
+Change History,Andreea Rubei,12
+Change History,updated informed_consent_group on Trial tab,12
+Change History,0.6,12
+Change History,fixes for integration,12
+Change History,updated answer options for variable DSDIS3 per clie nt requirement,12
+Change History,- removed checks sv_10 to sv_13 - removed Water Re striction End page from Day-1 and Day 18,12
+Change History,added new procedure instructions on Water Restrictio,12
+Change History,3.2,13
+Change History,29-Jun-2022,13
+Change History,Cosmin Manolescu,13
+Change History,Updated skip triggers to include 1003 as well where it was 1002.,13
+Change History,was added during 3.1 for testing possible scenarios.,13
+Change History,"""Triplicate Orthostatic BP and HR - ET"" at ET visit O n vs3c tab added a new repeat section for ""Triplicate Orthostatic BP and HR – ET"" page, subgroup 822 at ET visit. Updated ""Completed"" status logic.",13
+Change History,"New repeat (Urogenital) added on pe_table. Visit labe l updated from “Screen Visit 1 Day -42 to -21” to “Sc reen Visit 1 Day -55 to -16”. “NA” selection option a dded to PERES variable. Removed ""Orthostatic BP a nd HR"" Scheduled and Unscheduled page from sched ule. Updated field and variable label for LBRR47 vari",13
+Change History,"""Relationship to Prazosin"", ""Relationship to Proprano lol"" to AE page",14
+Change History,6.3,14
+Change History,12May2023,14
+Change History,Paul Mostioru,14
+Change History,"Added new label field on AE page, updated AEREL l abel",14
+Change History,"Created new form ex_t. Added ex_t with subgroup 3 t o Steady-state Attainment Period Day 18. On ex_t ad ded set form and remove form triggers for the new pa ge to enroll when Visit date is entered at group 1103 s ubgroup 1. Added the new variables EXTDOSE, EX TDAYS to Variables tab. POE updates as per POE fil e version 1.19",14
+Change History,"Made the following fields from Drug Accountability r ead-only: DA01BN, DA02BN, DA03BN, DA04BN.",14
+Reproductive Status - Female,Bilateral Oophorectomy Bilateral Tubal Ligation,42
+Reproductive Status - Female,Of Childbearing Potential,42
+Reproductive Status - Female,Abstinence (must remain abstinent from the time of screening until at least 90 days after the last dose of study drug),42
+Reproductive Status - Female,Sexually Active?,42
+Reproductive Status - Female,If sexually active does the subject commit to utilizing 2 different approved methods of birth control during the trial and for 30 days after the last dose of IMP?- mark the selected methods below,42
+Reproductive Status - Female,Vasectomy,42
+Reproductive Status - Female,Tubal ligation,42
+Reproductive Status - Female,Nonhormonal intrauterine device,43
+Reproductive Status - Female,Condom with spermicide,43
+Reproductive Status - Female,Sponge with spermicide,43
+Reproductive Status - Female,Occlusive cap (vaginal diaphragm or cervical/vault cap) with spermicide,43
+Reproductive Status - Female,Has any applicable reproductive status and/or medications been transcribed to the Medical History Page and/or Con Med Page?,43
+Reproductive Status - Female,"If no, reason not transcribed to medical history",43
+Reproductive Status - Male,Tubal ligation,45
+Reproductive Status - Male,Intrauterine device,45
+Reproductive Status - Male,Birth control pills,45
+Reproductive Status - Male,Birth control implant,45
+Reproductive Status - Male,Birth control depot injection,45
+Reproductive Status - Male,Condom with spermicide,45
+Reproductive Status - Male,Sponge with spermicide,45
+Reproductive Status - Male,Occlusive cap (vaginal diaphragm or cervical/vault cap) with spermicide,46
+Reproductive Status - Male,Has any applicable reproductive status and/or medications been transcribed to the Medical History Page and/or Con Med Page?,46
+Reproductive Status - Male,"If no, reason not transcribed to medical history",46
+Medical/Psychiatric History,Term,48
+Medical/Psychiatric History,Start Date,48
+Medical/Psychiatric History,Ongoing?,48
+Medical/Psychiatric History,End Date,48
+Adverse Events,Term,928
+Adverse Events,Onset Date,928
+Adverse Events,Onset Time,928
+Prior and Concomitant Medications,Medication,935
+Prior and Concomitant Medications,Indication,935
+Prior and Concomitant Medications,Start date,935
+Prior and Concomitant Medications,Start time,935
+Surgeries and medical procedures,Procedure/Surgery Name,945
+Surgeries and medical procedures,Start Date,945
+Surgeries and medical procedures,End Date,945
+Lost to Follow-up Details - Unscheduled,Initial contact,1079
+Lost to Follow-up Details - Unscheduled,Second,1079
+Lost to Follow-up Details - Unscheduled,Second contact,1079
+Lost to Follow-up Details - Unscheduled,Third contact -,1079
+Lost to Follow-up Details - Unscheduled,Third contact,1079
+Lost to Follow-up Details - Unscheduled,Certified letter,1079
+Lost to Follow-up Details - Unscheduled,- date,1079
+Lost to Follow-up Details - Unscheduled,contact - date,1079
+Lost to Follow-up Details - Unscheduled,attempt,1079
+Lost to Follow-up Details - Unscheduled,date,1079
+Lost to Follow-up Details - Unscheduled,sent - date,1079
+Lost to Follow-up Details - Unscheduled,sent,1079
+Lost to Follow-up Details - Unscheduled,confirmation,1079

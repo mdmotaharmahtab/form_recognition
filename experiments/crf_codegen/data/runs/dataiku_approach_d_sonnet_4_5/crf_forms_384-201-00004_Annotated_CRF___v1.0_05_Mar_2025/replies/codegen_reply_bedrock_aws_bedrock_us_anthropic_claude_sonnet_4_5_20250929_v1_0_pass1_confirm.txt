@@ -1,0 +1,9 @@
+Looking at the sample pages:
+
+**Page 174 & 187 (cluster 1)**: These are reference/lookup tables showing code lists (e.g., "CM Dose Units", "Dose Route" with Coded/Decode columns). They contain NO data-entry fields - just definitions/mappings. The current program correctly filters these out as reference tables.
+
+**Page 157 & 162 (cluster 0)**: These show edit check metadata and technical annotations (Name:, Description:, Edit Checks:, Mandatory?, etc.). These are NOT data-entry fields but rather system documentation about validation rules. The field labels themselves appear elsewhere on these forms.
+
+All sampled pages are genuinely field-free (reference tables, metadata, technical annotations). Zero coverage is correct.
+
+CONFIRM_NO_FIELDS

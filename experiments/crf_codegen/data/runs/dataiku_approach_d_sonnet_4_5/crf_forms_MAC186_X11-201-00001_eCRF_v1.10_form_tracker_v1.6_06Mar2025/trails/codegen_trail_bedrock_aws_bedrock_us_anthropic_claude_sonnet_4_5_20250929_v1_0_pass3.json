@@ -1,0 +1,503 @@
+{
+ "stop_reason": "plateau",
+ "versions": 5,
+ "best_version": 3,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "confirm",
+   "metrics": {
+    "engine": "codegen",
+    "records": 92,
+    "pages_total": 41,
+    "pages_with_fields": 28,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 66,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 5,
+    "fields_per_form": 18.4,
+    "forms_per_100_pages": 12.2,
+    "form_same_page_evidence_records": 45,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 68
+   },
+   "problems": [],
+   "outcome": "extended_program"
+  },
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 46,
+    "pages_total": 41,
+    "pages_with_fields": 9,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 98,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 4,
+    "fields_per_form": 11.5,
+    "forms_per_100_pages": 9.8,
+    "form_same_page_evidence_records": 45,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 22
+   },
+   "problems": [],
+   "warnings": [
+    "The program filters by 15 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    0,
+    "not_audited",
+    1,
+    -9
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "confirm_extension",
+   "metrics": {
+    "engine": "codegen",
+    "records": 92,
+    "pages_total": 41,
+    "pages_with_fields": 28,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 66,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 5,
+    "fields_per_form": 18.4,
+    "forms_per_100_pages": 12.2,
+    "form_same_page_evidence_records": 45,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 68
+   },
+   "problems": [],
+   "warnings": [
+    "form_name empty for 34% of records - if the document does print form/section names, fix the form_name strategy (consider carrying the last seen title forward).",
+    "The program filters by 14 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": 14,
+   "audit_pages": [
+    4,
+    25,
+    35,
+    154,
+    206,
+    451
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 4,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 25,
+     "missed": [],
+     "false": [],
+     "wrong_form": [
+      "15. Hypochondriasis",
+      "16. Loss of Weight (Rate either a OR b)",
+      "17. Insight",
+      "Total Score"
+     ]
+    },
+    {
+     "page": 35,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 154,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 206,
+     "missed": [],
+     "false": [],
+     "wrong_form": [
+      "17. I felt my heart beating irregularly or skipping beats",
+      "18. Pressure or weight in my chest or abdomen",
+      "19. I experienced a decreased sense of sanity",
+      "20. I felt as if I was dead or dying",
+      "21. Panic",
+      "22. Experience of antagonism toward people around me",
+      "23. Despair",
+      "24. I felt isolated from everything and everyone",
+      "25. Emotional and/or physical suffering",
+      "26. I felt frightened"
+     ]
+    },
+    {
+     "page": 451,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    14,
+    2,
+    -28
+   ],
+   "became_best": true
+  },
+  {
+   "version": 3,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 92,
+    "pages_total": 41,
+    "pages_with_fields": 28,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 66,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 5,
+    "fields_per_form": 18.4,
+    "forms_per_100_pages": 12.2,
+    "form_same_page_evidence_records": 45,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 68
+   },
+   "problems": [],
+   "warnings": [
+    "form_name empty for 34% of records - if the document does print form/section names, fix the form_name strategy (consider carrying the last seen title forward)."
+   ],
+   "audit_issues": 5,
+   "audit_pages": [
+    4,
+    25,
+    35,
+    36,
+    81,
+    154,
+    206,
+    451
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 4,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 25,
+     "missed": [],
+     "false": [],
+     "wrong_form": [
+      "14. Genital Symptoms",
+      "15. Hypochondriasis",
+      "16. Loss of Weight (Rate either a OR b)",
+      "17. Insight",
+      "Total Score"
+     ]
+    },
+    {
+     "page": 35,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 36,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 81,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 154,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 206,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 451,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    5,
+    1,
+    -28
+   ],
+   "became_best": true
+  },
+  {
+   "version": 4,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 92,
+    "pages_total": 41,
+    "pages_with_fields": 28,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 66,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 5,
+    "fields_per_form": 18.4,
+    "forms_per_100_pages": 12.2,
+    "form_same_page_evidence_records": 45,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 68
+   },
+   "problems": [],
+   "warnings": [
+    "form_name empty for 34% of records - if the document does print form/section names, fix the form_name strategy (consider carrying the last seen title forward)."
+   ],
+   "audit_issues": 15,
+   "audit_pages": [
+    4,
+    25,
+    35,
+    142,
+    154,
+    164,
+    206,
+    451
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 4,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 25,
+     "missed": [],
+     "false": [],
+     "wrong_form": [
+      "14. Genital Symptoms",
+      "15. Hypochondriasis",
+      "16. Loss of Weight (Rate either a OR b)",
+      "17. Insight",
+      "Total Score"
+     ]
+    },
+    {
+     "page": 35,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 142,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 154,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 164,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 206,
+     "missed": [],
+     "false": [],
+     "wrong_form": [
+      "17. I felt my heart beating irregularly or skipping beats",
+      "18. Pressure or weight in my chest or abdomen",
+      "19. I experienced a decreased sense of sanity",
+      "20. I felt as if I was dead or dying",
+      "21. Panic",
+      "22. Experience of antagonism toward people around me",
+      "23. Despair",
+      "24. I felt isolated from everything and everyone",
+      "25. Emotional and/or physical suffering",
+      "26. I felt frightened"
+     ]
+    },
+    {
+     "page": 451,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    15,
+    1,
+    -28
+   ],
+   "became_best": false
+  },
+  {
+   "version": 5,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 134,
+    "pages_total": 41,
+    "pages_with_fields": 33,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 12,
+    "fields_per_form": 11.2,
+    "forms_per_100_pages": 29.3,
+    "form_same_page_evidence_records": 114,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 80
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 12,
+   "audit_pages": [
+    4,
+    25,
+    35,
+    154,
+    186,
+    206,
+    209,
+    451
+   ],
+   "audit_partial": null,
+   "audit_promoted": [
+    209
+   ],
+   "audit_verdicts": [
+    {
+     "page": 4,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 25,
+     "missed": [
+      "14. Genital Symptoms",
+      "15. Hypochondriasis",
+      "16. Loss of Weight (Rate either a OR b)",
+      "17. Insight",
+      "Total Score"
+     ],
+     "false": [],
+     "wrong_form": [
+      "[19]"
+     ]
+    },
+    {
+     "page": 35,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 154,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 186,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 206,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 209,
+     "missed": [
+      "15. I worry too much over something that really doesn't matter",
+      "16. I lack self-confidence",
+      "17. I feel secure",
+      "18. I feel inadequate",
+      "19. I am a steady person",
+      "20. I get in a state of tension or turmoil as I think over my recent concerns and interests"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 451,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    12,
+    0,
+    -33
+   ],
+   "became_best": false
+  }
+ ]
+}

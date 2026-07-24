@@ -1,0 +1,207 @@
+{
+ "multipass": 2,
+ "stop_reason": "p1:converged;p2:converged",
+ "versions": 2,
+ "best_version": null,
+ "passes": [
+  {
+   "pass": 1,
+   "clusters": [
+    0,
+    1,
+    2,
+    3,
+    5
+   ],
+   "status": "ok",
+   "stop_reason": "converged",
+   "versions": 1,
+   "best_version": 1,
+   "fields": 664
+  },
+  {
+   "pass": 2,
+   "clusters": [
+    4
+   ],
+   "status": "ok_with_warnings",
+   "stop_reason": "converged",
+   "versions": 1,
+   "best_version": 1,
+   "fields": 0
+  }
+ ],
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "confirm",
+   "outcome": "confirmed_no_fields",
+   "pass": 1
+  },
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 664,
+    "pages_total": 243,
+    "pages_with_fields": 138,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 98,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 57,
+    "fields_per_form": 11.6,
+    "forms_per_100_pages": 23.5,
+    "form_same_page_evidence_records": 637,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 57,
+    "content_pages": 243,
+    "content_covered_pct": 57,
+    "uncovered_content_pct": 43
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 0,
+   "audit_pages": [
+    1,
+    21,
+    56,
+    92,
+    174,
+    209
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 21,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 56,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 92,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 174,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 209,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    0,
+    0,
+    -138
+   ],
+   "became_best": true,
+   "pass": 1
+  },
+  {
+   "version": 1,
+   "kind": "confirm",
+   "outcome": "confirmed_no_fields",
+   "pass": 2
+  },
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 0,
+    "pages_total": 3,
+    "pages_with_fields": 0,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 0,
+    "labels_look_human_pct": 0,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 0,
+    "fields_per_form": 0.0,
+    "forms_per_100_pages": 0.0,
+    "form_same_page_evidence_records": 0,
+    "form_same_page_persistence_pct": null,
+    "furniture_candidates": [],
+    "pages_covered_pct": 0,
+    "content_pages": 3,
+    "content_covered_pct": 0,
+    "uncovered_content_pct": 100
+   },
+   "problems": [],
+   "warnings": [
+    "This pass's layout scope produced ZERO records - correct only if these layouts genuinely carry few or no data-entry fields; the page audit will verify that claim.",
+    "form_name empty for 100% of records - if the document does print form/section names, fix the form_name strategy (consider carrying the last seen title forward).",
+    "Only 0% of field_name values look like human labels (they look like codes/dates/junk) - fix label selection."
+   ],
+   "audit_issues": 0,
+   "audit_pages": [
+    244,
+    245,
+    246
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 244,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 245,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 246,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    0,
+    3,
+    0
+   ],
+   "became_best": true,
+   "pass": 2
+  }
+ ]
+}

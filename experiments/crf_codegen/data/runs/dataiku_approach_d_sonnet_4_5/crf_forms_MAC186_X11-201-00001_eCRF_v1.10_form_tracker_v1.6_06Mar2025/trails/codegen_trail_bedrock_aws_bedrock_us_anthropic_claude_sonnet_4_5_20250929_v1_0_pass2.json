@@ -1,0 +1,850 @@
+{
+ "stop_reason": "budget",
+ "versions": 6,
+ "best_version": 5,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "confirm",
+   "metrics": {
+    "engine": "codegen",
+    "records": 385,
+    "pages_total": 131,
+    "pages_with_fields": 81,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 23,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 12,
+    "fields_per_form": 32.1,
+    "forms_per_100_pages": 9.2,
+    "form_same_page_evidence_records": 51,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 62
+   },
+   "problems": [],
+   "outcome": "extended_program"
+  },
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 385,
+    "pages_total": 131,
+    "pages_with_fields": 81,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 23,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 12,
+    "fields_per_form": 32.1,
+    "forms_per_100_pages": 9.2,
+    "form_same_page_evidence_records": 51,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 62
+   },
+   "problems": [],
+   "warnings": [
+    "form_name empty for 77% of records - if the document does print form/section names, fix the form_name strategy (consider carrying the last seen title forward)."
+   ],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    0,
+    "not_audited",
+    1,
+    -81
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "confirm_extension",
+   "metrics": {
+    "engine": "codegen",
+    "records": 385,
+    "pages_total": 131,
+    "pages_with_fields": 81,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 23,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 12,
+    "fields_per_form": 32.1,
+    "forms_per_100_pages": 9.2,
+    "form_same_page_evidence_records": 51,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 62
+   },
+   "problems": [],
+   "warnings": [
+    "form_name empty for 77% of records - if the document does print form/section names, fix the form_name strategy (consider carrying the last seen title forward)."
+   ],
+   "audit_issues": 66,
+   "audit_pages": [
+    16,
+    34,
+    53,
+    62,
+    495,
+    510
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 16,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 34,
+     "missed": [
+      "MGH Assessment Performed",
+      "Reason Not Performed",
+      "MGH Assessment Date",
+      "MGH Assessment Time",
+      "Rater Initials",
+      "Medication Type",
+      "Medication, Minimally adequate dose level, Minimal dose at optional level",
+      "Taken during THIS current episode",
+      "Minimally adequate dose",
+      "Minimal dose at optimal level",
+      "Scale for % Improvement"
+     ],
+     "false": [
+      "Tricyclic Antidepressants Tricyclic Antidepressants",
+      "Monoamine Oxidase Inhibitors (MAOIs) Monoamine Oxidase Inhibitors (MAOIs)"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 53,
+     "missed": [
+      "Vital Signs Performed",
+      "Reason Not Performed",
+      "Repetition Number",
+      "Details",
+      "Location",
+      "Position",
+      "Other, Please Specify",
+      "Vital Signs Date",
+      "Position Time",
+      "Vital Signs Time",
+      "Not Done",
+      "Test",
+      "Result",
+      "Interpretation",
+      "Reason Not Done"
+     ],
+     "false": [
+      "Vital Signs Details Vital Signs Details"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 62,
+     "missed": [
+      "Parameter",
+      "Not Done",
+      "Reason Not Done",
+      "Interpretation"
+     ],
+     "false": [
+      "Basophils Basophils",
+      "Basophils/Leukocytes Basophils/Leukocytes",
+      "Eosinophils Eosinophils",
+      "Eosinophils/Leukocytes Eosinophils/Leukocytes",
+      "Ery. Mean Corpuscular HGB Concentration Ery. Mean Corpuscular HGB Concentration",
+      "Ery. Mean Corpuscular Volume Ery. Mean Corpuscular Volume",
+      "Erythrocyte Erythrocyte",
+      "Hematocrit Hematocrit",
+      "Hemoglobin Hemoglobin",
+      "Leukocytes Leukocytes",
+      "Lymphocytes Lymphocytes",
+      "Lymphocytes/Leukocytes Lymphocytes/Leukocytes",
+      "Monocytes Monocytes",
+      "Monocytes/Leukocytes Monocytes/Leukocytes",
+      "Neutrophils Neutrophils",
+      "Neutrophils/Leukocytes Neutrophils/Leukocytes",
+      "Platelets Platelets"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 495,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 510,
+     "missed": [
+      "Vital Signs Performed",
+      "Reason Not Performed",
+      "Repetition Number",
+      "Details",
+      "Location",
+      "Position",
+      "Other, Please Specify",
+      "Vital Signs Date",
+      "Position Time",
+      "Vital Signs Time",
+      "Not Done",
+      "Test",
+      "Result",
+      "Interpretation",
+      "Reason Not Done"
+     ],
+     "false": [
+      "Vital Signs Details Vital Signs Details"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    66,
+    1,
+    -81
+   ],
+   "became_best": true
+  },
+  {
+   "version": 3,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 1614,
+    "pages_total": 131,
+    "pages_with_fields": 103,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 82,
+    "labels_look_human_pct": 99,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 18,
+    "fields_per_form": 89.7,
+    "forms_per_100_pages": 13.7,
+    "form_same_page_evidence_records": 1325,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 79
+   },
+   "problems": [],
+   "warnings": [
+    "The program filters by 10 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": 40,
+   "audit_pages": [
+    16,
+    34,
+    46,
+    53,
+    62,
+    167,
+    495,
+    510
+   ],
+   "audit_partial": null,
+   "audit_promoted": [
+    167
+   ],
+   "audit_verdicts": [
+    {
+     "page": 16,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 34,
+     "missed": [
+      "Medication Type"
+     ],
+     "false": [
+      "Yes No",
+      "Medication, Minimally adequate dose level, Minimal",
+      "Taken during THIS",
+      "Minimally",
+      "Minimal dose at",
+      "Scale for %",
+      "dose at optional level",
+      "current episode",
+      "adequate dose",
+      "optimal level",
+      "Improvement"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 46,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 53,
+     "missed": [
+      "Repetition Number"
+     ],
+     "false": [
+      "Yes No"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 62,
+     "missed": [
+      "Basophils",
+      "Basophils/Leukocytes",
+      "Eosinophils"
+     ],
+     "false": [
+      "Parameter",
+      "Not Done Reason Not Done",
+      "Interpretation"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 167,
+     "missed": [
+      "Timepoint",
+      "Eye",
+      "Repeat",
+      "Not Done",
+      "Reason Not Done",
+      "Pupillometry Date",
+      "Position Rest Time",
+      "Pupillometry Start Time",
+      "Readings downloaded onto a spreadsheet via Bluetooth from the pupilometer device.",
+      "Reviewed, signed and dated by a physician",
+      "Reason not review, signed and dated",
+      "PLR diameter init",
+      "PLR MAX constriction velocity",
+      "PLR dilation velocity",
+      "PLR T75",
+      "Pupil Area (Calculated)",
+      "ACA (Calculated)",
+      "Dilation Velocity at T75 (Calculated)"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 495,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 510,
+     "missed": [
+      "Repetition Number"
+     ],
+     "false": [
+      "Yes No"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    40,
+    1,
+    -103
+   ],
+   "became_best": true
+  },
+  {
+   "version": 4,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 1316,
+    "pages_total": 131,
+    "pages_with_fields": 103,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 75,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 18,
+    "fields_per_form": 73.1,
+    "forms_per_100_pages": 13.7,
+    "form_same_page_evidence_records": 993,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 79
+   },
+   "problems": [],
+   "warnings": [
+    "The program filters by 13 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": 64,
+   "audit_pages": [
+    16,
+    34,
+    53,
+    59,
+    62,
+    167,
+    495,
+    510
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 16,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 34,
+     "missed": [
+      "Minimally adequate dose",
+      "Minimal dose at optimal level",
+      "Scale for % Improvement"
+     ],
+     "false": [
+      "Yes No",
+      "Medication, Minimally adequate dose level, Minimal",
+      "Taken during THIS",
+      "dose at optional level",
+      "current episode"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 53,
+     "missed": [
+      "Repetition Number",
+      "Test",
+      "Result",
+      "Interpretation",
+      "Reason Not Done"
+     ],
+     "false": [
+      "Yes No"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 59,
+     "missed": [
+      "PLR diameter init",
+      "PLR MAX constriction velocity",
+      "PLR dilation velocity",
+      "PLR T75",
+      "Pupil Area (Calculated)",
+      "ACA (Calculated)",
+      "Dilation Velocity at T75 (Calculated)"
+     ],
+     "false": [
+      "Pupillometry - Single Time Point",
+      "Yes No",
+      "Not",
+      "Pupillometry",
+      "Position",
+      "Readings downloaded onto a",
+      "Reviewed, signed",
+      "Reason not review, signed",
+      "Done",
+      "Date",
+      "Rest Time",
+      "Start Time",
+      "spreadsheet via Bluetooth from the",
+      "and dated by a",
+      "and dated",
+      "pupilometer device.",
+      "physician"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 62,
+     "missed": [
+      "Interpretation"
+     ],
+     "false": [
+      "Parameter",
+      "Not Done Reason Not Done",
+      "Basophils",
+      "Basophils/Leukocytes",
+      "Eosinophils",
+      "Eosinophils/Leukocytes",
+      "Ery. Mean Corpuscular HGB Concentration",
+      "Ery. Mean Corpuscular Volume",
+      "Erythrocyte",
+      "Hematocrit",
+      "Hemoglobin",
+      "Leukocytes",
+      "Lymphocytes",
+      "Lymphocytes/Leukocytes",
+      "Monocytes",
+      "Monocytes/Leukocytes",
+      "Neutrophils",
+      "Neutrophils/Leukocytes",
+      "Platelets"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 167,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 495,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 510,
+     "missed": [
+      "Repetition Number",
+      "Test",
+      "Result",
+      "Interpretation",
+      "Reason Not Done"
+     ],
+     "false": [
+      "Yes No"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    64,
+    1,
+    -103
+   ],
+   "became_best": false
+  },
+  {
+   "version": 5,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 1239,
+    "pages_total": 131,
+    "pages_with_fields": 103,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 74,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 18,
+    "fields_per_form": 68.8,
+    "forms_per_100_pages": 13.7,
+    "form_same_page_evidence_records": 916,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 79
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 39,
+   "audit_pages": [
+    16,
+    17,
+    34,
+    53,
+    62,
+    167,
+    495,
+    510
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 16,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 17,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 34,
+     "missed": [
+      "Taken during THIS current episode",
+      "Minimally adequate dose",
+      "Minimal dose at optimal level",
+      "Scale for % Improvement"
+     ],
+     "false": [
+      "Yes No",
+      "Medication, Minimally adequate dose level, Minimal",
+      "dose at optional level"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 53,
+     "missed": [
+      "Not Done",
+      "Test",
+      "Result",
+      "Interpretation",
+      "Reason Not Done"
+     ],
+     "false": [
+      "Yes No"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 62,
+     "missed": [
+      "Interpretation"
+     ],
+     "false": [
+      "Parameter",
+      "Not Done Reason Not Done",
+      "Basophils",
+      "Basophils/Leukocytes",
+      "Eosinophils",
+      "Eosinophils/Leukocytes",
+      "Ery. Mean Corpuscular HGB Concentration",
+      "Ery. Mean Corpuscular Volume",
+      "Erythrocyte",
+      "Hematocrit",
+      "Hemoglobin",
+      "Leukocytes",
+      "Lymphocytes",
+      "Lymphocytes/Leukocytes",
+      "Monocytes",
+      "Monocytes/Leukocytes",
+      "Neutrophils",
+      "Neutrophils/Leukocytes",
+      "Platelets"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 167,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 495,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 510,
+     "missed": [
+      "Not Done",
+      "Test",
+      "Result",
+      "Interpretation",
+      "Reason Not Done"
+     ],
+     "false": [
+      "Yes No"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    39,
+    0,
+    -103
+   ],
+   "became_best": true
+  },
+  {
+   "version": 6,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 1239,
+    "pages_total": 131,
+    "pages_with_fields": 103,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 74,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 18,
+    "fields_per_form": 68.8,
+    "forms_per_100_pages": 13.7,
+    "form_same_page_evidence_records": 916,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 79
+   },
+   "problems": [],
+   "warnings": [
+    "The program filters by 29 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": 51,
+   "audit_pages": [
+    16,
+    34,
+    53,
+    55,
+    62,
+    167,
+    495,
+    510
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 16,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 34,
+     "missed": [
+      "Taken during THIS current episode",
+      "Minimally adequate dose",
+      "Minimal dose at optimal level",
+      "Scale for % Improvement"
+     ],
+     "false": [
+      "Yes No",
+      "Medication, Minimally adequate dose level, Minimal",
+      "dose at optional level"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 53,
+     "missed": [
+      "Repetition Number",
+      "Not Done",
+      "Test",
+      "Result",
+      "Interpretation",
+      "Reason Not Done"
+     ],
+     "false": [
+      "Yes No"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 55,
+     "missed": [
+      "Repetition Number",
+      "ECG Time",
+      "Interpretation",
+      "Interpretation Comment",
+      "Not Done",
+      "Test",
+      "Result",
+      "Reason Not Done"
+     ],
+     "false": [
+      "12-Lead ECG - Single Time Point",
+      "Yes No"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 62,
+     "missed": [
+      "Interpretation"
+     ],
+     "false": [
+      "Parameter",
+      "Not Done Reason Not Done",
+      "Basophils",
+      "Basophils/Leukocytes",
+      "Eosinophils",
+      "Eosinophils/Leukocytes",
+      "Ery. Mean Corpuscular HGB Concentration",
+      "Ery. Mean Corpuscular Volume",
+      "Erythrocyte",
+      "Hematocrit",
+      "Hemoglobin",
+      "Leukocytes",
+      "Lymphocytes",
+      "Lymphocytes/Leukocytes",
+      "Monocytes",
+      "Monocytes/Leukocytes",
+      "Neutrophils",
+      "Neutrophils/Leukocytes",
+      "Platelets"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 167,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 495,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 510,
+     "missed": [
+      "Repetition Number",
+      "Not Done",
+      "Test",
+      "Result",
+      "Interpretation",
+      "Reason Not Done"
+     ],
+     "false": [
+      "Yes No"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    51,
+    1,
+    -103
+   ],
+   "became_best": false
+  }
+ ]
+}

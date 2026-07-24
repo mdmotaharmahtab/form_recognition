@@ -1,0 +1,13 @@
+Looking at the sample pages:
+
+**Cluster 0 (pages 480, 778)**: These are copyright/attribution pages with definitions and contact information. They contain NO data-entry fields - just reference text about the C-SSRS scale. The program already tries to skip these with the copyright check, and zero coverage here is correct.
+
+**Cluster 2 (pages 957, 960)**: These pages show:
+- A form title in blue (#004c99): "Admission to clinic" / "Discharge from clinic"
+- A note: "(Repeatable row added with Add Row button)"
+
+These appear to be section title pages that introduce repeatable table forms. The actual data-entry fields would be on subsequent pages. These title pages themselves contain NO data-entry fields - they're just section dividers.
+
+All the shown pages are genuinely field-free. The program is working correctly by not extracting from them.
+
+CONFIRM_NO_FIELDS

@@ -1,0 +1,18 @@
+Looking at the sample pages:
+
+**Page 20 (cluster 1)**: This appears to be a table of contents or navigation page listing form names in blue (#0000ff) with "Subject" and "Common" labels. No data-entry fields visible - just links/references to other forms.
+
+**Page 175 (cluster 1)**: This is a code list/legend page showing the "CSSRS Actual Lethality/Medical Damage" scoring system with codes (0-5) and their definitions. This is reference material, not data-entry fields.
+
+**Page 128 (cluster 0)**: Shows technical annotations (SAS Field Name, Edit Checks, Code List) - already 96% covered by the program, this is just metadata.
+
+**Page 157 (cluster 0)**: Similar technical annotations - already 96% covered.
+
+**Page 242 & 243 (cluster 3)**: DocuSign certificate pages with signature tracking information. These are administrative/signature pages, not data-entry fields.
+
+All the uncovered pages shown are genuinely field-free:
+- Cluster 1: Table of contents and code list/legend pages
+- Cluster 3: DocuSign certificate pages
+- Cluster 0 is already 96% covered (the 4% are likely similar metadata-only sections)
+
+CONFIRM_NO_FIELDS

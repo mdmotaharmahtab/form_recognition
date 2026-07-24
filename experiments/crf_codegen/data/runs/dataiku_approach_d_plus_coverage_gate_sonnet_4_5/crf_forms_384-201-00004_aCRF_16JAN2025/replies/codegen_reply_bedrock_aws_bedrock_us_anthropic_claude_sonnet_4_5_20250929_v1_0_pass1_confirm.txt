@@ -1,0 +1,8 @@
+Looking at the sample pages, I can see they are code-list/lookup table pages with "Coded" and "Decode" column headers. These pages show the answer options/codes for fields defined elsewhere - they are NOT data-entry field pages themselves.
+
+Page 150 shows "CSSRS Deterrents" with coded values 1-5 and 0, with their decode descriptions.
+Page 163 shows "DM Ethnic" with ethnic category codes and their descriptions.
+
+These are reference/definition pages that list the valid values for coded fields. They contain no data-entry fields - just lookup tables. My program correctly identifies and skips these via the `_is_toc_or_codelist_page` function which checks for "Coded" and "Decode" headers.
+
+CONFIRM_NO_FIELDS

@@ -1,0 +1,696 @@
+You are writing a deterministic extraction program for one specific clinical Case Report Form (CRF) PDF document. Below you will find a small sample of REPRESENTATIVE PAGES (one or two per page-layout cluster) from a document that is 1083 pages long. The document is highly repetitive: the sampled pages cover its layouts, but the unsampled pages contain different content in the same layouts.
+
+NOTE: This document carries more page-layout families than one prompt can
+sample, so several independent extraction programs are run and the harness
+assembles their outputs. Each program is credited only for the pages of its
+assigned layout families; records it emits for any other page are silently
+discarded, never penalized. Therefore write your program as if it owned the
+ENTIRE document: read every page and extract every data-entry field you can
+recognize, exactly per the contract above. Do not try to filter pages to your
+assignment yourself - skipping pages risks losing fields you own, while
+extracting beyond your assignment costs nothing.
+
+Each sampled page is shown as structured text lines with geometry:
+    x=<left> y=<top> sz=<font-size> <color-hex or 'black'> <B if bold> | <text>
+
+# Your task
+
+Write a Python function that will run UNCHANGED over all 1083 pages and extract every data-entry field of the CRF:
+  - form_name : the CRF form/section the field belongs to
+  - field_name: the human-readable field label/question
+
+That is the complete output. Some CRFs also print machine codes or technical
+annotations near fields - do NOT return those (they are resolved downstream by a
+separate system). You may still USE such markings as structural landmarks if that
+helps you locate fields reliably.
+
+# Runtime contract
+
+def extract(pages):
+    # pages: list of (page_index_0based, lines) tuples for the ENTIRE document, in
+    #        page order. lines is a list of Line objects sorted by y, then x.
+    #        NOTE: y-then-x order is NOT reading order on multi-column pages; if the
+    #        layout has side-by-side columns, use x coordinates to separate them.
+    #        For right-to-left scripts the within-row order is right-to-left, and
+    #        vertical text yields an arbitrary line order - reconstruct reading
+    #        order from the coordinates when the script needs it.
+    # Line attributes:
+    #   .text  (str, stripped visible text of one visual line)
+    #   .x0 .y0 .x1 .y1  (floats; PDF points; origin = top-left of the page)
+    #   .size  (float; font size in points; the largest span on the line)
+    #   .bold  (bool)
+    #   .non_black  (bool; True if any text on the line is printed in color)
+    # returns: list of dicts, one per extracted field occurrence:
+    #   {"form_name": str, "field_name": str, "page": int_1based}
+
+# Hard constraints
+
+- Pure computation only. These modules are already available: re, math, collections,
+  itertools, functools, string, unicodedata, bisect, statistics, json, typing,
+  dataclasses, enum, datetime. You may not import anything else, access
+  files/network, or print.
+- Deterministic, fast, simple: loops, regexes, coordinate arithmetic. It must
+  process all 1083 pages in seconds.
+- Generalize from STRUCTURE, not content. The unsampled pages contain questions,
+  values and section names you have never seen. Never key your logic on specific
+  question wording from the samples; key it on geometry (x positions, font sizes,
+  color, boldness), on repeated marker/header patterns, and on the SHAPE of text
+  (regexes over character classes). The document may be in any language.
+- Geometry generalizes only when it is RELATIVE and TOLERANT. A family's
+  instances drift in absolute numbers across a big document (a label font shown
+  at one size in the samples prints slightly smaller or larger elsewhere), so
+  prefer comparisons against the page's own scale - size ranks (title vs label
+  vs body), "distinctly larger/smaller than" - and give absolute windows real
+  slack. Verify every threshold against ALL sample pages of the family it
+  serves: a cutoff that excludes one of its own family's samples is wrong.
+- Junk filtering must be structural too. Never enumerate literal text strings
+  (blocklists of answer options, column headers, known non-fields): unsampled
+  pages carry the same junk CLASSES with different wording, so a blocklist
+  both misses them and deletes real fields that happen to share the words.
+  Find the discriminator instead - answer options sit in an option column/row
+  under their field, column headers sit in a table's header band, furniture
+  repeats at a fixed position page after page. Literal matching is appropriate
+  only for the document's own repeated TEMPLATE markers used as landmarks.
+- Do not discard whole pages with statistical heuristics (text density, line
+  counts). Skip a page only on structural evidence of its TYPE (it matches a
+  recognized non-form template); when unsure, extract - a wrongly read page
+  costs a few junk records, a wrongly skipped page loses every field on it.
+- You may keep state across pages (the function receives the whole document) -
+  e.g. a form name announced once may govern many following pages.
+
+# Program architecture
+
+The representative pages below are labeled by LAYOUT FAMILY to expose meaningful
+structural variation, but a cluster label is evidence, not an implementation
+requirement. When families have genuinely different field-bearing structures,
+use small family handlers dispatched by tolerant structural signatures. When
+families differ only in incidental styling or content volume, prefer one shared
+handler. Do not force one handler per cluster. Check every chosen handler against
+all relevant samples. Pages matching no signature must not be silently skipped -
+route them through the closest compatible handler or a tolerant generic path.
+
+# Quality bar (your program's output is machine-checked before acceptance)
+
+- It must extract from every page that carries fields, not just the sampled ones.
+- form_name should be non-empty for the large majority of records. Use form/section
+  titles exactly as printed - do not invent, abbreviate, or reformat them. If the
+  document genuinely prints no form/section names, use the best available section
+  context; leave it empty only as a last resort.
+- form_name is the title printed FOR HUMAN READERS that heads the form/section: a
+  grouping shared by all of that form's fields, usually repeated or carried forward
+  across the form's continuation pages. Never build form_name from text attached to
+  one individual field - the field's own label, a machine code, or a per-field
+  technical annotation. Structural self-check: if nearly every record ends up with
+  its own unique form_name, the program is reading per-field text, not form titles.
+- field_name values must be human-readable label text - not machine codes, bare
+  numbers, dates, or page furniture (headers/footers/page numbers/watermarks/
+  legends).
+- A label/question may WRAP across several visual lines: join its continuation
+  lines into ONE field_name. Sentence fragments are not separate fields.
+- Answer OPTIONS are not fields: choice values (e.g. Yes / No / Unknown / list
+  items - examples here are English, apply the concept in the document's language)
+  belong to a field, they are not field_name records themselves. The same applies
+  to rating-scale anchor rows that merely explain what each numeric value means.
+- Rows of a printed reference or enumeration table (a list of items with no
+  per-row entry cell to fill in) are page content, not data-entry fields. A table
+  row IS a field when the row has its own cell to be filled per row - such a cell
+  may be a drawn blank box that prints no text.
+- No duplicate records for the same (form_name, field_name) pair beyond what the
+  document itself repeats.
+
+# Reply format
+
+Reply with ONLY Python source code (no prose outside code comments). Start with a
+comment block (3-6 lines) stating what layout you observed in the samples and the
+extraction strategy you chose. Then define extract(pages) plus any helpers.
+
+# Representative pages of this document
+
+The document's pages cluster into structural LAYOUT FAMILIES (computed from this document itself). The sample below shows:
+  family A (~1 pages of the document) - sample pages 1
+  family B (~9 pages of the document) - sample pages 2
+  family C (~88 pages of the document) - sample pages 60, 65, 67, 184
+  family D (~85 pages of the document) - sample pages 103, 112, 253, 260
+  family E (~18 pages of the document) - sample pages 105, 268, 948, 964
+Pages of one family share the same structural layout, but instances may drift in absolute font sizes, positions and wording - what all of a family's sample pages have in COMMON is what defines it. A few small families may have no sample here.
+
+--- page 1 of 1083 | layout family A (~1 pages) ---
+x= 510.9 y= 117.2 sz= 9.0 black   B | Pack Version
+x= 554.4 y= 131.3 sz= 9.0 black   B | 7.0
+x= 507.4 y= 152.9 sz= 9.0 black   B | Paul Mostioru
+x= 518.9 y= 167.0 sz= 9.0 black   B | 04July2023
+x= 224.5 y= 204.8 sz=24.0 black   B | Annotated CRF
+x= 119.2 y= 284.8 sz=14.0 #1d60a4   | CHANGE HISTORY
+x= 101.2 y= 286.3 sz=15.0 #1d60a4 B | 1
+x= 119.2 y= 314.9 sz=14.0 #1d60a4   | SCHEDULE OF ASSESSMENT
+x= 101.2 y= 316.4 sz=15.0 #1d60a4 B | 2
+x= 119.2 y= 345.0 sz=14.0 #1d60a4   | PAGES
+x= 101.2 y= 346.5 sz=15.0 #1d60a4 B | 3
+x= 159.2 y= 375.1 sz=15.0 #2477cc   | 3.1. Visit Date
+x= 159.2 y= 392.3 sz=15.0 #2477cc   | 3.2. Informed Consent
+x= 159.2 y= 409.6 sz=15.0 #2477cc   | 3.3. FBR Consent
+x= 159.2 y= 426.8 sz=15.0 #2477cc   | 3.4. Demography
+x= 159.2 y= 444.1 sz=15.0 #2477cc   | 3.5. Reproductive Status - Female
+x= 159.2 y= 461.3 sz=15.0 #2477cc   | 3.6. Reproductive Status - Male
+x= 159.2 y= 478.6 sz=15.0 #2477cc   | 3.7. Medical/Psychiatric History
+x= 159.2 y= 495.8 sz=15.0 #2477cc   | 3.8. Body Temperature and Respiratory Rate
+x= 159.2 y= 513.1 sz=15.0 #2477cc   | 3.9. Triplicate Orthostatic BP and HR - Central
+x= 159.2 y= 530.3 sz=15.0 #2477cc   | 3.10. Height and Weight
+x= 159.2 y= 547.6 sz=15.0 #2477cc   | 3.11. Physical Exam
+x= 159.2 y= 564.8 sz=15.0 #2477cc   | 3.12. Triplicate ECG Assessments
+x= 159.2 y= 582.1 sz=15.0 #2477cc   | 3.13. Serology
+x= 159.2 y= 599.3 sz=15.0 #2477cc   | 3.14. Glycated Hemoglobin
+x= 159.2 y= 616.6 sz=15.0 #2477cc   | 3.15. Clinical Laboratory Assessments
+x= 159.2 y= 633.8 sz=15.0 #2477cc   | 3.16. Laboratory results review
+x= 159.2 y= 651.1 sz=15.0 #2477cc   | 3.17. FSH Blood Sample
+x= 159.2 y= 668.3 sz=15.0 #2477cc   | 3.18. Pregnancy test
+x= 159.2 y= 685.6 sz=15.0 #2477cc   | 3.19. Tobacco Use
+x= 159.2 y= 702.8 sz=15.0 #2477cc   | 3.20. Alcohol Use
+x= 271.1 y= 798.3 sz=12.0 black     | Page 1 of 1083
+
+--- page 2 of 1083 | layout family B (~9 pages) ---
+x= 159.2 y= 147.3 sz=15.0 #2477cc   | 3.21. Alcohol Screen - Urine or Breath
+x= 159.2 y= 164.5 sz=15.0 #2477cc   | 3.22. Urine Drug Screen
+x= 159.2 y= 181.8 sz=15.0 #2477cc   | 3.23. Cotinine Screen
+x= 159.2 y= 199.0 sz=15.0 #2477cc   | 3.24. C-SSRS - Screening/Baseline
+x= 159.2 y= 216.3 sz=15.0 #2477cc   | 3.25. C-SSRS - Screening/Baseline - Page 1
+x= 159.2 y= 233.5 sz=15.0 #2477cc   | 3.26. C-SSRS - Screening/Baseline - Page 2
+x= 159.2 y= 250.8 sz=15.0 #2477cc   | 3.27. C-SSRS - Screening/Baseline - Page 3
+x= 159.2 y= 268.0 sz=15.0 #2477cc   | 3.28. C-SSRS - Screening/Baseline - Page 4
+x= 159.2 y= 285.3 sz=15.0 #2477cc   | 3.29. AE and CM prompt
+x= 159.2 y= 302.5 sz=15.0 #2477cc   | 3.30. Inclusion criteria
+x= 159.2 y= 319.8 sz=15.0 #2477cc   | 3.31. Exclusion criteria
+x= 159.2 y= 337.0 sz=15.0 #2477cc   | 3.32. Inclusion criteria
+x= 159.2 y= 354.3 sz=15.0 #2477cc   | 3.33. Exclusion criteria
+x= 159.2 y= 371.5 sz=15.0 #2477cc   | 3.34. Sertraline Titration
+x= 159.2 y= 388.8 sz=15.0 #2477cc   | 3.35. Washout and Sertraline Titration
+x= 159.2 y= 406.0 sz=15.0 #2477cc   | 3.36. End of Screening
+x= 159.2 y= 423.3 sz=15.0 #2477cc   | 3.37. Visit Date
+x= 159.2 y= 440.5 sz=15.0 #2477cc   | 3.38. Drug dispensation- Titration period
+x= 159.2 y= 457.8 sz=15.0 #2477cc   | 3.39. Visit Date
+x= 159.2 y= 475.0 sz=15.0 #2477cc   | 3.40. Drug dispensation- Titration period
+x= 159.2 y= 492.3 sz=15.0 #2477cc   | 3.41. Visit Date
+x= 159.2 y= 509.5 sz=15.0 #2477cc   | 3.42. Triplicate Orthostatic BP and HR - Central
+x= 159.2 y= 526.8 sz=15.0 #2477cc   | 3.43. PK Blood Draw - Sertraline
+x= 159.2 y= 544.0 sz=15.0 #2477cc   | 3.44. Aicure Device - Distribution
+x= 159.2 y= 561.3 sz=15.0 #2477cc   | 3.45. Water Restriction Start Prompt
+x= 159.2 y= 578.5 sz=15.0 #2477cc   | 3.46. Drug administration- Titration Period
+x= 159.2 y= 595.8 sz=15.0 #2477cc   | 3.47. ADT Washout
+x= 159.2 y= 613.0 sz=15.0 #2477cc   | 3.48. IMP Administration - Sertraline
+x= 159.2 y= 630.3 sz=15.0 #2477cc   | 3.49. Water Restriction End Prompt
+x= 159.2 y= 647.5 sz=15.0 #2477cc   | 3.50. AE and CM prompt
+x= 159.2 y= 664.8 sz=15.0 #2477cc   | 3.51. End of Screening
+x= 159.2 y= 682.0 sz=15.0 #2477cc   | 3.52. Visit Date
+x= 159.2 y= 699.2 sz=15.0 #2477cc   | 3.53. Triplicate Orthostatic BP and HR - Central
+x= 271.1 y= 798.3 sz=12.0 black     | Page 2 of 1083
+
+--- page 60 of 1083 | layout family C (~88 pages) ---
+x=  61.2 y= 124.0 sz=10.5 black     | Region/Body System
+x= 243.3 y= 124.0 sz=10.5 black     | Result
+x= 425.4 y= 124.0 sz=10.5 black     | Abnormal Findings
+x= 607.6 y= 124.0 sz=10.5 black     | Clinically Significant
+x=  61.6 y= 152.2 sz= 9.0 #ff0000   | [TYPE: text]
+x= 243.7 y= 152.2 sz= 9.0 #ff0000   | [PERES]
+x= 425.8 y= 152.2 sz= 9.0 #ff0000   | [TYPE: text]
+x= 607.9 y= 152.2 sz= 9.0 #ff0000   | [TYPE: enumeration (values: Yes, No)]
+x= 365.1 y= 153.2 sz=10.5 black     | Normal
+x= 365.1 y= 168.2 sz=10.5 black     | Abnormal
+x=  61.6 y= 168.9 sz= 9.0 #ff0000   | [Read-only field]
+x= 243.7 y= 168.9 sz= 9.0 #ff0000   | [TYPE: enumeration
+x= 243.7 y= 181.7 sz= 9.0 #ff0000   | (values: Normal,
+x= 365.1 y= 183.2 sz=10.5 black     | Not Done
+x= 243.7 y= 194.6 sz= 9.0 #ff0000   | Abnormal, Not
+x= 365.1 y= 198.2 sz=10.5 black     | NA
+x= 243.7 y= 207.4 sz= 9.0 #ff0000   | Done, NA)]
+x= 376.9 y= 565.9 sz=12.0 black     | Page 60 of 1083
+
+--- page 65 of 1083 | layout family C (~88 pages) ---
+x=  61.2 y= 124.0 sz=10.5 black     | Sample
+x= 204.7 y= 124.0 sz=10.5 black     | Status
+x= 312.2 y= 124.0 sz=10.5 black     | Reason not done
+x= 419.8 y= 124.0 sz=10.5 black     | Date of Collection
+x= 541.8 y= 124.0 sz=10.5 black     | Time of Collection
+x= 635.0 y= 124.0 sz=10.5 black     | Scan
+x= 696.4 y= 124.0 sz=10.5 black     | Barcode Number
+x=  61.6 y= 152.2 sz= 9.0 #ff0000   | [Read-only field]
+x= 542.2 y= 152.2 sz= 9.0 #ff0000   | (hour, minutes)]
+x= 635.4 y= 152.2 sz= 9.0 #ff0000   | enumeration
+x= 214.8 y= 153.2 sz=10.5 #999999   | Not Applicable
+x= 635.4 y= 165.1 sz= 9.0 #ff0000   | (values:
+x= 205.0 y= 177.0 sz= 9.0 #ff0000   | [LBSTAT1]
+x= 635.4 y= 178.0 sz= 9.0 #ff0000   | Scan)]
+x= 205.0 y= 193.6 sz= 9.0 #ff0000   | [TYPE: enumeration
+x= 635.4 y= 194.6 sz= 9.0 #ff0000   | [VISIBILITY:
+x= 205.0 y= 206.5 sz= 9.0 #ff0000   | (values: Collected, Not
+x= 635.4 y= 207.4 sz= 9.0 #ff0000   | site only]
+x= 205.0 y= 219.3 sz= 9.0 #ff0000   | Collected, Not
+x= 205.0 y= 232.2 sz= 9.0 #ff0000   | Applicable)]
+x= 376.9 y= 565.9 sz=12.0 black     | Page 65 of 1083
+
+--- page 67 of 1083 | layout family C (~88 pages) ---
+x=  61.2 y= 124.0 sz=10.5 black     | Sample
+x= 276.4 y= 124.0 sz=10.5 black     | Date of Collection
+x= 441.4 y= 124.0 sz=10.5 black     | Time of Collection
+x= 584.8 y= 124.0 sz=10.5 black     | Scan
+x= 646.2 y= 124.0 sz=10.5 black     | Barcode Number
+x=  62.3 y= 149.2 sz= 9.0 #999999   | Glycated Hemoglobin
+x= 594.9 y= 154.0 sz=10.5 #999999   | Scan
+x= 585.2 y= 177.7 sz= 9.0 #ff0000   | [SCANNER]
+x=  61.6 y= 179.2 sz= 9.0 #ff0000   | [LBGLYTEST]
+x= 276.8 y= 179.2 sz= 9.0 #ff0000   | [LBGLYDAT]
+x= 441.7 y= 179.2 sz= 9.0 #ff0000   | [LBGLYTIM]
+x= 646.6 y= 179.2 sz= 9.0 #ff0000   | [LBGLYBAR]
+x= 585.2 y= 194.4 sz= 9.0 #ff0000   | [TYPE:
+x=  61.6 y= 195.9 sz= 9.0 #ff0000   | [TYPE: text]
+x= 276.8 y= 195.9 sz= 9.0 #ff0000   | [TYPE: partialdate]
+x= 441.7 y= 195.9 sz= 9.0 #ff0000   | [TYPE: partialtime (hour, minutes)]
+x= 646.6 y= 195.9 sz= 9.0 #ff0000   | [TYPE: text]
+x= 585.2 y= 207.2 sz= 9.0 #ff0000   | enumeration
+x=  61.6 y= 212.5 sz= 9.0 #ff0000   | [Read-only field]
+x= 585.2 y= 220.1 sz= 9.0 #ff0000   | (values:
+x= 585.2 y= 232.9 sz= 9.0 #ff0000   | Scan)]
+x= 585.2 y= 249.5 sz= 9.0 #ff0000   | [VISIBILITY:
+x= 585.2 y= 262.4 sz= 9.0 #ff0000   | site only]
+x= 376.9 y= 565.9 sz=12.0 black     | Page 67 of 1083
+
+--- page 103 of 1083 | layout family D (~85 pages) ---
+x=  61.2 y= 124.0 sz=10.5 black     | Test
+x= 425.4 y= 124.0 sz=10.5 black     | Result
+x=  62.3 y= 149.2 sz= 9.0 #999999   | Amphetamines
+x= 435.6 y= 154.0 sz=10.5 #999999   | Positive
+x= 488.2 y= 154.0 sz=10.5 #999999   | Negative
+x= 544.8 y= 154.0 sz=10.5 #999999   | Not Done
+x= 425.8 y= 177.7 sz= 9.0 #ff0000   | [LBORRES3]
+x=  61.6 y= 179.2 sz= 9.0 #ff0000   | [LBTEST3]
+x= 425.8 y= 194.4 sz= 9.0 #ff0000   | [TYPE: enumeration (values: Positive, Negative, Not Done)]
+x=  61.6 y= 195.9 sz= 9.0 #ff0000   | [TYPE: text]
+x=  61.6 y= 212.5 sz= 9.0 #ff0000   | [Read-only field]
+x=  62.3 y= 235.8 sz= 9.0 #999999   | Barbiturates
+x= 435.6 y= 240.6 sz=10.5 #999999   | Positive
+x= 488.2 y= 240.6 sz=10.5 #999999   | Negative
+x= 544.8 y= 240.6 sz=10.5 #999999   | Not Done
+x= 425.8 y= 264.3 sz= 9.0 #ff0000   | [LBORRES3]
+x=  61.6 y= 265.8 sz= 9.0 #ff0000   | [LBTEST3]
+x= 425.8 y= 280.9 sz= 9.0 #ff0000   | [TYPE: enumeration (values: Positive, Negative, Not Done)]
+x=  61.6 y= 282.4 sz= 9.0 #ff0000   | [TYPE: text]
+x=  61.6 y= 299.0 sz= 9.0 #ff0000   | [Read-only field]
+x=  62.3 y= 322.4 sz= 9.0 #999999   | Benzodiazepines
+x= 435.6 y= 327.1 sz=10.5 #999999   | Positive
+x= 488.2 y= 327.1 sz=10.5 #999999   | Negative
+x= 544.8 y= 327.1 sz=10.5 #999999   | Not Done
+x= 425.8 y= 350.9 sz= 9.0 #ff0000   | [LBORRES3]
+x=  61.6 y= 352.4 sz= 9.0 #ff0000   | [LBTEST3]
+x= 425.8 y= 367.5 sz= 9.0 #ff0000   | [TYPE: enumeration (values: Positive, Negative, Not Done)]
+x=  61.6 y= 369.0 sz= 9.0 #ff0000   | [TYPE: text]
+x=  61.6 y= 385.6 sz= 9.0 #ff0000   | [Read-only field]
+x=  62.3 y= 409.0 sz= 9.0 #999999   | Cannabinoids
+x= 435.6 y= 413.7 sz=10.5 #999999   | Positive
+x= 488.2 y= 413.7 sz=10.5 #999999   | Negative
+x= 544.8 y= 413.7 sz=10.5 #999999   | Not Done
+x= 425.8 y= 437.5 sz= 9.0 #ff0000   | [LBORRES3]
+x=  61.6 y= 439.0 sz= 9.0 #ff0000   | [LBTEST3]
+x= 425.8 y= 454.1 sz= 9.0 #ff0000   | [TYPE: enumeration (values: Positive, Negative, Not Done)]
+x=  61.6 y= 455.6 sz= 9.0 #ff0000   | [TYPE: text]
+x=  61.6 y= 472.2 sz= 9.0 #ff0000   | [Read-only field]
+x=  62.3 y= 495.5 sz= 9.0 #999999   | Cocaine
+x= 435.6 y= 500.3 sz=10.5 #999999   | Positive
+x= 488.2 y= 500.3 sz=10.5 #999999   | Negative
+x= 544.8 y= 500.3 sz=10.5 #999999   | Not Done
+x= 373.6 y= 565.9 sz=12.0 black     | Page 103 of 1083
+
+--- page 105 of 1083 | layout family E (~18 pages) ---
+x=  61.2 y= 124.0 sz=10.5 black     | Test
+x= 425.4 y= 124.0 sz=10.5 black     | Result
+x=  61.6 y= 152.2 sz= 9.0 #ff0000   | [Read-only field]
+x= 373.6 y= 565.9 sz=12.0 black     | Page 105 of 1083
+
+--- page 112 of 1083 | layout family D (~85 pages) ---
+x=  61.2 y= 124.0 sz=10.5 black     | Suicidal Ideation
+x= 498.3 y= 124.0 sz=10.5 black     | Lifetime
+x= 644.0 y= 124.0 sz=10.5 black     | Past 3 Month
+x=  61.6 y= 148.5 sz= 9.0 black   B | Row 1
+x=  61.6 y= 181.2 sz= 9.0 black   B | 1. Wish to be dead
+x=  61.6 y= 204.1 sz= 9.0 black     | Subject endorses thoughts about a wish to be dead or not alive anymore, or wish to fall asleep and not wake up.
+x= 583.6 y= 211.8 sz=10.5 black     | Yes
+x= 729.3 y= 211.8 sz=10.5 black     | Yes
+x= 583.6 y= 226.8 sz=10.5 black     | No
+x= 729.3 y= 226.8 sz=10.5 black     | No
+x=  61.6 y= 227.1 sz= 9.0 black   B | Have you wished you were dead or wished you could go to sleep and not wake up?
+x= 498.7 y= 246.1 sz= 9.0 #ff0000   | [CSS0401A]
+x= 644.4 y= 246.1 sz= 9.0 #ff0000   | [CSS0401B]
+x= 498.7 y= 262.7 sz= 9.0 #ff0000   | [TYPE: enumeration (values: Yes,
+x= 644.4 y= 262.7 sz= 9.0 #ff0000   | [TYPE: enumeration (values: Yes,
+x= 498.7 y= 275.6 sz= 9.0 #ff0000   | No)]
+x= 644.4 y= 275.6 sz= 9.0 #ff0000   | No)]
+x=  61.6 y= 298.2 sz= 9.0 black   B | Row 2
+x=  61.6 y= 320.8 sz= 9.0 black     | If Yes, describe
+x=  61.6 y= 343.4 sz= 9.0 black   B | Row 3
+x=  61.6 y= 396.7 sz= 9.0 #ff0000   | [CSS0401C]
+x=  61.6 y= 413.4 sz= 9.0 #ff0000   | [TYPE: text]
+x=  61.6 y= 436.0 sz= 9.0 black   B | Row 4
+x=  61.6 y= 468.6 sz= 9.0 black   B | 2. Non-specific active suicidal thoughts
+x=  61.6 y= 491.6 sz= 9.0 black     | General non-specific thoughts of wanting to end one's life/commit suicide (e.g. "I've thought about killing myself")
+x= 583.6 y= 499.3 sz=10.5 black     | Yes
+x= 729.3 y= 499.3 sz=10.5 black     | Yes
+x=  61.6 y= 504.4 sz= 9.0 black     | without thoughts of way to kill oneself/associated methods,intent or plan during the assessment period.
+x= 374.0 y= 565.9 sz=12.0 black     | Page 112 of 1083
+
+--- page 184 of 1083 | layout family C (~88 pages) ---
+x=  61.2 y= 124.0 sz=10.5 black     | Sample
+x= 241.0 y= 124.0 sz=10.5 black     | Timepoint
+x= 350.2 y= 124.0 sz=10.5 black     | Sample Status
+x= 459.3 y= 124.0 sz=10.5 black     | Time of
+x= 597.8 y= 124.0 sz=10.5 black     | Barcode
+x= 724.4 y= 124.0 sz=10.5 black     | Backup
+x= 459.3 y= 139.0 sz=10.5 black     | Collection
+x= 597.8 y= 139.0 sz=10.5 black     | Number
+x= 724.4 y= 139.0 sz=10.5 black     | Barcode
+x= 724.4 y= 154.0 sz=10.5 black     | Number
+x=  61.6 y= 178.5 sz= 9.0 black   B | Row 1
+x= 242.1 y= 201.9 sz= 9.0 #999999   | Predose
+x=  71.3 y= 206.6 sz=10.5 #999999   | Sertraline PK
+x= 546.5 y= 206.6 sz=10.5 #999999   | Scan
+x= 673.2 y= 206.6 sz=10.5 #999999   | Scan
+x= 536.7 y= 230.4 sz= 9.0 #ff0000   | [SCANNER]
+x= 663.4 y= 230.4 sz= 9.0 #ff0000   | [SCANNER]
+x= 241.4 y= 231.9 sz= 9.0 #ff0000   | [LBTPT8]
+x= 459.7 y= 231.9 sz= 9.0 #ff0000   | [LBTIM8]
+x= 598.2 y= 231.9 sz= 9.0 #ff0000   | [LBREQ8]
+x= 724.8 y= 231.9 sz= 9.0 #ff0000   | [LBBREQ8]
+x= 111.6 y= 241.8 sz=10.5 black     | Brexpiprazole/Sertraline PK
+x= 395.0 y= 241.8 sz=10.5 black     | Collected
+x= 536.7 y= 247.0 sz= 9.0 #ff0000   | [TYPE:
+x= 663.4 y= 247.0 sz= 9.0 #ff0000   | [TYPE:
+x= 241.4 y= 248.5 sz= 9.0 #ff0000   | [TYPE: text]
+x= 459.7 y= 248.5 sz= 9.0 #ff0000   | [TYPE:
+x= 598.2 y= 248.5 sz= 9.0 #ff0000   | [TYPE: text]
+x= 724.8 y= 248.5 sz= 9.0 #ff0000   | [TYPE: text]
+x= 111.6 y= 256.8 sz=10.5 black     | Sertraline PK
+x= 395.0 y= 256.8 sz=10.5 black     | Not
+x= 536.7 y= 259.8 sz= 9.0 #ff0000   | enumeration
+x= 663.4 y= 259.8 sz= 9.0 #ff0000   | enumeration
+x= 459.7 y= 261.3 sz= 9.0 #ff0000   | partialtime (hour,
+x= 241.4 y= 265.1 sz= 9.0 #ff0000   | [Read-only field]
+x= 111.6 y= 271.8 sz=10.5 black     | Propranolol PK
+x= 395.0 y= 271.8 sz=10.5 black     | Collected
+x= 536.7 y= 272.7 sz= 9.0 #ff0000   | (values:
+x= 663.4 y= 272.7 sz= 9.0 #ff0000   | (values:
+x= 459.7 y= 274.2 sz= 9.0 #ff0000   | minutes)]
+x= 536.7 y= 285.5 sz= 9.0 #ff0000   | Scan)]
+x= 663.4 y= 285.5 sz= 9.0 #ff0000   | Scan)]
+x= 111.6 y= 286.8 sz=10.5 black     | Prazosin PK
+x= 350.5 y= 291.1 sz= 9.0 #ff0000   | [LBSTAT8]
+x= 536.7 y= 302.1 sz= 9.0 #ff0000   | [VISIBILITY:
+x= 663.4 y= 302.1 sz= 9.0 #ff0000   | [VISIBILITY:
+x=  61.6 y= 306.1 sz= 9.0 #ff0000   | [LBCAT8]
+x= 350.5 y= 307.7 sz= 9.0 #ff0000   | [TYPE: enumeration
+x= 536.7 y= 315.0 sz= 9.0 #ff0000   | site only]
+x= 663.4 y= 315.0 sz= 9.0 #ff0000   | site only]
+x= 350.5 y= 320.6 sz= 9.0 #ff0000   | (values: Collected, Not
+x=  61.6 y= 322.7 sz= 9.0 #ff0000   | [TYPE: enumeration (values: Brexpiprazole/
+x= 350.5 y= 333.4 sz= 9.0 #ff0000   | Collected)]
+x=  61.6 y= 335.6 sz= 9.0 #ff0000   | Sertraline PK, Sertraline PK, Propranolol PK,
+x=  61.6 y= 348.4 sz= 9.0 #ff0000   | Prazosin PK)]
+x=  61.6 y= 365.0 sz= 9.0 #ff0000   | [Read-only field]
+x= 373.6 y= 565.9 sz=12.0 black     | Page 184 of 1083
+
+--- page 253 of 1083 | layout family D (~85 pages) ---
+x=  61.2 y= 124.0 sz=10.5 black     | Suicidal Ideation
+x= 498.3 y= 124.0 sz=10.5 black     | Since Last Visit
+x=  61.6 y= 148.5 sz= 9.0 black   B | Row 1
+x=  61.6 y= 181.2 sz= 9.0 black   B | 1. Wish to be dead
+x=  61.6 y= 204.1 sz= 9.0 black     | Subject endorses thoughts about a wish to be dead or not alive anymore, or wish to fall asleep and not wake up.
+x= 498.7 y= 210.9 sz= 9.0 #ff0000   | [CSS0201]
+x= 729.3 y= 211.8 sz=10.5 black     | Yes
+x= 729.3 y= 226.8 sz=10.5 black     | No
+x=  61.6 y= 227.1 sz= 9.0 black   B | Have you wished you were dead or wished you could go to sleep and not wake up?
+x= 498.7 y= 227.5 sz= 9.0 #ff0000   | [TYPE: enumeration (values: Yes, No)]
+x=  61.6 y= 259.7 sz= 9.0 black   B | Row 2
+x=  61.6 y= 282.3 sz= 9.0 black     | If Yes, describe
+x= 498.7 y= 313.1 sz= 9.0 #ff0000   | [CSS0201A]
+x= 498.7 y= 329.7 sz= 9.0 #ff0000   | [TYPE: text]
+x=  61.6 y= 352.3 sz= 9.0 black   B | Row 3
+x=  61.6 y= 385.0 sz= 9.0 black   B | 2. Non-specific active suicidal thoughts
+x=  61.6 y= 407.9 sz= 9.0 black     | General non-specific thoughts of wanting to end one's life/commit suicide (e.g. "I've thought about killing myself")
+x= 498.7 y= 414.7 sz= 9.0 #ff0000   | [CSS0202]
+x= 729.3 y= 415.7 sz=10.5 black     | Yes
+x=  61.6 y= 420.8 sz= 9.0 black     | without thoughts of way to kill oneself/associated methods,intent or plan during the assessment period.
+x= 729.3 y= 430.7 sz=10.5 black     | No
+x= 498.7 y= 431.3 sz= 9.0 #ff0000   | [TYPE: enumeration (values: Yes, No)]
+x=  61.6 y= 443.7 sz= 9.0 black   B | Have you actually had any thoughts of killing yourself?
+x=  61.6 y= 476.4 sz= 9.0 black   B | Row 4
+x= 373.6 y= 565.9 sz=12.0 black     | Page 253 of 1083
+
+--- page 260 of 1083 | layout family D (~85 pages) ---
+x=  61.2 y= 124.0 sz=10.5 black     | Intensity of Ideation
+x= 498.3 y= 124.0 sz=10.5 black     | Since Last Visit
+x= 498.7 y= 152.2 sz= 9.0 #ff0000   | attempting suicide, (2) Deterrents probably stopped you, (3) Uncertain that
+x= 498.7 y= 165.1 sz= 9.0 #ff0000   | deterrents stopped you, (4) Deterrents most likely did not stop you, (5)
+x= 498.7 y= 178.0 sz= 9.0 #ff0000   | Deterrents definitely did not stop you, (0) Does not apply)]
+x=  61.6 y= 200.6 sz= 9.0 black   B | Row 7
+x=  61.6 y= 233.3 sz= 9.0 black   B | Reasons for Ideation
+x=  61.6 y= 256.2 sz= 9.0 black   B | What sort of reasons did you have for thinking about wanting to die or killing yourself? Was it to end the pain or
+x= 543.2 y= 263.9 sz=10.5 black     | (1) Completely to get attention/ revenge or a reaction
+x=  61.6 y= 269.0 sz= 9.0 black   B | stop the way you were feeling (in other words you couldn't go on living with this pain or how you were feeling) or
+x= 543.2 y= 278.9 sz=10.5 black     | from others
+x=  61.6 y= 281.9 sz= 9.0 black   B | was it to get attention, revenge or a reaction from others? or both?
+x= 543.2 y= 293.9 sz=10.5 black     | (2) Mostly to get attention/ revenge or a reaction from
+x= 543.2 y= 308.9 sz=10.5 black     | others
+x= 543.2 y= 323.9 sz=10.5 black     | (3) Equally to get attention/ revenge or a reaction from
+x= 543.2 y= 338.9 sz=10.5 black     | others and to end/stop the pain
+x= 543.2 y= 353.9 sz=10.5 black     | (4) Mostly to end or stop the pain (you could not go on
+x= 543.2 y= 368.9 sz=10.5 black     | living with the pain or how you were feeling)
+x= 543.2 y= 383.9 sz=10.5 black     | (5) Completely to end or stop the pain (you could not
+x= 543.2 y= 398.9 sz=10.5 black     | go on living with the pain or how you were feeling)
+x= 543.2 y= 413.9 sz=10.5 black     | (0) Does not apply
+x= 498.7 y= 433.2 sz= 9.0 #ff0000   | [CSS0211]
+x= 498.7 y= 449.8 sz= 9.0 #ff0000   | [TYPE: enumeration (values: (1) Completely to get attention/ revenge or a
+x= 498.7 y= 462.6 sz= 9.0 #ff0000   | reaction from others, (2) Mostly to get attention/ revenge or a reaction from
+x= 498.7 y= 475.5 sz= 9.0 #ff0000   | others, (3) Equally to get attention/ revenge or a reaction from others and to
+x= 498.7 y= 488.4 sz= 9.0 #ff0000   | end/stop the pain, (4) Mostly to end or stop the pain (you could not go on
+x= 498.7 y= 501.2 sz= 9.0 #ff0000   | living with the pain or how you were feeling), (5) Completely to end or stop
+x= 498.7 y= 514.1 sz= 9.0 #ff0000   | the pain (you could not go on living with the pain or how you were feeling),
+x= 373.6 y= 565.9 sz=12.0 black     | Page 260 of 1083
+
+--- page 268 of 1083 | layout family E (~18 pages) ---
+x=  61.2 y= 124.0 sz=10.5 black     | Suicidal Behaviour
+x= 571.1 y= 124.0 sz=10.5 black     | Since Last Visit
+x= 571.5 y= 152.2 sz= 9.0 #ff0000   | [TYPE: enumeration (values: Yes, No)]
+x= 373.6 y= 565.9 sz=12.0 black     | Page 268 of 1083
+
+--- page 948 of 1083 | layout family E (~18 pages) ---
+x=  61.2 y= 124.0 sz=10.5 black     | Start date
+x= 243.3 y= 124.0 sz=10.5 black     | Stop date
+x= 425.4 y= 124.0 sz=10.5 black     | Trial Day
+x= 607.6 y= 124.0 sz=10.5 black     | Total Number of Tab taken
+x= 373.6 y= 565.9 sz=12.0 black     | Page 948 of 1083
+
+--- page 964 of 1083 | layout family E (~18 pages) ---
+x=  61.2 y= 124.0 sz=10.5 black     | Date Dispensed
+x= 206.9 y= 124.0 sz=10.5 black     | Sertraline - 50 mg Dispensed
+x= 352.6 y= 124.0 sz=10.5 black     | Brexpiprazole - 1 mg Dispensed
+x= 498.3 y= 124.0 sz=10.5 black     | Brexpiprazole - 2 mg Dispensed
+x= 644.0 y= 124.0 sz=10.5 black     | Brexpiprazole - 2 mg Dispensed
+x= 373.6 y= 565.9 sz=12.0 black     | Page 964 of 1083
+
+
+# Independent title/form context
+
+These pages are TITLE/FORM CONTEXT ONLY, selected independently from the layout families because representative field pages can all be continuations. Repeated invariant text may be page chrome OR a document-wide title; changing text that persists over a run of pages may be a form/section title. Treat both as candidates, then use structural prominence and whether the text actually groups multiple fields to identify the title. Learn its position/style and carry it forward. Do not treat per-field subsection labels or technical annotations as titles.
+
+--- title-context page 31 of 1083 (not a layout-family representative) ---
+x=  64.2 y= 153.6 sz=16.5 #004c99   | Visit Date
+x=  64.2 y= 211.8 sz= 9.0 black     | Visit Date
+x=  64.2 y= 237.8 sz= 9.0 #ff0000   | [VISDAT]
+x=  64.2 y= 251.9 sz= 9.0 #ff0000   | [TYPE: date]
+x= 267.8 y= 798.3 sz=12.0 black     | Page 31 of 1083
+
+
+--- title-context page 53 of 1083 (not a layout-family representative) ---
+x=  64.2 y= 117.2 sz= 9.0 #ff0000   | postdose, 8h postdose)]
+x=  64.2 y= 131.3 sz= 9.0 #ff0000   | [Read-only field]
+x=  64.2 y= 172.4 sz= 9.0 black     | Collect vital signs after subject has been resting in a supine position for at least 5 minutes and again after the subject has
+x=  64.2 y= 185.0 sz= 9.0 black     | been in a standing position for 3 minutes.
+x=  71.7 y= 254.4 sz=16.5 #004c99   | Supine
+x=  64.2 y= 322.2 sz= 9.0 black     | Time Placed in Position
+x=  64.2 y= 348.1 sz= 9.0 #ff0000   | [VSSUTIM]
+x=  64.2 y= 362.2 sz= 9.0 #ff0000   | [TYPE: partialtime (hour, minutes)]
+x=  64.2 y= 393.2 sz= 9.0 black     | Time of Vitals Measurement #1
+x=  64.2 y= 419.1 sz= 9.0 #ff0000   | [VSSUVTIM1]
+x=  64.2 y= 433.2 sz= 9.0 #ff0000   | [TYPE: partialtime (hour, minutes)]
+x=  64.2 y= 464.1 sz= 9.0 black     | Time of Vitals Measurement #2
+x=  64.2 y= 490.0 sz= 9.0 #ff0000   | [VSSUVTIM2]
+x=  64.2 y= 504.1 sz= 9.0 #ff0000   | [TYPE: partialtime (hour, minutes)]
+x=  64.2 y= 535.1 sz= 9.0 black     | Time of Vitals Measurement #3
+x=  64.2 y= 561.0 sz= 9.0 #ff0000   | [VSSUVTIM3]
+x=  64.2 y= 575.1 sz= 9.0 #ff0000   | [TYPE: partialtime (hour, minutes)]
+x=  71.7 y= 629.6 sz=16.5 #004c99   | Standing
+x=  64.2 y= 697.4 sz= 9.0 black     | Time Placed in Position
+x=  64.2 y= 723.3 sz= 9.0 #ff0000   | [VSSTTIM]
+x=  64.2 y= 737.4 sz= 9.0 #ff0000   | [TYPE: partialtime (hour, minutes)]
+x= 267.8 y= 798.3 sz=12.0 black     | Page 53 of 1083
+
+
+--- title-context page 54 of 1083 (not a layout-family representative) ---
+x=  64.2 y= 134.1 sz= 9.0 black     | Time of Vitals Measurement #1
+x=  64.2 y= 160.0 sz= 9.0 #ff0000   | [VSSTVTIM1]
+x=  64.2 y= 174.1 sz= 9.0 #ff0000   | [TYPE: partialtime (hour, minutes)]
+x=  64.2 y= 205.0 sz= 9.0 black     | Time of Vitals Measurement #2
+x=  64.2 y= 230.9 sz= 9.0 #ff0000   | [VSSTVTIM2]
+x=  64.2 y= 245.0 sz= 9.0 #ff0000   | [TYPE: partialtime (hour, minutes)]
+x=  64.2 y= 276.0 sz= 9.0 black     | Time of Vitals Measurement #3
+x=  64.2 y= 301.9 sz= 9.0 #ff0000   | [VSSTVTIM]
+x=  64.2 y= 316.0 sz= 9.0 #ff0000   | [TYPE: partialtime (hour, minutes)]
+x= 267.8 y= 798.3 sz=12.0 black     | Page 54 of 1083
+
+
+--- title-context page 245 of 1083 (not a layout-family representative) ---
+x=  61.2 y= 124.0 sz=10.5 black     | Sample
+x= 241.0 y= 124.0 sz=10.5 black     | Timepoint
+x= 350.2 y= 124.0 sz=10.5 black     | Sample Status
+x= 459.3 y= 124.0 sz=10.5 black     | Time of
+x= 597.8 y= 124.0 sz=10.5 black     | Barcode
+x= 724.4 y= 124.0 sz=10.5 black     | Backup
+x= 459.3 y= 139.0 sz=10.5 black     | Collection
+x= 597.8 y= 139.0 sz=10.5 black     | Number
+x= 724.4 y= 139.0 sz=10.5 black     | Barcode
+x= 724.4 y= 154.0 sz=10.5 black     | Number
+x=  61.6 y= 178.5 sz= 9.0 black   B | Row 1
+x= 242.1 y= 201.9 sz= 9.0 #999999   | Predose
+x=  71.3 y= 206.6 sz=10.5 #999999   | Sertraline PK
+x= 546.5 y= 206.6 sz=10.5 #999999   | Scan
+x= 673.2 y= 206.6 sz=10.5 #999999   | Scan
+x= 536.7 y= 230.4 sz= 9.0 #ff0000   | [SCANNER]
+x= 663.4 y= 230.4 sz= 9.0 #ff0000   | [SCANNER]
+x= 241.4 y= 231.9 sz= 9.0 #ff0000   | [LBTPT8]
+x= 459.7 y= 231.9 sz= 9.0 #ff0000   | [LBTIM8]
+x= 598.2 y= 231.9 sz= 9.0 #ff0000   | [LBREQ8]
+x= 724.8 y= 231.9 sz= 9.0 #ff0000   | [LBBREQ8]
+x= 111.6 y= 241.8 sz=10.5 black     | Brexpiprazole/Sertraline PK
+x= 395.0 y= 241.8 sz=10.5 black     | Collected
+x= 536.7 y= 247.0 sz= 9.0 #ff0000   | [TYPE:
+x= 663.4 y= 247.0 sz= 9.0 #ff0000   | [TYPE:
+x= 241.4 y= 248.5 sz= 9.0 #ff0000   | [TYPE: text]
+x= 459.7 y= 248.5 sz= 9.0 #ff0000   | [TYPE:
+x= 598.2 y= 248.5 sz= 9.0 #ff0000   | [TYPE: text]
+x= 724.8 y= 248.5 sz= 9.0 #ff0000   | [TYPE: text]
+x= 111.6 y= 256.8 sz=10.5 black     | Sertraline PK
+x= 395.0 y= 256.8 sz=10.5 black     | Not
+x= 536.7 y= 259.8 sz= 9.0 #ff0000   | enumeration
+x= 663.4 y= 259.8 sz= 9.0 #ff0000   | enumeration
+x= 459.7 y= 261.3 sz= 9.0 #ff0000   | partialtime (hour,
+x= 241.4 y= 265.1 sz= 9.0 #ff0000   | [Read-only field]
+x= 111.6 y= 271.8 sz=10.5 black     | Propranolol PK
+x= 395.0 y= 271.8 sz=10.5 black     | Collected
+x= 536.7 y= 272.7 sz= 9.0 #ff0000   | (values:
+x= 663.4 y= 272.7 sz= 9.0 #ff0000   | (values:
+x= 459.7 y= 274.2 sz= 9.0 #ff0000   | minutes)]
+x= 536.7 y= 285.5 sz= 9.0 #ff0000   | Scan)]
+x= 663.4 y= 285.5 sz= 9.0 #ff0000   | Scan)]
+x= 111.6 y= 286.8 sz=10.5 black     | Prazosin PK
+x= 350.5 y= 291.1 sz= 9.0 #ff0000   | [LBSTAT8]
+x= 536.7 y= 302.1 sz= 9.0 #ff0000   | [VISIBILITY:
+x= 663.4 y= 302.1 sz= 9.0 #ff0000   | [VISIBILITY:
+x=  61.6 y= 306.1 sz= 9.0 #ff0000   | [LBCAT8]
+x= 350.5 y= 307.7 sz= 9.0 #ff0000   | [TYPE: enumeration
+x= 536.7 y= 315.0 sz= 9.0 #ff0000   | site only]
+x= 663.4 y= 315.0 sz= 9.0 #ff0000   | site only]
+x= 350.5 y= 320.6 sz= 9.0 #ff0000   | (values: Collected, Not
+x=  61.6 y= 322.7 sz= 9.0 #ff0000   | [TYPE: enumeration (values: Brexpiprazole/
+x= 350.5 y= 333.4 sz= 9.0 #ff0000   | Collected)]
+x=  61.6 y= 335.6 sz= 9.0 #ff0000   | Sertraline PK, Sertraline PK, Propranolol PK,
+x=  61.6 y= 348.4 sz= 9.0 #ff0000   | Prazosin PK)]
+x=  61.6 y= 365.0 sz= 9.0 #ff0000   | [Read-only field]
+x= 373.6 y= 565.9 sz=12.0 black     | Page 245 of 1083
+
+
+--- title-context page 251 of 1083 (not a layout-family representative) ---
+x=  64.2 y= 144.2 sz= 9.0 black   B | Definitions of behavioral suicidal events in this scale are based on those used in **The Columbia Suicide History Form**,
+x=  64.2 y= 156.8 sz= 9.0 black     | developed by John Mann, MD and Maria Oquendo, MD, Conte Center for the Neuroscience of Mental Disorders (CCNMD),
+x=  64.2 y= 169.4 sz= 9.0 black     | New York State Psychiatric Institute, 1051 Riverside Drive, New York, NY, 10032. (Oquendo M. A., Halberstam B. & Mann J.
+x=  64.2 y= 182.0 sz= 9.0 black     | J., Risk factors for suicidal behavior: utility and limitations of research instruments. In M.B. First [Ed.] Standardized
+x=  64.2 y= 194.6 sz= 9.0 black     | Evaluation in Clinical Practice, pp. 103 -130, 2003.)
+x=  64.2 y= 217.2 sz= 9.0 black     | For reprints of the C-SSRS contact Kelly Posner, Ph.D., New York State Psychiatric Institute, 1051 Riverside Drive, New
+x=  64.2 y= 229.8 sz= 9.0 black     | York, New York, 10032; inquiries and training requirements contact posnerk@nyspi.columbia.edu
+x=  64.2 y= 285.8 sz= 9.0 black     | © 2008 The Research Foundation for Mental Hygiene, Inc.
+x= 264.4 y= 798.3 sz=12.0 black     | Page 251 of 1083
+
+
+--- title-context page 351 of 1083 (not a layout-family representative) ---
+x=  61.2 y= 124.0 sz=10.5 black     | Sample
+x= 241.0 y= 124.0 sz=10.5 black     | Timepoint
+x= 350.2 y= 124.0 sz=10.5 black     | Sample Status
+x= 459.3 y= 124.0 sz=10.5 black     | Time of
+x= 597.8 y= 124.0 sz=10.5 black     | Barcode
+x= 724.4 y= 124.0 sz=10.5 black     | Backup
+x= 459.3 y= 139.0 sz=10.5 black     | Collection
+x= 597.8 y= 139.0 sz=10.5 black     | Number
+x= 724.4 y= 139.0 sz=10.5 black     | Barcode
+x= 724.4 y= 154.0 sz=10.5 black     | Number
+x=  61.6 y= 182.2 sz= 9.0 #ff0000   | [TYPE: enumeration (values: Brexpiprazole/
+x= 350.5 y= 182.2 sz= 9.0 #ff0000   | (values: Collected, Not
+x= 536.7 y= 182.2 sz= 9.0 #ff0000   | site only]
+x= 663.4 y= 182.2 sz= 9.0 #ff0000   | site only]
+x=  61.6 y= 195.1 sz= 9.0 #ff0000   | Sertraline PK, Sertraline PK, Propranolol PK,
+x= 350.5 y= 195.1 sz= 9.0 #ff0000   | Collected)]
+x=  61.6 y= 208.0 sz= 9.0 #ff0000   | Prazosin PK)]
+x=  61.6 y= 224.6 sz= 9.0 #ff0000   | [Read-only field]
+x=  61.6 y= 247.2 sz= 9.0 black   B | Row 3
+x= 242.1 y= 270.5 sz= 9.0 #999999   | 2h Postdose
+x=  71.3 y= 275.3 sz=10.5 #999999   | Sertraline PK
+x= 546.5 y= 275.3 sz=10.5 #999999   | Scan
+x= 673.2 y= 275.3 sz=10.5 #999999   | Scan
+x= 536.7 y= 299.0 sz= 9.0 #ff0000   | [SCANNER]
+x= 663.4 y= 299.0 sz= 9.0 #ff0000   | [SCANNER]
+x= 241.4 y= 300.5 sz= 9.0 #ff0000   | [LBTPT8]
+x= 459.7 y= 300.5 sz= 9.0 #ff0000   | [LBTIM8]
+x= 598.2 y= 300.5 sz= 9.0 #ff0000   | [LBREQ8]
+x= 724.8 y= 300.5 sz= 9.0 #ff0000   | [LBBREQ8]
+x= 111.6 y= 310.5 sz=10.5 black     | Brexpiprazole/Sertraline PK
+x= 395.0 y= 310.5 sz=10.5 black     | Collected
+x= 536.7 y= 315.6 sz= 9.0 #ff0000   | [TYPE:
+x= 663.4 y= 315.6 sz= 9.0 #ff0000   | [TYPE:
+x= 241.4 y= 317.1 sz= 9.0 #ff0000   | [TYPE: text]
+x= 459.7 y= 317.1 sz= 9.0 #ff0000   | [TYPE:
+x= 598.2 y= 317.1 sz= 9.0 #ff0000   | [TYPE: text]
+x= 724.8 y= 317.1 sz= 9.0 #ff0000   | [TYPE: text]
+x= 111.6 y= 325.5 sz=10.5 black     | Sertraline PK
+x= 395.0 y= 325.5 sz=10.5 black     | Not
+x= 536.7 y= 328.5 sz= 9.0 #ff0000   | enumeration
+x= 663.4 y= 328.5 sz= 9.0 #ff0000   | enumeration
+x= 459.7 y= 330.0 sz= 9.0 #ff0000   | partialtime (hour,
+x= 241.4 y= 333.7 sz= 9.0 #ff0000   | [Read-only field]
+x= 111.6 y= 340.5 sz=10.5 black     | Propranolol PK
+x= 395.0 y= 340.5 sz=10.5 black     | Collected
+x= 536.7 y= 341.4 sz= 9.0 #ff0000   | (values:
+x= 663.4 y= 341.4 sz= 9.0 #ff0000   | (values:
+x= 459.7 y= 342.9 sz= 9.0 #ff0000   | minutes)]
+x= 536.7 y= 354.2 sz= 9.0 #ff0000   | Scan)]
+x= 663.4 y= 354.2 sz= 9.0 #ff0000   | Scan)]
+x= 111.6 y= 355.5 sz=10.5 black     | Prazosin PK
+x= 350.5 y= 359.8 sz= 9.0 #ff0000   | [LBSTAT8]
+x= 536.7 y= 370.8 sz= 9.0 #ff0000   | [VISIBILITY:
+x= 663.4 y= 370.8 sz= 9.0 #ff0000   | [VISIBILITY:
+x=  61.6 y= 374.8 sz= 9.0 #ff0000   | [LBCAT8]
+x= 350.5 y= 376.4 sz= 9.0 #ff0000   | [TYPE: enumeration
+x= 536.7 y= 383.7 sz= 9.0 #ff0000   | site only]
+x= 663.4 y= 383.7 sz= 9.0 #ff0000   | site only]
+x= 350.5 y= 389.2 sz= 9.0 #ff0000   | (values: Collected, Not
+x=  61.6 y= 391.4 sz= 9.0 #ff0000   | [TYPE: enumeration (values: Brexpiprazole/
+x= 350.5 y= 402.1 sz= 9.0 #ff0000   | Collected)]
+x=  61.6 y= 404.2 sz= 9.0 #ff0000   | Sertraline PK, Sertraline PK, Propranolol PK,
+x=  61.6 y= 417.1 sz= 9.0 #ff0000   | Prazosin PK)]
+x=  61.6 y= 433.7 sz= 9.0 #ff0000   | [Read-only field]
+x=  61.6 y= 456.3 sz= 9.0 black   B | Row 4
+x= 242.1 y= 479.7 sz= 9.0 #999999   | 3h Postdose
+x=  71.3 y= 484.4 sz=10.5 #999999   | Sertraline PK
+x= 546.5 y= 484.4 sz=10.5 #999999   | Scan
+x= 673.2 y= 484.4 sz=10.5 #999999   | Scan
+x= 536.7 y= 508.2 sz= 9.0 #ff0000   | [SCANNER]
+x= 663.4 y= 508.2 sz= 9.0 #ff0000   | [SCANNER]
+x= 241.4 y= 509.7 sz= 9.0 #ff0000   | [LBTPT8]
+x= 459.7 y= 509.7 sz= 9.0 #ff0000   | [LBTIM8]
+x= 598.2 y= 509.7 sz= 9.0 #ff0000   | [LBREQ8]
+x= 724.8 y= 509.7 sz= 9.0 #ff0000   | [LBBREQ8]
+x= 373.6 y= 565.9 sz=12.0 black     | Page 351 of 1083
+

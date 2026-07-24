@@ -1,0 +1,141 @@
+{
+ "stage0_s": 13.359,
+ "llm_s": 272.157,
+ "llm_calls": 12,
+ "llm_prompt_chars": 314847,
+ "llm_reply_chars": 74407,
+ "llm_by_kind": {
+  "generate": {
+   "calls": 1,
+   "s": 27.091,
+   "prompt_chars": 46415,
+   "reply_chars": 6523
+  },
+  "revise_gates": {
+   "calls": 1,
+   "s": 25.621,
+   "prompt_chars": 12533,
+   "reply_chars": 8389
+  },
+  "confirm": {
+   "calls": 1,
+   "s": 6.481,
+   "prompt_chars": 11204,
+   "reply_chars": 1036
+  },
+  "audit": {
+   "calls": 5,
+   "s": 38.441,
+   "prompt_chars": 155421,
+   "reply_chars": 6706
+  },
+  "revise_audit": {
+   "calls": 4,
+   "s": 174.523,
+   "prompt_chars": 89274,
+   "reply_chars": 51753
+  }
+ },
+ "sandbox_validate_s": 13.811,
+ "sandbox_validate_calls": 6,
+ "export_s": 2.212,
+ "total_s": 288.687,
+ "calls": [
+  {
+   "seq": 1,
+   "kind": "generate",
+   "version": 1,
+   "s": 27.091,
+   "prompt_chars": 46415,
+   "reply_chars": 6523
+  },
+  {
+   "seq": 2,
+   "kind": "revise_gates",
+   "version": 2,
+   "s": 25.621,
+   "prompt_chars": 12533,
+   "reply_chars": 8389
+  },
+  {
+   "seq": 3,
+   "kind": "confirm",
+   "version": 2,
+   "s": 6.481,
+   "prompt_chars": 11204,
+   "reply_chars": 1036
+  },
+  {
+   "seq": 4,
+   "kind": "audit",
+   "version": 2,
+   "s": 22.895,
+   "prompt_chars": 28362,
+   "reply_chars": 3976
+  },
+  {
+   "seq": 5,
+   "kind": "revise_audit",
+   "version": 3,
+   "s": 27.961,
+   "prompt_chars": 16115,
+   "reply_chars": 11166
+  },
+  {
+   "seq": 6,
+   "kind": "audit",
+   "version": 3,
+   "s": 4.265,
+   "prompt_chars": 34933,
+   "reply_chars": 728
+  },
+  {
+   "seq": 7,
+   "kind": "revise_audit",
+   "version": 4,
+   "s": 46.338,
+   "prompt_chars": 23251,
+   "reply_chars": 12673
+  },
+  {
+   "seq": 8,
+   "kind": "audit",
+   "version": 4,
+   "s": 3.885,
+   "prompt_chars": 32023,
+   "reply_chars": 665
+  },
+  {
+   "seq": 9,
+   "kind": "revise_audit",
+   "version": 5,
+   "s": 50.133,
+   "prompt_chars": 24312,
+   "reply_chars": 13957
+  },
+  {
+   "seq": 10,
+   "kind": "audit",
+   "version": 5,
+   "s": 3.666,
+   "prompt_chars": 30175,
+   "reply_chars": 666
+  },
+  {
+   "seq": 11,
+   "kind": "revise_audit",
+   "version": 6,
+   "s": 50.091,
+   "prompt_chars": 25596,
+   "reply_chars": 13957
+  },
+  {
+   "seq": 12,
+   "kind": "audit",
+   "version": 6,
+   "s": 3.73,
+   "prompt_chars": 29928,
+   "reply_chars": 671
+  }
+ ]
+}

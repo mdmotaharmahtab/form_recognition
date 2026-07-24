@@ -1,0 +1,635 @@
+{
+ "stop_reason": "budget",
+ "versions": 5,
+ "best_version": 5,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 769,
+    "pages_total": 109,
+    "pages_with_fields": 109,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 95,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 6,
+    "fields_per_form": 128.2,
+    "forms_per_100_pages": 5.5,
+    "form_same_page_evidence_records": 769,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 100
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 27,
+   "audit_pages": [
+    1,
+    2,
+    4,
+    38,
+    47,
+    76
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [
+      "Informed Consent: Photo ID #1",
+      "Group Information: Group Info Session #1",
+      "Group Information: Group info held by #1",
+      "Informed Consent: Study ICF Database Check #1",
+      "Informed Consent: Study ICF Participant  #1",
+      "Informed Consent: Study ICF Date #1"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [],
+     "false": [
+      "Informed Consent: Study ICF Time #1",
+      "Informed Consent: Study ICF Part #1",
+      "Informed Consent: Study ICF Version #1"
+     ],
+     "wrong_form": [
+      "(Version must be checked against ICF present in the RSF \u2013 escalate any discrepancies)"
+     ]
+    },
+    {
+     "page": 4,
+     "missed": [],
+     "false": [
+      "Informed Consent Addition: Add ICF Time #1",
+      "Informed Consent Addition: Add ICF Signed by Physician/Nurse #1",
+      "System: Available #1"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 38,
+     "missed": [],
+     "false": [
+      "Exclusion: E22 #1",
+      "Exclusion: E23 #1"
+     ],
+     "wrong_form": [
+      "Exclusion 21. Participants with no permanent place of residence.",
+      "Exclusion 22. Any participant who, in the opinion of the investigator, should not participate in",
+      "the trial.",
+      "Exclusion 23. Previous exposure to OPC-224333."
+     ]
+    },
+    {
+     "page": 47,
+     "missed": [],
+     "false": [
+      "C-SSRS Baseline: 1. Wish to be Dead (month) #1",
+      "C-SSRS Baseline: 2. Non-specific Thoughts (lifetime) #1",
+      "C-SSRS Baseline: 2. Non-specific Thoughts (month) #1"
+     ],
+     "wrong_form": [
+      "Subject endorses thoughts about a wish to be dead or not alive anymore, or a wish to fall asleep and not wake up. (Have you wished you were dead or wished you could go to sleep and not wake up?)",
+      "General non-specific thoughts of wanting to end one's life / commit suicide (e.g. \"I've thought about killing myself\") without thoughts of ways to kill oneself / associated methods, intent, or plan during the assessment period. (Have you actually had any thoughts of killing yourself?)"
+     ]
+    },
+    {
+     "page": 76,
+     "missed": [],
+     "false": [
+      "Adverse Event: Progress Notes #1"
+     ],
+     "wrong_form": [
+      "Medical History: Body System #1",
+      "Affected Body System"
+     ]
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    27,
+    0,
+    -109
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 720,
+    "pages_total": 109,
+    "pages_with_fields": 109,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 96,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 6,
+    "fields_per_form": 120.0,
+    "forms_per_100_pages": 5.5,
+    "form_same_page_evidence_records": 720,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 100
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 41,
+   "audit_pages": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    38,
+    47,
+    76
+   ],
+   "audit_partial": null,
+   "audit_promoted": [
+    3
+   ],
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [
+      "Informed Consent: Photo ID #1",
+      "Group Information: Group Info Session #1",
+      "Group Information: Group info held by #1",
+      "Informed Consent: Study ICF Database Check #1",
+      "Informed Consent: Study ICF Participant  #1",
+      "Informed Consent: Study ICF Date #1"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [],
+     "false": [
+      "Informed Consent: Study ICF Time #1",
+      "Informed Consent: Study ICF Part #1",
+      "Informed Consent: Study ICF Version #1"
+     ],
+     "wrong_form": [
+      "(Version must be checked against ICF present in the RSF \u2013 escalate any discrepancies)"
+     ]
+    },
+    {
+     "page": 3,
+     "missed": [],
+     "false": [
+      "Informed Consent: Study ICF Signed by Physician/Nurse #1",
+      "Informed Consent: Study ICF copy #1",
+      "Informed Consent Addition: Consented to Additional ICF #1",
+      "where a DNA sample will be taken and other data collected may be used for potential future research?",
+      "Informed Consent Addition: Add ICF Participant #1",
+      "Informed Consent Addition: Add ICF Date #1"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 4,
+     "missed": [],
+     "false": [
+      "Informed Consent Addition: Add ICF Time #1",
+      "Informed Consent Addition: Add ICF Signed by Physician/Nurse #1",
+      "System: Available #1"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 5,
+     "missed": [],
+     "false": [
+      "On Study Demographics x: Sponsor Specific Participation Number #1",
+      "sequentially from S00001)",
+      "Screening Restrictions: Alcohol #1",
+      "Screening Restrictions: Poppy seeds #1",
+      "Screening visit?",
+      "Screening Restrictions: Exercise #1",
+      "Prompts: PD Prompt #1",
+      "On Study Demographics: Year of Birth #1"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 38,
+     "missed": [
+      "Exclusion 21. Participants with no permanent place of residence.",
+      "Exclusion 22. Any participant who, in the opinion of the investigator, should not participate in the trial.",
+      "Exclusion 23. Previous exposure to OPC-224333."
+     ],
+     "false": [
+      "Exclusion: E22 #1",
+      "the trial.",
+      "Exclusion: E23 #1"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 47,
+     "missed": [
+      "Subject endorses thoughts about a wish to be dead or not alive anymore, or a wish to fall asleep and not wake up.",
+      "(Have you wished you were dead or wished you could go to sleep and not wake up?)",
+      "General non-specific thoughts of wanting to end one's life / commit suicide (e.g. \"I've thought about killing myself\") without thoughts of ways to kill oneself / associated methods, intent, or plan during the assessment period.",
+      "(Have you actually had any thoughts of killing yourself?)"
+     ],
+     "false": [
+      "C-SSRS Baseline: 1. Wish to be Dead (month) #1",
+      "C-SSRS Baseline: 2. Non-specific Thoughts (lifetime) #1",
+      "C-SSRS Baseline: 2. Non-specific Thoughts (month) #1"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 76,
+     "missed": [],
+     "false": [
+      "Adverse Event: Progress Notes #1"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    41,
+    0,
+    -109
+   ],
+   "became_best": false
+  },
+  {
+   "version": 3,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 737,
+    "pages_total": 109,
+    "pages_with_fields": 109,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 96,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 6,
+    "fields_per_form": 122.8,
+    "forms_per_100_pages": 5.5,
+    "form_same_page_evidence_records": 737,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 100
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 29,
+   "audit_pages": [
+    1,
+    2,
+    3,
+    4,
+    6,
+    38,
+    47,
+    76
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [
+      "Informed Consent: Photo ID #1",
+      "Group Information: Group Info Session #1",
+      "Group Information: Group info held by #1",
+      "Informed Consent: Study ICF Database Check #1",
+      "Informed Consent: Study ICF Participant  #1",
+      "Informed Consent: Study ICF Date #1"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [],
+     "false": [
+      "Informed Consent: Study ICF Time #1",
+      "Informed Consent: Study ICF Part #1",
+      "Informed Consent: Study ICF Version #1"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 3,
+     "missed": [
+      "where a DNA sample will be taken and other data collected may be used for potential future research?"
+     ],
+     "false": [
+      "Informed Consent: Study ICF Signed by Physician/Nurse #1",
+      "Informed Consent: Study ICF copy #1",
+      "Informed Consent Addition: Consented to Additional ICF #1",
+      "Informed Consent Addition: Add ICF Participant #1",
+      "Informed Consent Addition: Add ICF Date #1"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 4,
+     "missed": [],
+     "false": [
+      "Informed Consent Addition: Add ICF Time #1",
+      "Informed Consent Addition: Add ICF Signed by Physician/Nurse #1",
+      "System: Available #1"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 6,
+     "missed": [],
+     "false": [
+      "On Study Demographics: Age #1",
+      "On Study Demographics: Ethnicity #1"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 38,
+     "missed": [],
+     "false": [
+      "Exclusion: E22 #1",
+      "the trial.",
+      "Exclusion: E23 #1"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 47,
+     "missed": [],
+     "false": [
+      "C-SSRS Baseline: 1. Wish to be Dead (month) #1",
+      "C-SSRS Baseline: 2. Non-specific Thoughts (lifetime) #1",
+      "C-SSRS Baseline: 2. Non-specific Thoughts (month) #1"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 76,
+     "missed": [],
+     "false": [
+      "Adverse Event: Progress Notes #1"
+     ],
+     "wrong_form": [
+      "Medical History: Body System #1",
+      "Affected Body System"
+     ]
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    29,
+    0,
+    -109
+   ],
+   "became_best": true
+  },
+  {
+   "version": 4,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 459,
+    "pages_total": 109,
+    "pages_with_fields": 109,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 94,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 6,
+    "fields_per_form": 76.5,
+    "forms_per_100_pages": 5.5,
+    "form_same_page_evidence_records": 453,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 100
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 10,
+   "audit_pages": [
+    1,
+    2,
+    3,
+    4,
+    7,
+    38,
+    47,
+    76
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [],
+     "false": [
+      "(Version must be checked against ICF present in the RSF \u2013 escalate any discrepancies)"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 3,
+     "missed": [],
+     "false": [
+      "Informed Consent: Study ICF Signed by Physician/Nurse #1",
+      "Has the participant read, understood and signed the consent for the Future Use Sub Study,"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 4,
+     "missed": [],
+     "false": [
+      "Informed Consent Addition: Add ICF Signed by Physician/Nurse #1"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 7,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 38,
+     "missed": [],
+     "false": [
+      "Exclusion 22. Any participant who, in the opinion of the investigator, should not participate in",
+      "the trial."
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 47,
+     "missed": [],
+     "false": [
+      "Subject endorses thoughts about a wish to be dead or not alive anymore, or a wish to fall asleep and not wake up. (Have you wished you were dead or wished you could go to sleep and not wake up?)",
+      "C-SSRS Baseline: 2. Non-specific Thoughts (lifetime) #1",
+      "General non-specific thoughts of wanting to end one's life / commit suicide (e.g. \"I've thought about killing myself\") without thoughts of ways to kill oneself / associated methods, intent, or plan during the assessment period. (Have you actually had any thoughts of killing yourself?)",
+      "C-SSRS Baseline: 2. Non-specific Thoughts (month) #1"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 76,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    10,
+    0,
+    -109
+   ],
+   "became_best": true
+  },
+  {
+   "version": 5,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 369,
+    "pages_total": 109,
+    "pages_with_fields": 105,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 92,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 6,
+    "fields_per_form": 61.5,
+    "forms_per_100_pages": 5.5,
+    "form_same_page_evidence_records": 357,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 96
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 10,
+   "audit_pages": [
+    1,
+    2,
+    3,
+    4,
+    31,
+    38,
+    47,
+    76
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [],
+     "false": [
+      "(Version must be checked against ICF present in the RSF \u2013 escalate any discrepancies)"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 3,
+     "missed": [
+      "Has the participant read, understood and signed the consent for the Future Use Sub Study, where a DNA sample will be taken and other data collected may be used for potential future research?"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 4,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 31,
+     "missed": [
+      "Inclusion 4. Sexually active males who: a) Will commit to utilizing 2 different approved methods of birth control during the trial and for 90 days plus 5 half-lives (ie, 92 days) after the last dose of IMP, or b) Will remain abstinent during the trial and for 90 days plus 5 half-lives (ie, 92 days) after the last dose of IMP. c) Will refrain from sperm donation from the screening visit through 90 days plus 5 half-lives (ie, 92 days) after the last dose of IMP, or d) Have had a bilateral orchiectomy.",
+      "Inclusion 5. Female participants who are surgically sterile (ie, have undergone bilateral oophorectomy or hysterectomy) or who have been postmenopausal for at least 12 consecutive months. This will be confirmed with a follicle-stimulating hormone (FSH) assessment."
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 38,
+     "missed": [
+      "Exclusion 21. Participants with no permanent place of residence.",
+      "Exclusion 22. Any participant who, in the opinion of the investigator, should not participate in the trial.",
+      "Exclusion 23. Previous exposure to OPC-224333."
+     ],
+     "false": [
+      "the trial."
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 47,
+     "missed": [],
+     "false": [
+      "Subject endorses thoughts about a wish to be dead or not alive anymore, or a wish to fall asleep and not wake up. (Have you wished you were dead or wished you could go to sleep and not wake up?)",
+      "General non-specific thoughts of wanting to end one's life / commit suicide (e.g. \"I've thought about killing myself\") without thoughts of ways to kill oneself / associated methods, intent, or plan during the assessment period. (Have you actually had any thoughts of killing yourself?)"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 76,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    10,
+    0,
+    -105
+   ],
+   "became_best": true
+  }
+ ]
+}

@@ -1,0 +1,928 @@
+[
+ {
+  "doc": "crf_forms_326-201-00007_Annotated_CRF___v1.0_30_Sep_2024_1_",
+  "status": "ok_audit_issues",
+  "multipass": 2,
+  "version_budget": 5,
+  "versions": 9,
+  "stop_reason": "p1:budget;p2:plateau",
+  "fields": 2035,
+  "forms": 9,
+  "pages_with_fields": 486,
+  "audit_issues": 10,
+  "passes": [
+   {
+    "doc": "crf_forms_326-201-00007_Annotated_CRF___v1.0_30_Sep_2024_1_",
+    "versions": 5,
+    "stop_reason": "budget",
+    "status": "ok_audit_issues",
+    "best_version": 2,
+    "fields": 2029,
+    "forms": 9,
+    "pages_with_fields": 483,
+    "audit_issues": 7,
+    "warnings": [
+     "The program filters by 16 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+    ],
+    "elapsed_s": 178.271,
+    "stage0_s": 3.923,
+    "llm_s": 163.56,
+    "llm_calls": 9,
+    "pass": 1,
+    "clusters": [
+     0
+    ]
+   },
+   {
+    "doc": "crf_forms_326-201-00007_Annotated_CRF___v1.0_30_Sep_2024_1_",
+    "versions": 4,
+    "stop_reason": "plateau",
+    "status": "ok_audit_issues",
+    "best_version": 2,
+    "fields": 6,
+    "forms": 3,
+    "pages_with_fields": 3,
+    "audit_issues": 3,
+    "warnings": [],
+    "elapsed_s": 85.552,
+    "stage0_s": 3.923,
+    "llm_s": 73.302,
+    "llm_calls": 7,
+    "pass": 2,
+    "clusters": [
+     1
+    ]
+   }
+  ],
+  "elapsed_s": 263.911,
+  "stage0_s": 3.923,
+  "llm_s": 236.862,
+  "llm_calls": 16
+ },
+ {
+  "doc": "crf_forms_326-201-00007_Annotated_CRF___v1.0_30_Sep_2024",
+  "status": "ok_audit_issues",
+  "multipass": 2,
+  "version_budget": 5,
+  "versions": 8,
+  "stop_reason": "p1:budget;p2:converged",
+  "fields": 370,
+  "forms": 7,
+  "pages_with_fields": 106,
+  "audit_issues": 10,
+  "passes": [
+   {
+    "doc": "crf_forms_326-201-00007_Annotated_CRF___v1.0_30_Sep_2024",
+    "versions": 5,
+    "stop_reason": "budget",
+    "status": "ok_audit_issues",
+    "best_version": 5,
+    "fields": 369,
+    "forms": 6,
+    "pages_with_fields": 105,
+    "audit_issues": 10,
+    "warnings": [],
+    "elapsed_s": 158.893,
+    "stage0_s": 1.559,
+    "llm_s": 152.895,
+    "llm_calls": 10,
+    "pass": 1,
+    "clusters": [
+     0
+    ]
+   },
+   {
+    "doc": "crf_forms_326-201-00007_Annotated_CRF___v1.0_30_Sep_2024",
+    "versions": 3,
+    "stop_reason": "converged",
+    "status": "ok_with_warnings",
+    "best_version": 3,
+    "fields": 1,
+    "forms": 1,
+    "pages_with_fields": 1,
+    "audit_issues": 0,
+    "warnings": [
+     "Only 1 records from this 3-page document - plausible for a document this small, but make sure no fields were missed."
+    ],
+    "elapsed_s": 53.591,
+    "stage0_s": 1.559,
+    "llm_s": 50.188,
+    "llm_calls": 5,
+    "pass": 2,
+    "clusters": [
+     1
+    ]
+   }
+  ],
+  "elapsed_s": 212.511,
+  "stage0_s": 1.559,
+  "llm_s": 203.083,
+  "llm_calls": 15
+ },
+ {
+  "doc": "crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023",
+  "status": "ok_audit_issues",
+  "multipass": 5,
+  "version_budget": 6,
+  "versions": 26,
+  "stop_reason": "p1:budget;p2:budget;p3:plateau;p4:plateau;p5:converged",
+  "fields": 3895,
+  "forms": 123,
+  "pages_with_fields": 938,
+  "audit_issues": 74,
+  "passes": [
+   {
+    "doc": "crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023",
+    "versions": 6,
+    "stop_reason": "budget",
+    "status": "ok_audit_issues",
+    "best_version": 6,
+    "fields": 2457,
+    "forms": 113,
+    "pages_with_fields": 692,
+    "audit_issues": 12,
+    "warnings": [],
+    "elapsed_s": 359.5,
+    "stage0_s": 13.359,
+    "llm_s": 340.79,
+    "llm_calls": 13,
+    "pass": 1,
+    "clusters": [
+     0,
+     1,
+     2,
+     5,
+     6,
+     13,
+     14,
+     20,
+     21,
+     22,
+     23,
+     24,
+     25
+    ]
+   },
+   {
+    "doc": "crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023",
+    "versions": 6,
+    "stop_reason": "budget",
+    "status": "ok_audit_issues",
+    "best_version": 4,
+    "fields": 1188,
+    "forms": 42,
+    "pages_with_fields": 191,
+    "audit_issues": 6,
+    "warnings": [
+     "The program filters by 17 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+    ],
+    "elapsed_s": 453.695,
+    "stage0_s": 13.359,
+    "llm_s": 139.718,
+    "llm_calls": 10,
+    "pass": 2,
+    "clusters": [
+     3,
+     4,
+     7
+    ]
+   },
+   {
+    "doc": "crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023",
+    "versions": 6,
+    "stop_reason": "plateau",
+    "status": "ok_audit_issues",
+    "best_version": 2,
+    "fields": 104,
+    "forms": 1,
+    "pages_with_fields": 29,
+    "audit_issues": 11,
+    "warnings": [
+     "The program filters by 28 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+    ],
+    "elapsed_s": 244.635,
+    "stage0_s": 13.359,
+    "llm_s": 229.152,
+    "llm_calls": 11,
+    "pass": 3,
+    "clusters": [
+     8,
+     9,
+     10,
+     11
+    ]
+   },
+   {
+    "doc": "crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023",
+    "versions": 6,
+    "stop_reason": "plateau",
+    "status": "ok_audit_issues",
+    "best_version": 2,
+    "fields": 143,
+    "forms": 11,
+    "pages_with_fields": 23,
+    "audit_issues": 45,
+    "warnings": [],
+    "elapsed_s": 288.687,
+    "stage0_s": 13.359,
+    "llm_s": 272.157,
+    "llm_calls": 12,
+    "pass": 4,
+    "clusters": [
+     12,
+     15,
+     16,
+     17,
+     18
+    ]
+   },
+   {
+    "doc": "crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023",
+    "versions": 2,
+    "stop_reason": "converged",
+    "status": "ok_with_warnings",
+    "best_version": 2,
+    "fields": 3,
+    "forms": 1,
+    "pages_with_fields": 3,
+    "audit_issues": 0,
+    "warnings": [
+     "Only 3 records from this 3-page document - plausible for a document this small, but make sure no fields were missed.",
+     "The program filters by 17 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+    ],
+    "elapsed_s": 66.04,
+    "stage0_s": 13.359,
+    "llm_s": 59.544,
+    "llm_calls": 3,
+    "pass": 5,
+    "clusters": [
+     19
+    ]
+   }
+  ],
+  "elapsed_s": 1412.803,
+  "stage0_s": 13.359,
+  "llm_s": 1041.361,
+  "llm_calls": 49
+ },
+ {
+  "doc": "crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023",
+  "status": "needs_manual_template",
+  "multipass": 5,
+  "version_budget": 6,
+  "versions": 25,
+  "stop_reason": "p1:budget;p2:plateau;p3:budget;p4:plateau;p5:converged",
+  "fields": 2396,
+  "forms": 105,
+  "pages_with_fields": 368,
+  "audit_issues": null,
+  "passes": [
+   {
+    "doc": "crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023",
+    "versions": 6,
+    "stop_reason": "budget",
+    "status": "ok_audit_issues",
+    "best_version": 4,
+    "fields": 2249,
+    "forms": 103,
+    "pages_with_fields": 318,
+    "audit_issues": 4,
+    "warnings": [],
+    "elapsed_s": 230.933,
+    "stage0_s": 12.609,
+    "llm_s": 215.995,
+    "llm_calls": 10,
+    "pass": 1,
+    "clusters": [
+     0,
+     1,
+     2,
+     5,
+     6,
+     13,
+     14,
+     20,
+     21,
+     22,
+     23,
+     24,
+     25
+    ]
+   },
+   {
+    "doc": "crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023",
+    "versions": 6,
+    "stop_reason": "plateau",
+    "status": "needs_manual_template",
+    "elapsed_s": 293.725,
+    "stage0_s": 12.609,
+    "llm_s": 279.994,
+    "llm_calls": 9,
+    "pass": 2,
+    "clusters": [
+     3,
+     4,
+     7
+    ]
+   },
+   {
+    "doc": "crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023",
+    "versions": 6,
+    "stop_reason": "budget",
+    "status": "ok_audit_issues",
+    "best_version": 1,
+    "fields": 71,
+    "forms": 0,
+    "pages_with_fields": 35,
+    "audit_issues": 6,
+    "warnings": [
+     "form_name empty for 100% of records - if the document does print form/section names, fix the form_name strategy (consider carrying the last seen title forward).",
+     "The program filters by 29 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+    ],
+    "elapsed_s": 248.618,
+    "stage0_s": 12.609,
+    "llm_s": 231.197,
+    "llm_calls": 13,
+    "pass": 3,
+    "clusters": [
+     8,
+     9,
+     10,
+     11
+    ]
+   },
+   {
+    "doc": "crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023",
+    "versions": 5,
+    "stop_reason": "plateau",
+    "status": "ok_audit_issues",
+    "best_version": 3,
+    "fields": 73,
+    "forms": 8,
+    "pages_with_fields": 12,
+    "audit_issues": 25,
+    "warnings": [],
+    "elapsed_s": 269.114,
+    "stage0_s": 12.609,
+    "llm_s": 254.22,
+    "llm_calls": 11,
+    "pass": 4,
+    "clusters": [
+     12,
+     15,
+     16,
+     17,
+     18
+    ]
+   },
+   {
+    "doc": "crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023",
+    "versions": 2,
+    "stop_reason": "converged",
+    "status": "ok_with_warnings",
+    "best_version": 2,
+    "fields": 3,
+    "forms": 1,
+    "pages_with_fields": 3,
+    "audit_issues": 0,
+    "warnings": [
+     "Only 3 records from this 3-page document - plausible for a document this small, but make sure no fields were missed."
+    ],
+    "elapsed_s": 55.705,
+    "stage0_s": 12.609,
+    "llm_s": 48.904,
+    "llm_calls": 3,
+    "pass": 5,
+    "clusters": [
+     19
+    ]
+   }
+  ],
+  "elapsed_s": 1098.301,
+  "stage0_s": 12.609,
+  "llm_s": 1030.31,
+  "llm_calls": 46
+ },
+ {
+  "doc": "crf_forms_384-201-00002_Annotated_Unique_CRF_04Nov2024",
+  "versions": 3,
+  "stop_reason": "plateau",
+  "status": "ok_audit_issues",
+  "best_version": 1,
+  "fields": 787,
+  "forms": 76,
+  "pages_with_fields": 149,
+  "audit_issues": 1,
+  "warnings": [],
+  "elapsed_s": 85.461,
+  "stage0_s": 2.766,
+  "llm_s": 80.251,
+  "llm_calls": 7,
+  "version_budget": 5
+ },
+ {
+  "doc": "crf_forms_384-201-00004_Annotated_CRF___v1.0_05_Mar_2025",
+  "status": "ok_with_warnings",
+  "multipass": 2,
+  "version_budget": 5,
+  "versions": 6,
+  "stop_reason": "p1:converged;p2:converged",
+  "fields": 655,
+  "forms": 58,
+  "pages_with_fields": 134,
+  "audit_issues": 0,
+  "passes": [
+   {
+    "doc": "crf_forms_384-201-00004_Annotated_CRF___v1.0_05_Mar_2025",
+    "versions": 4,
+    "stop_reason": "converged",
+    "status": "ok",
+    "best_version": 4,
+    "fields": 607,
+    "forms": 57,
+    "pages_with_fields": 131,
+    "audit_issues": 0,
+    "warnings": [],
+    "elapsed_s": 121.639,
+    "stage0_s": 4.52,
+    "llm_s": 112.608,
+    "llm_calls": 9,
+    "pass": 1,
+    "clusters": [
+     0,
+     1,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11
+    ]
+   },
+   {
+    "doc": "crf_forms_384-201-00004_Annotated_CRF___v1.0_05_Mar_2025",
+    "versions": 2,
+    "stop_reason": "converged",
+    "status": "ok_with_warnings",
+    "best_version": 2,
+    "fields": 48,
+    "forms": 3,
+    "pages_with_fields": 3,
+    "audit_issues": 0,
+    "warnings": [
+     "The program filters by 13 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+    ],
+    "elapsed_s": 112.471,
+    "stage0_s": 4.52,
+    "llm_s": 106.4,
+    "llm_calls": 5,
+    "pass": 2,
+    "clusters": [
+     2,
+     3
+    ]
+   }
+  ],
+  "elapsed_s": 234.167,
+  "stage0_s": 4.52,
+  "llm_s": 219.008,
+  "llm_calls": 14
+ },
+ {
+  "doc": "crf_forms_384-201-00004_Annotated_CRF___v2.0_20_May_2025",
+  "status": "ok_audit_issues",
+  "multipass": 2,
+  "version_budget": 5,
+  "versions": 6,
+  "stop_reason": "p1:budget;p2:converged",
+  "fields": 256,
+  "forms": 57,
+  "pages_with_fields": 57,
+  "audit_issues": 11,
+  "passes": [
+   {
+    "doc": "crf_forms_384-201-00004_Annotated_CRF___v2.0_20_May_2025",
+    "versions": 5,
+    "stop_reason": "budget",
+    "status": "ok_audit_issues",
+    "best_version": 3,
+    "fields": 256,
+    "forms": 57,
+    "pages_with_fields": 57,
+    "audit_issues": 11,
+    "warnings": [],
+    "elapsed_s": 139.977,
+    "stage0_s": 4.311,
+    "llm_s": 128.844,
+    "llm_calls": 9,
+    "pass": 1,
+    "clusters": [
+     0,
+     1,
+     2,
+     3,
+     5
+    ]
+   },
+   {
+    "doc": "crf_forms_384-201-00004_Annotated_CRF___v2.0_20_May_2025",
+    "versions": 1,
+    "stop_reason": "converged",
+    "status": "ok_with_warnings",
+    "best_version": 1,
+    "fields": 0,
+    "forms": 0,
+    "pages_with_fields": 0,
+    "audit_issues": 0,
+    "warnings": [
+     "This pass's layout scope produced ZERO records - correct only if these layouts genuinely carry few or no data-entry fields; the page audit will verify that claim.",
+     "form_name empty for 100% of records - if the document does print form/section names, fix the form_name strategy (consider carrying the last seen title forward).",
+     "Only 0% of field_name values look like human labels (they look like codes/dates/junk) - fix label selection."
+    ],
+    "elapsed_s": 21.299,
+    "stage0_s": 4.311,
+    "llm_s": 18.023,
+    "llm_calls": 3,
+    "pass": 2,
+    "clusters": [
+     4
+    ]
+   }
+  ],
+  "elapsed_s": 161.355,
+  "stage0_s": 4.311,
+  "llm_s": 146.867,
+  "llm_calls": 12
+ },
+ {
+  "doc": "crf_forms_384-201-00004_aCRF_16JAN2025",
+  "status": "ok_audit_issues",
+  "multipass": 2,
+  "version_budget": 5,
+  "versions": 6,
+  "stop_reason": "p1:budget;p2:converged",
+  "fields": 229,
+  "forms": 51,
+  "pages_with_fields": 51,
+  "audit_issues": 5,
+  "passes": [
+   {
+    "doc": "crf_forms_384-201-00004_aCRF_16JAN2025",
+    "versions": 5,
+    "stop_reason": "budget",
+    "status": "ok_audit_issues",
+    "best_version": 2,
+    "fields": 229,
+    "forms": 51,
+    "pages_with_fields": 51,
+    "audit_issues": 5,
+    "warnings": [],
+    "elapsed_s": 188.543,
+    "stage0_s": 2.829,
+    "llm_s": 181.51,
+    "llm_calls": 8,
+    "pass": 1,
+    "clusters": [
+     0,
+     1,
+     2,
+     4
+    ]
+   },
+   {
+    "doc": "crf_forms_384-201-00004_aCRF_16JAN2025",
+    "versions": 1,
+    "stop_reason": "converged",
+    "status": "ok_with_warnings",
+    "best_version": 1,
+    "fields": 0,
+    "forms": 0,
+    "pages_with_fields": 0,
+    "audit_issues": 0,
+    "warnings": [
+     "This pass's layout scope produced ZERO records - correct only if these layouts genuinely carry few or no data-entry fields; the page audit will verify that claim.",
+     "form_name empty for 100% of records - if the document does print form/section names, fix the form_name strategy (consider carrying the last seen title forward).",
+     "Only 0% of field_name values look like human labels (they look like codes/dates/junk) - fix label selection."
+    ],
+    "elapsed_s": 34.106,
+    "stage0_s": 2.829,
+    "llm_s": 31.311,
+    "llm_calls": 3,
+    "pass": 2,
+    "clusters": [
+     3
+    ]
+   }
+  ],
+  "elapsed_s": 222.677,
+  "stage0_s": 2.829,
+  "llm_s": 212.821,
+  "llm_calls": 11
+ },
+ {
+  "doc": "crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025",
+  "status": "ok_audit_issues",
+  "multipass": 3,
+  "version_budget": 6,
+  "versions": 15,
+  "stop_reason": "p1:plateau;p2:budget;p3:plateau",
+  "fields": 2951,
+  "forms": 78,
+  "pages_with_fields": 464,
+  "audit_issues": 50,
+  "passes": [
+   {
+    "doc": "crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025",
+    "versions": 4,
+    "stop_reason": "plateau",
+    "status": "ok_audit_issues",
+    "best_version": 2,
+    "fields": 1620,
+    "forms": 55,
+    "pages_with_fields": 333,
+    "audit_issues": 6,
+    "warnings": [],
+    "elapsed_s": 219.441,
+    "stage0_s": 15.981,
+    "llm_s": 174.133,
+    "llm_calls": 9,
+    "pass": 1,
+    "clusters": [
+     0,
+     1,
+     6
+    ]
+   },
+   {
+    "doc": "crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025",
+    "versions": 6,
+    "stop_reason": "budget",
+    "status": "ok_audit_issues",
+    "best_version": 5,
+    "fields": 1239,
+    "forms": 18,
+    "pages_with_fields": 103,
+    "audit_issues": 39,
+    "warnings": [],
+    "elapsed_s": 374.482,
+    "stage0_s": 15.981,
+    "llm_s": 311.087,
+    "llm_calls": 11,
+    "pass": 2,
+    "clusters": [
+     2,
+     3,
+     4
+    ]
+   },
+   {
+    "doc": "crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025",
+    "versions": 5,
+    "stop_reason": "plateau",
+    "status": "ok_audit_issues",
+    "best_version": 3,
+    "fields": 92,
+    "forms": 5,
+    "pages_with_fields": 28,
+    "audit_issues": 5,
+    "warnings": [
+     "form_name empty for 34% of records - if the document does print form/section names, fix the form_name strategy (consider carrying the last seen title forward)."
+    ],
+    "elapsed_s": 241.582,
+    "stage0_s": 15.981,
+    "llm_s": 186.826,
+    "llm_calls": 9,
+    "pass": 3,
+    "clusters": [
+     5,
+     7,
+     8
+    ]
+   }
+  ],
+  "elapsed_s": 835.573,
+  "stage0_s": 15.981,
+  "llm_s": 672.046,
+  "llm_calls": 29
+ },
+ {
+  "doc": "crf_forms_QSC302573_Final_AnnotatedCRFs_16Oct2024-326-201-00007_1_",
+  "status": "ok_audit_issues",
+  "multipass": 2,
+  "version_budget": 5,
+  "versions": 9,
+  "stop_reason": "p1:budget;p2:plateau",
+  "fields": 2264,
+  "forms": 16,
+  "pages_with_fields": 604,
+  "audit_issues": 7,
+  "passes": [
+   {
+    "doc": "crf_forms_QSC302573_Final_AnnotatedCRFs_16Oct2024-326-201-00007_1_",
+    "versions": 5,
+    "stop_reason": "budget",
+    "status": "ok_audit_issues",
+    "best_version": 4,
+    "fields": 2261,
+    "forms": 16,
+    "pages_with_fields": 601,
+    "audit_issues": 4,
+    "warnings": [],
+    "elapsed_s": 177.452,
+    "stage0_s": 5.464,
+    "llm_s": 158.671,
+    "llm_calls": 10,
+    "pass": 1,
+    "clusters": [
+     0,
+     2
+    ]
+   },
+   {
+    "doc": "crf_forms_QSC302573_Final_AnnotatedCRFs_16Oct2024-326-201-00007_1_",
+    "versions": 4,
+    "stop_reason": "plateau",
+    "status": "ok_audit_issues",
+    "best_version": 2,
+    "fields": 3,
+    "forms": 3,
+    "pages_with_fields": 3,
+    "audit_issues": 3,
+    "warnings": [
+     "Only 3 records from this 3-page document - plausible for a document this small, but make sure no fields were missed."
+    ],
+    "elapsed_s": 93.208,
+    "stage0_s": 5.464,
+    "llm_s": 78.294,
+    "llm_calls": 8,
+    "pass": 2,
+    "clusters": [
+     1
+    ]
+   }
+  ],
+  "elapsed_s": 270.706,
+  "stage0_s": 5.464,
+  "llm_s": 236.965,
+  "llm_calls": 18
+ },
+ {
+  "doc": "crf_forms_annotatedCRF_33120100246-_v1.0_-17Aug2021",
+  "status": "ok_audit_issues",
+  "multipass": 5,
+  "version_budget": 5,
+  "versions": 25,
+  "stop_reason": "p1:plateau;p2:budget;p3:budget;p4:budget;p5:budget",
+  "fields": 2467,
+  "forms": 101,
+  "pages_with_fields": 520,
+  "audit_issues": 95,
+  "passes": [
+   {
+    "doc": "crf_forms_annotatedCRF_33120100246-_v1.0_-17Aug2021",
+    "versions": 5,
+    "stop_reason": "plateau",
+    "status": "ok_audit_issues",
+    "best_version": 3,
+    "fields": 1451,
+    "forms": 93,
+    "pages_with_fields": 347,
+    "audit_issues": 3,
+    "warnings": [
+     "The program filters by 10 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+    ],
+    "elapsed_s": 211.266,
+    "stage0_s": 10.054,
+    "llm_s": 198.838,
+    "llm_calls": 10,
+    "pass": 1,
+    "clusters": [
+     0,
+     1,
+     2,
+     3,
+     16,
+     19,
+     23,
+     24,
+     25,
+     26,
+     27,
+     28,
+     29,
+     30,
+     31,
+     32,
+     33,
+     34
+    ]
+   },
+   {
+    "doc": "crf_forms_annotatedCRF_33120100246-_v1.0_-17Aug2021",
+    "versions": 5,
+    "stop_reason": "budget",
+    "status": "ok_audit_issues",
+    "best_version": 5,
+    "fields": 441,
+    "forms": 7,
+    "pages_with_fields": 98,
+    "audit_issues": 11,
+    "warnings": [
+     "The program filters by 25 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+    ],
+    "elapsed_s": 271.551,
+    "stage0_s": 10.054,
+    "llm_s": 258.58,
+    "llm_calls": 9,
+    "pass": 2,
+    "clusters": [
+     4,
+     5,
+     6
+    ]
+   },
+   {
+    "doc": "crf_forms_annotatedCRF_33120100246-_v1.0_-17Aug2021",
+    "versions": 5,
+    "stop_reason": "budget",
+    "status": "ok_audit_issues",
+    "best_version": 4,
+    "fields": 504,
+    "forms": 0,
+    "pages_with_fields": 52,
+    "audit_issues": 48,
+    "warnings": [
+     "form_name empty for 100% of records - if the document does print form/section names, fix the form_name strategy (consider carrying the last seen title forward).",
+     "The program filters by 27 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+    ],
+    "elapsed_s": 222.978,
+    "stage0_s": 10.054,
+    "llm_s": 210.361,
+    "llm_calls": 7,
+    "pass": 3,
+    "clusters": [
+     7,
+     8,
+     9,
+     10
+    ]
+   },
+   {
+    "doc": "crf_forms_annotatedCRF_33120100246-_v1.0_-17Aug2021",
+    "versions": 5,
+    "stop_reason": "budget",
+    "status": "ok_audit_issues",
+    "best_version": 4,
+    "fields": 18,
+    "forms": 2,
+    "pages_with_fields": 9,
+    "audit_issues": 16,
+    "warnings": [],
+    "elapsed_s": 236.453,
+    "stage0_s": 10.054,
+    "llm_s": 225.113,
+    "llm_calls": 9,
+    "pass": 4,
+    "clusters": [
+     11,
+     12,
+     13,
+     14,
+     15,
+     17
+    ]
+   },
+   {
+    "doc": "crf_forms_annotatedCRF_33120100246-_v1.0_-17Aug2021",
+    "versions": 5,
+    "stop_reason": "budget",
+    "status": "ok_audit_issues",
+    "best_version": 5,
+    "fields": 53,
+    "forms": 10,
+    "pages_with_fields": 14,
+    "audit_issues": 17,
+    "warnings": [
+     "The program filters by 20 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+    ],
+    "elapsed_s": 161.498,
+    "stage0_s": 10.054,
+    "llm_s": 147.875,
+    "llm_calls": 9,
+    "pass": 5,
+    "clusters": [
+     18,
+     20,
+     21,
+     22
+    ]
+   }
+  ],
+  "elapsed_s": 1103.85,
+  "stage0_s": 10.054,
+  "llm_s": 1040.767,
+  "llm_calls": 44
+ }
+]

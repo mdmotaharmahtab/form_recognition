@@ -1,0 +1,229 @@
+{
+ "stop_reason": "converged",
+ "versions": 2,
+ "best_version": 2,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "confirm",
+   "metrics": {
+    "engine": "codegen",
+    "records": 36,
+    "pages_total": 21,
+    "pages_with_fields": 3,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 97,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 3,
+    "fields_per_form": 12.0,
+    "forms_per_100_pages": 14.3,
+    "form_same_page_evidence_records": 36,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 14
+   },
+   "problems": [],
+   "outcome": "extension_rejected"
+  },
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 41,
+    "pages_total": 21,
+    "pages_with_fields": 3,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 3,
+    "fields_per_form": 13.7,
+    "forms_per_100_pages": 14.3,
+    "form_same_page_evidence_records": 41,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 14
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 12,
+   "audit_pages": [
+    5,
+    9,
+    14,
+    54,
+    56,
+    74
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 5,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 9,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 14,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 54,
+     "missed": [
+      "given for",
+      "Total dose",
+      "Dose form",
+      "Dose unit",
+      "Frequency"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 56,
+     "missed": [
+      "Total dose",
+      "Dose form",
+      "Dose unit",
+      "Frequency",
+      "Indication",
+      "Start date",
+      "Stop date"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 74,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    12,
+    0,
+    -3
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 48,
+    "pages_total": 21,
+    "pages_with_fields": 3,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 3,
+    "fields_per_form": 16.0,
+    "forms_per_100_pages": 14.3,
+    "form_same_page_evidence_records": 48,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 14
+   },
+   "problems": [],
+   "warnings": [
+    "The program filters by 13 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": 0,
+   "audit_pages": [
+    5,
+    6,
+    9,
+    14,
+    25,
+    54,
+    56,
+    74
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 5,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 6,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 9,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 14,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 25,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 54,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 56,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 74,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    0,
+    1,
+    -3
+   ],
+   "became_best": true
+  }
+ ]
+}

@@ -148,9 +148,28 @@ route them through the closest compatible handler or a tolerant generic path.
 
 # Reply format
 
-Reply with ONLY Python source code (no prose outside code comments). Start with a
-comment block (3-6 lines) stating what layout you observed in the samples and the
-extraction strategy you chose. Then define extract(pages) plus any helpers.
+Answer in TWO parts, in this order, in one reply:
+
+1. STRATEGY (plain language, NO code). Begin with a line "STRATEGY:" then 6-12
+   short sentences describing the GENERAL extraction logic you will implement -
+   rules meant to hold over the pages you were NOT shown, not a description of the
+   sampled pages. Decide the approach in words first; that is the point of this
+   step. Commit explicitly to:
+     - how you locate the form/section title, AND what you do on pages where the
+       title is absent, smaller, or positioned differently. A form runs across
+       many pages, so most pages will NOT reprint the title: state how you carry
+       the current title forward instead of skipping a page that lacks one.
+     - how you tell a data-entry field from an answer option, a reference or
+       enumeration table row, and page furniture - by geometry, style and
+       position, never by specific wording.
+     - how you ensure every content-bearing page that holds fields yields them
+       (no whole-page skips keyed on a single cue such as one font size, one
+       y-position, or one wording).
+
+2. CODE. Then give the program as a SINGLE ```python fenced code block: open with
+   a short comment (2-4 lines) noting the layout you observed, then define
+   extract(pages) plus any helpers. Put NO prose outside this block. The code
+   must implement the STRATEGY above.
 
 # Representative pages of this document
 
@@ -175,7 +194,13 @@ Sample of extracted records (pN: form_name | field_name):
 Problems to fix (in priority order):
 {problems}
 {cluster_feedback}
-Rewrite the program now. Same reply format: Python source only, define extract(pages).
+Rewrite the program now, in the SAME two-part reply format: FIRST a short
+"STRATEGY:" section in plain language (no code) stating how this revision handles
+the form/section title - including pages where the title is absent, smaller, or
+placed differently, via carrying the current title forward - how it separates
+data-entry fields from options / table rows / furniture structurally, and how it
+covers every content-bearing page; THEN the program as a SINGLE ```python fenced
+code block defining extract(pages).
 Where your program already works, EXTEND it rather than rewriting it - do not lose
 coverage on pages that were extracting correctly. Different page layouts may need
 different handling inside the same extract() function.
@@ -223,18 +248,50 @@ For each sampled page decide: does this layout carry data-entry fields your prog
 Reply with EXACTLY one of:
 - the single line: CONFIRM_NO_FIELDS
   (meaning: all shown layouts are genuinely field-free; the program is complete), or
-- the FULL updated Python program (same reply format: source only, define
-  extract(pages)) that keeps existing behavior for covered layouts and ADDS
-  handling for the missed ones.
+- an EXTENSION, in the same two-part format as before: FIRST a short "STRATEGY:"
+  section in plain language (no code) saying what field-bearing structure you now
+  see on these pages, how you will locate their form/section title - including
+  pages that do not reprint it, which you handle by carrying the current title
+  forward rather than skipping the page - and how you separate their fields from
+  options / table rows / furniture structurally; THEN the FULL updated program as
+  a SINGLE ```python fenced code block defining extract(pages), keeping existing
+  behavior for covered layouts and ADDING handling for the missed ones.
 """
 
 _FENCE = re.compile(r"```(?:python)?\s*\n(.*?)```", re.S)
 
 
+def _parses(src: str) -> bool:
+    try:
+        ast.parse(src)
+        return True
+    except SyntaxError:
+        return False
+
+
 def extract_source(raw: str) -> str:
-    """Accept both bare source and fenced code blocks."""
+    """Extract the program from a model reply.
+
+    Handles three shapes: (1) a fenced ```python block - the largest wins;
+    (2) bare source (returned verbatim, including any leading module-level
+    constants); (3) the STRATEGY-then-code reply format, where a plain-language
+    section precedes UNFENCED code. Case (3) is detected by parseability: valid
+    bare source is returned untouched, and only when the whole text does NOT
+    parse do we drop leading lines until the remainder is valid Python (the
+    prose stripped away). This never discards real top-level code the way a
+    keyword-anchored heuristic would."""
     blocks = _FENCE.findall(raw)
-    return (max(blocks, key=len) if blocks else raw).strip()
+    if blocks:
+        return max(blocks, key=len).strip()
+    text = raw.strip()
+    if not text or _parses(text):
+        return text
+    lines = text.splitlines()
+    for i in range(1, len(lines)):
+        cand = "\n".join(lines[i:]).strip()
+        if cand and _parses(cand):
+            return cand
+    return text
 
 
 def run_extractor(source: str, pdf_path: str, timeout_s: int = 300) -> ReplayResult:
@@ -391,6 +448,46 @@ def cluster_stats(result, meta: dict) -> list[dict]:
             "hole_pages": holes[:40],  # 0-based; capped, feedback only samples a few
         })
     return stats
+
+
+# Doc-wide coverage floor. A MAIN-pass program that leaves more than this share
+# of CONTENT-BEARING pages with zero records has over-gated (typically anchored
+# a whole page on one fixed cue - a font size, a y-position, a wording - that
+# many pages legitimately lack). The share is measured only over pages that
+# provably carry content (>= 3 text lines), so blank/furniture pages never count
+# against it, and the loop clears the floor entirely once the model confirms the
+# uncovered layouts are field-free. Env-overridable for probes; NOT tuned per doc.
+COVERAGE_FLOOR_UNCOVERED_PCT = int(os.environ.get("ECS_COVERAGE_FLOOR_PCT", "50"))
+
+# Credibility bar for a blanket "the uncovered layouts are field-free" answer,
+# which otherwise stands the floor down for the rest of the document. Deliberately
+# ABOVE the floor: between the two values a claim can still excuse a coverage hole
+# (some books really do carry many instruction/TOC/reference pages), but past this
+# point the program is reading under a quarter of the document's content-bearing
+# pages, so "all the rest holds no data-entry fields" is not a credible statement
+# about a form book - it is the excuse a title-gated program would use to dodge the
+# floor. Rejecting it only costs bounded extra revisions; the best version is still
+# what gets exported.
+FIELD_FREE_CLAIM_MAX_UNCOVERED_PCT = int(
+    os.environ.get("ECS_FIELD_FREE_MAX_UNCOVERED_PCT", "75"))
+
+
+def coverage_floor_metrics(stats: list[dict]) -> dict:
+    """Doc-wide coverage over CONTENT-BEARING pages, from per-cluster stats.
+
+    content pages = covered pages (they emitted records) + uncovered pages that
+    carry content (`uncovered_content` holes). Blank/furniture pages are in
+    neither term, so a document of mostly-empty template pages is not penalized.
+    Returns 100% covered for an empty stat set (nothing to judge)."""
+    covered = sum(s.get("pages_with_records", 0) for s in stats)
+    holes = sum(s.get("uncovered_content", 0) for s in stats)
+    content_total = covered + holes
+    if content_total <= 0:
+        return {"content_pages": 0, "content_covered_pct": 100,
+                "uncovered_content_pct": 0}
+    return {"content_pages": content_total,
+            "content_covered_pct": round(100 * covered / content_total),
+            "uncovered_content_pct": round(100 * holes / content_total)}
 
 
 def weak_clusters(stats: list[dict], doc_pages: int | None = None,
@@ -709,6 +806,7 @@ def validate_generated(pdf_path: str, raw_reply: str, outdir: str | None = None,
             weak = weak_clusters(stats, doc_pages=meta["pages"])
             metrics["pages_covered_pct"] = round(
                 100 * len(result.covered_pages) / max(1, meta["pages"]))
+            metrics.update(coverage_floor_metrics(stats))
             if weak:
                 cluster_feedback = build_cluster_feedback(pdf_path, weak, meta, stats)
             if not cluster_feedback:

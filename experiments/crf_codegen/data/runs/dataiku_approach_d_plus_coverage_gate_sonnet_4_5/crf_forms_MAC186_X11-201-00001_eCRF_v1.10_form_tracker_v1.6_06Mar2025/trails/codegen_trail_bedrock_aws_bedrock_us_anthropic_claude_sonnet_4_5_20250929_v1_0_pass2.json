@@ -1,0 +1,687 @@
+{
+ "stop_reason": "budget",
+ "versions": 6,
+ "best_version": 5,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 422,
+    "pages_total": 131,
+    "pages_with_fields": 104,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 20,
+    "fields_per_form": 21.1,
+    "forms_per_100_pages": 15.3,
+    "form_same_page_evidence_records": 405,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 79,
+    "content_pages": 131,
+    "content_covered_pct": 79,
+    "uncovered_content_pct": 21
+   },
+   "problems": [
+    "Extreme content-fitted blocklist. The program filters by 32 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "warnings": [],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    1,
+    "not_audited",
+    0,
+    -104
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "confirm",
+   "metrics": {
+    "engine": "codegen",
+    "records": 729,
+    "pages_total": 131,
+    "pages_with_fields": 70,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 14,
+    "fields_per_form": 52.1,
+    "forms_per_100_pages": 10.7,
+    "form_same_page_evidence_records": 729,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 53,
+    "content_pages": 131,
+    "content_covered_pct": 53,
+    "uncovered_content_pct": 47
+   },
+   "problems": [],
+   "outcome": "extended_program"
+  },
+  {
+   "version": 2,
+   "kind": "revise_gates",
+   "metrics": {
+    "engine": "codegen",
+    "records": 440,
+    "pages_total": 131,
+    "pages_with_fields": 53,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 13,
+    "fields_per_form": 33.8,
+    "forms_per_100_pages": 9.9,
+    "form_same_page_evidence_records": 440,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 40,
+    "content_pages": 131,
+    "content_covered_pct": 40,
+    "uncovered_content_pct": 60
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    0,
+    "not_audited",
+    0,
+    -53
+   ],
+   "became_best": false
+  },
+  {
+   "version": 3,
+   "kind": "confirm_extension",
+   "metrics": {
+    "engine": "codegen",
+    "records": 729,
+    "pages_total": 131,
+    "pages_with_fields": 70,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 14,
+    "fields_per_form": 52.1,
+    "forms_per_100_pages": 10.7,
+    "form_same_page_evidence_records": 729,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 53,
+    "content_pages": 131,
+    "content_covered_pct": 53,
+    "uncovered_content_pct": 47
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 23,
+   "audit_pages": [
+    16,
+    34,
+    53,
+    319,
+    512,
+    604
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 16,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 34,
+     "missed": [],
+     "false": [
+      "Yes No",
+      "Medication, Minimally adequate dose level, Minimal",
+      "dose at optional level"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 53,
+     "missed": [
+      "Repetition Number",
+      "Vital Signs Date",
+      "Position Time",
+      "Vital Signs Time",
+      "Not Done",
+      "Test",
+      "Result",
+      "Interpretation",
+      "Reason Not Done"
+     ],
+     "false": [
+      "Yes No"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 319,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 512,
+     "missed": [
+      "Result",
+      "Reason Not Done"
+     ],
+     "false": [
+      "Yes No",
+      "Position Time ECG Time Interpretation Interpretation Comment Not Done Test"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 604,
+     "missed": [
+      "Sample Performed",
+      "Reason Not Done",
+      "Sample Date",
+      "Sample Time",
+      "Primary Sample Accession Number",
+      "Back Up Sample Accession Number"
+     ],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    23,
+    0,
+    -70
+   ],
+   "became_best": false
+  },
+  {
+   "version": 4,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 753,
+    "pages_total": 131,
+    "pages_with_fields": 82,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 15,
+    "fields_per_form": 50.2,
+    "forms_per_100_pages": 11.5,
+    "form_same_page_evidence_records": 753,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 63,
+    "content_pages": 131,
+    "content_covered_pct": 63,
+    "uncovered_content_pct": 37
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 35,
+   "audit_pages": [
+    16,
+    17,
+    34,
+    53,
+    167,
+    319,
+    512,
+    604
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 16,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 17,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 34,
+     "missed": [
+      "MGH Assessment Performed",
+      "Taken during THIS current episode",
+      "Minimally adequate dose",
+      "Minimal dose at optimal level",
+      "Scale for % Improvement"
+     ],
+     "false": [
+      "Yes No",
+      "Medication, Minimally adequate dose level, Minimal",
+      "dose at optional level"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 53,
+     "missed": [
+      "Vital Signs Performed",
+      "Repetition Number",
+      "Vital Signs Date",
+      "Position Time",
+      "Vital Signs Time",
+      "Not Done",
+      "Test",
+      "Result",
+      "Interpretation",
+      "Reason Not Done"
+     ],
+     "false": [
+      "Yes No"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 167,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 319,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 512,
+     "missed": [
+      "ECG Performed",
+      "ECG Time",
+      "Interpretation",
+      "Interpretation Comment",
+      "Not Done",
+      "Test",
+      "Result",
+      "Reason Not Done"
+     ],
+     "false": [
+      "Yes No",
+      "Position Time ECG Time Interpretation Interpretation Comment Not Done Test"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 604,
+     "missed": [
+      "Sample Performed",
+      "Reason Not Done",
+      "Sample Date",
+      "Sample Time",
+      "Primary Sample Accession Number",
+      "Back Up Sample Accession Number"
+     ],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    35,
+    0,
+    -82
+   ],
+   "became_best": false
+  },
+  {
+   "version": 5,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 915,
+    "pages_total": 131,
+    "pages_with_fields": 103,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 19,
+    "fields_per_form": 48.2,
+    "forms_per_100_pages": 14.5,
+    "form_same_page_evidence_records": 915,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 79,
+    "content_pages": 131,
+    "content_covered_pct": 79,
+    "uncovered_content_pct": 21
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 30,
+   "audit_pages": [
+    16,
+    22,
+    34,
+    46,
+    53,
+    319,
+    512,
+    604
+   ],
+   "audit_partial": null,
+   "audit_promoted": [
+    46
+   ],
+   "audit_verdicts": [
+    {
+     "page": 16,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 22,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 34,
+     "missed": [
+      "Taken during THIS current episode",
+      "Minimally adequate dose",
+      "Minimal dose at optimal level",
+      "Scale for % Improvement"
+     ],
+     "false": [
+      "Yes No",
+      "Medication, Minimally adequate dose level, Minimal",
+      "dose at optional level"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 46,
+     "missed": [
+      "Test",
+      "Test Date",
+      "Test Time",
+      "Result",
+      "Comments"
+     ],
+     "false": [
+      "Alcohol Breath Test",
+      "Urine Cotinine"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 53,
+     "missed": [
+      "Repetition Number",
+      "Vital Signs Date",
+      "Position Time",
+      "Vital Signs Time",
+      "Not Done",
+      "Test",
+      "Result",
+      "Interpretation",
+      "Reason Not Done"
+     ],
+     "false": [
+      "Yes No"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 319,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 512,
+     "missed": [
+      "Result",
+      "Reason Not Done"
+     ],
+     "false": [
+      "Yes No",
+      "Position Time ECG Time Interpretation Interpretation Comment Not Done Test"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 604,
+     "missed": [],
+     "false": [
+      "Sample Performed Reason Not Done",
+      "Sample Date Sample Time Primary Sample Accession Number Back Up Sample Accession Number"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    30,
+    0,
+    -103
+   ],
+   "became_best": true
+  },
+  {
+   "version": 6,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 954,
+    "pages_total": 131,
+    "pages_with_fields": 103,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 93,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 19,
+    "fields_per_form": 50.2,
+    "forms_per_100_pages": 14.5,
+    "form_same_page_evidence_records": 954,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 79,
+    "content_pages": 131,
+    "content_covered_pct": 79,
+    "uncovered_content_pct": 21
+   },
+   "problems": [],
+   "warnings": [
+    "The program filters by 16 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": 63,
+   "audit_pages": [
+    16,
+    34,
+    46,
+    53,
+    55,
+    319,
+    512,
+    604
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 16,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 34,
+     "missed": [
+      "Taken during THIS current episode",
+      "Minimally adequate dose",
+      "Minimal dose at optimal level",
+      "Scale for % Improvement"
+     ],
+     "false": [
+      "Yes  [1]",
+      "Yes",
+      "Medication, Minimally adequate dose level, Minimal",
+      "dose at optional level"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 46,
+     "missed": [
+      "Reason Not Performed",
+      "Test Date",
+      "Test Time",
+      "Result",
+      "Comments"
+     ],
+     "false": [
+      "Test  [1]",
+      "[2] Reason Not Performed",
+      "[3]",
+      "Test Date  [4]",
+      "[5] Result",
+      "[6]",
+      "Comments  [7]"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 53,
+     "missed": [
+      "Repetition Number",
+      "Position Time",
+      "Vital Signs Time",
+      "Not Done",
+      "Test",
+      "Result",
+      "Interpretation",
+      "Reason Not Done"
+     ],
+     "false": [
+      "Yes  [1]",
+      "Yes"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 55,
+     "missed": [
+      "Position Time",
+      "ECG Time",
+      "Interpretation",
+      "Interpretation Comment",
+      "Not Done",
+      "Test",
+      "Result",
+      "Reason Not Done"
+     ],
+     "false": [
+      "Yes  [1]",
+      "Yes",
+      "Position Time ECG Time Interpretation Interpretation Comment Not Done Test"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 319,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 512,
+     "missed": [
+      "Position Time",
+      "ECG Time",
+      "Interpretation",
+      "Interpretation Comment",
+      "Not Done",
+      "Test",
+      "Result",
+      "Reason Not Done"
+     ],
+     "false": [
+      "Yes  [1]",
+      "Yes",
+      "Position Time ECG Time Interpretation Interpretation Comment Not Done Test"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 604,
+     "missed": [
+      "Reason Not Done",
+      "Sample Date",
+      "Sample Time",
+      "Primary Sample Accession Number",
+      "Back Up Sample Accession Number"
+     ],
+     "false": [
+      "[1] Reason Not Done",
+      "[2]",
+      "[3] Sample Time",
+      "[4] Primary Sample Accession Number",
+      "[5] Back Up Sample Accession Number",
+      "[6]"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    63,
+    1,
+    -103
+   ],
+   "became_best": false
+  }
+ ]
+}

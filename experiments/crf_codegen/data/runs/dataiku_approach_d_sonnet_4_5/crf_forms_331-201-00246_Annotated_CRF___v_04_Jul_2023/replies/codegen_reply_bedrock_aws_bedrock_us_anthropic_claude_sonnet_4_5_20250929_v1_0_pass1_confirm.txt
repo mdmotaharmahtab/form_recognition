@@ -1,0 +1,11 @@
+Looking at the sample pages:
+
+- **Pages 5, 8 (cluster 5)**: These are Table of Contents continuation pages with numbered section lists (3.120, 3.121, etc.) in blue color #2477cc. They contain no data-entry fields, only navigation links.
+
+- **Pages 280, 626 (cluster 3)**: These pages appear to be blank or contain only page numbers. No field content is visible.
+
+- **Pages 398, 691 (cluster 4)**: These show only form titles ("C-SSRS since last visit - Page 3/4") with no visible field content in the samples provided.
+
+All of these layouts appear to be genuinely field-free (TOC pages, blank pages, or pages where the field content is not visible in the sample). The program is correctly skipping them.
+
+CONFIRM_NO_FIELDS

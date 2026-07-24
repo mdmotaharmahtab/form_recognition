@@ -54,15 +54,22 @@ def check(name: str, ok: bool, note: str = "") -> None:
 
 
 def make_verdict(problems=(), warnings=(), coverage=100, records=50, feedback="",
-                 covered=None):
+                 covered=None, uncovered_pct=None):
     # covered: explicit covered-page iterable for the page-SET retention guard;
     # without it coverage_of() falls back to range(pages_with_fields), which
     # keeps the guard equivalent to the old count comparison for these tests
     result = (SimpleNamespace(covered_pages=set(covered)) if covered is not None
               else object())  # otherwise only truthiness is used by the controller
+    metrics = {"records": records, "pages_with_fields": coverage}
+    # uncovered_pct: share of content-bearing pages with zero records (the
+    # coverage-floor signal). None omits it entirely (metric absent), which is
+    # how validate_generated behaves when it can't build cluster stats.
+    if uncovered_pct is not None:
+        metrics["uncovered_content_pct"] = uncovered_pct
+        metrics["content_covered_pct"] = 100 - uncovered_pct
     return {"source": "def extract(pages): return []",
             "result": result,
-            "metrics": {"records": records, "pages_with_fields": coverage},
+            "metrics": metrics,
             "problems": list(problems), "warnings": list(warnings),
             "sample": "(none)", "cluster_stats": [], "weak_clusters": [],
             "cluster_feedback": feedback}
@@ -136,10 +143,11 @@ class Script:
         self.i += 1
         return self.steps[self.i][0]
 
-    def run(self, max_versions=5):
+    def run(self, max_versions=5, scope=None):
         self.install()
         return rci.induce_document(self.transport, "model", "tag", "doc.pdf",
-                                   "outdir", "initial-prompt", max_versions)
+                                   "outdir", "initial-prompt", max_versions,
+                                   scope=scope)
 
 
 def trail_kinds(trail):
@@ -306,6 +314,57 @@ def main() -> None:
         [(base, 0)], confirm_reply="extension-code", confirm_verdict=ext).run(max_versions=1)
     check("confirm skipped at last budget slot",
           versions == 1 and not trail_kinds(trail))
+
+    # 12b. coverage floor: a main-pass version that leaves most content pages
+    #      empty becomes a PROBLEM (cannot converge on a clean audit), so a
+    #      later well-covered version wins. v1 (80% empty) is blocked; v2 (10%)
+    #      converges. The v1 trail entry carries the coverage-floor problem.
+    steps = [(make_verdict(uncovered_pct=80), 0), (make_verdict(uncovered_pct=10), 0)]
+    best, trail, stop, versions = Script(steps).run()
+    v1_probs = next(t["problems"] for t in trail if t.get("version") == 1
+                    and t.get("kind") != "confirm")
+    check("coverage floor blocks a low-coverage version from converging",
+          stop == "converged" and best["version"] == 2
+          and any("Coverage floor" in p for p in v1_probs),
+          f"stop={stop} best=v{best['version']} v1_probs={v1_probs}")
+
+    # 12c. a CREDIBLE field-free confirmation stands the coverage floor down:
+    #      60% empty is past the floor (50) but within the credibility bar (75),
+    #      so CONFIRM_NO_FIELDS is honored and v1 converges with NO floor problem
+    #      (we never force junk extraction out of genuinely field-free layouts).
+    ffbase = make_verdict(uncovered_pct=60, feedback="uncovered clusters...")
+    best, trail, stop, versions = Script(
+        [(ffbase, 0)], confirm_reply="Checked.\nCONFIRM_NO_FIELDS").run()
+    all_probs = [p for t in trail for p in (t.get("problems") or [])]
+    check("credible field-free confirmation stands down the coverage floor",
+          stop == "converged" and versions == 1
+          and trail_kinds(trail) == [("confirm", "confirmed_no_fields")]
+          and not any("Coverage floor" in p for p in all_probs),
+          f"stop={stop} versions={versions} probs={all_probs}")
+
+    # 12c2. an IMPLAUSIBLE field-free claim cannot dodge the floor: at 90% of
+    #       content pages empty the program reads almost nothing, so the claim is
+    #       recorded but the floor stays armed and the version cannot converge.
+    ffbad = make_verdict(uncovered_pct=90, feedback="uncovered clusters...")
+    best, trail, stop, versions = Script(
+        [(ffbad, 0), (make_verdict(uncovered_pct=10), 0)],
+        confirm_reply="Checked.\nCONFIRM_NO_FIELDS").run()
+    bad_probs = [p for t in trail for p in (t.get("problems") or [])]
+    check("implausible field-free claim leaves the coverage floor armed",
+          trail_kinds(trail) == [("confirm", "confirmed_no_fields_not_credible")]
+          and any("Coverage floor" in p for p in bad_probs)
+          and best["version"] == 2,
+          f"stop={stop} best=v{best['version']} kinds={trail_kinds(trail)}")
+
+    # 12d. coverage floor never fires on a TAIL-SPECIALIST scope (those keep the
+    #      softened-gate philosophy): an 80%-empty specialist still converges.
+    best, trail, stop, versions = Script(
+        [(make_verdict(uncovered_pct=80), 0)]).run(scope={"main": False})
+    spec_probs = [p for t in trail for p in (t.get("problems") or [])]
+    check("coverage floor skipped for tail-specialist scope",
+          stop == "converged" and versions == 1
+          and not any("Coverage floor" in p for p in spec_probs),
+          f"stop={stop} versions={versions} probs={spec_probs}")
 
     # 13. transport error on generate -> stop, nothing usable
     best, trail, stop, versions = Script([RuntimeError("cli down")]).run()
@@ -739,6 +798,27 @@ def extract(pages):
     check("count_text_filters: inline/named blocklists counted, non-regex pipes ignored",
           nb >= 15 and nn == 6 and nl == 0 and nh == 0,
           f"blocky={nb} named={nn} lean={nl} harmless={nh}")
+
+    # 25b. extract_source handles the STRATEGY-then-code reply format: a fenced
+    #      block wins; bare source (incl. leading module-level constants) is kept
+    #      verbatim; and an UNFENCED prose preamble is stripped by parseability,
+    #      never by dropping real top-level code.
+    fence = "```"
+    es_fenced = ("STRATEGY:\nprose line\n- carry title forward\n\n" + fence
+                 + "python\n# obs\ndef extract(pages):\n    return []\n" + fence
+                 + "\ntrailing prose")
+    es_bare_const = ("BLOCKLIST = ['a', 'b']\n"
+                     "def extract(pages):\n    return []")
+    es_prose = ("STRATEGY:\nsome prose\n## a heading\nmore prose\n\n"
+                "import re\ndef extract(pages):\n    return []")
+    check("extract_source: fenced block wins, prose dropped",
+          codegen.extract_source(es_fenced)
+          == "# obs\ndef extract(pages):\n    return []")
+    check("extract_source: bare source with leading const kept verbatim",
+          codegen.extract_source(es_bare_const) == es_bare_const)
+    check("extract_source: unfenced prose preamble stripped to valid code",
+          codegen.extract_source(es_prose)
+          == "import re\ndef extract(pages):\n    return []")
 
     # 26. load_rep_pages labels reps by layout family: preamble groups the
     #     sample pages per family, headers carry the tag, and a specialist's

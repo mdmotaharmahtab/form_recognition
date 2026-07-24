@@ -1,0 +1,76 @@
+x=  36.0 y=  11.5 sz= 9.0 black     | 384-201-00004
+x=  42.0 y=  34.8 sz=12.0 #ffffff   | Blood Collection - PK SEP/PD Creatine/Glucose/Insulin
+x= 498.9 y=  36.6 sz= 9.6 #ffffff   | Origin: CRF
+x=  48.0 y=  55.2 sz= 7.8 #ffffff B | Aliases:
+x=  77.9 y=  55.3 sz= 7.8 #ffffff   | Odm OID = F.1177
+x=  43.5 y=  72.8 sz=10.5 #31708f   | Blood Collection - PK SEP/PD Creatinine/Glucose/Insulin
+x= 394.5 y=  73.4 sz= 8.4 #31708f B | Origin: CRF; Repeating: No; Domain: PC
+x=  49.5 y=  88.0 sz= 6.8 #808080 B | Aliases:
+x=  75.7 y=  88.0 sz= 6.8 #808080   | Odm OID = IG.1535
+x= 453.5 y= 110.8 sz= 5.6 black   B | PCSTAT
+x= 453.5 y= 117.4 sz= 5.6 black     | Format: $1
+x= 453.5 y= 123.9 sz= 5.6 black     | Data Type: string
+x= 453.5 y= 130.4 sz= 5.6 black     | Origin: CRF
+x= 453.5 y= 136.9 sz= 5.6 black     | Aliases:
+x=  46.5 y= 138.9 sz= 7.5 black     | Was the sample collected?
+x= 249.2 y= 142.0 sz= 7.5 black     | O Yes
+x= 456.5 y= 143.5 sz= 5.6 black     | Odm OID = I.5726
+x= 453.5 y= 150.0 sz= 5.6 black     | Description: Was the sample
+x= 249.2 y= 150.7 sz= 7.5 black     | O No
+x=  46.5 y= 156.3 sz= 7.5 black     | [PCPERF]
+x= 453.5 y= 156.5 sz= 5.6 black     | collected?
+x= 453.5 y= 163.0 sz= 5.6 black     | Edit Checks:
+x= 253.0 y= 163.4 sz= 6.4 #808080   | Code List: Yes/No
+x=  46.5 y= 165.0 sz= 7.5 black     | [SAS Field Name: PCSTAT]
+x= 456.5 y= 169.7 sz= 5.6 black   B | Name: TEMPLATE_PCPERF:
+x= 534.9 y= 169.7 sz= 5.6 black     | Value
+x= 456.5 y= 176.4 sz= 5.6 black   B | =
+x= 459.8 y= 176.4 sz= 5.6 black     | Y
+x= 456.5 y= 183.0 sz= 5.6 black     | Description: Value should = Y
+x= 453.5 y= 189.5 sz= 5.6 black     | Mandatory?: Yes
+x= 453.5 y= 196.0 sz= 5.6 black     | Disallow Future Date: Yes
+x= 453.5 y= 218.3 sz= 5.6 black   B | PCDTC
+x= 453.5 y= 224.9 sz= 5.6 black     | Format: dd-MMM-yyyy HH:mm:ss
+x= 453.5 y= 231.4 sz= 5.6 black     | Data Type: datetime
+x= 453.5 y= 237.9 sz= 5.6 black     | Origin: CRF
+x=  46.5 y= 240.9 sz= 7.5 black     | PK SEP collection date and time
+x= 453.5 y= 244.4 sz= 5.6 black     | Conditionally Visible
+x= 453.5 y= 251.0 sz= 5.6 black     | Conditional Item: PCPERF
+x= 249.2 y= 257.0 sz= 7.5 black     | [_|_] - [_|_|_] - [_|_|_|_] [_|_] : [_|_] : [_|_]
+x= 453.5 y= 257.5 sz= 5.6 black     | Visible If Value: Y = Yes
+x=  46.5 y= 258.3 sz= 7.5 black     | [PCDTC_PK]
+x= 453.5 y= 264.0 sz= 5.6 black     | Aliases:
+x=  46.5 y= 267.0 sz= 7.5 black     | [SAS Field Name: PCDTC]
+x= 253.0 y= 269.6 sz= 6.4 #808080   | dd-MMM-yyyy HH:mm:ss
+x= 456.5 y= 270.5 sz= 5.6 black     | Odm OID = I.5728
+x= 453.5 y= 277.1 sz= 5.6 black     | Description: Date and time of
+x=  53.2 y= 278.2 sz= 6.4 #808080   | Collect a 4mL purple K2EDTA tube. Immediately gently invert 8-10
+x= 453.5 y= 283.6 sz= 5.6 black     | collection
+x=  53.2 y= 285.6 sz= 6.4 #808080   | times and place upright in room temperature rack.
+x= 453.5 y= 290.1 sz= 5.6 black     | Sample Path: SEP PK
+x= 453.5 y= 296.6 sz= 5.6 black     | Requires Barcode Verification
+x= 453.5 y= 303.2 sz= 5.6 black     | Mandatory?: Yes
+x= 453.5 y= 309.7 sz= 5.6 black     | Disallow Future Date: Yes
+x= 453.5 y= 331.9 sz= 5.6 black   B | PDDTC
+x= 453.5 y= 338.5 sz= 5.6 black     | Format: dd-MMM-yyyy HH:mm:ss
+x= 453.5 y= 345.1 sz= 5.6 black     | Data Type: datetime
+x=  46.5 y= 348.1 sz= 7.5 black     | Creatinine collection date and time
+x= 453.5 y= 351.6 sz= 5.6 black     | Origin: CRF
+x= 453.5 y= 358.1 sz= 5.6 black     | Conditionally Visible
+x= 249.2 y= 364.1 sz= 7.5 black     | [_|_] - [_|_|_] - [_|_|_|_] [_|_] : [_|_] : [_|_]
+x= 453.5 y= 364.6 sz= 5.6 black     | Conditional Item: PCPERF
+x=  46.5 y= 365.5 sz= 7.5 black     | [PDDTC_CREAT]
+x= 453.5 y= 371.2 sz= 5.6 black     | Visible If Value: Y = Yes
+x=  46.5 y= 374.2 sz= 7.5 black     | [SAS Field Name: PDDTC]
+x= 253.0 y= 376.7 sz= 6.4 #808080   | dd-MMM-yyyy HH:mm:ss
+x= 453.5 y= 377.7 sz= 5.6 black     | Description: Creatinine collection date
+x= 453.5 y= 384.2 sz= 5.6 black     | and time
+x=  53.2 y= 385.3 sz= 6.4 #808080   | Collect a 3.5 red top SST, invert 5-10 times and place upright in a
+x= 453.5 y= 390.7 sz= 5.6 black     | Sample Path: PD Serum Creatinine
+x=  53.2 y= 392.7 sz= 6.4 #808080   | rack. Keep at room temperature.
+x= 453.5 y= 397.3 sz= 5.6 black     | Requires Barcode Verification
+x= 453.5 y= 403.8 sz= 5.6 black     | Mandatory?: Yes
+x= 453.5 y= 410.3 sz= 5.6 black     | Disallow Future Date: Yes
+x=  36.0 y= 817.4 sz= 9.0 black     | Annotated CRF
+x= 278.9 y= 817.4 sz= 9.0 black     | 31 of 238
+x= 445.8 y= 817.4 sz= 9.0 black     | https://drvince.clinspark.com

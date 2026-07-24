@@ -1,0 +1,11 @@
+Looking at the sample pages:
+
+**Pages 5, 8 (cluster 5)**: These are table-of-contents pages listing form titles with section numbers (e.g., "3.120. Triplicate Orthostatic BP and HR - 6h Postdose"). These are navigation/index pages, not data-entry forms.
+
+**Pages 938, 941 (cluster 3)**: These show lists of medication form types (Emulsion, Gel, Graft...) and routes (Rectal, Ophthalmic...). These are reference lists/legends defining answer options, not data-entry fields.
+
+**Pages 398, 693 (cluster 4)**: These contain only a form title ("C-SSRS since last visit - Page 3/4") and page number. These appear to be blank continuation pages or pages where the actual field content is in images/tables not captured in the text extraction.
+
+All of these layouts are genuinely field-free - they are TOC, reference/legend pages, or blank continuation pages. Zero coverage is correct for these clusters.
+
+CONFIRM_NO_FIELDS

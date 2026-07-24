@@ -1,0 +1,27 @@
+x=  64.2 y= 153.6 sz=16.5 #004c99   | Body Temperature and Respiratory Rate
+x= 502.8 y= 210.0 sz=10.5 #999999   | Yes
+x= 536.8 y= 210.0 sz=10.5 #999999   | No
+x=  64.2 y= 211.8 sz= 9.0 black     | Were Vital Signs Collected?
+x=  64.2 y= 236.3 sz= 9.0 #ff0000   | [VSPERF]
+x=  64.2 y= 250.4 sz= 9.0 #ff0000   | [TYPE: enumeration (values: Yes, No)]
+x=  64.2 y= 281.3 sz= 9.0 black     | If not collected, reason:
+x=  64.2 y= 307.2 sz= 9.0 #ff0000   | [VSREAS]
+x=  64.2 y= 321.3 sz= 9.0 #ff0000   | [TYPE: text]
+x=  64.2 y= 352.2 sz= 9.0 black     | Collection Date
+x=  64.2 y= 378.2 sz= 9.0 #ff0000   | [VSDAT]
+x=  64.2 y= 392.3 sz= 9.0 #ff0000   | [TYPE: date]
+x= 486.3 y= 421.4 sz=10.5 #999999   | N/A
+x=  64.2 y= 423.2 sz= 9.0 black     | Planned Timepoint
+x= 442.4 y= 461.9 sz=10.5 black     | N/A
+x= 442.4 y= 487.4 sz=10.5 black     | Predose
+x= 442.4 y= 512.9 sz=10.5 black     | 1h postdose
+x= 442.4 y= 538.4 sz=10.5 black     | 1.5h postdose
+x= 442.4 y= 563.9 sz=10.5 black     | 2h postdose
+x= 442.4 y= 589.4 sz=10.5 black     | 2.5h postdose
+x= 442.4 y= 614.9 sz=10.5 black     | 3h postdose
+x= 442.4 y= 640.4 sz=10.5 black     | 4h postdose
+x= 442.4 y= 665.9 sz=10.5 black     | 6h postdose
+x= 442.4 y= 691.4 sz=10.5 black     | 8h postdose
+x=  64.2 y= 722.1 sz= 9.0 #ff0000   | [VSTPT]
+x=  64.2 y= 736.2 sz= 9.0 #ff0000   | [TYPE: enumeration (values: N/A, Predose, 1h postdose, 1.5h postdose, 2h postdose, 2.5h postdose, 3h postdose, 4h postdose, 6h
+x= 267.8 y= 798.3 sz=12.0 black     | Page 50 of 1083

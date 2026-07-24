@@ -1,0 +1,9 @@
+Looking at the sample pages:
+
+**Cluster 0 (pages 45, 73)**: These are "Variable details" metadata pages showing field specifications (Export Name, Type, Max length, Categories). The current program correctly skips these with the check `if any(line.text == "Variable details" and line.bold for line in lines): continue`. These are NOT data-entry fields - they are documentation pages. Zero coverage is correct.
+
+**Cluster 2 (pages 374, 618)**: These are simple visit separator/divider pages showing only "Visit:" and a day number (e.g., "Day 15", "Day 71"). They contain no data-entry fields, just section markers. Zero coverage is correct.
+
+All three clusters shown are genuinely field-free pages. The program is working correctly by not extracting records from them.
+
+CONFIRM_NO_FIELDS

@@ -1,0 +1,525 @@
+{
+ "stop_reason": "plateau",
+ "versions": 5,
+ "best_version": 3,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 1517,
+    "pages_total": 369,
+    "pages_with_fields": 350,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 0,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 0,
+    "fields_per_form": 1517.0,
+    "forms_per_100_pages": 0.0,
+    "form_same_page_evidence_records": 0,
+    "form_same_page_persistence_pct": null,
+    "furniture_candidates": [],
+    "pages_covered_pct": 95
+   },
+   "problems": [
+    "Extreme content-fitted blocklist. The program filters by 46 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "warnings": [
+    "form_name empty for 100% of records - if the document does print form/section names, fix the form_name strategy (consider carrying the last seen title forward)."
+   ],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    1,
+    "not_audited",
+    1,
+    -350
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "confirm",
+   "outcome": "confirmed_no_fields"
+  },
+  {
+   "version": 2,
+   "kind": "revise_gates",
+   "metrics": {
+    "engine": "codegen",
+    "records": 1713,
+    "pages_total": 369,
+    "pages_with_fields": 352,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 94,
+    "fields_per_form": 18.2,
+    "forms_per_100_pages": 25.5,
+    "form_same_page_evidence_records": 1703,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 95
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 40,
+   "audit_pages": [
+    1,
+    7,
+    58,
+    82,
+    215,
+    334,
+    386
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 7,
+     "missed": [],
+     "false": [
+      "Version",
+      "29-Mar-2021",
+      "2-Apr-2021",
+      "6-Apr-2021",
+      "7-Apr-2021",
+      "8-Apr-2021",
+      "9-Apr-2021",
+      "13-Apr-2021",
+      "22-Apr-2021",
+      "27-Apr-2021",
+      "28-Apr-2021",
+      "04-May-2021",
+      "17-May-2021",
+      "23-Jun-2021",
+      "28-Jun-2021",
+      "29-Jun-2021",
+      "30-Jun-2021",
+      "15-Jul-2021",
+      "21Jul2021",
+      "27Jul2021",
+      "29Jul2021",
+      "05Aug2021",
+      "06Aug2021",
+      "11Aug2021"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 58,
+     "missed": [],
+     "false": [
+      "Please go to Add-On Forms and select Additional Local Lab Results Review form to add to this visit."
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 82,
+     "missed": [],
+     "false": [
+      "If Yes then please fill in AE page",
+      "If Yes then please fill in ConMed page"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 215,
+     "missed": [],
+     "false": [
+      "Collect vital signs after subject has been resting in a supine position for at least 5 minutes and again after the subject has been in a standing position for 3 minutes."
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 334,
+     "missed": [
+      "Sample",
+      "Sample Status",
+      "Time of Collection",
+      "Barcode Number",
+      "Backup Barcode Number"
+     ],
+     "false": [
+      "Timepoint",
+      "Brexpiprazole/Sertraline PK",
+      "Sertraline PK",
+      "Propranolol PK",
+      "Prazosin PK"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 386,
+     "missed": [],
+     "false": [],
+     "wrong_form": [
+      "Time Placed in Position",
+      "Time of Vitals Measurement #3"
+     ]
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    40,
+    0,
+    -352
+   ],
+   "became_best": true
+  },
+  {
+   "version": 3,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 1451,
+    "pages_total": 369,
+    "pages_with_fields": 347,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 93,
+    "fields_per_form": 15.6,
+    "forms_per_100_pages": 25.2,
+    "form_same_page_evidence_records": 1429,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 94
+   },
+   "problems": [],
+   "warnings": [
+    "The program filters by 10 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": 3,
+   "audit_pages": [
+    1,
+    7,
+    28,
+    54,
+    58,
+    82,
+    215,
+    334,
+    386
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 7,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 28,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 54,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 58,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 82,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 215,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 334,
+     "missed": [
+      "Was PK Collection Performed?"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 386,
+     "missed": [],
+     "false": [],
+     "wrong_form": [
+      "Time Placed in Position",
+      "Time of Vitals Measurement #3"
+     ]
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    3,
+    1,
+    -347
+   ],
+   "became_best": true
+  },
+  {
+   "version": 4,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 1543,
+    "pages_total": 369,
+    "pages_with_fields": 350,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 94,
+    "fields_per_form": 16.4,
+    "forms_per_100_pages": 25.5,
+    "form_same_page_evidence_records": 1525,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 95
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 4,
+   "audit_pages": [
+    1,
+    2,
+    7,
+    58,
+    82,
+    215,
+    233,
+    334,
+    386
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 7,
+     "missed": [],
+     "false": [
+      "Date"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 58,
+     "missed": [],
+     "false": [
+      "Please go to Add-On Forms and select Additional Local Lab Results Review form to add to this visit."
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 82,
+     "missed": [],
+     "false": [
+      "If Yes then please fill in AE page",
+      "If Yes then please fill in ConMed page"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 215,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 233,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 334,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 386,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    4,
+    0,
+    -350
+   ],
+   "became_best": false
+  },
+  {
+   "version": 5,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 1364,
+    "pages_total": 369,
+    "pages_with_fields": 350,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 94,
+    "fields_per_form": 14.5,
+    "forms_per_100_pages": 25.5,
+    "form_same_page_evidence_records": 1345,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 95
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 8,
+   "audit_pages": [
+    1,
+    3,
+    5,
+    7,
+    58,
+    82,
+    215,
+    334,
+    386
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 3,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 5,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 7,
+     "missed": [],
+     "false": [
+      "Date"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 58,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 82,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 215,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 334,
+     "missed": [
+      "If not performed, Reason:",
+      "Sample Status",
+      "Time of Collection",
+      "Barcode Number",
+      "Backup Barcode Number"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 386,
+     "missed": [],
+     "false": [],
+     "wrong_form": [
+      "Time Placed in Position",
+      "Time of Vitals Measurement #3"
+     ]
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    8,
+    0,
+    -350
+   ],
+   "became_best": false
+  }
+ ]
+}

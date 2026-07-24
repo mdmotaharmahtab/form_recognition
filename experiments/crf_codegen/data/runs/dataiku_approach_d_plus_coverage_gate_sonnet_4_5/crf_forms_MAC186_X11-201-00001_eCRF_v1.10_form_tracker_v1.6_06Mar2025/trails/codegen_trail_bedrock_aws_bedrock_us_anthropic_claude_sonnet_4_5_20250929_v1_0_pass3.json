@@ -1,0 +1,99 @@
+{
+ "stop_reason": "converged",
+ "versions": 1,
+ "best_version": 1,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 192,
+    "pages_total": 41,
+    "pages_with_fields": 41,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 99,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 15,
+    "fields_per_form": 12.8,
+    "forms_per_100_pages": 36.6,
+    "form_same_page_evidence_records": 174,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 100,
+    "content_pages": 41,
+    "content_covered_pct": 100,
+    "uncovered_content_pct": 0
+   },
+   "problems": [],
+   "warnings": [
+    "The program filters by 14 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": 0,
+   "audit_pages": [
+    4,
+    25,
+    139,
+    203,
+    267,
+    619
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 4,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 25,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 139,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 203,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 267,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 619,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    0,
+    1,
+    -41
+   ],
+   "became_best": true
+  }
+ ]
+}

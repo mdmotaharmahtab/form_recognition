@@ -1,0 +1,324 @@
+{
+ "stop_reason": "plateau",
+ "versions": 3,
+ "best_version": 1,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "confirm",
+   "outcome": "confirmed_no_fields"
+  },
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 787,
+    "pages_total": 404,
+    "pages_with_fields": 149,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 76,
+    "fields_per_form": 10.4,
+    "forms_per_100_pages": 18.8,
+    "form_same_page_evidence_records": 769,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 37
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 1,
+   "audit_pages": [
+    1,
+    2,
+    4,
+    109,
+    194,
+    211,
+    313
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 4,
+     "missed": [
+      "Check all that apply"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 109,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 194,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 211,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 313,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    1,
+    0,
+    -149
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 716,
+    "pages_total": 404,
+    "pages_with_fields": 149,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 76,
+    "fields_per_form": 9.4,
+    "forms_per_100_pages": 18.8,
+    "form_same_page_evidence_records": 698,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 37
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 1,
+   "audit_pages": [
+    1,
+    2,
+    4,
+    50,
+    54,
+    109,
+    194,
+    211,
+    313
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 4,
+     "missed": [
+      "Check all that apply"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 50,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 54,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 109,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 194,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 211,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 313,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    1,
+    0,
+    -149
+   ],
+   "became_best": false
+  },
+  {
+   "version": 3,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 1286,
+    "pages_total": 404,
+    "pages_with_fields": 346,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 76,
+    "fields_per_form": 16.9,
+    "forms_per_100_pages": 18.8,
+    "form_same_page_evidence_records": 1167,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 86
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 6,
+   "audit_pages": [
+    1,
+    2,
+    4,
+    7,
+    62,
+    109,
+    194,
+    211,
+    313
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 4,
+     "missed": [
+      "Check all that apply"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 7,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 62,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 109,
+     "missed": [],
+     "false": [
+      "LBTIM",
+      "LBREFID",
+      "LBDTTM"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 194,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 211,
+     "missed": [],
+     "false": [
+      "RSORRES"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 313,
+     "missed": [],
+     "false": [
+      "QSORRES"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    6,
+    0,
+    -346
+   ],
+   "became_best": false
+  }
+ ]
+}

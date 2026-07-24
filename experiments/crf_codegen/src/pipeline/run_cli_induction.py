@@ -102,7 +102,9 @@ import tempfile
 import time
 
 import run_report
-from codegen import (AUDIT_NOT_RUN, SPECIALIST_LOOP_NOTE, SPECIALIST_NOTE,
+from codegen import (AUDIT_NOT_RUN, COVERAGE_FLOOR_UNCOVERED_PCT,
+                     FIELD_FREE_CLAIM_MAX_UNCOVERED_PCT,
+                     SPECIALIST_LOOP_NOTE, SPECIALIST_NOTE,
                      audit_problem_lines, build_audit_prompt,
                      build_code_revision_prompt, build_codegen_prompt,
                      build_coverage_confirm_prompt, forgivable_junk_pages,
@@ -244,6 +246,8 @@ def induce_document(call, model: str, tag: str, pdf: str, outdir: str,
     rot_slots, max_sample = 0, 0        # set once core_pages is known
     audit_history: set[int] = set()     # every page audited so far (rotation memory)
     confirm_pending = True              # one coverage-confirm round per document
+    field_free_confirmed = False        # model verified uncovered layouts hold no
+    #                                     fields -> the coverage floor stands down
     stalls = 0                          # consecutive versions with no improvement
     prompt, kind = initial_prompt, "generate"
     versions, stop = 0, None
@@ -382,9 +386,25 @@ def induce_document(call, model: str, tag: str, pdf: str, outdir: str,
                                     "confirm")
                 save_reply(outdir, tag, "confirm", reply2, ext="txt")
                 if is_confirm_no_fields(reply2):
+                    # The claim keeps the program as-is, so it also stands the
+                    # coverage floor down - but only while it is believable. Once
+                    # the program is reading almost none of the document's
+                    # content-bearing pages, "all the rest is field-free" is the
+                    # excuse a title-gated program would use to dodge the floor,
+                    # so we record the claim and leave the floor armed.
+                    _ucp = verdict["metrics"].get("uncovered_content_pct")
+                    credible = (_ucp is None
+                                or _ucp <= FIELD_FREE_CLAIM_MAX_UNCOVERED_PCT)
+                    field_free_confirmed = credible
                     trail.append({"version": versions, "kind": "confirm",
-                                  "outcome": "confirmed_no_fields"})
-                    print("    model confirmed uncovered clusters are field-free")
+                                  "outcome": "confirmed_no_fields" if credible
+                                  else "confirmed_no_fields_not_credible",
+                                  "uncovered_content_pct": _ucp})
+                    if credible:
+                        print("    model confirmed uncovered clusters are field-free")
+                    else:
+                        print(f"    field-free claim not credible at {_ucp}% of "
+                              "content pages empty; coverage floor stays armed")
                 else:
                     verdict2 = timed_validate(reply2)
                     # an extension may only ADD layouts: record count must not
@@ -433,6 +453,32 @@ def induce_document(call, model: str, tag: str, pdf: str, outdir: str,
             except Exception as e:  # noqa: BLE001
                 trail.append({"version": versions, "kind": "confirm", "transport_error": str(e)})
                 print(f"    confirmation transport error: {e}")
+
+        # ---- coverage floor --------------------------------------------------
+        # A MAIN-pass program that leaves most content-bearing pages empty has
+        # over-gated: it keyed whole pages on one fixed cue (a font size, a
+        # y-position, a specific wording) that many real pages lack. Make that a
+        # hard PROBLEM so it cannot converge or claim best on a clean audit
+        # alone; the gate revision then tells the model to stop skipping pages
+        # for want of a title. It fires only AFTER the confirmation round (so the
+        # model keeps its one chance to declare the layouts field-free), never
+        # once field-free is confirmed, and never on tail-specialist scopes
+        # (which keep the softened-gate philosophy).
+        is_main_pass = scope is None or scope.get("main", True)
+        ucp = verdict["metrics"].get("uncovered_content_pct")
+        if (is_main_pass and not field_free_confirmed and not verdict["problems"]
+                and ucp is not None and ucp > COVERAGE_FLOOR_UNCOVERED_PCT):
+            ccp = verdict["metrics"].get("content_covered_pct")
+            verdict["problems"].append(
+                f"Coverage floor: only {ccp}% of content-bearing pages produced "
+                f"any records ({ucp}% left empty). A page that carries data-entry "
+                "fields must yield them even when its title/header is absent, in "
+                "smaller text, or placed differently. Do not gate an entire page "
+                "on a single fixed cue (one font size, one y-position, one "
+                "wording); read the form/section name where it exists but never "
+                "skip a page for lacking it.")
+            print(f"    coverage floor tripped: {ccp}% content pages covered "
+                  f"({ucp}% empty > {COVERAGE_FLOOR_UNCOVERED_PCT}% floor)")
 
         # ---- grounded audit (fixed core + rotating exploration slots) --------
         # aud_count semantics: None = this version was NOT verified against pages

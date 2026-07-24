@@ -1,0 +1,181 @@
+x=  36.0 y=  11.5 sz= 9.0 black     | 384-201-00004
+x=  46.5 y=  43.6 sz= 7.5 black     | [EXC016]
+x=  46.5 y=  52.3 sz= 7.5 black     | [SAS Field Name: EXC016]
+x=  46.5 y=  67.1 sz= 7.5 black     | 17. Exposure to any substances known to stimulate hepatic
+x= 249.2 y=  70.3 sz= 7.5 black     | O N/A
+x= 453.5 y=  70.8 sz= 5.6 black   B | EXC017
+x=  46.5 y=  75.8 sz= 7.5 black     | microsomal enzymes within 30 days prior to screening (eg,
+x= 453.5 y=  77.3 sz= 5.6 black     | Format: $6
+x= 249.2 y=  79.0 sz= 7.5 black     | O Yes
+x= 453.5 y=  83.9 sz= 5.6 black     | Data Type: string
+x=  46.5 y=  84.5 sz= 7.5 black     | occupational exposure to pesticides, organic solvents, etc).
+x= 249.2 y=  87.7 sz= 7.5 black     | O No
+x= 453.5 y=  90.4 sz= 5.6 black     | Origin: CRF
+x= 249.2 y=  96.4 sz= 7.5 black     | O Unspecified
+x= 453.5 y=  96.9 sz= 5.6 black     | Description: EXC017
+x=  46.5 y= 101.9 sz= 7.5 black     | [EXC017]
+x= 453.5 y= 103.4 sz= 5.6 black     | Mandatory?: Yes
+x= 253.0 y= 109.0 sz= 6.4 #808080   | Code List: IE - Not Met
+x= 453.5 y= 110.0 sz= 5.6 black     | Disallow Future Date: Yes
+x=  46.5 y= 110.6 sz= 7.5 black     | [SAS Field Name: EXC017]
+x=  46.5 y= 125.5 sz= 7.5 black     | 18. Use of tobacco products or daily exposure to second-
+x=  46.5 y= 134.2 sz= 7.5 black     | hand smoke within 2 months prior to the screening visit, or
+x= 249.2 y= 137.3 sz= 7.5 black     | O N/A
+x= 453.5 y= 137.8 sz= 5.6 black   B | EXC018
+x=  46.5 y= 142.9 sz= 7.5 black     | urine cotinine concentrations > 200 ng/mL or serum
+x= 453.5 y= 144.4 sz= 5.6 black     | Format: $6
+x= 249.2 y= 146.0 sz= 7.5 black     | O Yes
+x= 453.5 y= 150.9 sz= 5.6 black     | Data Type: string
+x=  46.5 y= 151.6 sz= 7.5 black     | cotinine concentrations > 20 ng/mL at screening or check-
+x= 249.2 y= 154.7 sz= 7.5 black     | O No
+x= 453.5 y= 157.4 sz= 5.6 black     | Origin: CRF
+x=  46.5 y= 160.3 sz= 7.5 black     | in to the trial site.
+x= 249.2 y= 163.4 sz= 7.5 black     | O Unspecified
+x= 453.5 y= 163.9 sz= 5.6 black     | Description: EXC018
+x= 453.5 y= 170.5 sz= 5.6 black     | Mandatory?: Yes
+x= 253.0 y= 176.0 sz= 6.4 #808080   | Code List: IE - Not Met
+x= 453.5 y= 177.0 sz= 5.6 black     | Disallow Future Date: Yes
+x=  46.5 y= 177.7 sz= 7.5 black     | [EXC018]
+x=  46.5 y= 186.4 sz= 7.5 black     | [SAS Field Name: EXC018]
+x=  46.5 y= 198.1 sz= 7.5 black     | 19. Presenting with, or having a history of, uncontrolled
+x=  46.5 y= 206.8 sz= 7.5 black     | hypertension (systolic blood pressure > 140 mmHg or
+x=  46.5 y= 215.5 sz= 7.5 black     | diastolic blood pressure > 90 mmHg in supine position) or
+x=  46.5 y= 224.2 sz= 7.5 black     | symptomatic hypotension or orthostatic hypotension, which
+x= 249.2 y= 231.6 sz= 7.5 black     | O N/A
+x= 453.5 y= 232.1 sz= 5.6 black   B | EXC019
+x=  46.5 y= 232.9 sz= 7.5 black     | is defined as a decrease of >= 20 mmHg in systolic blood
+x= 453.5 y= 238.7 sz= 5.6 black     | Format: $6
+x= 249.2 y= 240.3 sz= 7.5 black     | O Yes
+x=  46.5 y= 241.6 sz= 7.5 black     | pressure and/or a decrease of >= 10 mmHg in diastolic
+x= 453.5 y= 245.2 sz= 5.6 black     | Data Type: string
+x= 249.2 y= 249.0 sz= 7.5 black     | O No
+x=  46.5 y= 250.3 sz= 7.5 black     | blood pressure after at least 3 minutes of standing
+x= 453.5 y= 251.8 sz= 5.6 black     | Origin: CRF
+x= 249.2 y= 257.7 sz= 7.5 black     | O Unspecified
+x= 453.5 y= 258.3 sz= 5.6 black     | Description: EXC019
+x=  46.5 y= 259.0 sz= 7.5 black     | compared with the previous supine blood pressure, at
+x= 453.5 y= 264.8 sz= 5.6 black     | Mandatory?: Yes
+x=  46.5 y= 267.7 sz= 7.5 black     | screening or check-in. Blood pressure measurements may
+x= 253.0 y= 270.4 sz= 6.4 #808080   | Code List: IE - Not Met
+x= 453.5 y= 271.3 sz= 5.6 black     | Disallow Future Date: Yes
+x=  46.5 y= 276.4 sz= 7.5 black     | be repeated once at the discretion of the investigator.
+x=  46.5 y= 293.8 sz= 7.5 black     | [EXC019]
+x=  46.5 y= 302.5 sz= 7.5 black     | [SAS Field Name: EXC019]
+x=  46.5 y= 314.2 sz= 7.5 black     | 20. Participants who have a supine heart rate, after resting
+x=  46.5 y= 322.9 sz= 7.5 black     | for at least 3 minutes, outside the range of 50 to 100 beats
+x=  46.5 y= 331.6 sz= 7.5 black     | per minute, ie, heart rate: > 100 bpm and< 50 bpm at
+x=  46.5 y= 340.3 sz= 7.5 black     | screening or check-in or predose timepoints. The sponsor
+x= 249.2 y= 347.7 sz= 7.5 black     | O N/A
+x= 453.5 y= 348.2 sz= 5.6 black   B | EXC020
+x=  46.5 y= 349.0 sz= 7.5 black     | may allow exceptions if the results are not considered to be
+x= 453.5 y= 354.8 sz= 5.6 black     | Format: $6
+x= 249.2 y= 356.4 sz= 7.5 black     | O Yes
+x=  46.5 y= 357.7 sz= 7.5 black     | clinically significant; however, this will need to be approved
+x= 453.5 y= 361.3 sz= 5.6 black     | Data Type: string
+x= 249.2 y= 365.1 sz= 7.5 black     | O No
+x=  46.5 y= 366.4 sz= 7.5 black     | by the medical monitor and sponsor physician. Note: If the
+x= 453.5 y= 367.9 sz= 5.6 black     | Origin: CRF
+x= 249.2 y= 373.8 sz= 7.5 black     | O Unspecified
+x= 453.5 y= 374.4 sz= 5.6 black     | Description: EXC020
+x=  46.5 y= 375.1 sz= 7.5 black     | first heart rate measurement is abnormal, it can be
+x= 453.5 y= 380.9 sz= 5.6 black     | Mandatory?: Yes
+x=  46.5 y= 383.8 sz= 7.5 black     | repeated at the investigator’s discretion, in which case a
+x= 253.0 y= 386.5 sz= 6.4 #808080   | Code List: IE - Not Met
+x= 453.5 y= 387.4 sz= 5.6 black     | Disallow Future Date: Yes
+x=  46.5 y= 392.5 sz= 7.5 black     | third (confirmatory) measurement may also be required.
+x=  46.5 y= 409.9 sz= 7.5 black     | [EXC020]
+x=  46.5 y= 418.6 sz= 7.5 black     | [SAS Field Name: EXC020]
+x= 249.2 y= 436.5 sz= 7.5 black     | O N/A
+x= 453.5 y= 437.0 sz= 5.6 black   B | EXC021
+x=  46.5 y= 442.1 sz= 7.5 black     | 21. History of unexplained syncope.
+x= 453.5 y= 443.6 sz= 5.6 black     | Format: $6
+x= 249.2 y= 445.2 sz= 7.5 black     | O Yes
+x= 453.5 y= 450.1 sz= 5.6 black     | Data Type: string
+x= 249.2 y= 453.9 sz= 7.5 black     | O No
+x= 453.5 y= 456.7 sz= 5.6 black     | Origin: CRF
+x=  46.5 y= 459.5 sz= 7.5 black     | [EXC021]
+x= 249.2 y= 462.6 sz= 7.5 black     | O Unspecified
+x= 453.5 y= 463.2 sz= 5.6 black     | Description: EXC021
+x=  46.5 y= 468.2 sz= 7.5 black     | [SAS Field Name: EXC021]
+x= 453.5 y= 469.7 sz= 5.6 black     | Mandatory?: Yes
+x= 253.0 y= 475.3 sz= 6.4 #808080   | Code List: IE - Not Met
+x= 453.5 y= 476.2 sz= 5.6 black     | Disallow Future Date: Yes
+x=  46.5 y= 491.7 sz= 7.5 black     | 22. Clinically relevant ECG findings at screening or check-
+x=  46.5 y= 500.4 sz= 7.5 black     | in or predose timepoints including heart rate: > 100 bpm
+x=  46.5 y= 509.1 sz= 7.5 black     | and < 50 bpm, QT interval corrected for heart rate using
+x=  46.5 y= 517.8 sz= 7.5 black     | Fridericia’s formula (QTcF) > 450 msec for male
+x= 249.2 y= 521.0 sz= 7.5 black     | O N/A
+x= 453.5 y= 521.4 sz= 5.6 black   B | EXC022
+x=  46.5 y= 526.5 sz= 7.5 black     | participants or > 470 msec for female participants, QRS
+x= 453.5 y= 528.0 sz= 5.6 black     | Format: $6
+x= 249.2 y= 529.7 sz= 7.5 black     | O Yes
+x= 453.5 y= 534.5 sz= 5.6 black     | Data Type: string
+x=  46.5 y= 535.2 sz= 7.5 black     | internal > 120 msec or PR interval > 200 msec. A
+x= 249.2 y= 538.4 sz= 7.5 black     | O No
+x= 453.5 y= 541.1 sz= 5.6 black     | Origin: CRF
+x=  46.5 y= 543.9 sz= 7.5 black     | participant with non-clinically significant ECG abnormalities
+x= 249.2 y= 547.1 sz= 7.5 black     | O Unspecified
+x= 453.5 y= 547.6 sz= 5.6 black     | Description: EXC022
+x=  46.5 y= 552.6 sz= 7.5 black     | at screening and check-in requires approval from the
+x= 453.5 y= 554.1 sz= 5.6 black     | Mandatory?: Yes
+x= 253.0 y= 559.7 sz= 6.4 #808080   | Code List: IE - Not Met
+x= 453.5 y= 560.6 sz= 5.6 black     | Disallow Future Date: Yes
+x=  46.5 y= 561.3 sz= 7.5 black     | medical monitor and the sponsor’s physician.
+x=  46.5 y= 578.7 sz= 7.5 black     | [EXC022]
+x=  46.5 y= 587.4 sz= 7.5 black     | [SAS Field Name: EXC022]
+x=  46.5 y= 602.3 sz= 7.5 black     | 23. Heavy consumption of alcohol and/or food and
+x= 249.2 y= 605.4 sz= 7.5 black     | O N/A
+x= 453.5 y= 605.9 sz= 5.6 black   B | EXC023
+x=  46.5 y= 611.0 sz= 7.5 black     | beverages containing caffeine and methylxanthines (eg,
+x= 453.5 y= 612.5 sz= 5.6 black     | Format: $6
+x= 249.2 y= 614.1 sz= 7.5 black     | O Yes
+x= 453.5 y= 619.0 sz= 5.6 black     | Data Type: string
+x=  46.5 y= 619.7 sz= 7.5 black     | coffee) within 72 hours prior to dosing.
+x= 249.2 y= 622.8 sz= 7.5 black     | O No
+x= 453.5 y= 625.5 sz= 5.6 black     | Origin: CRF
+x= 249.2 y= 631.5 sz= 7.5 black     | O Unspecified
+x= 453.5 y= 632.0 sz= 5.6 black     | Description: EXC023
+x=  46.5 y= 637.1 sz= 7.5 black     | [EXC023]
+x= 453.5 y= 638.6 sz= 5.6 black     | Mandatory?: Yes
+x= 253.0 y= 644.1 sz= 6.4 #808080   | Code List: IE - Not Met
+x= 453.5 y= 645.1 sz= 5.6 black     | Disallow Future Date: Yes
+x=  46.5 y= 645.8 sz= 7.5 black     | [SAS Field Name: EXC023]
+x=  46.5 y= 663.7 sz= 7.5 black     | 24. Consumption of foods known to affect cytochrome
+x= 249.2 y= 666.9 sz= 7.5 black     | O N/A
+x= 453.5 y= 667.3 sz= 5.6 black   B | EXC024
+x=  46.5 y= 672.4 sz= 7.5 black     | P450 (CYP) 1A2 (eg,charbroiled or pan-fried meats and
+x= 453.5 y= 673.9 sz= 5.6 black     | Format: $6
+x= 249.2 y= 675.6 sz= 7.5 black     | O Yes
+x= 453.5 y= 680.5 sz= 5.6 black     | Data Type: string
+x=  46.5 y= 681.1 sz= 7.5 black     | cruciferous vegetables) within 72 hours priorto dosing.
+x= 249.2 y= 684.3 sz= 7.5 black     | O No
+x= 453.5 y= 687.0 sz= 5.6 black     | Origin: CRF
+x= 249.2 y= 693.0 sz= 7.5 black     | O Unspecified
+x= 453.5 y= 693.5 sz= 5.6 black     | Description: EXC024
+x=  46.5 y= 698.5 sz= 7.5 black     | [EXC024]
+x= 453.5 y= 700.0 sz= 5.6 black     | Mandatory?: Yes
+x= 253.0 y= 705.6 sz= 6.4 #808080   | Code List: IE - Not Met
+x= 453.5 y= 706.6 sz= 5.6 black     | Disallow Future Date: Yes
+x=  46.5 y= 707.2 sz= 7.5 black     | [SAS Field Name: EXC024]
+x=  46.5 y= 725.2 sz= 7.5 black     | 25. Consumption of foods or supplements known to inhibit
+x= 249.2 y= 728.3 sz= 7.5 black     | O N/A
+x= 453.5 y= 728.8 sz= 5.6 black   B | EXC025
+x=  46.5 y= 733.9 sz= 7.5 black     | or induce CYP3A4, eg,pomelo, grapefruit, Seville oranges,
+x= 453.5 y= 735.4 sz= 5.6 black     | Format: $6
+x= 249.2 y= 737.0 sz= 7.5 black     | O Yes
+x= 453.5 y= 741.9 sz= 5.6 black     | Data Type: string
+x=  46.5 y= 742.6 sz= 7.5 black     | St. John’s Wort within 72 hours prior todosing.
+x= 249.2 y= 745.7 sz= 7.5 black     | O No
+x= 453.5 y= 748.4 sz= 5.6 black     | Origin: CRF
+x= 249.2 y= 754.4 sz= 7.5 black     | O Unspecified
+x= 453.5 y= 755.0 sz= 5.6 black     | Description: EXC025
+x=  46.5 y= 760.0 sz= 7.5 black     | [EXC025]
+x= 453.5 y= 761.5 sz= 5.6 black     | Mandatory?: Yes
+x= 253.0 y= 767.1 sz= 6.4 #808080   | Code List: IE - Not Met
+x= 453.5 y= 768.0 sz= 5.6 black     | Disallow Future Date: Yes
+x=  46.5 y= 768.7 sz= 7.5 black     | [SAS Field Name: EXC025]
+x=  46.5 y= 783.5 sz= 7.5 black     | 26. Active suicidal ideation as evidenced by clinical
+x=  46.5 y= 792.2 sz= 7.5 black     | examination or an answer of “yes” on Questions 4 or 5 of
+x=  36.0 y= 817.4 sz= 9.0 black     | Annotated CRF
+x= 276.3 y= 817.4 sz= 9.0 black     | 118 of 238
+x= 445.8 y= 817.4 sz= 9.0 black     | https://drvince.clinspark.com

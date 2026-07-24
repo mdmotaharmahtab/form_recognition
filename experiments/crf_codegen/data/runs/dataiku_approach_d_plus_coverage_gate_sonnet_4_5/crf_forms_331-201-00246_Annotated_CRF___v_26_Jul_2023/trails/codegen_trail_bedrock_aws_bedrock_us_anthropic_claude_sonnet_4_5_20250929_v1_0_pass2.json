@@ -1,0 +1,649 @@
+{
+ "stop_reason": "plateau",
+ "versions": 6,
+ "best_version": 4,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "confirm",
+   "metrics": {
+    "engine": "codegen",
+    "records": 1040,
+    "pages_total": 191,
+    "pages_with_fields": 190,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 97,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 41,
+    "fields_per_form": 25.4,
+    "forms_per_100_pages": 21.5,
+    "form_same_page_evidence_records": 1027,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 99,
+    "content_pages": 191,
+    "content_covered_pct": 99,
+    "uncovered_content_pct": 1
+   },
+   "problems": [],
+   "outcome": "extended_program"
+  },
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 997,
+    "pages_total": 191,
+    "pages_with_fields": 172,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 97,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 36,
+    "fields_per_form": 27.7,
+    "forms_per_100_pages": 18.8,
+    "form_same_page_evidence_records": 984,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 90,
+    "content_pages": 191,
+    "content_covered_pct": 90,
+    "uncovered_content_pct": 10
+   },
+   "problems": [],
+   "warnings": [
+    "The program filters by 19 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    0,
+    "not_audited",
+    1,
+    -172
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "confirm_extension",
+   "metrics": {
+    "engine": "codegen",
+    "records": 1040,
+    "pages_total": 191,
+    "pages_with_fields": 190,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 97,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 41,
+    "fields_per_form": 25.4,
+    "forms_per_100_pages": 21.5,
+    "form_same_page_evidence_records": 1027,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 99,
+    "content_pages": 191,
+    "content_covered_pct": 99,
+    "uncovered_content_pct": 1
+   },
+   "problems": [],
+   "warnings": [
+    "The program filters by 19 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": 14,
+   "audit_pages": [
+    58,
+    60,
+    184,
+    421,
+    757,
+    1070
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 58,
+     "missed": [],
+     "false": [
+      "(values: Normal,",
+      "Abnormal, Not",
+      "Done, NA)]"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 60,
+     "missed": [],
+     "false": [
+      "(values: Normal,",
+      "Abnormal, Not",
+      "Done, NA)]"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 184,
+     "missed": [],
+     "false": [
+      "Sertraline PK, Sertraline PK, Propranolol PK, Prazosin PK)]"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 421,
+     "missed": [],
+     "false": [
+      "Sertraline PK, Sertraline PK, Propranolol PK, Prazosin PK)]"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 757,
+     "missed": [],
+     "false": [
+      "(values: Collected, Not",
+      "Collected, Not Applicable)]"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 1070,
+     "missed": [
+      "Sample",
+      "Sample Status",
+      "Time of Collection",
+      "Barcode Number"
+     ],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    14,
+    1,
+    -190
+   ],
+   "became_best": true
+  },
+  {
+   "version": 3,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 887,
+    "pages_total": 191,
+    "pages_with_fields": 190,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 98,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 41,
+    "fields_per_form": 21.6,
+    "forms_per_100_pages": 21.5,
+    "form_same_page_evidence_records": 858,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 99,
+    "content_pages": 191,
+    "content_covered_pct": 99,
+    "uncovered_content_pct": 1
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 12,
+   "audit_pages": [
+    58,
+    59,
+    60,
+    103,
+    184,
+    421,
+    757,
+    1070
+   ],
+   "audit_partial": null,
+   "audit_promoted": [
+    59
+   ],
+   "audit_verdicts": [
+    {
+     "page": 58,
+     "missed": [],
+     "false": [
+      "Abnormal, Not"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 59,
+     "missed": [],
+     "false": [
+      "Abnormal, Not"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 60,
+     "missed": [],
+     "false": [
+      "Abnormal, Not"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 103,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 184,
+     "missed": [],
+     "false": [
+      "Sertraline PK",
+      "Brexpiprazole/Sertraline PK",
+      "Propranolol PK",
+      "Prazosin PK"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 421,
+     "missed": [],
+     "false": [
+      "Prazosin PK",
+      "Brexpiprazole/Sertraline PK",
+      "Sertraline PK",
+      "Propranolol PK"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 757,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 1070,
+     "missed": [
+      "PGx"
+     ],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    12,
+    0,
+    -190
+   ],
+   "became_best": true
+  },
+  {
+   "version": 4,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 890,
+    "pages_total": 191,
+    "pages_with_fields": 191,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 98,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 42,
+    "fields_per_form": 21.2,
+    "forms_per_100_pages": 22.0,
+    "form_same_page_evidence_records": 862,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 100,
+    "content_pages": 191,
+    "content_covered_pct": 100,
+    "uncovered_content_pct": 0
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 11,
+   "audit_pages": [
+    58,
+    59,
+    60,
+    104,
+    184,
+    421,
+    757,
+    1070
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 58,
+     "missed": [],
+     "false": [
+      "Abnormal, Not"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 59,
+     "missed": [],
+     "false": [
+      "Abnormal, Not"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 60,
+     "missed": [],
+     "false": [
+      "Abnormal, Not"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 104,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 184,
+     "missed": [],
+     "false": [
+      "Sertraline PK",
+      "Brexpiprazole/Sertraline PK",
+      "Propranolol PK",
+      "Prazosin PK"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 421,
+     "missed": [],
+     "false": [
+      "Prazosin PK",
+      "Brexpiprazole/Sertraline PK",
+      "Sertraline PK",
+      "Propranolol PK"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 757,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 1070,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    11,
+    0,
+    -191
+   ],
+   "became_best": true
+  },
+  {
+   "version": 5,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 727,
+    "pages_total": 191,
+    "pages_with_fields": 172,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 97,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 42,
+    "fields_per_form": 17.3,
+    "forms_per_100_pages": 22.0,
+    "form_same_page_evidence_records": 699,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 90,
+    "content_pages": 191,
+    "content_covered_pct": 90,
+    "uncovered_content_pct": 10
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 23,
+   "audit_pages": [
+    58,
+    59,
+    60,
+    105,
+    184,
+    421,
+    757,
+    1070
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 58,
+     "missed": [],
+     "false": [
+      "Abnormal, Not"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 59,
+     "missed": [],
+     "false": [
+      "Abnormal, Not"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 60,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 105,
+     "missed": [],
+     "false": [
+      "Test",
+      "Result"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 184,
+     "missed": [
+      "Sample",
+      "Timepoint",
+      "Sample Status",
+      "Time of Collection",
+      "Barcode Number",
+      "Backup Barcode Number"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 421,
+     "missed": [
+      "Sample",
+      "Timepoint",
+      "Sample Status",
+      "Time of Collection",
+      "Barcode Number",
+      "Backup Barcode Number"
+     ],
+     "false": [
+      "Predose",
+      "1h Postdose"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 757,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 1070,
+     "missed": [
+      "Sample",
+      "Sample Status",
+      "Time of Collection",
+      "Barcode Number"
+     ],
+     "false": [
+      "PGx"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    23,
+    0,
+    -172
+   ],
+   "became_best": false
+  },
+  {
+   "version": 6,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 776,
+    "pages_total": 191,
+    "pages_with_fields": 151,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 98,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 40,
+    "fields_per_form": 19.4,
+    "forms_per_100_pages": 20.9,
+    "form_same_page_evidence_records": 773,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 79,
+    "content_pages": 191,
+    "content_covered_pct": 79,
+    "uncovered_content_pct": 21
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 2,
+   "audit_pages": [
+    58,
+    59,
+    60,
+    98,
+    184,
+    421,
+    757,
+    1070
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 58,
+     "missed": [],
+     "false": [
+      "Abnormal, Not"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 59,
+     "missed": [],
+     "false": [
+      "Abnormal, Not"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 60,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 98,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 184,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 421,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 757,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 1070,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    2,
+    0,
+    -151
+   ],
+   "became_best": false
+  }
+ ]
+}

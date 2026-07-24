@@ -1,0 +1,510 @@
+{
+ "stop_reason": "budget",
+ "versions": 5,
+ "best_version": 3,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "confirm",
+   "metrics": {
+    "engine": "codegen",
+    "records": 256,
+    "pages_total": 243,
+    "pages_with_fields": 57,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 57,
+    "fields_per_form": 4.5,
+    "forms_per_100_pages": 23.5,
+    "form_same_page_evidence_records": 247,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 23
+   },
+   "problems": [],
+   "outcome": "extended_program"
+  },
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 222,
+    "pages_total": 243,
+    "pages_with_fields": 56,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 56,
+    "fields_per_form": 4.0,
+    "forms_per_100_pages": 23.0,
+    "form_same_page_evidence_records": 208,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 23
+   },
+   "problems": [],
+   "warnings": [
+    "56 distinct form_names for 222 records - check whether form detection is picking up field labels or body text as form names; if so, make the form_name pattern stricter (font size / color / position) or carry the last seen title forward. If the document genuinely has this many forms, keep it as is."
+   ],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    0,
+    "not_audited",
+    1,
+    -56
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "confirm_extension",
+   "metrics": {
+    "engine": "codegen",
+    "records": 256,
+    "pages_total": 243,
+    "pages_with_fields": 57,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 57,
+    "fields_per_form": 4.5,
+    "forms_per_100_pages": 23.5,
+    "form_same_page_evidence_records": 247,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 23
+   },
+   "problems": [],
+   "warnings": [
+    "The program filters by 13 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": 11,
+   "audit_pages": [
+    1,
+    21,
+    56,
+    70,
+    147,
+    197
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 21,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 56,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 70,
+     "missed": [
+      "QTcB",
+      "RATE",
+      "RR",
+      "EGTXT",
+      "ECG Acquisition Time",
+      "ECG Interpretation"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 147,
+     "missed": [
+      "Diastolic Blood Pressure",
+      "Heart Rate",
+      "Did systolic blood pressure decrease by 20 or more?",
+      "Clinical significance",
+      "Did diastolic blood pressure decrease by 10 or more?"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 197,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    11,
+    1,
+    -57
+   ],
+   "became_best": true
+  },
+  {
+   "version": 3,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 256,
+    "pages_total": 243,
+    "pages_with_fields": 57,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 57,
+    "fields_per_form": 4.5,
+    "forms_per_100_pages": 23.5,
+    "form_same_page_evidence_records": 247,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 23
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 11,
+   "audit_pages": [
+    1,
+    2,
+    4,
+    21,
+    56,
+    70,
+    147,
+    197
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 4,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 21,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 56,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 70,
+     "missed": [
+      "QTcB",
+      "RATE",
+      "RR",
+      "EGTXT",
+      "ECG Acquisition Time",
+      "ECG Interpretation"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 147,
+     "missed": [
+      "Diastolic Blood Pressure",
+      "Heart Rate",
+      "Did systolic blood pressure decrease by 20 or more?",
+      "Clinical significance",
+      "Did diastolic blood pressure decrease by 10 or more?"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 197,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    11,
+    0,
+    -57
+   ],
+   "became_best": true
+  },
+  {
+   "version": 4,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 256,
+    "pages_total": 243,
+    "pages_with_fields": 57,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 57,
+    "fields_per_form": 4.5,
+    "forms_per_100_pages": 23.5,
+    "form_same_page_evidence_records": 247,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 23
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 17,
+   "audit_pages": [
+    1,
+    5,
+    16,
+    21,
+    56,
+    70,
+    147,
+    197
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [
+      "Sponsor Name",
+      "Protocol Number",
+      "Protocol Title",
+      "aCRF Version",
+      "Prepared by",
+      "Date"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 5,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 16,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 21,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 56,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 70,
+     "missed": [
+      "QTcB",
+      "RATE",
+      "RR",
+      "EGTXT",
+      "ECG Acquisition Time",
+      "ECG Interpretation"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 147,
+     "missed": [
+      "Diastolic Blood Pressure",
+      "Heart Rate",
+      "Did systolic blood pressure decrease by 20 or more?",
+      "Clinical significance",
+      "Did diastolic blood pressure decrease by 10 or more?"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 197,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    17,
+    0,
+    -57
+   ],
+   "became_best": false
+  },
+  {
+   "version": 5,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 257,
+    "pages_total": 243,
+    "pages_with_fields": 57,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 57,
+    "fields_per_form": 4.5,
+    "forms_per_100_pages": 23.5,
+    "form_same_page_evidence_records": 248,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 23
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 16,
+   "audit_pages": [
+    1,
+    6,
+    21,
+    25,
+    56,
+    70,
+    147,
+    197
+   ],
+   "audit_partial": null,
+   "audit_promoted": [
+    25
+   ],
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 6,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 21,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 25,
+     "missed": [
+      "Dose unit",
+      "Dose form",
+      "Frequency",
+      "Administration start date and time"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 56,
+     "missed": [
+      "Frequency"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 70,
+     "missed": [
+      "QTcB",
+      "RATE",
+      "RR",
+      "EGTXT",
+      "ECG Acquisition Time",
+      "ECG Interpretation"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 147,
+     "missed": [
+      "Diastolic Blood Pressure",
+      "Heart Rate",
+      "Did systolic blood pressure decrease by 20 or more?",
+      "Clinical significance",
+      "Did diastolic blood pressure decrease by 10 or more?"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 197,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    16,
+    0,
+    -57
+   ],
+   "became_best": false
+  }
+ ]
+}

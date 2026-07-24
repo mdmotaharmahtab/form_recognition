@@ -1,0 +1,230 @@
+form_name,field_name,page
+AE / CM,Were any adverse events experienced?,3
+AE / CM,Start date and time,3
+AE / CM,Ongoing?,3
+AE / CM,End date and time,3
+AE / CM,Adverse event term,3
+AE / CM,Is this a treatment emergent adverse event?,3
+AE / CM,Is this an adverse event of special interest?,3
+Blood Collection - PGx (Predose),PGx collection date and time,9
+Blood Collection - PK SEP,PK SEP collection date and time,10
+Blood Collection - PK SEP/PD Creatine,PK SEP collection date and time,11
+Blood Collection - PK SEP/PD Creatinine/Safety Day 1,PK SEP collection date and time,12
+Blood Collection - PK SEP/PK Quinidine,PK SEP collection date and time,13
+Blood Collection - PK SEP/PK Quinidine/Safety Day 7,PK SEP collection date and time,14
+C-SSRS - Baseline/Screening,Date and Time of Collection,15
+C-SSRS - Baseline/Screening,Have you wished you were dead or wished you could go to,15
+C-SSRS - Baseline/Screening,sleep and not wake up? (Lifetime).,15
+C-SSRS - Baseline/Screening,sleep and not wake up? (Past 6 Months).,15
+C-SSRS - Baseline/Screening,"If yes, describe:",15
+C-SSRS - Baseline/Screening,Have you actually had any thoughts of killing yourself?,15
+C-SSRS - Baseline/Screening,(Lifetime).,15
+C-SSRS - Since Last Visit,Date and Time of Collection,23
+C-SSRS - Since Last Visit,Have you wished you were dead or wished you could go to,23
+C-SSRS - Since Last Visit,sleep and not wake up since last visit?,23
+C-SSRS - Since Last Visit,"If yes, describe:",23
+C-SSRS - Since Last Visit,Have you actually had any thoughts of killing yourself since,23
+C-SSRS - Since Last Visit,last visit?,23
+C-SSRS - Since Last Visit,Have you been thinking about how you might do this since,23
+CM related to MH,Enter medical history the concomitant medication is being,29
+CM related to MH,given for,29
+CM related to MH,Concomitant medication or therapy,29
+CM related to MH,Route of administration,29
+CM related to MH,Total dose,29
+CM related to MH,Dose form,29
+Concomitant Medications - Screening,Were any concomitant medications taken?,31
+Concomitant Medications - Screening,Concomitant medication or therapy,31
+Concomitant Medications - Screening,Route of administration,31
+Concomitant Medications - Screening,Total dose,31
+Concomitant Medications - Screening,Dose form,31
+Concomitant Medications - Screening,Dose unit,31
+Demographics,Date of demographic collection,33
+Demographics,Age,33
+Demographics,Sex,33
+Demographics,Ethnicity,33
+Demographics,American Indian Or Alaska Native,33
+Demographics,Asian,33
+Demographics,Black Or African American,33
+Demographics,Native Hawaiian Or Other Pacific Islander,33
+Demographics,White,33
+Disposition,Date of volunteer completion or discontinuation,35
+Disposition,Completion/Reason for Non-Completion,35
+Disposition,Date of Death,35
+Disposition,Adverse Event term,35
+Disposition,What randomization criteria did the volunteer not meet?,35
+Disposition,What made the volunteer a lost to follow-up?,35
+ECG (RScribe),PR,38
+ECG (RScribe),QRS,38
+ECG (RScribe),QT,38
+ECG (RScribe),QTcF,38
+ECG (RScribe),QTcB,38
+ECG (RScribe),RATE,38
+ECG (RScribe) Admission,PR,41
+ECG (RScribe) Admission,QRS,41
+ECG (RScribe) Admission,QT,41
+ECG (RScribe) Admission,QTcF,41
+ECG (RScribe) Admission,QTcB,41
+ECG (RScribe) Admission,RATE,41
+ECG (RScribe) Screening,PR,44
+ECG (RScribe) Screening,QRS,44
+ECG (RScribe) Screening,QT,44
+ECG (RScribe) Screening,QTcF,44
+ECG (RScribe) Screening,QTcB,44
+ECG (RScribe) Screening,RATE,44
+ECG (RScribe) Unscheduled,PR,47
+ECG (RScribe) Unscheduled,QRS,47
+ECG (RScribe) Unscheduled,QT,47
+ECG (RScribe) Unscheduled,QTcF,47
+ECG (RScribe) Unscheduled,QTcB,47
+ECG (RScribe) Unscheduled,RATE,47
+ECG Triplicate (RScribe),PR,50
+ECG Triplicate (RScribe),QRS,50
+ECG Triplicate (RScribe),QT,50
+ECG Triplicate (RScribe),QTcF,50
+ECG Triplicate (RScribe),QTcB,50
+ECG Triplicate (RScribe),RATE,50
+ECG Triplicate (RScribe) - Baseline,PR,57
+ECG Triplicate (RScribe) - Baseline,QRS,57
+ECG Triplicate (RScribe) - Baseline,QT,57
+ECG Triplicate (RScribe) - Baseline,QTcF,57
+ECG Triplicate (RScribe) - Baseline,QTcB,57
+ECG Triplicate (RScribe) - Baseline,RATE,57
+Genomic ICF,Genomic ICF Version,64
+Genomic ICF,Date and Time of Genomic Informed Consent,64
+Height / Weight / BMI,Date and time of collection,65
+Height / Weight / BMI,Height,65
+Height / Weight / BMI,Weight,65
+Height / Weight / BMI,BMI,65
+Medical History,Does the volunteer have any medical history to report?,66
+Medical History,Reported term for the medical history,66
+Medical History,Start date of medical history event,66
+Medical History,End date of medical history event,66
+Medical History,Is condition ongoing?,66
+Medical History,Clinical significance,66
+Physical Examination - Full,Date and time performed,67
+Physical Examination - Full,Body system,67
+Physical Examination - Full,Examination result,67
+Physical Examination - Full,Clinical significance,67
+Physical Examination - Full,Abnormal findings,67
+Physical Examination - Screening,Date and time performed,74
+Physical Examination - Screening,Body system,74
+Physical Examination - Screening,Examination result,74
+Physical Examination - Screening,Clinical significance,74
+Physical Examination - Screening,Abnormal findings,74
+Physical Examination - Targeted,Date and time performed,81
+Physical Examination - Targeted,Body system,81
+Physical Examination - Targeted,Examination result,81
+Physical Examination - Targeted,Clinical significance,81
+Physical Examination - Targeted,Abnormal findings,81
+Principal Investigator Approval,I acknowledge that I have reviewed and approved all data,85
+Principal Investigator Approval,for this volunteer.,85
+Protocol Deviations,Deviation Date,86
+Protocol Deviations,Deviation visit,86
+Protocol Deviations,Deviation timepoint,86
+Protocol Deviations,Deviation category,86
+Protocol Deviations,Deviation Category Other Specify,86
+Randomization,Date and time of randomization,88
+Randomization,Randomization number,88
+Re-Screen,Is this volunteer re-screening?,89
+Re-Screen,Original Screening Number,89
+Study Drug Administration - Quinidine,Route of administration,90
+Study Drug Administration - Quinidine,Date and time of administration,90
+Study Drug Administration - Quinidine,Drug name given,90
+Study Drug Administration - Quinidine,Total dose,90
+Study Drug Administration - Quinidine,Unit,90
+Study Drug Administration - Quinidine,Formulation of study drug,90
+Study Drug Administration - Quinidine,Quantity administered,90
+Study Drug Administration - Quinidine,Was the dose administered per protocol?,90
+Study Drug Administration - SEP-380135,Route of administration,92
+Study Drug Administration - SEP-380135,Date and time of administration,92
+Study Drug Administration - SEP-380135,Drug name given,92
+Study Drug Administration - SEP-380135,Total dose,92
+Study Drug Administration - SEP-380135,Unit,92
+Study Drug Administration - SEP-380135,Formulation of study drug,92
+Study Drug Administration - SEP-380135,Quantity administered,92
+Study Drug Administration - SEP-380135,Was the dose administered per protocol?,92
+Subject Eligibility,1. Male or female participants between 18 and 55 years of,94
+Subject Eligibility,age (inclusive) at time of consent.,94
+Subject Eligibility,2. Body mass index from 18.0 to 32.0 kg/m2 (inclusive).,94
+Subject Eligibility,3. In good health as determined by: a. Medical history b. Physical examination c. Vital signs d. Neurological,94
+Subject Eligibility,Physical examination c. Vital signs d. Neurological,94
+Subject Eligibility,"examination e. Electrocardiogram f. Serum chemistry, lipid",94
+Subject Eligibility,"panel, thyroid panel, coagulation panel, urinalysis,",94
+Subject Eligibility,"hematology, and serology tests (from screening visit).",94
+Subject Eligibility,"4. Willing to stay in the clinic for the required period (ie, to",94
+Subject Eligibility,be hospitalized) andwilling to be contacted for the safety,94
+Subject Eligibility,follow-up telephone call.,94
+Subject Eligibility,"5. Ability to provide written, informed consent prior to",94
+Subject Eligibility,"initiation of any trial-relatedprocedures, and ability, in the",94
+Subject Eligibility,"opinion of the Principal Investigator, to complywith all the",94
+Subject Eligibility,requirements of the trial.,94
+Subject Eligibility,1. Are breast-feeding.,94
+Subject Eligibility,2. Have a positive pregnancy test prior to receiving IMP.,94
+Subject Eligibility,3. Participants of reproductive potential (PORP)/ participants of childbearing potential (POCBP) who do not,94
+Subject Eligibility,participants of childbearing potential (POCBP) who do not,94
+Subject Eligibility,agree to practice 2 different highly effective methods of,94
+Subject Eligibility,birth control or remain fully abstinent from sexual activity,94
+Subject Eligibility,"with the potential for conception, per the guidelines in",94
+Subject Eligibility,Section 10.3.,94
+Subject Eligibility,4. Participants who do not agree to refrain from donating,94
+Subject Eligibility,sperm or eggs from trialscreening through 90 days after the,94
+Subject Eligibility,last dose of IMP.,94
+Subject Eligibility,"condition or anyclinically significant chronic disease that in the opinion of the investigator, would limit the participant’s ability to complete and/or participate in the study, including",94
+Subject Eligibility,"the opinion of the investigator, would limit the participant’s ability to complete and/or participate in the study, including",94
+Subject Eligibility,"ability to complete and/or participate in the study, including",94
+Subject Eligibility,any clinically significant hematological (including deep vein,94
+Subject Eligibility,"thrombosis) orbleeding disorder, renal, metabolic,",94
+Subject Eligibility,"endocrine, pulmonary, gastrointestinal, urological,",94
+Subject Eligibility,"cardiovascular, hepatic, neurologic or allergic disease",94
+Subject Informed Consent,ICF Version,99
+Subject Informed Consent,Date and Time of Informed Consent,99
+Urine Collection - Admission,Urine collection date and time,100
+Urine Collection - Admission,Cotinine Result,100
+Urine Collection - Admission,Cotinine Clinical Significance,100
+Urine Collection - Admission,Amphetamines / Methamphetamines,100
+Urine Collection - Admission,Clinical Significance,100
+Urine Collection - Admission,Barbiturates,100
+Urine Collection - PK - Interval Start (0-2),Collection start date and time,104
+Urine Collection - PK - Interval Start (12-24),Collection start date and time,105
+Urine Collection - PK - Interval Start (2-4),Collection start date and time,106
+Urine Collection - PK - Interval Start (4-8),Collection start date and time,107
+Urine Collection - PK - Interval Start (8-12),Collection start date and time,108
+Urine Collection - PK - Interval Stop (0-2),Date and time of last collection.,109
+Urine Collection - PK - Interval Stop (12-24),Date and time of last collection.,110
+Urine Collection - PK - Interval Stop (2-4),Date and time of last collection.,111
+Urine Collection - PK - Interval Stop (4-8),Date and time of last collection.,112
+Urine Collection - PK - Interval Stop (8-12),Date and time of last collection.,113
+Urine Collection - PK - Spot Collection,Collection start date and time,114
+Urine Collection - Screening,Urine collection date and time,115
+Urine Collection - Screening,Cotinine Result,115
+Urine Collection - Screening,Cotinine Clinical Significance,115
+Urine Collection - Screening,Amphetamines / Methamphetamines,115
+Urine Collection - Screening,Clinical Significance,115
+Urine Collection - Screening,Barbiturates,115
+Vital Signs - Orthostatic (3 min Standing),Date and time of collection,118
+Vital Signs - Orthostatic (3 min Standing),Systolic Blood Pressure,118
+Vital Signs - Orthostatic (3 min Standing),Is systolic blood pressure out of range?,118
+Vital Signs - Orthostatic (3 min Standing),Clinical significance,118
+Vital Signs - Orthostatic (3 min Standing),Diastolic Blood Pressure,118
+Vital Signs - Orthostatic (3 min Standing),Is diastolic blood pressure out of range?,118
+Vital Signs - Orthostatic Screening/Admission (3 min Standing),Date and time of collection,123
+Vital Signs - Orthostatic Screening/Admission (3 min Standing),Systolic Blood Pressure,123
+Vital Signs - Orthostatic Screening/Admission (3 min Standing),Is systolic blood pressure out of range?,123
+Vital Signs - Orthostatic Screening/Admission (3 min Standing),Clinical significance,123
+Vital Signs - Orthostatic Screening/Admission (3 min Standing),Diastolic Blood Pressure,123
+Vital Signs - Orthostatic Screening/Admission (3 min Standing),Is diastolic blood pressure out of range?,123
+Vital Signs - Unscheduled,Date and time of collection,128
+Vital Signs - Unscheduled,Systolic Blood Pressure,128
+Vital Signs - Unscheduled,Is systolic blood pressure out of range?,128
+Vital Signs - Unscheduled,Clinical significance,128
+Vital Signs - Unscheduled,Diastolic Blood Pressure,128
+Vital Signs - Unscheduled,Is diastolic blood pressure out of range?,128
+Vital Signs - Unscheduled - Orthostatic (3 min Standing),Date and time of collection,132
+Vital Signs - Unscheduled - Orthostatic (3 min Standing),Systolic Blood Pressure,132
+Vital Signs - Unscheduled - Orthostatic (3 min Standing),Is systolic blood pressure out of range?,132
+Vital Signs - Unscheduled - Orthostatic (3 min Standing),Clinical significance,132
+Vital Signs - Unscheduled - Orthostatic (3 min Standing),Diastolic Blood Pressure,132
+Vital Signs - Unscheduled - Orthostatic (3 min Standing),Is diastolic blood pressure out of range?,132
+Weight / BMI,Date and time of collection,136
+Weight / BMI,Weight,136
+Weight / BMI,BMI,136

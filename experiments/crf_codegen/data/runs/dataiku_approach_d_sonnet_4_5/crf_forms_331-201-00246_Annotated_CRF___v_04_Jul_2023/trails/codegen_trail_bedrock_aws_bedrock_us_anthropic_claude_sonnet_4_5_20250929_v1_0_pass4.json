@@ -1,0 +1,579 @@
+{
+ "stop_reason": "plateau",
+ "versions": 6,
+ "best_version": 2,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 117,
+    "pages_total": 28,
+    "pages_with_fields": 21,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 0,
+    "labels_look_human_pct": 83,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 0,
+    "fields_per_form": 117.0,
+    "forms_per_100_pages": 0.0,
+    "form_same_page_evidence_records": 0,
+    "form_same_page_persistence_pct": null,
+    "furniture_candidates": [],
+    "pages_covered_pct": 75
+   },
+   "problems": [
+    "Extreme content-fitted blocklist. The program filters by 37 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "warnings": [
+    "form_name empty for 100% of records - if the document does print form/section names, fix the form_name strategy (consider carrying the last seen title forward)."
+   ],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    1,
+    "not_audited",
+    1,
+    -21
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "confirm",
+   "outcome": "confirmed_no_fields"
+  },
+  {
+   "version": 2,
+   "kind": "revise_gates",
+   "metrics": {
+    "engine": "codegen",
+    "records": 143,
+    "pages_total": 28,
+    "pages_with_fields": 23,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 79,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 11,
+    "fields_per_form": 13.0,
+    "forms_per_100_pages": 39.3,
+    "form_same_page_evidence_records": 143,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 82
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 45,
+   "audit_pages": [
+    11,
+    13,
+    45,
+    387,
+    776,
+    921
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 11,
+     "missed": [],
+     "false": [
+      "Changed By",
+      "Initial draft",
+      "updates to unique pages",
+      "built full schedule",
+      "updates to full schedule"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 13,
+     "missed": [],
+     "false": [
+      "Changed By",
+      "n End Prompt page in Day-15, Day-1 and Day 18",
+      "deploy version 3.0 to production",
+      "Changes as per CR 8",
+      "Updated skip triggers to include 1003 as well where it was 1002.",
+      "POE Updates as per POE file v: 0.16 and 0.17",
+      "Poe updates and fixes",
+      "Removed variable DSPRTNO1 from enrollment, that was added during 3.1 for testing possible scenarios.",
+      "Production Release",
+      "Mara Mihailescu",
+      "Updates as per CR 11",
+      "Mara Mihailescu/Paul M",
+      "Updates as per feedback sheet",
+      "Paul Mostioru",
+      "Added new \"Time of Vitals Measurement\" VSSUVTI M1, VSSUVTIM2; VSSUVTIM,VSSTVTIM1, VSS",
+      "TVTIM2 variables on vs3c and vs3c_rpt tabs Added \"Triplicate Orthostatic BP and HR - ET\" at ET visit O",
+      "n vs3c tab added a new repeat section for \"Triplicate Orthostatic BP and HR \u2013 ET\" page, subgroup 822 at",
+      "ET visit. Updated \"Completed\" status logic.",
+      "On vs3c and vs3c_rpt tabs changed variable VSSUV TIM to new variable VSSUVTIM3.",
+      "POE Updates as per POE file version 1.04",
+      "POE Updates after client UAT",
+      "Updates after client UAT",
+      "New repeat (Urogenital) added on pe_table. Visit labe l updated from \"Screen Visit 1 Day -42 to -21\" to \"Sc",
+      "reen Visit 1 Day -55 to -16\". \"NA\" selection option a dded to PERES variable. Removed \"Orthostatic BP a",
+      "nd HR\" Scheduled and Unscheduled page from sched ule. Updated field and variable label for LBRR47 vari"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 45,
+     "missed": [],
+     "false": [],
+     "wrong_form": [
+      "Tubal ligation",
+      "Intrauterine device",
+      "Birth control pills",
+      "Birth control implant",
+      "Birth control depot injection",
+      "Condom with spermicide",
+      "Sponge with spermicide"
+     ]
+    },
+    {
+     "page": 387,
+     "missed": [],
+     "false": [
+      "Definitions of behavioral suicidal events in this scale are based on those used in **The Columbia Suicide History Form**, developed by John Mann, MD and Maria Oquendo, MD, Conte Center for the Neuroscience of Mental Disorders (CCNMD),",
+      "New York State Psychiatric Institute, 1051 Riverside Drive, New York, NY, 10032. (Oquendo M. A., Halberstam B. & Mann J. J., Risk factors for suicidal behavior: utility and limitations of research instruments. In M.B. First [Ed.] Standardized",
+      "Evaluation in Clinical Practice, pp. 103 -130, 2003.)",
+      "For reprints of the C-SSRS contact Kelly Posner, Ph.D., New York State Psychiatric Institute, 1051 Riverside Drive, New York, New York, 10032; inquiries and training requirements contact posnerk@nyspi.columbia.edu"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 776,
+     "missed": [],
+     "false": [
+      "Definitions of behavioral suicidal events in this scale are based on those used in **The Columbia Suicide History Form**, developed by John Mann, MD and Maria Oquendo, MD, Conte Center for the Neuroscience of Mental Disorders (CCNMD),",
+      "New York State Psychiatric Institute, 1051 Riverside Drive, New York, NY, 10032. (Oquendo M. A., Halberstam B. & Mann J. J., Risk factors for suicidal behavior: utility and limitations of research instruments. In M.B. First [Ed.] Standardized",
+      "Evaluation in Clinical Practice, pp. 103 -130, 2003.)",
+      "For reprints of the C-SSRS contact Kelly Posner, Ph.D., New York State Psychiatric Institute, 1051 Riverside Drive, New York, New York, 10032; inquiries and training requirements contact posnerk@nyspi.columbia.edu"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 921,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    45,
+    0,
+    -23
+   ],
+   "became_best": true
+  },
+  {
+   "version": 3,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 47,
+    "pages_total": 28,
+    "pages_with_fields": 9,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 7,
+    "fields_per_form": 6.7,
+    "forms_per_100_pages": 25.0,
+    "form_same_page_evidence_records": 47,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 32
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 3,
+   "audit_pages": [
+    11,
+    12,
+    13,
+    42,
+    45,
+    387,
+    776,
+    921
+   ],
+   "audit_partial": null,
+   "audit_promoted": [
+    42
+   ],
+   "audit_verdicts": [
+    {
+     "page": 11,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 12,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 13,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 42,
+     "missed": [
+      "Vasectomy"
+     ],
+     "false": [
+      "Bilateral Oophorectomy",
+      "Bilateral Tubal Ligation"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 45,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 387,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 776,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 921,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    3,
+    0,
+    -9
+   ],
+   "became_best": false
+  },
+  {
+   "version": 4,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 48,
+    "pages_total": 28,
+    "pages_with_fields": 9,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 7,
+    "fields_per_form": 6.9,
+    "forms_per_100_pages": 25.0,
+    "form_same_page_evidence_records": 48,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 32
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 0,
+   "audit_pages": [
+    11,
+    13,
+    42,
+    43,
+    45,
+    387,
+    776,
+    921
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 11,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 13,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 42,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 43,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 45,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 387,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 776,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 921,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    0,
+    0,
+    -9
+   ],
+   "became_best": false
+  },
+  {
+   "version": 5,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 48,
+    "pages_total": 28,
+    "pages_with_fields": 9,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 7,
+    "fields_per_form": 6.9,
+    "forms_per_100_pages": 25.0,
+    "form_same_page_evidence_records": 48,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 32
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 0,
+   "audit_pages": [
+    11,
+    13,
+    42,
+    45,
+    110,
+    387,
+    776,
+    921
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 11,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 13,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 42,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 45,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 110,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 387,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 776,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 921,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    0,
+    0,
+    -9
+   ],
+   "became_best": false
+  },
+  {
+   "version": 6,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 48,
+    "pages_total": 28,
+    "pages_with_fields": 9,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 7,
+    "fields_per_form": 6.9,
+    "forms_per_100_pages": 25.0,
+    "form_same_page_evidence_records": 48,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 32
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 1,
+   "audit_pages": [
+    11,
+    13,
+    42,
+    45,
+    48,
+    387,
+    776,
+    921
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 11,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 13,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 42,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 45,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 48,
+     "missed": [
+      "Term"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 387,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 776,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 921,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    1,
+    0,
+    -9
+   ],
+   "became_best": false
+  }
+ ]
+}

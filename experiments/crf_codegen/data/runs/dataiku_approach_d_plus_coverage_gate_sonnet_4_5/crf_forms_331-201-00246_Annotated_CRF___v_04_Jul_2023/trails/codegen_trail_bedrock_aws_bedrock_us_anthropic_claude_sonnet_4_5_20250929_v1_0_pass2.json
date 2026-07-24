@@ -1,0 +1,566 @@
+{
+ "stop_reason": "budget",
+ "versions": 6,
+ "best_version": 5,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "confirm",
+   "metrics": {
+    "engine": "codegen",
+    "records": 1448,
+    "pages_total": 191,
+    "pages_with_fields": 180,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 41,
+    "fields_per_form": 35.3,
+    "forms_per_100_pages": 21.5,
+    "form_same_page_evidence_records": 1446,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 94,
+    "content_pages": 191,
+    "content_covered_pct": 94,
+    "uncovered_content_pct": 6
+   },
+   "problems": [],
+   "outcome": "extended_program"
+  },
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 1090,
+    "pages_total": 191,
+    "pages_with_fields": 160,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 97,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 33,
+    "fields_per_form": 33.0,
+    "forms_per_100_pages": 17.3,
+    "form_same_page_evidence_records": 1086,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 84,
+    "content_pages": 191,
+    "content_covered_pct": 84,
+    "uncovered_content_pct": 16
+   },
+   "problems": [],
+   "warnings": [
+    "The program filters by 12 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    0,
+    "not_audited",
+    1,
+    -160
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "confirm_extension",
+   "metrics": {
+    "engine": "codegen",
+    "records": 1448,
+    "pages_total": 191,
+    "pages_with_fields": 180,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 41,
+    "fields_per_form": 35.3,
+    "forms_per_100_pages": 21.5,
+    "form_same_page_evidence_records": 1446,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 94,
+    "content_pages": 191,
+    "content_covered_pct": 94,
+    "uncovered_content_pct": 6
+   },
+   "problems": [],
+   "warnings": [
+    "The program filters by 19 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": 46,
+   "audit_pages": [
+    58,
+    60,
+    104,
+    184,
+    421,
+    755
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 58,
+     "missed": [
+      "Result"
+     ],
+     "false": [
+      "Abnormal, Not",
+      "Done, NA)",
+      "Skin and Mucosae"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 60,
+     "missed": [
+      "Result"
+     ],
+     "false": [
+      "Normal",
+      "Abnormal, Not",
+      "Done, NA)"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 104,
+     "missed": [
+      "Test",
+      "Result",
+      "Methadone",
+      "Opiates",
+      "Phencyclidine",
+      "Propoxyphene"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 184,
+     "missed": [
+      "Sample",
+      "Timepoint",
+      "Sample Status",
+      "Time of Collection",
+      "Barcode Number",
+      "Backup Barcode Number"
+     ],
+     "false": [
+      "Sertraline PK",
+      "Brexpiprazole/Sertraline PK",
+      "partialtime (hour",
+      "Propranolol PK",
+      "Prazosin PK",
+      "site only]",
+      "Sertraline PK, Sertraline PK, Propranolol PK",
+      "Prazosin PK)"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 421,
+     "missed": [
+      "Sample",
+      "Timepoint",
+      "Sample Status",
+      "Time of Collection",
+      "Barcode Number",
+      "Backup Barcode Number"
+     ],
+     "false": [
+      "Prazosin PK",
+      "Brexpiprazole/Sertraline PK",
+      "Sertraline PK",
+      "partialtime (hour",
+      "Propranolol PK",
+      "site only]",
+      "Sertraline PK, Sertraline PK, Propranolol PK",
+      "Prazosin PK)",
+      "1h Postdose"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 755,
+     "missed": [],
+     "false": [
+      "Not Applicable",
+      "site only]",
+      "Collected, Not"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    46,
+    1,
+    -180
+   ],
+   "became_best": true
+  },
+  {
+   "version": 3,
+   "kind": "revise_audit",
+   "metrics": {
+    "error": "generated extractor crashed:\nTraceback (most recent call last):\n  File \"/data/dataiku/dss_data/jupyter-run/dku-workdirs/ECSGENERATION/CRF_codegen_induction95780c5a-dssuser_MdMotaha8f825895/crf_codegen_work/modules/sandbox_runner.py\", line 128, in main\n    raw = fn(pages)\n  File \"<generated_extractor>\", line 21, in extract\n  File \"<generated_extractor>\", line 68, in extract_fields_from_page\nAttributeError: 'Line' object has no attribute 'color'\n"
+   },
+   "problems": [
+    "Program failed to run: generated extractor crashed:\nTraceback (most recent call last):\n  File \"/data/dataiku/dss_data/jupyter-run/dku-workdirs/ECSGENERATION/CRF_codegen_induction95780c5a-dssuser_MdMotaha8f825895/crf_codegen_work/modules/sandbox_runner.py\", line 128, in main\n    raw = fn(pages)\n  File \"<generated_extractor>\", line 21, in extract\n  File \"<generated_extractor>\", line 68, in extract_fields_from_page\nAttributeError: 'Line' object has no attribute 'color'\n"
+   ],
+   "warnings": [],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    1,
+    "not_audited",
+    0,
+    0
+   ],
+   "became_best": false
+  },
+  {
+   "version": 4,
+   "kind": "revise_gates",
+   "metrics": {
+    "engine": "codegen",
+    "records": 1616,
+    "pages_total": 191,
+    "pages_with_fields": 191,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 42,
+    "fields_per_form": 38.5,
+    "forms_per_100_pages": 22.0,
+    "form_same_page_evidence_records": 1607,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 100,
+    "content_pages": 191,
+    "content_covered_pct": 100,
+    "uncovered_content_pct": 0
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 39,
+   "audit_pages": [
+    58,
+    60,
+    103,
+    104,
+    105,
+    184,
+    421,
+    755
+   ],
+   "audit_partial": null,
+   "audit_promoted": [
+    103
+   ],
+   "audit_verdicts": [
+    {
+     "page": 58,
+     "missed": [
+      "Clinically Significant"
+     ],
+     "false": [
+      "Normal",
+      "Abnormal",
+      "(values: Normal",
+      "Not Done",
+      "Thorax",
+      "Abdomen",
+      "Skin and Mucosae"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 60,
+     "missed": [
+      "Clinically Significant"
+     ],
+     "false": [
+      "Normal",
+      "Abnormal",
+      "(values: Normal",
+      "Not Done"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 103,
+     "missed": [
+      "Amphetamines"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 104,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 105,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 184,
+     "missed": [
+      "Barcode Number",
+      "Backup Barcode Number"
+     ],
+     "false": [
+      "Predose",
+      "Sertraline PK",
+      "Brexpiprazole/Sertraline PK",
+      "Collected",
+      "Propranolol PK",
+      "Prazosin PK",
+      "Sertraline PK, Sertraline PK, Propranolol PK",
+      "Prazosin PK)]"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 421,
+     "missed": [
+      "Barcode Number",
+      "Backup Barcode Number"
+     ],
+     "false": [
+      "Predose",
+      "Prazosin PK",
+      "Brexpiprazole/Sertraline PK",
+      "Collected",
+      "Sertraline PK",
+      "Propranolol PK",
+      "Sertraline PK, Sertraline PK, Propranolol PK",
+      "Prazosin PK)]",
+      "1h Postdose"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 755,
+     "missed": [
+      "Scan",
+      "Barcode Number"
+     ],
+     "false": [
+      "Not Applicable",
+      "Applicable)]"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    39,
+    0,
+    -191
+   ],
+   "became_best": true
+  },
+  {
+   "version": 5,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 1345,
+    "pages_total": 191,
+    "pages_with_fields": 191,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 42,
+    "fields_per_form": 32.0,
+    "forms_per_100_pages": 22.0,
+    "form_same_page_evidence_records": 1345,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 100,
+    "content_pages": 191,
+    "content_covered_pct": 100,
+    "uncovered_content_pct": 0
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 19,
+   "audit_pages": [
+    58,
+    60,
+    103,
+    104,
+    116,
+    184,
+    421,
+    755
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 58,
+     "missed": [
+      "Clinically Significant",
+      "HEENT"
+     ],
+     "false": [
+      "Thorax",
+      "Abdomen",
+      "Skin and Mucosae"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 60,
+     "missed": [
+      "Clinically Significant"
+     ],
+     "false": [
+      "Normal"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 103,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 104,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 116,
+     "missed": [
+      "Past 3 Month"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 184,
+     "missed": [
+      "Backup",
+      "Backup Barcode Number"
+     ],
+     "false": [
+      "Predose",
+      "Not"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 421,
+     "missed": [
+      "Backup",
+      "Backup Barcode Number"
+     ],
+     "false": [
+      "Predose",
+      "1h Postdose"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 755,
+     "missed": [
+      "Scan",
+      "Barcode Number"
+     ],
+     "false": [
+      "Applicable)]"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    19,
+    0,
+    -191
+   ],
+   "became_best": true
+  },
+  {
+   "version": 6,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 1294,
+    "pages_total": 191,
+    "pages_with_fields": 191,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 42,
+    "fields_per_form": 30.8,
+    "forms_per_100_pages": 22.0,
+    "form_same_page_evidence_records": 1294,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 100,
+    "content_pages": 191,
+    "content_covered_pct": 100,
+    "uncovered_content_pct": 0
+   },
+   "problems": [
+    "Extreme content-fitted blocklist. The program filters by 30 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "warnings": [],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    1,
+    "not_audited",
+    0,
+    -191
+   ],
+   "became_best": false
+  }
+ ]
+}

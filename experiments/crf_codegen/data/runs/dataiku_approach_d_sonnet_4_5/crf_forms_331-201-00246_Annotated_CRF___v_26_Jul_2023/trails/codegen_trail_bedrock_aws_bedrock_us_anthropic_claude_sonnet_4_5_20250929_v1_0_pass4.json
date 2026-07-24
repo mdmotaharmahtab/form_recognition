@@ -1,0 +1,809 @@
+{
+ "stop_reason": "plateau",
+ "versions": 5,
+ "best_version": 3,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "confirm",
+   "outcome": "confirmed_no_fields"
+  },
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 207,
+    "pages_total": 28,
+    "pages_with_fields": 12,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 77,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 8,
+    "fields_per_form": 25.9,
+    "forms_per_100_pages": 28.6,
+    "form_same_page_evidence_records": 207,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 43
+   },
+   "problems": [],
+   "warnings": [
+    "The program filters by 11 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": 126,
+   "audit_pages": [
+    11,
+    12,
+    13,
+    46,
+    480,
+    923
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 11,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 12,
+     "missed": [],
+     "false": [
+      "Version",
+      "Date",
+      "Changed By",
+      "Details",
+      "0.3",
+      "15-Jul-2021",
+      "Andreea Hardut / Alexan",
+      "updates according to feedback sheet",
+      "dru Giucal",
+      "0.4",
+      "21Jul2021",
+      "Andreea Rubei / Cosmin",
+      "deploy to UAT 2",
+      "Manolescu",
+      "0.5",
+      "27Jul2021",
+      "Andreea Rubei",
+      "updated informed_consent_group on Trial tab",
+      "0.6",
+      "fixes for integration",
+      "0.7",
+      "29Jul2021",
+      "deploy to UAT 3",
+      "0.8",
+      "05Aug2021",
+      "Andreea Rubei / Alexand",
+      "deploy to UAT 4",
+      "ru Giucal",
+      "0.9",
+      "06Aug2021",
+      "0.10",
+      "11Aug2021",
+      "0.11",
+      "0.12",
+      "13Aug2021",
+      "0.13",
+      "16Aug2021",
+      "implemented client feedback",
+      "1.0",
+      "17Aug2021",
+      "deployment to live",
+      "1.1",
+      "14Oct2021",
+      "Andreea Rubei/Alexandr",
+      "applied changes according to CRP",
+      "u Giucal",
+      "1.2",
+      "19Oct2021",
+      "updated answer options for variable DSDIS3 per clie nt requirement",
+      "2.0",
+      "26Nov2021",
+      "Deploy v2.0 to live",
+      "2.1",
+      "03Jan2022",
+      "Alexandru Giucal",
+      "2.2",
+      "06Jan2022",
+      "updated error message per last POE doc",
+      "2.3",
+      "18Jan2022",
+      "- removed checks sv_10 to sv_13 - removed Water Re striction End page from Day-1 and Day 18",
+      "2.4",
+      "20Jan2022",
+      "added new Water Restriction End Prompt page in Da y-1 and Day 18",
+      "2.5",
+      "25Jan2022",
+      "added new procedure instructions on Water Restrictio"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 13,
+     "missed": [],
+     "false": [
+      "Version",
+      "Date",
+      "Changed By",
+      "Details",
+      "n End Prompt page in Day-15, Day-1 and Day 18",
+      "3.0",
+      "27Jan2022",
+      "Andreea Rubei",
+      "deploy version 3.0 to production",
+      "3.1",
+      "27-Jun-2022",
+      "Cosmin Manolescu",
+      "Changes as per CR 8",
+      "3.2",
+      "29-Jun-2022",
+      "Updated skip triggers to include 1003 as well where it was 1002.",
+      "3.3",
+      "06-July-2022",
+      "POE Updates as per POE file v: 0.16 and 0.17",
+      "3.4",
+      "08-July-2022",
+      "Poe updates and fixes",
+      "3.5",
+      "11-July-2022",
+      "Removed variable DSPRTNO1 from enrollment, that was added during 3.1 for testing possible scenarios.",
+      "4.0",
+      "Production Release",
+      "4.1",
+      "27Oct2022",
+      "Mara Mihailescu",
+      "Updates as per CR 11",
+      "4.2",
+      "11Nov2022",
+      "Mara Mihailescu/Paul M",
+      "Updates as per feedback sheet",
+      "ostioru",
+      "5.0",
+      "05Dec2022",
+      "Paul Mostioru",
+      "5.1",
+      "15Feb2023",
+      "Added new \"Time of Vitals Measurement\" VSSUVTI M1, VSSUVTIM2; VSSUVTIM,VSSTVTIM1, VSS TVTIM2 variables on vs3c and vs3c_rpt tabs Added \"Triplicate Orthostatic BP and HR - ET\" at ET visit O n vs3c tab added a new repeat section for \"Triplicate Orthostatic BP and HR \u2013 ET\" page, subgroup 822 at ET visit. Updated \"Completed\" status logic.",
+      "5.2",
+      "23Feb2023",
+      "On vs3c and vs3c_rpt tabs changed variable VSSUV TIM to new variable VSSUVTIM3.",
+      "5.3",
+      "13Mar2023",
+      "POE Updates as per POE file version 1.04",
+      "5.4",
+      "16Mar2023",
+      "POE Updates after client UAT",
+      "5.5",
+      "Updates after client UAT",
+      "6.0",
+      "17Mar2023",
+      "6.1",
+      "28Apr2023",
+      "New repeat (Urogenital) added on pe_table. Visit labe l updated from \"Screen Visit 1 Day -42 to -21\" to \"Sc reen Visit 1 Day -55 to -16\". \"NA\" selection option a dded to PERES variable. Removed \"Orthostatic BP a nd HR\" Scheduled and Unscheduled page from sched ule. Updated field and variable label for LBRR47 vari"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 46,
+     "missed": [],
+     "false": [
+      "Occlusive cap (vaginal diaphragm or cervical/vault cap) with spermicide"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 480,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 923,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    126,
+    1,
+    -12
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 204,
+    "pages_total": 28,
+    "pages_with_fields": 12,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 76,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 8,
+    "fields_per_form": 25.5,
+    "forms_per_100_pages": 28.6,
+    "form_same_page_evidence_records": 204,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 43
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 155,
+   "audit_pages": [
+    11,
+    12,
+    13,
+    14,
+    46,
+    480,
+    923,
+    949
+   ],
+   "audit_partial": null,
+   "audit_promoted": [
+    14
+   ],
+   "audit_verdicts": [
+    {
+     "page": 11,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 12,
+     "missed": [],
+     "false": [
+      "Version",
+      "Date",
+      "Changed By",
+      "Details",
+      "0.3",
+      "15-Jul-2021",
+      "Andreea Hardut / Alexan",
+      "updates according to feedback sheet",
+      "dru Giucal",
+      "0.4",
+      "21Jul2021",
+      "Andreea Rubei / Cosmin",
+      "deploy to UAT 2",
+      "Manolescu",
+      "0.5",
+      "27Jul2021",
+      "Andreea Rubei",
+      "updated informed_consent_group on Trial tab",
+      "0.6",
+      "fixes for integration",
+      "0.7",
+      "29Jul2021",
+      "deploy to UAT 3",
+      "0.8",
+      "05Aug2021",
+      "Andreea Rubei / Alexand",
+      "deploy to UAT 4",
+      "ru Giucal",
+      "0.9",
+      "06Aug2021",
+      "0.10",
+      "11Aug2021",
+      "0.11",
+      "0.12",
+      "13Aug2021",
+      "0.13",
+      "16Aug2021",
+      "implemented client feedback",
+      "1.0",
+      "17Aug2021",
+      "deployment to live",
+      "1.1",
+      "14Oct2021",
+      "Andreea Rubei/Alexandr",
+      "applied changes according to CRP",
+      "u Giucal",
+      "1.2",
+      "19Oct2021",
+      "updated answer options for variable DSDIS3 per clie nt requirement",
+      "2.0",
+      "26Nov2021",
+      "Deploy v2.0 to live",
+      "2.1",
+      "03Jan2022",
+      "Alexandru Giucal",
+      "2.2",
+      "06Jan2022",
+      "updated error message per last POE doc",
+      "2.3",
+      "18Jan2022",
+      "- removed checks sv_10 to sv_13 - removed Water Re striction End page from Day-1 and Day 18",
+      "2.4",
+      "20Jan2022",
+      "added new Water Restriction End Prompt page in Da y-1 and Day 18",
+      "2.5",
+      "25Jan2022",
+      "added new procedure instructions on Water Restrictio"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 13,
+     "missed": [],
+     "false": [
+      "Version",
+      "Date",
+      "Changed By",
+      "Details n End Prompt page in Day-15, Day-1 and Day 18",
+      "3.0",
+      "27Jan2022",
+      "Andreea Rubei",
+      "deploy version 3.0 to production",
+      "3.1",
+      "27-Jun-2022",
+      "Cosmin Manolescu",
+      "Changes as per CR 8",
+      "3.2",
+      "29-Jun-2022",
+      "Updated skip triggers to include 1003 as well where it was 1002.",
+      "3.3",
+      "06-July-2022",
+      "POE Updates as per POE file v: 0.16 and 0.17",
+      "3.4",
+      "08-July-2022",
+      "Poe updates and fixes",
+      "3.5",
+      "11-July-2022",
+      "Removed variable DSPRTNO1 from enrollment, that was added during 3.1 for testing possible scenarios.",
+      "4.0",
+      "Production Release",
+      "4.1",
+      "27Oct2022",
+      "Mara Mihailescu",
+      "Updates as per CR 11",
+      "4.2",
+      "11Nov2022",
+      "Mara Mihailescu/Paul M",
+      "Updates as per feedback sheet",
+      "ostioru",
+      "5.0",
+      "05Dec2022",
+      "Paul Mostioru",
+      "5.1",
+      "15Feb2023",
+      "Added new \"Time of Vitals Measurement\" VSSUVTI M1, VSSUVTIM2; VSSUVTIM,VSSTVTIM1, VSS TVTIM2 variables on vs3c and vs3c_rpt tabs Added \"Triplicate Orthostatic BP and HR - ET\" at ET visit O n vs3c tab added a new repeat section for \"Triplicate Orthostatic BP and HR \u2013 ET\" page, subgroup 822 at ET visit. Updated \"Completed\" status logic.",
+      "5.2",
+      "23Feb2023",
+      "On vs3c and vs3c_rpt tabs changed variable VSSUV TIM to new variable VSSUVTIM3.",
+      "5.3",
+      "13Mar2023",
+      "POE Updates as per POE file version 1.04",
+      "5.4",
+      "16Mar2023",
+      "POE Updates after client UAT",
+      "5.5",
+      "Updates after client UAT",
+      "6.0",
+      "17Mar2023",
+      "6.1",
+      "28Apr2023",
+      "New repeat (Urogenital) added on pe_table. Visit labe l updated from \"Screen Visit 1 Day -42 to -21\" to \"Sc reen Visit 1 Day -55 to -16\". \"NA\" selection option a dded to PERES variable. Removed \"Orthostatic BP a nd HR\" Scheduled and Unscheduled page from sched ule. Updated field and variable label for LBRR47 vari"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 14,
+     "missed": [],
+     "false": [
+      "Version",
+      "Date",
+      "Changed By",
+      "Details able. Added new field with variable DSRSN4 on ds_s cr.",
+      "6.2",
+      "09May2023",
+      "Paul Mostioru",
+      "Updates after client UAT Added new fields \"Relation ship to Brexpiprazole\", \"Relationship to Sertraline\",",
+      "\"Relationship to Prazosin\", \"Relationship to Proprano lol\" to AE page",
+      "6.3",
+      "12May2023",
+      "Added new label field on AE page, updated AEREL l abel",
+      "6.4",
+      "15June2023",
+      "Programming POE updates",
+      "6.5",
+      "27June2023",
+      "Marius Pastravanu",
+      "Applied client feedback and fixes",
+      "7.0",
+      "04July2023",
+      "Production Release",
+      "7.1",
+      "18July2023",
+      "Created new form ex_t. Added ex_t with subgroup 3 t o Steady-state Attainment Period Day 18. On ex_t ad ded set form and remove form triggers for the new pa ge to enroll when Visit date is entered at group 1103 s ubgroup 1. Added the new variables EXTDOSE, EX TDAYS to Variables tab. POE updates as per POE fil e version 1.19",
+      "7.2",
+      "21July2023",
+      "Made the following fields from Drug Accountability r ead-only: DA01BN, DA02BN, DA03BN, DA04BN.",
+      "8.0",
+      "26July2023"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 46,
+     "missed": [
+      "Does the subject agree to refrain from sperm donation from the screening visit through 30 days after the last dose of IMP?"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 480,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 923,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 949,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    155,
+    0,
+    -12
+   ],
+   "became_best": true
+  },
+  {
+   "version": 3,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 73,
+    "pages_total": 28,
+    "pages_with_fields": 12,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 90,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 8,
+    "fields_per_form": 9.1,
+    "forms_per_100_pages": 28.6,
+    "form_same_page_evidence_records": 73,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 43
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 25,
+   "audit_pages": [
+    11,
+    12,
+    13,
+    14,
+    42,
+    46,
+    480,
+    923
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 11,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 12,
+     "missed": [],
+     "false": [
+      "0.5",
+      "27Jul2021",
+      "Andreea Rubei",
+      "updated informed_consent_group on Trial tab",
+      "0.6",
+      "fixes for integration",
+      "updated answer options for variable DSDIS3 per clie nt requirement",
+      "- removed checks sv_10 to sv_13 - removed Water Re striction End page from Day-1 and Day 18",
+      "added new procedure instructions on Water Restrictio"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 13,
+     "missed": [],
+     "false": [
+      "3.2",
+      "29-Jun-2022",
+      "Cosmin Manolescu",
+      "Updated skip triggers to include 1003 as well where it was 1002.",
+      "was added during 3.1 for testing possible scenarios.",
+      "\"Triplicate Orthostatic BP and HR - ET\" at ET visit O n vs3c tab added a new repeat section for \"Triplicate Orthostatic BP and HR \u2013 ET\" page, subgroup 822 at ET visit. Updated \"Completed\" status logic.",
+      "New repeat (Urogenital) added on pe_table. Visit labe l updated from \"Screen Visit 1 Day -42 to -21\" to \"Sc reen Visit 1 Day -55 to -16\". \"NA\" selection option a dded to PERES variable. Removed \"Orthostatic BP a nd HR\" Scheduled and Unscheduled page from sched ule. Updated field and variable label for LBRR47 vari"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 14,
+     "missed": [],
+     "false": [
+      "\"Relationship to Prazosin\", \"Relationship to Proprano lol\" to AE page",
+      "6.3",
+      "12May2023",
+      "Paul Mostioru",
+      "Added new label field on AE page, updated AEREL l abel",
+      "Created new form ex_t. Added ex_t with subgroup 3 t o Steady-state Attainment Period Day 18. On ex_t ad ded set form and remove form triggers for the new pa ge to enroll when Visit date is entered at group 1103 s ubgroup 1. Added the new variables EXTDOSE, EX TDAYS to Variables tab. POE updates as per POE fil e version 1.19",
+      "Made the following fields from Drug Accountability r ead-only: DA01BN, DA02BN, DA03BN, DA04BN."
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 42,
+     "missed": [],
+     "false": [
+      "Bilateral Oophorectomy Bilateral Tubal Ligation"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 46,
+     "missed": [
+      "Does the subject agree to refrain from sperm donation from the screening visit through 30 days after the last dose of IMP?"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 480,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 923,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    25,
+    0,
+    -12
+   ],
+   "became_best": true
+  },
+  {
+   "version": 4,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 50,
+    "pages_total": 28,
+    "pages_with_fields": 9,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 7,
+    "fields_per_form": 7.1,
+    "forms_per_100_pages": 25.0,
+    "form_same_page_evidence_records": 50,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 32
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 2,
+   "audit_pages": [
+    11,
+    12,
+    13,
+    14,
+    46,
+    110,
+    480,
+    923
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 11,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 12,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 13,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 14,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 46,
+     "missed": [
+      "Does the subject agree to refrain from sperm donation from the screening visit through 30 days after the last dose of IMP?"
+     ],
+     "false": [
+      "Occlusive cap (vaginal diaphragm or cervical/vault cap) with spermicide"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 110,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 480,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 923,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    2,
+    0,
+    -9
+   ],
+   "became_best": false
+  },
+  {
+   "version": 5,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 50,
+    "pages_total": 28,
+    "pages_with_fields": 9,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 7,
+    "fields_per_form": 7.1,
+    "forms_per_100_pages": 25.0,
+    "form_same_page_evidence_records": 50,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 32
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 2,
+   "audit_pages": [
+    11,
+    12,
+    13,
+    14,
+    46,
+    48,
+    480,
+    923
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 11,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 12,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 13,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 14,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 46,
+     "missed": [
+      "Does the subject agree to refrain from sperm donation from the screening visit through 30 days after the last dose of IMP?"
+     ],
+     "false": [
+      "Occlusive cap (vaginal diaphragm or cervical/vault cap) with spermicide"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 48,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 480,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 923,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    2,
+    0,
+    -9
+   ],
+   "became_best": false
+  }
+ ]
+}

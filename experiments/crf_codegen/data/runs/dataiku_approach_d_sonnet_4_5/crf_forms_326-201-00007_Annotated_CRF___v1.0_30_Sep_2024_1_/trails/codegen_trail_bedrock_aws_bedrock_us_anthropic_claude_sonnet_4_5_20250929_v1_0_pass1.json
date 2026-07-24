@@ -1,0 +1,619 @@
+{
+ "stop_reason": "budget",
+ "versions": 5,
+ "best_version": 2,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 3679,
+    "pages_total": 486,
+    "pages_with_fields": 483,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 96,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 9,
+    "fields_per_form": 408.8,
+    "forms_per_100_pages": 1.9,
+    "form_same_page_evidence_records": 3678,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 99
+   },
+   "problems": [],
+   "warnings": [
+    "The program filters by 12 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": 33,
+   "audit_pages": [
+    1,
+    2,
+    3,
+    33,
+    47,
+    125,
+    247,
+    366
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [
+      "Admission Restrictions: Photo ID #1",
+      "Admission Restrictions: Bag Search #1",
+      "Admission Restrictions: Bag Search Items Removed #1",
+      "Admission Restrictions: ICF Check #1",
+      "Admission Restrictions: ICF Version/Date #1",
+      "(Version must be checked against ICF present in the CSF \u2013 escalate any discrepancies)"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [],
+     "false": [
+      "Admission Restrictions: Screening #1",
+      "Admission Restrictions: Alcohol #1",
+      "Admission Restrictions: Alcohol Units #1",
+      "Admission Restrictions: Caffeine #1"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 3,
+     "missed": [],
+     "false": [
+      "Admission Restrictions: Grapefruit #1",
+      "Admission Restrictions: Poppy seeds #1",
+      "Admission Restrictions: Activity #1",
+      "Admission Restrictions: Smoking #1",
+      "Prompts: PD Prompt #1",
+      "Admission Restrictions: Adverse Event #1"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 33,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 47,
+     "missed": [],
+     "false": [
+      "PRE-DOSE - Vital Signs Difference for DIASTOLIC Drop (Supine)",
+      "Pre-dose Vital Signs Standing: Clinical Significance #1",
+      "Pre-dose Vital Signs Standing: Vital Signs Findings #1",
+      "Predose Targeted Physical Examination: Require Targeted PE? #1",
+      "Predose Targeted Physical Examination: Any clinically significant abnormal",
+      "findings? #1"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 125,
+     "missed": [],
+     "false": [
+      "Pre-dose Triplicate ECG 1: ECG Findings #1",
+      "Pre-dose Triplicate ECG 1: ECG Findings inc Rhythm #1",
+      "Pre-dose Triplicate ECG 2: 12 Lead Standard #1",
+      "ECG1)",
+      "Pre-dose Triplicate ECG 2: ECG Rhythm Assess/Interpretation #1"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 247,
+     "missed": [],
+     "false": [
+      "Vital Signs: Vital Signs Supine Full Set #5",
+      "(Supine for at least 3 minutes)",
+      "Vital Signs: Clinical Significance #5"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 366,
+     "missed": [],
+     "false": [
+      "Pre-dose Vital Signs: Clinical Significance #1",
+      "Pre-dose Vital Signs: Vital Signs Findings #1",
+      "Pre-dose Vital Signs Standing: Vital Signs Standing BP and HR #1"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    33,
+    1,
+    -483
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 2029,
+    "pages_total": 486,
+    "pages_with_fields": 483,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 94,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 9,
+    "fields_per_form": 225.4,
+    "forms_per_100_pages": 1.9,
+    "form_same_page_evidence_records": 1994,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 99
+   },
+   "problems": [],
+   "warnings": [
+    "The program filters by 16 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": 7,
+   "audit_pages": [
+    1,
+    2,
+    3,
+    33,
+    47,
+    125,
+    247,
+    366,
+    479,
+    488
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 3,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 33,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 47,
+     "missed": [],
+     "false": [
+      "PRE-DOSE - Vital Signs Difference for DIASTOLIC Drop (Supine)",
+      "Predose Targeted Physical Examination: Any clinically significant abnormal",
+      "findings? #1"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 125,
+     "missed": [],
+     "false": [
+      "PRE-DOSE Triplicate ECG 2: 12 Lead Standard ECG (To be performed at least 2 minutes after",
+      "ECG1)"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 247,
+     "missed": [],
+     "false": [
+      "ECG Difference Calculation - a participant will be withdrawn where there is an increase in QTcF",
+      "interval of >60 msec from baseline (confirmed following a repeat ECG)"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 366,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 479,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 488,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    7,
+    1,
+    -483
+   ],
+   "became_best": true
+  },
+  {
+   "version": 3,
+   "kind": "confirm",
+   "metrics": {
+    "engine": "codegen",
+    "records": 2718,
+    "pages_total": 486,
+    "pages_with_fields": 478,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 95,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 9,
+    "fields_per_form": 302.0,
+    "forms_per_100_pages": 1.9,
+    "form_same_page_evidence_records": 2686,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 98
+   },
+   "problems": [],
+   "outcome": "extended_program"
+  },
+  {
+   "version": 3,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 1842,
+    "pages_total": 486,
+    "pages_with_fields": 470,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 93,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 9,
+    "fields_per_form": 204.7,
+    "forms_per_100_pages": 1.9,
+    "form_same_page_evidence_records": 1801,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 97
+   },
+   "problems": [],
+   "warnings": [
+    "The program filters by 13 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    0,
+    "not_audited",
+    1,
+    -470
+   ],
+   "became_best": false
+  },
+  {
+   "version": 4,
+   "kind": "confirm_extension",
+   "metrics": {
+    "engine": "codegen",
+    "records": 2718,
+    "pages_total": 486,
+    "pages_with_fields": 478,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 95,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 9,
+    "fields_per_form": 302.0,
+    "forms_per_100_pages": 1.9,
+    "form_same_page_evidence_records": 2686,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 98
+   },
+   "problems": [],
+   "warnings": [
+    "The program filters by 13 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": 24,
+   "audit_pages": [
+    1,
+    2,
+    3,
+    33,
+    47,
+    125,
+    128,
+    200,
+    247,
+    366
+   ],
+   "audit_partial": null,
+   "audit_promoted": [
+    128
+   ],
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [
+      "Date _",
+      "Version"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [],
+     "false": [
+      "Date _",
+      "Time _",
+      "No of Units"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 3,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 33,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 47,
+     "missed": [
+      "PRE-DOSE Triplicate ECG 3: Was the ECG clinically significant? (Medic to assess)",
+      "PRE-DOSE - Targeted Physical Examination:  Does the participant require a targeted physical examination? (If yes, please specify the reason)"
+     ],
+     "false": [
+      "Diastolic",
+      "examination? (If yes, please specify the reason)"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 125,
+     "missed": [
+      "PRE-DOSE Triplicate ECG 1: ECG Findings",
+      "PRE-DOSE Triplicate ECG 1: ECG Findings, including rhythm assessment",
+      "PRE-DOSE Triplicate ECG 2: 12 Lead Standard ECG (To be performed at least 2 minutes after ECG1)",
+      "PRE-DOSE Triplicate ECG 2: ECG Rhythm assessment and interpretation"
+     ],
+     "false": [
+      "ECG1)"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 128,
+     "missed": [
+      "PRE-DOSE Triplicate ECG 3: Was the ECG clinically significant? (Medic to assess)",
+      "PRE-DOSE Triplicate ECG 3: ECG Findings",
+      "PRE-DOSE Triplicate ECG 3: ECG Findings, including rhythm assessment"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 200,
+     "missed": [
+      "PRE-DOSE Triplicate ECG 3: Was the ECG clinically significant? (Medic to assess)",
+      "PRE-DOSE Triplicate ECG 3: ECG Findings",
+      "PRE-DOSE Triplicate ECG 3: ECG Findings, including rhythm assessment"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 247,
+     "missed": [
+      "ECG Difference Calculation - a participant will be withdrawn where there is an increase in QTcF interval of >60 msec from baseline (confirmed following a repeat ECG)",
+      "Vital Signs (Supine for at least 3 minutes)"
+     ],
+     "false": [
+      "interval of >60 msec from baseline (confirmed following a repeat ECG)",
+      "Vital Signs"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 366,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    24,
+    1,
+    -478
+   ],
+   "became_best": false
+  },
+  {
+   "version": 5,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 2540,
+    "pages_total": 486,
+    "pages_with_fields": 474,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 95,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 9,
+    "fields_per_form": 282.2,
+    "forms_per_100_pages": 1.9,
+    "form_same_page_evidence_records": 2512,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 98
+   },
+   "problems": [],
+   "warnings": [
+    "The program filters by 14 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": 20,
+   "audit_pages": [
+    1,
+    2,
+    3,
+    33,
+    40,
+    47,
+    125,
+    128,
+    247,
+    366
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [
+      "Date _"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [],
+     "false": [
+      "Date _",
+      "Time _"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 3,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 33,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 40,
+     "missed": [
+      "PRE-DOSE Triplicate ECG 1: Was the ECG clinically significant? (Medic to assess)",
+      "PRE-DOSE Triplicate ECG 1: ECG Findings",
+      "PRE-DOSE Triplicate ECG 1: ECG Findings, including rhythm assessment",
+      "PRE-DOSE Triplicate ECG 2: 12 Lead Standard ECG (To be performed at least 2 minutes after ECG1)"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 47,
+     "missed": [
+      "PRE-DOSE - Targeted Physical Examination:  Does the participant require a targeted physical examination? (If yes, please specify the reason)"
+     ],
+     "false": [
+      "examination? (If yes, please specify the reason)"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 125,
+     "missed": [
+      "PRE-DOSE Triplicate ECG 1: ECG Findings",
+      "PRE-DOSE Triplicate ECG 1: ECG Findings, including rhythm assessment",
+      "PRE-DOSE Triplicate ECG 2: 12 Lead Standard ECG (To be performed at least 2 minutes after ECG1)",
+      "PRE-DOSE Triplicate ECG 2: ECG Rhythm assessment and interpretation"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 128,
+     "missed": [
+      "PRE-DOSE Triplicate ECG 3: Was the ECG clinically significant? (Medic to assess)",
+      "PRE-DOSE Triplicate ECG 3: ECG Findings",
+      "PRE-DOSE Triplicate ECG 3: ECG Findings, including rhythm assessment"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 247,
+     "missed": [
+      "ECG Difference Calculation - a participant will be withdrawn where there is an increase in QTcF interval of >60 msec from baseline (confirmed following a repeat ECG)",
+      "Vital Signs (Supine for at least 3 minutes)"
+     ],
+     "false": [
+      "interval of >60 msec from baseline (confirmed following a repeat ECG)",
+      "Vital Signs"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 366,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    20,
+    1,
+    -474
+   ],
+   "became_best": false
+  }
+ ]
+}

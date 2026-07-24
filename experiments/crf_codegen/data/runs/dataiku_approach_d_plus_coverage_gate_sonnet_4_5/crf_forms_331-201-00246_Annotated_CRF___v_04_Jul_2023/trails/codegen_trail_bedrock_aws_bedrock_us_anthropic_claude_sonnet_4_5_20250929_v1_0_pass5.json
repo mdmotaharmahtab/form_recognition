@@ -1,0 +1,79 @@
+{
+ "stop_reason": "converged",
+ "versions": 1,
+ "best_version": 1,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 3,
+    "pages_total": 3,
+    "pages_with_fields": 3,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 1,
+    "fields_per_form": 3.0,
+    "forms_per_100_pages": 33.3,
+    "form_same_page_evidence_records": 0,
+    "form_same_page_persistence_pct": null,
+    "furniture_candidates": [],
+    "pages_covered_pct": 100,
+    "content_pages": 3,
+    "content_covered_pct": 100,
+    "uncovered_content_pct": 0
+   },
+   "problems": [],
+   "warnings": [
+    "Only 3 records from this 3-page document - plausible for a document this small, but make sure no fields were missed.",
+    "The program filters by 13 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": 0,
+   "audit_pages": [
+    168,
+    201,
+    307
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 168,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 201,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 307,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    0,
+    2,
+    -3
+   ],
+   "became_best": true
+  }
+ ]
+}

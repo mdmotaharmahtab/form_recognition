@@ -1,0 +1,568 @@
+{
+ "stop_reason": "plateau",
+ "versions": 6,
+ "best_version": 2,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "confirm",
+   "metrics": {
+    "engine": "codegen",
+    "records": 104,
+    "pages_total": 51,
+    "pages_with_fields": 29,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 92,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 1,
+    "fields_per_form": 104.0,
+    "forms_per_100_pages": 2.0,
+    "form_same_page_evidence_records": 104,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 57
+   },
+   "problems": [],
+   "outcome": "extended_program"
+  },
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 0,
+    "pages_total": 51,
+    "pages_with_fields": 0,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 0,
+    "labels_look_human_pct": 0,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 0,
+    "fields_per_form": 0.0,
+    "forms_per_100_pages": 0.0,
+    "form_same_page_evidence_records": 0,
+    "form_same_page_persistence_pct": null,
+    "furniture_candidates": [],
+    "pages_covered_pct": 0
+   },
+   "problems": [],
+   "warnings": [
+    "This pass's layout scope produced ZERO records - correct only if these layouts genuinely carry few or no data-entry fields; the page audit will verify that claim.",
+    "form_name empty for 100% of records - if the document does print form/section names, fix the form_name strategy (consider carrying the last seen title forward).",
+    "Only 0% of field_name values look like human labels (they look like codes/dates/junk) - fix label selection.",
+    "The program filters by 28 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    0,
+    "not_audited",
+    4,
+    0
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "confirm_extension",
+   "metrics": {
+    "engine": "codegen",
+    "records": 104,
+    "pages_total": 51,
+    "pages_with_fields": 29,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 92,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 1,
+    "fields_per_form": 104.0,
+    "forms_per_100_pages": 2.0,
+    "form_same_page_evidence_records": 104,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 57
+   },
+   "problems": [],
+   "warnings": [
+    "The program filters by 28 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": 11,
+   "audit_pages": [
+    15,
+    22,
+    29,
+    259,
+    320,
+    672
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 15,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 22,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 29,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 259,
+     "missed": [],
+     "false": [
+      "Intensity of Ideation",
+      "Since Last Visit"
+     ],
+     "wrong_form": [
+      "Could/can you stop thinking about killing yourself or wanting to die if you want to?",
+      "Deterrents Are there things - anyone or anything - that stopped you from wanting to die or acting on thoughts of committing",
+      "suicide?"
+     ]
+    },
+    {
+     "page": 320,
+     "missed": [],
+     "false": [
+      "Version 1/14/09",
+      "Disclaimer:",
+      "This scale is intended to be used by individuals who have received training in its administration. The questions contained in the Columbia-Suicide Severity Rating Scale are suggested probes. Ultimately, the determination of the presence of suicidal ideation or behavior depends on the judgment of the individual administering the scale."
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 672,
+     "missed": [],
+     "false": [
+      "Version 1/14/09",
+      "Disclaimer:",
+      "This scale is intended to be used by individuals who have received training in its administration. The questions contained in the Columbia-Suicide Severity Rating Scale are suggested probes. Ultimately, the determination of the presence of suicidal ideation or behavior depends on the judgment of the individual administering the scale."
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    11,
+    1,
+    -29
+   ],
+   "became_best": true
+  },
+  {
+   "version": 3,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 43,
+    "pages_total": 51,
+    "pages_with_fields": 12,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 2,
+    "fields_per_form": 21.5,
+    "forms_per_100_pages": 3.9,
+    "form_same_page_evidence_records": 43,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 24
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 3,
+   "audit_pages": [
+    15,
+    16,
+    22,
+    29,
+    109,
+    259,
+    320,
+    672
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 15,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 16,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 22,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 29,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 109,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 259,
+     "missed": [],
+     "false": [
+      "Deterrents Are there things - anyone or anything - that stopped you from wanting to die or acting on thoughts of committing",
+      "Are there things - anyone or anything - that stopped you from wanting to die or acting on thoughts of committing",
+      "suicide?"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 320,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 672,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    3,
+    0,
+    -12
+   ],
+   "became_best": false
+  },
+  {
+   "version": 4,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 43,
+    "pages_total": 51,
+    "pages_with_fields": 12,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 2,
+    "fields_per_form": 21.5,
+    "forms_per_100_pages": 3.9,
+    "form_same_page_evidence_records": 43,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 24
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 2,
+   "audit_pages": [
+    15,
+    17,
+    22,
+    29,
+    118,
+    259,
+    320,
+    672
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 15,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 17,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 22,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 29,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 118,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 259,
+     "missed": [],
+     "false": [
+      "Deterrents Are there things - anyone or anything - that stopped you from wanting to die or acting on thoughts of committing",
+      "Are there things - anyone or anything - that stopped you from wanting to die or acting on thoughts of committing"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 320,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 672,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    2,
+    0,
+    -12
+   ],
+   "became_best": false
+  },
+  {
+   "version": 5,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 34,
+    "pages_total": 51,
+    "pages_with_fields": 12,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 2,
+    "fields_per_form": 17.0,
+    "forms_per_100_pages": 3.9,
+    "form_same_page_evidence_records": 34,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 24
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 2,
+   "audit_pages": [
+    15,
+    22,
+    29,
+    124,
+    259,
+    261,
+    320,
+    672
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 15,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 22,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 29,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 124,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 259,
+     "missed": [],
+     "false": [],
+     "wrong_form": [
+      "Deterrents Are there things - anyone or anything - that stopped you from wanting to die or acting on thoughts of committing",
+      "suicide?"
+     ]
+    },
+    {
+     "page": 261,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 320,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 672,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    2,
+    0,
+    -12
+   ],
+   "became_best": false
+  },
+  {
+   "version": 6,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 25,
+    "pages_total": 51,
+    "pages_with_fields": 12,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 2,
+    "fields_per_form": 12.5,
+    "forms_per_100_pages": 3.9,
+    "form_same_page_evidence_records": 25,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 24
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 2,
+   "audit_pages": [
+    15,
+    22,
+    29,
+    250,
+    259,
+    320,
+    331,
+    672
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 15,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 22,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 29,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 250,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 259,
+     "missed": [],
+     "false": [],
+     "wrong_form": [
+      "Deterrents Are there things - anyone or anything - that stopped you from wanting to die or acting on thoughts of committing",
+      "suicide?"
+     ]
+    },
+    {
+     "page": 320,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 331,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 672,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    2,
+    0,
+    -12
+   ],
+   "became_best": false
+  }
+ ]
+}

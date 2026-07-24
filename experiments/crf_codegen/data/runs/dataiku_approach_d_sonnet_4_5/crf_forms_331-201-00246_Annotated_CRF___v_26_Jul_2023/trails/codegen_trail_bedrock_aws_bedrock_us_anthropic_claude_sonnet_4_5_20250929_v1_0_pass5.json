@@ -1,0 +1,138 @@
+{
+ "stop_reason": "converged",
+ "versions": 2,
+ "best_version": 2,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "confirm",
+   "metrics": {
+    "engine": "codegen",
+    "records": 3,
+    "pages_total": 3,
+    "pages_with_fields": 3,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 1,
+    "fields_per_form": 3.0,
+    "forms_per_100_pages": 33.3,
+    "form_same_page_evidence_records": 0,
+    "form_same_page_persistence_pct": null,
+    "furniture_candidates": [],
+    "pages_covered_pct": 100
+   },
+   "problems": [],
+   "outcome": "extended_program"
+  },
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 0,
+    "pages_total": 3,
+    "pages_with_fields": 0,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 0,
+    "labels_look_human_pct": 0,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 0,
+    "fields_per_form": 0.0,
+    "forms_per_100_pages": 0.0,
+    "form_same_page_evidence_records": 0,
+    "form_same_page_persistence_pct": null,
+    "furniture_candidates": [],
+    "pages_covered_pct": 0
+   },
+   "problems": [],
+   "warnings": [
+    "This pass's layout scope produced ZERO records - correct only if these layouts genuinely carry few or no data-entry fields; the page audit will verify that claim.",
+    "form_name empty for 100% of records - if the document does print form/section names, fix the form_name strategy (consider carrying the last seen title forward).",
+    "Only 0% of field_name values look like human labels (they look like codes/dates/junk) - fix label selection."
+   ],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    0,
+    "not_audited",
+    3,
+    0
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "confirm_extension",
+   "metrics": {
+    "engine": "codegen",
+    "records": 3,
+    "pages_total": 3,
+    "pages_with_fields": 3,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 1,
+    "fields_per_form": 3.0,
+    "forms_per_100_pages": 33.3,
+    "form_same_page_evidence_records": 0,
+    "form_same_page_persistence_pct": null,
+    "furniture_candidates": [],
+    "pages_covered_pct": 100
+   },
+   "problems": [],
+   "warnings": [
+    "Only 3 records from this 3-page document - plausible for a document this small, but make sure no fields were missed."
+   ],
+   "audit_issues": 0,
+   "audit_pages": [
+    168,
+    201,
+    307
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 168,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 201,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 307,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    0,
+    1,
+    -3
+   ],
+   "became_best": true
+  }
+ ]
+}

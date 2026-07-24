@@ -1,0 +1,579 @@
+{
+ "stop_reason": "budget",
+ "versions": 6,
+ "best_version": 4,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 1117,
+    "pages_total": 191,
+    "pages_with_fields": 191,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 97,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 42,
+    "fields_per_form": 26.6,
+    "forms_per_100_pages": 22.0,
+    "form_same_page_evidence_records": 1097,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 100
+   },
+   "problems": [],
+   "warnings": [
+    "The program filters by 18 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": 12,
+   "audit_pages": [
+    58,
+    60,
+    105,
+    260,
+    421,
+    778
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 58,
+     "missed": [
+      "Result"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 60,
+     "missed": [
+      "Result"
+     ],
+     "false": [
+      "Normal Abnormal"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 105,
+     "missed": [
+      "Result"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 260,
+     "missed": [],
+     "false": [
+      "Intensity of Ideation",
+      "Since Last Visit"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 421,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 778,
+     "missed": [
+      "If Yes, describe"
+     ],
+     "false": [
+      "1. Wish to be dead",
+      "Subject endorses thoughts about a wish to be dead or not alive anymore, or wish to fall asleep and not wake up.",
+      "2. Non-specific active suicidal thoughts",
+      "General non-specific thoughts of wanting to end one's life/commit suicide (e.g. \"I've thought about killing myself\")",
+      "without thoughts of way to kill oneself/associated methods,intent or plan during the assessment period."
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    12,
+    1,
+    -191
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "revise_audit",
+   "metrics": {
+    "error": "generated extractor exceeded 300s"
+   },
+   "problems": [
+    "Program failed to run: generated extractor exceeded 300s"
+   ],
+   "warnings": [],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    1,
+    "not_audited",
+    0,
+    0
+   ],
+   "became_best": false
+  },
+  {
+   "version": 3,
+   "kind": "revise_gates",
+   "metrics": {
+    "engine": "codegen",
+    "records": 1445,
+    "pages_total": 191,
+    "pages_with_fields": 191,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 42,
+    "fields_per_form": 34.4,
+    "forms_per_100_pages": 22.0,
+    "form_same_page_evidence_records": 1445,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 100
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 8,
+   "audit_pages": [
+    58,
+    59,
+    60,
+    103,
+    105,
+    260,
+    421,
+    778
+   ],
+   "audit_partial": null,
+   "audit_promoted": [
+    59
+   ],
+   "audit_verdicts": [
+    {
+     "page": 58,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 59,
+     "missed": [],
+     "false": [
+      "Normal",
+      "Abnormal"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 60,
+     "missed": [],
+     "false": [
+      "Normal",
+      "Abnormal"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 103,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 105,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 260,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 421,
+     "missed": [],
+     "false": [
+      "Brexpiprazole/Sertraline PK",
+      "Sertraline PK",
+      "Propranolol PK",
+      "Prazosin PK"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 778,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    8,
+    0,
+    -191
+   ],
+   "became_best": true
+  },
+  {
+   "version": 4,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 1188,
+    "pages_total": 191,
+    "pages_with_fields": 191,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 42,
+    "fields_per_form": 28.3,
+    "forms_per_100_pages": 22.0,
+    "form_same_page_evidence_records": 1188,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 100
+   },
+   "problems": [],
+   "warnings": [
+    "The program filters by 17 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": 6,
+   "audit_pages": [
+    58,
+    59,
+    60,
+    104,
+    105,
+    260,
+    421,
+    778
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 58,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 59,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 60,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 104,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 105,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 260,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 421,
+     "missed": [
+      "Time of Collection",
+      "Barcode Number",
+      "Backup Barcode Number"
+     ],
+     "false": [
+      "Sertraline PK",
+      "Propranolol PK",
+      "Prazosin PK"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 778,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    6,
+    1,
+    -191
+   ],
+   "became_best": true
+  },
+  {
+   "version": 5,
+   "kind": "confirm",
+   "metrics": {
+    "engine": "codegen",
+    "records": 1693,
+    "pages_total": 191,
+    "pages_with_fields": 186,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 42,
+    "fields_per_form": 40.3,
+    "forms_per_100_pages": 22.0,
+    "form_same_page_evidence_records": 1678,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 97
+   },
+   "problems": [],
+   "outcome": "extended_program"
+  },
+  {
+   "version": 5,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 1069,
+    "pages_total": 191,
+    "pages_with_fields": 171,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 36,
+    "fields_per_form": 29.7,
+    "forms_per_100_pages": 18.8,
+    "form_same_page_evidence_records": 1059,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 90
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    0,
+    "not_audited",
+    0,
+    -171
+   ],
+   "became_best": false
+  },
+  {
+   "version": 6,
+   "kind": "confirm_extension",
+   "metrics": {
+    "engine": "codegen",
+    "records": 1693,
+    "pages_total": 191,
+    "pages_with_fields": 186,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 42,
+    "fields_per_form": 40.3,
+    "forms_per_100_pages": 22.0,
+    "form_same_page_evidence_records": 1678,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 97
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 63,
+   "audit_pages": [
+    58,
+    59,
+    60,
+    64,
+    105,
+    260,
+    421,
+    778
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 58,
+     "missed": [
+      "Abnormal Findings",
+      "Clinically Significant",
+      "HEENT"
+     ],
+     "false": [
+      "Normal",
+      "Abnormal",
+      "[TYPE: enumeration",
+      "(values: Normal,",
+      "Not Done",
+      "Abnormal, Not",
+      "Done, NA)]",
+      "Thorax",
+      "Abdomen",
+      "Skin and Mucosae"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 59,
+     "missed": [
+      "Abnormal Findings",
+      "Clinically Significant"
+     ],
+     "false": [
+      "Normal",
+      "Abnormal",
+      "[TYPE: enumeration",
+      "(values: Normal,",
+      "Not Done",
+      "Abnormal, Not",
+      "Done, NA)]",
+      "Neurological",
+      "Extremities",
+      "Urogenital"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 60,
+     "missed": [
+      "Abnormal Findings",
+      "Clinically Significant"
+     ],
+     "false": [
+      "Normal",
+      "Abnormal",
+      "[TYPE: enumeration",
+      "(values: Normal,",
+      "Not Done",
+      "Abnormal, Not",
+      "Done, NA)]"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 64,
+     "missed": [
+      "Time of Collection",
+      "Scan",
+      "Barcode Number",
+      "HIV",
+      "HBsAg"
+     ],
+     "false": [
+      "Collected",
+      "Not Collected",
+      "Not Applicable",
+      "[TYPE: enumeration",
+      "(values: Collected, Not",
+      "Collected, Not",
+      "Applicable)]",
+      "Anti-HCV"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 105,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 260,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 421,
+     "missed": [
+      "Time of Collection",
+      "Barcode Number",
+      "Backup Barcode Number"
+     ],
+     "false": [
+      "Predose",
+      "Prazosin PK",
+      "Brexpiprazole/Sertraline PK",
+      "Collected",
+      "Sertraline PK",
+      "Propranolol PK",
+      "[TYPE: enumeration",
+      "(values: Collected, Not",
+      "[TYPE: enumeration (values: Brexpiprazole/",
+      "Collected)]",
+      "Sertraline PK, Sertraline PK, Propranolol PK,",
+      "Prazosin PK)]",
+      "1h Postdose"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 778,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    63,
+    0,
+    -186
+   ],
+   "became_best": false
+  }
+ ]
+}

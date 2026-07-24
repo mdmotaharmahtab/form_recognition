@@ -1,0 +1,35 @@
+x=  47.8 y=  66.1 sz=14.4 #004c99   | Drug Accountability
+x=  47.8 y= 116.5 sz= 7.8 black     | Log one line per dispensation
+x=  41.2 y= 176.2 sz=10.5 black   B | (Repeatable row added with Add Row button)
+x=  45.2 y= 198.3 sz= 9.2 black     | Date Dispensed
+x= 147.8 y= 198.3 sz= 9.2 black     | Sertraline - 50 mg
+x= 250.4 y= 198.3 sz= 9.2 black     | Brexpiprazole - 1 mg
+x= 353.1 y= 198.3 sz= 9.2 black     | Brexpiprazole - 2 mg
+x= 455.7 y= 198.3 sz= 9.2 black     | Brexpiprazole - 2 mg
+x= 147.8 y= 211.4 sz= 9.2 black     | Dispensed
+x= 250.4 y= 211.4 sz= 9.2 black     | Dispensed
+x= 353.1 y= 211.4 sz= 9.2 black     | Dispensed
+x= 455.7 y= 211.4 sz= 9.2 black     | Dispensed
+x=  47.8 y= 273.4 sz= 7.8 black     | Date Bottles Dispensed
+x=  47.8 y= 296.3 sz= 7.8 #ff0000   | [DADSPDAT]
+x=  47.8 y= 308.7 sz= 7.8 #ff0000   | [TYPE: date]
+x=  47.8 y= 343.3 sz= 7.8 black   B | Bottle Number(s) Sertraline - 50 mg
+x=  47.8 y= 367.5 sz= 7.8 #ff0000   | [DA01BN]
+x=  47.8 y= 380.0 sz= 7.8 #ff0000   | [TYPE: text]
+x=  47.8 y= 414.6 sz= 7.8 black   B | Number of Sertraline - 50 mg bottles Dispensed
+x=  47.8 y= 438.8 sz= 7.8 #ff0000   | [DA01BDSP]
+x=  47.8 y= 451.2 sz= 7.8 #ff0000   | [TYPE: integer (allow zero)]
+x=  47.8 y= 485.9 sz= 7.8 black   B | Number of Sertraline - 50 mg Capsules Dispensed (total)
+x=  47.8 y= 510.1 sz= 7.8 #ff0000   | [DA01TDSP]
+x=  47.8 y= 522.5 sz= 7.8 #ff0000   | [TYPE: integer (allow zero)]
+x=  47.8 y= 557.1 sz= 7.8 black   B | Bottle Number(s) Brexpiprazole - 1 mg
+x=  47.8 y= 581.3 sz= 7.8 #ff0000   | [DA02BN]
+x=  47.8 y= 593.7 sz= 7.8 #ff0000   | [TYPE: text]
+x=  47.8 y= 628.4 sz= 7.8 black   B | Number of Brexpiprazole - 1 mg bottles Dispensed
+x=  47.8 y= 652.6 sz= 7.8 #ff0000   | [DA02BDSP]
+x=  47.8 y= 665.0 sz= 7.8 #ff0000   | [TYPE: integer (allow zero)]
+x=  47.8 y= 699.6 sz= 7.8 black   B | Number of Brexpiprazole - 1 mg Capsules Dispensed (total)
+x=  47.8 y= 723.8 sz= 7.8 #ff0000   | [DA02TDSP]
+x=  47.8 y= 736.2 sz= 7.8 #ff0000   | [TYPE: integer (allow zero)]
+x=  47.8 y= 770.9 sz= 7.8 black   B | Bottle Number(s) Brexpiprazole - 2 mg
+x=  47.8 y= 795.1 sz= 7.8 #ff0000   | [DA03BN]

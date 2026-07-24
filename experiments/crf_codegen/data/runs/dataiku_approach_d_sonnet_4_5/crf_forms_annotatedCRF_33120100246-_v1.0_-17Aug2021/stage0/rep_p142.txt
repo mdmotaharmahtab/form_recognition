@@ -1,0 +1,42 @@
+x=  47.8 y=  66.1 sz=14.4 #004c99   | C-SSRS since last visit - Page 4
+x=  45.2 y= 108.1 sz= 9.2 black     | Actual Attempts
+x= 353.1 y= 108.1 sz= 9.2 black     | Most Lethal Attempt
+x=  45.8 y= 128.9 sz= 7.8 black   B | Row 1
+x=  45.8 y= 148.5 sz= 7.8 black     | Date of Attempt
+x= 353.7 y= 175.3 sz= 7.8 #ff0000   | [CSS0223A]
+x= 353.7 y= 189.7 sz= 7.8 #ff0000   | [TYPE: partialdate (Unknown Day, Unknown Month)]
+x=  45.8 y= 209.3 sz= 7.8 black   B | Row 2
+x=  45.8 y= 228.9 sz= 7.8 black   B | Actual Lethality/Medical Damage:
+x=  45.8 y= 247.9 sz= 7.8 black     | \0.\ No physical damage or very minor physical damage (e.g. surface scratches) \1.\
+x=  45.8 y= 259.0 sz= 7.8 black     | Minor physical damage (e.g. lethargic speech, first-degree burns, mild bleeding,
+x= 353.7 y= 267.5 sz= 7.8 #ff0000   | [CSS0223B]
+x= 505.4 y= 268.9 sz= 9.2 black     | 0
+x=  45.8 y= 270.1 sz= 7.8 black     | sprains) \2.\ Moderate physical damage; medical attention needed (e.g. conscious but
+x=  45.8 y= 281.2 sz= 7.8 black     | sleepy; somewhat responsive, second-degree burns; bleeding of major vessel \3.\
+x= 353.7 y= 281.9 sz= 7.8 #ff0000   | [TYPE: enumeration (values: 0, 1, 2, 3, 4,
+x= 505.4 y= 282.0 sz= 9.2 black     | 1
+x=  45.8 y= 292.4 sz= 7.8 black     | Moderately severe physical damage; medical hospitalization and likely intensive care
+x= 353.7 y= 293.0 sz= 7.8 #ff0000   | 5)]
+x= 505.4 y= 295.1 sz= 9.2 black     | 2
+x=  45.8 y= 303.5 sz= 7.8 black     | required (e.g. comatose with reflexes intact; third-degree burns less than 20% of
+x= 505.4 y= 308.2 sz= 9.2 black     | 3
+x=  45.8 y= 314.6 sz= 7.8 black     | body; extensive blood loss but can recover, major fractures) \4.\ Severe physical
+x= 505.4 y= 321.2 sz= 9.2 black     | 4
+x=  45.8 y= 325.7 sz= 7.8 black     | damage; medical hospitalization with intensive care required (e.g. comatose without
+x= 505.4 y= 334.3 sz= 9.2 black     | 5
+x=  45.8 y= 336.8 sz= 7.8 black     | reflexes; third-degree burns over 20% of the body; extensive blood loss with unstable
+x=  45.8 y= 347.9 sz= 7.8 black     | vital signs; major damage to a vital area \5.\ Death
+x=  45.8 y= 367.5 sz= 7.8 black   B | Row 3
+x=  45.8 y= 387.1 sz= 7.8 black   B | Potential Lethality: Only answer if Actual Lethality=0
+x=  45.8 y= 406.1 sz= 7.8 black     | Likely lethality of actual attempt if no medical damage (the following examples, while
+x=  45.8 y= 417.2 sz= 7.8 black     | having no actual medical damage, has potential for very serious lethality; put gun in
+x= 353.7 y= 425.7 sz= 7.8 #ff0000   | [CSS0223C]
+x= 505.4 y= 427.2 sz= 9.2 black     | 0
+x=  45.8 y= 428.3 sz= 7.8 black     | mouth and pulled the trigger but gun fails to fire so no medical damage; laying on train
+x=  45.8 y= 439.5 sz= 7.8 black     | tracks with oncoming train but pulled away before run over).
+x= 353.7 y= 440.1 sz= 7.8 #ff0000   | [TYPE: enumeration (values: 0, 1, 2)]
+x= 505.4 y= 440.2 sz= 9.2 black     | 1
+x= 505.4 y= 453.3 sz= 9.2 black     | 2
+x=  45.8 y= 458.4 sz= 7.8 black     | \0.\ Behavior not likely to result in injury \1.\ Behavior like to result in injury but not
+x=  45.8 y= 469.5 sz= 7.8 black     | likely to cause death \2.\ Behavior likely to result in death despite available medical
+x=  45.8 y= 480.6 sz= 7.8 black     | care

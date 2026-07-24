@@ -28,8 +28,16 @@ exist locally):
 |---|---|
 | `corpus_cli/` | The default / current CLI outputs for the full 11-document corpus. `common.OUT_DIR` points here when `ECS_OUT_DIR` is unset. |
 | `probe_clusters_2021/` | Cluster-sampling ablation runs on the 2021 book (`a_baseline`, `b_more_samples`, `c_narrow_split`, `d_*`, and per-model `*_sonnet` / `*_gpt` cells). Each cell is a complete isolated `OUT_DIR`, driven by the `ECS_*` knobs. |
+| `dataiku_loop2_sonnet_4_5/`, `dataiku_loop2_gpt_5_2/` | Full-corpus **Dataiku** runs on the loop-2 (default) config, per model. |
+| `dataiku_approach_d_sonnet_4_5/` | Full-corpus **Dataiku** run on **approach D** (Sonnet generation / GPT audit). |
 | `dataiku_fail_384v1/` | Approach-D rerun of the document Sonnet-Dataiku failed on. |
 | `snapshots/` | **Frozen historical** corpus snapshots, one per milestone (see below). Kept in their original flat layout on purpose — NOT re-bucketed. |
+
+Dataiku run roots are named by **method** (`dataiku_<method>_<model>`). To add a
+new one: download the managed-folder export, extract it here stripping the
+`runs/<RUN_ID>/` wrapper, run `tools/migrate_to_buckets.py <run_root>` to bucket
+the flat artifacts, then add a `RUNS` entry in
+[`../../src/evaluation/accuracy_audit.py`](../../src/evaluation/accuracy_audit.py).
 
 ### `snapshots/` — historical milestones
 

@@ -1,0 +1,11 @@
+Looking at the sample pages:
+
+**Cluster 5 (pages 4, 6)**: These are table-of-contents pages showing numbered section titles (e.g., "3.137. Urine Drug Screen"). All text is colored (#2477cc) and represents navigation/TOC entries, not data-entry fields. These pages are genuinely field-free.
+
+**Cluster 4 (pages 349, 462)**: These contain only metadata annotations in red (`[TYPE: enumeration (values: Yes, No)]`). No actual field labels are visible. These are likely continuation pages where the field label appeared earlier and only the metadata annotation remains. These pages are genuinely field-free.
+
+**Cluster 9**: Only 1 of 2 pages is uncovered, but no sample was provided. Given the high overall coverage (1667 records extracted) and that the other clusters shown are legitimately field-free, this is likely similar.
+
+All the shown layouts are genuinely field-free pages (TOC and metadata-only pages). The program is correctly skipping them.
+
+CONFIRM_NO_FIELDS

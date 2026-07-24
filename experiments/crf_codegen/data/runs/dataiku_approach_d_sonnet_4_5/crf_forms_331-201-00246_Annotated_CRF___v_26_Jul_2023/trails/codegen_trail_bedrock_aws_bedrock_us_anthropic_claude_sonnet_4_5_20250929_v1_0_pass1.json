@@ -1,0 +1,671 @@
+{
+ "stop_reason": "budget",
+ "versions": 6,
+ "best_version": 4,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 0,
+    "pages_total": 812,
+    "pages_with_fields": 0,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 0,
+    "labels_look_human_pct": 0,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 0,
+    "fields_per_form": 0.0,
+    "forms_per_100_pages": 0.0,
+    "form_same_page_evidence_records": 0,
+    "form_same_page_persistence_pct": null,
+    "furniture_candidates": [],
+    "pages_covered_pct": 0
+   },
+   "problems": [
+    "The program extracted ZERO records from the document.",
+    "Extreme content-fitted blocklist. The program filters by 36 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "warnings": [
+    "form_name empty for 100% of records - if the document does print form/section names, fix the form_name strategy (consider carrying the last seen title forward).",
+    "Only 0% of field_name values look like human labels (they look like codes/dates/junk) - fix label selection."
+   ],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    2,
+    "not_audited",
+    2,
+    0
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "confirm",
+   "metrics": {
+    "engine": "codegen",
+    "records": 2249,
+    "pages_total": 812,
+    "pages_with_fields": 318,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 103,
+    "fields_per_form": 21.8,
+    "forms_per_100_pages": 12.7,
+    "form_same_page_evidence_records": 2234,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 39
+   },
+   "problems": [],
+   "outcome": "extended_program"
+  },
+  {
+   "version": 2,
+   "kind": "revise_gates",
+   "metrics": {
+    "engine": "codegen",
+    "records": 2243,
+    "pages_total": 812,
+    "pages_with_fields": 318,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 103,
+    "fields_per_form": 21.8,
+    "forms_per_100_pages": 12.7,
+    "form_same_page_evidence_records": 2228,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 39
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    0,
+    "not_audited",
+    0,
+    -318
+   ],
+   "became_best": true
+  },
+  {
+   "version": 3,
+   "kind": "confirm_extension",
+   "metrics": {
+    "engine": "codegen",
+    "records": 2249,
+    "pages_total": 812,
+    "pages_with_fields": 318,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 103,
+    "fields_per_form": 21.8,
+    "forms_per_100_pages": 12.7,
+    "form_same_page_evidence_records": 2234,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 39
+   },
+   "problems": [],
+   "warnings": [
+    "The program filters by 12 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": 6,
+   "audit_pages": [
+    1,
+    31,
+    44,
+    171,
+    275,
+    333,
+    537,
+    557,
+    739,
+    922
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 31,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 44,
+     "missed": [],
+     "false": [
+      "90 days after the last dose of IMP?- mark the selected methods below **",
+      "Vasectomy"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 171,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 275,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 333,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 537,
+     "missed": [
+      "Time of Vitals Measurement #1",
+      "Time of Vitals Measurement #2",
+      "Time of Vitals Measurement #3"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 557,
+     "missed": [],
+     "false": [
+      "If Yes, please add to Adverse Events form"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 739,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 922,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    6,
+    1,
+    -318
+   ],
+   "became_best": true
+  },
+  {
+   "version": 4,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 2249,
+    "pages_total": 812,
+    "pages_with_fields": 318,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 103,
+    "fields_per_form": 21.8,
+    "forms_per_100_pages": 12.7,
+    "form_same_page_evidence_records": 2234,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 39
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 4,
+   "audit_pages": [
+    1,
+    2,
+    31,
+    44,
+    117,
+    138,
+    171,
+    275,
+    333,
+    537,
+    557,
+    739,
+    922
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 31,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 44,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 117,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 138,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 171,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 275,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 333,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 537,
+     "missed": [
+      "Time of Vitals Measurement #1",
+      "Time of Vitals Measurement #2",
+      "Time of Vitals Measurement #3"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 557,
+     "missed": [],
+     "false": [
+      "If Yes, please add to Adverse Events form"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 739,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 922,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    4,
+    0,
+    -318
+   ],
+   "became_best": true
+  },
+  {
+   "version": 5,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 2249,
+    "pages_total": 812,
+    "pages_with_fields": 318,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 103,
+    "fields_per_form": 21.8,
+    "forms_per_100_pages": 12.7,
+    "form_same_page_evidence_records": 2234,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 39
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 17,
+   "audit_pages": [
+    1,
+    3,
+    31,
+    44,
+    134,
+    141,
+    171,
+    275,
+    333,
+    537,
+    557,
+    739,
+    922
+   ],
+   "audit_partial": null,
+   "audit_promoted": [
+    134
+   ],
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 3,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 31,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 44,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 134,
+     "missed": [
+      "Date of Attempt"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 141,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 171,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 275,
+     "missed": [],
+     "false": [],
+     "wrong_form": [
+      "Date of Administration",
+      "Time of Administration",
+      "Reason",
+      "As per protocol",
+      "Adverse Event",
+      "Dosing error",
+      "Dispensing error",
+      "Technical problems",
+      "Subject/guardian decision",
+      "Physician decision",
+      "Was water restricted for 2 hours following dosing?",
+      "Dosing Comments (optional)"
+     ]
+    },
+    {
+     "page": 333,
+     "missed": [
+      "Actual attempt:"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 537,
+     "missed": [
+      "Time of Vitals Measurement #1",
+      "Time of Vitals Measurement #2",
+      "Time of Vitals Measurement #3"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 557,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 739,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 922,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    17,
+    0,
+    -318
+   ],
+   "became_best": false
+  },
+  {
+   "version": 6,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 2274,
+    "pages_total": 812,
+    "pages_with_fields": 325,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 106,
+    "fields_per_form": 21.5,
+    "forms_per_100_pages": 13.1,
+    "form_same_page_evidence_records": 2259,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 40
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 9,
+   "audit_pages": [
+    1,
+    31,
+    44,
+    134,
+    135,
+    150,
+    171,
+    275,
+    333,
+    537,
+    557,
+    739,
+    922
+   ],
+   "audit_partial": null,
+   "audit_promoted": [
+    135
+   ],
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 31,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 44,
+     "missed": [
+      "**If sexually active does the subject commit to utilizing 2 different approved methods of birth control during the trial and for 90 days after the last dose of IMP?- mark the selected methods below **"
+     ],
+     "false": [
+      "90 days after the last dose of IMP?- mark the selected methods below **"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 134,
+     "missed": [
+      "Date of Attempt",
+      "Actual Lethality/Medical Damage:"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 135,
+     "missed": [
+      "Potential Lethality: Only answer if Actual Lethality=0"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 150,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 171,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 275,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 333,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 537,
+     "missed": [
+      "Time of Vitals Measurement #1",
+      "Time of Vitals Measurement #2",
+      "Time of Vitals Measurement #3"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 557,
+     "missed": [],
+     "false": [
+      "If Yes, please add to Adverse Events form"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 739,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 922,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    9,
+    0,
+    -325
+   ],
+   "became_best": false
+  }
+ ]
+}

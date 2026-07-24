@@ -1,0 +1,137 @@
+x=  36.0 y=  11.5 sz= 9.0 black     | 384-201-00004
+x=  42.0 y=  34.8 sz=12.0 #ffffff   | Concomitant Medications - Screening
+x= 498.9 y=  36.6 sz= 9.6 #ffffff   | Origin: CRF
+x=  48.0 y=  55.2 sz= 7.8 #ffffff B | Aliases:
+x=  77.9 y=  55.3 sz= 7.8 #ffffff   | CC Mapping = Concomitant Medications, CC Mapping = Medication History
+x=  43.5 y=  72.8 sz=10.5 #31708f   | CM Leading Question
+x= 286.3 y=  73.4 sz= 8.4 #31708f   | Origin: CRF; Repeating: No; Domain:
+x= 429.5 y=  73.4 sz= 8.4 #31708f B | CM2
+x= 447.3 y=  73.4 sz= 8.4 #31708f   | ; SAS Dataset Name:
+x= 531.7 y=  73.4 sz= 8.4 #31708f B | CM2
+x=  49.5 y=  88.0 sz= 6.8 #808080 B | Aliases:
+x=  75.7 y=  88.0 sz= 6.8 #808080   | Odm OID = IG.1986
+x= 453.5 y= 110.8 sz= 5.6 black   B | CMYN
+x=  46.5 y= 113.4 sz= 7.5 black     | Were any concomitant medications taken?
+x= 453.5 y= 117.4 sz= 5.6 black     | Format: $1
+x= 453.5 y= 123.9 sz= 5.6 black     | Data Type: string
+x= 249.2 y= 128.8 sz= 7.5 black     | O Yes
+x= 453.5 y= 130.4 sz= 5.6 black     | Origin: CRF
+x=  46.5 y= 130.8 sz= 7.5 black     | [CMYN]
+x= 453.5 y= 136.9 sz= 5.6 black     | Aliases:
+x= 249.2 y= 137.5 sz= 7.5 black     | O No
+x=  46.5 y= 139.5 sz= 7.5 black     | [SAS Field Name: CMYN]
+x= 456.5 y= 143.5 sz= 5.6 black     | Odm OID = I.7705
+x= 453.5 y= 150.0 sz= 5.6 black     | Description: Any Concomitant
+x= 253.0 y= 150.1 sz= 6.4 #808080   | Code List: Yes/No
+x=  53.2 y= 150.7 sz= 6.4 #808080   | Documentation of all non-study medications, including prescription,
+x= 453.5 y= 156.5 sz= 5.6 black     | Medications Taken
+x=  53.2 y= 158.1 sz= 6.4 #808080   | over-the-counter, herbal/therapies/natural health products and
+x= 453.5 y= 163.0 sz= 5.6 black     | Mandatory?: Yes
+x=  53.2 y= 165.5 sz= 6.4 #808080   | supplements 30 days prior to screening.
+x= 453.5 y= 169.6 sz= 5.6 black     | Disallow Future Date: Yes
+x=  43.5 y= 189.9 sz=10.5 #31708f   | CM
+x= 124.2 y= 190.5 sz= 8.4 #31708f   | Origin: CRF; Repeating: Yes; User Additions: Yes; Conditionally Visible; Domain:
+x= 429.4 y= 190.5 sz= 8.4 #31708f B | CM2
+x= 447.1 y= 190.5 sz= 8.4 #31708f   | ; SAS Dataset Name:
+x= 531.6 y= 190.5 sz= 8.4 #31708f B | CM2
+x=  49.5 y= 205.0 sz= 6.8 #808080 B | Description: Concomitant Medications (Screening)
+x= 453.5 y= 227.8 sz= 5.6 black   B | CMTRT
+x= 453.5 y= 234.4 sz= 5.6 black     | Format: $200
+x=  46.5 y= 236.2 sz= 7.5 black     | Concomitant medication or therapy
+x= 453.5 y= 241.0 sz= 5.6 black     | Data Type: text
+x= 453.5 y= 247.5 sz= 5.6 black     | Origin: CRF
+x= 249.2 y= 249.2 sz= 7.5 black     | [____________________]
+x=  46.5 y= 253.6 sz= 7.5 black     | [CMTRT]
+x= 453.5 y= 254.0 sz= 5.6 black     | Description: Concomitant medication
+x= 453.5 y= 260.5 sz= 5.6 black     | or therapy
+x=  46.5 y= 262.3 sz= 7.5 black     | [SAS Field Name: CMTRT]
+x= 453.5 y= 267.1 sz= 5.6 black     | Mandatory?: Yes
+x= 453.5 y= 273.6 sz= 5.6 black     | Disallow Future Date: Yes
+x= 249.2 y= 289.1 sz= 7.5 black     | O TOPICAL
+x= 249.2 y= 297.8 sz= 7.5 black     | O ORAL
+x= 249.2 y= 306.5 sz= 7.5 black     | O AURICULAR (OTIC)
+x= 249.2 y= 315.2 sz= 7.5 black     | O EPIDURAL
+x= 249.2 y= 323.9 sz= 7.5 black     | O INTRAOCULAR
+x= 249.2 y= 332.6 sz= 7.5 black     | O INTRAMUSCULAR
+x= 249.2 y= 341.3 sz= 7.5 black     | O INTRALESIONAL
+x= 249.2 y= 350.0 sz= 7.5 black     | O INTRAPERITONEAL
+x= 249.2 y= 358.7 sz= 7.5 black     | O INTRAVENOUS
+x= 249.2 y= 367.4 sz= 7.5 black     | O INTRATHECAL
+x= 249.2 y= 376.1 sz= 7.5 black     | O INTRA-ARTICULAR
+x= 249.2 y= 384.8 sz= 7.5 black     | O INTRADERMAL
+x= 249.2 y= 393.5 sz= 7.5 black     | O INTRA-ARTERIAL
+x= 249.2 y= 402.2 sz= 7.5 black     | O INTRAUTERINE
+x= 453.5 y= 407.0 sz= 5.6 black   B | CMROUTE
+x= 249.2 y= 410.9 sz= 7.5 black     | O INTRAVAGINAL
+x=  46.5 y= 412.1 sz= 7.5 black     | Route of administration
+x= 453.5 y= 413.6 sz= 5.6 black     | Format: $100
+x= 249.2 y= 419.6 sz= 7.5 black     | O INTRAVENTRICULAR
+x= 453.5 y= 420.1 sz= 5.6 black     | Data Type: string
+x= 453.5 y= 426.7 sz= 5.6 black     | Origin: CRF
+x= 249.2 y= 428.3 sz= 7.5 black     | O LARYNGEAL
+x=  46.5 y= 429.5 sz= 7.5 black     | [CMROUTE]
+x= 453.5 y= 433.2 sz= 5.6 black     | Description: Route of Administration
+x= 249.2 y= 437.0 sz= 7.5 black     | O NASAL
+x=  46.5 y= 438.2 sz= 7.5 black     | [SAS Field Name: CMROUTE]
+x= 453.5 y= 439.7 sz= 5.6 black     | Mandatory?: No
+x= 249.2 y= 445.7 sz= 7.5 black     | O NASOGASTRIC
+x= 453.5 y= 446.2 sz= 5.6 black     | Disallow Future Date: Yes
+x= 249.2 y= 454.4 sz= 7.5 black     | O NOT APPLICABLE
+x= 249.2 y= 463.1 sz= 7.5 black     | O OPHTHALMIC
+x= 249.2 y= 471.8 sz= 7.5 black     | O PERIARTICULAR
+x= 249.2 y= 480.5 sz= 7.5 black     | O RECTAL
+x= 249.2 y= 489.2 sz= 7.5 black     | O RESPIRATION (INHALATION)
+x= 249.2 y= 497.9 sz= 7.5 black     | O RESPIRATORY (INHALATION)
+x= 249.2 y= 506.6 sz= 7.5 black     | O SUBCUTANEOUS
+x= 249.2 y= 515.3 sz= 7.5 black     | O SUBLINGUAL
+x= 249.2 y= 524.0 sz= 7.5 black     | O TRANSDERMAL
+x= 249.2 y= 532.7 sz= 7.5 black     | O UNKNOWN
+x= 249.2 y= 541.4 sz= 7.5 black     | O URETERAL
+x= 249.2 y= 550.1 sz= 7.5 black     | O VAGINAL
+x= 253.0 y= 562.7 sz= 6.4 #808080   | Code List: CM Dose Route
+x= 453.5 y= 579.7 sz= 5.6 black   B | CMDOSE
+x=  46.5 y= 584.7 sz= 7.5 black     | Total dose
+x= 453.5 y= 586.3 sz= 5.6 black     | Format: N(3.2)
+x= 453.5 y= 592.8 sz= 5.6 black     | Data Type: float
+x= 249.2 y= 597.8 sz= 7.5 black     | [_|_|_] . [_|_]
+x= 453.5 y= 599.3 sz= 5.6 black     | Origin: CRF
+x=  46.5 y= 602.1 sz= 7.5 black     | [CMDOSE]
+x= 453.5 y= 605.8 sz= 5.6 black     | Description: Total dose
+x=  46.5 y= 610.8 sz= 7.5 black     | [SAS Field Name: CMDOSE]
+x= 453.5 y= 612.4 sz= 5.6 black     | Mandatory?: No
+x= 453.5 y= 618.9 sz= 5.6 black     | Disallow Future Date: Yes
+x= 453.5 y= 641.1 sz= 5.6 black   B | CMDOSFRM
+x=  46.5 y= 646.2 sz= 7.5 black     | Dose form
+x= 453.5 y= 647.7 sz= 5.6 black     | Format: $100
+x= 453.5 y= 654.2 sz= 5.6 black     | Data Type: string
+x= 249.2 y= 659.3 sz= 7.5 black     | [____________________]
+x= 453.5 y= 660.8 sz= 5.6 black     | Origin: CRF
+x=  46.5 y= 663.6 sz= 7.5 black     | [CMDOSFRM]
+x= 453.5 y= 667.3 sz= 5.6 black     | Description: Dose Form
+x=  46.5 y= 672.3 sz= 7.5 black     | [SAS Field Name: CMDOSFRM]
+x= 453.5 y= 673.8 sz= 5.6 black     | Mandatory?: No
+x= 453.5 y= 680.3 sz= 5.6 black     | Disallow Future Date: Yes
+x= 249.2 y= 695.9 sz= 7.5 black     | O DROP
+x= 249.2 y= 704.6 sz= 7.5 black     | O g
+x= 249.2 y= 713.3 sz= 7.5 black     | O IU
+x= 249.2 y= 722.0 sz= 7.5 black     | O mg
+x= 453.5 y= 722.4 sz= 5.6 black   B | CMDOSU
+x=  46.5 y= 727.5 sz= 7.5 black     | Dose unit
+x= 453.5 y= 729.0 sz= 5.6 black     | Format: $100
+x= 249.2 y= 730.7 sz= 7.5 black     | O mL
+x= 453.5 y= 735.5 sz= 5.6 black     | Data Type: string
+x= 249.2 y= 739.4 sz= 7.5 black     | O oz
+x= 453.5 y= 742.1 sz= 5.6 black     | Origin: CRF
+x=  46.5 y= 744.9 sz= 7.5 black     | [CMDOSU]
+x= 249.2 y= 748.1 sz= 7.5 black     | O %
+x= 453.5 y= 748.6 sz= 5.6 black     | Description: Dose Units
+x=  46.5 y= 753.6 sz= 7.5 black     | [SAS Field Name: CMDOSU]
+x= 453.5 y= 755.1 sz= 5.6 black     | Mandatory?: No
+x= 249.2 y= 756.8 sz= 7.5 black     | O SCOOPFUL
+x= 453.5 y= 761.6 sz= 5.6 black     | Disallow Future Date: Yes
+x= 249.2 y= 765.5 sz= 7.5 black     | O ug
+x= 249.2 y= 774.2 sz= 7.5 black     | O UNKNOWN
+x= 253.0 y= 786.8 sz= 6.4 #808080   | Code List: CM Dose Units
+x=  36.0 y= 817.4 sz= 9.0 black     | Annotated CRF
+x= 278.9 y= 817.4 sz= 9.0 black     | 53 of 238
+x= 445.8 y= 817.4 sz= 9.0 black     | https://drvince.clinspark.com

@@ -1,0 +1,54 @@
+x=  72.0 y=  36.7 sz= 7.8 black     | Overdose: Person has pills in hand but is stopped from ingesting. Once they ingest any pills,
+x= 404.7 y=  40.0 sz= 7.8 #ff0000   | [TYPE: enumeration (values: Yes, No)]
+x=  72.0 y=  47.9 sz= 7.8 black     | this becomes an attempt rather than an interrupted attempt.
+x=  72.0 y=  59.0 sz= 7.8 black     | Shooting: Person has gun pointed toward self, gun is taken away by someone else, or is
+x=  72.0 y=  70.1 sz= 7.8 black     | somehow prevent from pulling trigger. Once they pull the trigger, even if the gun fails to fire, it
+x=  72.0 y=  81.2 sz= 7.8 black     | is an attempt.
+x=  72.0 y=  92.3 sz= 7.8 black     | Jumping: Person is poised to jump, is grabbed and taken down from ledge.
+x=  72.0 y= 103.4 sz= 7.8 black     | Hanging: Person has noose around neck but has not yet started to hang - is stopped from
+x=  72.0 y= 114.5 sz= 7.8 black     | doing so
+x=  45.8 y= 133.5 sz= 7.8 black   B | Has there been a time when you started to do something to end your life but someone or
+x=  45.8 y= 144.6 sz= 7.8 black   B | something stopped you before you actually did anything?
+x=  45.8 y= 168.8 sz= 7.8 black   B | Row 6
+x=  45.8 y= 188.4 sz= 7.8 black     | If Yes, Total number of interrupted attempts
+x= 404.7 y= 215.2 sz= 7.8 #ff0000   | [CSS0216]
+x= 404.7 y= 229.6 sz= 7.8 #ff0000   | [TYPE: integer (allow zero)]
+x=  45.8 y= 249.2 sz= 7.8 black   B | Row 7
+x=  45.8 y= 268.8 sz= 7.8 black     | If Yes, describe
+x= 404.7 y= 295.6 sz= 7.8 #ff0000   | [CSS0216A]
+x= 404.7 y= 310.0 sz= 7.8 #ff0000   | [TYPE: text]
+x=  45.8 y= 329.6 sz= 7.8 black   B | Row 8
+x=  45.8 y= 349.2 sz= 7.8 black   B | Aborted attempt:
+x= 413.2 y= 354.6 sz= 9.2 #454545   | Yes
+x= 445.3 y= 354.6 sz= 9.2 #454545   | No
+x=  45.8 y= 368.2 sz= 7.8 black     | When person begins to take steps toward making a suicide attempt, but stops themselves before
+x= 404.7 y= 374.7 sz= 7.8 #ff0000   | [CSS0217]
+x=  45.8 y= 379.3 sz= 7.8 black     | they actually have engaged in any self destructive behaviour. Examples are similar to interrupted
+x= 404.7 y= 389.1 sz= 7.8 #ff0000   | [TYPE: enumeration (values: Yes, No)]
+x=  45.8 y= 390.4 sz= 7.8 black     | attempts, except that the individual stops him/herself, instead of being stopped by something else.
+x=  45.8 y= 409.4 sz= 7.8 black   B | Has there been a time when you started to do something to try to end your life but you
+x=  45.8 y= 420.5 sz= 7.8 black   B | stopped yourself before you actually did anything?
+x=  45.8 y= 440.1 sz= 7.8 black   B | Row 9
+x=  45.8 y= 459.7 sz= 7.8 black     | If Yes, Total number of aborted attempts
+x= 404.7 y= 486.5 sz= 7.8 #ff0000   | [CSS0218]
+x= 404.7 y= 500.9 sz= 7.8 #ff0000   | [TYPE: integer (allow zero)]
+x=  45.8 y= 520.5 sz= 7.8 black   B | Row 10
+x=  45.8 y= 540.1 sz= 7.8 black     | If Yes, describe
+x= 404.7 y= 566.9 sz= 7.8 #ff0000   | [CSS0218A]
+x= 404.7 y= 581.3 sz= 7.8 #ff0000   | [TYPE: text]
+x=  45.8 y= 600.9 sz= 7.8 black   B | Row 11
+x=  45.8 y= 620.5 sz= 7.8 black   B | Preparatory acts or behavior:
+x= 413.2 y= 625.9 sz= 9.2 #454545   | Yes
+x= 445.3 y= 625.9 sz= 9.2 #454545   | No
+x=  45.8 y= 639.5 sz= 7.8 black     | Acts or preparation towards imminently making a suicide attempt. This can include anything beyond
+x= 404.7 y= 646.0 sz= 7.8 #ff0000   | [CSS0219]
+x=  45.8 y= 650.6 sz= 7.8 black     | a verbalization or thought such as assembling a specific method (e.g., buying pills, purchasing a
+x= 404.7 y= 660.4 sz= 7.8 #ff0000   | [TYPE: enumeration (values: Yes, No)]
+x=  45.8 y= 661.7 sz= 7.8 black     | gun) or preparing for one's death by suicide (e.g., giving things away, writing a suicide note)
+x=  45.8 y= 680.7 sz= 7.8 black   B | Have you taken any step towards making a suicide attempt or preparing to kill yourself (such
+x=  45.8 y= 691.8 sz= 7.8 black   B | as collecting pills, getting a gun, giving valuables away or writing a suicide note?)
+x=  45.8 y= 711.4 sz= 7.8 black   B | Row 12
+x=  45.8 y= 731.0 sz= 7.8 black     | If Yes, describe
+x= 404.7 y= 757.8 sz= 7.8 #ff0000   | [CSS0219A]
+x= 404.7 y= 772.2 sz= 7.8 #ff0000   | [TYPE: text]
+x=  45.8 y= 791.8 sz= 7.8 black   B | Row 13

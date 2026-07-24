@@ -1,0 +1,885 @@
+{
+ "stop_reason": "budget",
+ "versions": 6,
+ "best_version": 5,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "confirm",
+   "outcome": "confirmed_no_fields"
+  },
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 2787,
+    "pages_total": 812,
+    "pages_with_fields": 705,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 94,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 117,
+    "fields_per_form": 23.8,
+    "forms_per_100_pages": 14.4,
+    "form_same_page_evidence_records": 2726,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 87,
+    "content_pages": 719,
+    "content_covered_pct": 98,
+    "uncovered_content_pct": 2
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 16,
+   "audit_pages": [
+    1,
+    30,
+    44,
+    72,
+    130,
+    252,
+    466,
+    667,
+    869,
+    969
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 30,
+     "missed": [],
+     "false": [
+      "Repeat Pages",
+      "Page Label"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 44,
+     "missed": [
+      "Of Childbearing Potential"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 72,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 130,
+     "missed": [
+      "Row 9",
+      "Row 10",
+      "Row 11",
+      "Aborted attempt:"
+     ],
+     "false": [
+      "When person begins to take steps toward making a suicide attempt, but stops themselves before they actually have engaged in any self destructive behaviour. Examples are similar to interrupted attempts, except that the individual",
+      "stops him/herself, instead of being stopped by something else."
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 252,
+     "missed": [
+      "Version Number 14-Jan-2009"
+     ],
+     "false": [
+      "Ask questions 1 and 2. If both are negative, proceed to \"Suicidal Behavior\" Section. If the answer to question 2 is \"yes\", ask questions 3, 4 and 5. If the answer to question 1 and/or 2 is \"yes\", complete \"Intensity of Ideation\" section below."
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 466,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 667,
+     "missed": [],
+     "false": [
+      "If Yes then please fill in AE page",
+      "If Yes then please fill in ConMed page"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 869,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 969,
+     "missed": [
+      "Number of Sertraline - 50 mg Capsules Returned",
+      "Number of Brexpiprazole - 1 mg Capsules Returned",
+      "Number of Brexpiprazole - 2 mg Capsules Returned"
+     ],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    16,
+    0,
+    -705
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 2859,
+    "pages_total": 812,
+    "pages_with_fields": 678,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 95,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 115,
+    "fields_per_form": 24.9,
+    "forms_per_100_pages": 14.2,
+    "form_same_page_evidence_records": 2825,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 83,
+    "content_pages": 719,
+    "content_covered_pct": 94,
+    "uncovered_content_pct": 6
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 12,
+   "audit_pages": [
+    1,
+    30,
+    32,
+    44,
+    72,
+    117,
+    127,
+    130,
+    252,
+    466,
+    667,
+    869,
+    969
+   ],
+   "audit_partial": null,
+   "audit_promoted": [
+    127
+   ],
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 30,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 32,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 44,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 72,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 117,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 127,
+     "missed": [],
+     "false": [
+      "Select all that apply, so long as these are separate events; must ask about all types",
+      "A potentially self-injurious act committed with at least some wish to die, as a result of act. Behaviour was in part thought of as method to kill oneself. Intent does not have to be 100%. If there is any intent/desire to die associated",
+      "with the act, then it can be considered an actual suicide attempt. There does not have to be any injury or harm, just",
+      "the potential for injury or harm. If a person pulls the trigger while gun is in mouth but gun is broken so no injury results, this is considered an attempt.",
+      "Inferring Intent: even if an individual denies intent/wish to die, it may be inferred clinically from the behaviour or circumstances. For example, a highly lethal act that is clearly not an accident so no other intent but suicide can be inferred (e.g. gunshot to the head, jumping from window of a high floor/story). Also, if someone denies intent to die, but they thought that what they did could be lethal, intent may be inferred.",
+      "Have you made a suicide attempt?",
+      "Have you done anything to harm yourself?",
+      "Have you done anything dangerous where you could have died?",
+      "What did you do?",
+      "Did you ______ as a way to end your life?"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 130,
+     "missed": [],
+     "false": [
+      "stops him/herself, instead of being stopped by something else.",
+      "Has there been a time when you started to do something to try to end your life but you stopped yourself before you actually did anything?"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 252,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 466,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 667,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 869,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 969,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    12,
+    0,
+    -678
+   ],
+   "became_best": true
+  },
+  {
+   "version": 3,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 2544,
+    "pages_total": 812,
+    "pages_with_fields": 678,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 115,
+    "fields_per_form": 22.1,
+    "forms_per_100_pages": 14.2,
+    "form_same_page_evidence_records": 2495,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 83,
+    "content_pages": 719,
+    "content_covered_pct": 94,
+    "uncovered_content_pct": 6
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 11,
+   "audit_pages": [
+    1,
+    30,
+    44,
+    72,
+    126,
+    127,
+    130,
+    137,
+    252,
+    466,
+    667,
+    869,
+    969
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 30,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 44,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 72,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 126,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 127,
+     "missed": [],
+     "false": [
+      "Select all that apply, so long as these are separate events; must ask about all types",
+      "with the act, then it can be considered an actual suicide attempt. There does not have to be any injury or harm, just",
+      "the potential for injury or harm. If a person pulls the trigger while gun is in mouth but gun is broken so no injury results, this is considered an attempt.",
+      "Have you done anything to harm yourself?",
+      "Have you done anything dangerous where you could have died?",
+      "What did you do?",
+      "Did you ______ as a way to end your life?"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 130,
+     "missed": [],
+     "false": [
+      "If Yes, describe",
+      "stops him/herself, instead of being stopped by something else."
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 137,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 252,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 466,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 667,
+     "missed": [],
+     "false": [
+      "If Yes then please fill in AE page",
+      "If Yes then please fill in ConMed page"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 869,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 969,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    11,
+    0,
+    -678
+   ],
+   "became_best": true
+  },
+  {
+   "version": 4,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 2525,
+    "pages_total": 812,
+    "pages_with_fields": 678,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 115,
+    "fields_per_form": 22.0,
+    "forms_per_100_pages": 14.2,
+    "form_same_page_evidence_records": 2476,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 83,
+    "content_pages": 719,
+    "content_covered_pct": 94,
+    "uncovered_content_pct": 6
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 4,
+   "audit_pages": [
+    1,
+    2,
+    30,
+    44,
+    72,
+    127,
+    130,
+    133,
+    252,
+    466,
+    667,
+    869,
+    969
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 30,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 44,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 72,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 127,
+     "missed": [
+      "Have you made a suicide attempt?"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 130,
+     "missed": [],
+     "false": [
+      "stops him/herself, instead of being stopped by something else."
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 133,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 252,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 466,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 667,
+     "missed": [
+      "If Yes then please fill in AE page",
+      "If Yes then please fill in ConMed page"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 869,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 969,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    4,
+    0,
+    -678
+   ],
+   "became_best": true
+  },
+  {
+   "version": 5,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 2503,
+    "pages_total": 812,
+    "pages_with_fields": 688,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 116,
+    "fields_per_form": 21.6,
+    "forms_per_100_pages": 14.3,
+    "form_same_page_evidence_records": 2445,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 85,
+    "content_pages": 719,
+    "content_covered_pct": 96,
+    "uncovered_content_pct": 4
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 2,
+   "audit_pages": [
+    1,
+    3,
+    30,
+    44,
+    72,
+    127,
+    130,
+    138,
+    252,
+    466,
+    667,
+    869,
+    969
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 3,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 30,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 44,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 72,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 127,
+     "missed": [
+      "Have you made a suicide attempt?"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 130,
+     "missed": [
+      "Has there been a time when you started to do something to try to end your life but you stopped yourself before you actually did anything?"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 138,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 252,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 466,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 667,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 869,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 969,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    2,
+    0,
+    -688
+   ],
+   "became_best": true
+  },
+  {
+   "version": 6,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 2523,
+    "pages_total": 812,
+    "pages_with_fields": 688,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 116,
+    "fields_per_form": 21.8,
+    "forms_per_100_pages": 14.3,
+    "form_same_page_evidence_records": 2465,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 85,
+    "content_pages": 719,
+    "content_covered_pct": 96,
+    "uncovered_content_pct": 4
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 18,
+   "audit_pages": [
+    1,
+    30,
+    44,
+    72,
+    127,
+    130,
+    134,
+    141,
+    252,
+    466,
+    667,
+    869,
+    969
+   ],
+   "audit_partial": null,
+   "audit_promoted": [
+    134
+   ],
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 30,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 44,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 72,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 127,
+     "missed": [
+      "Have you made a suicide attempt?"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 130,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 134,
+     "missed": [
+      "5) Death",
+      "sleepy; somewhat responsive, second-degree burns; bleeding of major vessel",
+      "intensive care required (e.g. comatose with reflexes intact; third-degree burns",
+      "less than 20% of body; extensive blood loss but can recover, major fractures)",
+      "4) Severe physical damage; medical hospitalization with intensive care",
+      "required (e.g. comatose without reflexes; third-degree burns over 20% of the",
+      "body; extensive blood loss with unstable vital signs; major damage to a vital",
+      "area"
+     ],
+     "false": [
+      "0) No physical damage or very minor physical damage (e.g. surface",
+      "scratches)",
+      "1) Minor physical damage (e.g. lethargic speech, first-degree burns, mild",
+      "bleeding, sprains)",
+      "2) Moderate physical damage; medical attention needed (e.g. conscious but",
+      "3) Moderately severe physical damage; medical hospitalization and likely"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 141,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 252,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 466,
+     "missed": [
+      "Chemistry clinically significant abnormal assay # 3:"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 667,
+     "missed": [],
+     "false": [
+      "If Yes then please fill in AE page",
+      "If Yes then please fill in ConMed page"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 869,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 969,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    18,
+    0,
+    -688
+   ],
+   "became_best": false
+  }
+ ]
+}

@@ -20,7 +20,7 @@ The two things that used to be confusing are fixed:
 | `src/pipeline/` | the core pipeline (mutually-importing): `common.py` (paths + page model + the `art()` bucket helper), `generic_profile.py` (stage-0 clustering), `stage0_cluster.py` (stage 0 runner), `codegen.py` (prompt building + gates + `plan_passes`), `induction.py` (shared gates + legacy recipe path), `run_cli_induction.py` (the induction loop / orchestrator), `replay.py`, `sandbox_runner.py`, `run_report.py`, `oid_mapping.py`, plus legacy runners (`run_induction.py`, `run_reference.py`, `run_review.py`, `subagent_bridge.py`). |
 | `src/evaluation/` | scoring & reporting: `accuracy_audit.py` (sample/score vs ground truth), `accuracy_report.py`, `eval_form_field.py`, `evaluate.py`, `cost_report.py`, `build_backpocket_eval_report.py`. |
 | `src/probes/` | one-off diagnostics, sweeps and clustering/stop-policy experiments (not part of the shipped path). |
-| `notebooks/` | the Dataiku notebooks (`CRF_codegen_induction.ipynb`, `LLM_reasoning_probe.ipynb`), `build_dataiku_notebook.py`, `folder_code/` (the module bundle uploaded to Dataiku), and the downloaded Dataiku run outputs (`out_dataiku_sonnet_4_5/`, `out_dataiku_gpt_5_2/`). |
+| `notebooks/` | the Dataiku notebooks (`CRF_codegen_induction.ipynb`, `LLM_reasoning_probe.ipynb`), `build_dataiku_notebook.py`, and `folder_code/` (the module bundle uploaded to Dataiku). Downloaded Dataiku run outputs now live under `data/runs/dataiku_*` (see below), not here. |
 | `docs/` | supporting docs and end-to-end logs. The full narrative deep-dive lives at the repo-level `docs/crf_codegen_deep_dive.html`. |
 | `reference/` | hand-authored reference recipes (engine smoke-test baselines). |
 | `eval_assets/` | ground-truth `truth/`, annotation `packets/`, `manifest.json`, and consolidated `scored*.json` score snapshots. |
@@ -42,8 +42,15 @@ summary files:
 |---|---|
 | `corpus_cli/` | the default local CLI run over the whole corpus (`common.OUT_DIR` points here when `ECS_OUT_DIR` is unset). |
 | `probe_clusters_2021/` | the cluster-sampling ablation runs (`a_baseline`, `b_more_samples`, `c_narrow_split`, `d_*`, and per-model variants). |
+| `dataiku_loop2_sonnet_4_5/`, `dataiku_loop2_gpt_5_2/` | full-corpus Dataiku runs on the **loop-2** (default) config, per model. |
+| `dataiku_approach_d_sonnet_4_5/` | full-corpus Dataiku run on **approach D** (few clusters + richer per-specialist samples), Sonnet generation / GPT audit. |
 | `dataiku_fail_384v1/` | approach-D rerun of the document Sonnet-Dataiku failed on. |
 | `snapshots/` | **frozen historical** output snapshots. These keep their original flat layout on purpose and are NOT re-bucketed. |
+
+Dataiku run roots are named by the **method** they used (`dataiku_<method>_<model>`),
+mirroring the `snapshots/` milestone naming. Downloaded Dataiku exports are
+extracted here (stripping the `runs/<RUN_ID>/` wrapper) and bucketed with
+`tools/migrate_to_buckets.py`.
 
 Run-root files (not per-document): `cli_induction_summary_<tag>.json`,
 `cli_error_events_<tag>.csv`, `cli_error_summary_<tag>.json`, and any

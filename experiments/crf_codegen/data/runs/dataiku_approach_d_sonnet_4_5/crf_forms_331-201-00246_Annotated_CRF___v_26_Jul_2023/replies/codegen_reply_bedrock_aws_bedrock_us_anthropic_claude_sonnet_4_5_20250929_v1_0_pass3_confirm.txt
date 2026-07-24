@@ -1,0 +1,15 @@
+Looking at the sample pages:
+
+**Pages 490, 788 (cluster 2)**: These show "Intensity of Ideation" and "Since Last Visit" as column headers, with "(0) Does not apply)" as a red answer option. These appear to be continuation pages of C-SSRS forms showing only column headers and answer options, but no actual data-entry field labels. These are genuinely field-free continuation pages.
+
+**Pages 27, 28 (cluster 0)**: These are schedule/table of contents pages showing visit schedules with columns like "Visit Num", "Visit Label", "Page Num", "Page Label", "Dynamic?", "Description of Dynamic". The program correctly skips these as table headers (they're in the skip list). The blue text items are page references (e.g., "C-SSRS since last visit - Page 2"), not field labels. These are navigation/index pages, not data-entry forms.
+
+All the shown pages are genuinely field-free - they contain only:
+- Column headers (already skipped)
+- Answer options in red (already skipped)
+- Schedule/TOC navigation content (already skipped)
+- Page references and numbers
+
+The zero coverage in these clusters is correct.
+
+CONFIRM_NO_FIELDS

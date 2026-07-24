@@ -1,0 +1,608 @@
+form_name,field_name,page
+Treatment,Conditionally Visible,16
+Treatment,Form: Early Termination,16
+Treatment,Study Event: Early,16
+Treatment,Termination,16
+Treatment,Timepoint: -00:10:00 (9),16
+Treatment,Conditional Item: ETREQ,16
+Treatment,Visible If Value: Y = Yes,16
+AE / CM,Were any adverse events experienced?,21
+AE / CM,Start date and time,21
+AE / CM,Ongoing?,21
+AE / CM,End date and time,21
+AE / CM,Adverse event term,21
+AE / CM,Is this a treatment emergent adverse event?,21
+AE / CM,Is this an Immediately Reportable Event (IRE)?,21
+AE / CM,Severity,22
+AE / CM,Relationship to investigational product,22
+AE / CM,Action taken with investigational product,22
+AE / CM,Was a concomitant medication given?,22
+AE / CM,Were any other actions taken in response to this adverse,22
+AE / CM,event?,22
+AE / CM,Other action taken,22
+AE / CM,Outcome,22
+AE / CM,Was the adverse event an SAE?,23
+AE / CM,Was the serious adverse event associated with a,23
+AE / CM,congenital anomaly or birth defect?,23
+AE / CM,Did the serious adverse event result in persistent,23
+AE / CM,significant disability or incapacity?,23
+AE / CM,Did the serious adverse event result in death?,23
+AE / CM,Death date,23
+AE / CM,Did the serious adverse event result in initial or prolonged,23
+AE / CM,hospitalization for the volunteer?,23
+AE / CM,Is the serious adverse event life threatening?,24
+AE / CM,Was the adverse event a medically important event not,24
+AE / CM,covered by other serious criteria?,24
+AE / CM,Concomitant medication or therapy,24
+AE / CM,Indication,24
+AE / CM,Route of administration,24
+AE / CM,Total dose,24
+AE / CM,Administration end date and time,26
+Blood Collection - Admission Day -2,Were the sample(s) collected?,27
+Blood Collection - Baseline Day -1,Were the sample(s) collected?,28
+Blood Collection - Baseline Day -1,Creatinine collection date and time,28
+Blood Collection - PD Creatinine,Was the sample collected?,29
+Blood Collection - PD Creatinine,Creatinine collection date and time,29
+Blood Collection - PK Quinidine,Was the sample collected?,30
+Blood Collection - PK Quinidine,PK Quinidine collection date and time,30
+Blood Collection - PK SEP,Was the sample collected?,31
+Blood Collection - PK SEP,PK SEP collection date and time,31
+Blood Collection - PK SEP and Safety,Were the sample(s) collected?,32
+Blood Collection - PK SEP and Safety,PK SEP collection date and time,32
+Blood Collection - PK SEP/PD Creatine,Was the sample collected?,33
+Blood Collection - PK SEP/PD Creatine,PK SEP collection date and time,33
+Blood Collection - PK SEP/PD Creatine,Creatinine collection date and time,33
+Blood Collection - PK SEP/PD Creatine/Glucose/Insulin,Was the sample collected?,34
+Blood Collection - PK SEP/PD Creatine/Glucose/Insulin,PK SEP collection date and time,34
+Blood Collection - PK SEP/PD Creatine/Glucose/Insulin,Creatinine collection date and time,34
+Blood Collection - PK SEP/PD Creatinine/PGx/ Safety Day 1,Were the sample(s) collected?,35
+Blood Collection - PK SEP/PD Creatinine/PGx/ Safety Day 1,PK SEP collection date and time,35
+Blood Collection - PK SEP/PD Creatinine/PGx/ Safety Day 1,Creatinine collection date and time,35
+Blood Collection - PK SEP/PD Creatinine/PGx/ Safety Day 1,PGx collection date and time,35
+Blood Collection - PK SEP/PK Quinidine,Was the sample collected?,36
+Blood Collection - PK SEP/PK Quinidine,PK SEP collection date and time,36
+Blood Collection - PK SEP/PK Quinidine,PK Quinidine collection date and time,36
+Blood Collection - PK SEP/PK Quinidine/Safety Day 7,Were the sample(s) collected?,37
+Blood Collection - PK SEP/PK Quinidine/Safety Day 7,PK SEP collection date and time,37
+Blood Collection - PK SEP/PK Quinidine/Safety Day 7,PK Quinidine collection date and time,37
+Blood Collection - Safety,Were the sample(s) collected?,38
+Blood Collection - Screening,Were the sample(s) collected?,39
+C-SSRS - Baseline/Screening,Date and Time of Collection,40
+C-SSRS - Baseline/Screening,Have you wished you were dead or wished you could go to,40
+C-SSRS - Baseline/Screening,sleep and not wake up? (Lifetime).,40
+C-SSRS - Baseline/Screening,sleep and not wake up? (Past 12 Months).,40
+C-SSRS - Baseline/Screening,Have you actually had any thoughts of killing yourself?,40
+C-SSRS - Baseline/Screening,(Lifetime).,40
+C-SSRS - Baseline/Screening,(Past 12 Months).,40
+C-SSRS - Baseline/Screening,Have you been thinking about how you might do this?,41
+C-SSRS - Baseline/Screening,(Lifetime).,41
+C-SSRS - Baseline/Screening,(Past 12 Months).,41
+C-SSRS - Baseline/Screening,Have you had these thoughts and had some intention of,41
+C-SSRS - Baseline/Screening,acting on them? (Lifetime).,41
+C-SSRS - Baseline/Screening,Have you had these thoughts and had some intention of,42
+C-SSRS - Baseline/Screening,acting on them? (Past 12 Months).,42
+C-SSRS - Baseline/Screening,Have you started to work out or worked out the details of,42
+C-SSRS - Baseline/Screening,how to kill yourself? Do you intend to carry out this plan?,42
+C-SSRS - Baseline/Screening,(Lifetime).,42
+C-SSRS - Baseline/Screening,(Past 12 Months).,42
+C-SSRS - Baseline/Screening,Most severe ideation. (Lifetime).,42
+C-SSRS - Baseline/Screening,Description of most severe ideation. (Lifetime).,42
+C-SSRS - Baseline/Screening,Most severe ideation. (Past 12 Months).,43
+C-SSRS - Baseline/Screening,Description of most severe ideation. (Past 12 Months).,43
+C-SSRS - Baseline/Screening,Frequency (Lifetime),43
+C-SSRS - Baseline/Screening,Frequency (Past 12 Months),43
+C-SSRS - Baseline/Screening,Duration (Lifetime),43
+C-SSRS - Baseline/Screening,Duration (Past 12 Months),43
+C-SSRS - Baseline/Screening,Controllability (Lifetime),43
+C-SSRS - Baseline/Screening,Controllability (Past 12 Months),43
+C-SSRS - Baseline/Screening,Deterrents (Lifetime),43
+C-SSRS - Baseline/Screening,Deterrents (Past 12 Months),43
+C-SSRS - Baseline/Screening,Reasons for Ideation (Lifetime),44
+C-SSRS - Baseline/Screening,Reasons for Ideation (Past 12 Months),44
+C-SSRS - Baseline/Screening,Actual Attempt: Have you made a suicide attempt? Have you done anything to harm yourself? Have you done anything dangerous where you could have died? What did you do? Did you ___ as a way to end your life? Did you want to die (even a little) when you ___? Were you trying to,44
+C-SSRS - Baseline/Screening,you done anything to harm yourself? Have you done anything dangerous where you could have died? What did you do? Did you ___ as a way to end your life? Did you want to die (even a little) when you ___? Were you trying to end your life when you ___? Or Did you think it was,44
+C-SSRS - Baseline/Screening,anything dangerous where you could have died? What did you do? Did you ___ as a way to end your life? Did you want to die (even a little) when you ___? Were you trying to end your life when you ___? Or Did you think it was possible you could have died from ___? Or did you do it,44
+C-SSRS - Baseline/Screening,you do? Did you ___ as a way to end your life? Did you want to die (even a little) when you ___? Were you trying to end your life when you ___? Or Did you think it was possible you could have died from ___? Or did you do it purely for other reasons / without ANY intention of killing,44
+C-SSRS - Baseline/Screening,"want to die (even a little) when you ___? Were you trying to end your life when you ___? Or Did you think it was possible you could have died from ___? Or did you do it purely for other reasons / without ANY intention of killing yourself (like to relieve stress, feel better, get sympathy, or",44
+C-SSRS - Baseline/Screening,"end your life when you ___? Or Did you think it was possible you could have died from ___? Or did you do it purely for other reasons / without ANY intention of killing yourself (like to relieve stress, feel better, get sympathy, or get something else to happen)? (Self-Injurious Behavior",44
+C-SSRS - Baseline/Screening,"possible you could have died from ___? Or did you do it purely for other reasons / without ANY intention of killing yourself (like to relieve stress, feel better, get sympathy, or get something else to happen)? (Self-Injurious Behavior",44
+C-SSRS - Baseline/Screening,"purely for other reasons / without ANY intention of killing yourself (like to relieve stress, feel better, get sympathy, or get something else to happen)? (Self-Injurious Behavior",44
+C-SSRS - Baseline/Screening,"yourself (like to relieve stress, feel better, get sympathy, or get something else to happen)? (Self-Injurious Behavior",44
+C-SSRS - Baseline/Screening,get something else to happen)? (Self-Injurious Behavior,44
+C-SSRS - Baseline/Screening,without suicidal intent),44
+C-SSRS - Baseline/Screening,Total number of actual attempts.,44
+C-SSRS - Baseline/Screening,Has the subject engaged in non-suicidal self-injurious,45
+C-SSRS - Baseline/Screening,behavior.,45
+C-SSRS - Baseline/Screening,Interrupted Attempt: Has there been a time when you started to do something to try to end your life but someone or something stopped you before you actually did anything?,45
+C-SSRS - Baseline/Screening,started to do something to try to end your life but someone or something stopped you before you actually did anything?,45
+C-SSRS - Baseline/Screening,or something stopped you before you actually did anything?,45
+C-SSRS - Baseline/Screening,anything?,45
+C-SSRS - Baseline/Screening,Total number of interrupted attempts.,45
+C-SSRS - Baseline/Screening,Aborted Attempt: Has there been a time when you started to do something to try to end your life but you stopped,45
+C-SSRS - Baseline/Screening,to do something to try to end your life but you stopped,45
+C-SSRS - Baseline/Screening,yourself before you actually did anything?,45
+C-SSRS - Baseline/Screening,Total number of aborted attempts.,45
+C-SSRS - Baseline/Screening,"Preparatory Acts or Behavior: Have you taken any steps towards making a suicide attempt or preparing to kill yourself (such as collecting pills, getting a gun, giving",46
+C-SSRS - Baseline/Screening,"towards making a suicide attempt or preparing to kill yourself (such as collecting pills, getting a gun, giving",46
+C-SSRS - Baseline/Screening,"yourself (such as collecting pills, getting a gun, giving",46
+C-SSRS - Baseline/Screening,valuables away or writing a suicide note)?,46
+C-SSRS - Baseline/Screening,Most Recent Attempt Date:,46
+C-SSRS - Baseline/Screening,Actual Lethality/Medical Damage:,46
+C-SSRS - Baseline/Screening,Potential Lethality: Only Answer if Actual Lethality=0,46
+C-SSRS - Baseline/Screening,Most Lethal Attempt Date:,47
+C-SSRS - Baseline/Screening,Actual Lethality/Medical Damage:,47
+C-SSRS - Baseline/Screening,Potential Lethality: Only Answer if Actual Lethality=0,47
+C-SSRS - Baseline/Screening,Initial/First attempt date,47
+C-SSRS - Baseline/Screening,Actual lethality/medical damage.,47
+C-SSRS - Baseline/Screening,Potential Lethality: Only answer if actual lethality = 0,47
+C-SSRS - Since Last Visit,Date and Time of Collection,48
+C-SSRS - Since Last Visit,Have you wished you were dead or wished you could go to,48
+C-SSRS - Since Last Visit,sleep and not wake up since last visit?,48
+C-SSRS - Since Last Visit,Have you actually had any thoughts of killing yourself since,48
+C-SSRS - Since Last Visit,last visit?,48
+C-SSRS - Since Last Visit,Have you been thinking about how you might do this since,48
+C-SSRS - Since Last Visit,Have you had these thoughts and had some intention of,49
+C-SSRS - Since Last Visit,acting on them since last visit?,49
+C-SSRS - Since Last Visit,Have you started to work out or worked out the details of,49
+C-SSRS - Since Last Visit,how to kill yourself since your last visit? Do you intend to,49
+C-SSRS - Since Last Visit,carry out this plan?,49
+C-SSRS - Since Last Visit,Most Severe Ideation,49
+C-SSRS - Since Last Visit,Description of Ideation,49
+C-SSRS - Since Last Visit,Frequency,50
+C-SSRS - Since Last Visit,Duration,50
+C-SSRS - Since Last Visit,Controllability,50
+C-SSRS - Since Last Visit,Deterrents,50
+C-SSRS - Since Last Visit,Reason for Ideation,50
+C-SSRS - Since Last Visit,Actual Attempt: Have you made a suicide attempt? Have you done anything to harm yourself? Have you done anything dangerous where you could have died? What did you do? Did you ___ as a way to end your life? Did you want to die (even a little) when you ___? Were you trying to,50
+C-SSRS - Since Last Visit,you done anything to harm yourself? Have you done anything dangerous where you could have died? What did you do? Did you ___ as a way to end your life? Did you want to die (even a little) when you ___? Were you trying to end your life when you ___? Or Did you think it was,50
+C-SSRS - Since Last Visit,anything dangerous where you could have died? What did you do? Did you ___ as a way to end your life? Did you want to die (even a little) when you ___? Were you trying to end your life when you ___? Or Did you think it was possible you could have died from ___? Or did you do it,50
+C-SSRS - Since Last Visit,you do? Did you ___ as a way to end your life? Did you want to die (even a little) when you ___? Were you trying to end your life when you ___? Or Did you think it was possible you could have died from ___? Or did you do it purely for other reasons / without ANY intention of killing,50
+C-SSRS - Since Last Visit,"want to die (even a little) when you ___? Were you trying to end your life when you ___? Or Did you think it was possible you could have died from ___? Or did you do it purely for other reasons / without ANY intention of killing yourself (like to relieve stress, feel better, get sympathy, or",50
+C-SSRS - Since Last Visit,"end your life when you ___? Or Did you think it was possible you could have died from ___? Or did you do it purely for other reasons / without ANY intention of killing yourself (like to relieve stress, feel better, get sympathy, or get something else to happen)? (Self-Injurious Behavior",50
+C-SSRS - Since Last Visit,"possible you could have died from ___? Or did you do it purely for other reasons / without ANY intention of killing yourself (like to relieve stress, feel better, get sympathy, or get something else to happen)? (Self-Injurious Behavior",50
+C-SSRS - Since Last Visit,"purely for other reasons / without ANY intention of killing yourself (like to relieve stress, feel better, get sympathy, or get something else to happen)? (Self-Injurious Behavior",50
+C-SSRS - Since Last Visit,"yourself (like to relieve stress, feel better, get sympathy, or get something else to happen)? (Self-Injurious Behavior",50
+C-SSRS - Since Last Visit,get something else to happen)? (Self-Injurious Behavior,50
+C-SSRS - Since Last Visit,without suicidal intent),50
+C-SSRS - Since Last Visit,Total number of actual attempts.,50
+C-SSRS - Since Last Visit,Has the subject engaged in non-suicidal self-injurious,51
+C-SSRS - Since Last Visit,behavior?,51
+C-SSRS - Since Last Visit,Interrupted Attempt: Has there been a time when you started to do something to end your life but someone or something stopped you before you actually did anything?,51
+C-SSRS - Since Last Visit,started to do something to end your life but someone or something stopped you before you actually did anything?,51
+C-SSRS - Since Last Visit,something stopped you before you actually did anything?,51
+C-SSRS - Since Last Visit,Total number of interrupted attempts.,51
+C-SSRS - Since Last Visit,Aborted Attempt: Has there been a time when you started to do something to try to end your life but you stopped,51
+C-SSRS - Since Last Visit,to do something to try to end your life but you stopped,51
+C-SSRS - Since Last Visit,yourself before you actually did anything?,51
+C-SSRS - Since Last Visit,Total number of aborted attempts.,52
+C-SSRS - Since Last Visit,"Preparatory Acts or Behavior: Have you taken any steps towards making a suicide attempt or preparing to kill yourself (such as collecting pills, getting a gun, giving",52
+C-SSRS - Since Last Visit,"towards making a suicide attempt or preparing to kill yourself (such as collecting pills, getting a gun, giving",52
+C-SSRS - Since Last Visit,"yourself (such as collecting pills, getting a gun, giving",52
+C-SSRS - Since Last Visit,valuables away or writing a suicide note)?,52
+C-SSRS - Since Last Visit,Most Lethal Attempt Date:,52
+C-SSRS - Since Last Visit,Actual Lethality/Medical Damage:,52
+C-SSRS - Since Last Visit,Potential Lethality: Only Answer if Actual Lethality=0,53
+CM related to MH,Dose unit,55
+CM related to MH,Frequency,55
+CM related to MH,Administration start date and time,55
+CM related to MH,Administration ongoing?,55
+CM related to MH,Administration end date and time,55
+Demographics,Date of demographic collection,58
+Demographics,Age,58
+Demographics,Sex,58
+Demographics,Ethnicity,58
+Demographics,American Indian Or Alaska Native,58
+Demographics,Asian,58
+Demographics,Black Or African American,58
+Demographics,Native Hawaiian Or Other Pacific Islander,58
+Demographics,White,58
+Demographics,Race - Unknown,59
+Disposition,Date of volunteer completion or discontinuation,60
+Disposition,Completion/Reason for Non-Completion,60
+Disposition,Date of Death,60
+Disposition,Adverse Event term,60
+Disposition,What enrollment criteria did the volunteer not meet?,60
+Disposition,What made the volunteer a lost to follow-up?,60
+Disposition,Why was the volunteer not needed?,61
+Disposition,How was the volunteer non-compliant with the study drug?,61
+Disposition,How was the volunteer non-compliant with the study,61
+Disposition,schedule?,61
+Disposition,Reason for physician decision,61
+Disposition,What withdrawal criteria was met?,61
+Disposition,Why was the volunteer discontinued at sponsor request?,61
+Disposition,Why was the study terminated by sponsor?,62
+Disposition,Reason volunteer withdrew consent,62
+Disposition,Why was the subject screen failed?,62
+ECG (RScribe),Is this collection a repeat?,63
+ECG (RScribe),QTcF,63
+ECG (RScribe),QTcB,63
+ECG (RScribe),PR,63
+ECG (RScribe),QRS,63
+ECG (RScribe),QT,63
+ECG (RScribe),ECG Acquisition Time,64
+ECG (RScribe),ECG Interpretation,64
+ECG (RScribe),Clinical Significance Assessed by Investigator,64
+ECG (RScribe),RATE,64
+ECG (RScribe),RR,64
+ECG (RScribe),Abnormality Reason,65
+ECG (RScribe) Admission,Is this collection a repeat?,66
+ECG (RScribe) Admission,QTcF,66
+ECG (RScribe) Admission,QTcB,66
+ECG (RScribe) Admission,PR,66
+ECG (RScribe) Admission,QRS,66
+ECG (RScribe) Admission,QT,66
+ECG (RScribe) Admission,ECG Acquisition Time,67
+ECG (RScribe) Admission,ECG Interpretation,67
+ECG (RScribe) Admission,Clinical Significance Assessed by Investigator,67
+ECG (RScribe) Admission,RATE,67
+ECG (RScribe) Admission,RR,67
+ECG (RScribe) Admission,Abnormality Reason,68
+ECG (RScribe) Screening,Is this collection a repeat?,69
+ECG (RScribe) Screening,QTcF,69
+ECG (RScribe) Screening,QTcB,69
+ECG (RScribe) Screening,PR,69
+ECG (RScribe) Screening,QRS,69
+ECG (RScribe) Screening,QT,69
+ECG (RScribe) Screening,ECG Acquisition Time,70
+ECG (RScribe) Screening,ECG Interpretation,70
+ECG (RScribe) Screening,Clinical Significance Assessed by Investigator,70
+ECG (RScribe) Screening,RATE,70
+ECG (RScribe) Screening,RR,70
+ECG (RScribe) Screening,Abnormality Reason,71
+ECG (RScribe) Unscheduled,QTcF,72
+ECG (RScribe) Unscheduled,QTcB,72
+ECG (RScribe) Unscheduled,PR,72
+ECG (RScribe) Unscheduled,QRS,72
+ECG (RScribe) Unscheduled,QT,72
+ECG (RScribe) Unscheduled,RATE,72
+ECG (RScribe) Unscheduled,ECG Acquisition Time,73
+ECG (RScribe) Unscheduled,ECG Interpretation,73
+ECG (RScribe) Unscheduled,Clinical Significance Assessed by Investigator,73
+ECG (RScribe) Unscheduled,Abnormality Reason,73
+ECG (RScribe) Unscheduled,RR,73
+ECG Triplicate (RScribe),Is this collection a repeat?,75
+ECG Triplicate (RScribe),QTcF,75
+ECG Triplicate (RScribe),QTcB,75
+ECG Triplicate (RScribe),PR,75
+ECG Triplicate (RScribe),QRS,75
+ECG Triplicate (RScribe),QT,75
+ECG Triplicate (RScribe),ECG Acquisition Time,76
+ECG Triplicate (RScribe),ECG Interpretation,76
+ECG Triplicate (RScribe),Clinical Significance Assessed by Investigator,76
+ECG Triplicate (RScribe),RATE,76
+ECG Triplicate (RScribe),RR,76
+ECG Triplicate (RScribe),Abnormality Reason,77
+ECG Triplicate (RScribe),QTcF,77
+ECG Triplicate (RScribe),QTcB,77
+ECG Triplicate (RScribe),PR,77
+ECG Triplicate (RScribe),QRS,77
+ECG Triplicate (RScribe),QT,77
+ECG Triplicate (RScribe),ECG Acquisition Time,78
+ECG Triplicate (RScribe),ECG Interpretation,78
+ECG Triplicate (RScribe),Clinical Significance Assessed by Investigator,78
+ECG Triplicate (RScribe),RATE,78
+ECG Triplicate (RScribe),RR,78
+ECG Triplicate (RScribe),Abnormality Reason,79
+ECG Triplicate (RScribe),QTcF,79
+ECG Triplicate (RScribe),QTcB,79
+ECG Triplicate (RScribe),PR,79
+ECG Triplicate (RScribe),QRS,79
+ECG Triplicate (RScribe),QT,79
+ECG Triplicate (RScribe),ECG Acquisition Time,80
+ECG Triplicate (RScribe),ECG Interpretation,80
+ECG Triplicate (RScribe),Clinical Significance Assessed by Investigator,80
+ECG Triplicate (RScribe),RATE,80
+ECG Triplicate (RScribe),RR,80
+ECG Triplicate (RScribe),Abnormality Reason,81
+ECG Triplicate (RScribe),What is the Average QTcF?,81
+ECG Triplicate (RScribe) - Baseline,Is this collection a repeat?,82
+ECG Triplicate (RScribe) - Baseline,QTcF,82
+ECG Triplicate (RScribe) - Baseline,QTcB,82
+ECG Triplicate (RScribe) - Baseline,PR,82
+ECG Triplicate (RScribe) - Baseline,QRS,82
+ECG Triplicate (RScribe) - Baseline,QT,82
+ECG Triplicate (RScribe) - Baseline,ECG Acquisition Time,83
+ECG Triplicate (RScribe) - Baseline,ECG Interpretation,83
+ECG Triplicate (RScribe) - Baseline,Clinical Significance Assessed by Investigator,83
+ECG Triplicate (RScribe) - Baseline,RATE,83
+ECG Triplicate (RScribe) - Baseline,RR,83
+ECG Triplicate (RScribe) - Baseline,Abnormality Reason,84
+ECG Triplicate (RScribe) - Baseline,QTcF,84
+ECG Triplicate (RScribe) - Baseline,QTcB,84
+ECG Triplicate (RScribe) - Baseline,PR,84
+ECG Triplicate (RScribe) - Baseline,QRS,84
+ECG Triplicate (RScribe) - Baseline,QT,84
+ECG Triplicate (RScribe) - Baseline,ECG Acquisition Time,85
+ECG Triplicate (RScribe) - Baseline,ECG Interpretation,85
+ECG Triplicate (RScribe) - Baseline,Clinical Significance Assessed by Investigator,85
+ECG Triplicate (RScribe) - Baseline,RATE,85
+ECG Triplicate (RScribe) - Baseline,RR,85
+ECG Triplicate (RScribe) - Baseline,Abnormality Reason,86
+ECG Triplicate (RScribe) - Baseline,QTcF,86
+ECG Triplicate (RScribe) - Baseline,QTcB,86
+ECG Triplicate (RScribe) - Baseline,PR,86
+ECG Triplicate (RScribe) - Baseline,QRS,86
+ECG Triplicate (RScribe) - Baseline,QT,86
+ECG Triplicate (RScribe) - Baseline,ECG Acquisition Time,87
+ECG Triplicate (RScribe) - Baseline,ECG Interpretation,87
+ECG Triplicate (RScribe) - Baseline,Clinical Significance Assessed by Investigator,87
+ECG Triplicate (RScribe) - Baseline,RATE,87
+ECG Triplicate (RScribe) - Baseline,RR,87
+ECG Triplicate (RScribe) - Baseline,Abnormality Reason,88
+ECG Triplicate (RScribe) - Baseline,What is the Average QTcF?,88
+Enrollment,Date and time of enrollment,89
+Enrollment,Enrollment number,89
+Height / Weight / BMI,Date and time of collection,90
+Height / Weight / BMI,Height,90
+Height / Weight / BMI,Weight,90
+Height / Weight / BMI,BMI,90
+Medical History,Does the volunteer have any medical history to report?,91
+Medical History,Reported term for the medical history,91
+Medical History,Start date of medical history event,91
+Medical History,End date of medical history event,91
+Medical History,Is condition ongoing?,91
+Medical History,Clinical significance,91
+Physical Examination - Full,Date and time performed,92
+Physical Examination - Full,Body system,92
+Physical Examination - Full,Examination result,92
+Physical Examination - Full,Clinical significance,92
+Physical Examination - Full,Abnormal findings,92
+Physical Examination - Full,Clinical significance,93
+Physical Examination - Full,Abnormal findings,93
+Physical Examination - Full,Body system,93
+Physical Examination - Full,Examination result,93
+Physical Examination - Full,Examination result,94
+Physical Examination - Full,Clinical significance,94
+Physical Examination - Full,Abnormal findings,94
+Physical Examination - Full,Body system,94
+Physical Examination - Full,Body system,95
+Physical Examination - Full,Examination result,95
+Physical Examination - Full,Clinical significance,95
+Physical Examination - Full,Abnormal findings,95
+Physical Examination - Full,Abnormal findings,96
+Physical Examination - Full,Body system,96
+Physical Examination - Full,Examination result,96
+Physical Examination - Full,Clinical significance,96
+Physical Examination - Full,Clinical significance,97
+Physical Examination - Full,Abnormal findings,97
+Physical Examination - Full,Body system,97
+Physical Examination - Full,Examination result,97
+Physical Examination - Full,Other specify,97
+Physical Examination - Full,Examination result,98
+Physical Examination - Full,Clinical significance,98
+Physical Examination - Full,Abnormal findings,98
+Physical Examination - Screening,Date and time performed,99
+Physical Examination - Screening,Body system,99
+Physical Examination - Screening,Examination result,99
+Physical Examination - Screening,Clinical significance,99
+Physical Examination - Screening,Abnormal findings,99
+Physical Examination - Screening,Clinical significance,100
+Physical Examination - Screening,Abnormal findings,100
+Physical Examination - Screening,Body system,100
+Physical Examination - Screening,Examination result,100
+Physical Examination - Screening,Examination result,101
+Physical Examination - Screening,Clinical significance,101
+Physical Examination - Screening,Abnormal findings,101
+Physical Examination - Screening,Body system,101
+Physical Examination - Screening,Body system,102
+Physical Examination - Screening,Examination result,102
+Physical Examination - Screening,Clinical significance,102
+Physical Examination - Screening,Abnormal findings,102
+Physical Examination - Screening,Abnormal findings,103
+Physical Examination - Screening,Body system,103
+Physical Examination - Screening,Examination result,103
+Physical Examination - Screening,Clinical significance,103
+Physical Examination - Screening,Clinical significance,104
+Physical Examination - Screening,Abnormal findings,104
+Physical Examination - Screening,Body system,104
+Physical Examination - Screening,Examination result,104
+Physical Examination - Screening,Other specify,104
+Physical Examination - Screening,Examination result,105
+Physical Examination - Screening,Clinical significance,105
+Physical Examination - Screening,Abnormal findings,105
+Physical Examination - Targeted,Date and time performed,106
+Physical Examination - Targeted,Body system,106
+Physical Examination - Targeted,Examination result,106
+Physical Examination - Targeted,Clinical significance,106
+Physical Examination - Targeted,Abnormal findings,106
+Physical Examination - Targeted,Clinical significance,107
+Physical Examination - Targeted,Abnormal findings,107
+Physical Examination - Targeted,Body system,107
+Physical Examination - Targeted,Examination result,107
+Physical Examination - Targeted,Examination result,108
+Physical Examination - Targeted,Clinical significance,108
+Physical Examination - Targeted,Abnormal findings,108
+Physical Examination - Targeted,Body system,108
+Physical Examination - Targeted,Body system,109
+Physical Examination - Targeted,Other specify,109
+Physical Examination - Targeted,Examination result,109
+Physical Examination - Targeted,Clinical significance,109
+Physical Examination - Targeted,Abnormal findings,109
+Principal Investigator Approval,I acknowledge that I have reviewed and approved all data,110
+Principal Investigator Approval,for this volunteer.,110
+Re-Screen,Is this volunteer re-screening?,111
+Re-Screen,Original Screening Number,111
+Study Drug Administration - Combined,Route of administration,112
+Study Drug Administration - Combined,Date and time of administration,112
+Study Drug Administration - Combined,Drug name given,112
+Study Drug Administration - Combined,Total dose,112
+Study Drug Administration - Combined,Unit,112
+Study Drug Administration - Combined,Formulation of study drug,112
+Study Drug Administration - Combined,Quantity administered,112
+Study Drug Administration - Combined,Was the dose administered per protocol?,112
+Study Drug Administration - Combined,Comments,113
+Study Drug Administration - Combined,Route of administration,113
+Study Drug Administration - Combined,Date and time of administration,113
+Study Drug Administration - Combined,Drug name given,113
+Study Drug Administration - Combined,Total dose,113
+Study Drug Administration - Combined,Unit,113
+Study Drug Administration - Combined,Formulation of study drug,113
+Study Drug Administration - Combined,Quantity administered,113
+Study Drug Administration - Combined,Was the dose administered per protocol?,114
+Study Drug Administration - Combined,Comments,114
+Study Drug Administration - Quinidine,Route of administration,115
+Study Drug Administration - Quinidine,Date and time of administration,115
+Study Drug Administration - Quinidine,Drug name given,115
+Study Drug Administration - Quinidine,Total dose,115
+Study Drug Administration - Quinidine,Unit,115
+Study Drug Administration - Quinidine,Formulation of study drug,115
+Study Drug Administration - Quinidine,Quantity administered,115
+Study Drug Administration - Quinidine,Was the dose administered per protocol?,115
+Study Drug Administration - Quinidine,Comments,116
+Study Drug Administration - SEP-380135,Route of administration,117
+Study Drug Administration - SEP-380135,Date and time of administration,117
+Study Drug Administration - SEP-380135,Drug name given,117
+Study Drug Administration - SEP-380135,Total dose,117
+Study Drug Administration - SEP-380135,Unit,117
+Study Drug Administration - SEP-380135,Formulation of study drug,117
+Study Drug Administration - SEP-380135,Quantity administered,117
+Study Drug Administration - SEP-380135,Was the dose administered per protocol?,117
+Study Drug Administration - SEP-380135,Comments,118
+Subject Eligibility,35. Any type of anemia with hemoglobin <= 11 g/dL.,123
+Subject Eligibility,36. Are a clinical site staff member or the relative of a,123
+Subject Eligibility,clinical site staff member.,123
+Subject Eligibility,"37. In the opinion of the investigator, should not participate",123
+Subject Eligibility,in the trial.,123
+Subject Eligibility,Subject eligibility result,123
+Subject Informed Consent,ICF Version,124
+Subject Informed Consent,Date and Time of Informed Consent,124
+Urine Collection - Admission,Urine collection date and time,125
+Urine Collection - Admission,Cotinine Result,125
+Urine Collection - Admission,Cotinine Clinical Significance,125
+Urine Collection - Admission,Amphetamines / Methamphetamines,125
+Urine Collection - Admission,Clinical Significance,125
+Urine Collection - Admission,Barbiturates,126
+Urine Collection - Admission,Clinical Significance,126
+Urine Collection - Admission,Benzodiazepines,126
+Urine Collection - Admission,Cocaine,126
+Urine Collection - Admission,Ethanol,126
+Urine Collection - Admission,Methadone,127
+Urine Collection - Admission,Clinical Significance,127
+Urine Collection - Admission,Opiates,127
+Urine Collection - Admission,Phencyclidine,127
+Urine Collection - Admission,THC,127
+Urine Collection - PK - Active Interval Collection (0-2),Collection start date and time,129
+Urine Collection - PK - Active Interval Collection (0-2) - Day 1,Collection start date and time,130
+Urine Collection - PK - Active Interval Collection (12-24),Collection start date and time,131
+Urine Collection - PK - Active Interval Collection (2-4),Collection start date and time,132
+Urine Collection - PK - Active Interval Collection (4-8),Collection start date and time,133
+Urine Collection - PK - Active Interval Collection (8-12),Collection start date and time,134
+Urine Collection - PK - Interval End (0-2) – LAB USE ONLY,Date and time of last collection.,135
+Urine Collection - PK - Interval End (0-2) – LAB USE ONLY,Did the subject provide a sample during the interval?,135
+Urine Collection - PK - Interval End (0-2) – LAB USE ONLY,Total Interval Volume,135
+Urine Collection - PK - Interval End (12-24) – LAB USE ONLY,Date and time of last collection.,136
+Urine Collection - PK - Interval End (12-24) – LAB USE ONLY,Did the subject provide a sample during the interval?,136
+Urine Collection - PK - Interval End (12-24) – LAB USE ONLY,Total Interval Volume,136
+Urine Collection - PK - Interval End (2-4) – LAB USE ONLY,Date and time of last collection.,137
+Urine Collection - PK - Interval End (2-4) – LAB USE ONLY,Did the subject provide a sample during the interval?,137
+Urine Collection - PK - Interval End (2-4) – LAB USE ONLY,Total Interval Volume,137
+Urine Collection - PK - Interval End (4-8) – LAB USE ONLY,Date and time of last collection.,138
+Urine Collection - PK - Interval End (4-8) – LAB USE ONLY,Did the subject provide a sample during the interval?,138
+Urine Collection - PK - Interval End (4-8) – LAB USE ONLY,Total Interval Volume,138
+Urine Collection - PK - Interval End (8-12) – LAB USE ONLY,Date and time of last collection.,139
+Urine Collection - PK - Interval End (8-12) – LAB USE ONLY,Did the subject provide a sample during the interval?,139
+Urine Collection - PK - Interval End (8-12) – LAB USE ONLY,Total Interval Volume,139
+Urine Collection - Screening,Urine collection date and time,140
+Urine Collection - Screening,Cotinine Result,140
+Urine Collection - Screening,Cotinine Clinical Significance,140
+Urine Collection - Screening,Amphetamines / Methamphetamines,140
+Urine Collection - Screening,Clinical Significance,140
+Urine Collection - Screening,Barbiturates,140
+Urine Collection - Screening,Clinical Significance,141
+Urine Collection - Screening,Benzodiazepines,141
+Urine Collection - Screening,Cocaine,141
+Urine Collection - Screening,Ethanol,141
+Urine Collection - Screening,Methadone,142
+Urine Collection - Screening,Clinical Significance,142
+Urine Collection - Screening,Opiates,142
+Urine Collection - Screening,Phencyclidine,142
+Urine Collection - Screening,THC,142
+Vital Signs - Orthostatic,Is this collection a repeat?,144
+Vital Signs - Orthostatic,Date and time of collection,144
+Vital Signs - Orthostatic,Systolic Blood Pressure,144
+Vital Signs - Orthostatic,Is systolic blood pressure out of range?,144
+Vital Signs - Orthostatic,Clinical significance,144
+Vital Signs - Orthostatic,Diastolic Blood Pressure,144
+Vital Signs - Orthostatic,Is diastolic blood pressure out of range?,145
+Vital Signs - Orthostatic,Clinical significance,145
+Vital Signs - Orthostatic,Heart Rate,145
+Vital Signs - Orthostatic,Is heart rate out of range?,145
+Vital Signs - Orthostatic,Temperature,145
+Vital Signs - Orthostatic,Is temperature out of range?,145
+Vital Signs - Orthostatic,Clinical significance,146
+Vital Signs - Orthostatic,Respiratory Rate,146
+Vital Signs - Orthostatic,Is respiratory rate out of range?,146
+Vital Signs - Orthostatic,Date and time of collection,146
+Vital Signs - Orthostatic,Systolic Blood Pressure,146
+Vital Signs - Orthostatic,Diastolic Blood Pressure,146
+Vital Signs - Orthostatic,Heart Rate,147
+Vital Signs - Orthostatic,Did systolic blood pressure decrease by 20 or more?,147
+Vital Signs - Orthostatic,Clinical significance,147
+Vital Signs - Orthostatic,Did diastolic blood pressure decrease by 10 or more?,147
+Vital Signs - Orthostatic,Did heart rate increase by 30 or more?,147
+Vital Signs - Orthostatic,Clinical significance,148
+Vital Signs - Orthostatic Screening/Admission,Is this collection a repeat?,149
+Vital Signs - Orthostatic Screening/Admission,Date and time of collection,149
+Vital Signs - Orthostatic Screening/Admission,Systolic Blood Pressure,149
+Vital Signs - Orthostatic Screening/Admission,Is systolic blood pressure out of range?,149
+Vital Signs - Orthostatic Screening/Admission,Clinical significance,149
+Vital Signs - Orthostatic Screening/Admission,Diastolic Blood Pressure,149
+Vital Signs - Orthostatic Screening/Admission,Is diastolic blood pressure out of range?,150
+Vital Signs - Orthostatic Screening/Admission,Clinical significance,150
+Vital Signs - Orthostatic Screening/Admission,Heart Rate,150
+Vital Signs - Orthostatic Screening/Admission,Is heart rate out of range?,150
+Vital Signs - Orthostatic Screening/Admission,Temperature,150
+Vital Signs - Orthostatic Screening/Admission,Is temperature out of range?,151
+Vital Signs - Orthostatic Screening/Admission,Clinical significance,151
+Vital Signs - Orthostatic Screening/Admission,Respiratory Rate,151
+Vital Signs - Orthostatic Screening/Admission,Is respiratory rate out of range?,151
+Vital Signs - Orthostatic Screening/Admission,Date and time of collection,151
+Vital Signs - Orthostatic Screening/Admission,Systolic Blood Pressure,151
+Vital Signs - Orthostatic Screening/Admission,Diastolic Blood Pressure,152
+Vital Signs - Orthostatic Screening/Admission,Heart Rate,152
+Vital Signs - Orthostatic Screening/Admission,Did systolic blood pressure decrease by 20 or more?,152
+Vital Signs - Orthostatic Screening/Admission,Clinical significance,152
+Vital Signs - Orthostatic Screening/Admission,Did diastolic blood pressure decrease by 10 or more?,152
+Vital Signs - Orthostatic Screening/Admission,Did heart rate increase by 30 or more?,153
+Vital Signs - Orthostatic Screening/Admission,Clinical significance,153
+Vital Signs - Unscheduled,Date and time of collection,154
+Vital Signs - Unscheduled,Systolic Blood Pressure,154
+Vital Signs - Unscheduled,Is systolic blood pressure out of range?,154
+Vital Signs - Unscheduled,Clinical significance,154
+Vital Signs - Unscheduled,Diastolic Blood Pressure,154
+Vital Signs - Unscheduled,Is diastolic blood pressure out of range?,154
+Vital Signs - Unscheduled,Clinical significance,155
+Vital Signs - Unscheduled,Heart Rate,155
+Vital Signs - Unscheduled,Is heart rate out of range?,155
+Vital Signs - Unscheduled,Temperature,155
+Vital Signs - Unscheduled,Is temperature out of range?,155
+Vital Signs - Unscheduled,Clinical significance,156
+Vital Signs - Unscheduled,Oxygen Saturation,156
+Vital Signs - Unscheduled,Is oxygen saturation out of range?,156
+Vital Signs - Unscheduled,Respiratory Rate,156
+Vital Signs - Unscheduled,Is respiratory rate out of range?,156
+Vital Signs - Unscheduled - Orthostatic,Date and time of collection,158
+Vital Signs - Unscheduled - Orthostatic,Systolic Blood Pressure,158
+Vital Signs - Unscheduled - Orthostatic,Is systolic blood pressure out of range?,158
+Vital Signs - Unscheduled - Orthostatic,Clinical significance,158
+Vital Signs - Unscheduled - Orthostatic,Diastolic Blood Pressure,158
+Vital Signs - Unscheduled - Orthostatic,Is diastolic blood pressure out of range?,158
+Vital Signs - Unscheduled - Orthostatic,Clinical significance,159
+Vital Signs - Unscheduled - Orthostatic,Temperature,159
+Vital Signs - Unscheduled - Orthostatic,Is temperature out of range?,159
+Vital Signs - Unscheduled - Orthostatic,Heart Rate,159
+Vital Signs - Unscheduled - Orthostatic,Is heart rate out of range?,159
+Vital Signs - Unscheduled - Orthostatic,Clinical significance,160
+Vital Signs - Unscheduled - Orthostatic,Respiratory Rate,160
+Vital Signs - Unscheduled - Orthostatic,Is respiratory rate out of range?,160
+Vital Signs - Unscheduled - Orthostatic,Date and time of collection,160
+Vital Signs - Unscheduled - Orthostatic,Systolic Blood Pressure,160
+Vital Signs - Unscheduled - Orthostatic,Diastolic Blood Pressure,160
+Vital Signs - Unscheduled - Orthostatic,Heart Rate,161
+Vital Signs - Unscheduled - Orthostatic,Did systolic blood pressure decrease by 20 or more?,161
+Vital Signs - Unscheduled - Orthostatic,Clinical significance,161
+Vital Signs - Unscheduled - Orthostatic,Did diastolic blood pressure decrease by 10 or more?,161
+Vital Signs - Unscheduled - Orthostatic,Did heart rate increase by 30 or more?,161
+Weight / BMI,Date and time of collection,163
+Weight / BMI,Weight,163
+Weight / BMI,BMI,163

@@ -1,0 +1,27 @@
+{
+ "run_id": "20260724-184419_bedrock_aws_bedrock_us_anthropic_claude_sonnet_4_5_20250929_v1_0",
+ "llm_id": "bedrock:AWS-Bedrock:us.anthropic.claude-sonnet-4-5-20250929-v1:0",
+ "max_versions": 5,
+ "doc_filter": [
+  "20May2025",
+  "16JAN2025",
+  "MAC186",
+  "26Jul2023",
+  "04Jul2023"
+ ],
+ "max_docs": null,
+ "completion_settings": {
+  "temperature": 0.2,
+  "maxOutputTokens": 16000
+ },
+ "documents": [
+  "crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023",
+  "crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023",
+  "crf_forms_384-201-00004_Annotated_CRF___v2.0_20_May_2025",
+  "crf_forms_384-201-00004_aCRF_16JAN2025",
+  "crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025"
+ ],
+ "started_utc": "2026-07-24T18:44:19Z",
+ "finished_utc": "2026-07-24T19:01:56Z",
+ "total_s": 3120.5
+}

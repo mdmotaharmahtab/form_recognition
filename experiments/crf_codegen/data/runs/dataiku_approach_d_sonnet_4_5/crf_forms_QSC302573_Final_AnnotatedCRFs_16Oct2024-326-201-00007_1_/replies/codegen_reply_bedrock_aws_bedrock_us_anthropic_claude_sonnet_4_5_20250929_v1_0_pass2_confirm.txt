@@ -1,0 +1,14 @@
+Looking at the sample pages, I can see they contain answer options (starting with "O") and SAS codes, but there is no actual field question visible on these pages. The pages show:
+
+1. A "Schedule Category & Name" header
+2. Column headers: "Timepoint", "Activity", "Line #"
+3. "Answer(s):" label
+4. Multiple answer options (O 1, O 2, etc.) with their descriptions
+5. SAS code specifications
+6. A "Comment:" label at the bottom
+
+These pages appear to be continuation pages showing only the answer options for a question that was asked on a previous page. There is no field question text visible on these specific pages - they only show the response options.
+
+Since the task is to extract "form_name + field_name for every data-entry field" and field_name should be "field labels only - never machine codes, answer options, or page furniture", these pages genuinely contain no field labels to extract. The actual question/field would have appeared on an earlier page.
+
+CONFIRM_NO_FIELDS

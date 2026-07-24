@@ -1,0 +1,16 @@
+Looking at the sample pages from cluster 2, I can see they contain:
+
+1. **Form titles** in blue (#004c99), size 16.5: "Admission to clinic" and "Discharge from clinic"
+2. **Repeatable row instructions** in bold black text: "(Repeatable row added with Add Row button)"
+3. **Page numbers** at the bottom
+
+These pages appear to be **repeatable section pages** where the actual data-entry fields would be added dynamically via the "Add Row button". The pages themselves don't show any static field labels - they're essentially blank templates waiting for rows to be added.
+
+This is a common pattern in clinical CRFs where repeatable sections (like multiple admissions or discharges) are handled through dynamic row addition. The page shows only:
+- The section title (form name)
+- Instructions for adding rows
+- No actual field labels
+
+Since these pages contain no static data-entry field labels (only the instruction about adding rows dynamically), they are genuinely field-free in terms of extractable field definitions.
+
+CONFIRM_NO_FIELDS

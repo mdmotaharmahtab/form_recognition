@@ -1,0 +1,412 @@
+{
+ "stop_reason": "converged",
+ "versions": 4,
+ "best_version": 4,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "confirm",
+   "outcome": "confirmed_no_fields"
+  },
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 561,
+    "pages_total": 225,
+    "pages_with_fields": 130,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 35,
+    "labels_look_human_pct": 98,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 54,
+    "fields_per_form": 10.4,
+    "forms_per_100_pages": 24.0,
+    "form_same_page_evidence_records": 188,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 58
+   },
+   "problems": [],
+   "warnings": [
+    "form_name empty for 65% of records - if the document does print form/section names, fix the form_name strategy (consider carrying the last seen title forward).",
+    "The program filters by 13 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": 12,
+   "audit_pages": [
+    1,
+    21,
+    77,
+    91,
+    182,
+    214
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [
+      "Sponsor Name",
+      "Protocol Number",
+      "Protocol Title",
+      "aCRF Version",
+      "Prepared by",
+      "Date"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 21,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 77,
+     "missed": [
+      "PR",
+      "QRS",
+      "QT"
+     ],
+     "false": [],
+     "wrong_form": [
+      "Abnormality Reason",
+      "QTcF",
+      "QTcB"
+     ]
+    },
+    {
+     "page": 91,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 182,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 214,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    12,
+    2,
+    -130
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 561,
+    "pages_total": 225,
+    "pages_with_fields": 130,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 98,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 56,
+    "fields_per_form": 10.0,
+    "forms_per_100_pages": 24.9,
+    "form_same_page_evidence_records": 543,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 58
+   },
+   "problems": [],
+   "warnings": [
+    "The program filters by 13 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": 3,
+   "audit_pages": [
+    1,
+    2,
+    21,
+    77,
+    91,
+    182,
+    214,
+    244
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 21,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 77,
+     "missed": [
+      "PR",
+      "QRS",
+      "QT"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 91,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 182,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 214,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 244,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    3,
+    1,
+    -130
+   ],
+   "became_best": true
+  },
+  {
+   "version": 3,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 546,
+    "pages_total": 225,
+    "pages_with_fields": 130,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 97,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 56,
+    "fields_per_form": 9.8,
+    "forms_per_100_pages": 24.9,
+    "form_same_page_evidence_records": 528,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 58
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 3,
+   "audit_pages": [
+    1,
+    3,
+    4,
+    21,
+    77,
+    91,
+    182,
+    214
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 3,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 4,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 21,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 77,
+     "missed": [
+      "PR",
+      "QRS",
+      "QT"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 91,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 182,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 214,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    3,
+    0,
+    -130
+   ],
+   "became_best": true
+  },
+  {
+   "version": 4,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 607,
+    "pages_total": 225,
+    "pages_with_fields": 131,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 98,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 57,
+    "fields_per_form": 10.6,
+    "forms_per_100_pages": 25.3,
+    "form_same_page_evidence_records": 589,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 58
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 0,
+   "audit_pages": [
+    1,
+    21,
+    77,
+    91,
+    182,
+    214,
+    243,
+    246
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 21,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 77,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 91,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 182,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 214,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 243,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 246,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    0,
+    0,
+    -131
+   ],
+   "became_best": true
+  }
+ ]
+}

@@ -1,0 +1,535 @@
+{
+ "stop_reason": "plateau",
+ "versions": 6,
+ "best_version": 2,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 308,
+    "pages_total": 191,
+    "pages_with_fields": 60,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 73,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 10,
+    "fields_per_form": 30.8,
+    "forms_per_100_pages": 5.2,
+    "form_same_page_evidence_records": 308,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 31
+   },
+   "problems": [
+    "Extreme content-fitted blocklist. The program filters by 42 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "warnings": [],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    1,
+    "not_audited",
+    0,
+    -60
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "revise_gates",
+   "metrics": {
+    "engine": "codegen",
+    "records": 310,
+    "pages_total": 191,
+    "pages_with_fields": 77,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 85,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 19,
+    "fields_per_form": 16.3,
+    "forms_per_100_pages": 9.9,
+    "form_same_page_evidence_records": 300,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 40
+   },
+   "problems": [
+    "Extreme content-fitted blocklist. The program filters by 40 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "warnings": [],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    1,
+    "not_audited",
+    0,
+    -77
+   ],
+   "became_best": true
+  },
+  {
+   "version": 3,
+   "kind": "confirm",
+   "metrics": {
+    "engine": "codegen",
+    "records": 307,
+    "pages_total": 191,
+    "pages_with_fields": 69,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 85,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 16,
+    "fields_per_form": 19.2,
+    "forms_per_100_pages": 8.4,
+    "form_same_page_evidence_records": 307,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 36
+   },
+   "problems": [],
+   "outcome": "extended_program"
+  },
+  {
+   "version": 3,
+   "kind": "revise_gates",
+   "metrics": {
+    "engine": "codegen",
+    "records": 307,
+    "pages_total": 191,
+    "pages_with_fields": 69,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 85,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 16,
+    "fields_per_form": 19.2,
+    "forms_per_100_pages": 8.4,
+    "form_same_page_evidence_records": 307,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 36
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    0,
+    "not_audited",
+    0,
+    -69
+   ],
+   "became_best": false
+  },
+  {
+   "version": 4,
+   "kind": "confirm_extension",
+   "metrics": {
+    "engine": "codegen",
+    "records": 307,
+    "pages_total": 191,
+    "pages_with_fields": 69,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 85,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 16,
+    "fields_per_form": 19.2,
+    "forms_per_100_pages": 8.4,
+    "form_same_page_evidence_records": 307,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 36
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 12,
+   "audit_pages": [
+    58,
+    60,
+    108,
+    249,
+    581,
+    852
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 58,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 60,
+     "missed": [],
+     "false": [
+      "(values: Normal,",
+      "Not Done",
+      "Abnormal, Not Done, NA)]"
+     ],
+     "wrong_form": [
+      "(values: Normal,",
+      "Not Done",
+      "Abnormal, Not Done, NA)]"
+     ]
+    },
+    {
+     "page": 108,
+     "missed": [],
+     "false": [
+      "[LBTEST3]",
+      "[TYPE: text]",
+      "[Read-only field]"
+     ],
+     "wrong_form": [
+      "[LBTEST3]",
+      "[TYPE: text]",
+      "[Read-only field]"
+     ]
+    },
+    {
+     "page": 249,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 581,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 852,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    12,
+    0,
+    -69
+   ],
+   "became_best": false
+  },
+  {
+   "version": 5,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 307,
+    "pages_total": 191,
+    "pages_with_fields": 69,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 85,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 16,
+    "fields_per_form": 19.2,
+    "forms_per_100_pages": 8.4,
+    "form_same_page_evidence_records": 307,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 36
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 31,
+   "audit_pages": [
+    58,
+    59,
+    60,
+    105,
+    108,
+    249,
+    581,
+    852
+   ],
+   "audit_partial": null,
+   "audit_promoted": [
+    59
+   ],
+   "audit_verdicts": [
+    {
+     "page": 58,
+     "missed": [
+      "Region/Body System",
+      "Result",
+      "Abnormal Findings",
+      "Clinically Significant"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 59,
+     "missed": [
+      "Region/Body System",
+      "Result",
+      "Abnormal Findings",
+      "Clinically Significant"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 60,
+     "missed": [],
+     "false": [
+      "(values: Normal,",
+      "Not Done",
+      "Abnormal, Not Done, NA)]"
+     ],
+     "wrong_form": [
+      "(values: Normal,",
+      "Not Done",
+      "Abnormal, Not Done, NA)]"
+     ]
+    },
+    {
+     "page": 105,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 108,
+     "missed": [],
+     "false": [
+      "[LBTEST3]",
+      "[TYPE: text]",
+      "[Read-only field]"
+     ],
+     "wrong_form": [
+      "[LBTEST3]",
+      "[TYPE: text]",
+      "[Read-only field]"
+     ]
+    },
+    {
+     "page": 249,
+     "missed": [
+      "Sample",
+      "Timepoint",
+      "Sample Status",
+      "Time of Collection",
+      "Barcode Number"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 581,
+     "missed": [
+      "Test",
+      "Result"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 852,
+     "missed": [
+      "Region/Body System",
+      "Result",
+      "Abnormal Findings",
+      "Clinically Significant"
+     ],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    31,
+    0,
+    -69
+   ],
+   "became_best": false
+  },
+  {
+   "version": 6,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 307,
+    "pages_total": 191,
+    "pages_with_fields": 69,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 85,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 16,
+    "fields_per_form": 19.2,
+    "forms_per_100_pages": 8.4,
+    "form_same_page_evidence_records": 307,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 36
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 44,
+   "audit_pages": [
+    58,
+    59,
+    60,
+    64,
+    108,
+    249,
+    581,
+    852
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 58,
+     "missed": [
+      "Region/Body System",
+      "Result",
+      "Abnormal Findings",
+      "Clinically Significant"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 59,
+     "missed": [
+      "Region/Body System",
+      "Result",
+      "Abnormal Findings",
+      "Clinically Significant"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 60,
+     "missed": [
+      "Region/Body System",
+      "Result",
+      "Abnormal Findings",
+      "Clinically Significant"
+     ],
+     "false": [
+      "(values: Normal,",
+      "Not Done",
+      "Abnormal, Not Done, NA)]"
+     ],
+     "wrong_form": [
+      "(values: Normal,",
+      "Not Done",
+      "Abnormal, Not Done, NA)]"
+     ]
+    },
+    {
+     "page": 64,
+     "missed": [
+      "Sample",
+      "Status",
+      "Reason not done",
+      "Date of Collection",
+      "Time of Collection",
+      "Scan",
+      "Barcode Number"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 108,
+     "missed": [
+      "Test",
+      "Result"
+     ],
+     "false": [
+      "[LBTEST3]",
+      "[TYPE: text]",
+      "[Read-only field]"
+     ],
+     "wrong_form": [
+      "[LBTEST3]",
+      "[TYPE: text]",
+      "[Read-only field]"
+     ]
+    },
+    {
+     "page": 249,
+     "missed": [
+      "Sample",
+      "Timepoint",
+      "Sample Status",
+      "Time of Collection",
+      "Barcode Number"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 581,
+     "missed": [
+      "Test",
+      "Result"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 852,
+     "missed": [
+      "Region/Body System",
+      "Result",
+      "Abnormal Findings",
+      "Clinically Significant"
+     ],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    44,
+    0,
+    -69
+   ],
+   "became_best": false
+  }
+ ]
+}

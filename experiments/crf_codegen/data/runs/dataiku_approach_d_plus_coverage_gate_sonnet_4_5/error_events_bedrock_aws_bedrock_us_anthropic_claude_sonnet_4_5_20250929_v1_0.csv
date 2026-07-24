@@ -1,0 +1,848 @@
+doc,stage,version,severity,code,detail
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,gates,1,quality,warn_form_names_empty,"form_name empty for 100% of records - if the document does print form/section names, fix the form_name strategy (consider carrying the last seen title forward)."
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,gates,1,quality,warn_text_blocklists,"The program filters by 15 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. "
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,gates,2,quality,warn_form_names_empty,"form_name empty for 100% of records - if the document does print form/section names, fix the form_name strategy (consider carrying the last seen title forward)."
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,gates,2,quality,warn_text_blocklists,"The program filters by 23 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. "
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_missed,p44: Abstinence (must remain abstinent from the time of screening until at least 180 days after the last dose of study drug)
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_missed,p44: **If sexually active does the subject commit to utilizing 2 different approved methods of birth control during the trial and for 90 days after the last dose of IMP?- mark the selected methods below **
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,p72: Albumin
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,p72: Alkaline phosphatase
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_missed,"p130: If Yes, describe"
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,"p130: engaged in any self destructive behaviour. Examples are similar to interrupted attempts, except that the individual"
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,p263: Since Last Visit
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,"p263: kill oneself. Intent does not have to be 100%. If there is any intent/desire to die associated with the act, then it can be considered an actual"
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_missed,p466: Chemistry abnormal assay # 3 Investigator comment
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,p466: Calcium
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,p466: Carbon dioxide
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,p466: Chloride
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,p466: Uric acid
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_missed,p868: Hematology clinically significant abnormal assay # 3
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,p868: Platelet count
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,p868: Red blood cell count
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,p868: Glycated Hemoglobin
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,3,quality,audit_false_positive,p44: 90 days after the last dose of IMP?- mark the selected methods below **
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,3,quality,audit_false_positive,p72: Chemistry clinically significant abnormal assay # 1: Albumin Alkaline phosphatase ALT AST Calcium Carbon dioxide Chloride
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,3,quality,audit_false_positive,"p130: engaged in any self destructive behaviour. Examples are similar to interrupted attempts, except that the individual"
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,3,quality,audit_false_positive,p130: actually did anything? Page 130 of 1083
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,3,quality,audit_false_positive,"p263: kill oneself. Intent does not have to be 100%. If there is any intent/desire to die associated with the act, then it can be considered an actual"
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,3,quality,audit_false_positive,p263: Or did you think it was possible you could have died from ____? Page 263 of 1083
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,3,quality,audit_missed,p466: Chemistry clinically significant abnormal assay # 3
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,3,quality,audit_false_positive,p466: Urea nitrogen Uric acid
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,3,quality,audit_missed,p868: Hematology clinically significant abnormal assay # 3
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,3,quality,audit_false_positive,p868: Glycated Hemoglobin
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,gates,4,quality,warn_text_blocklists,"The program filters by 12 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. "
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,4,quality,audit_false_positive,p44: 90 days after the last dose of IMP?- mark the selected methods below **
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,4,quality,audit_false_positive,"p130: If Yes, describe Row 10"
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,4,quality,audit_missed,p263: Or did you think it was possible you could have died from ____?
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,4,quality,audit_missed,p466: Chemistry clinically significant abnormal assay # 3
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,4,quality,audit_false_positive,p466: Urea nitrogen Uric acid
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,4,quality,audit_false_positive,p868: Glycated Hemoglobin
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,5,quality,audit_missed,p263: Or did you think it was possible you could have died from ____?
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,5,quality,audit_missed,p466: Chemistry clinically significant abnormal assay # 3
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,5,quality,audit_false_positive,p466: Urea nitrogen Uric acid
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,5,quality,audit_false_positive,p868: Glycated Hemoglobin
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,6,quality,audit_missed,p44: **If sexually active does the subject commit to utilizing 2 different approved methods of birth control during the trial and for 90 days after the last dose of IMP?- mark the selected methods below **
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,6,quality,audit_false_positive,"p130: If Yes, describe Row 10"
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,6,quality,audit_false_positive,p134: Actual Lethality/Medical Damage: 0) No physical damage or very minor physical damage (e.g. surface
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,6,quality,audit_false_positive,p263: Have you made a suicide attempt? Have you done anything to harm yourself?
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,6,quality,audit_false_positive,p263: Have you done anything dangerous where you could have died? What did you do?
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,6,quality,audit_false_positive,p263: Did you ______ as a way to end your life? Did you want to die (even a little) when you ____?
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,6,quality,audit_false_positive,p263: Were trying to end your life when you ____? Or did you think it was possible you could have died from ____?
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,6,quality,audit_false_positive,p466: Urea nitrogen Uric acid
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,6,quality,audit_false_positive,p868: Glycated Hemoglobin
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,gates,1,quality,warn_text_blocklists,"The program filters by 12 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. "
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,gates,2,quality,warn_text_blocklists,"The program filters by 19 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. "
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_missed,p58: Result
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,"p58: Abnormal, Not"
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,"p58: Done, NA)"
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,p58: Skin and Mucosae
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_missed,p60: Result
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,p60: Normal
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,"p60: Abnormal, Not"
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,"p60: Done, NA)"
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_missed,p104: Test
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_missed,p104: Result
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_missed,p104: Methadone
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_missed,p104: Opiates
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_missed,p104: Phencyclidine
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_missed,p104: Propoxyphene
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_missed,p184: Sample
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_missed,p184: Timepoint
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_missed,p184: Sample Status
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_missed,p184: Time of Collection
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_missed,p184: Barcode Number
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_missed,p184: Backup Barcode Number
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,p184: Sertraline PK
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,p184: Brexpiprazole/Sertraline PK
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,p184: partialtime (hour
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,p184: Propranolol PK
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,p184: Prazosin PK
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,p184: site only]
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,"p184: Sertraline PK, Sertraline PK, Propranolol PK"
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,p184: Prazosin PK)
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_missed,p421: Sample
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_missed,p421: Timepoint
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_missed,p421: Sample Status
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_missed,p421: Time of Collection
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_missed,p421: Barcode Number
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_missed,p421: Backup Barcode Number
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,p421: Prazosin PK
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,p421: Brexpiprazole/Sertraline PK
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,p421: Sertraline PK
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,p421: partialtime (hour
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,p421: Propranolol PK
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,p421: site only]
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,"p421: Sertraline PK, Sertraline PK, Propranolol PK"
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,p421: Prazosin PK)
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,p421: 1h Postdose
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,p755: Not Applicable
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,p755: site only]
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,"p755: Collected, Not"
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,gates,3,blocking,gate_crash,"Program failed to run: generated extractor crashed:
+Traceback (most recent call last):
+  File ""/data/dataiku/dss_data/jupyter-run/dku-workdirs/ECSGENERATION/CRF_codegen_induction95780c5a-dssuser_MdMotaha8f825895/crf_codegen_work/modules/sandbox_runner.py"", line 128, in main
+    raw = fn(pages)
+  Fil"
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,4,quality,audit_missed,p58: Clinically Significant
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,4,quality,audit_false_positive,p58: Normal
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,4,quality,audit_false_positive,p58: Abnormal
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,4,quality,audit_false_positive,p58: (values: Normal
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,4,quality,audit_false_positive,p58: Not Done
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,4,quality,audit_false_positive,p58: Thorax
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,4,quality,audit_false_positive,p58: Abdomen
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,4,quality,audit_false_positive,p58: Skin and Mucosae
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,4,quality,audit_missed,p60: Clinically Significant
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,4,quality,audit_false_positive,p60: Normal
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,4,quality,audit_false_positive,p60: Abnormal
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,4,quality,audit_false_positive,p60: (values: Normal
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,4,quality,audit_false_positive,p60: Not Done
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,4,quality,audit_missed,p103: Amphetamines
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,4,quality,audit_missed,p184: Barcode Number
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,4,quality,audit_missed,p184: Backup Barcode Number
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,4,quality,audit_false_positive,p184: Predose
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,4,quality,audit_false_positive,p184: Sertraline PK
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,4,quality,audit_false_positive,p184: Brexpiprazole/Sertraline PK
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,4,quality,audit_false_positive,p184: Collected
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,4,quality,audit_false_positive,p184: Propranolol PK
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,4,quality,audit_false_positive,p184: Prazosin PK
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,4,quality,audit_false_positive,"p184: Sertraline PK, Sertraline PK, Propranolol PK"
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,4,quality,audit_false_positive,p184: Prazosin PK)]
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,4,quality,audit_missed,p421: Barcode Number
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,4,quality,audit_missed,p421: Backup Barcode Number
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,4,quality,audit_false_positive,p421: Predose
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,4,quality,audit_false_positive,p421: Prazosin PK
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,4,quality,audit_false_positive,p421: Brexpiprazole/Sertraline PK
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,4,quality,audit_false_positive,p421: Collected
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,4,quality,audit_false_positive,p421: Sertraline PK
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,4,quality,audit_false_positive,p421: Propranolol PK
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,4,quality,audit_false_positive,"p421: Sertraline PK, Sertraline PK, Propranolol PK"
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,4,quality,audit_false_positive,p421: Prazosin PK)]
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,4,quality,audit_false_positive,p421: 1h Postdose
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,4,quality,audit_missed,p755: Scan
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,4,quality,audit_missed,p755: Barcode Number
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,4,quality,audit_false_positive,p755: Not Applicable
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,4,quality,audit_false_positive,p755: Applicable)]
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,5,quality,audit_missed,p58: Clinically Significant
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,5,quality,audit_missed,p58: HEENT
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,5,quality,audit_false_positive,p58: Thorax
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,5,quality,audit_false_positive,p58: Abdomen
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,5,quality,audit_false_positive,p58: Skin and Mucosae
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,5,quality,audit_missed,p60: Clinically Significant
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,5,quality,audit_false_positive,p60: Normal
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,5,quality,audit_missed,p116: Past 3 Month
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,5,quality,audit_missed,p184: Backup
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,5,quality,audit_missed,p184: Backup Barcode Number
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,5,quality,audit_false_positive,p184: Predose
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,5,quality,audit_false_positive,p184: Not
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,5,quality,audit_missed,p421: Backup
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,5,quality,audit_missed,p421: Backup Barcode Number
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,5,quality,audit_false_positive,p421: Predose
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,5,quality,audit_false_positive,p421: 1h Postdose
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,5,quality,audit_missed,p755: Scan
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,5,quality,audit_missed,p755: Barcode Number
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,5,quality,audit_false_positive,p755: Applicable)]
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,gates,6,blocking,gate_other,"Extreme content-fitted blocklist. The program filters by 30 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere"
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,gates,1,quality,warn_text_blocklists,"The program filters by 25 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. "
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,gates,2,quality,warn_text_blocklists,"The program filters by 21 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. "
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,p15: Schedule
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,p15: Screen Visit 1 Day -55 to -16
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,p15: page enrols if SEX = Fe male on Demography pa
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,p15: page enrols if SEX = Mal e on Demography page
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,p15: page enrols if SEX = Fe male on Demography pa ge and if RPPOSMEN= Yes on Reproductive Stat
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,p16: us - Female page
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,p16: page enrols if SEX = Fe male on Demography pa
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,p16: page enrols if Protocol V ersion = Original/Amend ment 1
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,p16: page enrols if Protocol V ersion = Amendment 2
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,"p16: page enrols if Protocol V ersion = Amendment 2, t his has EXCL25 with sel ectable ""N/A"""
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,p109: Baseline/Screening Version
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,p109: Version 1/14/09
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,p109: Disclaimer:
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,"p109: This scale is intended to be used by individuals who have received training in its administration. The questions contained in the Columbia-Suicide Severity Rating Scale are suggested probes. Ultimately, the determination of the presence of suicidal ideation or behavior depends on the judgment "
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,p250: Since Last Visit
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,p250: Version 1/14/09
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,p250: Disclaimer:
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,"p250: This scale is intended to be used by individuals who have received training in its administration. The questions contained in the Columbia-Suicide Severity Rating Scale are suggested probes. Ultimately, the determination of the presence of suicidal ideation or behavior depends on the judgment "
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,p259: Intensity of Ideation
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,p259: Since Last Visit
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,"p259: [TYPE: enumeration (values: (1) Easily able to control thoughts, (2) Can control thoughts with little difficulty, (3) Can control thoughts with some difficulty, (4) Can control thoughts with a lot of difficulty, (5) Unable to control thoughts, (0) Does not attempt to control thoughts)]"
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,p259: Deterrents
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,p259: Are there things - anyone or anything - that stopped you from wanting to die or acting on thoughts of committing
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,p259: suicide?
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,p259: suicide
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,p259: [TYPE: enumeration (values: (1) Deterrents definitely stopped you from
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,p672: Since Last Visit
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,p672: Version 1/14/09
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,p672: Disclaimer:
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,"p672: This scale is intended to be used by individuals who have received training in its administration. The questions contained in the Columbia-Suicide Severity Rating Scale are suggested probes. Ultimately, the determination of the presence of suicidal ideation or behavior depends on the judgment "
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,3,quality,audit_false_positive,p15: Schedule
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,3,quality,audit_false_positive,p109: Baseline/Screening Version
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,3,quality,audit_false_positive,p109: Version 1/14/09
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,3,quality,audit_false_positive,p109: Disclaimer:
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,3,quality,audit_false_positive,p109: ideation or behavior depends on the judgment of the individual administering the scale.
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,3,quality,audit_false_positive,p250: Since Last Visit
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,3,quality,audit_false_positive,p250: Version 1/14/09
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,3,quality,audit_false_positive,p250: Disclaimer:
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,3,quality,audit_false_positive,p250: ideation or behavior depends on the judgment of the individual administering the scale.
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,3,quality,audit_wrong_form,p259: Intensity of Ideation
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,3,quality,audit_wrong_form,p259: Could/can you stop thinking about killing yourself or wanting to die if you want to?
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,3,quality,audit_wrong_form,p259: Row 6
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,3,quality,audit_wrong_form,p259: Deterrents
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,3,quality,audit_wrong_form,p259: Are there things - anyone or anything - that stopped you from wanting to die or acting on thoughts of committing suicide?
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,3,quality,audit_false_positive,p320: Since Last Visit
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,3,quality,audit_false_positive,p320: Version 1/14/09
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,3,quality,audit_false_positive,p320: Disclaimer:
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,3,quality,audit_false_positive,p320: ideation or behavior depends on the judgment of the individual administering the scale.
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,3,quality,audit_false_positive,p672: Since Last Visit
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,3,quality,audit_false_positive,p672: Version 1/14/09
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,3,quality,audit_false_positive,p672: Disclaimer:
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,3,quality,audit_false_positive,p672: ideation or behavior depends on the judgment of the individual administering the scale.
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,gates,1,quality,warn_text_blocklists,"The program filters by 16 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. "
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,1,quality,audit_false_positive,p42: Bilateral Oophorectomy Bilateral Tubal Ligation
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,1,quality,audit_false_positive,p955: (Repeatable row added with Add Row button)
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,p11: Version
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,p11: Date
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,p11: Changed By
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,p11: Details
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,p11: Andreea Hardut
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,p11: Initial draft
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,p11: 0.1.1
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,p11: updates to unique pages
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,p11: 0.1.2
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,p11: 0.1.3
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,p11: 0.1.4
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,p11: 0.1.5
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,p11: 0.1.6
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,p11: Andreea Hardut / Alexan
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,p11: dru Giucal
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,p11: 0.1.7
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,p11: built full schedule
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,p11: 0.2.1
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,p11: 0.2.2
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,p11: 0.2.3
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,p11: 0.2.4
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,p11: updates to full schedule
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,p11: 0.2.5
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,p11: 0.2.6
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,p11: 0.2.7
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_missed,p42: Hysterectomy
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,p42: Bilateral Oophorectomy Bilateral Tubal Ligation
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_missed,p46: Has any applicable reproductive status and/or medications been transcribed to the Medical History Page and/or Con Med Page?
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,2,quality,audit_false_positive,p46: Page?
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,3,quality,audit_false_positive,p42: Bilateral Oophorectomy Bilateral Tubal Ligation
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,3,quality,audit_missed,p43: Has any applicable reproductive status and/or medications been transcribed to the Medical History Page and/or Con Med Page?
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,3,quality,audit_missed,p46: Has any applicable reproductive status and/or medications been transcribed to the Medical History Page and/or Con Med Page?
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,gates,4,quality,warn_text_blocklists,"The program filters by 23 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. "
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,4,quality,audit_missed,p43: Nonhormonal intrauterine device
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,4,quality,audit_missed,p43: Condom with spermicide
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,4,quality,audit_missed,p43: Sponge with spermicide
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,4,quality,audit_missed,p45: Tubal ligation
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,4,quality,audit_missed,p45: Intrauterine device
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,4,quality,audit_missed,p45: Birth control pills
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,4,quality,audit_missed,p45: Birth control implant
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,4,quality,audit_missed,p45: Birth control depot injection
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,4,quality,audit_missed,p45: Condom with spermicide
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,4,quality,audit_missed,p45: Sponge with spermicide
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,gates,5,quality,warn_text_blocklists,"The program filters by 11 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. "
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,5,quality,audit_false_positive,p42: Bilateral Oophorectomy Bilateral Tubal Ligation
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,5,quality,audit_missed,p926: Record
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,5,quality,audit_missed,p926: Term
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,5,quality,audit_missed,p926: Onset Date
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,audit,5,quality,audit_missed,p926: Onset Time
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,gates,1,quality,warn_low_volume_small_doc,"Only 3 records from this 3-page document - plausible for a document this small, but make sure no fields were missed."
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,gates,1,quality,warn_text_blocklists,"The program filters by 13 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. "
+crf_forms_331-201-00246_Annotated_CRF___v_04_Jul_2023,loop,,quality,stopped_with_open_issues,"stop=p1:budget;p2:budget;p3:plateau;p4:plateau;p5:converged, open audit issues=56"
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,1,quality,audit_false_positive,p30: Repeat Pages
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,1,quality,audit_false_positive,p30: Page Label
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,1,quality,audit_missed,p44: Of Childbearing Potential
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,1,quality,audit_missed,p130: Row 9
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,1,quality,audit_missed,p130: Row 10
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,1,quality,audit_missed,p130: Row 11
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,1,quality,audit_missed,p130: Aborted attempt:
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,1,quality,audit_false_positive,"p130: When person begins to take steps toward making a suicide attempt, but stops themselves before they actually have engaged in any self destructive behaviour. Examples are similar to interrupted attempts, except that the individual"
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,1,quality,audit_false_positive,"p130: stops him/herself, instead of being stopped by something else."
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,1,quality,audit_missed,p252: Version Number 14-Jan-2009
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,1,quality,audit_false_positive,"p252: Ask questions 1 and 2. If both are negative, proceed to ""Suicidal Behavior"" Section. If the answer to question 2 is ""yes"", ask questions 3, 4 and 5. If the answer to question 1 and/or 2 is ""yes"", complete ""Intensity of Ideation"" section below."
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,1,quality,audit_false_positive,p667: If Yes then please fill in AE page
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,1,quality,audit_false_positive,p667: If Yes then please fill in ConMed page
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,1,quality,audit_missed,p969: Number of Sertraline - 50 mg Capsules Returned
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,1,quality,audit_missed,p969: Number of Brexpiprazole - 1 mg Capsules Returned
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,1,quality,audit_missed,p969: Number of Brexpiprazole - 2 mg Capsules Returned
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,"p127: Select all that apply, so long as these are separate events; must ask about all types"
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,"p127: A potentially self-injurious act committed with at least some wish to die, as a result of act. Behaviour was in part thought of as method to kill oneself. Intent does not have to be 100%. If there is any intent/desire to die associated"
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,"p127: with the act, then it can be considered an actual suicide attempt. There does not have to be any injury or harm, just"
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,"p127: the potential for injury or harm. If a person pulls the trigger while gun is in mouth but gun is broken so no injury results, this is considered an attempt."
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,"p127: Inferring Intent: even if an individual denies intent/wish to die, it may be inferred clinically from the behaviour or circumstances. For example, a highly lethal act that is clearly not an accident so no other intent but suicide can be inferred (e.g. gunshot to the head, jumping from window o"
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,p127: Have you made a suicide attempt?
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,p127: Have you done anything to harm yourself?
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,p127: Have you done anything dangerous where you could have died?
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,p127: What did you do?
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,p127: Did you ______ as a way to end your life?
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,"p130: stops him/herself, instead of being stopped by something else."
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,p130: Has there been a time when you started to do something to try to end your life but you stopped yourself before you actually did anything?
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,3,quality,audit_false_positive,"p127: Select all that apply, so long as these are separate events; must ask about all types"
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,3,quality,audit_false_positive,"p127: with the act, then it can be considered an actual suicide attempt. There does not have to be any injury or harm, just"
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,3,quality,audit_false_positive,"p127: the potential for injury or harm. If a person pulls the trigger while gun is in mouth but gun is broken so no injury results, this is considered an attempt."
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,3,quality,audit_false_positive,p127: Have you done anything to harm yourself?
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,3,quality,audit_false_positive,p127: Have you done anything dangerous where you could have died?
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,3,quality,audit_false_positive,p127: What did you do?
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,3,quality,audit_false_positive,p127: Did you ______ as a way to end your life?
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,3,quality,audit_false_positive,"p130: If Yes, describe"
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,3,quality,audit_false_positive,"p130: stops him/herself, instead of being stopped by something else."
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,3,quality,audit_false_positive,p667: If Yes then please fill in AE page
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,3,quality,audit_false_positive,p667: If Yes then please fill in ConMed page
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,4,quality,audit_missed,p127: Have you made a suicide attempt?
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,4,quality,audit_false_positive,"p130: stops him/herself, instead of being stopped by something else."
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,4,quality,audit_missed,p667: If Yes then please fill in AE page
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,4,quality,audit_missed,p667: If Yes then please fill in ConMed page
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,5,quality,audit_missed,p127: Have you made a suicide attempt?
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,5,quality,audit_missed,p130: Has there been a time when you started to do something to try to end your life but you stopped yourself before you actually did anything?
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,6,quality,audit_missed,p127: Have you made a suicide attempt?
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,6,quality,audit_missed,p134: 5) Death
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,6,quality,audit_missed,"p134: sleepy; somewhat responsive, second-degree burns; bleeding of major vessel"
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,6,quality,audit_missed,p134: intensive care required (e.g. comatose with reflexes intact; third-degree burns
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,6,quality,audit_missed,"p134: less than 20% of body; extensive blood loss but can recover, major fractures)"
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,6,quality,audit_missed,p134: 4) Severe physical damage; medical hospitalization with intensive care
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,6,quality,audit_missed,p134: required (e.g. comatose without reflexes; third-degree burns over 20% of the
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,6,quality,audit_missed,p134: body; extensive blood loss with unstable vital signs; major damage to a vital
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,6,quality,audit_missed,p134: area
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,6,quality,audit_false_positive,p134: 0) No physical damage or very minor physical damage (e.g. surface
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,6,quality,audit_false_positive,p134: scratches)
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,6,quality,audit_false_positive,"p134: 1) Minor physical damage (e.g. lethargic speech, first-degree burns, mild"
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,6,quality,audit_false_positive,"p134: bleeding, sprains)"
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,6,quality,audit_false_positive,p134: 2) Moderate physical damage; medical attention needed (e.g. conscious but
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,6,quality,audit_false_positive,p134: 3) Moderately severe physical damage; medical hospitalization and likely
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,6,quality,audit_missed,p466: Chemistry clinically significant abnormal assay # 3:
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,6,quality,audit_false_positive,p667: If Yes then please fill in AE page
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,6,quality,audit_false_positive,p667: If Yes then please fill in ConMed page
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,gates,1,quality,warn_text_blocklists,"The program filters by 19 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. "
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,gates,2,quality,warn_text_blocklists,"The program filters by 19 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. "
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,"p58: (values: Normal,"
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,"p58: Abnormal, Not"
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,"p58: Done, NA)]"
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,"p60: (values: Normal,"
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,"p60: Abnormal, Not"
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,"p60: Done, NA)]"
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,"p184: Sertraline PK, Sertraline PK, Propranolol PK, Prazosin PK)]"
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,"p421: Sertraline PK, Sertraline PK, Propranolol PK, Prazosin PK)]"
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,"p757: (values: Collected, Not"
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,"p757: Collected, Not Applicable)]"
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_missed,p1070: Sample
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_missed,p1070: Sample Status
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_missed,p1070: Time of Collection
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_missed,p1070: Barcode Number
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,3,quality,audit_false_positive,"p58: Abnormal, Not"
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,3,quality,audit_false_positive,"p59: Abnormal, Not"
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,3,quality,audit_false_positive,"p60: Abnormal, Not"
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,3,quality,audit_false_positive,p184: Sertraline PK
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,3,quality,audit_false_positive,p184: Brexpiprazole/Sertraline PK
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,3,quality,audit_false_positive,p184: Propranolol PK
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,3,quality,audit_false_positive,p184: Prazosin PK
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,3,quality,audit_false_positive,p421: Prazosin PK
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,3,quality,audit_false_positive,p421: Brexpiprazole/Sertraline PK
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,3,quality,audit_false_positive,p421: Sertraline PK
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,3,quality,audit_false_positive,p421: Propranolol PK
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,3,quality,audit_missed,p1070: PGx
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,4,quality,audit_false_positive,"p58: Abnormal, Not"
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,4,quality,audit_false_positive,"p59: Abnormal, Not"
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,4,quality,audit_false_positive,"p60: Abnormal, Not"
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,4,quality,audit_false_positive,p184: Sertraline PK
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,4,quality,audit_false_positive,p184: Brexpiprazole/Sertraline PK
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,4,quality,audit_false_positive,p184: Propranolol PK
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,4,quality,audit_false_positive,p184: Prazosin PK
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,4,quality,audit_false_positive,p421: Prazosin PK
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,4,quality,audit_false_positive,p421: Brexpiprazole/Sertraline PK
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,4,quality,audit_false_positive,p421: Sertraline PK
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,4,quality,audit_false_positive,p421: Propranolol PK
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,5,quality,audit_false_positive,"p58: Abnormal, Not"
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,5,quality,audit_false_positive,"p59: Abnormal, Not"
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,5,quality,audit_false_positive,p105: Test
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,5,quality,audit_false_positive,p105: Result
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,5,quality,audit_missed,p184: Sample
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,5,quality,audit_missed,p184: Timepoint
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,5,quality,audit_missed,p184: Sample Status
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,5,quality,audit_missed,p184: Time of Collection
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,5,quality,audit_missed,p184: Barcode Number
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,5,quality,audit_missed,p184: Backup Barcode Number
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,5,quality,audit_missed,p421: Sample
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,5,quality,audit_missed,p421: Timepoint
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,5,quality,audit_missed,p421: Sample Status
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,5,quality,audit_missed,p421: Time of Collection
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,5,quality,audit_missed,p421: Barcode Number
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,5,quality,audit_missed,p421: Backup Barcode Number
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,5,quality,audit_false_positive,p421: Predose
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,5,quality,audit_false_positive,p421: 1h Postdose
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,5,quality,audit_missed,p1070: Sample
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,5,quality,audit_missed,p1070: Sample Status
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,5,quality,audit_missed,p1070: Time of Collection
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,5,quality,audit_missed,p1070: Barcode Number
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,5,quality,audit_false_positive,p1070: PGx
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,6,quality,audit_false_positive,"p58: Abnormal, Not"
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,6,quality,audit_false_positive,"p59: Abnormal, Not"
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,gates,1,quality,warn_text_blocklists,"The program filters by 21 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. "
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,gates,2,quality,warn_text_blocklists,"The program filters by 22 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. "
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,p15: Schedule of Assessments
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,p15: Schedule
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,p15: Screen Visit 1 Day -55 to -16
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,p15: page enrols if SEX = Fe male on Demography pa ge
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,p15: page enrols if SEX = Mal e on Demography page
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,p15: page enrols if SEX = Fe male on Demography pa ge and if RPPOSMEN=
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,p15: Yes on Reproductive Stat
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,p16: us - Female page
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,p16: page enrols if SEX = Fe male on Demography pa ge
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,p16: page enrols if Protocol V ersion = Original/Amend ment 1
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,p16: page enrols if Protocol V ersion = Amendment 2
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,"p16: page enrols if Protocol V ersion = Amendment 2, t his has EXCL25 with sel"
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,"p16: ectable ""N/A"""
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,p122: Intensity of Ideation
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,p122: Lifetime
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,p122: Past 3 Month
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,p122: definitely stopped
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,p122: you from attempting
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,p122: probably stopped
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,p122: deterrents stopped
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,p122: likely did not stop
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,p122: definitely did not
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,p250: C-SSRS - Since Last Visit
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,p250: Since Last Visit
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,"p250: P.; Zelazny, J.; Burke, A.; Oquendo, M.; Mann, J."
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,p250: ideation or behavior depends on the judgment of the individual administering the scale.
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,p674: C-SSRS - Since Last Visit
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,p674: Since Last Visit
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,"p674: P.; Zelazny, J.; Burke, A.; Oquendo, M.; Mann, J."
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,p674: ideation or behavior depends on the judgment of the individual administering the scale.
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,gates,3,blocking,gate_other,"Extreme content-fitted blocklist. The program filters by 30 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere"
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,gates,4,blocking,gate_other,"Extreme content-fitted blocklist. The program filters by 37 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere"
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,5,quality,audit_false_positive,p15: Schedule of Assessments
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,5,quality,audit_false_positive,p15: Screen Visit 1 Day -55 to -16
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,5,quality,audit_false_positive,p15: page enrols if SEX = Fe
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,5,quality,audit_false_positive,p15: male on Demography pa ge
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,5,quality,audit_false_positive,p15: page enrols if SEX = Mal
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,5,quality,audit_false_positive,p15: e on Demography page
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,5,quality,audit_false_positive,p15: male on Demography pa
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,5,quality,audit_false_positive,p15: ge and if RPPOSMEN=
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,5,quality,audit_false_positive,p15: Yes on Reproductive Stat
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,5,quality,audit_false_positive,p250: C-SSRS - Since Last Visit
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,5,quality,audit_false_positive,p250: COLUMBIA-SUICIDE SEVERITY
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,5,quality,audit_false_positive,p250: RATING SCALE
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,5,quality,audit_false_positive,p250: Since Last Visit
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,5,quality,audit_false_positive,p250: Version 1/14/09
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,5,quality,audit_false_positive,"p250: Posner, K.; Brent, D.; Lucas, C.; Gould, M.; Stanley, B.; Brown, G.; Fisher,"
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,5,quality,audit_false_positive,"p250: P.; Zelazny, J.; Burke, A.; Oquendo, M.; Mann, J."
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,5,quality,audit_false_positive,p250: Disclaimer:
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,5,quality,audit_false_positive,p250: This scale is intended to be used by individuals who have received training in its administration. The questions contained in
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,5,quality,audit_false_positive,"p250: the Columbia-Suicide Severity Rating Scale are suggested probes. Ultimately, the determination of the presence of suicidal"
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,5,quality,audit_false_positive,p250: ideation or behavior depends on the judgment of the individual administering the scale.
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,5,quality,audit_false_positive,p674: C-SSRS - Since Last Visit
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,5,quality,audit_false_positive,p674: COLUMBIA-SUICIDE SEVERITY
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,5,quality,audit_false_positive,p674: RATING SCALE
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,5,quality,audit_false_positive,p674: Since Last Visit
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,5,quality,audit_false_positive,p674: Version 1/14/09
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,5,quality,audit_false_positive,"p674: Posner, K.; Brent, D.; Lucas, C.; Gould, M.; Stanley, B.; Brown, G.; Fisher,"
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,5,quality,audit_false_positive,"p674: P.; Zelazny, J.; Burke, A.; Oquendo, M.; Mann, J."
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,5,quality,audit_false_positive,p674: Disclaimer:
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,5,quality,audit_false_positive,p674: This scale is intended to be used by individuals who have received training in its administration. The questions contained in
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,5,quality,audit_false_positive,"p674: the Columbia-Suicide Severity Rating Scale are suggested probes. Ultimately, the determination of the presence of suicidal"
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,5,quality,audit_false_positive,p674: ideation or behavior depends on the judgment of the individual administering the scale.
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,gates,1,quality,warn_form_names_empty,"form_name empty for 100% of records - if the document does print form/section names, fix the form_name strategy (consider carrying the last seen title forward)."
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,1,quality,audit_missed,p42: Vasectomy
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,1,quality,audit_false_positive,p42: Of Childbearing Potential
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,gates,2,quality,warn_labels_not_human,Only 55% of field_name values look like human labels (they look like codes/dates/junk) - fix label selection.
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,gates,2,quality,warn_text_blocklists,"The program filters by 12 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. "
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,p11: 0.1
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,p11: Initial draft
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,p11: 0.1.1
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,p11: updates to unique pages
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,p11: 0.1.2
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,p11: 0.1.3
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,p11: 0.1.4
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,p11: 0.1.5
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,p11: 0.1.6
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,p11: dru Giucal
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,p11: 0.1.7
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,p11: 0.2
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,p11: built full schedule
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,p11: 0.2.1
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,p11: 0.2.2
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,p11: 0.2.3
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,p11: 0.2.4
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,p11: updates to full schedule
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,p11: 0.2.5
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,p11: 0.2.6
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,p11: 0.2.7
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,p11: 0.3
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,p12: 0.3
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,p12: updates according to feedback sheet
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,p12: dru Giucal
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,p12: 0.4
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,p12: deploy to UAT 2
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,p12: 0.5
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,p12: updated informed_consent_group on Trial tab
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,p12: 0.6
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,p12: fixes for integration
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,p12: 0.7
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,p12: deploy to UAT 3
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,p12: 0.8
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,p12: deploy to UAT 4
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,p12: ru Giucal
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,p12: 0.9
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,p12: 0.10
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,p12: 0.11
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,p12: 0.12
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,p12: 0.13
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,p12: implemented client feedback
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,p12: 1.0
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,p12: deployment to live
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,p12: 1.1
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,p12: applied changes according to CRP
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,p12: u Giucal
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,p12: 1.2
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,p12: updated answer options for variable DSDIS3 per clie nt requirement
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,p12: 2.0
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,p12: Deploy v2.0 to live
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,p12: 2.1
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,p12: 2.2
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,p12: updated error message per last POE doc
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,p12: 2.3
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,p12: - removed checks sv_10 to sv_13 - removed Water Re striction End page from Day-1 and Day 18
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,p12: 2.4
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,p12: added new Water Restriction End Prompt page in Da y-1 and Day 18
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,p12: 2.5
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_false_positive,p12: added new procedure instructions on Water Restrictio
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,audit,2,quality,audit_missed,p42: Vasectomy
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,gates,1,quality,warn_low_volume_small_doc,"Only 3 records from this 3-page document - plausible for a document this small, but make sure no fields were missed."
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,gates,1,quality,warn_text_blocklists,"The program filters by 23 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. "
+crf_forms_331-201-00246_Annotated_CRF___v_26_Jul_2023,loop,,quality,stopped_with_open_issues,"stop=p1:budget;p2:plateau;p3:plateau;p4:converged;p5:converged, open audit issues=43"
+crf_forms_384-201-00004_Annotated_CRF___v2.0_20_May_2025,gates,1,quality,warn_scope_zero_records,This pass's layout scope produced ZERO records - correct only if these layouts genuinely carry few or no data-entry fields; the page audit will verify that claim.
+crf_forms_384-201-00004_Annotated_CRF___v2.0_20_May_2025,gates,1,quality,warn_form_names_empty,"form_name empty for 100% of records - if the document does print form/section names, fix the form_name strategy (consider carrying the last seen title forward)."
+crf_forms_384-201-00004_Annotated_CRF___v2.0_20_May_2025,gates,1,quality,warn_labels_not_human,Only 0% of field_name values look like human labels (they look like codes/dates/junk) - fix label selection.
+crf_forms_384-201-00004_aCRF_16JAN2025,gates,1,quality,warn_scope_zero_records,This pass's layout scope produced ZERO records - correct only if these layouts genuinely carry few or no data-entry fields; the page audit will verify that claim.
+crf_forms_384-201-00004_aCRF_16JAN2025,gates,1,quality,warn_form_names_empty,"form_name empty for 100% of records - if the document does print form/section names, fix the form_name strategy (consider carrying the last seen title forward)."
+crf_forms_384-201-00004_aCRF_16JAN2025,gates,1,quality,warn_labels_not_human,Only 0% of field_name values look like human labels (they look like codes/dates/junk) - fix label selection.
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,gates,1,quality,warn_text_blocklists,"The program filters by 28 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. "
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,1,quality,audit_missed,p2: Informed Consent Obtained
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,1,quality,audit_missed,p2: Informed Consent Date
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,1,quality,audit_missed,p2: Previous Subject Number
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,1,quality,audit_missed,p8: All Eligibility Criteria Met
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,1,quality,audit_missed,p134: Sleep EEG Performed
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,1,quality,audit_missed,p134: Date Device Put On
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,1,quality,audit_missed,p134: Time Device Put On
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,1,quality,audit_missed,p134: EEG Start Date
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,1,quality,audit_missed,p134: EEG Start Time
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,1,quality,audit_missed,p134: EEG End Date
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,1,quality,audit_missed,"p470: Specimen Appearance, Other Specify"
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,1,quality,audit_missed,p470: pH
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,1,quality,audit_missed,p470: Glucose Interpretation
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,1,quality,audit_missed,p470: pH Interpretation
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,1,quality,audit_missed,p470: Occult Blood Interpretation
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,1,quality,audit_missed,p470: Protein Interpretation
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,1,quality,audit_missed,p470: Specific Gravity (SG) Interpretation
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,1,quality,audit_missed,"p470: Colour, Other Specify"
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,1,quality,audit_missed,p470: Sent for Microscopy
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,1,quality,audit_false_positive,p470: Negative
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,1,quality,audit_false_positive,p470: ≤1.0051.010
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,gates,2,quality,warn_furniture_candidates,"These field_name values were extracted on >=70% of ALL pages: 'Reason Not Performed'. Text recurring on nearly every page is usually page template furniture (watermark/footer/stamp), not a field - verify against the page dumps and stop extracting it unless it is genuinely a per-page data-entry field"
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,2,quality,audit_false_positive,p2: Yes No
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,2,quality,audit_false_positive,p6: Yes No
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,2,quality,audit_false_positive,p6: American Indian or Alaska Native Asian Native Hawaiian or Other Pacific Islander Black or African American White Unknown Not Reported Other
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,2,quality,audit_false_positive,p8: Yes No
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,2,quality,audit_false_positive,p8: Inclusion / Exclusion Criteria Inclusion / Exclusion Criteria ID 1 Exclusion
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,2,quality,audit_false_positive,p134: Yes No
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,2,quality,audit_false_positive,p470: 5 5.5
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,2,quality,audit_false_positive,p470: Negative
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,2,quality,audit_false_positive,p470: ≤1.005 1.010
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,2,quality,audit_false_positive,p470: Yes No
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,gates,3,quality,warn_furniture_candidates,"These field_name values were extracted on >=70% of ALL pages: 'Reason Not Performed'. Text recurring on nearly every page is usually page template furniture (watermark/footer/stamp), not a field - verify against the page dumps and stop extracting it unless it is genuinely a per-page data-entry field"
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,gates,3,quality,warn_text_blocklists,"The program filters by 10 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. "
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,3,quality,audit_false_positive,p8: Inclusion / Exclusion Criteria Inclusion / Exclusion Criteria ID 1 Exclusion
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,3,quality,audit_false_positive,p187: Subjective Drug Intensity (SDI)  - Day 1
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,3,quality,audit_false_positive,p187: Performed
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,3,quality,audit_false_positive,p470: 5 5.5
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,3,quality,audit_false_positive,p470: Negative
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,3,quality,audit_false_positive,p470: ≤1.005 1.010
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,4,quality,audit_missed,p2: Informed Consent Obtained
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,4,quality,audit_missed,p2: Informed Consent Date
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,4,quality,audit_missed,p2: Informed Consent Time
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,4,quality,audit_missed,p2: Informed Consent Version
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,4,quality,audit_missed,p2: Subject Previously Screened
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,4,quality,audit_missed,p2: Previous Subject Number
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,4,quality,audit_false_positive,p2: Yes No
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,4,quality,audit_missed,p6: Child-Bearing Potential
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,4,quality,audit_missed,"p6: Country Other, Specify"
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,4,quality,audit_missed,"p6: Other, Please Specify"
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,4,quality,audit_false_positive,p6: Yes No
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,4,quality,audit_false_positive,p6: American Indian or Alaska Native Asian Native Hawaiian or Other Pacific Islander Black or African American White Unknown Not Reported Other
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,4,quality,audit_missed,p8: Date Eligibility Criteria Confirmed
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,4,quality,audit_false_positive,p8: Yes No
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,4,quality,audit_missed,p12: C-SSRS Performed
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,4,quality,audit_missed,p12: C-SSRS Date
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,4,quality,audit_missed,p12: C-SSRS Time
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,4,quality,audit_missed,p12: Rater Initials
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,4,quality,audit_false_positive,p12: Yes No
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,4,quality,audit_false_positive,p12: Lifetime
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,4,quality,audit_false_positive,p12: Past 60 Months
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,4,quality,audit_false_positive,"p12: If yes, describe:"
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,4,quality,audit_false_positive,p12: Yes
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,4,quality,audit_false_positive,p12: 1. Wish to be Dead
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,4,quality,audit_false_positive,p12: 2. Non-Specific Active Suicidal Thoughts
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,4,quality,audit_false_positive,p12: 3. Active Suicidal Ideation with Any
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,4,quality,audit_false_positive,p12: Methods (Not Plan) without Intent to Act
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,4,quality,audit_false_positive,p12: 4. Active Suicidal Ideation with Some
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,4,quality,audit_false_positive,"p12: Intent to Act, without Specific Plan"
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,4,quality,audit_false_positive,p12: 5. Active Suicidal Ideation with
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,4,quality,audit_false_positive,p12: Specific Plan and Intent
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,4,quality,audit_false_positive,p12: INTENSITY OF IDEATION
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,4,quality,audit_false_positive,p12: Type # (1-5)
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,4,quality,audit_false_positive,p12: Description of Ideation
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,4,quality,audit_missed,p134: Device Serial Number
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,4,quality,audit_false_positive,p134: Yes No
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,4,quality,audit_missed,p370: C-SSRS Performed
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,4,quality,audit_missed,p370: Reason Not Performed
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,4,quality,audit_missed,p370: C-SSRS Date
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,4,quality,audit_missed,p470: Specimen Appearance
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,4,quality,audit_missed,"p470: Specimen Appearance, Other Specify"
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,4,quality,audit_missed,p470: Specimen Appearance Interpretation
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,4,quality,audit_missed,p470: Glucose Interpretation
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,4,quality,audit_missed,p470: Occult Blood
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,4,quality,audit_missed,p470: Occult Blood Interpretation
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,4,quality,audit_missed,p470: Protein Interpretation
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,4,quality,audit_missed,p470: Colour Interpretation
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,4,quality,audit_missed,"p470: Colour, Other Specify"
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,4,quality,audit_missed,p470: Microscopy Interpretation
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,4,quality,audit_false_positive,p470: Negative
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,4,quality,audit_missed,p550: Test
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,4,quality,audit_missed,p550: Performed
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,4,quality,audit_missed,p732: Sample Performed
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,4,quality,audit_missed,p732: Reason Not Performed
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,4,quality,audit_missed,p732: Sample Date
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,gates,5,quality,warn_text_blocklists,"The program filters by 11 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. "
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,5,quality,audit_missed,p2: Informed Consent Obtained
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,5,quality,audit_missed,p2: Informed Consent Date
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,5,quality,audit_missed,p2: Informed Consent Time
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,5,quality,audit_missed,p2: Informed Consent Version
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,5,quality,audit_missed,p2: Subject Previously Screened
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,5,quality,audit_missed,p2: Previous Subject Number
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,5,quality,audit_false_positive,p2: Yes No
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,5,quality,audit_missed,p6: Child-Bearing Potential
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,5,quality,audit_missed,"p6: Country Other, Specify"
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,5,quality,audit_missed,"p6: Other, Please Specify"
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,5,quality,audit_false_positive,p6: Yes No
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,5,quality,audit_false_positive,p6: American Indian or Alaska Native Asian Native Hawaiian or Other Pacific Islander Black or African American White Unknown Not Reported Other
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,5,quality,audit_missed,p8: Date Eligibility Criteria Confirmed
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,5,quality,audit_false_positive,p8: Yes No
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,5,quality,audit_false_positive,p8: Inclusion / Exclusion Criteria Inclusion / Exclusion Criteria ID 1 Exclusion
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,5,quality,audit_missed,p12: C-SSRS Performed
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,5,quality,audit_missed,p12: C-SSRS Date
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,5,quality,audit_missed,p12: C-SSRS Time
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,5,quality,audit_missed,p12: Rater Initials
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,5,quality,audit_false_positive,p12: Yes No
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,5,quality,audit_false_positive,"p12: If yes, describe:"
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,5,quality,audit_false_positive,p12: Yes
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,5,quality,audit_false_positive,p12: INTENSITY OF IDEATION
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,5,quality,audit_false_positive,p12: Type # (1-5)
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,5,quality,audit_false_positive,p12: Description of Ideation
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,5,quality,audit_missed,p134: Device Serial Number
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,5,quality,audit_false_positive,p134: Yes No
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,5,quality,audit_missed,p470: Specimen Appearance
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,5,quality,audit_missed,"p470: Specimen Appearance, Other Specify"
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,5,quality,audit_missed,p470: Specimen Appearance Interpretation
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,5,quality,audit_missed,p470: Glucose Interpretation
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,5,quality,audit_missed,p470: Occult Blood
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,5,quality,audit_missed,p470: Occult Blood Interpretation
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,5,quality,audit_missed,p470: Protein Interpretation
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,5,quality,audit_missed,p470: Colour Interpretation
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,5,quality,audit_missed,"p470: Colour, Other Specify"
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,5,quality,audit_missed,p470: Microscopy Interpretation
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,5,quality,audit_false_positive,p470: pH
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,5,quality,audit_false_positive,p470: 5 5.5
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,5,quality,audit_false_positive,p470: Glucose
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,5,quality,audit_false_positive,p470: Negative
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,5,quality,audit_false_positive,p470: Trace (100)
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,5,quality,audit_false_positive,p470: pH Interpretation
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,5,quality,audit_false_positive,p470: Protein
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,5,quality,audit_false_positive,p470: Trace - lysed
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,5,quality,audit_false_positive,p470: Trace - intact
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,5,quality,audit_false_positive,p470: Moderate (++)
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,5,quality,audit_false_positive,p470: Large (+++)
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,5,quality,audit_false_positive,p470: Specific Gravity (SG)
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,5,quality,audit_false_positive,p470: Specific Gravity (SG) Interpretation
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,5,quality,audit_false_positive,p470: Colour
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,5,quality,audit_false_positive,p470: Yes No
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,5,quality,audit_missed,p550: Test
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,5,quality,audit_missed,p550: Performed
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,gates,6,blocking,gate_other,"Extreme content-fitted blocklist. The program filters by 33 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere"
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,gates,6,quality,warn_furniture_candidates,"These field_name values were extracted on >=70% of ALL pages: 'Reason Not Performed'. Text recurring on nearly every page is usually page template furniture (watermark/footer/stamp), not a field - verify against the page dumps and stop extracting it unless it is genuinely a per-page data-entry field"
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,gates,1,blocking,gate_other,"Extreme content-fitted blocklist. The program filters by 32 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere"
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,3,quality,audit_false_positive,p34: Yes No
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,3,quality,audit_false_positive,"p34: Medication, Minimally adequate dose level, Minimal"
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,3,quality,audit_false_positive,p34: dose at optional level
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,3,quality,audit_missed,p53: Repetition Number
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,3,quality,audit_missed,p53: Vital Signs Date
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,3,quality,audit_missed,p53: Position Time
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,3,quality,audit_missed,p53: Vital Signs Time
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,3,quality,audit_missed,p53: Not Done
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,3,quality,audit_missed,p53: Test
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,3,quality,audit_missed,p53: Result
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,3,quality,audit_missed,p53: Interpretation
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,3,quality,audit_missed,p53: Reason Not Done
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,3,quality,audit_false_positive,p53: Yes No
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,3,quality,audit_missed,p512: Result
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,3,quality,audit_missed,p512: Reason Not Done
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,3,quality,audit_false_positive,p512: Yes No
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,3,quality,audit_false_positive,p512: Position Time ECG Time Interpretation Interpretation Comment Not Done Test
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,3,quality,audit_missed,p604: Sample Performed
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,3,quality,audit_missed,p604: Reason Not Done
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,3,quality,audit_missed,p604: Sample Date
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,3,quality,audit_missed,p604: Sample Time
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,3,quality,audit_missed,p604: Primary Sample Accession Number
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,3,quality,audit_missed,p604: Back Up Sample Accession Number
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,4,quality,audit_missed,p34: MGH Assessment Performed
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,4,quality,audit_missed,p34: Taken during THIS current episode
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,4,quality,audit_missed,p34: Minimally adequate dose
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,4,quality,audit_missed,p34: Minimal dose at optimal level
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,4,quality,audit_missed,p34: Scale for % Improvement
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,4,quality,audit_false_positive,p34: Yes No
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,4,quality,audit_false_positive,"p34: Medication, Minimally adequate dose level, Minimal"
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,4,quality,audit_false_positive,p34: dose at optional level
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,4,quality,audit_missed,p53: Vital Signs Performed
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,4,quality,audit_missed,p53: Repetition Number
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,4,quality,audit_missed,p53: Vital Signs Date
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,4,quality,audit_missed,p53: Position Time
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,4,quality,audit_missed,p53: Vital Signs Time
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,4,quality,audit_missed,p53: Not Done
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,4,quality,audit_missed,p53: Test
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,4,quality,audit_missed,p53: Result
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,4,quality,audit_missed,p53: Interpretation
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,4,quality,audit_missed,p53: Reason Not Done
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,4,quality,audit_false_positive,p53: Yes No
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,4,quality,audit_missed,p512: ECG Performed
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,4,quality,audit_missed,p512: ECG Time
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,4,quality,audit_missed,p512: Interpretation
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,4,quality,audit_missed,p512: Interpretation Comment
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,4,quality,audit_missed,p512: Not Done
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,4,quality,audit_missed,p512: Test
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,4,quality,audit_missed,p512: Result
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,4,quality,audit_missed,p512: Reason Not Done
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,4,quality,audit_false_positive,p512: Yes No
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,4,quality,audit_false_positive,p512: Position Time ECG Time Interpretation Interpretation Comment Not Done Test
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,4,quality,audit_missed,p604: Sample Performed
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,4,quality,audit_missed,p604: Reason Not Done
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,4,quality,audit_missed,p604: Sample Date
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,4,quality,audit_missed,p604: Sample Time
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,4,quality,audit_missed,p604: Primary Sample Accession Number
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,4,quality,audit_missed,p604: Back Up Sample Accession Number
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,5,quality,audit_missed,p34: Taken during THIS current episode
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,5,quality,audit_missed,p34: Minimally adequate dose
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,5,quality,audit_missed,p34: Minimal dose at optimal level
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,5,quality,audit_missed,p34: Scale for % Improvement
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,5,quality,audit_false_positive,p34: Yes No
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,5,quality,audit_false_positive,"p34: Medication, Minimally adequate dose level, Minimal"
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,5,quality,audit_false_positive,p34: dose at optional level
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,5,quality,audit_missed,p46: Test
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,5,quality,audit_missed,p46: Test Date
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,5,quality,audit_missed,p46: Test Time
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,5,quality,audit_missed,p46: Result
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,5,quality,audit_missed,p46: Comments
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,5,quality,audit_false_positive,p46: Alcohol Breath Test
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,5,quality,audit_false_positive,p46: Urine Cotinine
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,5,quality,audit_missed,p53: Repetition Number
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,5,quality,audit_missed,p53: Vital Signs Date
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,5,quality,audit_missed,p53: Position Time
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,5,quality,audit_missed,p53: Vital Signs Time
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,5,quality,audit_missed,p53: Not Done
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,5,quality,audit_missed,p53: Test
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,5,quality,audit_missed,p53: Result
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,5,quality,audit_missed,p53: Interpretation
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,5,quality,audit_missed,p53: Reason Not Done
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,5,quality,audit_false_positive,p53: Yes No
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,5,quality,audit_missed,p512: Result
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,5,quality,audit_missed,p512: Reason Not Done
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,5,quality,audit_false_positive,p512: Yes No
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,5,quality,audit_false_positive,p512: Position Time ECG Time Interpretation Interpretation Comment Not Done Test
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,5,quality,audit_false_positive,p604: Sample Performed Reason Not Done
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,5,quality,audit_false_positive,p604: Sample Date Sample Time Primary Sample Accession Number Back Up Sample Accession Number
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,gates,6,quality,warn_text_blocklists,"The program filters by 16 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. "
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,6,quality,audit_missed,p34: Taken during THIS current episode
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,6,quality,audit_missed,p34: Minimally adequate dose
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,6,quality,audit_missed,p34: Minimal dose at optimal level
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,6,quality,audit_missed,p34: Scale for % Improvement
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,6,quality,audit_false_positive,p34: Yes  [1]
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,6,quality,audit_false_positive,p34: Yes
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,6,quality,audit_false_positive,"p34: Medication, Minimally adequate dose level, Minimal"
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,6,quality,audit_false_positive,p34: dose at optional level
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,6,quality,audit_missed,p46: Reason Not Performed
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,6,quality,audit_missed,p46: Test Date
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,6,quality,audit_missed,p46: Test Time
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,6,quality,audit_missed,p46: Result
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,6,quality,audit_missed,p46: Comments
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,6,quality,audit_false_positive,p46: Test  [1]
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,6,quality,audit_false_positive,p46: [2] Reason Not Performed
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,6,quality,audit_false_positive,p46: [3]
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,6,quality,audit_false_positive,p46: Test Date  [4]
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,6,quality,audit_false_positive,p46: [5] Result
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,6,quality,audit_false_positive,p46: [6]
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,6,quality,audit_false_positive,p46: Comments  [7]
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,6,quality,audit_missed,p53: Repetition Number
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,6,quality,audit_missed,p53: Position Time
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,6,quality,audit_missed,p53: Vital Signs Time
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,6,quality,audit_missed,p53: Not Done
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,6,quality,audit_missed,p53: Test
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,6,quality,audit_missed,p53: Result
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,6,quality,audit_missed,p53: Interpretation
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,6,quality,audit_missed,p53: Reason Not Done
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,6,quality,audit_false_positive,p53: Yes  [1]
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,6,quality,audit_false_positive,p53: Yes
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,6,quality,audit_missed,p55: Position Time
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,6,quality,audit_missed,p55: ECG Time
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,6,quality,audit_missed,p55: Interpretation
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,6,quality,audit_missed,p55: Interpretation Comment
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,6,quality,audit_missed,p55: Not Done
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,6,quality,audit_missed,p55: Test
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,6,quality,audit_missed,p55: Result
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,6,quality,audit_missed,p55: Reason Not Done
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,6,quality,audit_false_positive,p55: Yes  [1]
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,6,quality,audit_false_positive,p55: Yes
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,6,quality,audit_false_positive,p55: Position Time ECG Time Interpretation Interpretation Comment Not Done Test
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,6,quality,audit_missed,p512: Position Time
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,6,quality,audit_missed,p512: ECG Time
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,6,quality,audit_missed,p512: Interpretation
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,6,quality,audit_missed,p512: Interpretation Comment
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,6,quality,audit_missed,p512: Not Done
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,6,quality,audit_missed,p512: Test
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,6,quality,audit_missed,p512: Result
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,6,quality,audit_missed,p512: Reason Not Done
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,6,quality,audit_false_positive,p512: Yes  [1]
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,6,quality,audit_false_positive,p512: Yes
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,6,quality,audit_false_positive,p512: Position Time ECG Time Interpretation Interpretation Comment Not Done Test
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,6,quality,audit_missed,p604: Reason Not Done
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,6,quality,audit_missed,p604: Sample Date
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,6,quality,audit_missed,p604: Sample Time
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,6,quality,audit_missed,p604: Primary Sample Accession Number
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,6,quality,audit_missed,p604: Back Up Sample Accession Number
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,6,quality,audit_false_positive,p604: [1] Reason Not Done
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,6,quality,audit_false_positive,p604: [2]
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,6,quality,audit_false_positive,p604: [3] Sample Time
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,6,quality,audit_false_positive,p604: [4] Primary Sample Accession Number
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,6,quality,audit_false_positive,p604: [5] Back Up Sample Accession Number
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,audit,6,quality,audit_false_positive,p604: [6]
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,gates,1,quality,warn_text_blocklists,"The program filters by 14 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. "
+crf_forms_MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025,loop,,quality,stopped_with_open_issues,"stop=p1:budget;p2:budget;p3:converged, open audit issues=36"

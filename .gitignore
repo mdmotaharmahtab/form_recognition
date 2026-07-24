@@ -67,6 +67,12 @@ experiments/crf_codegen/**/.ipynb_checkpoints/
 experiments/crf_codegen/**/*.png
 experiments/crf_codegen/**/llm_calls/
 experiments/crf_codegen/data/runs/snapshots/
-# scratch scripts + stray default output dir
+# scratch scripts + stray default output dirs
 experiments/crf_codegen/tmp/
 experiments/crf_codegen/outdir/
+/outdir/
+# zip bundles are transport, not results: the Dataiku download zips duplicate the
+# extracted run artifacts, and folder_code.zip is rebuilt from folder_code/ before
+# each upload - a committed copy would only ever be a stale twin of the modules.
+experiments/crf_codegen/data/runs/**/*.zip
+experiments/crf_codegen/notebooks/folder_code.zip

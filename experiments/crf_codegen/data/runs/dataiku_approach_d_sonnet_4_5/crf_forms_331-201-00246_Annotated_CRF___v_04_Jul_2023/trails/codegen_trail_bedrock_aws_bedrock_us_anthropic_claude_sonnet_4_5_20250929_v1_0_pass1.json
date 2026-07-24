@@ -1,0 +1,937 @@
+{
+ "stop_reason": "budget",
+ "versions": 6,
+ "best_version": 6,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "confirm",
+   "outcome": "confirmed_no_fields"
+  },
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 4060,
+    "pages_total": 810,
+    "pages_with_fields": 702,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 0,
+    "labels_look_human_pct": 96,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 0,
+    "fields_per_form": 4060.0,
+    "forms_per_100_pages": 0.0,
+    "form_same_page_evidence_records": 0,
+    "form_same_page_persistence_pct": null,
+    "furniture_candidates": [],
+    "pages_covered_pct": 87
+   },
+   "problems": [],
+   "warnings": [
+    "form_name empty for 100% of records - if the document does print form/section names, fix the form_name strategy (consider carrying the last seen title forward).",
+    "The program filters by 29 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": 35,
+   "audit_pages": [
+    1,
+    30,
+    44,
+    72,
+    130,
+    264,
+    468,
+    668,
+    869,
+    967
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 30,
+     "missed": [],
+     "false": [
+      "Page Label"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 44,
+     "missed": [
+      "**If sexually active does the subject commit to utilizing 2 different approved methods of birth control during the trial and for 90 days after the last dose of IMP?- mark the selected methods below **"
+     ],
+     "false": [
+      "Of Childbearing Potential Abstinence (must remain abstinent from the time of screening until at least 180 days after the last dose of study drug)",
+      "\u2022 Vasectomy"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 72,
+     "missed": [
+      "ALT",
+      "AST"
+     ],
+     "false": [
+      "Chemistry clinically significant abnormal assay # 1:",
+      "Albumin Alkaline phosphatase",
+      "Calcium Carbon dioxide",
+      "Chloride Cholesterol (total",
+      "low density lipoprotein;and; high density lipoprotein) Creatine phosphokinase",
+      "Creatinine Gamma glutamyl transferase",
+      "Glucose Lactate dehydrogenase",
+      "Magnesium Phosphorus",
+      "Potassium Prolactin",
+      "Total bilirubin Total protein",
+      "Triglycerides Sodium"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 130,
+     "missed": [],
+     "false": [
+      "If Yes, describe Row 10",
+      "When person begins to take steps toward making a suicide attempt, but stops themselves before they actually have engaged in any self destructive behaviour. Examples are similar to interrupted attempts, except that the individual",
+      "stops him/herself, instead of being stopped by something else."
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 264,
+     "missed": [],
+     "false": [
+      "Since Last Visit",
+      "Or did you do it purely for other reasons/without ANY intention of killing yourself (like to relieve stress, feel better, get sympathy, or get something else to happen? (Self-Injurious Behavior without suicidal intent) Row 2"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 468,
+     "missed": [
+      "ALT",
+      "AST"
+     ],
+     "false": [
+      "Triglycerides Sodium",
+      "Urea nitrogen Uric acid",
+      "Albumin Alkaline phosphatase",
+      "Calcium Carbon dioxide",
+      "Chloride Cholesterol (total",
+      "low density lipoprotein;and; high density lipoprotein) Creatine phosphokinase",
+      "Creatinine"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 668,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 869,
+     "missed": [],
+     "false": [
+      "Hematocrit Hemoglobin",
+      "Mean corpuscular hemoglobin concentration Mean corpuscular volume",
+      "Platelet count Red blood cell count",
+      "White blood cell count (absolute and differential) Glycated Hemoglobin"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 967,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    35,
+    2,
+    -702
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 3124,
+    "pages_total": 810,
+    "pages_with_fields": 691,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 0,
+    "labels_look_human_pct": 95,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 0,
+    "fields_per_form": 3124.0,
+    "forms_per_100_pages": 0.0,
+    "form_same_page_evidence_records": 0,
+    "form_same_page_persistence_pct": null,
+    "furniture_candidates": [],
+    "pages_covered_pct": 85
+   },
+   "problems": [],
+   "warnings": [
+    "form_name empty for 100% of records - if the document does print form/section names, fix the form_name strategy (consider carrying the last seen title forward)."
+   ],
+   "audit_issues": 29,
+   "audit_pages": [
+    1,
+    30,
+    32,
+    44,
+    72,
+    117,
+    127,
+    130,
+    264,
+    468,
+    668,
+    869,
+    967
+   ],
+   "audit_partial": null,
+   "audit_promoted": [
+    127
+   ],
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 30,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 32,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 44,
+     "missed": [
+      "**If sexually active does the subject commit to utilizing 2 different approved methods of birth control during the trial and for 90 days after the last dose of IMP?- mark the selected methods below **"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 72,
+     "missed": [
+      "Phosphorus",
+      "Potassium",
+      "Prolactin",
+      "Sodium",
+      "Uric acid"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 117,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 127,
+     "missed": [
+      "Row 2",
+      "Actual attempt:"
+     ],
+     "false": [
+      "Row 1 Select all that apply, so long as these are separate events; must ask about all types",
+      "A potentially self-injurious act committed with at least some wish to die, as a result of act. Behaviour was in part thought of as method to kill oneself. Intent does not have to be 100%. If there is any intent/desire to die associated",
+      "with the act, then it can be considered an actual suicide attempt. There does not have to be any injury or harm, just",
+      "the potential for injury or harm. If a person pulls the trigger while gun is in mouth but gun is broken so no injury results, this is considered an attempt. Inferring Intent: even if an individual denies intent/wish to die, it may be inferred clinically from the behaviour or circumstances. For example, a highly lethal act that is clearly not an accident so no other intent but suicide can be",
+      "inferred (e.g. gunshot to the head, jumping from window of a high floor/story). Also, if someone denies intent to die, but they thought that what they did could be lethal, intent may be inferred. Have you made a suicide attempt? Have you done anything to harm yourself?",
+      "Have you done anything dangerous where you could have died? What did you do? Did you ______ as a way to end your life?"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 130,
+     "missed": [
+      "Row 10",
+      "Row 11",
+      "Aborted attempt:"
+     ],
+     "false": [
+      "Row 9 If Yes, describe",
+      "When person begins to take steps toward making a suicide attempt, but stops themselves before they actually have engaged in any self destructive behaviour. Examples are similar to interrupted attempts, except that the individual",
+      "stops him/herself, instead of being stopped by something else.",
+      "Has there been a time when you started to do something to try to end your life but you stopped yourself before you actually did anything?"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 264,
+     "missed": [
+      "Row 5"
+     ],
+     "false": [
+      "Or did you do it purely for other reasons/without ANY intention of killing yourself (like to relieve stress, feel better, get sympathy, or get something else to happen? (Self-Injurious Behavior without suicidal intent) Row 2",
+      "Row 3 If Yes, describe"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 468,
+     "missed": [
+      "Uric acid",
+      "Creatine phosphokinase",
+      "Creatinine"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 668,
+     "missed": [
+      "Respiratory Rate (breaths/min)",
+      "Body Temperature (celsius)"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 869,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 967,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    29,
+    1,
+    -691
+   ],
+   "became_best": true
+  },
+  {
+   "version": 3,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 2589,
+    "pages_total": 810,
+    "pages_with_fields": 692,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 93,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 113,
+    "fields_per_form": 22.9,
+    "forms_per_100_pages": 14.0,
+    "form_same_page_evidence_records": 2533,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 85
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 16,
+   "audit_pages": [
+    1,
+    30,
+    44,
+    72,
+    126,
+    127,
+    130,
+    137,
+    264,
+    468,
+    668,
+    869,
+    967
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 30,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 44,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 72,
+     "missed": [],
+     "false": [
+      "Albumin Alkaline phosphatase ALT AST Calcium Carbon dioxide Chloride Cholesterol (total low density lipoprotein;and; high density lipoprotein) Creatine phosphokinase Creatinine Gamma glutamyl transferase Glucose Lactate dehydrogenase Magnesium Phosphorus Potassium Prolactin Total bilirubin Total protein Triglycerides Sodium"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 126,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 127,
+     "missed": [],
+     "false": [
+      "Row 1 Select all that apply, so long as these are separate events; must ask about all types Row 2",
+      "A potentially self-injurious act committed with at least some wish to die, as a result of act. Behaviour was in part thought of as method to kill oneself. Intent does not have to be 100%. If there is any intent/desire to die associated",
+      "with the act, then it can be considered an actual suicide attempt. There does not have to be any injury or harm, just"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 130,
+     "missed": [],
+     "false": [
+      "Row 9 If Yes, describe Row 10",
+      "When person begins to take steps toward making a suicide attempt, but stops themselves before they actually have engaged in any self destructive behaviour. Examples are similar to interrupted attempts, except that the individual",
+      "stops him/herself, instead of being stopped by something else.",
+      "Has there been a time when you started to do something to try to end your life but you stopped yourself before you actually did anything?"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 137,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 264,
+     "missed": [],
+     "false": [
+      "Or did you do it purely for other reasons/without ANY intention of killing yourself (like to relieve stress, feel better, get sympathy, or get something else to happen? (Self-Injurious Behavior without suicidal intent) Row 2 If Yes, Total number of attempts",
+      "Row 3 If Yes, describe"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 468,
+     "missed": [],
+     "false": [
+      "Triglycerides Sodium Urea nitrogen Uric acid",
+      "Albumin Alkaline phosphatase ALT AST Calcium Carbon dioxide Chloride Cholesterol (total low density lipoprotein;and; high density lipoprotein) Creatine phosphokinase Creatinine"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 668,
+     "missed": [
+      "Respiratory Rate (breaths/min)",
+      "Body Temperature (celsius)"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 869,
+     "missed": [],
+     "false": [
+      "Hematocrit Hemoglobin Mean corpuscular hemoglobin concentration Mean corpuscular volume Platelet count Red blood cell count White blood cell count (absolute and differential) Glycated Hemoglobin",
+      "Hematocrit Hemoglobin Mean corpuscular hemoglobin concentration Mean corpuscular volume Platelet count Red blood cell count"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 967,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    16,
+    0,
+    -692
+   ],
+   "became_best": true
+  },
+  {
+   "version": 4,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 2457,
+    "pages_total": 810,
+    "pages_with_fields": 692,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 94,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 113,
+    "fields_per_form": 21.7,
+    "forms_per_100_pages": 14.0,
+    "form_same_page_evidence_records": 2377,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 85
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 9,
+   "audit_pages": [
+    1,
+    2,
+    30,
+    44,
+    72,
+    127,
+    130,
+    133,
+    264,
+    468,
+    668,
+    869,
+    967
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 30,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 44,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 72,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 127,
+     "missed": [],
+     "false": [
+      "Row 1 Select all that apply, so long as these are separate events; must ask about all types Row 2",
+      "A potentially self-injurious act committed with at least some wish to die, as a result of act. Behaviour was in part thought of as method to kill oneself. Intent does not have to be 100%. If there is any intent/desire to die associated",
+      "with the act, then it can be considered an actual suicide attempt. There does not have to be any injury or harm, just"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 130,
+     "missed": [],
+     "false": [
+      "When person begins to take steps toward making a suicide attempt, but stops themselves before they actually have engaged in any self destructive behaviour. Examples are similar to interrupted attempts, except that the individual",
+      "stops him/herself, instead of being stopped by something else.",
+      "Has there been a time when you started to do something to try to end your life but you stopped yourself before you actually did anything?"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 133,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 264,
+     "missed": [],
+     "false": [
+      "Or did you do it purely for other reasons/without ANY intention of killing yourself (like to relieve stress, feel better, get sympathy, or get something else to happen? (Self-Injurious Behavior without suicidal intent) Row 2 If Yes, Total number of attempts"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 468,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 668,
+     "missed": [
+      "Respiratory Rate (breaths/min)",
+      "Body Temperature (celsius)"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 869,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 967,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    9,
+    0,
+    -692
+   ],
+   "became_best": true
+  },
+  {
+   "version": 5,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 2457,
+    "pages_total": 810,
+    "pages_with_fields": 692,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 94,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 113,
+    "fields_per_form": 21.7,
+    "forms_per_100_pages": 14.0,
+    "form_same_page_evidence_records": 2377,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 85
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 11,
+   "audit_pages": [
+    1,
+    3,
+    30,
+    44,
+    72,
+    127,
+    130,
+    138,
+    264,
+    468,
+    668,
+    869,
+    967
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 3,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 30,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 44,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 72,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 127,
+     "missed": [],
+     "false": [
+      "Row 1 Select all that apply, so long as these are separate events; must ask about all types Row 2",
+      "A potentially self-injurious act committed with at least some wish to die, as a result of act. Behaviour was in part thought of as method to kill oneself. Intent does not have to be 100%. If there is any intent/desire to die associated",
+      "with the act, then it can be considered an actual suicide attempt. There does not have to be any injury or harm, just"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 130,
+     "missed": [],
+     "false": [
+      "Row 9 If Yes, describe Row 10",
+      "When person begins to take steps toward making a suicide attempt, but stops themselves before they actually have engaged in any self destructive behaviour. Examples are similar to interrupted attempts, except that the individual",
+      "stops him/herself, instead of being stopped by something else.",
+      "Has there been a time when you started to do something to try to end your life but you stopped yourself before you actually did anything?"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 138,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 264,
+     "missed": [],
+     "false": [
+      "Or did you do it purely for other reasons/without ANY intention of killing yourself (like to relieve stress, feel better, get sympathy, or get something else to happen? (Self-Injurious Behavior without suicidal intent) Row 2 If Yes, Total number of attempts",
+      "Row 3 If Yes, describe"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 468,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 668,
+     "missed": [
+      "Respiratory Rate (breaths/min)",
+      "Body Temperature (celsius)"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 869,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 967,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    11,
+    0,
+    -692
+   ],
+   "became_best": false
+  },
+  {
+   "version": 6,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 2457,
+    "pages_total": 810,
+    "pages_with_fields": 692,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 94,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 113,
+    "fields_per_form": 21.7,
+    "forms_per_100_pages": 14.0,
+    "form_same_page_evidence_records": 2377,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 85
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 12,
+   "audit_pages": [
+    1,
+    30,
+    44,
+    72,
+    127,
+    130,
+    134,
+    141,
+    264,
+    468,
+    668,
+    869,
+    967
+   ],
+   "audit_partial": null,
+   "audit_promoted": [
+    134
+   ],
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 30,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 44,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 72,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 127,
+     "missed": [],
+     "false": [
+      "A potentially self-injurious act committed with at least some wish to die, as a result of act. Behaviour was in part thought of as method to kill oneself. Intent does not have to be 100%. If there is any intent/desire to die associated",
+      "with the act, then it can be considered an actual suicide attempt. There does not have to be any injury or harm, just"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 130,
+     "missed": [],
+     "false": [
+      "When person begins to take steps toward making a suicide attempt, but stops themselves before they actually have engaged in any self destructive behaviour. Examples are similar to interrupted attempts, except that the individual",
+      "stops him/herself, instead of being stopped by something else."
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 134,
+     "missed": [],
+     "false": [
+      "1) Minor physical damage (e.g. lethargic speech, first-degree burns, mild",
+      "2) Moderate physical damage; medical attention needed (e.g. conscious but",
+      "sleepy; somewhat responsive, second-degree burns; bleeding of major vessel",
+      "3) Moderately severe physical damage; medical hospitalization and likely",
+      "intensive care required (e.g. comatose with reflexes intact; third-degree burns",
+      "less than 20% of body; extensive blood loss but can recover, major fractures) 4) Severe physical damage; medical hospitalization with intensive care required (e.g. comatose without reflexes; third-degree burns over 20% of the body; extensive blood loss with unstable vital signs; major damage to a vital area"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 141,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 264,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 468,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 668,
+     "missed": [
+      "Respiratory Rate (breaths/min)",
+      "Body Temperature (celsius)"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 869,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 967,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    12,
+    0,
+    -692
+   ],
+   "became_best": true
+  }
+ ]
+}

@@ -1,0 +1,840 @@
+You are writing a deterministic extraction program for one specific clinical Case Report Form (CRF) PDF document. Below you will find a small sample of REPRESENTATIVE PAGES (one or two per page-layout cluster) from a document that is 913 pages long. The document is highly repetitive: the sampled pages cover its layouts, but the unsampled pages contain different content in the same layouts.
+
+Each sampled page is shown as structured text lines with geometry:
+    x=<left> y=<top> sz=<font-size> <color-hex or 'black'> <B if bold> | <text>
+
+# Your task
+
+Write a Python function that will run UNCHANGED over all 913 pages and extract every data-entry field of the CRF:
+  - form_name : the CRF form/section the field belongs to
+  - field_name: the human-readable field label/question
+
+That is the complete output. Some CRFs also print machine codes or technical
+annotations near fields - do NOT return those (they are resolved downstream by a
+separate system). You may still USE such markings as structural landmarks if that
+helps you locate fields reliably.
+
+# Runtime contract
+
+def extract(pages):
+    # pages: list of (page_index_0based, lines) tuples for the ENTIRE document, in
+    #        page order. lines is a list of Line objects sorted by y, then x.
+    #        NOTE: y-then-x order is NOT reading order on multi-column pages; if the
+    #        layout has side-by-side columns, use x coordinates to separate them.
+    #        For right-to-left scripts the within-row order is right-to-left, and
+    #        vertical text yields an arbitrary line order - reconstruct reading
+    #        order from the coordinates when the script needs it.
+    # Line attributes:
+    #   .text  (str, stripped visible text of one visual line)
+    #   .x0 .y0 .x1 .y1  (floats; PDF points; origin = top-left of the page)
+    #   .size  (float; font size in points; the largest span on the line)
+    #   .bold  (bool)
+    #   .non_black  (bool; True if any text on the line is printed in color)
+    # returns: list of dicts, one per extracted field occurrence:
+    #   {"form_name": str, "field_name": str, "page": int_1based}
+
+# Hard constraints
+
+- Pure computation only. These modules are already available: re, math, collections,
+  itertools, functools, string, unicodedata, bisect, statistics, json, typing,
+  dataclasses, enum, datetime. You may not import anything else, access
+  files/network, or print.
+- Deterministic, fast, simple: loops, regexes, coordinate arithmetic. It must
+  process all 913 pages in seconds.
+- Generalize from STRUCTURE, not content. The unsampled pages contain questions,
+  values and section names you have never seen. Never key your logic on specific
+  question wording from the samples; key it on geometry (x positions, font sizes,
+  color, boldness), on repeated marker/header patterns, and on the SHAPE of text
+  (regexes over character classes). The document may be in any language.
+- Geometry generalizes only when it is RELATIVE and TOLERANT. A family's
+  instances drift in absolute numbers across a big document (a label font shown
+  at one size in the samples prints slightly smaller or larger elsewhere), so
+  prefer comparisons against the page's own scale - size ranks (title vs label
+  vs body), "distinctly larger/smaller than" - and give absolute windows real
+  slack. Verify every threshold against ALL sample pages of the family it
+  serves: a cutoff that excludes one of its own family's samples is wrong.
+- Junk filtering must be structural too. Never enumerate literal text strings
+  (blocklists of answer options, column headers, known non-fields): unsampled
+  pages carry the same junk CLASSES with different wording, so a blocklist
+  both misses them and deletes real fields that happen to share the words.
+  Find the discriminator instead - answer options sit in an option column/row
+  under their field, column headers sit in a table's header band, furniture
+  repeats at a fixed position page after page. Literal matching is appropriate
+  only for the document's own repeated TEMPLATE markers used as landmarks.
+- Do not discard whole pages with statistical heuristics (text density, line
+  counts). Skip a page only on structural evidence of its TYPE (it matches a
+  recognized non-form template); when unsure, extract - a wrongly read page
+  costs a few junk records, a wrongly skipped page loses every field on it.
+- You may keep state across pages (the function receives the whole document) -
+  e.g. a form name announced once may govern many following pages.
+
+# Program architecture
+
+The representative pages below are labeled by LAYOUT FAMILY to expose meaningful
+structural variation, but a cluster label is evidence, not an implementation
+requirement. When families have genuinely different field-bearing structures,
+use small family handlers dispatched by tolerant structural signatures. When
+families differ only in incidental styling or content volume, prefer one shared
+handler. Do not force one handler per cluster. Check every chosen handler against
+all relevant samples. Pages matching no signature must not be silently skipped -
+route them through the closest compatible handler or a tolerant generic path.
+
+# Quality bar (your program's output is machine-checked before acceptance)
+
+- It must extract from every page that carries fields, not just the sampled ones.
+- form_name should be non-empty for the large majority of records. Use form/section
+  titles exactly as printed - do not invent, abbreviate, or reformat them. If the
+  document genuinely prints no form/section names, use the best available section
+  context; leave it empty only as a last resort.
+- form_name is the title printed FOR HUMAN READERS that heads the form/section: a
+  grouping shared by all of that form's fields, usually repeated or carried forward
+  across the form's continuation pages. Never build form_name from text attached to
+  one individual field - the field's own label, a machine code, or a per-field
+  technical annotation. Structural self-check: if nearly every record ends up with
+  its own unique form_name, the program is reading per-field text, not form titles.
+- field_name values must be human-readable label text - not machine codes, bare
+  numbers, dates, or page furniture (headers/footers/page numbers/watermarks/
+  legends).
+- A label/question may WRAP across several visual lines: join its continuation
+  lines into ONE field_name. Sentence fragments are not separate fields.
+- Answer OPTIONS are not fields: choice values (e.g. Yes / No / Unknown / list
+  items - examples here are English, apply the concept in the document's language)
+  belong to a field, they are not field_name records themselves. The same applies
+  to rating-scale anchor rows that merely explain what each numeric value means.
+- Rows of a printed reference or enumeration table (a list of items with no
+  per-row entry cell to fill in) are page content, not data-entry fields. A table
+  row IS a field when the row has its own cell to be filled per row - such a cell
+  may be a drawn blank box that prints no text.
+- No duplicate records for the same (form_name, field_name) pair beyond what the
+  document itself repeats.
+
+# Reply format
+
+Answer in TWO parts, in this order, in one reply:
+
+1. STRATEGY (plain language, NO code). Begin with a line "STRATEGY:" then 6-12
+   short sentences describing the GENERAL extraction logic you will implement -
+   rules meant to hold over the pages you were NOT shown, not a description of the
+   sampled pages. Decide the approach in words first; that is the point of this
+   step. Commit explicitly to:
+     - how you locate the form/section title, AND what you do on pages where the
+       title is absent, smaller, or positioned differently. A form runs across
+       many pages, so most pages will NOT reprint the title: state how you carry
+       the current title forward instead of skipping a page that lacks one.
+     - how you tell a data-entry field from an answer option, a reference or
+       enumeration table row, and page furniture - by geometry, style and
+       position, never by specific wording.
+     - how you ensure every content-bearing page that holds fields yields them
+       (no whole-page skips keyed on a single cue such as one font size, one
+       y-position, or one wording).
+
+2. CODE. Then give the program as a SINGLE ```python fenced code block: open with
+   a short comment (2-4 lines) noting the layout you observed, then define
+   extract(pages) plus any helpers. Put NO prose outside this block. The code
+   must implement the STRATEGY above.
+
+# Representative pages of this document
+
+The document's pages cluster into structural LAYOUT FAMILIES (computed from this document itself). The sample below shows:
+  family A (~18 pages of the document) - sample pages 1
+  family B (~1 pages of the document) - sample pages 2
+  family C (~387 pages of the document) - sample pages 3, 5, 11, 54
+  family D (~336 pages of the document) - sample pages 6, 134, 159, 802
+Pages of one family share the same structural layout, but instances may drift in absolute font sizes, positions and wording - what all of a family's sample pages have in COMMON is what defines it. A few small families may have no sample here.
+
+--- page 1 of 913 | layout family A (~18 pages) ---
+x= 399.2 y= 214.6 sz=20.0 black     | Visit:
+x= 375.8 y= 238.6 sz=20.0 black     | Screening
+
+--- page 2 of 913 | layout family B (~1 pages) ---
+x=  33.3 y=  36.3 sz=11.4 black     | MAC186_X11_201_00001_eCRF_v1_10_form_tracker_v1_6_06Mar2025
+x=  33.3 y=  48.5 sz= 7.8 black   B | Informed Consent
+x=  42.9 y=  73.9 sz=17.4 black     | Informed Consent Form
+x=  95.0 y=  97.6 sz= 7.8 black   B | Informed Consent Obtained
+x= 218.5 y= 100.6 sz= 7.8 black   B | Yes  [1]
+x= 218.5 y= 113.8 sz= 7.8 black     | No
+x= 111.8 y= 134.8 sz= 7.8 black   B | Informed Consent Date
+x= 265.9 y= 134.8 sz= 7.8 black   B | [2]
+x= 110.6 y= 157.0 sz= 7.8 black   B | Informed Consent Time
+x= 244.3 y= 157.0 sz= 7.8 black   B | [3]
+x= 100.4 y= 179.1 sz= 7.8 black   B | Informed Consent Version
+x= 265.3 y= 182.1 sz= 7.8 black   B | [4]
+x=  90.2 y= 203.1 sz= 7.8 black   B | Subject Previously Screened
+x= 218.5 y= 206.1 sz= 7.8 black   B | Yes  [5]
+x= 218.5 y= 219.3 sz= 7.8 black     | No
+x= 103.4 y= 240.3 sz= 7.8 black   B | Previous Subject Number
+x= 316.2 y= 240.3 sz= 7.8 black   B | [6]
+
+--- page 3 of 913 | layout family C (~387 pages) ---
+x=  33.3 y=  36.3 sz=11.4 black     | MAC186_X11_201_00001_eCRF_v1_10_form_tracker_v1_6_06Mar2025
+x=  41.1 y=  50.1 sz= 7.2 black   B | Variable details
+x=  80.7 y=  66.9 sz= 7.2 black   B | Name
+x= 235.3 y=  66.9 sz= 7.2 black   B | Export Name
+x= 390.0 y=  66.9 sz= 7.2 black   B | Type
+x= 506.2 y=  66.9 sz= 7.2 black   B | Max length
+x= 584.2 y=  66.9 sz= 7.2 black   B | Categories
+x=  41.1 y=  76.5 sz= 7.2 black     | [1]
+x=  80.7 y=  76.5 sz= 7.2 black     | Informed Consent Obtained
+x= 235.3 y=  76.5 sz= 7.2 black     | DSYN
+x= 390.0 y=  76.5 sz= 7.2 black     | Categorical yes/no (dichotomous)
+x= 506.2 y=  76.5 sz= 7.2 black     | 3
+x=  41.1 y=  86.1 sz= 7.2 black     | [2]
+x=  80.7 y=  86.1 sz= 7.2 black     | Informed Consent Date
+x= 235.3 y=  86.1 sz= 7.2 black     | DSSTDAT
+x= 390.0 y=  86.1 sz= 7.2 black     | Date
+x= 506.2 y=  86.1 sz= 7.2 black     | 11
+x=  41.1 y=  95.7 sz= 7.2 black     | [3]
+x=  80.7 y=  95.7 sz= 7.2 black     | Informed Consent Time
+x= 235.3 y=  95.7 sz= 7.2 black     | DSSTTIM
+x= 390.0 y=  95.7 sz= 7.2 black     | Time
+x= 506.2 y=  95.7 sz= 7.2 black     | 5
+x=  41.1 y= 105.3 sz= 7.2 black     | [4]
+x=  80.7 y= 105.3 sz= 7.2 black     | Informed Consent Version
+x= 235.3 y= 105.3 sz= 7.2 black     | DSICVER
+x= 390.0 y= 105.3 sz= 7.2 black     | Categorical select one (nominal)
+x= 506.2 y= 105.3 sz= 7.2 black     | 21
+x= 584.2 y= 105.3 sz= 7.2 black     | Part 1 v4.0 03Mar2025
+x= 584.2 y= 112.5 sz= 7.2 black     | Part 2 v4.0 03Mar2025
+x=  41.1 y= 122.1 sz= 7.2 black     | [5]
+x=  80.7 y= 122.1 sz= 7.2 black     | Subject Previously Screened
+x= 235.3 y= 122.1 sz= 7.2 black     | DSRESCR
+x= 390.0 y= 122.1 sz= 7.2 black     | Categorical yes/no (dichotomous)
+x= 506.2 y= 122.1 sz= 7.2 black     | 3
+x=  41.1 y= 131.7 sz= 7.2 black     | [6]
+x=  80.7 y= 131.7 sz= 7.2 black     | Previous Subject Number
+x= 235.3 y= 131.7 sz= 7.2 black     | DSRENUM
+x= 390.0 y= 131.7 sz= 7.2 black     | Text or Any Value
+x= 506.2 y= 131.7 sz= 7.2 black     | 4000
+
+--- page 5 of 913 | layout family C (~387 pages) ---
+x=  33.3 y=  36.3 sz=11.4 black     | MAC186_X11_201_00001_eCRF_v1_10_form_tracker_v1_6_06Mar2025
+x=  41.1 y=  50.1 sz= 7.2 black   B | Variable details
+x=  80.7 y=  66.9 sz= 7.2 black   B | Name
+x= 235.3 y=  66.9 sz= 7.2 black   B | Export Name
+x= 390.0 y=  66.9 sz= 7.2 black   B | Type
+x= 506.2 y=  66.9 sz= 7.2 black   B | Max length
+x= 584.2 y=  66.9 sz= 7.2 black   B | Categories
+x=  41.1 y=  76.5 sz= 7.2 black     | [1]
+x=  80.7 y=  76.5 sz= 7.2 black     | Visit Date
+x= 235.3 y=  76.5 sz= 7.2 black     | VISDAT
+x= 390.0 y=  76.5 sz= 7.2 black     | Date
+x= 506.2 y=  76.5 sz= 7.2 black     | 11
+
+--- page 6 of 913 | layout family D (~336 pages) ---
+x=  33.3 y=  36.3 sz=11.4 black     | MAC186_X11_201_00001_eCRF_v1_10_form_tracker_v1_6_06Mar2025
+x=  33.3 y=  48.5 sz= 7.8 black   B | Demographics
+x=  42.9 y=  73.9 sz=17.4 black     | Demographics
+x=  44.7 y=  99.4 sz= 7.8 black   B | Year of Birth
+x=  77.1 y= 107.2 sz= 7.8 black   B | [1]
+x=  44.7 y= 125.0 sz= 9.6 black   B | Age at Consent (Years)
+x=  69.9 y= 134.8 sz= 7.8 black   B | [2]
+x=  44.7 y= 152.5 sz= 9.6 black   B | Sex
+x= 101.6 y= 165.3 sz= 7.8 black   B | [3]
+x=  44.7 y= 182.1 sz= 7.8 black   B | Child-Bearing Potential
+x=  54.9 y= 192.9 sz= 7.8 black   B | Yes  [4]
+x=  54.9 y= 206.1 sz= 7.8 black     | No
+x=  44.7 y= 222.9 sz= 7.8 black   B | Country of Residence
+x= 101.6 y= 233.7 sz= 7.8 black   B | [5]
+x=  44.7 y= 250.5 sz= 7.8 black   B | Country Other, Specify
+x= 152.6 y= 258.3 sz= 7.8 black   B | [6]
+x=  44.7 y= 276.2 sz= 7.8 black   B | Ethnicity
+x= 101.6 y= 287.0 sz= 7.8 black   B | [7]
+x=  44.7 y= 303.8 sz= 7.8 black   B | Race
+x=  55.5 y= 315.2 sz= 7.8 black   B | American Indian or Alaska Native  [8]
+x=  55.5 y= 329.0 sz= 7.8 black     | Asian
+x=  55.5 y= 342.8 sz= 7.8 black     | Native Hawaiian or Other Pacific Islander
+x=  55.5 y= 356.6 sz= 7.8 black     | Black or African American
+x=  55.5 y= 370.4 sz= 7.8 black     | White
+x=  55.5 y= 384.1 sz= 7.8 black     | Unknown
+x=  55.5 y= 397.9 sz= 7.8 black     | Not Reported
+x=  55.5 y= 411.7 sz= 7.8 black     | Other
+x=  44.7 y= 428.5 sz= 7.8 black   B | Other, Please Specify
+x= 152.6 y= 436.3 sz= 7.8 black   B | [9]
+
+--- page 11 of 913 | layout family C (~387 pages) ---
+x=  33.3 y=  36.3 sz=11.4 black     | MAC186_X11_201_00001_eCRF_v1_10_form_tracker_v1_6_06Mar2025
+x=  41.1 y=  50.1 sz= 7.2 black   B | Variable details
+x=  80.7 y=  66.9 sz= 7.2 black   B | Name
+x= 235.3 y=  66.9 sz= 7.2 black   B | Export Name
+x= 390.0 y=  66.9 sz= 7.2 black   B | Type
+x= 506.2 y=  66.9 sz= 7.2 black   B | Max length
+x= 584.2 y=  66.9 sz= 7.2 black   B | Categories
+x=  41.1 y=  76.5 sz= 7.2 black     | [1]
+x=  80.7 y=  76.5 sz= 7.2 black     | Relevant Medical History
+x= 235.3 y=  76.5 sz= 7.2 black     | MHYN
+x= 390.0 y=  76.5 sz= 7.2 black     | Categorical yes/no (dichotomous)
+x= 506.2 y=  76.5 sz= 7.2 black     | 3
+x=  41.1 y=  86.1 sz= 7.2 black     | [2]
+x=  80.7 y=  86.1 sz= 7.2 black     | Condition / Surgical Procedure
+x= 235.3 y=  86.1 sz= 7.2 black     | MHTERM
+x= 390.0 y=  86.1 sz= 7.2 black     | Text or Any Value
+x= 506.2 y=  86.1 sz= 7.2 black     | 4000
+x=  41.1 y=  95.7 sz= 7.2 black     | [3]
+x=  80.7 y=  95.7 sz= 7.2 black     | Category
+x= 235.3 y=  95.7 sz= 7.2 black     | MHCAT
+x= 390.0 y=  95.7 sz= 7.2 black     | Categorical select one (nominal)
+x= 506.2 y=  95.7 sz= 7.2 black     | 11
+x= 584.2 y=  95.7 sz= 7.2 black     | General
+x= 584.2 y= 102.9 sz= 7.2 black     | Psychiatric
+x= 584.2 y= 110.1 sz= 7.2 black     | Surgical
+x=  41.1 y= 119.7 sz= 7.2 black     | [4]
+x=  80.7 y= 119.7 sz= 7.2 black     | Start Date
+x= 235.3 y= 119.7 sz= 7.2 black     | MHSTDAT
+x= 390.0 y= 119.7 sz= 7.2 black     | Date
+x= 506.2 y= 119.7 sz= 7.2 black     | 11
+x=  41.1 y= 129.3 sz= 7.2 black     | [5]
+x=  80.7 y= 129.3 sz= 7.2 black     | Ongoing
+x= 235.3 y= 129.3 sz= 7.2 black     | MHONGO
+x= 390.0 y= 129.3 sz= 7.2 black     | Categorical yes/no (dichotomous)
+x= 506.2 y= 129.3 sz= 7.2 black     | 3
+x=  41.1 y= 138.8 sz= 7.2 black     | [6]
+x=  80.7 y= 138.8 sz= 7.2 black     | Stop Date
+x= 235.3 y= 138.8 sz= 7.2 black     | MHENDAT
+x= 390.0 y= 138.8 sz= 7.2 black     | Date
+x= 506.2 y= 138.8 sz= 7.2 black     | 11
+
+--- page 54 of 913 | layout family C (~387 pages) ---
+x=  33.3 y=  36.3 sz=11.4 black     | MAC186_X11_201_00001_eCRF_v1_10_form_tracker_v1_6_06Mar2025
+x=  41.1 y=  50.1 sz= 7.2 black   B | Variable details
+x=  80.7 y=  66.9 sz= 7.2 black   B | Name
+x= 235.3 y=  66.9 sz= 7.2 black   B | Export Name
+x= 390.0 y=  66.9 sz= 7.2 black   B | Type
+x= 506.2 y=  66.9 sz= 7.2 black   B | Max length
+x= 584.2 y=  66.9 sz= 7.2 black   B | Categories
+x=  41.1 y=  76.5 sz= 7.2 black     | [1]
+x=  80.7 y=  76.5 sz= 7.2 black     | Vital Signs Performed
+x= 235.3 y=  76.5 sz= 7.2 black     | VSPERF
+x= 390.0 y=  76.5 sz= 7.2 black     | Categorical yes/no (dichotomous)
+x= 506.2 y=  76.5 sz= 7.2 black     | 3
+x=  41.1 y=  86.1 sz= 7.2 black     | [2]
+x=  80.7 y=  86.1 sz= 7.2 black     | Reason Not Performed
+x= 235.3 y=  86.1 sz= 7.2 black     | VSREASND
+x= 390.0 y=  86.1 sz= 7.2 black     | Text or Any Value
+x= 506.2 y=  86.1 sz= 7.2 black     | 4000
+x=  41.1 y=  95.7 sz= 7.2 black     | [3]
+x=  80.7 y=  95.7 sz= 7.2 black     | Repetition Number
+x= 235.3 y=  95.7 sz= 7.2 black     | VSREPNUM
+x= 390.0 y=  95.7 sz= 7.2 black     | Categorical numeric range (ordinal)
+x= 506.2 y=  95.7 sz= 7.2 black     | 1
+x= 584.2 y=  95.7 sz= 7.2 black     | 1
+x= 584.2 y= 102.9 sz= 7.2 black     | 2
+x=  41.1 y= 112.5 sz= 7.2 black     | [4]
+x=  80.7 y= 112.5 sz= 7.2 black     | Details
+x= 235.3 y= 112.5 sz= 7.2 black     | VSCAT
+x= 390.0 y= 112.5 sz= 7.2 black     | Categorical select one (nominal)
+x= 506.2 y= 112.5 sz= 7.2 black     | 19
+x= 584.2 y= 112.5 sz= 7.2 black     | Vital Signs Details
+x=  41.1 y= 122.1 sz= 7.2 black     | [5]
+x=  80.7 y= 122.1 sz= 7.2 black     | Location
+x= 235.3 y= 122.1 sz= 7.2 black     | VSLOC
+x= 390.0 y= 122.1 sz= 7.2 black     | Categorical select one (nominal)
+x= 506.2 y= 122.1 sz= 7.2 black     | 8
+x= 584.2 y= 122.1 sz= 7.2 black     | Oral
+x= 584.2 y= 129.3 sz= 7.2 black     | Axilla
+x= 584.2 y= 136.4 sz= 7.2 black     | Ear
+x= 584.2 y= 143.6 sz= 7.2 black     | Forehead
+x= 584.2 y= 150.8 sz= 7.2 black     | Cavity
+x= 584.2 y= 158.0 sz= 7.2 black     | Rectum
+x=  41.1 y= 167.6 sz= 7.2 black     | [6]
+x=  80.7 y= 167.6 sz= 7.2 black     | Position
+x= 235.3 y= 167.6 sz= 7.2 black     | VSPOS
+x= 390.0 y= 167.6 sz= 7.2 black     | Categorical select one (nominal)
+x= 506.2 y= 167.6 sz= 7.2 black     | 11
+x= 584.2 y= 167.6 sz= 7.2 black     | Standing
+x= 584.2 y= 174.8 sz= 7.2 black     | Semi-Supine
+x= 584.2 y= 182.0 sz= 7.2 black     | Other
+x=  41.1 y= 191.6 sz= 7.2 black     | [7]
+x=  80.7 y= 191.6 sz= 7.2 black     | Other, Please Specify
+x= 235.3 y= 191.6 sz= 7.2 black     | VSPOSOTH
+x= 390.0 y= 191.6 sz= 7.2 black     | Text or Any Value
+x= 506.2 y= 191.6 sz= 7.2 black     | 4000
+x=  41.1 y= 201.2 sz= 7.2 black     | [8]
+x=  80.7 y= 201.2 sz= 7.2 black     | Vital Signs Date
+x= 235.3 y= 201.2 sz= 7.2 black     | VSDAT
+x= 390.0 y= 201.2 sz= 7.2 black     | Date
+x= 506.2 y= 201.2 sz= 7.2 black     | 11
+x=  41.1 y= 210.8 sz= 7.2 black     | [9]
+x=  80.7 y= 210.8 sz= 7.2 black     | Position Time
+x= 235.3 y= 210.8 sz= 7.2 black     | VSPOSTIM
+x= 390.0 y= 210.8 sz= 7.2 black     | Time
+x= 506.2 y= 210.8 sz= 7.2 black     | 5
+x=  41.1 y= 220.4 sz= 7.2 black     | [10]
+x=  80.7 y= 220.4 sz= 7.2 black     | Vital Signs Time
+x= 235.3 y= 220.4 sz= 7.2 black     | VSTIM
+x= 390.0 y= 220.4 sz= 7.2 black     | Time
+x= 506.2 y= 220.4 sz= 7.2 black     | 5
+x=  41.1 y= 230.0 sz= 7.2 black     | [11]
+x=  80.7 y= 230.0 sz= 7.2 black     | Not Done
+x= 235.3 y= 230.0 sz= 7.2 black     | VSND
+x= 390.0 y= 230.0 sz= 7.2 black     | Categorical yes/no (dichotomous)
+x= 506.2 y= 230.0 sz= 7.2 black     | 3
+x=  41.1 y= 239.5 sz= 7.2 black     | [12]
+x=  80.7 y= 239.5 sz= 7.2 black     | Test
+x= 235.3 y= 239.5 sz= 7.2 black     | VSTEST
+x= 390.0 y= 239.5 sz= 7.2 black     | Categorical select one (nominal)
+x= 506.2 y= 239.5 sz= 7.2 black     | 31
+x= 584.2 y= 239.5 sz= 7.2 black     | Temperature (°C)
+x= 584.2 y= 246.7 sz= 7.2 black     | Respiratory Rate (breaths/min)
+x= 584.2 y= 253.9 sz= 7.2 black     | Systolic Blood Pressure (mmHg)
+x= 584.2 y= 261.1 sz= 7.2 black     | Diastolic Blood Pressure (mmHg)
+x= 584.2 y= 268.3 sz= 7.2 black     | Pulse Rate (beats/min)
+x= 584.2 y= 275.5 sz= 7.2 black     | SPO2
+x=  41.1 y= 285.1 sz= 7.2 black     | [13]
+x=  80.7 y= 285.1 sz= 7.2 black     | Result
+x= 235.3 y= 285.1 sz= 7.2 black     | VSORRES
+x= 390.0 y= 285.1 sz= 7.2 black     | Number (continuous)
+x= 506.2 y= 285.1 sz= 7.2 black     | 15
+x=  41.1 y= 294.7 sz= 7.2 black     | [14]
+x=  80.7 y= 294.7 sz= 7.2 black     | Interpretation
+x= 235.3 y= 294.7 sz= 7.2 black     | VSORRES2
+x= 390.0 y= 294.7 sz= 7.2 black     | Categorical select one (nominal)
+x= 506.2 y= 294.7 sz= 7.2 black     | 12
+x= 584.2 y= 294.7 sz= 7.2 black     | Normal
+x= 584.2 y= 301.9 sz= 7.2 black     | Abnormal NCS
+x= 584.2 y= 309.1 sz= 7.2 black     | Abnormal CS
+x=  41.1 y= 318.7 sz= 7.2 black     | [15]
+x=  80.7 y= 318.7 sz= 7.2 black     | Reason Not Done
+x= 235.3 y= 318.7 sz= 7.2 black     | VSREASND2
+x= 390.0 y= 318.7 sz= 7.2 black     | Text or Any Value
+x= 506.2 y= 318.7 sz= 7.2 black     | 4000
+
+--- page 134 of 913 | layout family D (~336 pages) ---
+x=  33.3 y=  36.3 sz=11.4 black     | MAC186_X11_201_00001_eCRF_v1_10_form_tracker_v1_6_06Mar2025
+x=  33.3 y=  48.5 sz= 7.8 black   B | Sleep EEG - In Clinic
+x=  42.9 y=  73.9 sz=17.4 black     | Sleep EEG - In Clinic
+x= 119.6 y=  97.6 sz= 7.8 black   B | Sleep EEG Performed
+x= 218.5 y= 100.6 sz= 7.8 black   B | Yes  [1]
+x= 218.5 y= 113.8 sz= 7.8 black     | No
+x= 114.8 y= 134.8 sz= 7.8 black   B | Reason Not Performed
+x= 316.2 y= 134.8 sz= 7.8 black   B | [2]
+x= 117.8 y= 157.0 sz= 7.8 black   B | Device Serial Number
+x= 298.2 y= 157.0 sz= 7.8 black   B | [3]
+x= 128.0 y= 179.1 sz= 7.8 black   B | Date Device Put On
+x= 265.9 y= 179.1 sz= 7.8 black   B | [4]
+x= 126.8 y= 201.3 sz= 7.8 black   B | Time Device Put On
+x= 244.3 y= 201.3 sz= 7.8 black   B | [5]
+x= 145.4 y= 223.5 sz= 7.8 black   B | EEG Start Date
+x= 265.9 y= 223.5 sz= 7.8 black   B | [6]
+x= 144.2 y= 245.7 sz= 7.8 black   B | EEG Start Time
+x= 244.3 y= 245.7 sz= 7.8 black   B | [7]
+x= 150.2 y= 267.8 sz= 7.8 black   B | EEG End Date
+x= 265.9 y= 267.8 sz= 7.8 black   B | [8]
+x= 149.0 y= 290.0 sz= 7.8 black   B | EEG End Time
+x= 244.3 y= 290.0 sz= 7.8 black   B | [9]
+
+--- page 159 of 913 | layout family D (~336 pages) ---
+x=  33.3 y=  36.3 sz=11.4 black     | MAC186_X11_201_00001_eCRF_v1_10_form_tracker_v1_6_06Mar2025
+x=  57.9 y=  51.3 sz= 7.2 black   B | Time Point  [3]
+x= 140.0 y=  51.3 sz= 7.2 black   B | Details  [4]
+x= 198.1 y=  51.3 sz= 7.2 black   B | Position  [5]
+x= 251.5 y=  51.3 sz= 7.2 black   B | ECG Date  [6]
+x= 303.0 y=  51.3 sz= 7.2 black   B | Position Time
+x= 355.8 y=  51.3 sz= 7.2 black   B | ECG Time
+x= 398.3 y=  51.3 sz= 7.2 black   B | Interpretation
+x= 457.1 y=  51.3 sz= 7.2 black   B | Interpretation Comment
+x= 550.6 y=  51.3 sz= 7.2 black   B | Not Done
+x= 595.6 y=  51.3 sz= 7.2 black   B | Test  [12]
+x= 681.9 y=  51.3 sz= 7.2 black   B | Result
+x= 719.6 y=  51.3 sz= 7.2 black   B | Reason Not Done  [14]
+x= 303.0 y=  58.5 sz= 7.2 black   B | [7]
+x= 355.8 y=  58.5 sz= 7.2 black   B | [8]
+x= 398.3 y=  58.5 sz= 7.2 black   B | [9]
+x= 457.1 y=  58.5 sz= 7.2 black   B | [10]
+x= 550.6 y=  58.5 sz= 7.2 black   B | [11]
+x= 681.9 y=  58.5 sz= 7.2 black   B | [13]
+x=  45.3 y=  69.9 sz= 7.2 black     | 1
+x=  60.3 y=  72.3 sz= 7.2 black     | 1 Hour Post Dose
+x= 142.4 y=  72.3 sz= 7.2 black     | ECG Details
+x= 598.0 y=  72.3 sz= 7.2 black     | Interpretation
+x=  45.3 y=  86.1 sz= 7.2 black     | 2
+x=  60.3 y=  88.5 sz= 7.2 black     | 1 Hour Post Dose
+x= 598.0 y=  88.5 sz= 7.2 black     | Heart Rate (bpm)
+x=  45.3 y= 102.3 sz= 7.2 black     | 3
+x=  60.3 y= 104.7 sz= 7.2 black     | 1 Hour Post Dose
+x= 598.0 y= 104.7 sz= 7.2 black     | PR Interval (msec)
+x=  45.3 y= 118.5 sz= 7.2 black     | 4
+x=  60.3 y= 120.9 sz= 7.2 black     | 1 Hour Post Dose
+x= 598.0 y= 120.9 sz= 7.2 black     | QRS Interval (msec)
+x=  45.3 y= 134.6 sz= 7.2 black     | 5
+x=  60.3 y= 137.0 sz= 7.2 black     | 1 Hour Post Dose
+x= 598.0 y= 137.0 sz= 7.2 black     | QT Interval (msec)
+x=  45.3 y= 150.8 sz= 7.2 black     | 6
+x=  60.3 y= 153.2 sz= 7.2 black     | 1 Hour Post Dose
+x= 598.0 y= 153.2 sz= 7.2 black     | QTcF Interval (msec)
+x=  45.3 y= 167.0 sz= 7.2 black     | 7
+x=  60.3 y= 169.4 sz= 7.2 black     | 2 Hours Post Dose
+x= 142.4 y= 169.4 sz= 7.2 black     | ECG Details
+x= 598.0 y= 169.4 sz= 7.2 black     | Interpretation
+x=  45.3 y= 183.2 sz= 7.2 black     | 8
+x=  60.3 y= 185.6 sz= 7.2 black     | 2 Hours Post Dose
+x= 598.0 y= 185.6 sz= 7.2 black     | Heart Rate (bpm)
+x=  45.3 y= 199.4 sz= 7.2 black     | 9
+x=  60.3 y= 201.8 sz= 7.2 black     | 2 Hours Post Dose
+x= 598.0 y= 201.8 sz= 7.2 black     | PR Interval (msec)
+x=  45.3 y= 215.6 sz= 7.2 black     | 10
+x=  60.3 y= 218.0 sz= 7.2 black     | 2 Hours Post Dose
+x= 598.0 y= 218.0 sz= 7.2 black     | QRS Interval (msec)
+x=  45.3 y= 231.8 sz= 7.2 black     | 11
+x=  60.3 y= 234.2 sz= 7.2 black     | 2 Hours Post Dose
+x= 598.0 y= 234.2 sz= 7.2 black     | QT Interval (msec)
+x=  45.3 y= 247.9 sz= 7.2 black     | 12
+x=  60.3 y= 250.3 sz= 7.2 black     | 2 Hours Post Dose
+x= 598.0 y= 250.3 sz= 7.2 black     | QTcF Interval (msec)
+x=  45.3 y= 264.1 sz= 7.2 black     | 13
+x=  60.3 y= 266.5 sz= 7.2 black     | 4 Hours Post Dose
+x= 142.4 y= 266.5 sz= 7.2 black     | ECG Details
+x= 598.0 y= 266.5 sz= 7.2 black     | Interpretation
+x=  45.3 y= 280.3 sz= 7.2 black     | 14
+x=  60.3 y= 282.7 sz= 7.2 black     | 4 Hours Post Dose
+x= 598.0 y= 282.7 sz= 7.2 black     | Heart Rate (bpm)
+x=  45.3 y= 296.5 sz= 7.2 black     | 15
+x=  60.3 y= 298.9 sz= 7.2 black     | 4 Hours Post Dose
+x= 598.0 y= 298.9 sz= 7.2 black     | PR Interval (msec)
+x=  45.3 y= 312.7 sz= 7.2 black     | 16
+x=  60.3 y= 315.1 sz= 7.2 black     | 4 Hours Post Dose
+x= 598.0 y= 315.1 sz= 7.2 black     | QRS Interval (msec)
+x=  45.3 y= 328.9 sz= 7.2 black     | 17
+x=  60.3 y= 331.3 sz= 7.2 black     | 4 Hours Post Dose
+x= 598.0 y= 331.3 sz= 7.2 black     | QT Interval (msec)
+x=  45.3 y= 345.0 sz= 7.2 black     | 18
+x=  60.3 y= 347.4 sz= 7.2 black     | 4 Hours Post Dose
+x= 598.0 y= 347.4 sz= 7.2 black     | QTcF Interval (msec)
+x=  45.3 y= 361.2 sz= 7.2 black     | 19
+x=  60.3 y= 363.6 sz= 7.2 black     | 8 Hours Post Dose
+x= 142.4 y= 363.6 sz= 7.2 black     | ECG Details
+x= 598.0 y= 363.6 sz= 7.2 black     | Interpretation
+x=  45.3 y= 377.4 sz= 7.2 black     | 20
+x=  60.3 y= 379.8 sz= 7.2 black     | 8 Hours Post Dose
+x= 598.0 y= 379.8 sz= 7.2 black     | Heart Rate (bpm)
+x=  45.3 y= 393.6 sz= 7.2 black     | 21
+x=  60.3 y= 396.0 sz= 7.2 black     | 8 Hours Post Dose
+x= 598.0 y= 396.0 sz= 7.2 black     | PR Interval (msec)
+x=  45.3 y= 409.8 sz= 7.2 black     | 22
+x=  60.3 y= 412.2 sz= 7.2 black     | 8 Hours Post Dose
+x= 598.0 y= 412.2 sz= 7.2 black     | QRS Interval (msec)
+x=  45.3 y= 426.0 sz= 7.2 black     | 23
+x=  60.3 y= 428.4 sz= 7.2 black     | 8 Hours Post Dose
+x= 598.0 y= 428.4 sz= 7.2 black     | QT Interval (msec)
+x=  45.3 y= 442.2 sz= 7.2 black     | 24
+x=  60.3 y= 444.6 sz= 7.2 black     | 8 Hours Post Dose
+x= 598.0 y= 444.6 sz= 7.2 black     | QTcF Interval (msec)
+x=  45.3 y= 458.3 sz= 7.2 black     | 25
+x=  60.3 y= 460.7 sz= 7.2 black     | 12 Hours Post Dose
+x= 142.4 y= 460.7 sz= 7.2 black     | ECG Details
+x= 598.0 y= 460.7 sz= 7.2 black     | Interpretation
+x=  45.3 y= 474.5 sz= 7.2 black     | 26
+x=  60.3 y= 476.9 sz= 7.2 black     | 12 Hours Post Dose
+x= 598.0 y= 476.9 sz= 7.2 black     | Heart Rate (bpm)
+x=  45.3 y= 490.7 sz= 7.2 black     | 27
+x=  60.3 y= 493.1 sz= 7.2 black     | 12 Hours Post Dose
+x= 598.0 y= 493.1 sz= 7.2 black     | PR Interval (msec)
+x=  45.3 y= 506.9 sz= 7.2 black     | 28
+x=  60.3 y= 509.3 sz= 7.2 black     | 12 Hours Post Dose
+x= 598.0 y= 509.3 sz= 7.2 black     | QRS Interval (msec)
+x=  45.3 y= 523.1 sz= 7.2 black     | 29
+x=  60.3 y= 525.5 sz= 7.2 black     | 12 Hours Post Dose
+x= 598.0 y= 525.5 sz= 7.2 black     | QT Interval (msec)
+x=  45.3 y= 539.3 sz= 7.2 black     | 30
+x=  60.3 y= 541.7 sz= 7.2 black     | 12 Hours Post Dose
+x= 598.0 y= 541.7 sz= 7.2 black     | QTcF Interval (msec)
+
+--- page 802 of 913 | layout family D (~336 pages) ---
+x=  33.3 y=  36.3 sz=11.4 black     | MAC186_X11_201_00001_eCRF_v1_10_form_tracker_v1_6_06Mar2025
+x=  33.3 y=  48.5 sz= 7.8 black   B | Concomitant Therapy
+x=  42.9 y=  73.9 sz=17.4 black     | Concomitant Therapy
+x= 101.6 y=  97.6 sz= 7.8 black   B | Any Concomitant Therapy
+x= 218.5 y= 100.6 sz= 7.8 black   B | Yes  [1]
+x= 218.5 y= 113.8 sz= 7.8 black     | No
+x=  56.7 y= 136.0 sz= 7.8 black   B | Therapy
+x= 170.6 y= 136.0 sz= 7.8 black   B | Indication  [3]
+x= 284.5 y= 136.0 sz= 7.8 black   B | Related to Adverse
+x= 369.0 y= 136.0 sz= 7.8 black   B | Related Adverse
+x= 455.9 y= 136.0 sz= 7.8 black   B | Related to Medical
+x= 543.4 y= 136.0 sz= 7.8 black   B | Related Medical History
+x= 648.9 y= 136.0 sz= 7.8 black   B | Start Date  [8]
+x= 712.4 y= 136.0 sz= 7.8 black   B | Ongoing
+x= 750.2 y= 136.0 sz= 7.8 black   B | End Date  [10]
+x=  56.7 y= 143.8 sz= 7.8 black   B | [2]
+x= 284.5 y= 143.8 sz= 7.8 black   B | Event  [4]
+x= 369.0 y= 143.8 sz= 7.8 black   B | Event ID  [5]
+x= 455.9 y= 143.8 sz= 7.8 black   B | History  [6]
+x= 543.4 y= 143.8 sz= 7.8 black   B | Event ID  [7]
+x= 712.4 y= 143.8 sz= 7.8 black   B | [9]
+x=  46.5 y= 157.6 sz= 7.8 black     | 1
+x= 294.6 y= 159.4 sz= 7.8 black     | Yes
+x= 466.1 y= 159.4 sz= 7.8 black     | Yes
+x= 294.6 y= 172.5 sz= 7.8 black     | No
+x= 466.1 y= 172.5 sz= 7.8 black     | No
+x=  46.5 y= 191.1 sz= 7.8 black     | More rows: 1  5  10
+
+
+# Independent title/form context
+
+These pages are TITLE/FORM CONTEXT ONLY, selected independently from the layout families because representative field pages can all be continuations. Repeated invariant text may be page chrome OR a document-wide title; changing text that persists over a run of pages may be a form/section title. Treat both as candidates, then use structural prominence and whether the text actually groups multiple fields to identify the title. Learn its position/style and carry it forward. Do not treat per-field subsection labels or technical annotations as titles.
+
+--- title-context page 61 of 913 (not a layout-family representative) ---
+x=  33.3 y=  36.3 sz=11.4 black     | MAC186_X11_201_00001_eCRF_v1_10_form_tracker_v1_6_06Mar2025
+x=  33.3 y=  48.5 sz= 7.8 black   B | Haematology
+x=  42.9 y=  73.9 sz=17.4 black     | Haematology
+x= 129.8 y=  97.6 sz= 7.8 black   B | Sample Performed
+x= 218.5 y= 100.6 sz= 7.8 black   B | Yes  [1]
+x= 218.5 y= 113.8 sz= 7.8 black     | No
+x= 114.8 y= 134.8 sz= 7.8 black   B | Reason Not Performed
+x= 316.2 y= 134.8 sz= 7.8 black   B | [2]
+x= 153.2 y= 157.0 sz= 7.8 black   B | Sample Date
+x= 265.9 y= 157.0 sz= 7.8 black   B | [3]
+x= 152.0 y= 179.1 sz= 7.8 black   B | Sample Time
+x= 244.3 y= 179.1 sz= 7.8 black   B | [4]
+x=  42.9 y= 198.9 sz= 7.8 black   B | Complete for all parameters
+
+
+--- title-context page 63 of 913 (not a layout-family representative) ---
+x=  33.3 y=  36.3 sz=11.4 black     | MAC186_X11_201_00001_eCRF_v1_10_form_tracker_v1_6_06Mar2025
+x=  41.1 y=  50.1 sz= 7.2 black   B | Variable details
+x=  80.7 y=  66.9 sz= 7.2 black   B | Name
+x= 235.3 y=  66.9 sz= 7.2 black   B | Export Name
+x= 390.0 y=  66.9 sz= 7.2 black   B | Type
+x= 506.2 y=  66.9 sz= 7.2 black   B | Max length
+x= 584.2 y=  66.9 sz= 7.2 black   B | Categories
+x=  41.1 y=  76.5 sz= 7.2 black     | [1]
+x=  80.7 y=  76.5 sz= 7.2 black     | Sample Performed
+x= 235.3 y=  76.5 sz= 7.2 black     | LBPERF
+x= 390.0 y=  76.5 sz= 7.2 black     | Categorical yes/no (dichotomous)
+x= 506.2 y=  76.5 sz= 7.2 black     | 3
+x=  41.1 y=  86.1 sz= 7.2 black     | [2]
+x=  80.7 y=  86.1 sz= 7.2 black     | Reason Not Performed
+x= 235.3 y=  86.1 sz= 7.2 black     | LBREASND
+x= 390.0 y=  86.1 sz= 7.2 black     | Text or Any Value
+x= 506.2 y=  86.1 sz= 7.2 black     | 4000
+x=  41.1 y=  95.7 sz= 7.2 black     | [3]
+x=  80.7 y=  95.7 sz= 7.2 black     | Sample Date
+x= 235.3 y=  95.7 sz= 7.2 black     | LBDAT
+x= 390.0 y=  95.7 sz= 7.2 black     | Date
+x= 506.2 y=  95.7 sz= 7.2 black     | 11
+x=  41.1 y= 105.3 sz= 7.2 black     | [4]
+x=  80.7 y= 105.3 sz= 7.2 black     | Sample Time
+x= 235.3 y= 105.3 sz= 7.2 black     | LBTIM
+x= 390.0 y= 105.3 sz= 7.2 black     | Time
+x= 506.2 y= 105.3 sz= 7.2 black     | 5
+x=  41.1 y= 114.9 sz= 7.2 black     | [5]
+x=  80.7 y= 114.9 sz= 7.2 black     | Parameter
+x= 235.3 y= 114.9 sz= 7.2 black     | LBTEST
+x= 390.0 y= 114.9 sz= 7.2 black     | Categorical select one (nominal)
+x= 506.2 y= 114.9 sz= 7.2 black     | 39
+x= 584.2 y= 114.9 sz= 7.2 black     | Basophils
+x= 584.2 y= 122.1 sz= 7.2 black     | Basophils/Leukocytes
+x= 584.2 y= 129.3 sz= 7.2 black     | Eosinophils
+x= 584.2 y= 136.4 sz= 7.2 black     | Eosinophils/Leukocytes
+x= 584.2 y= 143.6 sz= 7.2 black     | Ery. Mean Corpuscular HGB Concentration
+x= 584.2 y= 150.8 sz= 7.2 black     | Ery. Mean Corpuscular Volume
+x= 584.2 y= 158.0 sz= 7.2 black     | Erythrocyte
+x= 584.2 y= 165.2 sz= 7.2 black     | Hematocrit
+x= 584.2 y= 172.4 sz= 7.2 black     | Hemoglobin
+x= 584.2 y= 179.6 sz= 7.2 black     | Leukocytes
+x= 584.2 y= 186.8 sz= 7.2 black     | Lymphocytes
+x= 584.2 y= 194.0 sz= 7.2 black     | Lymphocytes/Leukocytes
+x= 584.2 y= 201.2 sz= 7.2 black     | Monocytes
+x= 584.2 y= 208.4 sz= 7.2 black     | Monocytes/Leukocytes
+x= 584.2 y= 215.6 sz= 7.2 black     | Neutrophils
+x= 584.2 y= 222.8 sz= 7.2 black     | Neutrophils/Leukocytes
+x= 584.2 y= 230.0 sz= 7.2 black     | Platelets
+x=  41.1 y= 239.5 sz= 7.2 black     | [6]
+x=  80.7 y= 239.5 sz= 7.2 black     | Not Done
+x= 235.3 y= 239.5 sz= 7.2 black     | LBND
+x= 390.0 y= 239.5 sz= 7.2 black     | Categorical yes/no (dichotomous)
+x= 506.2 y= 239.5 sz= 7.2 black     | 3
+x=  41.1 y= 249.1 sz= 7.2 black     | [7]
+x=  80.7 y= 249.1 sz= 7.2 black     | Reason Not Done
+x= 235.3 y= 249.1 sz= 7.2 black     | LBREASND2
+x= 390.0 y= 249.1 sz= 7.2 black     | Text or Any Value
+x= 506.2 y= 249.1 sz= 7.2 black     | 4000
+x=  41.1 y= 258.7 sz= 7.2 black     | [8]
+x=  80.7 y= 258.7 sz= 7.2 black     | Interpretation
+x= 235.3 y= 258.7 sz= 7.2 black     | LBORRES
+x= 390.0 y= 258.7 sz= 7.2 black     | Categorical select one (nominal)
+x= 506.2 y= 258.7 sz= 7.2 black     | 12
+x= 584.2 y= 258.7 sz= 7.2 black     | Normal
+x= 584.2 y= 265.9 sz= 7.2 black     | Abnormal NCS
+x= 584.2 y= 273.1 sz= 7.2 black     | Abnormal CS
+
+
+--- title-context page 64 of 913 (not a layout-family representative) ---
+x=  33.3 y=  36.3 sz=11.4 black     | MAC186_X11_201_00001_eCRF_v1_10_form_tracker_v1_6_06Mar2025
+x=  33.3 y=  48.5 sz= 7.8 black   B | Biochemistry
+x=  42.9 y=  73.9 sz=17.4 black     | Biochemistry
+x= 129.8 y=  97.6 sz= 7.8 black   B | Sample Performed
+x= 218.5 y= 100.6 sz= 7.8 black   B | Yes  [1]
+x= 218.5 y= 113.8 sz= 7.8 black     | No
+x= 114.8 y= 134.8 sz= 7.8 black   B | Reason Not Performed
+x= 316.2 y= 134.8 sz= 7.8 black   B | [2]
+x= 153.2 y= 157.0 sz= 7.8 black   B | Sample Date
+x= 265.9 y= 157.0 sz= 7.8 black   B | [3]
+x= 152.0 y= 179.1 sz= 7.8 black   B | Sample Time
+x= 244.3 y= 179.1 sz= 7.8 black   B | [4]
+x=  42.9 y= 198.9 sz= 7.8 black   B | Complete for all parameters
+x=  60.9 y= 214.5 sz= 7.8 black   B | Parameter  [5]
+x= 189.1 y= 214.5 sz= 7.8 black   B | Not Done  [6] Reason Not Done  [7]
+x= 361.2 y= 214.5 sz= 7.8 black   B | Interpretation  [8]
+x=  46.5 y= 228.3 sz= 7.8 black     | 1
+x=  64.5 y= 231.3 sz= 7.8 black     | Alanine Aminotransferase
+x=  46.5 y= 249.3 sz= 7.8 black     | 2
+x=  64.5 y= 252.3 sz= 7.8 black     | Alkaline Phosphatase
+x=  46.5 y= 270.2 sz= 7.8 black     | 3
+x=  64.5 y= 273.2 sz= 7.8 black     | Aspartate Aminotransferase
+x=  46.5 y= 291.2 sz= 7.8 black     | 4
+x=  64.5 y= 294.2 sz= 7.8 black     | Bilirubin
+x=  46.5 y= 312.2 sz= 7.8 black     | 5
+x=  64.5 y= 315.2 sz= 7.8 black     | Calcium
+x=  46.5 y= 333.2 sz= 7.8 black     | 6
+x=  64.5 y= 336.2 sz= 7.8 black     | Cholesterol
+x=  46.5 y= 354.2 sz= 7.8 black     | 7
+x=  64.5 y= 357.2 sz= 7.8 black     | Creatinine
+x=  46.5 y= 375.1 sz= 7.8 black     | 8
+x=  64.5 y= 378.1 sz= 7.8 black     | Gamma Glutamyl Transferase
+x=  46.5 y= 396.1 sz= 7.8 black     | 9
+x=  64.5 y= 399.1 sz= 7.8 black     | Glucose
+x=  46.5 y= 417.1 sz= 7.8 black     | 10
+x=  64.5 y= 420.1 sz= 7.8 black     | Lactate Dehydrogenase
+x=  46.5 y= 438.1 sz= 7.8 black     | 11
+x=  64.5 y= 441.1 sz= 7.8 black     | Potassium
+x=  46.5 y= 459.1 sz= 7.8 black     | 12
+x=  64.5 y= 462.1 sz= 7.8 black     | Protein
+x=  46.5 y= 480.0 sz= 7.8 black     | 13
+x=  64.5 y= 483.0 sz= 7.8 black     | Sodium
+x=  46.5 y= 501.0 sz= 7.8 black     | 14
+x=  64.5 y= 504.0 sz= 7.8 black     | Triglycerides
+x=  46.5 y= 522.0 sz= 7.8 black     | 15
+x=  64.5 y= 525.0 sz= 7.8 black     | Urea Nitrogen
+
+
+--- title-context page 65 of 913 (not a layout-family representative) ---
+x=  33.3 y=  36.3 sz=11.4 black     | MAC186_X11_201_00001_eCRF_v1_10_form_tracker_v1_6_06Mar2025
+x=  41.1 y=  50.1 sz= 7.2 black   B | Variable details
+x=  80.7 y=  66.9 sz= 7.2 black   B | Name
+x= 235.3 y=  66.9 sz= 7.2 black   B | Export Name
+x= 390.0 y=  66.9 sz= 7.2 black   B | Type
+x= 506.2 y=  66.9 sz= 7.2 black   B | Max length
+x= 584.2 y=  66.9 sz= 7.2 black   B | Categories
+x=  41.1 y=  76.5 sz= 7.2 black     | [1]
+x=  80.7 y=  76.5 sz= 7.2 black     | Sample Performed
+x= 235.3 y=  76.5 sz= 7.2 black     | LBPERF
+x= 390.0 y=  76.5 sz= 7.2 black     | Categorical yes/no (dichotomous)
+x= 506.2 y=  76.5 sz= 7.2 black     | 3
+x=  41.1 y=  86.1 sz= 7.2 black     | [2]
+x=  80.7 y=  86.1 sz= 7.2 black     | Reason Not Performed
+x= 235.3 y=  86.1 sz= 7.2 black     | LBREASND
+x= 390.0 y=  86.1 sz= 7.2 black     | Text or Any Value
+x= 506.2 y=  86.1 sz= 7.2 black     | 4000
+x=  41.1 y=  95.7 sz= 7.2 black     | [3]
+x=  80.7 y=  95.7 sz= 7.2 black     | Sample Date
+x= 235.3 y=  95.7 sz= 7.2 black     | LBDAT
+x= 390.0 y=  95.7 sz= 7.2 black     | Date
+x= 506.2 y=  95.7 sz= 7.2 black     | 11
+x=  41.1 y= 105.3 sz= 7.2 black     | [4]
+x=  80.7 y= 105.3 sz= 7.2 black     | Sample Time
+x= 235.3 y= 105.3 sz= 7.2 black     | LBTIM
+x= 390.0 y= 105.3 sz= 7.2 black     | Time
+x= 506.2 y= 105.3 sz= 7.2 black     | 5
+x=  41.1 y= 114.9 sz= 7.2 black     | [5]
+x=  80.7 y= 114.9 sz= 7.2 black     | Parameter
+x= 235.3 y= 114.9 sz= 7.2 black     | LBTEST
+x= 390.0 y= 114.9 sz= 7.2 black     | Categorical select one (nominal)
+x= 506.2 y= 114.9 sz= 7.2 black     | 26
+x= 584.2 y= 114.9 sz= 7.2 black     | Alanine Aminotransferase
+x= 584.2 y= 122.1 sz= 7.2 black     | Alkaline Phosphatase
+x= 584.2 y= 129.3 sz= 7.2 black     | Aspartate Aminotransferase
+x= 584.2 y= 136.4 sz= 7.2 black     | Bilirubin
+x= 584.2 y= 143.6 sz= 7.2 black     | Calcium
+x= 584.2 y= 150.8 sz= 7.2 black     | Cholesterol
+x= 584.2 y= 158.0 sz= 7.2 black     | Creatinine
+x= 584.2 y= 165.2 sz= 7.2 black     | Gamma Glutamyl Transferase
+x= 584.2 y= 172.4 sz= 7.2 black     | Glucose
+x= 584.2 y= 179.6 sz= 7.2 black     | Lactate Dehydrogenase
+x= 584.2 y= 186.8 sz= 7.2 black     | Potassium
+x= 584.2 y= 194.0 sz= 7.2 black     | Protein
+x= 584.2 y= 201.2 sz= 7.2 black     | Sodium
+x= 584.2 y= 208.4 sz= 7.2 black     | Triglycerides
+x= 584.2 y= 215.6 sz= 7.2 black     | Urea Nitrogen
+x=  41.1 y= 225.2 sz= 7.2 black     | [6]
+x=  80.7 y= 225.2 sz= 7.2 black     | Not Done
+x= 235.3 y= 225.2 sz= 7.2 black     | LBND
+x= 390.0 y= 225.2 sz= 7.2 black     | Categorical yes/no (dichotomous)
+x= 506.2 y= 225.2 sz= 7.2 black     | 3
+x=  41.1 y= 234.8 sz= 7.2 black     | [7]
+x=  80.7 y= 234.8 sz= 7.2 black     | Reason Not Done
+x= 235.3 y= 234.8 sz= 7.2 black     | LBREASND2
+x= 390.0 y= 234.8 sz= 7.2 black     | Text or Any Value
+x= 506.2 y= 234.8 sz= 7.2 black     | 4000
+x=  41.1 y= 244.3 sz= 7.2 black     | [8]
+x=  80.7 y= 244.3 sz= 7.2 black     | Interpretation
+x= 235.3 y= 244.3 sz= 7.2 black     | LBORRES
+x= 390.0 y= 244.3 sz= 7.2 black     | Categorical select one (nominal)
+x= 506.2 y= 244.3 sz= 7.2 black     | 12
+x= 584.2 y= 244.3 sz= 7.2 black     | Normal
+x= 584.2 y= 251.5 sz= 7.2 black     | Abnormal NCS
+x= 584.2 y= 258.7 sz= 7.2 black     | Abnormal CS
+
+
+--- title-context page 66 of 913 (not a layout-family representative) ---
+x=  33.3 y=  36.3 sz=11.4 black     | MAC186_X11_201_00001_eCRF_v1_10_form_tracker_v1_6_06Mar2025
+x=  33.3 y=  48.5 sz= 7.8 black   B | Coagulation
+x=  42.9 y=  73.9 sz=17.4 black     | Coagulation
+x= 129.8 y=  97.6 sz= 7.8 black   B | Sample Performed
+x= 218.5 y= 100.6 sz= 7.8 black   B | Yes  [1]
+x= 218.5 y= 113.8 sz= 7.8 black     | No
+x= 114.8 y= 134.8 sz= 7.8 black   B | Reason Not Performed
+x= 316.2 y= 134.8 sz= 7.8 black   B | [2]
+x= 153.2 y= 157.0 sz= 7.8 black   B | Sample Date
+x= 265.9 y= 157.0 sz= 7.8 black   B | [3]
+x= 152.0 y= 179.1 sz= 7.8 black   B | Sample Time
+x= 244.3 y= 179.1 sz= 7.8 black   B | [4]
+x=  42.9 y= 198.9 sz= 7.8 black   B | Complete for all parameters
+x=  56.7 y= 214.5 sz= 7.8 black   B | Parameter  [5]
+x= 174.2 y= 214.5 sz= 7.8 black   B | Not Done  [6] Reason Not Done  [7]
+x= 346.2 y= 214.5 sz= 7.8 black   B | Interpretation  [8]
+x=  46.5 y= 228.3 sz= 7.8 black     | 1
+x=  60.3 y= 231.3 sz= 7.8 black     | Prothrombin time
+x=  46.5 y= 249.3 sz= 7.8 black     | 2
+x=  60.3 y= 252.3 sz= 7.8 black     | Partial thromboplastin time
+
+
+--- title-context page 121 of 913 (not a layout-family representative) ---
+x=  33.3 y=  36.3 sz=11.4 black     | MAC186_X11_201_00001_eCRF_v1_10_form_tracker_v1_6_06Mar2025
+x=  60.9 y=  52.7 sz= 7.8 black   B | Parameter  [5]
+x= 231.7 y=  52.7 sz= 7.8 black   B | Not Done  [6] Reason Not Done  [7]
+x= 403.7 y=  52.7 sz= 7.8 black   B | Interpretation  [8]
+x=  46.5 y=  66.4 sz= 7.8 black     | 1
+x=  64.5 y=  69.4 sz= 7.8 black     | Basophils
+x=  46.5 y=  87.4 sz= 7.8 black     | 2
+x=  64.5 y=  90.4 sz= 7.8 black     | Basophils/Leukocytes
+x=  46.5 y= 108.4 sz= 7.8 black     | 3
+x=  64.5 y= 111.4 sz= 7.8 black     | Eosinophils
+x=  46.5 y= 129.4 sz= 7.8 black     | 4
+x=  64.5 y= 132.4 sz= 7.8 black     | Eosinophils/Leukocytes
+x=  46.5 y= 150.4 sz= 7.8 black     | 5
+x=  64.5 y= 153.4 sz= 7.8 black     | Ery. Mean Corpuscular HGB Concentration
+x=  46.5 y= 171.3 sz= 7.8 black     | 6
+x=  64.5 y= 174.3 sz= 7.8 black     | Ery. Mean Corpuscular Volume
+x=  46.5 y= 192.3 sz= 7.8 black     | 7
+x=  64.5 y= 195.3 sz= 7.8 black     | Erythrocyte
+x=  46.5 y= 213.3 sz= 7.8 black     | 8
+x=  64.5 y= 216.3 sz= 7.8 black     | Hematocrit
+x=  46.5 y= 234.3 sz= 7.8 black     | 9
+x=  64.5 y= 237.3 sz= 7.8 black     | Hemoglobin
+x=  46.5 y= 255.3 sz= 7.8 black     | 10
+x=  64.5 y= 258.3 sz= 7.8 black     | Leukocytes
+x=  46.5 y= 276.2 sz= 7.8 black     | 11
+x=  64.5 y= 279.2 sz= 7.8 black     | Lymphocytes
+x=  46.5 y= 297.2 sz= 7.8 black     | 12
+x=  64.5 y= 300.2 sz= 7.8 black     | Lymphocytes/Leukocytes
+x=  46.5 y= 318.2 sz= 7.8 black     | 13
+x=  64.5 y= 321.2 sz= 7.8 black     | Monocytes
+x=  46.5 y= 339.2 sz= 7.8 black     | 14
+x=  64.5 y= 342.2 sz= 7.8 black     | Monocytes/Leukocytes
+x=  46.5 y= 360.2 sz= 7.8 black     | 15
+x=  64.5 y= 363.2 sz= 7.8 black     | Neutrophils
+x=  46.5 y= 381.1 sz= 7.8 black     | 16
+x=  64.5 y= 384.1 sz= 7.8 black     | Neutrophils/Leukocytes
+x=  46.5 y= 409.3 sz= 7.8 black     | 17
+x=  64.5 y= 412.3 sz= 7.8 black     | Platelets
+

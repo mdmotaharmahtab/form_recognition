@@ -1,0 +1,8 @@
+Looking at the sample pages from cluster 0, I can see they contain only:
+- Document ID (384-201-00004)
+- Technical metadata on the right side (Description, Short Name, Mandatory?, Disallow Future Date)
+- Page footer information (Annotated CRF, page numbers, URL)
+
+These are continuation pages showing only technical annotations and metadata. They do not contain any data-entry fields (no field labels with input boxes, radio buttons, or data collection elements). The "Description", "Short Name", "Mandatory?", and "Disallow Future Date" are system metadata about fields defined on other pages, not field labels themselves.
+
+CONFIRM_NO_FIELDS

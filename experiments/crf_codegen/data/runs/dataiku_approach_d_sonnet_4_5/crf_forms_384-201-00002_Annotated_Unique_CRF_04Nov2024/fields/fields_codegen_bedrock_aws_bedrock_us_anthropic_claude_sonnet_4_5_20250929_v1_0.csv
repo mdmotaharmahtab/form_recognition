@@ -1,0 +1,788 @@
+form_name,field_name,page
+Visit Date,Was visit performed?,2
+Visit Date,"If No, please provide reason",2
+Visit Date,Visit Date,2
+Visit Date,Folder OID (auto-populated),2
+Unscheduled Visit,Vital Signs,4
+Unscheduled Visit,Vital Signs-Standing,4
+Unscheduled Visit,Body Measurements,4
+Unscheduled Visit,Physical Exam,4
+Unscheduled Visit,Neurological Examination,4
+Unscheduled Visit,12-Lead ECG Triplicate,4
+Unscheduled Visit,Central Laboratory Sample Collection Summary,4
+Unscheduled Visit,Drug Screen Test,4
+Unscheduled Visit,Pregnancy Test,4
+Unscheduled Visit,Central Laboratory - FSH,4
+Unscheduled Visit,PK Plasma Sample,4
+Unscheduled Visit,Fluid Biomarkers,4
+Unscheduled Visit,Barnes Akathisia Rating Scale,4
+Unscheduled Visit,Abnormal Involuntary Movement Scale (AIMS),4
+Unscheduled Visit,Simpson-Angus Scale (SAS),5
+Unscheduled Visit,Positive and Negative Syndrome Scale (PANSS),5
+Unscheduled Visit,Clinical Global Impression - Severity of Illness,5
+Unscheduled Visit,Drug Effects Questionnaire,5
+Unscheduled Visit,The Clinician Administered Dissociative States Scale,5
+Unscheduled Visit,Calgary Depression Scale for Schizophrenia (CDSS),5
+Unscheduled Visit,Columbia-Suicide Severity Rating Scale (C-SSRS) Since,5
+Telephone Follow-up,Was the Post Treatment Follow Up (Telephone call),8
+Telephone Follow-up,"If No, Please provide reason",8
+Telephone Follow-up,Date of scheduled follow-up phone call,8
+Telephone Follow-up,Were you able to contact the participant?,8
+Telephone Follow-up,Date of Contact/Attempt,8
+Telephone Follow-up,Contact Attempt,8
+Telephone Follow-up,Contact Method,8
+Telephone Follow-up,Specify,8
+Telephone Follow-up,Has the participant had any new or change in adverse,8
+Telephone Follow-up,Has the participant taken any medications since the last,8
+Inclusion/Exclusion Criteria Summary,Initial Informed Consent Date (auto-populated):,11
+Inclusion/Exclusion Criteria Summary,Did the participant meet all eligibility criteria?,11
+Inclusion/Exclusion Criteria,Criterion Type,13
+Inclusion/Exclusion Criteria,Criterion Identifier,13
+Demographics,Country (auto-populated),15
+Demographics,Participant Status (auto-populated),15
+Demographics,Date of Birth,15
+Demographics,Age (xxx),15
+Demographics,Sex Assigned at Birth:,15
+Demographics,Participant currently identifies as:,15
+Demographics,Ethnicity,15
+Demographics,American Indian or Alaska Native,15
+Demographics,Asian,16
+Demographics,Black or African American,16
+Demographics,Native Hawaiian or Other Pacific Islander,16
+Demographics,White,16
+Demographics,Not Reported,16
+Demographics,Unknown,16
+Demographics,Other Race,16
+Demographics,Specify Other Race,16
+Demographics,Was participant previously screened?,16
+Demographics,Previous Participant Number,16
+Childbearing Potential,Is participant of childbearing potential?,20
+Childbearing Potential,"If No, reason",20
+Childbearing Potential,"If Post-menopausal, date of last menstruation",20
+Childbearing Potential,"Other, specify",20
+Childbearing Potential,Does the Subject agree not to donate sperm or eggs,20
+Childbearing Potential,List at minimum two birth control methods used,20
+Childbearing Potential,Implantable progestogen-only hormone contraception,20
+Childbearing Potential,Intrauterine device (non hormonal),20
+Childbearing Potential,Intrauterine hormone-releasing system,20
+Childbearing Potential,Combined (estrogen- and progestogen-containing),20
+Childbearing Potential,Condom,20
+Childbearing Potential,Sponge,20
+Childbearing Potential,Occlusive cap (vaginal diaphragm or cervical/vault cap),21
+Childbearing Potential,Progestogen-only hormone,21
+Childbearing Potential,Abstinence from sexual activity with the potential for,21
+Childbearing Potential,Sterile Partner,21
+Childbearing Potential,Other,21
+Childbearing Potential,"Other, specify",21
+Childbearing Potential,Month and Year of last menstruation (auto-populated),21
+Childbearing Potential,Year of last menstruation (auto-populated),21
+Medical History Summary,Has the participant experienced any past and / or,25
+Medical History,Medical Condition or Event,27
+Medical History,Is disease/condition under control?,27
+Medical History,Start Date,27
+Medical History,Ongoing?,27
+Medical History,End Date,27
+Medical History,Start Month and Year (auto-populated),27
+Medical History,Start Year (auto-populated),27
+Medical History,End Month and Year (auto-populated),27
+Medical History,End Year (auto-populated),27
+Randomization,Was participant randomized?,29
+Randomization,Randomization Date,29
+Randomization,Randomization Time,29
+Randomization,Randomization Assignment,29
+Randomization,Randomization Number,29
+Randomization,Randomization Date for Tagging (auto-populated),29
+Body Measurements,Were vital signs performed?,31
+Body Measurements,"If No, please provide reason",31
+Body Measurements,Date,31
+Body Measurements,Time,31
+Body Measurements,Height (xxx.x),31
+Body Measurements,Weight (xxx.x),31
+Body Measurements,BMI (auto-populated),31
+Body Measurements,Waist Circumference (xxx.xx),31
+Body Measurements,Date/Time (auto-populated),31
+Vital Signs,Were vital signs performed?,33
+Vital Signs,"If No, please provide reason",33
+Vital Signs,Date,33
+Vital Signs,Respiratory Rate (xxx),33
+Vital Signs,Temperature (xxx.x),33
+Vital Signs,Time participant placed in position,33
+Vital Signs,Position,33
+Vital Signs,Time,33
+Vital Signs,Systolic Blood Pressure (xxx),33
+Vital Signs,Date/Time (auto-populated),34
+Vital Signs,BP Alert (hidden),34
+Vital Signs,HR Alert (hidden),34
+Vital Signs Log,Were vital signs performed?,37
+Vital Signs Log,"If No, please provide reason",37
+Vital Signs Log,Time Point,37
+Vital Signs Log,Date,37
+Vital Signs Log,Respiratory Rate (xxx),37
+Vital Signs Log,Temperature (xxx.x),37
+Vital Signs Log,Time participant placed in position,37
+Vital Signs Log,Position,37
+Vital Signs Log,Time,37
+Vital Signs Log,Date/Time (auto-populated),38
+Vital Signs Log,BP Alert (hidden),38
+Vital Signs Log,HR Alert (hidden),38
+Vital Signs - Standing,Were vital signs performed?,41
+Vital Signs - Standing,"If No, please provide reason",41
+Vital Signs - Standing,Date,41
+Vital Signs - Standing,Time participant placed in position,41
+Vital Signs - Standing,Position,41
+Vital Signs - Standing,Time,41
+Vital Signs - Standing,Systolic Blood Pressure (xxx),41
+Vital Signs - Standing,Diastolic Blood Pressure (xxx),41
+Vital Signs - Standing,Pulse (xxx),41
+Vital Signs - Standing,Date/Time (auto-populated),41
+Vital Signs - Standing,BP Alert (hidden),42
+Vital Signs - Standing,HR Alert (hidden),42
+Vital Signs Log - Standing,Were vital signs performed?,45
+Vital Signs Log - Standing,"If No, please provide reason",45
+Vital Signs Log - Standing,Time Point,45
+Vital Signs Log - Standing,Date,45
+Vital Signs Log - Standing,Time participant placed in position,45
+Vital Signs Log - Standing,Position,45
+Vital Signs Log - Standing,Time,45
+Vital Signs Log - Standing,Systolic Blood Pressure (xxx),45
+Vital Signs Log - Standing,Diastolic Blood Pressure (xxx),45
+Vital Signs Log - Standing,Date/Time (auto-populated),46
+Vital Signs Log - Standing,BP Alert (hidden),46
+Vital Signs Log - Standing,HR Alert (hidden),46
+Physical Examination,Was the physical examination performed?,49
+Physical Examination,"If No, provide reason not done",49
+Physical Examination,Exam Date,49
+Physical Examination,Exam Time,49
+Physical Examination,Date/Time of Physical Exam (auto-populated),49
+Physical Examination,Body System Examined,49
+Physical Examination,Examination Result,49
+Physical Examination,Description of abnormal findings,49
+Physical Examination,Clinically Significant,49
+Physical Examination: Target,Was the target physical examination performed?,53
+Physical Examination: Target,"If No, provide reason not done",53
+Physical Examination: Target,Exam Date,53
+Physical Examination: Target,Exam Time,53
+Physical Examination: Target,Date/Time of Physical Exam (auto-populated),53
+Physical Examination: Target,Body System Examined,53
+Physical Examination: Target,Examination Result,53
+Physical Examination: Target,Description of abnormal findings,53
+Physical Examination: Target,Clinically Significant,53
+Neurological Examination,Was the neurological examination performed?,57
+Neurological Examination,"If No, provide reason not done",57
+Neurological Examination,Exam Date,57
+Neurological Examination,Exam Time,57
+Neurological Examination,Date/Time of Neurological Examination (auto-populated),57
+Neurological Examination,Neurological Examination,57
+Neurological Examination,Examination Result,57
+Neurological Examination,Description of abnormal findings,57
+Neurological Examination,Clinically Significant,57
+Neurological Examination: Target,Was target neurological examination performed?,61
+Neurological Examination: Target,"If No, provide reason not done",61
+Neurological Examination: Target,Exam Date,61
+Neurological Examination: Target,Exam Time,61
+Neurological Examination: Target,Date/Time of Neurological Examination (auto-populated),61
+Neurological Examination: Target,Neurological Examination,61
+Neurological Examination: Target,Examination Result,61
+Neurological Examination: Target,Description of abnormal findings,61
+Neurological Examination: Target,Clinically Significant,61
+Sleep EEG,Was Sleep EEG measurement performed?,65
+Sleep EEG,"If No, provide reason not done.",65
+Sleep EEG,Device ID,65
+Sleep EEG,Start Date,65
+Sleep EEG,Start Time,65
+Sleep EEG,End Date,65
+Sleep EEG,End Time,65
+12-Lead ECG Triplicate,Method,67
+12-Lead ECG Triplicate,Was an ECG performed?,67
+12-Lead ECG Triplicate,"If No, please specify reason",67
+12-Lead ECG Triplicate,Date,67
+12-Lead ECG Triplicate,Position,67
+12-Lead ECG Triplicate,Interval,67
+12-Lead ECG Triplicate,Time,67
+12-Lead ECG Triplicate,Mean Heart Rate (xxx),67
+12-Lead ECG Triplicate,PR Interval (xxx.x),68
+12-Lead ECG Triplicate,ECG Interpretation,68
+12-Lead ECG Triplicate,"If Abnormal, describe",68
+12-Lead ECG Triplicate,Clinically Significant,68
+12-Lead ECG Triplicate,Date/Time (auto-populated),68
+12-Lead ECG Triplicate Log,Method,72
+12-Lead ECG Triplicate Log,Time Point,72
+12-Lead ECG Triplicate Log,Interval,72
+12-Lead ECG Triplicate Log,Was an ECG performed?,72
+12-Lead ECG Triplicate Log,"If No, please specify reason",72
+12-Lead ECG Triplicate Log,Position,72
+12-Lead ECG Triplicate Log,Date,73
+12-Lead ECG Triplicate Log,Time,73
+12-Lead ECG Triplicate Log,Date/Time (auto-populated),73
+12-Lead ECG Triplicate Log,ECG Interpretation,73
+12-Lead ECG Triplicate Log,"If Abnormal, describe",74
+12-Lead ECG Triplicate Log,Clinically Significant,74
+12-Lead ECG Triplicate - 3 Hour Postdose,Method,79
+12-Lead ECG Triplicate - 3 Hour Postdose,Was an ECG performed?,79
+12-Lead ECG Triplicate - 3 Hour Postdose,"If No, please specify reason",79
+12-Lead ECG Triplicate - 3 Hour Postdose,Date,79
+12-Lead ECG Triplicate - 3 Hour Postdose,Position,79
+12-Lead ECG Triplicate - 3 Hour Postdose,Time Point,79
+12-Lead ECG Triplicate - 3 Hour Postdose,Interval,80
+12-Lead ECG Triplicate - 3 Hour Postdose,Time,80
+12-Lead ECG Triplicate - 3 Hour Postdose,Date/Time (auto-populated),80
+12-Lead ECG Triplicate - 3 Hour Postdose,ECG Interpretation,80
+12-Lead ECG Triplicate - 3 Hour Postdose,"If Abnormal, describe",81
+12-Lead ECG Triplicate - 3 Hour Postdose,Clinically Significant,81
+Holter ECG,Was Holter ECG Time Point performed?,86
+Holter ECG,"If No, please specify reason",86
+Holter ECG,ECG Recording Start Date,86
+Holter ECG,ECG Recording Start Time,86
+Holter ECG,ECG Recording End Date,86
+Holter ECG,ECG Recording End Time,86
+Holter ECG,Method,86
+Holter ECG,Was Time Point Completed?,86
+Holter ECG,Time Point,86
+Holter ECG,Resting State Start Date,87
+Holter ECG,Resting State End Date,87
+Holter ECG,Resting State Start Date/Time (auto-populated),87
+Holter ECG,Resting State End Date/Time (auto-populated),87
+Holter ECG,Recording Start Date and Time,87
+Holter ECG,Recording End Date and Time,87
+Holter ECG - Day 14,Was Holter ECG Time Point performed?,91
+Holter ECG - Day 14,"If No, please specify reason",91
+Holter ECG - Day 14,ECG Recording Start Date,91
+Holter ECG - Day 14,ECG Recording Start Time,91
+Holter ECG - Day 14,ECG Recording End Date,91
+Holter ECG - Day 14,ECG Recording End Time,91
+Holter ECG - Day 14,Method,91
+Holter ECG - Day 14,Was Time Point Completed?,91
+Holter ECG - Day 14,Time Point,91
+Holter ECG - Day 14,Resting State Start Date,92
+Holter ECG - Day 14,Resting State End Date,92
+Holter ECG - Day 14,Resting State Start Date/Time (auto-populated),92
+Holter ECG - Day 14,Resting State End Date/Time (auto-populated),92
+Holter ECG - Day 14,Recording Start Date and Time,92
+Holter ECG - Day 14,Recording End Date and Time,92
+Holter ECG - 24 Hours Post Dose,Method,96
+Holter ECG - 24 Hours Post Dose,Time Point,96
+Holter ECG - 24 Hours Post Dose,Was Holter ECG Time Point performed?,96
+Holter ECG - 24 Hours Post Dose,"If No, please specify reason",96
+Holter ECG - 24 Hours Post Dose,Resting State Start Date,96
+Holter ECG - 24 Hours Post Dose,Resting State Start Time,96
+Holter ECG - 24 Hours Post Dose,Resting State End Date,96
+Holter ECG - 24 Hours Post Dose,Resting State End Time,96
+Holter ECG - 24 Hours Post Dose,Resting State Start Date/Time (auto-populated),97
+Holter ECG - 24 Hours Post Dose,Resting State End Date/Time (auto-populated),97
+Telemetry Summary,Was Telemetry completed?,101
+Telemetry,Start Date,103
+Telemetry,Start Time,103
+Telemetry,End Date,103
+Telemetry,End Time,103
+Telemetry,Any potential findings?,103
+Telemetry,Were these findings clinically significant?,103
+Telemetry,Was a 12-lead ECG performed to confirm the findings?,103
+Pregnancy Test,Was a pregnancy test performed?,105
+Pregnancy Test,"If No, provide reason not done",105
+Pregnancy Test,Collection Date,105
+Pregnancy Test,Collection Time,105
+Pregnancy Test,Result,105
+Pregnancy Test,Collection Date/Time (auto-populated),105
+Central Laboratory - FSH,Panel Name,107
+Central Laboratory - FSH,Sample Collected?,107
+Central Laboratory - FSH,"If No, provide reason not done",107
+Central Laboratory - FSH,Collection Date,107
+Central Laboratory - FSH,Collection Time,107
+Central Laboratory - FSH,Accession Number,107
+Central Laboratory - FSH,Collection Date/Time (auto-populated),107
+Drug Screen Test,Test Name,110
+Drug Screen Test,Sample collected?,110
+Drug Screen Test,Collection Date,110
+Drug Screen Test,Specimen Type,110
+Drug Screen Test,Result,110
+Serology and Virology,Test Name,113
+Serology and Virology,Sample collected?,113
+Serology and Virology,"If No, please provide reason",113
+Serology and Virology,Collection Date,113
+Serology and Virology,Collection Time,113
+Serology and Virology,Accession Number,113
+Serology and Virology,Collection Date/Time (auto-populated),113
+Central Laboratory,Panel Name,115
+Central Laboratory,Sample Collected?,115
+Central Laboratory,"If No, please provide reason",115
+Central Laboratory,Collection Date,115
+Central Laboratory,Collection Time,115
+Central Laboratory,Accession Number,115
+Central Laboratory,Collection Date/Time (auto-populated),115
+Pharmacogenomics,Was Pharmacogenomics sample collected?,118
+Pharmacogenomics,"If No, please provide reason",118
+Pharmacogenomics,Collection Date,118
+Pharmacogenomics,Collection Time,118
+Pharmacogenomics,Reference ID,118
+Pharmacogenomics,Collection Date/Time (auto-populated),118
+IMP Administration,Study Treatment,120
+IMP Administration,Frequency,120
+IMP Administration,Timepoint,120
+IMP Administration,Was study treatment administered?,120
+IMP Administration,Reason Not Taken,120
+IMP Administration,Start Date,120
+IMP Administration,Start Time,120
+IMP Administration,Dose,120
+IMP Administration,Units,120
+IMP Administration,Fasting,120
+IMP Administration,Dose Adjusted,121
+IMP Administration,Reason Adjusted,121
+IMP Administration,Route,121
+IMP Administration,Start Date and Time (auto-populated),121
+PK plasma Samples Log,Time Point,124
+PK plasma Samples Log,Was Sample Collected?,124
+PK plasma Samples Log,"If No, provide reason not done",124
+PK plasma Samples Log,Collection Date,124
+PK plasma Samples Log,Collection Time,124
+PK plasma Samples Log,Accession Number,124
+PK plasma Samples Log,Specimen Type,124
+PK plasma Samples Log,Collection Date/Time (auto-populated),124
+PK Plasma Samples: Predose,Time Point,127
+PK Plasma Samples: Predose,Was Sample Collected?,127
+PK Plasma Samples: Predose,"If No, provide reason not done",127
+PK Plasma Samples: Predose,Collection Date,127
+PK Plasma Samples: Predose,Collection Time,127
+PK Plasma Samples: Predose,Accession Number,127
+PK Plasma Samples: Predose,Specimen Type,127
+PK Plasma Samples: Predose,Collection Date/Time (auto-populated),127
+PK Plasma Samples: Predose - 6 Hours,Time Point,129
+PK Plasma Samples: Predose - 6 Hours,Was Sample Collected?,129
+PK Plasma Samples: Predose - 6 Hours,"If No, provide reason not done",129
+PK Plasma Samples: Predose - 6 Hours,Collection Date,129
+PK Plasma Samples: Predose - 6 Hours,Collection Time,129
+PK Plasma Samples: Predose - 6 Hours,Accession Number,129
+PK Plasma Samples: Predose - 6 Hours,Specimen Type,129
+PK Plasma Samples: Predose - 6 Hours,Collection Date/Time (auto-populated),129
+PK Plasma Samples: 24 Hours - 36 Hours,Time Point,131
+PK Plasma Samples: 24 Hours - 36 Hours,Was Sample Collected?,131
+PK Plasma Samples: 24 Hours - 36 Hours,"If No, provide reason not done",131
+PK Plasma Samples: 24 Hours - 36 Hours,Collection Date,131
+PK Plasma Samples: 24 Hours - 36 Hours,Collection Time,131
+PK Plasma Samples: 24 Hours - 36 Hours,Accession Number,131
+PK Plasma Samples: 24 Hours - 36 Hours,Specimen Type,131
+PK Plasma Samples: 24 Hours - 36 Hours,Collection Date/Time (auto-populated),131
+PK Plasma Samples: 24 Hours,Time Point,133
+PK Plasma Samples: 24 Hours,Was Sample Collected?,133
+PK Plasma Samples: 24 Hours,"If No, provide reason not done",133
+PK Plasma Samples: 24 Hours,Collection Date,133
+PK Plasma Samples: 24 Hours,Collection Time,133
+PK Plasma Samples: 24 Hours,Accession Number,133
+PK Plasma Samples: 24 Hours,Specimen Type,133
+PK Plasma Samples: 24 Hours,Collection Date/Time (auto-populated),133
+PK Plasma Samples: 48 Hours - 54 Hours,Time Point,135
+PK Plasma Samples: 48 Hours - 54 Hours,Was Sample Collected?,135
+PK Plasma Samples: 48 Hours - 54 Hours,"If No, provide reason not done",135
+PK Plasma Samples: 48 Hours - 54 Hours,Collection Date,135
+PK Plasma Samples: 48 Hours - 54 Hours,Collection Time,135
+PK Plasma Samples: 48 Hours - 54 Hours,Accession Number,135
+PK Plasma Samples: 48 Hours - 54 Hours,Specimen Type,135
+PK Plasma Samples: 48 Hours - 54 Hours,Collection Date/Time (auto-populated),135
+PK Plasma Samples: 72 Hours,Time Point,137
+PK Plasma Samples: 72 Hours,Was Sample Collected?,137
+PK Plasma Samples: 72 Hours,"If No, provide reason not done",137
+PK Plasma Samples: 72 Hours,Collection Date,137
+PK Plasma Samples: 72 Hours,Collection Time,137
+PK Plasma Samples: 72 Hours,Accession Number,137
+PK Plasma Samples: 72 Hours,Specimen Type,137
+PK Plasma Samples: 72 Hours,Collection Date/Time (auto-populated),137
+PK Plasma Samples: 96 Hours,Time Point,139
+PK Plasma Samples: 96 Hours,Was Sample Collected?,139
+PK Plasma Samples: 96 Hours,"If No, provide reason not done",139
+PK Plasma Samples: 96 Hours,Collection Date,139
+PK Plasma Samples: 96 Hours,Collection Time,139
+PK Plasma Samples: 96 Hours,Accession Number,139
+PK Plasma Samples: 96 Hours,Specimen Type,139
+PK Plasma Samples: 96 Hours,Collection Date/Time (auto-populated),139
+PK Plasma Sample,Was Sample Collected?,141
+PK Plasma Sample,"If No, provide reason not done",141
+PK Plasma Sample,Collection Date,141
+PK Plasma Sample,Collection Time,141
+PK Plasma Sample,Accession Number,141
+PK Plasma Sample,Specimen Type,141
+PK Plasma Sample,Collection Date/Time (auto-populated),141
+Fluid Biomarkers,Was Sample Collected?,143
+Fluid Biomarkers,"If No, provide reason not done",143
+Fluid Biomarkers,Collection Date,143
+Fluid Biomarkers,Collection Time,143
+Fluid Biomarkers,Accession Number,143
+Fluid Biomarkers,Collection Date/Time (auto-populated),143
+Fluid Biomarkers - 4 Hours,Time Point,145
+Fluid Biomarkers - 4 Hours,Was Sample Collected?,145
+Fluid Biomarkers - 4 Hours,"If No, provide reason not done",145
+Fluid Biomarkers - 4 Hours,Collection Date,145
+Fluid Biomarkers - 4 Hours,Collection Time,145
+Fluid Biomarkers - 4 Hours,Accession Number,145
+Fluid Biomarkers - 4 Hours,Collection Date/Time (auto-populated),145
+Fluid Biomarkers - Predose,Time Point,147
+Fluid Biomarkers - Predose,Was Sample Collected?,147
+Fluid Biomarkers - Predose,"If No, provide reason not done",147
+Fluid Biomarkers - Predose,Collection Date,147
+Fluid Biomarkers - Predose,Collection Time,147
+Fluid Biomarkers - Predose,Accession Number,147
+Fluid Biomarkers - Predose,Collection Date/Time (auto-populated),147
+MINI For Psychotic Disorders 7.0.2,Was MINI completed?,149
+MINI For Psychotic Disorders 7.0.2,Assessment Date,149
+MINI For Psychotic Disorders 7.0.2,Assessment Time,149
+MINI For Psychotic Disorders 7.0.2,Date/Time (auto-populated),149
+MINI For Psychotic Disorders 7.0.2,Modules,149
+MINI For Psychotic Disorders 7.0.2,Time Frame,149
+MINI For Psychotic Disorders 7.0.2,Meets Criteria,149
+MINI For Psychotic Disorders 7.0.2,ICD-10-CM (SUICIDALITY),150
+MINI For Psychotic Disorders 7.0.2,ICD-10-CM (HYPOMANIC EPISODE),150
+MINI For Psychotic Disorders 7.0.2,"ICD-10-CM (MEDICAL, ORGANIC, DRUG CAUSE RULED",150
+MINI For Psychotic Disorders 7.0.2,Primary Diagnosis,150
+Barnes Akathisia Rating Scale (BARS),Was Barnes Akathisia Rating Scale (BARS) assessed?,162
+Barnes Akathisia Rating Scale (BARS),Assessment Date,162
+Barnes Akathisia Rating Scale (BARS),Assessment Time,162
+Barnes Akathisia Rating Scale (BARS),Date/Time (auto-populated),162
+Barnes Akathisia Rating Scale (BARS),Distress related to restlessness,163
+Barnes Akathisia Rating Scale (BARS),Total Score,163
+Barnes Akathisia Rating Scale (BARS),Global Clinical Assessment of Akathisia,163
+Abnormal Involuntary Movement Scale (AIMS),Was Abnormal Involuntary Movement Scale (AIMS),173
+Abnormal Involuntary Movement Scale (AIMS),Assessment Date,173
+Abnormal Involuntary Movement Scale (AIMS),Assessment Time,173
+Abnormal Involuntary Movement Scale (AIMS),Date/Time (auto-populated),173
+Abnormal Involuntary Movement Scale (AIMS),Facial and Oral Movements,173
+Abnormal Involuntary Movement Scale (AIMS),2. Lips and Perioral Area,173
+Abnormal Involuntary Movement Scale (AIMS),3. Jaw,173
+Abnormal Involuntary Movement Scale (AIMS),4. Tongue,174
+Abnormal Involuntary Movement Scale (AIMS),Extremity movements,174
+Abnormal Involuntary Movement Scale (AIMS),"6. Lower (legs, knees, ankles, toes)",174
+Abnormal Involuntary Movement Scale (AIMS),Trunk movements,174
+Abnormal Involuntary Movement Scale (AIMS),Global Judgments,175
+Abnormal Involuntary Movement Scale (AIMS),9. Incapacitation due to abnormal movements,175
+Abnormal Involuntary Movement Scale (AIMS),10. Patient's awareness of abnormal movements,175
+Abnormal Involuntary Movement Scale (AIMS),Dental Status,175
+Abnormal Involuntary Movement Scale (AIMS),12. Does patient usually wear dentures?,175
+Abnormal Involuntary Movement Scale (AIMS),Total Score,175
+Simpson-Angus Scale (SAS),Was Simpson-Angus Scale (SAS) assessed?,181
+Simpson-Angus Scale (SAS),Assessment Date,181
+Simpson-Angus Scale (SAS),Assessment Time,181
+Simpson-Angus Scale (SAS),Date/Time (auto-populated),181
+Simpson-Angus Scale (SAS),1. Gait,181
+Simpson-Angus Scale (SAS),2. Arm Dropping,181
+Simpson-Angus Scale (SAS),3. Shoulder Shaking,182
+Simpson-Angus Scale (SAS),4. Elbow Rigidity,182
+Simpson-Angus Scale (SAS),5. Fixation of Position or Wrist Rigidity,182
+Simpson-Angus Scale (SAS),6. Leg Pendulousness,182
+Simpson-Angus Scale (SAS),7. Head Dropping,183
+Simpson-Angus Scale (SAS),8. Glabella Tap,183
+Simpson-Angus Scale (SAS),9. Tremor,183
+Simpson-Angus Scale (SAS),10. Salivation,184
+Simpson-Angus Scale (SAS),Total Score,184
+Positive and Negative Syndrome Scale (PANSS),Was Positive and Negative Syndrome Scale(PANSS),193
+Positive and Negative Syndrome Scale (PANSS),Assessment Date,193
+Positive and Negative Syndrome Scale (PANSS),Assessment Time,193
+Positive and Negative Syndrome Scale (PANSS),Date/Time (auto-populated),193
+Positive and Negative Syndrome Scale (PANSS),P1-Delusions,193
+Positive and Negative Syndrome Scale (PANSS),P2-Conceptual Disorganization,193
+Positive and Negative Syndrome Scale (PANSS),P3-Hallucinatory Behavior,194
+Positive and Negative Syndrome Scale (PANSS),P4-Excitement,194
+Positive and Negative Syndrome Scale (PANSS),P5-Grandiosity,194
+Positive and Negative Syndrome Scale (PANSS),P6-Suspiciousness/Persecution,194
+Positive and Negative Syndrome Scale (PANSS),P7-Hostility,195
+Positive and Negative Syndrome Scale (PANSS),N1-Blunted Affect,195
+Positive and Negative Syndrome Scale (PANSS),N2-Emotional Withdrawal,195
+Positive and Negative Syndrome Scale (PANSS),N3-Poor Rapport,195
+Positive and Negative Syndrome Scale (PANSS),N4-Passive/Apathetic Social Withdraw,196
+Positive and Negative Syndrome Scale (PANSS),N5-Difficulty in Abstract Thinking,196
+Positive and Negative Syndrome Scale (PANSS),N6-Lack of Spontaneity,196
+Positive and Negative Syndrome Scale (PANSS),N7-Stereotyped Thinking,196
+Positive and Negative Syndrome Scale (PANSS),G1-Somatic Concern,197
+Positive and Negative Syndrome Scale (PANSS),G2-Anxiety,197
+Positive and Negative Syndrome Scale (PANSS),G3-Guilt Feelings,197
+Positive and Negative Syndrome Scale (PANSS),G4-Tension,198
+Positive and Negative Syndrome Scale (PANSS),G5-Mannerisms and Posturing,198
+Positive and Negative Syndrome Scale (PANSS),G6-Depression,198
+Positive and Negative Syndrome Scale (PANSS),G7-Motor Retardation,198
+Positive and Negative Syndrome Scale (PANSS),G8-Uncooperativeness,199
+Positive and Negative Syndrome Scale (PANSS),G9-Unusual Thought Content,199
+Positive and Negative Syndrome Scale (PANSS),G10-Disorientation,199
+Positive and Negative Syndrome Scale (PANSS),G11-Poor Attention,199
+Positive and Negative Syndrome Scale (PANSS),G12-Lack of Judgment and Insight,200
+Positive and Negative Syndrome Scale (PANSS),G13-Disturbance of Volition,200
+Positive and Negative Syndrome Scale (PANSS),G14-Poor Impulse Control,200
+Positive and Negative Syndrome Scale (PANSS),G15-Preoccupation,200
+Positive and Negative Syndrome Scale (PANSS),G16-Active Social Avoidance,201
+Positive and Negative Syndrome Scale (PANSS),Total Positive Symptoms Score,201
+Positive and Negative Syndrome Scale (PANSS),Total Negative Symptoms Score,201
+Positive and Negative Syndrome Scale (PANSS),Total General Psychopathology Symptoms Score,201
+Positive and Negative Syndrome Scale (PANSS),Total Score,201
+Positive and Negative Syndrome Scale (PANSS),Composite Score (Positive Symptoms Score minus,201
+Clinical Global Impression - Severity of Illness (CGI-S),Was Clinical Global Impression - Severity of Illness,216
+Clinical Global Impression - Severity of Illness (CGI-S),Assessment Date,216
+Clinical Global Impression - Severity of Illness (CGI-S),Assessment Time,216
+Clinical Global Impression - Severity of Illness (CGI-S),Date/Time (auto-populated),216
+Clinical Global Impression - Severity of Illness (CGI-S),Severity of Illness,216
+Drug Effects Questionnaire (DEQ),Was Drug Effects Questionnaire performed?,219
+Drug Effects Questionnaire (DEQ),Date of Completion,219
+Drug Effects Questionnaire (DEQ),Time of Completion,219
+Drug Effects Questionnaire (DEQ),Date/Time (auto-populated),219
+Drug Effects Questionnaire (DEQ),Effects,219
+Drug Effects Questionnaire (DEQ),Score,219
+The Clinician Administered Dissociative States Scale (CADSS),Was Clinician Administered Dissociative States Scale,222
+The Clinician Administered Dissociative States Scale (CADSS),Assessment Date,222
+The Clinician Administered Dissociative States Scale (CADSS),Assessment Time,222
+The Clinician Administered Dissociative States Scale (CADSS),Date/Time (auto-populated),222
+The Clinician Administered Dissociative States Scale (CADSS),1. Do things seem to be moving in slow motion?,222
+The Clinician Administered Dissociative States Scale (CADSS),"2. Do things seem to be unreal to you, as if you are in a",222
+The Clinician Administered Dissociative States Scale (CADSS),3. Do you have some experience that separates you,223
+The Clinician Administered Dissociative States Scale (CADSS),4. Do you feel as if you are looking at things from,224
+The Clinician Administered Dissociative States Scale (CADSS),5. Do you feel as if you are watching the situation as an,224
+The Clinician Administered Dissociative States Scale (CADSS),6. Do you feel disconnected from your own body?,225
+The Clinician Administered Dissociative States Scale (CADSS),7. Does your sense of your own body feel changed: for,225
+The Clinician Administered Dissociative States Scale (CADSS),"8. Do people seem motionless, dead, or mechanical?",226
+The Clinician Administered Dissociative States Scale (CADSS),9. Do objects look different than you would expect?,226
+The Clinician Administered Dissociative States Scale (CADSS),10. Do colors seem to be diminished in intensity?,227
+The Clinician Administered Dissociative States Scale (CADSS),"11. Do you see things as if you were in a tunnel, or",227
+The Clinician Administered Dissociative States Scale (CADSS),"12. Does this interview [assessment, questionnaire]",228
+The Clinician Administered Dissociative States Scale (CADSS),"13. Do things seem to be happening very quickly, as if",229
+The Clinician Administered Dissociative States Scale (CADSS),14. Have there been things which have happened during,229
+The Clinician Administered Dissociative States Scale (CADSS),"15. Have you spaced out, or in some other way lost",229
+The Clinician Administered Dissociative States Scale (CADSS),16. Have sounds almost disappeared or become much,230
+The Clinician Administered Dissociative States Scale (CADSS),"17. Do things seem very real, as if there is a special",231
+The Clinician Administered Dissociative States Scale (CADSS),18. Does it seem as if you are looking at the world,231
+The Clinician Administered Dissociative States Scale (CADSS),19. Do colors seem much brighter than you would have,231
+The Clinician Administered Dissociative States Scale (CADSS),20. Do you feel confused about who you really are?,232
+The Clinician Administered Dissociative States Scale (CADSS),21. Do you feel like there are different parts of yourself,232
+The Clinician Administered Dissociative States Scale (CADSS),22. Do you have gaps in your memory?,233
+The Clinician Administered Dissociative States Scale (CADSS),23. Do you feel like you have more than one identity?,233
+The Clinician Administered Dissociative States Scale (CADSS),Total Score,234
+Calgary Depression Scale for Schizophrenia (CDSS),Was Calgary Depression Scale for Schizophrenia (CDSS),269
+Calgary Depression Scale for Schizophrenia (CDSS),Assessment Date,269
+Calgary Depression Scale for Schizophrenia (CDSS),Assessment Time,269
+Calgary Depression Scale for Schizophrenia (CDSS),Date/Time (auto-populated),269
+Calgary Depression Scale for Schizophrenia (CDSS),I. DEPRESSION,269
+Calgary Depression Scale for Schizophrenia (CDSS),II. HOPELESSNESS,269
+Calgary Depression Scale for Schizophrenia (CDSS),III. SELF DEPRECIATION,270
+Calgary Depression Scale for Schizophrenia (CDSS),IV. GUILTY IDEAS OF REFERENCE,270
+Calgary Depression Scale for Schizophrenia (CDSS),V. PATHOLOGICAL GUILT,270
+Calgary Depression Scale for Schizophrenia (CDSS),VI. MORNING DEPRESSION,271
+Calgary Depression Scale for Schizophrenia (CDSS),VII. EARLY AWAKENING,271
+Calgary Depression Scale for Schizophrenia (CDSS),VIII. SUICIDE,272
+Calgary Depression Scale for Schizophrenia (CDSS),IX. OBSERVED DEPRESSION,272
+Calgary Depression Scale for Schizophrenia (CDSS),Total Score,273
+20-Item Physician Withdrawal Checklist (PWC-20),Was the Physician Withdrawal Checklist,286
+20-Item Physician Withdrawal Checklist (PWC-20),Assessment Date,286
+20-Item Physician Withdrawal Checklist (PWC-20),Assessment Time,286
+20-Item Physician Withdrawal Checklist (PWC-20),Date/Time (auto-populated),286
+20-Item Physician Withdrawal Checklist (PWC-20),1. Loss of appetite,286
+20-Item Physician Withdrawal Checklist (PWC-20),2. Nausea - Vomiting,286
+20-Item Physician Withdrawal Checklist (PWC-20),3. Diarrhea,286
+20-Item Physician Withdrawal Checklist (PWC-20),4. Anxiety - Nervousness,286
+20-Item Physician Withdrawal Checklist (PWC-20),5. Irritability,287
+20-Item Physician Withdrawal Checklist (PWC-20),6. Dysphoric mood - Depression,287
+20-Item Physician Withdrawal Checklist (PWC-20),7. Insomnia,287
+20-Item Physician Withdrawal Checklist (PWC-20),8. Fatigue - Lethargy - Lack of Energy,287
+20-Item Physician Withdrawal Checklist (PWC-20),9. Poor coordination,287
+20-Item Physician Withdrawal Checklist (PWC-20),10. Restlessness - Agitation,287
+20-Item Physician Withdrawal Checklist (PWC-20),11. Diaphoresis,288
+20-Item Physician Withdrawal Checklist (PWC-20),12. Tremor - Tremulousness,288
+20-Item Physician Withdrawal Checklist (PWC-20),13. Dizziness - Lightheadedness,288
+20-Item Physician Withdrawal Checklist (PWC-20),14. Headaches,288
+20-Item Physician Withdrawal Checklist (PWC-20),15. Muscle aches or stiffness,288
+20-Item Physician Withdrawal Checklist (PWC-20),16. Weakness,289
+20-Item Physician Withdrawal Checklist (PWC-20),"17. Increased acuity for sound, smell, touch or pain",289
+20-Item Physician Withdrawal Checklist (PWC-20),18. Paresthesias,289
+20-Item Physician Withdrawal Checklist (PWC-20),"19. Difficulty concentrating, remembering",289
+20-Item Physician Withdrawal Checklist (PWC-20),20. Depersonalization - Derealization,289
+20-Item Physician Withdrawal Checklist (PWC-20),Total Score,289
+C-SSRS Baseline/Screening Versions Summary,Was the Columbia-Suicide Severity Rating Scale,296
+Columbia-Suicide Severity Rating Scale (C-SSRS) Baseline/Screening,Assessment Date,298
+Columbia-Suicide Severity Rating Scale (C-SSRS) Baseline/Screening,Assessment Time,298
+Columbia-Suicide Severity Rating Scale (C-SSRS) Baseline/Screening,1. Wish to be Dead - Lifetime,298
+Columbia-Suicide Severity Rating Scale (C-SSRS) Baseline/Screening,1. Wish to be Dead - Past 12 months,298
+Columbia-Suicide Severity Rating Scale (C-SSRS) Baseline/Screening,"If yes, describe:",298
+Columbia-Suicide Severity Rating Scale (C-SSRS) Baseline/Screening,2. Non-Specific Active Suicidal Thoughts - Lifetime,298
+Columbia-Suicide Severity Rating Scale (C-SSRS) Baseline/Screening,2. Non-Specific Active Suicidal Thoughts - Past 12,298
+Columbia-Suicide Severity Rating Scale (C-SSRS) Baseline/Screening,3. Active Suicidal Ideation with Any Methods (Not Plan),298
+Columbia-Suicide Severity Rating Scale (C-SSRS) Baseline/Screening,3. Active Suicidal Ideation with Any Methods (Not Plan),299
+Columbia-Suicide Severity Rating Scale (C-SSRS) Baseline/Screening,"If yes, describe:",299
+Columbia-Suicide Severity Rating Scale (C-SSRS) Baseline/Screening,"4. Active Suicidal Ideation with Some Intent to Act,",299
+Columbia-Suicide Severity Rating Scale (C-SSRS) Baseline/Screening,5. Active Suicidal Ideation with Specific Plan and Intent -,299
+Columbia-Suicide Severity Rating Scale (C-SSRS) Baseline/Screening,Most severe ideation - Lifetime,299
+Columbia-Suicide Severity Rating Scale (C-SSRS) Baseline/Screening,Description of ideation - Lifetime,300
+Columbia-Suicide Severity Rating Scale (C-SSRS) Baseline/Screening,Most severe ideation - Past 12 months,300
+Columbia-Suicide Severity Rating Scale (C-SSRS) Baseline/Screening,Description of ideation - Past 12 months,300
+Columbia-Suicide Severity Rating Scale (C-SSRS) Baseline/Screening,Frequency,300
+Columbia-Suicide Severity Rating Scale (C-SSRS) Baseline/Screening,How many times have you had these thoughts - Past 12,300
+Columbia-Suicide Severity Rating Scale (C-SSRS) Baseline/Screening,Duration,300
+Columbia-Suicide Severity Rating Scale (C-SSRS) Baseline/Screening,"When you have the thoughts, how long do they last? -",301
+Columbia-Suicide Severity Rating Scale (C-SSRS) Baseline/Screening,Controllability,301
+Columbia-Suicide Severity Rating Scale (C-SSRS) Baseline/Screening,Could/can you stop thinking about killing yourself or,301
+Columbia-Suicide Severity Rating Scale (C-SSRS) Baseline/Screening,Deterrents,302
+Columbia-Suicide Severity Rating Scale (C-SSRS) Baseline/Screening,"Are there things - anyone or anything (e.g., family,",302
+Columbia-Suicide Severity Rating Scale (C-SSRS) Baseline/Screening,Reasons for ideation,302
+Columbia-Suicide Severity Rating Scale (C-SSRS) Baseline/Screening,What sort of reasons did you have for thinking about,303
+Columbia-Suicide Severity Rating Scale (C-SSRS) Baseline/Screening,Actual Attempt,303
+Columbia-Suicide Severity Rating Scale (C-SSRS) Baseline/Screening,Total # of Attempts - Lifetime,303
+Columbia-Suicide Severity Rating Scale (C-SSRS) Baseline/Screening,Have you made a suicide attempt? - Past 12 months,304
+Columbia-Suicide Severity Rating Scale (C-SSRS) Baseline/Screening,Total # of Attempts - Past 12 months,304
+Columbia-Suicide Severity Rating Scale (C-SSRS) Baseline/Screening,"If yes, describe:",304
+Columbia-Suicide Severity Rating Scale (C-SSRS) Baseline/Screening,Has subject engaged in Non-Suicidal Self-Injurious,304
+Columbia-Suicide Severity Rating Scale (C-SSRS) Baseline/Screening,Interrupted Attempt:,304
+Columbia-Suicide Severity Rating Scale (C-SSRS) Baseline/Screening,Total # of interrupted - Lifetime,304
+Columbia-Suicide Severity Rating Scale (C-SSRS) Baseline/Screening,Has there been a time when you started to do something,304
+Columbia-Suicide Severity Rating Scale (C-SSRS) Baseline/Screening,Total # of interrupted - Past 12 months,304
+Columbia-Suicide Severity Rating Scale (C-SSRS) Baseline/Screening,Aborted Attempt:,305
+Columbia-Suicide Severity Rating Scale (C-SSRS) Baseline/Screening,Total # of aborted - Lifetime,305
+Columbia-Suicide Severity Rating Scale (C-SSRS) Baseline/Screening,Has there been a time when you started to do something,305
+Columbia-Suicide Severity Rating Scale (C-SSRS) Baseline/Screening,Total # of aborted - Past 12 months,305
+Columbia-Suicide Severity Rating Scale (C-SSRS) Baseline/Screening,"If yes, describe:",305
+Columbia-Suicide Severity Rating Scale (C-SSRS) Baseline/Screening,Preparatory Acts or Behavior:,305
+Columbia-Suicide Severity Rating Scale (C-SSRS) Baseline/Screening,Have you taken any steps towards making a suicide,305
+Columbia-Suicide Severity Rating Scale (C-SSRS) Baseline/Screening,Suicidal Behavior:,305
+Columbia-Suicide Severity Rating Scale (C-SSRS) Baseline/Screening,Suicidal behavior was present during the assessment,306
+Columbia-Suicide Severity Rating Scale (C-SSRS) Baseline/Screening,Most Recent Attempt,306
+Columbia-Suicide Severity Rating Scale (C-SSRS) Baseline/Screening,Actual Lethality/Medical Damage:,306
+Columbia-Suicide Severity Rating Scale (C-SSRS) Baseline/Screening,Potential Lethality,307
+Columbia-Suicide Severity Rating Scale (C-SSRS) Baseline/Screening,Most Lethal Attempt,307
+Columbia-Suicide Severity Rating Scale (C-SSRS) Baseline/Screening,Actual Lethality/Medical Damage:,307
+Columbia-Suicide Severity Rating Scale (C-SSRS) Baseline/Screening,Potential Lethality,308
+Columbia-Suicide Severity Rating Scale (C-SSRS) Baseline/Screening,Initial/First Attempt,309
+Columbia-Suicide Severity Rating Scale (C-SSRS) Baseline/Screening,Actual Lethality/Medical Damage:,309
+Columbia-Suicide Severity Rating Scale (C-SSRS) Baseline/Screening,Potential Lethality,310
+C-SSRS Since Last Visit Summary,Was the Columbia-Suicide Severity Rating Scale,337
+Columbia-Suicide Severity Rating Scale (C-SSRS) Since Last Visit,Assessment Date,339
+Columbia-Suicide Severity Rating Scale (C-SSRS) Since Last Visit,Assessment Time,339
+Columbia-Suicide Severity Rating Scale (C-SSRS) Since Last Visit,1. Wish to be Dead,339
+Columbia-Suicide Severity Rating Scale (C-SSRS) Since Last Visit,"If yes, describe:",339
+Columbia-Suicide Severity Rating Scale (C-SSRS) Since Last Visit,2. Non-Specific Active Suicidal Thoughts,339
+Columbia-Suicide Severity Rating Scale (C-SSRS) Since Last Visit,3. Active Suicidal Ideation with Any Methods (Not Plan),339
+Columbia-Suicide Severity Rating Scale (C-SSRS) Since Last Visit,"4. Active Suicidal Ideation with Some Intent to Act,",339
+Columbia-Suicide Severity Rating Scale (C-SSRS) Since Last Visit,5. Active Suicidal Ideation with Specific Plan and Intent,340
+Columbia-Suicide Severity Rating Scale (C-SSRS) Since Last Visit,"If yes, describe:",340
+Columbia-Suicide Severity Rating Scale (C-SSRS) Since Last Visit,Most Severe ideation,340
+Columbia-Suicide Severity Rating Scale (C-SSRS) Since Last Visit,Description of ideation,340
+Columbia-Suicide Severity Rating Scale (C-SSRS) Since Last Visit,Frequency,340
+Columbia-Suicide Severity Rating Scale (C-SSRS) Since Last Visit,Duration,340
+Columbia-Suicide Severity Rating Scale (C-SSRS) Since Last Visit,Controllability,341
+Columbia-Suicide Severity Rating Scale (C-SSRS) Since Last Visit,Deterrents,341
+Columbia-Suicide Severity Rating Scale (C-SSRS) Since Last Visit,Reasons for Ideation,341
+Columbia-Suicide Severity Rating Scale (C-SSRS) Since Last Visit,Actual Attempt:,342
+Columbia-Suicide Severity Rating Scale (C-SSRS) Since Last Visit,Total # of Attempts,342
+Columbia-Suicide Severity Rating Scale (C-SSRS) Since Last Visit,"If yes, describe:",342
+Columbia-Suicide Severity Rating Scale (C-SSRS) Since Last Visit,Has subject engaged in Non-Suicidal Self-Injurious,342
+Columbia-Suicide Severity Rating Scale (C-SSRS) Since Last Visit,Interrupted Attempt:,342
+Columbia-Suicide Severity Rating Scale (C-SSRS) Since Last Visit,Total # of interrupted,342
+Columbia-Suicide Severity Rating Scale (C-SSRS) Since Last Visit,Aborted Attempt:,342
+Columbia-Suicide Severity Rating Scale (C-SSRS) Since Last Visit,Total # of aborted,342
+Columbia-Suicide Severity Rating Scale (C-SSRS) Since Last Visit,"If yes, describe:",343
+Columbia-Suicide Severity Rating Scale (C-SSRS) Since Last Visit,Preparatory Acts or Behavior:,343
+Columbia-Suicide Severity Rating Scale (C-SSRS) Since Last Visit,Suicidal Behavior:,343
+Columbia-Suicide Severity Rating Scale (C-SSRS) Since Last Visit,Suicide:,343
+Columbia-Suicide Severity Rating Scale (C-SSRS) Since Last Visit,Most Lethal Attempt,343
+Columbia-Suicide Severity Rating Scale (C-SSRS) Since Last Visit,Actual Lethality/Medical Damage:,343
+Columbia-Suicide Severity Rating Scale (C-SSRS) Since Last Visit,Potential Lethality,344
+Check-in Repeated?,Was Check-in visit repeated?,357
+Screening Status,Was participant a screen failure?,359
+Screening Status,Screen Failure Date,359
+Screening Status,Primary reason for screen failure,359
+Screening Status,Specify reason for screen failure,359
+Screening Status,Specify PRIMARY Adverse Event,359
+Screening Status,Did participant complete washout?,359
+Screening Status,Was the washout completed in clinic?,359
+Screening Status,Number of days in clinic,359
+Screening Status,Screen Failure Date for Tagging (auto-populated),359
+End of Treatment,Date of last dose of study medication (permanent study,363
+End of Treatment,Did participant complete treatment?,363
+End of Treatment,Reason for discontinuation of treatment,363
+End of Treatment,Specify,363
+End of Treatment,Specify PRIMARY Adverse Event,363
+End of Treatment,Was Washout completed?,363
+End of Treatment,Date of last dose of study medication Month and Year,363
+End of Treatment,Date of last dose of study medication Year,364
+Adverse Events Summary,Did the participant experience any adverse events during,368
+Adverse Events,Adverse Event,370
+Adverse Events,Start Date,370
+Adverse Events,Start Time,370
+Adverse Events,Ongoing?,370
+Adverse Events,End Date,370
+Adverse Events,End Time,370
+Adverse Events,Severity,370
+Adverse Events,Was the adverse event serious?,370
+Adverse Events,Death,370
+Adverse Events,Life Threatening,370
+Adverse Events,Hospitalization (initial or prolonged),371
+Adverse Events,Date of Admission,371
+Adverse Events,Date of Discharge,371
+Adverse Events,Disability or Permanent Damage,371
+Adverse Events,Congenital Anomaly or Birth Defect,371
+Adverse Events,Other Medically Important Serious Event,371
+Adverse Events,Relationship to Study Treatment,371
+Adverse Events,Action Taken with Study Treatment,371
+Adverse Events,Was concomitant or additional treatment given?,371
+Adverse Events,Were any other actions taken in response to this adverse,371
+Adverse Events,Other Action Taken,372
+Adverse Events,Outcome,372
+Adverse Events,Did the adverse event cause the participant to be,372
+Adverse Events,Start Date/Time (auto-populated),372
+Adverse Events,End Date/Time (auto-populated),372
+Prior & Concomitant Medication/Therapy Summary,Were any medications/therapies taken?,377
+Prior & Concomitant Medication/Therapy,Medication/Therapy,379
+Prior & Concomitant Medication/Therapy,Start Date,379
+Prior & Concomitant Medication/Therapy,Ongoing,379
+Prior & Concomitant Medication/Therapy,End Date,379
+Prior & Concomitant Medication/Therapy,Dose (xxxxx.xxxxx),379
+Prior & Concomitant Medication/Therapy,Unit,379
+Prior & Concomitant Medication/Therapy,"If Unit is Other, specify",379
+Prior & Concomitant Medication/Therapy,Dose Form,379
+Prior & Concomitant Medication/Therapy,"If Dose Form is Other, specify",380
+Prior & Concomitant Medication/Therapy,Frequency,380
+Prior & Concomitant Medication/Therapy,"If Frequency is Other, specify",380
+Prior & Concomitant Medication/Therapy,Route,380
+Prior & Concomitant Medication/Therapy,"If Route is Other, specify",380
+Prior & Concomitant Medication/Therapy,Indication,380
+Prior & Concomitant Medication/Therapy,Related Indication,380
+Prior & Concomitant Medication/Therapy,"If Other, specify",381
+Prior & Concomitant Medication/Therapy,Start Month and Year (auto-populated),381
+Prior & Concomitant Medication/Therapy,Start Year (auto-populated),381
+Prior & Concomitant Medication/Therapy,End Month and Year (auto-populated),381
+Prior & Concomitant Medication/Therapy,End Year (auto-populated),381
+Procedures Summary,"Were any surgical, therapeutic, or diagnostic procedures",386
+Procedures,Procedure Name,388
+Procedures,Procedure Date,388
+Procedures,Indication,388
+Study Completion/ Early Termination,End of Study Date,390
+Study Completion/ Early Termination,Did participant complete the study?,390
+Study Completion/ Early Termination,Reason for discontinuation of study,390
+Study Completion/ Early Termination,Specify,390
+Study Completion/ Early Termination,Specify PRIMARY Adverse Event,390
+Study Completion/ Early Termination,Study Completion/Early Termination Month and Year,390
+Study Completion/ Early Termination,Study Completion/Early Termination Year,390
+Study Completion/ Early Termination,Date of Study Completion for Tagging (auto-populated),390
+Study Completion/ Early Termination,Date of Early Termination for Tagging (auto-populated),391
+Death Details,Were any death detail assessments collected?,395
+Death Details,Collection Date,395
+Death Details,Death Date,395
+Death Details,Primary cause of death,395
+Death Details,Was an autopsy performed?,395
+Subject Consent Status,Document Date,397
+Subject Consent Status,Version Number,397
+Subject Consent Status,Patient Signature (UTC),397
+Subject Consent Status,Counter Signature (UTC),397
+Subject Consent Status,Consent Status,397
+Subject Consent Status,Initial Informed Consent (UTC),397
+Consent Document Status,Document,399
+Consent Document Status,Document Date,399
+Consent Document Status,Version Number,399
+Consent Document Status,Patient Signature (UTC),399
+Consent Document Status,Counter Signature (UTC),399
+Consent Document Status,Investigator Signature (UTC),399
+Consent Document Status,Witness Signature (UTC),399
+Consent Document Status,Consent Status,399
+Subject Consent Status - Paper Consent,Document Date,401
+Subject Consent Status - Paper Consent,Version Number,401
+Subject Consent Status - Paper Consent,Patient Signature,401
+Subject Consent Status - Paper Consent,Counter Signature,401
+Subject Consent Status - Paper Consent,Consent Status,401
+Subject Consent Status - Paper Consent,Initial Informed Consent (Paper),401
+Consent Document Status - Paper Consent,Document,403
+Consent Document Status - Paper Consent,"If Other, specify:",403
+Consent Document Status - Paper Consent,Document Date,403
+Consent Document Status - Paper Consent,Version Number,403
+Consent Document Status - Paper Consent,Consent Status,403
+Consent Document Status - Paper Consent,Patient Signature,403
+Consent Document Status - Paper Consent,Counter Signature,403
+Consent Document Status - Paper Consent,Investigator Signature,403
+Consent Document Status - Paper Consent,Witness Signature,403

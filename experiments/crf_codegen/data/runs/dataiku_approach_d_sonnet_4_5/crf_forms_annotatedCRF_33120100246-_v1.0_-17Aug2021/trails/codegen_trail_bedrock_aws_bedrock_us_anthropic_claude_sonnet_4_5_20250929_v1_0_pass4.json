@@ -1,0 +1,547 @@
+{
+ "stop_reason": "budget",
+ "versions": 5,
+ "best_version": 4,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "confirm",
+   "metrics": {
+    "engine": "codegen",
+    "records": 117,
+    "pages_total": 52,
+    "pages_with_fields": 9,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 2,
+    "fields_per_form": 58.5,
+    "forms_per_100_pages": 3.8,
+    "form_same_page_evidence_records": 117,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 17
+   },
+   "problems": [],
+   "outcome": "extended_program"
+  },
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 117,
+    "pages_total": 52,
+    "pages_with_fields": 9,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 2,
+    "fields_per_form": 58.5,
+    "forms_per_100_pages": 3.8,
+    "form_same_page_evidence_records": 117,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 17
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    0,
+    "not_audited",
+    0,
+    -9
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "confirm_extension",
+   "metrics": {
+    "engine": "codegen",
+    "records": 117,
+    "pages_total": 52,
+    "pages_with_fields": 9,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 2,
+    "fields_per_form": 58.5,
+    "forms_per_100_pages": 3.8,
+    "form_same_page_evidence_records": 117,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 17
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 32,
+   "audit_pages": [
+    9,
+    133,
+    142,
+    168,
+    252,
+    422
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 9,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 133,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 142,
+     "missed": [],
+     "false": [
+      "\\0.\\ No physical damage or very minor physical damage (e.g. surface scratches) \\1.\\ Minor physical damage (e.g. lethargic speech, first-degree burns, mild bleeding,",
+      "sprains) \\2.\\ Moderate physical damage; medical attention needed (e.g. conscious but sleepy; somewhat responsive, second-degree burns; bleeding of major vessel \\3.\\",
+      "Moderately severe physical damage; medical hospitalization and likely intensive care",
+      "required (e.g. comatose with reflexes intact; third-degree burns less than 20% of",
+      "body; extensive blood loss but can recover, major fractures) \\4.\\ Severe physical",
+      "damage; medical hospitalization with intensive care required (e.g. comatose without",
+      "reflexes; third-degree burns over 20% of the body; extensive blood loss with unstable vital signs; major damage to a vital area \\5.\\ Death",
+      "Likely lethality of actual attempt if no medical damage (the following examples, while having no actual medical damage, has potential for very serious lethality; put gun in",
+      "mouth and pulled the trigger but gun fails to fire so no medical damage; laying on train tracks with oncoming train but pulled away before run over).",
+      "\\0.\\ Behavior not likely to result in injury \\1.\\ Behavior like to result in injury but not likely to cause death \\2.\\ Behavior likely to result in death despite available medical care"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 168,
+     "missed": [],
+     "false": [
+      "\\0.\\ No physical damage or very minor physical damage (e.g. surface scratches) \\1.\\ Minor physical damage (e.g. lethargic speech, first-degree burns, mild bleeding,",
+      "sprains) \\2.\\ Moderate physical damage; medical attention needed (e.g. conscious but sleepy; somewhat responsive, second-degree burns; bleeding of major vessel \\3.\\",
+      "Moderately severe physical damage; medical hospitalization and likely intensive care",
+      "required (e.g. comatose with reflexes intact; third-degree burns less than 20% of",
+      "body; extensive blood loss but can recover, major fractures) \\4.\\ Severe physical",
+      "damage; medical hospitalization with intensive care required (e.g. comatose without",
+      "reflexes; third-degree burns over 20% of the body; extensive blood loss with unstable vital signs; major damage to a vital area \\5.\\ Death",
+      "Likely lethality of actual attempt if no medical damage (the following examples, while having no actual medical damage, has potential for very serious lethality; put gun in",
+      "mouth and pulled the trigger but gun fails to fire so no medical damage; laying on train tracks with oncoming train but pulled away before run over).",
+      "\\0.\\ Behavior not likely to result in injury \\1.\\ Behavior like to result in injury but not likely to cause death \\2.\\ Behavior likely to result in death despite available medical care"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 252,
+     "missed": [
+      "3. Active suicidal ideation with any methods (not plan) without intent to act",
+      "If Yes, describe",
+      "4. Active suicidal ideation with some intent to act, without specific plan",
+      "If Yes, describe",
+      "5. Active suicidal ideation with specific plan and intent",
+      "If Yes, describe"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 422,
+     "missed": [
+      "3. Active suicidal ideation with any methods (not plan) without intent to act",
+      "If Yes, describe",
+      "4. Active suicidal ideation with some intent to act, without specific plan",
+      "If Yes, describe",
+      "5. Active suicidal ideation with specific plan and intent",
+      "If Yes, describe"
+     ],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    32,
+    0,
+    -9
+   ],
+   "became_best": true
+  },
+  {
+   "version": 3,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 18,
+    "pages_total": 52,
+    "pages_with_fields": 9,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 2,
+    "fields_per_form": 9.0,
+    "forms_per_100_pages": 3.8,
+    "form_same_page_evidence_records": 18,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 17
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 21,
+   "audit_pages": [
+    9,
+    133,
+    138,
+    142,
+    168,
+    203,
+    252,
+    422
+   ],
+   "audit_partial": null,
+   "audit_promoted": [
+    203
+   ],
+   "audit_verdicts": [
+    {
+     "page": 9,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 133,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 138,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 142,
+     "missed": [
+      "Date of Attempt",
+      "Actual Lethality/Medical Damage:"
+     ],
+     "false": [
+      "Likely lethality of actual attempt if no medical damage (the following examples, while having no actual medical damage, has potential for very serious lethality; put gun in"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 168,
+     "missed": [
+      "Date of Attempt",
+      "Actual Lethality/Medical Damage:"
+     ],
+     "false": [
+      "Likely lethality of actual attempt if no medical damage (the following examples, while having no actual medical damage, has potential for very serious lethality; put gun in"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 203,
+     "missed": [
+      "Date of Attempt",
+      "Actual Lethality/Medical Damage:"
+     ],
+     "false": [
+      "Likely lethality of actual attempt if no medical damage (the following examples, while having no actual medical damage, has potential for very serious lethality; put gun in"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 252,
+     "missed": [
+      "3. Active suicidal ideation with any methods (not plan) without intent to act",
+      "If Yes, describe",
+      "4. Active suicidal ideation with some intent to act, without specific plan",
+      "If Yes, describe",
+      "5. Active suicidal ideation with specific plan and intent",
+      "If Yes, describe"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 422,
+     "missed": [
+      "3. Active suicidal ideation with any methods (not plan) without intent to act",
+      "If Yes, describe",
+      "4. Active suicidal ideation with some intent to act, without specific plan",
+      "If Yes, describe",
+      "5. Active suicidal ideation with specific plan and intent",
+      "If Yes, describe"
+     ],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    21,
+    0,
+    -9
+   ],
+   "became_best": true
+  },
+  {
+   "version": 4,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 18,
+    "pages_total": 52,
+    "pages_with_fields": 9,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 2,
+    "fields_per_form": 9.0,
+    "forms_per_100_pages": 3.8,
+    "form_same_page_evidence_records": 18,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 17
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 16,
+   "audit_pages": [
+    9,
+    133,
+    142,
+    168,
+    203,
+    252,
+    259,
+    422
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 9,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 133,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 142,
+     "missed": [
+      "Date of Attempt"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 168,
+     "missed": [
+      "Date of Attempt"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 203,
+     "missed": [
+      "Date of Attempt"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 252,
+     "missed": [
+      "3. Active suicidal ideation with any methods (not plan) without intent to act",
+      "If Yes, describe",
+      "4. Active suicidal ideation with some intent to act, without specific plan",
+      "If Yes, describe",
+      "5. Active suicidal ideation with specific plan and intent",
+      "If Yes, describe"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 259,
+     "missed": [
+      "Date of Attempt"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 422,
+     "missed": [
+      "3. Active suicidal ideation with any methods (not plan) without intent to act",
+      "If Yes, describe",
+      "4. Active suicidal ideation with some intent to act, without specific plan",
+      "If Yes, describe",
+      "5. Active suicidal ideation with specific plan and intent",
+      "If Yes, describe"
+     ],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    16,
+    0,
+    -9
+   ],
+   "became_best": true
+  },
+  {
+   "version": 5,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 18,
+    "pages_total": 52,
+    "pages_with_fields": 9,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 2,
+    "fields_per_form": 9.0,
+    "forms_per_100_pages": 3.8,
+    "form_same_page_evidence_records": 18,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 17
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 15,
+   "audit_pages": [
+    9,
+    10,
+    133,
+    142,
+    168,
+    203,
+    252,
+    422
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 9,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 10,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 133,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 142,
+     "missed": [
+      "Date of Attempt"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 168,
+     "missed": [
+      "Date of Attempt"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 203,
+     "missed": [
+      "Date of Attempt"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 252,
+     "missed": [
+      "3. Active suicidal ideation with any methods (not plan) without intent to act",
+      "If Yes, describe",
+      "4. Active suicidal ideation with some intent to act, without specific plan",
+      "If Yes, describe",
+      "5. Active suicidal ideation with specific plan and intent",
+      "If Yes, describe"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 422,
+     "missed": [
+      "3. Active suicidal ideation with any methods (not plan) without intent to act",
+      "If Yes, describe",
+      "4. Active suicidal ideation with some intent to act, without specific plan",
+      "If Yes, describe",
+      "5. Active suicidal ideation with specific plan and intent",
+      "If Yes, describe"
+     ],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    15,
+    0,
+    -9
+   ],
+   "became_best": false
+  }
+ ]
+}

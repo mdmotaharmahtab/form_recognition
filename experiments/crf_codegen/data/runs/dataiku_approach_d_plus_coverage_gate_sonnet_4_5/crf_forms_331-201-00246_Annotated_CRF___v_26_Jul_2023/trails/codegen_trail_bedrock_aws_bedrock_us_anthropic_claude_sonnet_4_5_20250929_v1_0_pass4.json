@@ -1,0 +1,373 @@
+{
+ "stop_reason": "converged",
+ "versions": 3,
+ "best_version": 3,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "confirm",
+   "outcome": "confirmed_no_fields"
+  },
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 22,
+    "pages_total": 28,
+    "pages_with_fields": 4,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 0,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 0,
+    "fields_per_form": 22.0,
+    "forms_per_100_pages": 0.0,
+    "form_same_page_evidence_records": 0,
+    "form_same_page_persistence_pct": null,
+    "furniture_candidates": [],
+    "pages_covered_pct": 14,
+    "content_pages": 28,
+    "content_covered_pct": 14,
+    "uncovered_content_pct": 86
+   },
+   "problems": [],
+   "warnings": [
+    "form_name empty for 100% of records - if the document does print form/section names, fix the form_name strategy (consider carrying the last seen title forward)."
+   ],
+   "audit_issues": 2,
+   "audit_pages": [
+    11,
+    42,
+    46,
+    251,
+    778,
+    949
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 11,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 42,
+     "missed": [
+      "Vasectomy"
+     ],
+     "false": [
+      "Of Childbearing Potential"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 46,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 251,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 778,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 949,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    2,
+    1,
+    -4
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 144,
+    "pages_total": 28,
+    "pages_with_fields": 10,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 55,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 5,
+    "fields_per_form": 28.8,
+    "forms_per_100_pages": 17.9,
+    "form_same_page_evidence_records": 144,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 36,
+    "content_pages": 28,
+    "content_covered_pct": 36,
+    "uncovered_content_pct": 64
+   },
+   "problems": [],
+   "warnings": [
+    "Only 55% of field_name values look like human labels (they look like codes/dates/junk) - fix label selection.",
+    "The program filters by 12 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": 61,
+   "audit_pages": [
+    11,
+    12,
+    42,
+    46,
+    251,
+    778,
+    923,
+    949
+   ],
+   "audit_partial": null,
+   "audit_promoted": [
+    12
+   ],
+   "audit_verdicts": [
+    {
+     "page": 11,
+     "missed": [],
+     "false": [
+      "0.1",
+      "Initial draft",
+      "0.1.1",
+      "updates to unique pages",
+      "0.1.2",
+      "0.1.3",
+      "0.1.4",
+      "0.1.5",
+      "0.1.6",
+      "dru Giucal",
+      "0.1.7",
+      "0.2",
+      "built full schedule",
+      "0.2.1",
+      "0.2.2",
+      "0.2.3",
+      "0.2.4",
+      "updates to full schedule",
+      "0.2.5",
+      "0.2.6",
+      "0.2.7",
+      "0.3"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 12,
+     "missed": [],
+     "false": [
+      "0.3",
+      "updates according to feedback sheet",
+      "dru Giucal",
+      "0.4",
+      "deploy to UAT 2",
+      "0.5",
+      "updated informed_consent_group on Trial tab",
+      "0.6",
+      "fixes for integration",
+      "0.7",
+      "deploy to UAT 3",
+      "0.8",
+      "deploy to UAT 4",
+      "ru Giucal",
+      "0.9",
+      "0.10",
+      "0.11",
+      "0.12",
+      "0.13",
+      "implemented client feedback",
+      "1.0",
+      "deployment to live",
+      "1.1",
+      "applied changes according to CRP",
+      "u Giucal",
+      "1.2",
+      "updated answer options for variable DSDIS3 per clie nt requirement",
+      "2.0",
+      "Deploy v2.0 to live",
+      "2.1",
+      "2.2",
+      "updated error message per last POE doc",
+      "2.3",
+      "- removed checks sv_10 to sv_13 - removed Water Re striction End page from Day-1 and Day 18",
+      "2.4",
+      "added new Water Restriction End Prompt page in Da y-1 and Day 18",
+      "2.5",
+      "added new procedure instructions on Water Restrictio"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 42,
+     "missed": [
+      "Vasectomy"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 46,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 251,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 778,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 923,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 949,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    61,
+    2,
+    -10
+   ],
+   "became_best": false
+  },
+  {
+   "version": 3,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 23,
+    "pages_total": 28,
+    "pages_with_fields": 4,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 2,
+    "fields_per_form": 11.5,
+    "forms_per_100_pages": 7.1,
+    "form_same_page_evidence_records": 23,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 14,
+    "content_pages": 28,
+    "content_covered_pct": 14,
+    "uncovered_content_pct": 86
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 0,
+   "audit_pages": [
+    11,
+    12,
+    13,
+    42,
+    46,
+    251,
+    778,
+    949
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 11,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 12,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 13,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 42,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 46,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 251,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 778,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 949,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    0,
+    0,
+    -4
+   ],
+   "became_best": true
+  }
+ ]
+}

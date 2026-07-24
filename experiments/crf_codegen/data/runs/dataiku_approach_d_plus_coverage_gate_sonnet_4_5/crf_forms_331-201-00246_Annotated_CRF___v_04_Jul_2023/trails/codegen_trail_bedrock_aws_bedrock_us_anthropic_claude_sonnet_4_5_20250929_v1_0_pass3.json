@@ -1,0 +1,428 @@
+{
+ "stop_reason": "plateau",
+ "versions": 4,
+ "best_version": 2,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "confirm",
+   "metrics": {
+    "engine": "codegen",
+    "records": 552,
+    "pages_total": 51,
+    "pages_with_fields": 51,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 96,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 10,
+    "fields_per_form": 55.2,
+    "forms_per_100_pages": 19.6,
+    "form_same_page_evidence_records": 552,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 100,
+    "content_pages": 51,
+    "content_covered_pct": 100,
+    "uncovered_content_pct": 0
+   },
+   "problems": [],
+   "outcome": "extended_program"
+  },
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 492,
+    "pages_total": 51,
+    "pages_with_fields": 42,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 96,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 10,
+    "fields_per_form": 49.2,
+    "forms_per_100_pages": 19.6,
+    "form_same_page_evidence_records": 492,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 82,
+    "content_pages": 51,
+    "content_covered_pct": 82,
+    "uncovered_content_pct": 18
+   },
+   "problems": [],
+   "warnings": [
+    "The program filters by 25 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    0,
+    "not_audited",
+    1,
+    -42
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "confirm_extension",
+   "metrics": {
+    "engine": "codegen",
+    "records": 552,
+    "pages_total": 51,
+    "pages_with_fields": 51,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 96,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 10,
+    "fields_per_form": 55.2,
+    "forms_per_100_pages": 19.6,
+    "form_same_page_evidence_records": 552,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 100,
+    "content_pages": 51,
+    "content_covered_pct": 100,
+    "uncovered_content_pct": 0
+   },
+   "problems": [],
+   "warnings": [
+    "The program filters by 21 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": 30,
+   "audit_pages": [
+    15,
+    16,
+    109,
+    250,
+    259,
+    672
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 15,
+     "missed": [],
+     "false": [
+      "Schedule",
+      "Screen Visit 1 Day -55 to -16",
+      "page enrols if SEX = Fe male on Demography pa",
+      "page enrols if SEX = Mal e on Demography page",
+      "page enrols if SEX = Fe male on Demography pa ge and if RPPOSMEN= Yes on Reproductive Stat"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 16,
+     "missed": [],
+     "false": [
+      "us - Female page",
+      "page enrols if SEX = Fe male on Demography pa",
+      "page enrols if Protocol V ersion = Original/Amend ment 1",
+      "page enrols if Protocol V ersion = Amendment 2",
+      "page enrols if Protocol V ersion = Amendment 2, t his has EXCL25 with sel ectable \"N/A\""
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 109,
+     "missed": [],
+     "false": [
+      "Baseline/Screening Version",
+      "Version 1/14/09",
+      "Disclaimer:",
+      "This scale is intended to be used by individuals who have received training in its administration. The questions contained in the Columbia-Suicide Severity Rating Scale are suggested probes. Ultimately, the determination of the presence of suicidal ideation or behavior depends on the judgment of the individual administering the scale."
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 250,
+     "missed": [],
+     "false": [
+      "Since Last Visit",
+      "Version 1/14/09",
+      "Disclaimer:",
+      "This scale is intended to be used by individuals who have received training in its administration. The questions contained in the Columbia-Suicide Severity Rating Scale are suggested probes. Ultimately, the determination of the presence of suicidal ideation or behavior depends on the judgment of the individual administering the scale."
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 259,
+     "missed": [],
+     "false": [
+      "Intensity of Ideation",
+      "Since Last Visit",
+      "[TYPE: enumeration (values: (1) Easily able to control thoughts, (2) Can control thoughts with little difficulty, (3) Can control thoughts with some difficulty, (4) Can control thoughts with a lot of difficulty, (5) Unable to control thoughts, (0) Does not attempt to control thoughts)]",
+      "Deterrents",
+      "Are there things - anyone or anything - that stopped you from wanting to die or acting on thoughts of committing",
+      "suicide?",
+      "suicide",
+      "[TYPE: enumeration (values: (1) Deterrents definitely stopped you from"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 672,
+     "missed": [],
+     "false": [
+      "Since Last Visit",
+      "Version 1/14/09",
+      "Disclaimer:",
+      "This scale is intended to be used by individuals who have received training in its administration. The questions contained in the Columbia-Suicide Severity Rating Scale are suggested probes. Ultimately, the determination of the presence of suicidal ideation or behavior depends on the judgment of the individual administering the scale."
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    30,
+    1,
+    -51
+   ],
+   "became_best": true
+  },
+  {
+   "version": 3,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 124,
+    "pages_total": 51,
+    "pages_with_fields": 43,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 10,
+    "fields_per_form": 12.4,
+    "forms_per_100_pages": 19.6,
+    "form_same_page_evidence_records": 106,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 84,
+    "content_pages": 51,
+    "content_covered_pct": 84,
+    "uncovered_content_pct": 16
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 22,
+   "audit_pages": [
+    15,
+    16,
+    18,
+    109,
+    250,
+    259,
+    320,
+    672
+   ],
+   "audit_partial": null,
+   "audit_promoted": [
+    320
+   ],
+   "audit_verdicts": [
+    {
+     "page": 15,
+     "missed": [],
+     "false": [
+      "Schedule"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 16,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 18,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 109,
+     "missed": [],
+     "false": [
+      "Baseline/Screening Version",
+      "Version 1/14/09",
+      "Disclaimer:",
+      "ideation or behavior depends on the judgment of the individual administering the scale."
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 250,
+     "missed": [],
+     "false": [
+      "Since Last Visit",
+      "Version 1/14/09",
+      "Disclaimer:",
+      "ideation or behavior depends on the judgment of the individual administering the scale."
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 259,
+     "missed": [],
+     "false": [],
+     "wrong_form": [
+      "Intensity of Ideation",
+      "Could/can you stop thinking about killing yourself or wanting to die if you want to?",
+      "Row 6",
+      "Deterrents",
+      "Are there things - anyone or anything - that stopped you from wanting to die or acting on thoughts of committing suicide?"
+     ]
+    },
+    {
+     "page": 320,
+     "missed": [],
+     "false": [
+      "Since Last Visit",
+      "Version 1/14/09",
+      "Disclaimer:",
+      "ideation or behavior depends on the judgment of the individual administering the scale."
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 672,
+     "missed": [],
+     "false": [
+      "Since Last Visit",
+      "Version 1/14/09",
+      "Disclaimer:",
+      "ideation or behavior depends on the judgment of the individual administering the scale."
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    22,
+    0,
+    -43
+   ],
+   "became_best": false
+  },
+  {
+   "version": 4,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 81,
+    "pages_total": 51,
+    "pages_with_fields": 36,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 9,
+    "fields_per_form": 9.0,
+    "forms_per_100_pages": 17.6,
+    "form_same_page_evidence_records": 58,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 71,
+    "content_pages": 51,
+    "content_covered_pct": 71,
+    "uncovered_content_pct": 29
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 0,
+   "audit_pages": [
+    15,
+    16,
+    17,
+    109,
+    250,
+    259,
+    320,
+    672
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 15,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 16,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 17,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 109,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 250,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 259,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 320,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 672,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    0,
+    0,
+    -36
+   ],
+   "became_best": false
+  }
+ ]
+}

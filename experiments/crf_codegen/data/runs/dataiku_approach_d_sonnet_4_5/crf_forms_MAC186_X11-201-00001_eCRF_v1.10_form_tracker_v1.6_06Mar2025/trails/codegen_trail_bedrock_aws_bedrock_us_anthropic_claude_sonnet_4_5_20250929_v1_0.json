@@ -1,0 +1,1958 @@
+{
+ "multipass": 3,
+ "stop_reason": "p1:plateau;p2:budget;p3:plateau",
+ "versions": 15,
+ "best_version": null,
+ "passes": [
+  {
+   "pass": 1,
+   "clusters": [
+    0,
+    1,
+    6
+   ],
+   "status": "ok_audit_issues",
+   "stop_reason": "plateau",
+   "versions": 4,
+   "best_version": 2,
+   "fields": 1620
+  },
+  {
+   "pass": 2,
+   "clusters": [
+    2,
+    3,
+    4
+   ],
+   "status": "ok_audit_issues",
+   "stop_reason": "budget",
+   "versions": 6,
+   "best_version": 5,
+   "fields": 1239
+  },
+  {
+   "pass": 3,
+   "clusters": [
+    5,
+    7,
+    8
+   ],
+   "status": "ok_audit_issues",
+   "stop_reason": "plateau",
+   "versions": 5,
+   "best_version": 3,
+   "fields": 92
+  }
+ ],
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "confirm",
+   "outcome": "confirmed_no_fields",
+   "pass": 1
+  },
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 1303,
+    "pages_total": 741,
+    "pages_with_fields": 333,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 96,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 53,
+    "fields_per_form": 24.6,
+    "forms_per_100_pages": 7.2,
+    "form_same_page_evidence_records": 1244,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 45
+   },
+   "problems": [],
+   "warnings": [
+    "The program filters by 11 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": 6,
+   "audit_pages": [
+    1,
+    2,
+    8,
+    134,
+    187,
+    374,
+    465,
+    552,
+    734
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [
+      "Informed Consent Obtained",
+      "Subject Previously Screened"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 8,
+     "missed": [
+      "All Eligibility Criteria Met",
+      "If Eligibility Criteria Not Met, Please Specify Which Criteria"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 134,
+     "missed": [
+      "Sleep EEG Performed"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 187,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 374,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 465,
+     "missed": [
+      "Sample Performed"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 552,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 734,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    6,
+    1,
+    -333
+   ],
+   "became_best": true,
+   "pass": 1
+  },
+  {
+   "version": 2,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 1620,
+    "pages_total": 741,
+    "pages_with_fields": 333,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 96,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 55,
+    "fields_per_form": 29.5,
+    "forms_per_100_pages": 7.4,
+    "form_same_page_evidence_records": 1555,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 45
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 6,
+   "audit_pages": [
+    1,
+    2,
+    3,
+    8,
+    10,
+    80,
+    134,
+    187,
+    374,
+    465,
+    552,
+    734
+   ],
+   "audit_partial": null,
+   "audit_promoted": [
+    10
+   ],
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [
+      "Informed Consent Obtained",
+      "Subject Previously Screened"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 3,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 8,
+     "missed": [
+      "All Eligibility Criteria Met"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 10,
+     "missed": [
+      "Relevant Medical History"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 80,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 134,
+     "missed": [
+      "Sleep EEG Performed"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 187,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 374,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 465,
+     "missed": [
+      "Sample Performed"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 552,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 734,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    6,
+    0,
+    -333
+   ],
+   "became_best": true,
+   "pass": 1
+  },
+  {
+   "version": 3,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 1619,
+    "pages_total": 741,
+    "pages_with_fields": 333,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 96,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 55,
+    "fields_per_form": 29.4,
+    "forms_per_100_pages": 7.4,
+    "form_same_page_evidence_records": 1554,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 45
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 6,
+   "audit_pages": [
+    1,
+    2,
+    5,
+    8,
+    10,
+    134,
+    159,
+    187,
+    374,
+    465,
+    552,
+    734
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [
+      "Informed Consent Obtained",
+      "Subject Previously Screened"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 5,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 8,
+     "missed": [
+      "All Eligibility Criteria Met"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 10,
+     "missed": [
+      "Relevant Medical History"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 134,
+     "missed": [
+      "Sleep EEG Performed"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 159,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 187,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 374,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 465,
+     "missed": [
+      "Sample Performed"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 552,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 734,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    6,
+    0,
+    -333
+   ],
+   "became_best": false,
+   "pass": 1
+  },
+  {
+   "version": 4,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 5385,
+    "pages_total": 741,
+    "pages_with_fields": 720,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 99,
+    "labels_look_human_pct": 91,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 56,
+    "fields_per_form": 96.2,
+    "forms_per_100_pages": 7.6,
+    "form_same_page_evidence_records": 5304,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [
+     "Reason Not Performed"
+    ],
+    "pages_covered_pct": 97
+   },
+   "problems": [],
+   "warnings": [
+    "These field_name values were extracted on >=70% of ALL pages: 'Reason Not Performed'. Text recurring on nearly every page is usually page template furniture (watermark/footer/stamp), not a field - verify against the page dumps and stop extracting it unless it is genuinely a per-page data-entry field."
+   ],
+   "audit_issues": 31,
+   "audit_pages": [
+    1,
+    2,
+    8,
+    10,
+    134,
+    136,
+    187,
+    374,
+    465,
+    552,
+    734,
+    806
+   ],
+   "audit_partial": null,
+   "audit_promoted": [
+    806
+   ],
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [
+      "Informed Consent Obtained",
+      "Subject Previously Screened"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 8,
+     "missed": [
+      "All Eligibility Criteria Met"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 10,
+     "missed": [
+      "Relevant Medical History"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 134,
+     "missed": [
+      "Sleep EEG Performed"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 136,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 187,
+     "missed": [],
+     "false": [],
+     "wrong_form": [
+      "Subjective Drug Intensity (SDI)  - Day 1",
+      "Reason Not Performed",
+      "Time Point",
+      "Not Done",
+      "Reason Not Done",
+      "Date",
+      "Time",
+      "Test",
+      "Results"
+     ]
+    },
+    {
+     "page": 374,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 465,
+     "missed": [
+      "Sample Performed"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 552,
+     "missed": [],
+     "false": [],
+     "wrong_form": [
+      "Sample Performed",
+      "Reason Not Performed",
+      "Sample Date",
+      "Sample Time",
+      "DOA TEST",
+      "Result",
+      "Comments (If Positive)"
+     ]
+    },
+    {
+     "page": 734,
+     "missed": [],
+     "false": [],
+     "wrong_form": [
+      "Sample Performed",
+      "Reason Not Performed",
+      "Sample Date",
+      "Sample Time",
+      "Parameter",
+      "Not Done",
+      "Reason Not Done",
+      "Interpretation"
+     ]
+    },
+    {
+     "page": 806,
+     "missed": [
+      "Any Protocol Deviations"
+     ],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    31,
+    1,
+    -720
+   ],
+   "became_best": false,
+   "pass": 1
+  },
+  {
+   "version": 1,
+   "kind": "confirm",
+   "metrics": {
+    "engine": "codegen",
+    "records": 385,
+    "pages_total": 131,
+    "pages_with_fields": 81,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 23,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 12,
+    "fields_per_form": 32.1,
+    "forms_per_100_pages": 9.2,
+    "form_same_page_evidence_records": 51,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 62
+   },
+   "problems": [],
+   "outcome": "extended_program",
+   "pass": 2
+  },
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 385,
+    "pages_total": 131,
+    "pages_with_fields": 81,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 23,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 12,
+    "fields_per_form": 32.1,
+    "forms_per_100_pages": 9.2,
+    "form_same_page_evidence_records": 51,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 62
+   },
+   "problems": [],
+   "warnings": [
+    "form_name empty for 77% of records - if the document does print form/section names, fix the form_name strategy (consider carrying the last seen title forward)."
+   ],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    0,
+    "not_audited",
+    1,
+    -81
+   ],
+   "became_best": true,
+   "pass": 2
+  },
+  {
+   "version": 2,
+   "kind": "confirm_extension",
+   "metrics": {
+    "engine": "codegen",
+    "records": 385,
+    "pages_total": 131,
+    "pages_with_fields": 81,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 23,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 12,
+    "fields_per_form": 32.1,
+    "forms_per_100_pages": 9.2,
+    "form_same_page_evidence_records": 51,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 62
+   },
+   "problems": [],
+   "warnings": [
+    "form_name empty for 77% of records - if the document does print form/section names, fix the form_name strategy (consider carrying the last seen title forward)."
+   ],
+   "audit_issues": 66,
+   "audit_pages": [
+    16,
+    34,
+    53,
+    62,
+    495,
+    510
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 16,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 34,
+     "missed": [
+      "MGH Assessment Performed",
+      "Reason Not Performed",
+      "MGH Assessment Date",
+      "MGH Assessment Time",
+      "Rater Initials",
+      "Medication Type",
+      "Medication, Minimally adequate dose level, Minimal dose at optional level",
+      "Taken during THIS current episode",
+      "Minimally adequate dose",
+      "Minimal dose at optimal level",
+      "Scale for % Improvement"
+     ],
+     "false": [
+      "Tricyclic Antidepressants Tricyclic Antidepressants",
+      "Monoamine Oxidase Inhibitors (MAOIs) Monoamine Oxidase Inhibitors (MAOIs)"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 53,
+     "missed": [
+      "Vital Signs Performed",
+      "Reason Not Performed",
+      "Repetition Number",
+      "Details",
+      "Location",
+      "Position",
+      "Other, Please Specify",
+      "Vital Signs Date",
+      "Position Time",
+      "Vital Signs Time",
+      "Not Done",
+      "Test",
+      "Result",
+      "Interpretation",
+      "Reason Not Done"
+     ],
+     "false": [
+      "Vital Signs Details Vital Signs Details"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 62,
+     "missed": [
+      "Parameter",
+      "Not Done",
+      "Reason Not Done",
+      "Interpretation"
+     ],
+     "false": [
+      "Basophils Basophils",
+      "Basophils/Leukocytes Basophils/Leukocytes",
+      "Eosinophils Eosinophils",
+      "Eosinophils/Leukocytes Eosinophils/Leukocytes",
+      "Ery. Mean Corpuscular HGB Concentration Ery. Mean Corpuscular HGB Concentration",
+      "Ery. Mean Corpuscular Volume Ery. Mean Corpuscular Volume",
+      "Erythrocyte Erythrocyte",
+      "Hematocrit Hematocrit",
+      "Hemoglobin Hemoglobin",
+      "Leukocytes Leukocytes",
+      "Lymphocytes Lymphocytes",
+      "Lymphocytes/Leukocytes Lymphocytes/Leukocytes",
+      "Monocytes Monocytes",
+      "Monocytes/Leukocytes Monocytes/Leukocytes",
+      "Neutrophils Neutrophils",
+      "Neutrophils/Leukocytes Neutrophils/Leukocytes",
+      "Platelets Platelets"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 495,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 510,
+     "missed": [
+      "Vital Signs Performed",
+      "Reason Not Performed",
+      "Repetition Number",
+      "Details",
+      "Location",
+      "Position",
+      "Other, Please Specify",
+      "Vital Signs Date",
+      "Position Time",
+      "Vital Signs Time",
+      "Not Done",
+      "Test",
+      "Result",
+      "Interpretation",
+      "Reason Not Done"
+     ],
+     "false": [
+      "Vital Signs Details Vital Signs Details"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    66,
+    1,
+    -81
+   ],
+   "became_best": true,
+   "pass": 2
+  },
+  {
+   "version": 3,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 1614,
+    "pages_total": 131,
+    "pages_with_fields": 103,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 82,
+    "labels_look_human_pct": 99,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 18,
+    "fields_per_form": 89.7,
+    "forms_per_100_pages": 13.7,
+    "form_same_page_evidence_records": 1325,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 79
+   },
+   "problems": [],
+   "warnings": [
+    "The program filters by 10 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": 40,
+   "audit_pages": [
+    16,
+    34,
+    46,
+    53,
+    62,
+    167,
+    495,
+    510
+   ],
+   "audit_partial": null,
+   "audit_promoted": [
+    167
+   ],
+   "audit_verdicts": [
+    {
+     "page": 16,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 34,
+     "missed": [
+      "Medication Type"
+     ],
+     "false": [
+      "Yes No",
+      "Medication, Minimally adequate dose level, Minimal",
+      "Taken during THIS",
+      "Minimally",
+      "Minimal dose at",
+      "Scale for %",
+      "dose at optional level",
+      "current episode",
+      "adequate dose",
+      "optimal level",
+      "Improvement"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 46,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 53,
+     "missed": [
+      "Repetition Number"
+     ],
+     "false": [
+      "Yes No"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 62,
+     "missed": [
+      "Basophils",
+      "Basophils/Leukocytes",
+      "Eosinophils"
+     ],
+     "false": [
+      "Parameter",
+      "Not Done Reason Not Done",
+      "Interpretation"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 167,
+     "missed": [
+      "Timepoint",
+      "Eye",
+      "Repeat",
+      "Not Done",
+      "Reason Not Done",
+      "Pupillometry Date",
+      "Position Rest Time",
+      "Pupillometry Start Time",
+      "Readings downloaded onto a spreadsheet via Bluetooth from the pupilometer device.",
+      "Reviewed, signed and dated by a physician",
+      "Reason not review, signed and dated",
+      "PLR diameter init",
+      "PLR MAX constriction velocity",
+      "PLR dilation velocity",
+      "PLR T75",
+      "Pupil Area (Calculated)",
+      "ACA (Calculated)",
+      "Dilation Velocity at T75 (Calculated)"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 495,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 510,
+     "missed": [
+      "Repetition Number"
+     ],
+     "false": [
+      "Yes No"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    40,
+    1,
+    -103
+   ],
+   "became_best": true,
+   "pass": 2
+  },
+  {
+   "version": 4,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 1316,
+    "pages_total": 131,
+    "pages_with_fields": 103,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 75,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 18,
+    "fields_per_form": 73.1,
+    "forms_per_100_pages": 13.7,
+    "form_same_page_evidence_records": 993,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 79
+   },
+   "problems": [],
+   "warnings": [
+    "The program filters by 13 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": 64,
+   "audit_pages": [
+    16,
+    34,
+    53,
+    59,
+    62,
+    167,
+    495,
+    510
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 16,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 34,
+     "missed": [
+      "Minimally adequate dose",
+      "Minimal dose at optimal level",
+      "Scale for % Improvement"
+     ],
+     "false": [
+      "Yes No",
+      "Medication, Minimally adequate dose level, Minimal",
+      "Taken during THIS",
+      "dose at optional level",
+      "current episode"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 53,
+     "missed": [
+      "Repetition Number",
+      "Test",
+      "Result",
+      "Interpretation",
+      "Reason Not Done"
+     ],
+     "false": [
+      "Yes No"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 59,
+     "missed": [
+      "PLR diameter init",
+      "PLR MAX constriction velocity",
+      "PLR dilation velocity",
+      "PLR T75",
+      "Pupil Area (Calculated)",
+      "ACA (Calculated)",
+      "Dilation Velocity at T75 (Calculated)"
+     ],
+     "false": [
+      "Pupillometry - Single Time Point",
+      "Yes No",
+      "Not",
+      "Pupillometry",
+      "Position",
+      "Readings downloaded onto a",
+      "Reviewed, signed",
+      "Reason not review, signed",
+      "Done",
+      "Date",
+      "Rest Time",
+      "Start Time",
+      "spreadsheet via Bluetooth from the",
+      "and dated by a",
+      "and dated",
+      "pupilometer device.",
+      "physician"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 62,
+     "missed": [
+      "Interpretation"
+     ],
+     "false": [
+      "Parameter",
+      "Not Done Reason Not Done",
+      "Basophils",
+      "Basophils/Leukocytes",
+      "Eosinophils",
+      "Eosinophils/Leukocytes",
+      "Ery. Mean Corpuscular HGB Concentration",
+      "Ery. Mean Corpuscular Volume",
+      "Erythrocyte",
+      "Hematocrit",
+      "Hemoglobin",
+      "Leukocytes",
+      "Lymphocytes",
+      "Lymphocytes/Leukocytes",
+      "Monocytes",
+      "Monocytes/Leukocytes",
+      "Neutrophils",
+      "Neutrophils/Leukocytes",
+      "Platelets"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 167,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 495,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 510,
+     "missed": [
+      "Repetition Number",
+      "Test",
+      "Result",
+      "Interpretation",
+      "Reason Not Done"
+     ],
+     "false": [
+      "Yes No"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    64,
+    1,
+    -103
+   ],
+   "became_best": false,
+   "pass": 2
+  },
+  {
+   "version": 5,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 1239,
+    "pages_total": 131,
+    "pages_with_fields": 103,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 74,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 18,
+    "fields_per_form": 68.8,
+    "forms_per_100_pages": 13.7,
+    "form_same_page_evidence_records": 916,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 79
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 39,
+   "audit_pages": [
+    16,
+    17,
+    34,
+    53,
+    62,
+    167,
+    495,
+    510
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 16,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 17,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 34,
+     "missed": [
+      "Taken during THIS current episode",
+      "Minimally adequate dose",
+      "Minimal dose at optimal level",
+      "Scale for % Improvement"
+     ],
+     "false": [
+      "Yes No",
+      "Medication, Minimally adequate dose level, Minimal",
+      "dose at optional level"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 53,
+     "missed": [
+      "Not Done",
+      "Test",
+      "Result",
+      "Interpretation",
+      "Reason Not Done"
+     ],
+     "false": [
+      "Yes No"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 62,
+     "missed": [
+      "Interpretation"
+     ],
+     "false": [
+      "Parameter",
+      "Not Done Reason Not Done",
+      "Basophils",
+      "Basophils/Leukocytes",
+      "Eosinophils",
+      "Eosinophils/Leukocytes",
+      "Ery. Mean Corpuscular HGB Concentration",
+      "Ery. Mean Corpuscular Volume",
+      "Erythrocyte",
+      "Hematocrit",
+      "Hemoglobin",
+      "Leukocytes",
+      "Lymphocytes",
+      "Lymphocytes/Leukocytes",
+      "Monocytes",
+      "Monocytes/Leukocytes",
+      "Neutrophils",
+      "Neutrophils/Leukocytes",
+      "Platelets"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 167,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 495,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 510,
+     "missed": [
+      "Not Done",
+      "Test",
+      "Result",
+      "Interpretation",
+      "Reason Not Done"
+     ],
+     "false": [
+      "Yes No"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    39,
+    0,
+    -103
+   ],
+   "became_best": true,
+   "pass": 2
+  },
+  {
+   "version": 6,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 1239,
+    "pages_total": 131,
+    "pages_with_fields": 103,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 74,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 18,
+    "fields_per_form": 68.8,
+    "forms_per_100_pages": 13.7,
+    "form_same_page_evidence_records": 916,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 79
+   },
+   "problems": [],
+   "warnings": [
+    "The program filters by 29 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": 51,
+   "audit_pages": [
+    16,
+    34,
+    53,
+    55,
+    62,
+    167,
+    495,
+    510
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 16,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 34,
+     "missed": [
+      "Taken during THIS current episode",
+      "Minimally adequate dose",
+      "Minimal dose at optimal level",
+      "Scale for % Improvement"
+     ],
+     "false": [
+      "Yes No",
+      "Medication, Minimally adequate dose level, Minimal",
+      "dose at optional level"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 53,
+     "missed": [
+      "Repetition Number",
+      "Not Done",
+      "Test",
+      "Result",
+      "Interpretation",
+      "Reason Not Done"
+     ],
+     "false": [
+      "Yes No"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 55,
+     "missed": [
+      "Repetition Number",
+      "ECG Time",
+      "Interpretation",
+      "Interpretation Comment",
+      "Not Done",
+      "Test",
+      "Result",
+      "Reason Not Done"
+     ],
+     "false": [
+      "12-Lead ECG - Single Time Point",
+      "Yes No"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 62,
+     "missed": [
+      "Interpretation"
+     ],
+     "false": [
+      "Parameter",
+      "Not Done Reason Not Done",
+      "Basophils",
+      "Basophils/Leukocytes",
+      "Eosinophils",
+      "Eosinophils/Leukocytes",
+      "Ery. Mean Corpuscular HGB Concentration",
+      "Ery. Mean Corpuscular Volume",
+      "Erythrocyte",
+      "Hematocrit",
+      "Hemoglobin",
+      "Leukocytes",
+      "Lymphocytes",
+      "Lymphocytes/Leukocytes",
+      "Monocytes",
+      "Monocytes/Leukocytes",
+      "Neutrophils",
+      "Neutrophils/Leukocytes",
+      "Platelets"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 167,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 495,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 510,
+     "missed": [
+      "Repetition Number",
+      "Not Done",
+      "Test",
+      "Result",
+      "Interpretation",
+      "Reason Not Done"
+     ],
+     "false": [
+      "Yes No"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    51,
+    1,
+    -103
+   ],
+   "became_best": false,
+   "pass": 2
+  },
+  {
+   "version": 1,
+   "kind": "confirm",
+   "metrics": {
+    "engine": "codegen",
+    "records": 92,
+    "pages_total": 41,
+    "pages_with_fields": 28,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 66,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 5,
+    "fields_per_form": 18.4,
+    "forms_per_100_pages": 12.2,
+    "form_same_page_evidence_records": 45,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 68
+   },
+   "problems": [],
+   "outcome": "extended_program",
+   "pass": 3
+  },
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 46,
+    "pages_total": 41,
+    "pages_with_fields": 9,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 98,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 4,
+    "fields_per_form": 11.5,
+    "forms_per_100_pages": 9.8,
+    "form_same_page_evidence_records": 45,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 22
+   },
+   "problems": [],
+   "warnings": [
+    "The program filters by 15 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    0,
+    "not_audited",
+    1,
+    -9
+   ],
+   "became_best": true,
+   "pass": 3
+  },
+  {
+   "version": 2,
+   "kind": "confirm_extension",
+   "metrics": {
+    "engine": "codegen",
+    "records": 92,
+    "pages_total": 41,
+    "pages_with_fields": 28,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 66,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 5,
+    "fields_per_form": 18.4,
+    "forms_per_100_pages": 12.2,
+    "form_same_page_evidence_records": 45,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 68
+   },
+   "problems": [],
+   "warnings": [
+    "form_name empty for 34% of records - if the document does print form/section names, fix the form_name strategy (consider carrying the last seen title forward).",
+    "The program filters by 14 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": 14,
+   "audit_pages": [
+    4,
+    25,
+    35,
+    154,
+    206,
+    451
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 4,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 25,
+     "missed": [],
+     "false": [],
+     "wrong_form": [
+      "15. Hypochondriasis",
+      "16. Loss of Weight (Rate either a OR b)",
+      "17. Insight",
+      "Total Score"
+     ]
+    },
+    {
+     "page": 35,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 154,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 206,
+     "missed": [],
+     "false": [],
+     "wrong_form": [
+      "17. I felt my heart beating irregularly or skipping beats",
+      "18. Pressure or weight in my chest or abdomen",
+      "19. I experienced a decreased sense of sanity",
+      "20. I felt as if I was dead or dying",
+      "21. Panic",
+      "22. Experience of antagonism toward people around me",
+      "23. Despair",
+      "24. I felt isolated from everything and everyone",
+      "25. Emotional and/or physical suffering",
+      "26. I felt frightened"
+     ]
+    },
+    {
+     "page": 451,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    14,
+    2,
+    -28
+   ],
+   "became_best": true,
+   "pass": 3
+  },
+  {
+   "version": 3,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 92,
+    "pages_total": 41,
+    "pages_with_fields": 28,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 66,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 5,
+    "fields_per_form": 18.4,
+    "forms_per_100_pages": 12.2,
+    "form_same_page_evidence_records": 45,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 68
+   },
+   "problems": [],
+   "warnings": [
+    "form_name empty for 34% of records - if the document does print form/section names, fix the form_name strategy (consider carrying the last seen title forward)."
+   ],
+   "audit_issues": 5,
+   "audit_pages": [
+    4,
+    25,
+    35,
+    36,
+    81,
+    154,
+    206,
+    451
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 4,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 25,
+     "missed": [],
+     "false": [],
+     "wrong_form": [
+      "14. Genital Symptoms",
+      "15. Hypochondriasis",
+      "16. Loss of Weight (Rate either a OR b)",
+      "17. Insight",
+      "Total Score"
+     ]
+    },
+    {
+     "page": 35,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 36,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 81,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 154,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 206,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 451,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    5,
+    1,
+    -28
+   ],
+   "became_best": true,
+   "pass": 3
+  },
+  {
+   "version": 4,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 92,
+    "pages_total": 41,
+    "pages_with_fields": 28,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 66,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 5,
+    "fields_per_form": 18.4,
+    "forms_per_100_pages": 12.2,
+    "form_same_page_evidence_records": 45,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 68
+   },
+   "problems": [],
+   "warnings": [
+    "form_name empty for 34% of records - if the document does print form/section names, fix the form_name strategy (consider carrying the last seen title forward)."
+   ],
+   "audit_issues": 15,
+   "audit_pages": [
+    4,
+    25,
+    35,
+    142,
+    154,
+    164,
+    206,
+    451
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 4,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 25,
+     "missed": [],
+     "false": [],
+     "wrong_form": [
+      "14. Genital Symptoms",
+      "15. Hypochondriasis",
+      "16. Loss of Weight (Rate either a OR b)",
+      "17. Insight",
+      "Total Score"
+     ]
+    },
+    {
+     "page": 35,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 142,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 154,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 164,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 206,
+     "missed": [],
+     "false": [],
+     "wrong_form": [
+      "17. I felt my heart beating irregularly or skipping beats",
+      "18. Pressure or weight in my chest or abdomen",
+      "19. I experienced a decreased sense of sanity",
+      "20. I felt as if I was dead or dying",
+      "21. Panic",
+      "22. Experience of antagonism toward people around me",
+      "23. Despair",
+      "24. I felt isolated from everything and everyone",
+      "25. Emotional and/or physical suffering",
+      "26. I felt frightened"
+     ]
+    },
+    {
+     "page": 451,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    15,
+    1,
+    -28
+   ],
+   "became_best": false,
+   "pass": 3
+  },
+  {
+   "version": 5,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 134,
+    "pages_total": 41,
+    "pages_with_fields": 33,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 12,
+    "fields_per_form": 11.2,
+    "forms_per_100_pages": 29.3,
+    "form_same_page_evidence_records": 114,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 80
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 12,
+   "audit_pages": [
+    4,
+    25,
+    35,
+    154,
+    186,
+    206,
+    209,
+    451
+   ],
+   "audit_partial": null,
+   "audit_promoted": [
+    209
+   ],
+   "audit_verdicts": [
+    {
+     "page": 4,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 25,
+     "missed": [
+      "14. Genital Symptoms",
+      "15. Hypochondriasis",
+      "16. Loss of Weight (Rate either a OR b)",
+      "17. Insight",
+      "Total Score"
+     ],
+     "false": [],
+     "wrong_form": [
+      "[19]"
+     ]
+    },
+    {
+     "page": 35,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 154,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 186,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 206,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 209,
+     "missed": [
+      "15. I worry too much over something that really doesn't matter",
+      "16. I lack self-confidence",
+      "17. I feel secure",
+      "18. I feel inadequate",
+      "19. I am a steady person",
+      "20. I get in a state of tension or turmoil as I think over my recent concerns and interests"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 451,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    12,
+    0,
+    -33
+   ],
+   "became_best": false,
+   "pass": 3
+  }
+ ]
+}

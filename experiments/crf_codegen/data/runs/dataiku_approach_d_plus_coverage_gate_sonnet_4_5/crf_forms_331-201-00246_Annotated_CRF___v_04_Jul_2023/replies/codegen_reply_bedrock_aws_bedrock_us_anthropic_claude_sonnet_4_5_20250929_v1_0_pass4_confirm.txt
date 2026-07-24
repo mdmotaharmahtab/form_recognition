@@ -1,0 +1,9 @@
+Looking at the sample pages:
+
+**Page 480 & 776 (cluster 0)**: These are copyright/attribution pages with only definitions text and copyright notice. They contain NO data-entry fields - just attribution text for the C-SSRS scale. The current program correctly skips these via the copyright detection logic.
+
+**Page 13 (cluster 3)**: This is a "Change History" / version control table with columns: Version, Date, Changed By, Details. This is document metadata, NOT a data-entry form. These are administrative records about the CRF document itself, not clinical data fields.
+
+All three sample pages are genuinely field-free - they contain no data-entry fields for clinical data collection. The zero coverage on these clusters is correct.
+
+CONFIRM_NO_FIELDS

@@ -42,7 +42,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 # pipeline modules (common.py etc.) live in the sibling src/pipeline/ package
 sys.path.insert(0, os.path.join(os.path.dirname(HERE), "pipeline"))
 
-from common import CRF_DIR, OUT_DIR, PROJECT_ROOT, art, doc_key  # noqa: E402
+from common import BASE, CRF_DIR, OUT_DIR, PROJECT_ROOT, art, doc_key  # noqa: E402
 
 PROTO = PROJECT_ROOT                              # structured project root
 CORPUS = CRF_DIR                                  # shared input corpus (repo root)
@@ -205,20 +205,37 @@ RUNS = [
         "summary": "cli_induction_summary_gpt_5_2.json",
     },
     {
-        "name": "sonnet-dataiku",
-        "label": "Claude Sonnet 4.5 (Dataiku)",
-        "root": os.path.join(PROTO, "notebooks", "out_dataiku_sonnet_4_5"),
+        "name": "sonnet-dataiku-loop2",
+        "label": "Claude Sonnet 4.5 (Dataiku, loop-2)",
+        "root": os.path.join(PROTO, "data", "runs", "dataiku_loop2_sonnet_4_5"),
         "tag": "bedrock_aws_bedrock_us_anthropic_claude_sonnet_4_5_20250929_v1_0",
         "dir_prefix": "crf_forms_",
         "summary": "induction_summary_bedrock_aws_bedrock_us_anthropic_claude_sonnet_4_5_20250929_v1_0.json",
     },
     {
-        "name": "gpt52-dataiku",
-        "label": "GPT 5.2 (Dataiku)",
-        "root": os.path.join(PROTO, "notebooks", "out_dataiku_gpt_5_2"),
+        "name": "gpt52-dataiku-loop2",
+        "label": "GPT 5.2 (Dataiku, loop-2)",
+        "root": os.path.join(PROTO, "data", "runs", "dataiku_loop2_gpt_5_2"),
         "tag": "azureopenai_azure_openai_nocache_gpt_5_2",
         "dir_prefix": "crf_forms_",
         "summary": "induction_summary_azureopenai_azure_openai_nocache_gpt_5_2.json",
+    },
+    {
+        "name": "sonnet-dataiku-approach-d",
+        "label": "Claude Sonnet 4.5 (Dataiku, approach D)",
+        "root": os.path.join(PROTO, "data", "runs", "dataiku_approach_d_sonnet_4_5"),
+        "tag": "bedrock_aws_bedrock_us_anthropic_claude_sonnet_4_5_20250929_v1_0",
+        "dir_prefix": "crf_forms_",
+        "summary": "induction_summary_bedrock_aws_bedrock_us_anthropic_claude_sonnet_4_5_20250929_v1_0.json",
+    },
+    {
+        "name": "sonnet-dataiku-approach-d-covgate",
+        "label": "Claude Sonnet 4.5 (Dataiku, approach D + STRATEGY-first + coverage floor)",
+        "root": os.path.join(PROTO, "data", "runs",
+                             "dataiku_approach_d_plus_coverage_gate_sonnet_4_5"),
+        "tag": "bedrock_aws_bedrock_us_anthropic_claude_sonnet_4_5_20250929_v1_0",
+        "dir_prefix": "crf_forms_",
+        "summary": "induction_summary_bedrock_aws_bedrock_us_anthropic_claude_sonnet_4_5_20250929_v1_0.json",
     },
 ]
 

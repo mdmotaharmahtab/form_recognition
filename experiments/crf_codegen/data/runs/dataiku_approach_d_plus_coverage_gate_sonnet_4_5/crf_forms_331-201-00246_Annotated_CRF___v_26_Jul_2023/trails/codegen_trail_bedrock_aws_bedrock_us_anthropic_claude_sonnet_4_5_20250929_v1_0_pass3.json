@@ -1,0 +1,418 @@
+{
+ "stop_reason": "plateau",
+ "versions": 5,
+ "best_version": 2,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "confirm",
+   "metrics": {
+    "engine": "codegen",
+    "records": 208,
+    "pages_total": 51,
+    "pages_with_fields": 49,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 10,
+    "fields_per_form": 20.8,
+    "forms_per_100_pages": 19.6,
+    "form_same_page_evidence_records": 202,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 96,
+    "content_pages": 51,
+    "content_covered_pct": 96,
+    "uncovered_content_pct": 4
+   },
+   "problems": [],
+   "outcome": "extended_program"
+  },
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 146,
+    "pages_total": 51,
+    "pages_with_fields": 40,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 99,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 10,
+    "fields_per_form": 14.6,
+    "forms_per_100_pages": 19.6,
+    "form_same_page_evidence_records": 138,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 78,
+    "content_pages": 51,
+    "content_covered_pct": 78,
+    "uncovered_content_pct": 22
+   },
+   "problems": [],
+   "warnings": [
+    "The program filters by 21 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    0,
+    "not_audited",
+    1,
+    -40
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "confirm_extension",
+   "metrics": {
+    "engine": "codegen",
+    "records": 208,
+    "pages_total": 51,
+    "pages_with_fields": 49,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 10,
+    "fields_per_form": 20.8,
+    "forms_per_100_pages": 19.6,
+    "form_same_page_evidence_records": 202,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 96,
+    "content_pages": 51,
+    "content_covered_pct": 96,
+    "uncovered_content_pct": 4
+   },
+   "problems": [],
+   "warnings": [
+    "The program filters by 22 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": 30,
+   "audit_pages": [
+    15,
+    16,
+    21,
+    122,
+    250,
+    674
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 15,
+     "missed": [],
+     "false": [
+      "Schedule of Assessments",
+      "Schedule",
+      "Screen Visit 1 Day -55 to -16",
+      "page enrols if SEX = Fe male on Demography pa ge",
+      "page enrols if SEX = Mal e on Demography page",
+      "page enrols if SEX = Fe male on Demography pa ge and if RPPOSMEN=",
+      "Yes on Reproductive Stat"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 16,
+     "missed": [],
+     "false": [
+      "us - Female page",
+      "page enrols if SEX = Fe male on Demography pa ge",
+      "page enrols if Protocol V ersion = Original/Amend ment 1",
+      "page enrols if Protocol V ersion = Amendment 2",
+      "page enrols if Protocol V ersion = Amendment 2, t his has EXCL25 with sel",
+      "ectable \"N/A\""
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 21,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 122,
+     "missed": [],
+     "false": [
+      "Intensity of Ideation",
+      "Lifetime",
+      "Past 3 Month",
+      "definitely stopped",
+      "you from attempting",
+      "probably stopped",
+      "deterrents stopped",
+      "likely did not stop",
+      "definitely did not"
+     ],
+     "wrong_form": [],
+     "note": "The field label is the full question text starting with 'Deterrents Are there things...' and ending with 'suicide?'"
+    },
+    {
+     "page": 250,
+     "missed": [],
+     "false": [
+      "C-SSRS - Since Last Visit",
+      "Since Last Visit",
+      "P.; Zelazny, J.; Burke, A.; Oquendo, M.; Mann, J.",
+      "ideation or behavior depends on the judgment of the individual administering the scale."
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 674,
+     "missed": [],
+     "false": [
+      "C-SSRS - Since Last Visit",
+      "Since Last Visit",
+      "P.; Zelazny, J.; Burke, A.; Oquendo, M.; Mann, J.",
+      "ideation or behavior depends on the judgment of the individual administering the scale."
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    30,
+    1,
+    -49
+   ],
+   "became_best": true
+  },
+  {
+   "version": 3,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 243,
+    "pages_total": 51,
+    "pages_with_fields": 40,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 10,
+    "fields_per_form": 24.3,
+    "forms_per_100_pages": 19.6,
+    "form_same_page_evidence_records": 241,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 78,
+    "content_pages": 51,
+    "content_covered_pct": 78,
+    "uncovered_content_pct": 22
+   },
+   "problems": [
+    "Extreme content-fitted blocklist. The program filters by 30 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "warnings": [],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    1,
+    "not_audited",
+    0,
+    -40
+   ],
+   "became_best": false
+  },
+  {
+   "version": 4,
+   "kind": "revise_gates",
+   "metrics": {
+    "engine": "codegen",
+    "records": 257,
+    "pages_total": 51,
+    "pages_with_fields": 40,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 10,
+    "fields_per_form": 25.7,
+    "forms_per_100_pages": 19.6,
+    "form_same_page_evidence_records": 257,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 78,
+    "content_pages": 51,
+    "content_covered_pct": 78,
+    "uncovered_content_pct": 22
+   },
+   "problems": [
+    "Extreme content-fitted blocklist. The program filters by 37 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "warnings": [],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    1,
+    "not_audited",
+    0,
+    -40
+   ],
+   "became_best": false
+  },
+  {
+   "version": 5,
+   "kind": "revise_gates",
+   "metrics": {
+    "engine": "codegen",
+    "records": 197,
+    "pages_total": 51,
+    "pages_with_fields": 34,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 7,
+    "fields_per_form": 28.1,
+    "forms_per_100_pages": 13.7,
+    "form_same_page_evidence_records": 191,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 67,
+    "content_pages": 51,
+    "content_covered_pct": 67,
+    "uncovered_content_pct": 33
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 31,
+   "audit_pages": [
+    15,
+    16,
+    21,
+    118,
+    122,
+    250,
+    261,
+    674
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 15,
+     "missed": [],
+     "false": [
+      "Schedule of Assessments",
+      "Screen Visit 1 Day -55 to -16",
+      "page enrols if SEX = Fe",
+      "male on Demography pa ge",
+      "page enrols if SEX = Mal",
+      "e on Demography page",
+      "male on Demography pa",
+      "ge and if RPPOSMEN=",
+      "Yes on Reproductive Stat"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 16,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 21,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 118,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 122,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 250,
+     "missed": [],
+     "false": [
+      "C-SSRS - Since Last Visit",
+      "COLUMBIA-SUICIDE SEVERITY",
+      "RATING SCALE",
+      "Since Last Visit",
+      "Version 1/14/09",
+      "Posner, K.; Brent, D.; Lucas, C.; Gould, M.; Stanley, B.; Brown, G.; Fisher,",
+      "P.; Zelazny, J.; Burke, A.; Oquendo, M.; Mann, J.",
+      "Disclaimer:",
+      "This scale is intended to be used by individuals who have received training in its administration. The questions contained in",
+      "the Columbia-Suicide Severity Rating Scale are suggested probes. Ultimately, the determination of the presence of suicidal",
+      "ideation or behavior depends on the judgment of the individual administering the scale."
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 261,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 674,
+     "missed": [],
+     "false": [
+      "C-SSRS - Since Last Visit",
+      "COLUMBIA-SUICIDE SEVERITY",
+      "RATING SCALE",
+      "Since Last Visit",
+      "Version 1/14/09",
+      "Posner, K.; Brent, D.; Lucas, C.; Gould, M.; Stanley, B.; Brown, G.; Fisher,",
+      "P.; Zelazny, J.; Burke, A.; Oquendo, M.; Mann, J.",
+      "Disclaimer:",
+      "This scale is intended to be used by individuals who have received training in its administration. The questions contained in",
+      "the Columbia-Suicide Severity Rating Scale are suggested probes. Ultimately, the determination of the presence of suicidal",
+      "ideation or behavior depends on the judgment of the individual administering the scale."
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    31,
+    0,
+    -34
+   ],
+   "became_best": false
+  }
+ ]
+}

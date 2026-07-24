@@ -1,0 +1,571 @@
+{
+ "stop_reason": "plateau",
+ "versions": 4,
+ "best_version": 2,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "confirm",
+   "outcome": "confirmed_no_fields"
+  },
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 1303,
+    "pages_total": 741,
+    "pages_with_fields": 333,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 96,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 53,
+    "fields_per_form": 24.6,
+    "forms_per_100_pages": 7.2,
+    "form_same_page_evidence_records": 1244,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 45
+   },
+   "problems": [],
+   "warnings": [
+    "The program filters by 11 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": 6,
+   "audit_pages": [
+    1,
+    2,
+    8,
+    134,
+    187,
+    374,
+    465,
+    552,
+    734
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [
+      "Informed Consent Obtained",
+      "Subject Previously Screened"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 8,
+     "missed": [
+      "All Eligibility Criteria Met",
+      "If Eligibility Criteria Not Met, Please Specify Which Criteria"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 134,
+     "missed": [
+      "Sleep EEG Performed"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 187,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 374,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 465,
+     "missed": [
+      "Sample Performed"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 552,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 734,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    6,
+    1,
+    -333
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 1620,
+    "pages_total": 741,
+    "pages_with_fields": 333,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 96,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 55,
+    "fields_per_form": 29.5,
+    "forms_per_100_pages": 7.4,
+    "form_same_page_evidence_records": 1555,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 45
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 6,
+   "audit_pages": [
+    1,
+    2,
+    3,
+    8,
+    10,
+    80,
+    134,
+    187,
+    374,
+    465,
+    552,
+    734
+   ],
+   "audit_partial": null,
+   "audit_promoted": [
+    10
+   ],
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [
+      "Informed Consent Obtained",
+      "Subject Previously Screened"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 3,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 8,
+     "missed": [
+      "All Eligibility Criteria Met"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 10,
+     "missed": [
+      "Relevant Medical History"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 80,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 134,
+     "missed": [
+      "Sleep EEG Performed"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 187,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 374,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 465,
+     "missed": [
+      "Sample Performed"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 552,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 734,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    6,
+    0,
+    -333
+   ],
+   "became_best": true
+  },
+  {
+   "version": 3,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 1619,
+    "pages_total": 741,
+    "pages_with_fields": 333,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 96,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 55,
+    "fields_per_form": 29.4,
+    "forms_per_100_pages": 7.4,
+    "form_same_page_evidence_records": 1554,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 45
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 6,
+   "audit_pages": [
+    1,
+    2,
+    5,
+    8,
+    10,
+    134,
+    159,
+    187,
+    374,
+    465,
+    552,
+    734
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [
+      "Informed Consent Obtained",
+      "Subject Previously Screened"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 5,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 8,
+     "missed": [
+      "All Eligibility Criteria Met"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 10,
+     "missed": [
+      "Relevant Medical History"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 134,
+     "missed": [
+      "Sleep EEG Performed"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 159,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 187,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 374,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 465,
+     "missed": [
+      "Sample Performed"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 552,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 734,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    6,
+    0,
+    -333
+   ],
+   "became_best": false
+  },
+  {
+   "version": 4,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 5385,
+    "pages_total": 741,
+    "pages_with_fields": 720,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 99,
+    "labels_look_human_pct": 91,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 56,
+    "fields_per_form": 96.2,
+    "forms_per_100_pages": 7.6,
+    "form_same_page_evidence_records": 5304,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [
+     "Reason Not Performed"
+    ],
+    "pages_covered_pct": 97
+   },
+   "problems": [],
+   "warnings": [
+    "These field_name values were extracted on >=70% of ALL pages: 'Reason Not Performed'. Text recurring on nearly every page is usually page template furniture (watermark/footer/stamp), not a field - verify against the page dumps and stop extracting it unless it is genuinely a per-page data-entry field."
+   ],
+   "audit_issues": 31,
+   "audit_pages": [
+    1,
+    2,
+    8,
+    10,
+    134,
+    136,
+    187,
+    374,
+    465,
+    552,
+    734,
+    806
+   ],
+   "audit_partial": null,
+   "audit_promoted": [
+    806
+   ],
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [
+      "Informed Consent Obtained",
+      "Subject Previously Screened"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 8,
+     "missed": [
+      "All Eligibility Criteria Met"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 10,
+     "missed": [
+      "Relevant Medical History"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 134,
+     "missed": [
+      "Sleep EEG Performed"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 136,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 187,
+     "missed": [],
+     "false": [],
+     "wrong_form": [
+      "Subjective Drug Intensity (SDI)  - Day 1",
+      "Reason Not Performed",
+      "Time Point",
+      "Not Done",
+      "Reason Not Done",
+      "Date",
+      "Time",
+      "Test",
+      "Results"
+     ]
+    },
+    {
+     "page": 374,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 465,
+     "missed": [
+      "Sample Performed"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 552,
+     "missed": [],
+     "false": [],
+     "wrong_form": [
+      "Sample Performed",
+      "Reason Not Performed",
+      "Sample Date",
+      "Sample Time",
+      "DOA TEST",
+      "Result",
+      "Comments (If Positive)"
+     ]
+    },
+    {
+     "page": 734,
+     "missed": [],
+     "false": [],
+     "wrong_form": [
+      "Sample Performed",
+      "Reason Not Performed",
+      "Sample Date",
+      "Sample Time",
+      "Parameter",
+      "Not Done",
+      "Reason Not Done",
+      "Interpretation"
+     ]
+    },
+    {
+     "page": 806,
+     "missed": [
+      "Any Protocol Deviations"
+     ],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    31,
+    1,
+    -720
+   ],
+   "became_best": false
+  }
+ ]
+}

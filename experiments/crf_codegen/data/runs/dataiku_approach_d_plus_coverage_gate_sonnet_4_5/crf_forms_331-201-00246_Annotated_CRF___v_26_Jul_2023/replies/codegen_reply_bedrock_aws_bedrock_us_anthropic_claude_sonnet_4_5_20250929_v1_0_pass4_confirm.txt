@@ -1,0 +1,14 @@
+Looking at the sample pages:
+
+**Page 480, 778 (cluster 0)**: These are copyright/definition pages containing only attribution text and copyright notices. No data-entry fields. The program correctly identifies these via `is_non_field_page()` checking for "© 2008 The Research Foundation" and "Columbia Suicide History Form".
+
+**Page 928 (cluster 1)**: This shows column headers "Record", "Term", "Onset Date", "Onset Time" but no actual data-entry fields visible on this sample. This appears to be a table header page or empty table template.
+
+**Page 957, 960 (cluster 2)**: These show a blue form title ("Admission to clinic" / "Discharge from clinic") and a note "(Repeatable row added with Add Row button)" but no actual field labels. These are instruction/template pages for repeatable sections.
+
+All sampled pages are genuinely field-free - they contain only:
+- Copyright/attribution text (cluster 0)
+- Table headers without fields (cluster 1)  
+- Form titles with instructions but no field labels (cluster 2)
+
+CONFIRM_NO_FIELDS

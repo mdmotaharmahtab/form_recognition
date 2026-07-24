@@ -1,0 +1,365 @@
+{
+ "stage0_s": 13.412,
+ "llm_s": 992.251,
+ "llm_calls": 40,
+ "llm_prompt_chars": 1045058,
+ "llm_reply_chars": 233588,
+ "llm_by_kind": {
+  "generate": {
+   "calls": 5,
+   "s": 183.881,
+   "prompt_chars": 206291,
+   "reply_chars": 34338
+  },
+  "confirm": {
+   "calls": 4,
+   "s": 50.19,
+   "prompt_chars": 43495,
+   "reply_chars": 14984
+  },
+  "audit": {
+   "calls": 17,
+   "s": 130.417,
+   "prompt_chars": 540561,
+   "reply_chars": 23037
+  },
+  "revise_audit": {
+   "calls": 12,
+   "s": 540.878,
+   "prompt_chars": 224227,
+   "reply_chars": 136515
+  },
+  "revise_gates": {
+   "calls": 2,
+   "s": 86.885,
+   "prompt_chars": 30484,
+   "reply_chars": 24714
+  }
+ },
+ "sandbox_validate_s": 49.605,
+ "sandbox_validate_calls": 21,
+ "export_s": null,
+ "total_s": 1055.936,
+ "calls": [
+  {
+   "seq": 1,
+   "kind": "generate",
+   "version": 1,
+   "s": 35.678,
+   "prompt_chars": 36755,
+   "reply_chars": 7445
+  },
+  {
+   "seq": 2,
+   "kind": "confirm",
+   "version": 1,
+   "s": 7.65,
+   "prompt_chars": 16361,
+   "reply_chars": 914
+  },
+  {
+   "seq": 3,
+   "kind": "audit",
+   "version": 1,
+   "s": 10.179,
+   "prompt_chars": 31966,
+   "reply_chars": 1738
+  },
+  {
+   "seq": 4,
+   "kind": "revise_audit",
+   "version": 2,
+   "s": 43.111,
+   "prompt_chars": 20678,
+   "reply_chars": 9992
+  },
+  {
+   "seq": 5,
+   "kind": "audit",
+   "version": 2,
+   "s": 15.811,
+   "prompt_chars": 38712,
+   "reply_chars": 2614
+  },
+  {
+   "seq": 6,
+   "kind": "revise_audit",
+   "version": 3,
+   "s": 54.789,
+   "prompt_chars": 25327,
+   "reply_chars": 12838
+  },
+  {
+   "seq": 7,
+   "kind": "audit",
+   "version": 3,
+   "s": 10.296,
+   "prompt_chars": 38307,
+   "reply_chars": 1861
+  },
+  {
+   "seq": 8,
+   "kind": "revise_audit",
+   "version": 4,
+   "s": 58.8,
+   "prompt_chars": 27593,
+   "reply_chars": 14040
+  },
+  {
+   "seq": 9,
+   "kind": "audit",
+   "version": 4,
+   "s": 6.891,
+   "prompt_chars": 38934,
+   "reply_chars": 1249
+  },
+  {
+   "seq": 10,
+   "kind": "revise_audit",
+   "version": 5,
+   "s": 66.645,
+   "prompt_chars": 28280,
+   "reply_chars": 16059
+  },
+  {
+   "seq": 11,
+   "kind": "audit",
+   "version": 5,
+   "s": 6.468,
+   "prompt_chars": 39492,
+   "reply_chars": 1246
+  },
+  {
+   "seq": 12,
+   "kind": "revise_audit",
+   "version": 6,
+   "s": 66.369,
+   "prompt_chars": 29393,
+   "reply_chars": 16142
+  },
+  {
+   "seq": 13,
+   "kind": "audit",
+   "version": 6,
+   "s": 11.556,
+   "prompt_chars": 41239,
+   "reply_chars": 2069
+  },
+  {
+   "seq": 1,
+   "kind": "generate",
+   "version": 1,
+   "s": 30.729,
+   "prompt_chars": 41882,
+   "reply_chars": 5755
+  },
+  {
+   "seq": 2,
+   "kind": "confirm",
+   "version": 1,
+   "s": 15.677,
+   "prompt_chars": 7296,
+   "reply_chars": 5671
+  },
+  {
+   "seq": 3,
+   "kind": "audit",
+   "version": 2,
+   "s": 5.576,
+   "prompt_chars": 25201,
+   "reply_chars": 966
+  },
+  {
+   "seq": 4,
+   "kind": "revise_audit",
+   "version": 3,
+   "s": 24.632,
+   "prompt_chars": 10142,
+   "reply_chars": 7194
+  },
+  {
+   "seq": 5,
+   "kind": "audit",
+   "version": 3,
+   "s": 5.244,
+   "prompt_chars": 32295,
+   "reply_chars": 876
+  },
+  {
+   "seq": 6,
+   "kind": "revise_audit",
+   "version": 4,
+   "s": 27.651,
+   "prompt_chars": 10269,
+   "reply_chars": 8397
+  },
+  {
+   "seq": 7,
+   "kind": "audit",
+   "version": 4,
+   "s": 5.561,
+   "prompt_chars": 32297,
+   "reply_chars": 871
+  },
+  {
+   "seq": 8,
+   "kind": "revise_audit",
+   "version": 5,
+   "s": 30.369,
+   "prompt_chars": 11194,
+   "reply_chars": 10260
+  },
+  {
+   "seq": 9,
+   "kind": "audit",
+   "version": 5,
+   "s": 6.228,
+   "prompt_chars": 29702,
+   "reply_chars": 1014
+  },
+  {
+   "seq": 10,
+   "kind": "revise_audit",
+   "version": 6,
+   "s": 48.369,
+   "prompt_chars": 16544,
+   "reply_chars": 12781
+  },
+  {
+   "seq": 11,
+   "kind": "audit",
+   "version": 6,
+   "s": 4.951,
+   "prompt_chars": 31524,
+   "reply_chars": 697
+  },
+  {
+   "seq": 1,
+   "kind": "generate",
+   "version": 1,
+   "s": 40.542,
+   "prompt_chars": 52233,
+   "reply_chars": 7040
+  },
+  {
+   "seq": 2,
+   "kind": "confirm",
+   "version": 1,
+   "s": 20.782,
+   "prompt_chars": 8219,
+   "reply_chars": 7367
+  },
+  {
+   "seq": 3,
+   "kind": "audit",
+   "version": 2,
+   "s": 10.517,
+   "prompt_chars": 30241,
+   "reply_chars": 1953
+  },
+  {
+   "seq": 4,
+   "kind": "revise_audit",
+   "version": 3,
+   "s": 42.636,
+   "prompt_chars": 13477,
+   "reply_chars": 10652
+  },
+  {
+   "seq": 5,
+   "kind": "revise_gates",
+   "version": 4,
+   "s": 41.9,
+   "prompt_chars": 14738,
+   "reply_chars": 12068
+  },
+  {
+   "seq": 6,
+   "kind": "revise_gates",
+   "version": 5,
+   "s": 44.985,
+   "prompt_chars": 15746,
+   "reply_chars": 12646
+  },
+  {
+   "seq": 7,
+   "kind": "audit",
+   "version": 5,
+   "s": 9.837,
+   "prompt_chars": 35840,
+   "reply_chars": 2322
+  },
+  {
+   "seq": 1,
+   "kind": "generate",
+   "version": 1,
+   "s": 40.956,
+   "prompt_chars": 48806,
+   "reply_chars": 7738
+  },
+  {
+   "seq": 2,
+   "kind": "confirm",
+   "version": 1,
+   "s": 6.081,
+   "prompt_chars": 11619,
+   "reply_chars": 1032
+  },
+  {
+   "seq": 3,
+   "kind": "audit",
+   "version": 1,
+   "s": 4.191,
+   "prompt_chars": 20314,
+   "reply_chars": 541
+  },
+  {
+   "seq": 4,
+   "kind": "revise_audit",
+   "version": 2,
+   "s": 38.964,
+   "prompt_chars": 15011,
+   "reply_chars": 9392
+  },
+  {
+   "seq": 5,
+   "kind": "audit",
+   "version": 2,
+   "s": 13.099,
+   "prompt_chars": 30370,
+   "reply_chars": 2095
+  },
+  {
+   "seq": 6,
+   "kind": "revise_audit",
+   "version": 3,
+   "s": 38.543,
+   "prompt_chars": 16319,
+   "reply_chars": 8768
+  },
+  {
+   "seq": 7,
+   "kind": "audit",
+   "version": 3,
+   "s": 3.983,
+   "prompt_chars": 34517,
+   "reply_chars": 665
+  },
+  {
+   "seq": 1,
+   "kind": "generate",
+   "version": 1,
+   "s": 35.976,
+   "prompt_chars": 26615,
+   "reply_chars": 6360
+  },
+  {
+   "seq": 2,
+   "kind": "audit",
+   "version": 1,
+   "s": 0.029,
+   "prompt_chars": 9610,
+   "reply_chars": 260
+  }
+ ]
+}

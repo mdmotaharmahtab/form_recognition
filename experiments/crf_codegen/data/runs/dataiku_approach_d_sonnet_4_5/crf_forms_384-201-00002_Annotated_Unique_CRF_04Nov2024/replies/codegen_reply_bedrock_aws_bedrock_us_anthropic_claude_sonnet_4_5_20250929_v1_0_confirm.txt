@@ -1,0 +1,15 @@
+Looking at the sample pages, I can see they are from **cluster 0** (249 pages, 0% covered). These pages show the data dictionary layout with:
+
+- Header: "Field Name Data Type" at y~155
+- Tabular structure showing field metadata (Field Name, Data Type, Units, Values, Pre-Filled Values, Include Field OID)
+- Field codes like "MHYN", "PERES", "PEDESC", "PECLSIG" in the left column
+- Data types like "$1", "$25", "$200" 
+- Value definitions like "Y = Yes", "N = No", "NORMAL = Normal"
+
+These are **reference/dictionary pages** that document the field codes and their allowed values. They are NOT data-entry fields themselves - they are metadata about fields that appear on the actual CRF forms (which are in cluster 1, the Family C pages that my program already extracts).
+
+My current program correctly identifies these as "Family D" dictionary pages and skips them with the `is_dict_page` flag. The detection logic looks for "Field Name Data Type" header around y~150-170, which matches exactly what I see on these pages.
+
+This is the correct behavior - these pages should produce zero records because they don't contain data-entry fields, only field definitions.
+
+CONFIRM_NO_FIELDS

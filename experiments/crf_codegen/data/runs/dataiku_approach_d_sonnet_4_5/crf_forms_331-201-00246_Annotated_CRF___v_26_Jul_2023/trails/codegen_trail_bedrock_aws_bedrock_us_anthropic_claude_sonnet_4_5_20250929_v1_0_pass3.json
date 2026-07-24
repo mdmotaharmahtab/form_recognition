@@ -1,0 +1,665 @@
+{
+ "stop_reason": "budget",
+ "versions": 6,
+ "best_version": 1,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "confirm",
+   "outcome": "confirmed_no_fields"
+  },
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 71,
+    "pages_total": 51,
+    "pages_with_fields": 35,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 0,
+    "labels_look_human_pct": 85,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 0,
+    "fields_per_form": 71.0,
+    "forms_per_100_pages": 0.0,
+    "form_same_page_evidence_records": 0,
+    "form_same_page_persistence_pct": null,
+    "furniture_candidates": [],
+    "pages_covered_pct": 69
+   },
+   "problems": [],
+   "warnings": [
+    "form_name empty for 100% of records - if the document does print form/section names, fix the form_name strategy (consider carrying the last seen title forward).",
+    "The program filters by 29 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": 6,
+   "audit_pages": [
+    15,
+    16,
+    17,
+    120,
+    386,
+    490
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 15,
+     "missed": [],
+     "false": [
+      "Screen Visit 1 Day -55 to -16"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 16,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 17,
+     "missed": [],
+     "false": [
+      "Titration Day -20",
+      "Screen Visit 2 Day -15"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 120,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 386,
+     "missed": [],
+     "false": [
+      "Version 1/14/09",
+      "Disclaimer:",
+      "This scale is intended to be used by individuals who have received training in its administration. The questions contained in the Columbia-Suicide Severity Rating Scale are suggested probes. Ultimately, the determination of the presence of suicidal ideation or behavior depends on the judgment of the individual administering the scale."
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 490,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    6,
+    2,
+    -35
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 74,
+    "pages_total": 51,
+    "pages_with_fields": 28,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 0,
+    "labels_look_human_pct": 85,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 0,
+    "fields_per_form": 74.0,
+    "forms_per_100_pages": 0.0,
+    "form_same_page_evidence_records": 0,
+    "form_same_page_persistence_pct": null,
+    "furniture_candidates": [],
+    "pages_covered_pct": 55
+   },
+   "problems": [],
+   "warnings": [
+    "form_name empty for 100% of records - if the document does print form/section names, fix the form_name strategy (consider carrying the last seen title forward)."
+   ],
+   "audit_issues": 10,
+   "audit_pages": [
+    15,
+    16,
+    17,
+    109,
+    120,
+    261,
+    386,
+    490
+   ],
+   "audit_partial": null,
+   "audit_promoted": [
+    109
+   ],
+   "audit_verdicts": [
+    {
+     "page": 15,
+     "missed": [],
+     "false": [
+      "Screen Visit 1 Day -55 to -16"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 16,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 17,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 109,
+     "missed": [],
+     "false": [
+      "Baseline/Screening Version",
+      "Version 1/14/09",
+      "Disclaimer:",
+      "This scale is intended to be used by individuals who have received training in its administration. The questions contained in the Columbia-Suicide Severity Rating Scale are suggested probes. Ultimately, the determination of the presence of suicidal ideation or behavior depends on the judgment of the individual administering the scale."
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 120,
+     "missed": [],
+     "false": [
+      "Intensity of Ideation"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 261,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 386,
+     "missed": [],
+     "false": [
+      "Since Last Visit",
+      "Version 1/14/09",
+      "Disclaimer:",
+      "This scale is intended to be used by individuals who have received training in its administration. The questions contained in the Columbia-Suicide Severity Rating Scale are suggested probes. Ultimately, the determination of the presence of suicidal ideation or behavior depends on the judgment of the individual administering the scale."
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 490,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    10,
+    1,
+    -28
+   ],
+   "became_best": false
+  },
+  {
+   "version": 3,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 60,
+    "pages_total": 51,
+    "pages_with_fields": 26,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 0,
+    "labels_look_human_pct": 98,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 0,
+    "fields_per_form": 60.0,
+    "forms_per_100_pages": 0.0,
+    "form_same_page_evidence_records": 0,
+    "form_same_page_persistence_pct": null,
+    "furniture_candidates": [],
+    "pages_covered_pct": 51
+   },
+   "problems": [],
+   "warnings": [
+    "form_name empty for 100% of records - if the document does print form/section names, fix the form_name strategy (consider carrying the last seen title forward)."
+   ],
+   "audit_issues": 13,
+   "audit_pages": [
+    15,
+    16,
+    17,
+    109,
+    120,
+    250,
+    386,
+    490
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 15,
+     "missed": [],
+     "false": [
+      "Screen Visit 1 Day -55 to -16"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 16,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 17,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 109,
+     "missed": [],
+     "false": [
+      "Baseline/Screening Version",
+      "Version 1/14/09",
+      "Disclaimer:",
+      "ideation or behavior depends on the judgment of the individual administering the scale."
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 120,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 250,
+     "missed": [],
+     "false": [
+      "Since Last Visit",
+      "Version 1/14/09",
+      "Disclaimer:",
+      "ideation or behavior depends on the judgment of the individual administering the scale."
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 386,
+     "missed": [],
+     "false": [
+      "Since Last Visit",
+      "Version 1/14/09",
+      "Disclaimer:",
+      "ideation or behavior depends on the judgment of the individual administering the scale."
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 490,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    13,
+    1,
+    -26
+   ],
+   "became_best": false
+  },
+  {
+   "version": 4,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 65,
+    "pages_total": 51,
+    "pages_with_fields": 27,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 0,
+    "labels_look_human_pct": 98,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 0,
+    "fields_per_form": 65.0,
+    "forms_per_100_pages": 0.0,
+    "form_same_page_evidence_records": 0,
+    "form_same_page_persistence_pct": null,
+    "furniture_candidates": [],
+    "pages_covered_pct": 53
+   },
+   "problems": [],
+   "warnings": [
+    "form_name empty for 100% of records - if the document does print form/section names, fix the form_name strategy (consider carrying the last seen title forward)."
+   ],
+   "audit_issues": 9,
+   "audit_pages": [
+    15,
+    16,
+    17,
+    18,
+    109,
+    120,
+    386,
+    490
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 15,
+     "missed": [],
+     "false": [
+      "Visit Label",
+      "Page Label",
+      "Screen Visit 1 Day -55 to -16"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 16,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 17,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 18,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 109,
+     "missed": [],
+     "false": [
+      "Baseline/Screening Version",
+      "Version 1/14/09",
+      "Disclaimer:"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 120,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 386,
+     "missed": [],
+     "false": [
+      "Since Last Visit",
+      "Version 1/14/09",
+      "Disclaimer:"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 490,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    9,
+    1,
+    -27
+   ],
+   "became_best": false
+  },
+  {
+   "version": 5,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 47,
+    "pages_total": 51,
+    "pages_with_fields": 18,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 0,
+    "labels_look_human_pct": 98,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 0,
+    "fields_per_form": 47.0,
+    "forms_per_100_pages": 0.0,
+    "form_same_page_evidence_records": 0,
+    "form_same_page_persistence_pct": null,
+    "furniture_candidates": [],
+    "pages_covered_pct": 35
+   },
+   "problems": [],
+   "warnings": [
+    "form_name empty for 100% of records - if the document does print form/section names, fix the form_name strategy (consider carrying the last seen title forward)."
+   ],
+   "audit_issues": 9,
+   "audit_pages": [
+    15,
+    16,
+    17,
+    109,
+    120,
+    124,
+    386,
+    490
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 15,
+     "missed": [],
+     "false": [
+      "Visit Label",
+      "Page Label",
+      "Screen Visit 1 Day -55 to -16"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 16,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 17,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 109,
+     "missed": [],
+     "false": [
+      "Baseline/Screening Version",
+      "Version 1/14/09",
+      "Disclaimer:"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 120,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 124,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 386,
+     "missed": [],
+     "false": [
+      "Since Last Visit",
+      "Version 1/14/09",
+      "Disclaimer:"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 490,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    9,
+    1,
+    -18
+   ],
+   "became_best": false
+  },
+  {
+   "version": 6,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 74,
+    "pages_total": 51,
+    "pages_with_fields": 27,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 0,
+    "labels_look_human_pct": 99,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 0,
+    "fields_per_form": 74.0,
+    "forms_per_100_pages": 0.0,
+    "form_same_page_evidence_records": 0,
+    "form_same_page_persistence_pct": null,
+    "furniture_candidates": [],
+    "pages_covered_pct": 53
+   },
+   "problems": [],
+   "warnings": [
+    "form_name empty for 100% of records - if the document does print form/section names, fix the form_name strategy (consider carrying the last seen title forward)."
+   ],
+   "audit_issues": 9,
+   "audit_pages": [
+    15,
+    16,
+    17,
+    109,
+    120,
+    331,
+    386,
+    490
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 15,
+     "missed": [],
+     "false": [
+      "Visit Label",
+      "Page Label",
+      "Screen Visit 1 Day -55 to -16"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 16,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 17,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 109,
+     "missed": [],
+     "false": [
+      "Baseline/Screening Version",
+      "Version 1/14/09",
+      "Disclaimer:"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 120,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 331,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 386,
+     "missed": [],
+     "false": [
+      "Since Last Visit",
+      "Version 1/14/09",
+      "Disclaimer:"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 490,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    9,
+    1,
+    -27
+   ],
+   "became_best": false
+  }
+ ]
+}

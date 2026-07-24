@@ -1,0 +1,877 @@
+{
+ "stop_reason": "budget",
+ "versions": 6,
+ "best_version": 3,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "confirm",
+   "outcome": "confirmed_no_fields"
+  },
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 1353,
+    "pages_total": 741,
+    "pages_with_fields": 329,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 99,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 52,
+    "fields_per_form": 26.0,
+    "forms_per_100_pages": 7.0,
+    "form_same_page_evidence_records": 1230,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 44,
+    "content_pages": 723,
+    "content_covered_pct": 46,
+    "uncovered_content_pct": 54
+   },
+   "problems": [],
+   "warnings": [
+    "The program filters by 28 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": 21,
+   "audit_pages": [
+    1,
+    2,
+    8,
+    134,
+    187,
+    370,
+    470,
+    550,
+    732
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [
+      "Informed Consent Obtained",
+      "Informed Consent Date",
+      "Previous Subject Number"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 8,
+     "missed": [
+      "All Eligibility Criteria Met"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 134,
+     "missed": [
+      "Sleep EEG Performed",
+      "Date Device Put On",
+      "Time Device Put On",
+      "EEG Start Date",
+      "EEG Start Time",
+      "EEG End Date"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 187,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 370,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 470,
+     "missed": [
+      "Specimen Appearance, Other Specify",
+      "pH",
+      "Glucose Interpretation",
+      "pH Interpretation",
+      "Occult Blood Interpretation",
+      "Protein Interpretation",
+      "Specific Gravity (SG) Interpretation",
+      "Colour, Other Specify",
+      "Sent for Microscopy"
+     ],
+     "false": [
+      "Negative",
+      "\u22641.0051.010"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 550,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 732,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    21,
+    1,
+    -329
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 6663,
+    "pages_total": 741,
+    "pages_with_fields": 723,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 75,
+    "fields_per_form": 88.8,
+    "forms_per_100_pages": 10.1,
+    "form_same_page_evidence_records": 6647,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [
+     "Reason Not Performed"
+    ],
+    "pages_covered_pct": 98,
+    "content_pages": 723,
+    "content_covered_pct": 100,
+    "uncovered_content_pct": 0
+   },
+   "problems": [],
+   "warnings": [
+    "These field_name values were extracted on >=70% of ALL pages: 'Reason Not Performed'. Text recurring on nearly every page is usually page template furniture (watermark/footer/stamp), not a field - verify against the page dumps and stop extracting it unless it is genuinely a per-page data-entry field."
+   ],
+   "audit_issues": 10,
+   "audit_pages": [
+    1,
+    2,
+    3,
+    6,
+    8,
+    80,
+    134,
+    187,
+    370,
+    470,
+    550,
+    732
+   ],
+   "audit_partial": null,
+   "audit_promoted": [
+    6
+   ],
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [],
+     "false": [
+      "Yes No"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 3,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 6,
+     "missed": [],
+     "false": [
+      "Yes No",
+      "American Indian or Alaska Native Asian Native Hawaiian or Other Pacific Islander Black or African American White Unknown Not Reported Other"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 8,
+     "missed": [],
+     "false": [
+      "Yes No",
+      "Inclusion / Exclusion Criteria Inclusion / Exclusion Criteria ID 1 Exclusion"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 80,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 134,
+     "missed": [],
+     "false": [
+      "Yes No"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 187,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 370,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 470,
+     "missed": [],
+     "false": [
+      "5 5.5",
+      "Negative",
+      "\u22641.005 1.010",
+      "Yes No"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 550,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 732,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    10,
+    1,
+    -723
+   ],
+   "became_best": true
+  },
+  {
+   "version": 3,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 6374,
+    "pages_total": 741,
+    "pages_with_fields": 723,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 99,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 75,
+    "fields_per_form": 85.0,
+    "forms_per_100_pages": 10.1,
+    "form_same_page_evidence_records": 6358,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [
+     "Reason Not Performed"
+    ],
+    "pages_covered_pct": 98,
+    "content_pages": 723,
+    "content_covered_pct": 100,
+    "uncovered_content_pct": 0
+   },
+   "problems": [],
+   "warnings": [
+    "These field_name values were extracted on >=70% of ALL pages: 'Reason Not Performed'. Text recurring on nearly every page is usually page template furniture (watermark/footer/stamp), not a field - verify against the page dumps and stop extracting it unless it is genuinely a per-page data-entry field.",
+    "The program filters by 10 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": 6,
+   "audit_pages": [
+    1,
+    2,
+    5,
+    6,
+    8,
+    10,
+    134,
+    187,
+    370,
+    470,
+    550,
+    732
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 5,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 6,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 8,
+     "missed": [],
+     "false": [
+      "Inclusion / Exclusion Criteria Inclusion / Exclusion Criteria ID 1 Exclusion"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 10,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 134,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 187,
+     "missed": [],
+     "false": [
+      "Subjective Drug Intensity (SDI)  - Day 1",
+      "Performed"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 370,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 470,
+     "missed": [],
+     "false": [
+      "5 5.5",
+      "Negative",
+      "\u22641.005 1.010"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 550,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 732,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    6,
+    2,
+    -723
+   ],
+   "became_best": true
+  },
+  {
+   "version": 4,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 4242,
+    "pages_total": 741,
+    "pages_with_fields": 703,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 74,
+    "fields_per_form": 57.3,
+    "forms_per_100_pages": 10.0,
+    "form_same_page_evidence_records": 4206,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 95,
+    "content_pages": 723,
+    "content_covered_pct": 97,
+    "uncovered_content_pct": 3
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 55,
+   "audit_pages": [
+    1,
+    2,
+    6,
+    8,
+    12,
+    134,
+    136,
+    187,
+    370,
+    470,
+    550,
+    732
+   ],
+   "audit_partial": null,
+   "audit_promoted": [
+    12
+   ],
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [
+      "Informed Consent Obtained",
+      "Informed Consent Date",
+      "Informed Consent Time",
+      "Informed Consent Version",
+      "Subject Previously Screened",
+      "Previous Subject Number"
+     ],
+     "false": [
+      "Yes No"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 6,
+     "missed": [
+      "Child-Bearing Potential",
+      "Country Other, Specify",
+      "Other, Please Specify"
+     ],
+     "false": [
+      "Yes No",
+      "American Indian or Alaska Native Asian Native Hawaiian or Other Pacific Islander Black or African American White Unknown Not Reported Other"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 8,
+     "missed": [
+      "Date Eligibility Criteria Confirmed"
+     ],
+     "false": [
+      "Yes No"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 12,
+     "missed": [
+      "C-SSRS Performed",
+      "C-SSRS Date",
+      "C-SSRS Time",
+      "Rater Initials"
+     ],
+     "false": [
+      "Yes No",
+      "Lifetime",
+      "Past 60 Months",
+      "If yes, describe:",
+      "Yes",
+      "1. Wish to be Dead",
+      "2. Non-Specific Active Suicidal Thoughts",
+      "3. Active Suicidal Ideation with Any",
+      "Methods (Not Plan) without Intent to Act",
+      "4. Active Suicidal Ideation with Some",
+      "Intent to Act, without Specific Plan",
+      "5. Active Suicidal Ideation with",
+      "Specific Plan and Intent",
+      "INTENSITY OF IDEATION",
+      "Type # (1-5)",
+      "Description of Ideation"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 134,
+     "missed": [
+      "Device Serial Number"
+     ],
+     "false": [
+      "Yes No"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 136,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 187,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 370,
+     "missed": [
+      "C-SSRS Performed",
+      "Reason Not Performed",
+      "C-SSRS Date"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 470,
+     "missed": [
+      "Specimen Appearance",
+      "Specimen Appearance, Other Specify",
+      "Specimen Appearance Interpretation",
+      "Glucose Interpretation",
+      "Occult Blood",
+      "Occult Blood Interpretation",
+      "Protein Interpretation",
+      "Colour Interpretation",
+      "Colour, Other Specify",
+      "Microscopy Interpretation"
+     ],
+     "false": [
+      "Negative"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 550,
+     "missed": [
+      "Test",
+      "Performed"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 732,
+     "missed": [
+      "Sample Performed",
+      "Reason Not Performed",
+      "Sample Date"
+     ],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    55,
+    0,
+    -703
+   ],
+   "became_best": false
+  },
+  {
+   "version": 5,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 4508,
+    "pages_total": 741,
+    "pages_with_fields": 703,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 74,
+    "fields_per_form": 60.9,
+    "forms_per_100_pages": 10.0,
+    "form_same_page_evidence_records": 4476,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 95,
+    "content_pages": 723,
+    "content_covered_pct": 97,
+    "uncovered_content_pct": 3
+   },
+   "problems": [],
+   "warnings": [
+    "The program filters by 11 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": 54,
+   "audit_pages": [
+    1,
+    2,
+    6,
+    8,
+    12,
+    134,
+    187,
+    220,
+    370,
+    470,
+    550,
+    732
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [
+      "Informed Consent Obtained",
+      "Informed Consent Date",
+      "Informed Consent Time",
+      "Informed Consent Version",
+      "Subject Previously Screened",
+      "Previous Subject Number"
+     ],
+     "false": [
+      "Yes No"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 6,
+     "missed": [
+      "Child-Bearing Potential",
+      "Country Other, Specify",
+      "Other, Please Specify"
+     ],
+     "false": [
+      "Yes No",
+      "American Indian or Alaska Native Asian Native Hawaiian or Other Pacific Islander Black or African American White Unknown Not Reported Other"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 8,
+     "missed": [
+      "Date Eligibility Criteria Confirmed"
+     ],
+     "false": [
+      "Yes No",
+      "Inclusion / Exclusion Criteria Inclusion / Exclusion Criteria ID 1 Exclusion"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 12,
+     "missed": [
+      "C-SSRS Performed",
+      "C-SSRS Date",
+      "C-SSRS Time",
+      "Rater Initials"
+     ],
+     "false": [
+      "Yes No",
+      "If yes, describe:",
+      "Yes",
+      "INTENSITY OF IDEATION",
+      "Type # (1-5)",
+      "Description of Ideation"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 134,
+     "missed": [
+      "Device Serial Number"
+     ],
+     "false": [
+      "Yes No"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 187,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 220,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 370,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 470,
+     "missed": [
+      "Specimen Appearance",
+      "Specimen Appearance, Other Specify",
+      "Specimen Appearance Interpretation",
+      "Glucose Interpretation",
+      "Occult Blood",
+      "Occult Blood Interpretation",
+      "Protein Interpretation",
+      "Colour Interpretation",
+      "Colour, Other Specify",
+      "Microscopy Interpretation"
+     ],
+     "false": [
+      "pH",
+      "5 5.5",
+      "Glucose",
+      "Negative",
+      "Trace (100)",
+      "pH Interpretation",
+      "Protein",
+      "Trace - lysed",
+      "Trace - intact",
+      "Moderate (++)",
+      "Large (+++)",
+      "Specific Gravity (SG)",
+      "Specific Gravity (SG) Interpretation",
+      "Colour",
+      "Yes No"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 550,
+     "missed": [
+      "Test",
+      "Performed"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 732,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    54,
+    1,
+    -703
+   ],
+   "became_best": false
+  },
+  {
+   "version": 6,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 7012,
+    "pages_total": 741,
+    "pages_with_fields": 723,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 75,
+    "fields_per_form": 93.5,
+    "forms_per_100_pages": 10.1,
+    "form_same_page_evidence_records": 6996,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [
+     "Reason Not Performed"
+    ],
+    "pages_covered_pct": 98,
+    "content_pages": 723,
+    "content_covered_pct": 100,
+    "uncovered_content_pct": 0
+   },
+   "problems": [
+    "Extreme content-fitted blocklist. The program filters by 33 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "warnings": [
+    "These field_name values were extracted on >=70% of ALL pages: 'Reason Not Performed'. Text recurring on nearly every page is usually page template furniture (watermark/footer/stamp), not a field - verify against the page dumps and stop extracting it unless it is genuinely a per-page data-entry field."
+   ],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    1,
+    "not_audited",
+    1,
+    -723
+   ],
+   "became_best": false
+  }
+ ]
+}

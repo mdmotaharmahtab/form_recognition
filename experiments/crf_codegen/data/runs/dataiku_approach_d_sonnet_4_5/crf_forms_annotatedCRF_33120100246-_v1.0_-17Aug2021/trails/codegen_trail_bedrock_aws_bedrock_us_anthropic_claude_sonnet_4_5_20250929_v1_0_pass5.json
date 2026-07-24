@@ -1,0 +1,550 @@
+{
+ "stop_reason": "budget",
+ "versions": 5,
+ "best_version": 5,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "confirm",
+   "metrics": {
+    "engine": "codegen",
+    "records": 60,
+    "pages_total": 14,
+    "pages_with_fields": 13,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 9,
+    "fields_per_form": 6.7,
+    "forms_per_100_pages": 64.3,
+    "form_same_page_evidence_records": 59,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 93
+   },
+   "problems": [],
+   "outcome": "extended_program"
+  },
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 21,
+    "pages_total": 14,
+    "pages_with_fields": 3,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 3,
+    "fields_per_form": 7.0,
+    "forms_per_100_pages": 21.4,
+    "form_same_page_evidence_records": 21,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 21
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    0,
+    "not_audited",
+    0,
+    -3
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "confirm_extension",
+   "metrics": {
+    "engine": "codegen",
+    "records": 60,
+    "pages_total": 14,
+    "pages_with_fields": 13,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 9,
+    "fields_per_form": 6.7,
+    "forms_per_100_pages": 64.3,
+    "form_same_page_evidence_records": 59,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 93
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 25,
+   "audit_pages": [
+    12,
+    14,
+    73,
+    502,
+    520,
+    549
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 12,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 14,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 73,
+     "missed": [
+      "If Yes, describe"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 502,
+     "missed": [
+      "Date of Contact/Attempt",
+      "Type of Contact",
+      "Method of Contact",
+      "Phone",
+      "Office Visit",
+      "Letter",
+      "Other"
+     ],
+     "false": [
+      "(Repeatable row added with Add Row button)",
+      "Were you able to contact the",
+      "Date of Contact/Attempt",
+      "Type of Contact",
+      "Method of Contact",
+      "Subject?",
+      "Final Contact",
+      "First Failed Attempt",
+      "Second Failed Attempt",
+      "Third Failed Attempt"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 520,
+     "missed": [
+      "Date of Discharge",
+      "Time of Discharge"
+     ],
+     "false": [
+      "(Repeatable row added with Add Row button)",
+      "Date of Discharge",
+      "Time of Discharge"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 549,
+     "missed": [],
+     "false": [
+      "Standing",
+      "Difference between Standing and Supine"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    25,
+    0,
+    -13
+   ],
+   "became_best": true
+  },
+  {
+   "version": 3,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 53,
+    "pages_total": 14,
+    "pages_with_fields": 14,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 94,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 10,
+    "fields_per_form": 5.3,
+    "forms_per_100_pages": 71.4,
+    "form_same_page_evidence_records": 52,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 100
+   },
+   "problems": [],
+   "warnings": [
+    "The program filters by 24 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": 18,
+   "audit_pages": [
+    12,
+    14,
+    73,
+    498,
+    502,
+    519,
+    520,
+    549
+   ],
+   "audit_partial": null,
+   "audit_promoted": [
+    498
+   ],
+   "audit_verdicts": [
+    {
+     "page": 12,
+     "missed": [],
+     "false": [
+      "1102",
+      "Control Period Day 2",
+      "Control Period Day 3"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 14,
+     "missed": [],
+     "false": [
+      "1402",
+      "Treatment Period Day 20"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 73,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 498,
+     "missed": [
+      "Time of Vitals Measurement",
+      "Systolic Blood Pressure (mmHg)",
+      "Diastolic Blood Pressure (mmHg)",
+      "Heart Rate (bpm)"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 502,
+     "missed": [],
+     "false": [
+      "Were you able to contact the",
+      "Date of Contact/Attempt",
+      "Type of Contact",
+      "Method of Contact",
+      "Subject?"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 519,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 520,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 549,
+     "missed": [
+      "Time of Vitals Measurement",
+      "Systolic Blood Pressure (mmHg)",
+      "Diastolic Blood Pressure (mmHg)",
+      "Heart Rate (bpm)"
+     ],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    18,
+    1,
+    -14
+   ],
+   "became_best": true
+  },
+  {
+   "version": 4,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 57,
+    "pages_total": 14,
+    "pages_with_fields": 14,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 95,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 10,
+    "fields_per_form": 5.7,
+    "forms_per_100_pages": 71.4,
+    "form_same_page_evidence_records": 56,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 100
+   },
+   "problems": [],
+   "warnings": [
+    "The program filters by 26 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": 23,
+   "audit_pages": [
+    12,
+    14,
+    15,
+    73,
+    498,
+    502,
+    520,
+    549
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 12,
+     "missed": [],
+     "false": [
+      "1102",
+      "Control Period Day 2",
+      "Control Period Day 3"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 14,
+     "missed": [],
+     "false": [
+      "1402",
+      "Treatment Period Day 20"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 15,
+     "missed": [],
+     "false": [
+      "1403",
+      "Treatment Period Day 21",
+      "YES",
+      "page enrols if DSAI101= Yes on Aicure Device - Distribution page"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 73,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 498,
+     "missed": [
+      "Time of Vitals Measurement",
+      "Systolic Blood Pressure (mmHg)",
+      "Diastolic Blood Pressure (mmHg)",
+      "Heart Rate (bpm)"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 502,
+     "missed": [],
+     "false": [
+      "Were you able to contact the",
+      "Subject?",
+      "Final Contact",
+      "First Failed Attempt",
+      "Second Failed Attempt",
+      "Third Failed Attempt"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 520,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 549,
+     "missed": [
+      "Time of Vitals Measurement",
+      "Systolic Blood Pressure (mmHg)",
+      "Diastolic Blood Pressure (mmHg)",
+      "Heart Rate (bpm)"
+     ],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    23,
+    1,
+    -14
+   ],
+   "became_best": false
+  },
+  {
+   "version": 5,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 53,
+    "pages_total": 14,
+    "pages_with_fields": 14,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 10,
+    "fields_per_form": 5.3,
+    "forms_per_100_pages": 71.4,
+    "form_same_page_evidence_records": 51,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 100
+   },
+   "problems": [],
+   "warnings": [
+    "The program filters by 20 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": 17,
+   "audit_pages": [
+    12,
+    14,
+    73,
+    498,
+    499,
+    502,
+    520,
+    549
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 12,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 14,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 73,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 498,
+     "missed": [
+      "Time of Vitals Measurement",
+      "Systolic Blood Pressure (mmHg)",
+      "Diastolic Blood Pressure (mmHg)",
+      "Heart Rate (bpm)"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 499,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 502,
+     "missed": [
+      "Were you able to contact the Subject?"
+     ],
+     "false": [
+      "Date of Contact/Attempt",
+      "Type of Contact",
+      "Method of Contact",
+      "Subject?",
+      "Final Contact",
+      "First Failed Attempt",
+      "Second Failed Attempt",
+      "Third Failed Attempt"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 520,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 549,
+     "missed": [
+      "Time of Vitals Measurement",
+      "Systolic Blood Pressure (mmHg)",
+      "Diastolic Blood Pressure (mmHg)",
+      "Heart Rate (bpm)"
+     ],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    17,
+    1,
+    -14
+   ],
+   "became_best": true
+  }
+ ]
+}

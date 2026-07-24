@@ -1,0 +1,464 @@
+{
+ "stop_reason": "budget",
+ "versions": 5,
+ "best_version": 4,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 423,
+    "pages_total": 57,
+    "pages_with_fields": 47,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 0,
+    "labels_look_human_pct": 97,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 0,
+    "fields_per_form": 423.0,
+    "forms_per_100_pages": 0.0,
+    "form_same_page_evidence_records": 0,
+    "form_same_page_persistence_pct": null,
+    "furniture_candidates": [],
+    "pages_covered_pct": 82
+   },
+   "problems": [
+    "Extreme content-fitted blocklist. The program filters by 30 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "warnings": [
+    "form_name empty for 100% of records - if the document does print form/section names, fix the form_name strategy (consider carrying the last seen title forward)."
+   ],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    1,
+    "not_audited",
+    1,
+    -47
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "confirm",
+   "metrics": {
+    "engine": "codegen",
+    "records": 471,
+    "pages_total": 57,
+    "pages_with_fields": 47,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 0,
+    "labels_look_human_pct": 97,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 0,
+    "fields_per_form": 471.0,
+    "forms_per_100_pages": 0.0,
+    "form_same_page_evidence_records": 0,
+    "form_same_page_persistence_pct": null,
+    "furniture_candidates": [],
+    "pages_covered_pct": 82
+   },
+   "problems": [],
+   "outcome": "extended_program"
+  },
+  {
+   "version": 2,
+   "kind": "revise_gates",
+   "metrics": {
+    "engine": "codegen",
+    "records": 471,
+    "pages_total": 57,
+    "pages_with_fields": 47,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 0,
+    "labels_look_human_pct": 97,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 0,
+    "fields_per_form": 471.0,
+    "forms_per_100_pages": 0.0,
+    "form_same_page_evidence_records": 0,
+    "form_same_page_persistence_pct": null,
+    "furniture_candidates": [],
+    "pages_covered_pct": 82
+   },
+   "problems": [],
+   "warnings": [
+    "form_name empty for 100% of records - if the document does print form/section names, fix the form_name strategy (consider carrying the last seen title forward).",
+    "The program filters by 18 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    0,
+    "not_audited",
+    2,
+    -47
+   ],
+   "became_best": true
+  },
+  {
+   "version": 3,
+   "kind": "confirm_extension",
+   "metrics": {
+    "engine": "codegen",
+    "records": 471,
+    "pages_total": 57,
+    "pages_with_fields": 47,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 0,
+    "labels_look_human_pct": 97,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 0,
+    "fields_per_form": 471.0,
+    "forms_per_100_pages": 0.0,
+    "form_same_page_evidence_records": 0,
+    "form_same_page_persistence_pct": null,
+    "furniture_candidates": [],
+    "pages_covered_pct": 82
+   },
+   "problems": [],
+   "warnings": [
+    "form_name empty for 100% of records - if the document does print form/section names, fix the form_name strategy (consider carrying the last seen title forward).",
+    "The program filters by 18 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": 61,
+   "audit_pages": [
+    37,
+    67,
+    78,
+    79,
+    254,
+    424
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 37,
+     "missed": [
+      "Skin and Mucosae",
+      "Neurological",
+      "Extremities"
+     ],
+     "false": [
+      "Normal",
+      "Abnormal",
+      "Not Done"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 67,
+     "missed": [
+      "Benzodiazepines",
+      "Cannabinoids",
+      "Cocaine",
+      "Methadone",
+      "Opiates",
+      "Phencyclidine",
+      "Propoxyphene"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 78,
+     "missed": [],
+     "false": [
+      "Suicidal Behaviour",
+      "Row 1 Select all that apply, so long as these are separate events; must ask about all types",
+      "A potentially self-injurious act committed with at least some wish to die, as a result of act. Behaviour was in part thought of as method to kill oneself. Intent does not have to",
+      "be 100%. If there is any intent/desire to die associated with the act, then it can be",
+      "considered an actual suicide attempt. There does not have to be any injury or",
+      "harm, just the potential for injury or harm. If a person pulls the trigger while gun is in mouth but gun is broken so no injury results, this is considered an attempt.",
+      "Inferring Intent: even if an individual denies intent/wish to die, it may be inferred clinically from the behaviour or circumstances. For example, a highly lethal act that is clearly not an accident so no other intent but suicide can be inferred (e.g. gunshot to",
+      "the head, jumping from window of a high floor/story). Also, if someone denies intent to die, but they thought that what they did could be lethal, intent may be inferred.",
+      "Have you made a suicide attempt?",
+      "Have you done anything to harm yourself?",
+      "Have you done anything dangerous where you could have died?",
+      "What did you do?",
+      "Did you ______ as a way to end your life?",
+      "Did you want to die (even a little) when you ____?",
+      "Were trying to end your life when you ____?",
+      "Or did you think it was possible you could have died from ____?",
+      "Or did you do it purely for other reasons/without ANY intention of killing",
+      "yourself (like to relieve stress, feel better, get sympathy, or get something else",
+      "to happen? (Self-Injurious Behavior without suicidal intent)",
+      "Row 4 If Yes, describe"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 79,
+     "missed": [],
+     "false": [
+      "Overdose: Person has pills in hand but is stopped from ingesting. Once they",
+      "ingest any pills, this becomes an attempt rather than an interrupted attempt. Shooting: Person has gun pointed toward self, gun is taken away by someone else, or is somehow prevent from pulling trigger. Once they pull the trigger,",
+      "even if the gun fails to fire, it is an attempt. Jumping: Person is poised to jump, is grabbed and taken down from ledge. Hanging: Person has noose around neck but has not yet started to hang - is",
+      "stopped from doing so",
+      "Has there been a time when you started to do something to end your life but",
+      "someone or something stopped you before you actually did anything?",
+      "Row 9 If Yes, describe",
+      "Examples are similar to interrupted attempts, except that the individual stops",
+      "him/herself, instead of being stopped by something else.",
+      "Has there been a time when you started to do something to try to end your life",
+      "but you stopped yourself before you actually did anything?",
+      "Row 13 If Yes, describe"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 254,
+     "missed": [],
+     "false": [
+      "Could/can you stop thinking about killing yourself or wanting to die if you want",
+      "to?",
+      "Are there things - anyone or anything - that stopped you from wanting to die or",
+      "acting on thoughts of committing suicide?",
+      "What sort of reasons did you have for thinking about wanting to die or killing",
+      "yourself? Was it to end the pain or stop the way you were feeling (in other",
+      "words you couldn't go on living with this pain or how you were feeling) or was it",
+      "to get attention, revenge or a reaction from others? or both?"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 424,
+     "missed": [],
+     "false": [
+      "Could/can you stop thinking about killing yourself or wanting to die if you want",
+      "to?",
+      "Are there things - anyone or anything - that stopped you from wanting to die or",
+      "acting on thoughts of committing suicide?",
+      "What sort of reasons did you have for thinking about wanting to die or killing",
+      "yourself? Was it to end the pain or stop the way you were feeling (in other",
+      "words you couldn't go on living with this pain or how you were feeling) or was it",
+      "to get attention, revenge or a reaction from others? or both?"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    61,
+    2,
+    -47
+   ],
+   "became_best": true
+  },
+  {
+   "version": 4,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 504,
+    "pages_total": 57,
+    "pages_with_fields": 52,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 0,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 0,
+    "fields_per_form": 504.0,
+    "forms_per_100_pages": 0.0,
+    "form_same_page_evidence_records": 0,
+    "form_same_page_persistence_pct": null,
+    "furniture_candidates": [],
+    "pages_covered_pct": 91
+   },
+   "problems": [],
+   "warnings": [
+    "form_name empty for 100% of records - if the document does print form/section names, fix the form_name strategy (consider carrying the last seen title forward).",
+    "The program filters by 27 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": 48,
+   "audit_pages": [
+    37,
+    66,
+    67,
+    78,
+    79,
+    136,
+    254,
+    424
+   ],
+   "audit_partial": null,
+   "audit_promoted": [
+    66
+   ],
+   "audit_verdicts": [
+    {
+     "page": 37,
+     "missed": [],
+     "false": [
+      "Skin and Mucosae",
+      "Neurological",
+      "Extremities"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 66,
+     "missed": [
+      "Result"
+     ],
+     "false": [
+      "Test",
+      "Amphetamines",
+      "Barbiturates"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 67,
+     "missed": [],
+     "false": [
+      "Benzodiazepines",
+      "Cannabinoids",
+      "Cocaine",
+      "Methadone",
+      "Opiates",
+      "Phencyclidine",
+      "Propoxyphene"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 78,
+     "missed": [],
+     "false": [
+      "Row 1 Select all that apply, so long as these are separate events; must ask about all types",
+      "A potentially self-injurious act committed with at least some wish to die, as a result of act. Behaviour was in part thought of as method to kill oneself. Intent does not have to",
+      "be 100%. If there is any intent/desire to die associated with the act, then it can be",
+      "considered an actual suicide attempt. There does not have to be any injury or",
+      "harm, just the potential for injury or harm. If a person pulls the trigger while gun is in mouth but gun is broken so no injury results, this is considered an attempt.",
+      "the head, jumping from window of a high floor/story). Also, if someone denies intent to die, but they thought that what they did could be lethal, intent may be inferred.",
+      "Have you made a suicide attempt?",
+      "Have you done anything to harm yourself?",
+      "Have you done anything dangerous where you could have died?",
+      "What did you do?",
+      "Did you ______ as a way to end your life?",
+      "Did you want to die (even a little) when you ____?",
+      "Were trying to end your life when you ____?",
+      "Or did you think it was possible you could have died from ____?",
+      "Or did you do it purely for other reasons/without ANY intention of killing",
+      "yourself (like to relieve stress, feel better, get sympathy, or get something else",
+      "to happen? (Self-Injurious Behavior without suicidal intent)",
+      "Row 3 If Yes, Total number of attempts",
+      "Row 4 If Yes, describe"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 79,
+     "missed": [],
+     "false": [
+      "Overdose: Person has pills in hand but is stopped from ingesting. Once they",
+      "even if the gun fails to fire, it is an attempt. Jumping: Person is poised to jump, is grabbed and taken down from ledge. Hanging: Person has noose around neck but has not yet started to hang - is",
+      "stopped from doing so",
+      "Has there been a time when you started to do something to end your life but",
+      "someone or something stopped you before you actually did anything?",
+      "Row 8 If Yes, Total number of interrupted attempts",
+      "Row 9 If Yes, describe",
+      "Examples are similar to interrupted attempts, except that the individual stops",
+      "him/herself, instead of being stopped by something else.",
+      "Has there been a time when you started to do something to try to end your life",
+      "but you stopped yourself before you actually did anything?",
+      "Row 12 If Yes, Total number of aborted attempts",
+      "Row 13 If Yes, describe"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 136,
+     "missed": [],
+     "false": [
+      "Row 1 The following features should be rated with respect to the most severe type of ideation",
+      "(i.e. 1-5 from above, with 1 being the least severe and 5 being the most severe). Ask about time he/she was feeling the most suicidal."
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 254,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 424,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    48,
+    2,
+    -52
+   ],
+   "became_best": true
+  },
+  {
+   "version": 5,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 512,
+    "pages_total": 57,
+    "pages_with_fields": 47,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 0,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 0,
+    "fields_per_form": 512.0,
+    "forms_per_100_pages": 0.0,
+    "form_same_page_evidence_records": 0,
+    "form_same_page_persistence_pct": null,
+    "furniture_candidates": [],
+    "pages_covered_pct": 82
+   },
+   "problems": [
+    "Extreme content-fitted blocklist. The program filters by 45 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "warnings": [
+    "form_name empty for 100% of records - if the document does print form/section names, fix the form_name strategy (consider carrying the last seen title forward)."
+   ],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    1,
+    "not_audited",
+    1,
+    -47
+   ],
+   "became_best": false
+  }
+ ]
+}

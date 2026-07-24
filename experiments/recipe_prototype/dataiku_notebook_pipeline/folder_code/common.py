@@ -28,7 +28,11 @@ import fitz
 BASE = os.environ.get("ECS_BASE") or os.path.dirname(os.path.dirname(
     os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 CRF_DIR = os.path.join(BASE, "data", "crf_forms")
-OUT_DIR = os.path.join(BASE, "experiments", "recipe_prototype", "data", "outputs", "out")
+# ECS_OUT_DIR lets a run write its artifacts into an isolated directory (e.g. a
+# side-by-side ablation) without touching the default corpus outputs; unset =
+# the historical default, so ordinary runs are unchanged.
+OUT_DIR = os.environ.get("ECS_OUT_DIR") or os.path.join(
+    BASE, "experiments", "recipe_prototype", "data", "outputs", "out")
 
 
 @dataclass

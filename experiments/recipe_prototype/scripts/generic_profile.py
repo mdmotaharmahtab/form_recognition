@@ -58,6 +58,12 @@ from common import Line, build_page_lines
 # layout cluster - the "more good samples per cluster" ablation. Unset = no
 # change anywhere.
 _REPS_PER_CLUSTER = max(1, int(os.environ.get("ECS_REPS_PER_CLUSTER", "4")))
+# Per-cluster samples given to SPECIALIST (offloaded) passes. Default 1 =
+# historical behavior (each non-budget cluster gets a single page in
+# 'all_representatives'). Raising it (ECS_SPECIALIST_REPS_PER_CLUSTER) lets the
+# "few clusters per agent AND more samples per cluster" ablation enrich the
+# specialist passes too, not just the generalist. Unset = byte-identical to before.
+_SPEC_REPS_PER_CLUSTER = max(1, int(os.environ.get("ECS_SPECIALIST_REPS_PER_CLUSTER", "1")))
 # Default total cluster-budget for stage-0 rep selection; ECS_MAX_REPS overrides
 # it (e.g. a narrow-split ablation shrinks the generalist's owned cluster set).
 _MAX_REPS = max(1, int(os.environ.get("ECS_MAX_REPS", "10")))
@@ -635,7 +641,8 @@ def pick_representatives(clusters: list[list[int]], page_count: int,
             cluster_reps = picks_for(pages, k, k_max=slot)[:slot]
             reps.extend(cluster_reps)
         elif rep_all_content and not _blank(pages):
-            cluster_reps = picks_for(pages, 1)[:1]
+            cluster_reps = picks_for(pages, _SPEC_REPS_PER_CLUSTER,
+                                     k_max=_SPEC_REPS_PER_CLUSTER)[:_SPEC_REPS_PER_CLUSTER]
             extra.extend(cluster_reps)
         covered += len(pages)
         out_clusters.append({"n_pages": len(pages), "pages": pages,

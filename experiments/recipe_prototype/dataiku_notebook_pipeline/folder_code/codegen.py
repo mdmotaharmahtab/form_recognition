@@ -1185,8 +1185,19 @@ def audit_problem_lines(verdicts: list[dict]) -> list[str]:
 # multi-pass specialists: when one prompt cannot show a rep page for every
 # layout family, split the families across several independent programs
 # --------------------------------------------------------------------------- #
-def plan_passes(meta: dict, rep_budget: int = 14, max_passes: int = 4,
-                min_tail_reps: int = 8, min_tail_content: int = 20) -> list[dict]:
+# Split-planning knobs. Defaults reproduce the shipped "splitting is rare"
+# behavior; the ECS_* env vars let an ablation force narrow, many-cluster splits
+# without editing code. Unset = identical to before.
+_REP_BUDGET = int(os.environ.get("ECS_REP_BUDGET", "14"))
+_MAX_PASSES = int(os.environ.get("ECS_MAX_PASSES", "4"))
+_MIN_TAIL_REPS = int(os.environ.get("ECS_MIN_TAIL_REPS", "8"))
+_MIN_TAIL_CONTENT = int(os.environ.get("ECS_MIN_TAIL_CONTENT", "20"))
+
+
+def plan_passes(meta: dict, rep_budget: int | None = None,
+                max_passes: int | None = None,
+                min_tail_reps: int | None = None,
+                min_tail_content: int | None = None) -> list[dict]:
     """Split a document's clusters into specialist passes.
 
     Returns [{"clusters": [cluster indices], "rep_pages": [1-based pages]}, ...].
@@ -1222,6 +1233,14 @@ def plan_passes(meta: dict, rep_budget: int = 14, max_passes: int = 4,
     overflow clusters fold into the last pass, keeping their page ownership
     (and thus coverage visibility) even where their reps no longer fit the
     prompt."""
+    if rep_budget is None:
+        rep_budget = _REP_BUDGET
+    if max_passes is None:
+        max_passes = _MAX_PASSES
+    if min_tail_reps is None:
+        min_tail_reps = _MIN_TAIL_REPS
+    if min_tail_content is None:
+        min_tail_content = _MIN_TAIL_CONTENT
     budget_reps = set(meta.get("representative_pages_1based") or [])
     clusters = meta.get("clusters") or []
     line_counts = meta.get("line_counts")

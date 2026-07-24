@@ -48,9 +48,25 @@ from __future__ import annotations
 
 import heapq
 import math
+import os
 from collections import Counter, defaultdict
 
 from common import Line, build_page_lines
+
+# Per-cluster representative cap. Default 4 = historical behavior. Raising it
+# (ECS_REPS_PER_CLUSTER) shows the model more diverse in-family samples per
+# layout cluster - the "more good samples per cluster" ablation. Unset = no
+# change anywhere.
+_REPS_PER_CLUSTER = max(1, int(os.environ.get("ECS_REPS_PER_CLUSTER", "4")))
+# Per-cluster samples given to SPECIALIST (offloaded) passes. Default 1 =
+# historical behavior (each non-budget cluster gets a single page in
+# 'all_representatives'). Raising it (ECS_SPECIALIST_REPS_PER_CLUSTER) lets the
+# "few clusters per agent AND more samples per cluster" ablation enrich the
+# specialist passes too, not just the generalist. Unset = byte-identical to before.
+_SPEC_REPS_PER_CLUSTER = max(1, int(os.environ.get("ECS_SPECIALIST_REPS_PER_CLUSTER", "1")))
+# Default total cluster-budget for stage-0 rep selection; ECS_MAX_REPS overrides
+# it (e.g. a narrow-split ablation shrinks the generalist's owned cluster set).
+_MAX_REPS = max(1, int(os.environ.get("ECS_MAX_REPS", "10")))
 
 X_BINS = 6
 # Fixed-theta fallback for component tests and probes. The shipped path is
@@ -592,10 +608,13 @@ def pick_representatives(clusters: list[list[int]], page_count: int,
     def _blank(c: list[int]) -> bool:
         return is_blank is not None and all(is_blank(p) for p in c)
 
+    per_cluster_cap = _REPS_PER_CLUSTER
+
     def n_for(pages: list[int]) -> int:
         if profiles is None:
             return 2 if len(pages) > 50 else 1
-        return min(4, max(1 + len(pages) // 100, 2 if len(pages) > 50 else 1))
+        return min(per_cluster_cap,
+                   max(1 + len(pages) // 100, 2 if len(pages) > 50 else 1))
 
     def picks_for(pages: list[int], k: int, k_max: int | None = None) -> list[int]:
         if profiles is not None:
@@ -618,10 +637,12 @@ def pick_representatives(clusters: list[list[int]], page_count: int,
         if is_rep_cluster:
             room = cap - len(reps)
             k = min(n_for(pages), room)
-            cluster_reps = picks_for(pages, k, k_max=min(4, room))[:min(4, room)]
+            slot = min(per_cluster_cap, room)
+            cluster_reps = picks_for(pages, k, k_max=slot)[:slot]
             reps.extend(cluster_reps)
         elif rep_all_content and not _blank(pages):
-            cluster_reps = picks_for(pages, 1)[:1]
+            cluster_reps = picks_for(pages, _SPEC_REPS_PER_CLUSTER,
+                                     k_max=_SPEC_REPS_PER_CLUSTER)[:_SPEC_REPS_PER_CLUSTER]
             extra.extend(cluster_reps)
         covered += len(pages)
         out_clusters.append({"n_pages": len(pages), "pages": pages,
@@ -660,7 +681,7 @@ def _cluster_signature(pages: list[int], profiles: dict[int, Counter],
 
 
 def cluster_pages_generic(doc, theta: float | None = None,
-                          max_reps: int = 10, coverage: float = 0.95,
+                          max_reps: int | None = None, coverage: float = 0.95,
                           page_lines: dict[int, list[Line]] | None = None,
                           method: str = "leader") -> dict:
     """Drop-in shaped counterpart of common.cluster_pages using the generic
@@ -671,6 +692,8 @@ def cluster_pages_generic(doc, theta: float | None = None,
     pre-parsed page_lines to avoid re-reading the PDF; if supplied it MUST
     cover every page 0..doc.page_count-1 (representatives and coverage are
     computed against the full document)."""
+    if max_reps is None:
+        max_reps = _MAX_REPS
     if page_lines is None:
         page_lines = {i: build_page_lines(doc[i]) for i in range(doc.page_count)}
     else:

@@ -1,0 +1,407 @@
+{
+ "stop_reason": "budget",
+ "versions": 5,
+ "best_version": 3,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "confirm",
+   "metrics": {
+    "engine": "codegen",
+    "records": 762,
+    "pages_total": 112,
+    "pages_with_fields": 110,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 90,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 6,
+    "fields_per_form": 127.0,
+    "forms_per_100_pages": 5.4,
+    "form_same_page_evidence_records": 758,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 98
+   },
+   "problems": [],
+   "outcome": "extended_program"
+  },
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 333,
+    "pages_total": 112,
+    "pages_with_fields": 108,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 90,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 6,
+    "fields_per_form": 55.5,
+    "forms_per_100_pages": 5.4,
+    "form_same_page_evidence_records": 323,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 96
+   },
+   "problems": [],
+   "warnings": [
+    "The program filters by 12 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    0,
+    "not_audited",
+    1,
+    -108
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "confirm_extension",
+   "metrics": {
+    "engine": "codegen",
+    "records": 762,
+    "pages_total": 112,
+    "pages_with_fields": 110,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 90,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 6,
+    "fields_per_form": 127.0,
+    "forms_per_100_pages": 5.4,
+    "form_same_page_evidence_records": 758,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 98
+   },
+   "problems": [],
+   "warnings": [
+    "The program filters by 12 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": 27,
+   "audit_pages": [
+    1,
+    3,
+    4,
+    39,
+    56,
+    77
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [
+      "Photo ID",
+      "Group Info Session",
+      "Group info held by",
+      "Study ICF Database Check",
+      "Study ICF Participant",
+      "Study ICF Date"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 3,
+     "missed": [],
+     "false": [
+      "Study ICF Signed by Physician/Nurse",
+      "Study ICF copy",
+      "Consented to Additional ICF",
+      "where a DNA sample will be taken and other data collected may be used for potential future research?",
+      "Add ICF Participant",
+      "Add ICF Date"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 4,
+     "missed": [],
+     "false": [
+      "Add ICF Time",
+      "Add ICF Signed by Physician/Nurse",
+      "Available"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 39,
+     "missed": [],
+     "false": [
+      "E24",
+      "(caffeinated coffee, caffeinated tea, caffeinated soda, and chocolate), pomelo, grapefruit, grapefruit juice, Seville oranges, Seville orange juice, blueberry juice, or cranberry juice within 72 hours prior to dosing.",
+      "E25",
+      "months, at the screening visit (Baseline/Screening version), and/or prior to dosing (as evidenced by clinical examination or an answer of \"yes\" on Questions 4 or 5 of the C SSRS Since Last Visit version) or suicidal behavior is present in the C-SSRS.",
+      "E26",
+      "minutes.",
+      "E27",
+      "untreated moderate or severe sleep apnea, other major untreated sleep disorders, or a known diagnosis of a circadian rhythm disorder. Participants adequately treated for obstructive sleep apnea are not excluded."
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 56,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 77,
+     "missed": [],
+     "false": [
+      "MH Term without Dictionary",
+      "Start Date",
+      "Ongoing",
+      "End Date"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    27,
+    1,
+    -110
+   ],
+   "became_best": true
+  },
+  {
+   "version": 3,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 734,
+    "pages_total": 112,
+    "pages_with_fields": 110,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 89,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 6,
+    "fields_per_form": 122.3,
+    "forms_per_100_pages": 5.4,
+    "form_same_page_evidence_records": 730,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 98
+   },
+   "problems": [],
+   "warnings": [
+    "The program filters by 12 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": 30,
+   "audit_pages": [
+    1,
+    2,
+    3,
+    4,
+    39,
+    56,
+    77,
+    108
+   ],
+   "audit_partial": null,
+   "audit_promoted": [
+    2
+   ],
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [
+      "Photo ID",
+      "Group Info Session",
+      "Group info held by",
+      "Study ICF Database Check",
+      "Study ICF Participant",
+      "Study ICF Date"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [
+      "Study ICF Part Number"
+     ],
+     "false": [
+      "Study ICF Time",
+      "Study ICF Part",
+      "Study ICF Version"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 3,
+     "missed": [],
+     "false": [
+      "Study ICF Signed by Physician/Nurse",
+      "Study ICF copy",
+      "Consented to Additional ICF",
+      "where a DNA sample will be taken and other data collected may be used for potential future research?",
+      "Add ICF Participant",
+      "Add ICF Date"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 4,
+     "missed": [],
+     "false": [
+      "Add ICF Time",
+      "Add ICF Signed by Physician/Nurse",
+      "Available"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 39,
+     "missed": [
+      "minutes."
+     ],
+     "false": [
+      "E24",
+      "(caffeinated coffee, caffeinated tea, caffeinated soda, and chocolate), pomelo, grapefruit, grapefruit juice, Seville oranges, Seville orange juice, blueberry juice, or cranberry juice within 72 hours prior to dosing.",
+      "E25",
+      "Exclusion 25. Participants with active suicidal ideation or suicidal behavior within the last 6",
+      "months, at the screening visit (Baseline/Screening version), and/or prior to dosing (as evidenced by clinical examination or an answer of \"yes\" on Questions 4 or 5 of the C SSRS Since Last Visit version) or suicidal behavior is present in the C-SSRS.",
+      "E26",
+      "Exclusion 26. Not able to consume the FDA HFM (High Fat Meal) for Part 2 and Part 3 within 20",
+      "E27",
+      "Exclusion 27. Participant has any significant primary sleep disorder. Participants with known",
+      "untreated moderate or severe sleep apnea, other major untreated sleep disorders, or a known diagnosis of a circadian rhythm disorder. Participants adequately treated for obstructive sleep apnea are not excluded."
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 56,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 77,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 108,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    30,
+    1,
+    -110
+   ],
+   "became_best": true
+  },
+  {
+   "version": 4,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 718,
+    "pages_total": 112,
+    "pages_with_fields": 110,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 89,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 6,
+    "fields_per_form": 119.7,
+    "forms_per_100_pages": 5.4,
+    "form_same_page_evidence_records": 714,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 98
+   },
+   "problems": [
+    "Extreme content-fitted blocklist. The program filters by 35 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "warnings": [],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    1,
+    "not_audited",
+    0,
+    -110
+   ],
+   "became_best": false
+  },
+  {
+   "version": 5,
+   "kind": "revise_gates",
+   "metrics": {
+    "engine": "codegen",
+    "records": 0,
+    "pages_total": 112,
+    "pages_with_fields": 0,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 0,
+    "labels_look_human_pct": 0,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 0,
+    "fields_per_form": 0.0,
+    "forms_per_100_pages": 0.0,
+    "form_same_page_evidence_records": 0,
+    "form_same_page_persistence_pct": null,
+    "furniture_candidates": [],
+    "pages_covered_pct": 0
+   },
+   "problems": [
+    "The program extracted ZERO records from the document.",
+    "Extreme content-fitted blocklist. The program filters by 71 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "warnings": [
+    "form_name empty for 100% of records - if the document does print form/section names, fix the form_name strategy (consider carrying the last seen title forward).",
+    "Only 0% of field_name values look like human labels (they look like codes/dates/junk) - fix label selection."
+   ],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    2,
+    "not_audited",
+    2,
+    0
+   ],
+   "became_best": false
+  }
+ ]
+}

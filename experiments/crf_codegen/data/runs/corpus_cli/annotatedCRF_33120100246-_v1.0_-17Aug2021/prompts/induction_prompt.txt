@@ -1,0 +1,445 @@
+You are configuring a deterministic PDF extraction engine for a clinical Case Report Form (CRF) document. You will see a small sample of REPRESENTATIVE PAGES (one or two per page-layout cluster) from a document that is 596 pages long. The whole document is repetitive: what you see is representative of everything.
+
+Each page is given as structured text lines with geometry:
+    x=<left> y=<top> sz=<font-size> <color> <B if bold> | <text>
+
+# Your task
+
+Produce a JSON "recipe" that tells the engine how to extract, for EVERY field on EVERY page of the document:
+  - form_name   : the name of the CRF form/section the field belongs to
+  - field_name  : the human-readable field label/question
+  - field_oid   : the machine identifier (OID / SAS name / export name / variable
+                  code) if the document prints one; null if the document is not
+                  annotated with machine codes
+
+# Engines you can parameterise (pick exactly one)
+
+1. "adjacent_annotation" - machine codes are printed on their own annotation lines
+   (often bracketed, often colored) directly next to/under the field label, in the
+   same column. Params: column_x_max, oid_regex (capture group 1 = code),
+   alt_regex/alt_is_primary (a second code on nearby lines), oid_color_non_black,
+   annotation_group_dy, label_max_dy, label_noise (regexes for lines that are
+   never labels).
+2. "anchored_blocks" - each field starts at a repeated anchor row (e.g. a bold
+   'Prefix: Activity #1' line with a number in a far-right column); everything
+   until the next anchor belongs to that field. Params: activity_regex (group 1 =
+   form, group 2 = field), activity_x [min,max], line_number_x_min, oid_regex.
+3. "numbered_join" - two page types per form: content pages print each label with
+   a small integer, definition pages map the same integers to codes in a column
+   under a header. Params: definition_page_all (regexes that all appear on
+   definition pages), oid_header (text of the column header the codes sit under),
+   row_number_x_max, data_number_regex, data_number_x_min, data_label_x_max,
+   label_noise. form_name.strategy must be "regex" for this engine.
+4. "column_table" - definition tables with an explicit header row; label and code
+   are cells of configurable columns. Params: definition_page_regex, row_key_regex,
+   name_header, oid_header, type_header.
+5. "line_pattern" - fallback: a code regex over lines, label = nearest previous
+   line matching label_regex within label_window_lines. Params: code_regex,
+   code_search (true = search inside line), label_regex, label_window_lines,
+   label_noise.
+
+# form_name strategies
+
+- {"strategy":"regex","regex":"^Form:\\s*(.+)$"} - a header line matches a regex (group 1 = name)
+- {"strategy":"colored_font","min_size":14,"carry_forward":true,"noise":[...]} - the form title is the big colored heading; carry_forward repeats the last seen title on continuation pages
+- {"strategy":"font","min_size":14,"carry_forward":true,"noise":[...]} - same but title is not colored
+- for engine anchored_blocks the form name comes from activity_regex group 1 automatically
+
+# Output format (JSON only, no prose)
+
+{
+  "format_id": "<short slug you invent>",
+  "reasoning": "<2-4 sentences: what layout you saw and why you chose the engine>",
+  "detect": {"all": ["<2-3 regexes that identify this layout>"]},
+  "skip_page_if": ["<optional regexes: pages to skip entirely (title/TOC/approval)>"],
+  "form_name": {...},
+  "fields": {"engine": "<one of the 5>", ...params...}
+}
+
+# Rules
+
+- Regexes are Python re syntax inside JSON strings (escape backslashes).
+- Codes are machine identifiers like AESTDAT / QVAL_GENDOTH - short, uppercase,
+  underscores/digits allowed. Human text, dates and option values are NOT codes.
+- Prefer the most specific engine that fits; use line_pattern only if nothing fits.
+- If the document prints NO machine codes at all, still extract form_name +
+  field_name (choose the engine that best yields labels; oid_regex may then match
+  nothing) and say so in "reasoning".
+- Numbers like x/y/size in the dumps are points; use them to set column bounds.
+
+# Representative pages
+
+--- page 1 of 596 (layout cluster covers ~1 pages) ---
+x= 504.5 y=  41.3 sz= 7.8 black   B | Pack Version
+x= 542.9 y=  53.7 sz= 7.8 black   B | 1.0
+x= 498.4 y=  72.7 sz= 7.8 black   B | Andreea Rubei
+x= 512.3 y=  85.1 sz= 7.8 black   B | 17Aug2021
+x= 221.4 y= 117.7 sz=20.9 black   B | Annotated CRF
+x=  87.0 y= 190.8 sz=15.3 #1d60a4   | CHANGE HISTORY
+x=  71.3 y= 191.5 sz=13.1 #1d60a4 B | 1
+x=  87.0 y= 224.2 sz=15.3 #1d60a4   | SCHEDULE OF ASSESSMENT
+x=  71.3 y= 224.9 sz=13.1 #1d60a4 B | 2
+x=  87.0 y= 256.8 sz=15.3 #1d60a4   | PAGES
+x=  71.3 y= 257.6 sz=13.1 #1d60a4 B | 3
+x= 113.1 y= 288.9 sz=13.1 #2477cc   | 3.1. Visit Date
+x= 113.1 y= 304.0 sz=13.1 #2477cc   | 3.2. Informed Consent
+x= 113.1 y= 319.0 sz=13.1 #2477cc   | 3.3. FBR Consent
+x= 113.1 y= 334.0 sz=13.1 #2477cc   | 3.4. Demography
+x= 113.1 y= 349.1 sz=13.1 #2477cc   | 3.5. Reproductive Status - Female
+x= 113.1 y= 364.1 sz=13.1 #2477cc   | 3.6. Reproductive Status - Male
+x= 113.1 y= 379.1 sz=13.1 #2477cc   | 3.7. Medical/Psychiatric History
+x= 113.1 y= 394.2 sz=13.1 #2477cc   | 3.8. Body Temperature and Respiratory Rate
+x= 113.1 y= 409.2 sz=13.1 #2477cc   | 3.9. Triplicate Orthostatic BP and HR - Central
+x= 113.1 y= 424.3 sz=13.1 #2477cc   | 3.10. Height and Weight
+x= 113.1 y= 439.3 sz=13.1 #2477cc   | 3.11. Physical Exam
+x= 113.1 y= 454.3 sz=13.1 #2477cc   | 3.12. Triplicate ECG Assessments
+x= 113.1 y= 469.4 sz=13.1 #2477cc   | 3.13. Serology
+x= 113.1 y= 484.4 sz=13.1 #2477cc   | 3.14. Glycated Hemoglobin
+x= 113.1 y= 499.4 sz=13.1 #2477cc   | 3.15. Clinical Laboratory Assessments
+x= 113.1 y= 514.5 sz=13.1 #2477cc   | 3.16. Laboratory results review
+x= 113.1 y= 529.5 sz=13.1 #2477cc   | 3.17. FSH Blood Sample
+x= 113.1 y= 544.5 sz=13.1 #2477cc   | 3.18. Pregnancy test
+x= 113.1 y= 559.6 sz=13.1 #2477cc   | 3.19. Tobacco Use
+x= 113.1 y= 574.6 sz=13.1 #2477cc   | 3.20. Alcohol Use
+x= 113.1 y= 589.7 sz=13.1 #2477cc   | 3.21. Alcohol Screen - Urine or Breath
+x= 113.1 y= 604.7 sz=13.1 #2477cc   | 3.22. Urine Drug Screen
+x= 113.1 y= 619.7 sz=13.1 #2477cc   | 3.23. Cotinine Screen
+x= 113.1 y= 634.8 sz=13.1 #2477cc   | 3.24. C-SSRS - Screening/Baseline
+x= 113.1 y= 649.8 sz=13.1 #2477cc   | 3.25. C-SSRS - Screening/Baseline - Page 1
+x= 113.1 y= 664.8 sz=13.1 #2477cc   | 3.26. C-SSRS - Screening/Baseline - Page 2
+x= 113.1 y= 679.9 sz=13.1 #2477cc   | 3.27. C-SSRS - Screening/Baseline - Page 3
+x= 113.1 y= 694.9 sz=13.1 #2477cc   | 3.28. C-SSRS - Screening/Baseline - Page 4
+x= 113.1 y= 709.9 sz=13.1 #2477cc   | 3.29. AE and CM prompt
+x= 113.1 y= 725.0 sz=13.1 #2477cc   | 3.30. Inclusion criteria
+x= 113.1 y= 740.0 sz=13.1 #2477cc   | 3.31. Exclusion criteria
+x= 113.1 y= 755.1 sz=13.1 #2477cc   | 3.32. Sertraline Titration
+x= 113.1 y= 770.1 sz=13.1 #2477cc   | 3.33. End of Screening
+x= 113.1 y= 785.1 sz=13.1 #2477cc   | 3.34. Visit Date
+
+--- page 2 of 596 (layout cluster covers ~1 pages) ---
+x= 113.1 y=  35.3 sz=13.1 #2477cc   | 3.35. Drug dispensation- Titration period
+x= 113.1 y=  50.3 sz=13.1 #2477cc   | 3.36. Visit Date
+x= 113.1 y=  65.3 sz=13.1 #2477cc   | 3.37. Triplicate Orthostatic BP and HR - Central
+x= 113.1 y=  80.4 sz=13.1 #2477cc   | 3.38. PK Blood Draw - Sertraline
+x= 113.1 y=  95.4 sz=13.1 #2477cc   | 3.39. Aicure Device - Distribution
+x= 113.1 y= 110.5 sz=13.1 #2477cc   | 3.40. Drug administration- Titration Period
+x= 113.1 y= 125.5 sz=13.1 #2477cc   | 3.41. IMP Administration - Sertraline
+x= 113.1 y= 140.5 sz=13.1 #2477cc   | 3.42. AE and CM prompt
+x= 113.1 y= 155.6 sz=13.1 #2477cc   | 3.43. End of Screening
+x= 113.1 y= 170.6 sz=13.1 #2477cc   | 3.44. Visit Date
+x= 113.1 y= 185.6 sz=13.1 #2477cc   | 3.45. Triplicate Orthostatic BP and HR - Central
+x= 113.1 y= 200.7 sz=13.1 #2477cc   | 3.46. Physical Exam
+x= 113.1 y= 215.7 sz=13.1 #2477cc   | 3.47. Clinical Laboratory Assessments
+x= 113.1 y= 230.7 sz=13.1 #2477cc   | 3.48. Laboratory results review
+x= 113.1 y= 245.8 sz=13.1 #2477cc   | 3.49. Pregnancy test
+x= 113.1 y= 260.8 sz=13.1 #2477cc   | 3.50. Alcohol Screen - Urine or Breath
+x= 113.1 y= 275.9 sz=13.1 #2477cc   | 3.51. Urine Drug Screen
+x= 113.1 y= 290.9 sz=13.1 #2477cc   | 3.52. Cotinine Screen
+x= 113.1 y= 305.9 sz=13.1 #2477cc   | 3.53. PK Blood Draw - Sertraline
+x= 113.1 y= 321.0 sz=13.1 #2477cc   | 3.54. PGx Blood Sample
+x= 113.1 y= 336.0 sz=13.1 #2477cc   | 3.55. FBR Blood Sample
+x= 113.1 y= 351.0 sz=13.1 #2477cc   | 3.56. C-SSRS - Since Last Visit
+x= 113.1 y= 366.1 sz=13.1 #2477cc   | 3.57. C-SSRS since last visit - Page 1
+x= 113.1 y= 381.1 sz=13.1 #2477cc   | 3.58. C-SSRS since last visit - Page 2
+x= 113.1 y= 396.1 sz=13.1 #2477cc   | 3.59. C-SSRS since last visit - Page 3
+x= 113.1 y= 411.2 sz=13.1 #2477cc   | 3.60. C-SSRS since last visit - Page 4
+x= 113.1 y= 426.2 sz=13.1 #2477cc   | 3.61. IMP Administration - Sertraline
+x= 113.1 y= 441.3 sz=13.1 #2477cc   | 3.62. AE and CM prompt
+x= 113.1 y= 456.3 sz=13.1 #2477cc   | 3.63. Inclusion criteria
+x= 113.1 y= 471.3 sz=13.1 #2477cc   | 3.64. Exclusion criteria
+x= 113.1 y= 486.4 sz=13.1 #2477cc   | 3.65. End of Screening
+x= 113.1 y= 501.4 sz=13.1 #2477cc   | 3.66. Visit Date
+x= 113.1 y= 516.4 sz=13.1 #2477cc   | 3.67. AE and CM prompt
+x= 113.1 y= 531.5 sz=13.1 #2477cc   | 3.68. Body Temperature and Respiratory Rate - Predose
+x= 113.1 y= 546.5 sz=13.1 #2477cc   | 3.69. Triplicate Orthostatic BP and HR - Predose
+x= 113.1 y= 561.5 sz=13.1 #2477cc   | 3.70. Triplicate ECG Assessments - Predose
+x= 113.1 y= 576.6 sz=13.1 #2477cc   | 3.71. C-SSRS - Since Last Visit
+x= 113.1 y= 591.6 sz=13.1 #2477cc   | 3.72. C-SSRS since last visit - Page 1
+x= 113.1 y= 606.7 sz=13.1 #2477cc   | 3.73. C-SSRS since last visit - Page 2
+x= 113.1 y= 621.7 sz=13.1 #2477cc   | 3.74. C-SSRS since last visit - Page 3
+x= 113.1 y= 636.7 sz=13.1 #2477cc   | 3.75. C-SSRS since last visit - Page 4
+x= 113.1 y= 651.8 sz=13.1 #2477cc   | 3.76. IMP Administration - Sertraline
+x= 113.1 y= 666.8 sz=13.1 #2477cc   | 3.77. PK Blood Draw - Sertraline
+x= 113.1 y= 681.8 sz=13.1 #2477cc   | 3.78. Triplicate Orthostatic BP and HR - 1h Postdose
+x= 113.1 y= 696.9 sz=13.1 #2477cc   | 3.79. Triplicate Orthostatic BP and HR - 1.5h Postdose
+x= 113.1 y= 711.9 sz=13.1 #2477cc   | 3.80. Triplicate Orthostatic BP and HR - 2h Postdose
+x= 113.1 y= 726.9 sz=13.1 #2477cc   | 3.81. Triplicate Orthostatic BP and HR - 2.5h Postdose
+x= 113.1 y= 742.0 sz=13.1 #2477cc   | 3.82. Triplicate Orthostatic BP and HR - 3h Postdose
+x= 113.1 y= 757.0 sz=13.1 #2477cc   | 3.83. Triplicate Orthostatic BP and HR - 4h Postdose
+x= 1
+<...page truncated...>
+
+--- page 123 of 596 (layout cluster covers ~51 pages) ---
+x=  47.8 y=  66.1 sz=14.4 #004c99   | Pregnancy test
+x= 494.9 y= 115.3 sz= 9.2 #454545   | Yes
+x= 527.0 y= 115.3 sz= 9.2 #454545   | No
+x=  47.8 y= 116.5 sz= 7.8 black     | Was a Pregnancy Test Performed?
+x=  47.8 y= 138.1 sz= 7.8 #ff0000   | [LBYN4]
+x=  47.8 y= 150.5 sz= 7.8 #ff0000   | [TYPE: enumeration (values: Yes, No)]
+x=  47.8 y= 177.3 sz= 7.8 black     | If not done reason
+x=  47.8 y= 200.2 sz= 7.8 #ff0000   | [LBRSN4]
+x=  47.8 y= 212.6 sz= 7.8 #ff0000   | [TYPE: text]
+x= 473.6 y= 238.2 sz= 9.2 #454545   | Urine
+x= 511.8 y= 238.2 sz= 9.2 #454545   | Serum
+x=  47.8 y= 239.4 sz= 7.8 black     | Type of pregnancy test
+x=  47.8 y= 261.0 sz= 7.8 #ff0000   | [LBCAT4]
+x=  47.8 y= 273.4 sz= 7.8 #ff0000   | [TYPE: enumeration (values: Urine, Serum)]
+x=  47.8 y= 300.2 sz= 7.8 black     | Barcode Number
+x=  47.8 y= 323.1 sz= 7.8 #ff0000   | [LBREQ4]
+x=  47.8 y= 335.5 sz= 7.8 #ff0000   | [TYPE: text]
+x=  47.8 y= 362.3 sz= 7.8 black     | Kit Expiration Date
+x=  47.8 y= 385.2 sz= 7.8 #ff0000   | [LBEXPDT4]
+x=  47.8 y= 397.6 sz= 7.8 #ff0000   | [TYPE: date]
+x=  47.8 y= 410.0 sz= 7.8 #ff0000   | [VISIBILITY: site only]
+x=  47.8 y= 436.8 sz= 7.8 black     | Kit Batch Number
+x=  47.8 y= 459.7 sz= 7.8 #ff0000   | [LBBTCH4]
+x=  47.8 y= 472.1 sz= 7.8 #ff0000   | [TYPE: text]
+x=  47.8 y= 484.6 sz= 7.8 #ff0000   | [VISIBILITY: site only]
+x=  47.8 y= 511.4 sz= 7.8 black     | Date of Sample
+x=  47.8 y= 534.2 sz= 7.8 #ff0000   | [LBDAT4]
+x=  47.8 y= 546.7 sz= 7.8 #ff0000   | [TYPE: date]
+x=  47.8 y= 573.5 sz= 7.8 black     | Time of Sample
+x=  47.8 y= 596.4 sz= 7.8 #ff0000   | [LBTIM4]
+x=  47.8 y= 608.8 sz= 7.8 #ff0000   | [TYPE: partialtime (hour, minutes)]
+x= 454.2 y= 634.4 sz= 9.2 #454545   | Negative
+x= 506.7 y= 634.4 sz= 9.2 #454545   | Positive
+x=  47.8 y= 635.6 sz= 7.8 black     | Result
+x=  47.8 y= 657.1 sz= 7.8 #ff0000   | [LBORRES4]
+x=  47.8 y= 669.6 sz= 7.8 #ff0000   | [TYPE: enumeration (values: Negative, Positive)]
+x=  47.8 y= 704.2 sz= 7.8 black     | If a urine test is performed and is positive, the investigator must follow-up with a confirmatory serum pregnancy test
+
+--- page 170 of 596 (layout cluster covers ~52 pages) ---
+x=  47.8 y=  50.5 sz= 7.8 black     | Reason
+x= 441.8 y=  88.5 sz= 9.2 black     | As per protocol
+x= 441.8 y= 110.7 sz= 9.2 black     | Adverse Event
+x= 441.8 y= 133.0 sz= 9.2 black     | Dosing error
+x= 441.8 y= 155.2 sz= 9.2 black     | Dispensing error
+x= 441.8 y= 177.4 sz= 9.2 black     | Technical problems
+x= 441.8 y= 199.7 sz= 9.2 black     | Subject/guardian decision
+x= 441.8 y= 221.9 sz= 9.2 black     | Physician decision
+x=  47.8 y= 248.6 sz= 7.8 #ff0000   | [EXADJ1]
+x=  47.8 y= 261.0 sz= 7.8 #ff0000   | [TYPE: enumeration (values: As per protocol, Adverse Event, Dosing error, Dispensing error, Technical problems, Subject/guardian decision,
+x=  47.8 y= 270.1 sz= 7.8 #ff0000   | Physician decision)]
+x=  47.8 y= 296.9 sz= 7.8 black     | Dosing Comments (optional)
+x=  47.8 y= 319.8 sz= 7.8 #ff0000   | [EXCOM1]
+x=  47.8 y= 332.2 sz= 7.8 #ff0000   | [TYPE: text]
+
+--- page 192 of 596 (layout cluster covers ~112 pages) ---
+x=  47.8 y=  66.1 sz=14.4 #004c99   | Triplicate Orthostatic BP and HR - Predose
+x= 494.9 y= 115.3 sz= 9.2 #454545   | Yes
+x= 527.0 y= 115.3 sz= 9.2 #454545   | No
+x=  47.8 y= 116.5 sz= 7.8 black     | Were Vital Signs Collected?
+x=  47.8 y= 138.1 sz= 7.8 #ff0000   | [VSPERF]
+x=  47.8 y= 150.5 sz= 7.8 #ff0000   | [TYPE: enumeration (values: Yes, No)]
+x=  47.8 y= 177.3 sz= 7.8 black     | If not collected, reason:
+x=  47.8 y= 200.2 sz= 7.8 #ff0000   | [VSREAS]
+x=  47.8 y= 212.6 sz= 7.8 #ff0000   | [TYPE: text]
+x=  47.8 y= 239.4 sz= 7.8 black     | Collection Date
+x=  47.8 y= 262.3 sz= 7.8 #ff0000   | [VSDAT]
+x=  47.8 y= 274.7 sz= 7.8 #ff0000   | [TYPE: date]
+x=  47.8 y= 301.5 sz= 7.8 black     | Planned Timepoint
+x= 480.4 y= 306.9 sz= 9.2 #454545   | Predose
+x= 445.2 y= 339.6 sz= 9.2 black     | N/A
+x= 445.2 y= 361.8 sz= 9.2 black     | Predose
+x= 445.2 y= 384.0 sz= 9.2 black     | 1h postdose
+x= 445.2 y= 406.2 sz= 9.2 black     | 1.5h postdose
+x= 445.2 y= 428.5 sz= 9.2 black     | 2h postdose
+x= 445.2 y= 450.7 sz= 9.2 black     | 2.5h postdose
+x= 445.2 y= 472.9 sz= 9.2 black     | 3h postdose
+x= 445.2 y= 495.2 sz= 9.2 black     | 4h postdose
+x= 445.2 y= 517.4 sz= 9.2 black     | 6h postdose
+x= 445.2 y= 539.6 sz= 9.2 black     | 8h postdose
+x=  47.8 y= 566.3 sz= 7.8 #ff0000   | [VSTPT]
+x=  47.8 y= 578.7 sz= 7.8 #ff0000   | [TYPE: enumeration (values: N/A, Predose, 1h postdose, 1.5h postdose, 2h postdose, 2.5h postdose, 3h postdose, 4h postdose, 6h postdose,
+x=  47.8 y= 587.9 sz= 7.8 #ff0000   | 8h postdose)]
+x=  47.8 y= 600.3 sz= 7.8 #ff0000   | [Read-only field]
+x=  47.8 y= 634.9 sz= 7.8 black     | Collect vital signs after subject has been resting in a supine position for at least 5 minutes and again after the subject has been in a standing
+x=  47.8 y= 645.4 sz= 7.8 black     | position for 3 minutes.
+x=  54.3 y= 702.9 sz=14.4 #004c99   | Supine
+x=  47.8 y= 760.4 sz= 7.8 black     | Time Placed in Position
+x=  47.8 y= 783.3 sz= 7.8 #ff0000   | [VSSUTIM]
+x=  47.8 y= 795.7 sz= 7.8 #ff0000   | [TYPE: partialtime (hour, minutes)]
+
+--- page 212 of 596 (layout cluster covers ~76 pages) ---
+x=  54.3 y=  72.0 sz=14.4 #004c99   | Standing
+x=  47.8 y= 130.2 sz= 7.8 black     | Time Placed in Position
+x=  47.8 y= 153.1 sz= 7.8 #ff0000   | [VSSTTIM]
+x=  47.8 y= 165.5 sz= 7.8 #ff0000   | [TYPE: partialtime (hour, minutes)]
+x=  47.8 y= 192.3 sz= 7.8 black     | Time of Vitals Measurement #3
+x=  47.8 y= 215.2 sz= 7.8 #ff0000   | [VSSTVTIM]
+x=  47.8 y= 227.6 sz= 7.8 #ff0000   | [TYPE: partialtime (hour, minutes)]
+
+--- page 283 of 596 (layout cluster covers ~51 pages) ---
+x=  47.8 y=  66.1 sz=14.4 #004c99   | Visit Date
+x=  47.8 y= 116.5 sz= 7.8 black     | Visit Date
+x=  47.8 y= 139.4 sz= 7.8 #ff0000   | [VISDAT]
+x=  47.8 y= 151.8 sz= 7.8 #ff0000   | [TYPE: date]
+x= 472.6 y= 177.4 sz= 9.2 #454545   | Skip to next visit
+x=  47.8 y= 178.6 sz= 7.8 black     | Skip to next visit
+x=  47.8 y= 200.2 sz= 7.8 #ff0000   | [VISSKIP]
+x=  47.8 y= 212.6 sz= 7.8 #ff0000   | [TYPE: enumeration (values: Skip to next visit)]
+x= 478.2 y= 238.2 sz= 9.2 #454545   | Skip to ET visit
+x=  47.8 y= 239.4 sz= 7.8 black     | Skip to Early Termination visit
+x=  47.8 y= 261.0 sz= 7.8 #ff0000   | [VISEOT]
+x=  47.8 y= 273.4 sz= 7.8 #ff0000   | [TYPE: enumeration (values: Skip to ET visit)]
+
+--- page 319 of 596 (layout cluster covers ~112 pages) ---
+x=  47.8 y=  66.1 sz=14.4 #004c99   | Triplicate Orthostatic BP and HR - Predose
+x= 494.9 y= 115.3 sz= 9.2 #454545   | Yes
+x= 527.0 y= 115.3 sz= 9.2 #454545   | No
+x=  47.8 y= 116.5 sz= 7.8 black     | Were Vital Signs Collected?
+x=  47.8 y= 138.1 sz= 7.8 #ff0000   | [VSPERF]
+x=  47.8 y= 150.5 sz= 7.8 #ff0000   | [TYPE: enumeration (values: Yes, No)]
+x=  47.8 y= 177.3 sz= 7.8 black     | If not collected, reason:
+x=  47.8 y= 200.2 sz= 7.8 #ff0000   | [VSREAS]
+x=  47.8 y= 212.6 sz= 7.8 #ff0000   | [TYPE: text]
+x=  47.8 y= 239.4 sz= 7.8 black     | Collection Date
+x=  47.8 y= 262.3 sz= 7.8 #ff0000   | [VSDAT]
+x=  47.8 y= 274.7 sz= 7.8 #ff0000   | [TYPE: date]
+x=  47.8 y= 301.5 sz= 7.8 black     | Planned Timepoint
+x= 480.4 y= 306.9 sz= 9.2 #454545   | Predose
+x= 445.2 y= 339.6 sz= 9.2 black     | N/A
+x= 445.2 y= 361.8 sz= 9.2 black     | Predose
+x= 445.2 y= 384.0 sz= 9.2 black     | 1h postdose
+x= 445.2 y= 406.2 sz= 9.2 black     | 1.5h postdose
+x= 445.2 y= 428.5 sz= 9.2 black     | 2h postdose
+x= 445.2 y= 450.7 sz= 9.2 black     | 2.5h postdose
+x= 445.2 y= 472.9 sz= 9.2 black     | 3h postdose
+x= 445.2 y= 495.2 sz= 9.2 black     | 4h postdose
+x= 445.2 y= 517.4 sz= 9.2 black     | 6h postdose
+x= 445.2 y= 539.6 sz= 9.2 black     | 8h postdose
+x=  47.8 y= 566.3 sz= 7.8 #ff0000   | [VSTPT]
+x=  47.8 y= 578.7 sz= 7.8 #ff0000   | [TYPE: enumeration (values: N/A, Predose, 1h postdose, 1.5h postdose, 2h postdose, 2.5h postdose, 3h postdose, 4h postdose, 6h postdose,
+x=  47.8 y= 587.9 sz= 7.8 #ff0000   | 8h postdose)]
+x=  47.8 y= 600.3 sz= 7.8 #ff0000   | [Read-only field]
+x=  47.8 y= 634.9 sz= 7.8 black     | Collect vital signs after subject has been resting in a supine position for at least 5 minutes and again after the subject has been in a standing
+x=  47.8 y= 645.4 sz= 7.8 black     | position for 3 minutes.
+x=  54.3 y= 702.9 sz=14.4 #004c99   | Supine
+x=  47.8 y= 760.4 sz= 7.8 black     | Time Placed in Position
+x=  47.8 y= 783.3 sz= 7.8 #ff0000   | [VSSUTIM]
+x=  47.8 y= 795.8 sz= 7.8 #ff0000   | [TYPE: partialtime (hour, minutes)]
+
+--- page 337 of 596 (layout cluster covers ~76 pages) ---
+x=  54.3 y=  72.0 sz=14.4 #004c99   | Standing
+x=  47.8 y= 130.2 sz= 7.8 black     | Time Placed in Position
+x=  47.8 y= 153.1 sz= 7.8 #ff0000   | [VSSTTIM]
+x=  47.8 y= 165.5 sz= 7.8 #ff0000   | [TYPE: partialtime (hour, minutes)]
+x=  47.8 y= 192.3 sz= 7.8 black     | Time of Vitals Measurement #3
+x=  47.8 y= 215.2 sz= 7.8 #ff0000   | [VSSTVTIM]
+x=  47.8 y= 227.6 sz= 7.8 #ff0000   | [TYPE: partialtime (hour, minutes)]
+
+--- page 371 of 596 (layout cluster covers ~34 pages) ---
+x=  47.8 y=  36.1 sz= 7.8 #ff0000   | [EXSTDAT2]
+x=  47.8 y=  48.5 sz= 7.8 #ff0000   | [TYPE: date]
+x=  47.8 y=  75.3 sz= 7.8 black     | Time of Administration
+x=  47.8 y=  98.2 sz= 7.8 #ff0000   | [EXSTTIM2]
+x=  47.8 y= 110.6 sz= 7.8 #ff0000   | [TYPE: partialtime (hour, minutes)]
+x=  47.8 y= 137.4 sz= 7.8 black     | Reason
+x= 441.8 y= 175.5 sz= 9.2 black     | As per protocol
+x= 441.8 y= 197.7 sz= 9.2 black     | Adverse Event
+x= 441.8 y= 219.9 sz= 9.2 black     | Dosing error
+x= 441.8 y= 242.2 sz= 9.2 black     | Dispensing error
+x= 441.8 y= 264.4 sz= 9.2 black     | Technical problems
+x= 441.8 y= 286.6 sz= 9.2 black     | Subject/guardian decision
+x= 441.8 y= 308.8 sz= 9.2 black     | Physician decision
+x=  47.8 y= 335.5 sz= 7.8 #ff0000   | [EXADJ2]
+x=  47.8 y= 347.9 sz= 7.8 #ff0000   | [TYPE: enumeration (values: As per protocol, Adverse Event, Dosing error, Dispensing error, Technical problems, Subject/guardian decision,
+x=  47.8 y= 357.1 sz= 7.8 #ff0000   | Physician decision)]
+x=  47.8 y= 383.9 sz= 7.8 black     | Dosing Comments (optional)
+x=  47.8 y= 406.8 sz= 7.8 #ff0000   | [EXCOM2]
+x=  47.8 y= 419.2 sz= 7.8 #ff0000   | [TYPE: text]
+x=  54.3 y= 464.9 sz=14.4 #004c99   | Prazosin Dose
+x= 494.9 y= 521.9 sz= 9.2 #454545   | Yes
+x= 527.0 y= 521.9 sz= 9.2 #454545   | No
+x=  47.8 y= 523.1 sz= 7.8 black     | Was Prazosin administered?
+x=  47.8 y= 544.7 sz= 7.8 #ff0000   | [EXYN3]
+x=  47.8 y= 557.1 sz= 7.8 #ff0000   | [TYPE: enumeration (values: Yes, No)]
+x=  47.8 y= 583.9 sz= 7.8 black     | If no, reason
+x=  47.8 y= 606.8 sz= 7.8 #ff0000   | [EXRSN3]
+x=  47.8 y= 619.2 sz= 7.8 #ff0000   | [TYPE: text]
+x= 462.9 y= 643.7 sz=10.5 #454545   | Prazosin
+x=  47.8 y= 646.0 sz= 7.8 black     | Treatment
+x=  47.8 y= 668.9 sz= 7.8 #ff0000   | [EXTRT3]
+x=  47.8 y= 681.3 sz= 7.8 #ff0000   | [TYPE: text]
+x=  47.8 y= 693.7 sz= 7.8 #ff0000   | [Read-only field]
+x= 462.9 y= 718.2 sz=10.5 #454545   | mg
+x=  47.8 y= 720.6 sz= 7.8 black     | Dose Unit
+x=  47.8 y= 743.4 sz= 7.8 #ff0000   | [EXDOSU3]
+x=  47.8 y= 755.9 sz= 7.8 #ff0000   | [TYPE: text]
+x=  47.8 y= 768.3 sz= 7.8 #ff0000   | [Read-only field]
+
+--- page 406 of 596 (layout cluster covers ~32 pages) ---
+x=  47.8 y=  50.5 sz= 7.8 black     | Chemistry clinically significant abnormal assay # 1:
+x= 337.0 y=  88.5 sz= 9.2 black     | Albumin
+x= 337.0 y= 110.7 sz= 9.2 black     | Alkaline phosphatase
+x= 337.0 y= 133.0 sz= 9.2 black     | ALT
+x= 337.0 y= 155.2 sz= 9.2 black     | AST
+x= 337.0 y= 177.4 sz= 9.2 black     | Calcium
+x= 337.0 y= 199.7 sz= 9.2 black     | Carbon dioxide
+x= 337.0 y= 221.9 sz= 9.2 black     | Chloride
+x= 337.0 y= 244.1 sz= 9.2 black     | Cholesterol (total
+x= 337.0 y= 266.3 sz= 9.2 black     | low density lipoprotein;and; high density lipoprotein)
+x= 337.0 y= 288.6 sz= 9.2 black     | Creatine phosphokinase
+x= 337.0 y= 310.8 sz= 9.2 black     | Creatinine
+x= 337.0 y= 333.0 sz= 9.2 black     | Gamma glutamyl transferase
+x= 337.0 y= 355.2 sz= 9.2 black     | Glucose
+x= 337.0 y= 377.5 sz= 9.2 black     | Lactate dehydrogenase
+x= 337.0 y= 399.7 sz= 9.2 black     | Magnesium
+x= 337.0 y= 421.9 sz= 9.2 black     | Phosphorus
+x= 337.0 y= 444.2 sz= 9.2 black     | Potassium
+x= 337.0 y= 466.4 sz= 9.2 black     | Prolactin
+x= 337.0 y= 488.6 sz= 9.2 black     | Total bilirubin
+x= 337.0 y= 510.8 sz= 9.2 black     | Total protein
+x= 337.0 y= 533.1 sz= 9.2 black     | Triglycerides
+x= 337.0 y= 555.3 sz= 9.2 black     | Sodium
+x= 337.0 y= 577.5 sz= 9.2 black     | Urea nitrogen
+x= 337.0 y= 599.7 sz= 9.2 black     | Uric acid
+x=  47.8 y= 626.4 sz= 7.8 #ff0000   | [LBCCS1]
+x=  47.8 y= 638.9 sz= 7.8 #ff0000   | [TYPE: enumeration (values: Albumin, Alkaline phosphatase, ALT, AST, Calcium, Carbon dioxide, Chloride, Cholesterol (total, low density
+x=  47.8 y= 648.0 sz= 7.8 #ff0000   | lipoprotein;and; high density lipoprotein), Creatine phosphokinase, Creatinine, Gamma glutamyl transferase, Glucose, Lactate dehydrogenase,
+x=  47.8 y= 657.1 sz= 7.8 #ff0000   | Magnesium, Phosphorus, Potassium, Prolactin, Total bilirubin, Total protein, Triglycerides, Sodium, Urea nitrogen, Uric acid)]
+x=  47.8 y= 684.0 sz= 7.8 black     | Chemistry abnormal assay # 1 Investigator comment
+x=  47.8 y= 706.8 sz= 7.8 #ff0000   | [LBRR6]
+x=  47.8 y= 719.3 sz= 7.8 #ff0000   | [TYPE: text (max_length: 200)]
+x=  47.8 y= 731.7 sz= 7.8 #ff0000   | [VISIBILITY: site only]
+
+--- page 410 of 596 (layout cluster covers ~52 pages) ---
+x=  47.8 y=  50.5 sz= 7.8 black     | Chemistry clinically significant abnormal assay # 5
+x= 337.0 y=  88.5 sz= 9.2 black     | Albumin
+x= 337.0 y= 110.7 sz= 9.2 black     | Alkaline phosphatase
+x= 337.0 y= 133.0 sz= 9.2 black     | ALT
+x= 337.0 y= 155.2 sz= 9.2 black     | AST
+x= 337.0 y= 177.4 sz= 9.2 black     | Calcium
+x= 337.0 y= 199.7 sz= 9.2 black     | Carbon dioxide
+x= 337.0 y= 221.9 sz= 9.2 black     | Chloride
+x= 337.0 y= 244.1 sz= 9.2 black     | Cholesterol (total
+x= 337.0 y= 266.3 sz= 9.2 black     | low density lipoprotein;and; high density lipoprotein)
+x= 337.0 y= 288.6 sz= 9.2 black     | Creatine phosphokinase
+x= 337.0 y= 310.8 sz= 9.2 black     | Creatinine
+x= 337.0 y= 333.0 sz= 9.2 black     | Gamma glutamyl transferase
+x= 337.0 y= 355.2 sz= 9.2 black     | Glucose
+x= 337.0 y= 377.5 sz= 9.2 black     | Lactate dehydrogenase
+x= 337.0 y= 399.7 sz= 9.2 black     | Magnesium
+x= 337.0 y= 421.9 sz= 9.2 black     | Phosphorus
+x= 337.0 y= 444.2 sz= 9.2 black     | Potassium
+x= 337.0 y= 466.4 sz= 9.2 black     | Prolactin
+x= 337.0 y= 488.6 sz= 9.2 black     | Total bilirubin
+x= 337.0 y= 510.8 sz= 9.2 black     | Total protein
+x= 337.0 y= 533.1 sz= 9.2 black     | Triglycerides
+x= 337.0 y= 555.3 sz= 9.2 black     | Sodium
+x= 337.0 y= 577.5 sz= 9.2 black     | Urea nitrogen
+x= 337.0 y= 599.7 sz= 9.2 black     | Uric acid
+x=  47.8 y= 626.4 sz= 7.8 #ff0000   | [LBCCS5]
+x=  47.8 y= 638.8 sz= 7.8 #ff0000   | [TYPE: enumeration (values: Albumin, Alkaline phosphatase, ALT, AST, Calcium, Carbon dioxide, Chloride, Cholesterol (total, low density
+x=  47.8 y= 648.0 sz= 7.8 #ff0000   | lipoprotein;and; high density lipoprotein), Creatine phosphokinase, Creatinine, Gamma glutamyl transferase, Glucose, Lactate dehydrogenase,
+x=  47.8 y= 657.1 sz= 7.8 #ff0000   | Magnesium, Phosphorus, Potassium, Prolactin, Total bilirubin, Total protein, Triglycerides, Sodium, Urea nitrogen, Uric acid)]
+x=  47.8 y= 683.9 sz= 7.8 black     | Chemistry abnormal assay # 5 Investigator comment
+x=  47.8 y= 706.8 sz= 7.8 #ff0000   | [LBRR14]
+x=  47.8 y= 719.2 sz= 7.8 #ff0000   | [TYPE: text (max_length: 200)]
+x=  47.8 y= 731.7 sz= 7.8 #ff0000   | [VISIBILITY: site only]
+x= 494.9 y= 757.3 sz= 9.2 #454545   | Yes
+x= 527.0 y= 757.3 sz= 9.2 #454545   | No
+x=  47.8 y= 758.5 sz= 7.8 black     | Are there any additional clinically significant abnormal chemistry results to be entered?
+x=  47.8 y= 780.1 sz= 7.8 #ff0000   | [LBRR15]
+x=  47.8 y= 792.5 sz= 7.8 #ff0000   | [TYPE: enumeration (values: Yes, No)]
+

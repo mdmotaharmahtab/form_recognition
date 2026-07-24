@@ -1,0 +1,24 @@
+=== 384-201-00002_Annotated_Unique_CRF_04Nov2024
+    v1 [generate]: calling claude-4.5-sonnet ...
+    coverage confirmation (uncovered: [(0, 249)]) ...
+    model confirmed uncovered clusters are field-free
+    audit: 8 issue(s) on pages [1, 2, 4, 91, 115, 234]
+    v2 [revise_audit]: calling claude-4.5-sonnet ...
+    audit: 2 issue(s) on pages [1, 2, 4, 91, 115, 234]
+    v3 [revise_audit]: calling claude-4.5-sonnet ...
+    problems: ['Program failed to run: 933 of 933 returned records were malformed (not a dict, or empty field_name)']
+    -> {'doc': '384-201-00002_Annotated_Unique_CRF_04Nov2024', 'versions': 3, 'stop_reason': 'plateau', 'status': 'ok_audit_issues', 'best_version': 2, 'fields': 864, 'forms': 76, 'pages_with_fields': 153, 'audit_issues': 2, 'warnings': []}
+[
+ {
+  "doc": "384-201-00002_Annotated_Unique_CRF_04Nov2024",
+  "versions": 3,
+  "stop_reason": "plateau",
+  "status": "ok_audit_issues",
+  "best_version": 2,
+  "fields": 864,
+  "forms": 76,
+  "pages_with_fields": 153,
+  "audit_issues": 2,
+  "warnings": []
+ }
+]

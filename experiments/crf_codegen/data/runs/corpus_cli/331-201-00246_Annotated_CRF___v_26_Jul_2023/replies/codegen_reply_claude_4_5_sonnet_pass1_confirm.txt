@@ -1,0 +1,14 @@
+Looking at the sample pages from clusters 5, 6, and 7:
+
+- **Cluster 5** (pages 310, 628): Only contain page numbers - no content
+- **Cluster 6** (pages 398, 693): Only show form title continuation ("C-SSRS since last visit - Page 3/4") and page numbers - these are continuation pages of multi-page forms with no additional fields
+- **Cluster 7** (pages 150, 284): Only show section titles ("Inclusion criteria", "Exclusion criteria") and page numbers - these appear to be checklist/criteria pages that may have simple yes/no fields but the samples show no field labels
+
+All these layouts appear to be either:
+1. Blank placeholder pages (cluster 5)
+2. Continuation page headers without repeated fields (cluster 6)  
+3. Section title pages (cluster 7)
+
+None of the samples show any field labels, machine codes, or data-entry structures. These are genuinely field-free pages.
+
+CONFIRM_NO_FIELDS

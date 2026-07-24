@@ -1,0 +1,10 @@
+Looking at page 14 from cluster 1, this is clearly a **table of contents or visit schedule page** - it shows a numbered list of form/section references (like "20", "205", "206", etc.) paired with form titles in blue hyperlink text (like "Respiratory Rate - Predose", "C-SSRS - Since Last Visit", etc.).
+
+This is **NOT** a page with data-entry fields. It's a navigation/index page that lists which forms appear at which visits. The structure is:
+- Black numbers (form/section IDs)
+- Blue hyperlinked text (form titles that link to actual form pages)
+- Visit period headers (like "Treatment Period Day 20")
+
+These are structural/navigation pages, not pages containing actual field labels where data would be entered. The actual data-entry fields appear on the form pages themselves (which are already being extracted by the program in clusters 0, 2, and 3).
+
+**CONFIRM_NO_FIELDS**

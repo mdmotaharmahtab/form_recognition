@@ -1,0 +1,217 @@
+# module: D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\eval_form_field.py
+# top-level names: ['__doc__', 'csv', 'json', 'os', 're', 'fitz', 'rapidfuzz', 'fuzz', 'common', 'BASE', 'OUT_DIR', 'path', 'join', 'GT', 'INDEX_DATA', 'RAVE_PDF', 'RAVE_KEY', 'FIELD_T', 'FORM_T', 'str', 'norm', '_export_csv', 'list', 'dict', 'load_extracted', 'load_gt', 'load_library', 'eval_pairs_vs_gt', '_recall_breakdown', '_precision_breakdown', 'eval_mapping', '__name__', 'argparse', 'ArgumentParser', 'ap', 'add_argument', 'parse_args', 'args', 'llm', 'ranker_model', 'run_cli_induction', 'call_cli', 'find_agent', 'agent_bin', 'sorted', 'listdir', 'keys', 'report', 'open', 'f', 'dump', 'print', 'dumps']
+
+=== module()  [line 1] ===
+  [STR]
+    | Evaluate the form+field pipeline (codegen scope) end to end.
+    | 
+    | 1. Extraction quality (Rave doc only - the one with production ground truth):
+    |    fuzzy-match extracted (form_name, field_name) pairs against digitized.csv.
+    | 2. Downstream OID resolution by NAME MAPPING (all finalized docs):
+    |    map each extracted (form, field) to a library OID via ecs_index_data
+    |    (form_field_value -> variable_name), lexical fuzzy matching locally
+    |    (production would add the stored field embeddings on top).
+    |    On the Rave doc, mapped OIDs are checked against the printed truth.
+  [STR] 'data'
+  [STR] 'outputs'
+  [STR]
+    | outputs_from_384_201_00002_annotated_unique_crf
+  [STR] 'digitized.csv'
+  [STR] 'index'
+  [STR] 'ecs_index_data.csv'
+  [STR] 'crf_forms'
+  [STR]
+    | 384-201-00002_Annotated Unique CRF_04Nov2024.pdf
+  [STR]
+    | 384-201-00002_Annotated_Unique_CRF_04Nov2024
+  [STR] 's'
+  [STR] 'return'
+  [STR] 'key'
+  [STR] 'gt_pairs'
+  [STR] 'got_pairs'
+  [STR] 'rows'
+  [STR] 'keys'
+  [STR] '__main__'
+  [STR] '--ranker-model'
+  [STR]
+    | resolve abstained pairs with this LLM via the cursor CLI (e.g. claude-4.5-sonnet); omit for deterministic-only
+  [STR]
+    | form-first funnel (oid_mapping.py): form scoping at partial_ratio>=70 as in review_table.get_standard_crf, field>=85 within the form, every candidate-bearing pair judged by the LLM ranker (pick a listed OID or refuse)
+  [STR]
+    |  -- ranker OFF this run: clear leaders map lexically, near-ties stay abstained
+  [STR]
+    | ecs_index_data has only 286 Standard rows; mapping coverage is bounded by library breadth, not extraction quality.
+  [STR] 'evaluation_form_field.json'
+  [STR] 'w'
+  [STR] 'utf-8'
+
+=== norm(s)  [line 30] ===
+  [STR] '\\(.*?\\)'
+  [STR] '[^a-z0-9 ]+'
+  [STR] '\\s+'
+
+=== _export_csv(key)  [line 40] ===
+  [STR]
+    | Prefer the newest model-tagged export (fields_codegen_<model>.csv);
+    |     fall back to the untagged prototype export.
+  [STR] 'fields_codegen.csv'
+
+=== <genexpr>(.0)  [line 45] ===
+  [STR] 'fields_codegen_'
+  [STR] '.csv'
+
+=== load_extracted(key)  [line 54] ===
+  [STR] 'utf-8'
+
+=== load_gt()  [line 62] ===
+  [STR] 'utf-8'
+
+=== load_library()  [line 67] ===
+  [STR] 'utf-8'
+  [STR] 'form_field_value'
+  [STR] 'variable_name'
+  [STR] 'form_name'
+
+=== eval_pairs_vs_gt()  [line 88] ===
+
+=== <listcomp>(.0)  [line 89] ===
+  [STR] 'form_name'
+  [STR] 'field_name'
+  [STR] 'field_oid'
+
+=== <listcomp>(.0)  [line 92] ===
+  [STR] 'form_name'
+  [STR] 'field_name'
+
+=== <setcomp>(.0)  [line 93] ===
+
+=== best_match(pair, pool)  [line 96] ===
+
+=== <genexpr>(.0)  [line 109] ===
+
+=== <genexpr>(.0)  [line 110] ===
+
+=== _recall_breakdown(gt_pairs, got_pairs, best_match)  [line 121] ===
+  [STR]
+    | Classify every truth pair the export lacks.
+    | 
+    |     Buckets, checked in order:
+    |       no_oid_in_truth      - the truth row itself carries no OID (page footer
+    |                              '01.025 GMK (432)' recorded once per form, plus a
+    |                              few OID-less option rows). Excluded because they
+    |                              are page furniture, NOT because OID-less fields
+    |                              lack downstream value - production writes
+    |                              LLM-generated rules for unmatched fields from
+    |                              their names alone (review_table.py)
+    |       different_form       - the field name WAS extracted (>= FIELD_T) but
+    |                              under a form that misses the FORM_T bar
+    |       near_miss_wording    - best in-form match lands at 70..84: extracted,
+    |                              but the truth wording (numbering / embedded
+    |                              option text) keeps it under the fuzzy bar
+    |       printed_not_extracted- some page prints the label yet no record matches:
+    |                              the real parser misses
+    |       label_not_printed    - the label appears on no page at all (derived /
+    |                              split fields only the production tool knows)
+    |     Also reports recall restricted to OID-bearing truth pairs - the only
+    |     pairs the downstream name->OID join can ever use.
+  [STR] 'form_name'
+  [STR] 'field_name'
+  [STR] 'field_oid'
+  [STR] 'no_oid_in_truth'
+  [STR] 'different_form'
+  [STR] 'near_miss_wording'
+  [STR] 'printed_not_extracted'
+  [STR] 'label_not_printed'
+  [STR] 'missed_total'
+  [STR] '_examples'
+  [STR] 'oid_bearing_truth_pairs'
+  [STR] 'oid_bearing_found'
+  [STR] 'oid_bearing_recall_pct'
+
+=== <setcomp>(.0)  [line 150] ===
+  [STR] 'text'
+
+=== <listcomp>(.0)  [line 154] ===
+
+=== <dictcomp>(.0)  [line 155] ===
+
+=== <genexpr>(.0)  [line 161] ===
+
+=== <genexpr>(.0)  [line 163] ===
+
+=== <genexpr>(.0)  [line 166] ===
+
+=== <listcomp>(.0)  [line 171] ===
+
+=== <genexpr>(.0)  [line 172] ===
+
+=== <listcomp>(.0)  [line 177] ===
+  [STR] ' | '
+
+=== _precision_breakdown(rows, gt_pairs, best_match)  [line 184] ===
+  [STR]
+    | Classify every extracted pair that matches nothing in the truth.
+    | 
+    |     'Appendix-only' pairs are those seen exclusively on the Rave book's
+    |     data-dictionary appendix (its largest layout cluster - 249 spec-table
+    |     pages). This is an eval-side classification specific to the ground-truth
+    |     document, used to show how much of the precision gap is that single
+    |     extraction decision rather than misread fields.
+  [STR] 'form_name'
+  [STR] 'field_name'
+  [STR] 'page'
+  [STR] 'clusters.json'
+  [STR] 'utf-8'
+  [STR] 'clusters'
+  [STR] 'pages'
+
+=== <lambda>(c)  [line 205] ===
+  [STR] 'pages'
+
+=== <setcomp>(.0)  [line 206] ===
+
+=== <setcomp>(.0)  [line 208] ===
+
+=== <genexpr>(.0)  [line 215] ===
+
+=== <listcomp>(.0)  [line 221] ===
+
+=== <genexpr>(.0)  [line 223] ===
+
+=== <genexpr>(.0)  [line 225] ===
+
+=== ex(pairs, n)  [line 228] ===
+
+=== <listcomp>(.0)  [line 229] ===
+  [STR] ' | '
+
+=== eval_mapping(keys, llm)  [line 246] ===
+  [STR]
+    | Run the funnel per document. With llm=None abstained pairs stay
+    |     ABSTAIN (deterministic-only); with an llm they resolve via the ranker.
+  [STR] 'field_oid'
+  [STR] 'form_name'
+  [STR] 'field_name'
+  [STR] ' -> mapped '
+  [STR] ' via '
+  [STR] ', printed truth '
+  [STR]
+    | accuracy over the truth-checkable subset of mapped pairs, not over all mappings
+
+=== <setcomp>(.0)  [line 265] ===
+  [STR] 'form_name'
+  [STR] 'field_name'
+
+=== <listcomp>(.0)  [line 268] ===
+
+=== <listcomp>(.0)  [line 269] ===
+
+=== <dictcomp>(.0)  [line 284] ===
+
+=== <genexpr>(.0)  [line 284] ===
+
+=== <setcomp>(.0)  [line 285] ===
+
+=== <lambda>(prompt)  [line 315] ===
+
+=== <listcomp>(.0)  [line 317] ===

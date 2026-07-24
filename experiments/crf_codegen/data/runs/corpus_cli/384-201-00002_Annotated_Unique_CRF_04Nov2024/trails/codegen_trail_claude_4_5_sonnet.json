@@ -1,0 +1,253 @@
+{
+ "stop_reason": "budget",
+ "versions": 5,
+ "best_version": 1,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "confirm",
+   "outcome": "confirmed_no_fields"
+  },
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 936,
+    "pages_total": 404,
+    "pages_with_fields": 153,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 76,
+    "fields_per_form": 12.3,
+    "forms_per_100_pages": 18.8,
+    "form_same_page_evidence_records": 929,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 38
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 11,
+   "audit_pages": [
+    1,
+    2,
+    4,
+    114,
+    184,
+    213,
+    314
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 4,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 114,
+     "missed": [
+      "Test Name",
+      "Was test performed?",
+      "If No, reason not performed",
+      "Sample Collection Date",
+      "Sample Collection Time",
+      "Laboratory Sample ID",
+      "Reported Date and Time"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 184,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 213,
+     "missed": [
+      "33. Stereotyped thinking",
+      "34. Lack of judgment and insight",
+      "35. Disturbance of volition"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 314,
+     "missed": [
+      "27. Duration of ideation in most severe episode"
+     ],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    11,
+    0,
+    -153
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "revise_audit",
+   "metrics": {
+    "error": "generated extractor crashed:\nTraceback (most recent call last):\n  File \"D:\\ubuntu\\codes\\ZS\\otsuka\\ECS\\experiments\\recipe_prototype\\scripts\\sandbox_runner.py\", line 116, in main\n    exec(compile(source, \"<generated_extractor>\", \"exec\"), g)  # noqa: S102\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<generated_extractor>\", line 1\n    I've rewritten the extraction program to be less aggressive with filtering. Key changes:\n     ^\nSyntaxError: unterminated string literal (detected at line 1)\n"
+   },
+   "problems": [
+    "Program failed to run: generated extractor crashed:\nTraceback (most recent call last):\n  File \"D:\\ubuntu\\codes\\ZS\\otsuka\\ECS\\experiments\\recipe_prototype\\scripts\\sandbox_runner.py\", line 116, in main\n    exec(compile(source, \"<generated_extractor>\", \"exec\"), g)  # noqa: S102\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<generated_extractor>\", line 1\n    I've rewritten the extraction program to be less aggressive with filtering. Key changes:\n     ^\nSyntaxError: unterminated string literal (detected at line 1)\n"
+   ],
+   "warnings": [],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    1,
+    "not_audited",
+    0,
+    0
+   ],
+   "became_best": false
+  },
+  {
+   "version": 3,
+   "kind": "revise_gates",
+   "metrics": {
+    "error": "generated extractor crashed:\nTraceback (most recent call last):\n  File \"D:\\ubuntu\\codes\\ZS\\otsuka\\ECS\\experiments\\recipe_prototype\\scripts\\sandbox_runner.py\", line 128, in main\n    raw = fn(pages)\n          ^^^^^^^^^\n  File \"<generated_extractor>\", line 9, in extract\nAttributeError: 'tuple' object has no attribute 'get'\n"
+   },
+   "problems": [
+    "Program failed to run: generated extractor crashed:\nTraceback (most recent call last):\n  File \"D:\\ubuntu\\codes\\ZS\\otsuka\\ECS\\experiments\\recipe_prototype\\scripts\\sandbox_runner.py\", line 128, in main\n    raw = fn(pages)\n          ^^^^^^^^^\n  File \"<generated_extractor>\", line 9, in extract\nAttributeError: 'tuple' object has no attribute 'get'\n"
+   ],
+   "warnings": [],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    1,
+    "not_audited",
+    0,
+    0
+   ],
+   "became_best": false
+  },
+  {
+   "version": 4,
+   "kind": "revise_gates",
+   "metrics": {
+    "engine": "codegen",
+    "records": 0,
+    "pages_total": 404,
+    "pages_with_fields": 0,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 0,
+    "labels_look_human_pct": 0,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 0,
+    "fields_per_form": 0.0,
+    "forms_per_100_pages": 0.0,
+    "form_same_page_evidence_records": 0,
+    "form_same_page_persistence_pct": null,
+    "furniture_candidates": [],
+    "pages_covered_pct": 0
+   },
+   "problems": [
+    "The program extracted ZERO records from the document."
+   ],
+   "warnings": [
+    "form_name empty for 100% of records - if the document does print form/section names, fix the form_name strategy (consider carrying the last seen title forward).",
+    "Only 0% of field_name values look like human labels (they look like codes/dates/junk) - fix label selection.",
+    "The program filters by 17 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    1,
+    "not_audited",
+    3,
+    0
+   ],
+   "became_best": false
+  },
+  {
+   "version": 5,
+   "kind": "revise_gates",
+   "metrics": {
+    "engine": "codegen",
+    "records": 0,
+    "pages_total": 404,
+    "pages_with_fields": 0,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 0,
+    "labels_look_human_pct": 0,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 0,
+    "fields_per_form": 0.0,
+    "forms_per_100_pages": 0.0,
+    "form_same_page_evidence_records": 0,
+    "form_same_page_persistence_pct": null,
+    "furniture_candidates": [],
+    "pages_covered_pct": 0
+   },
+   "problems": [
+    "The program extracted ZERO records from the document."
+   ],
+   "warnings": [
+    "form_name empty for 100% of records - if the document does print form/section names, fix the form_name strategy (consider carrying the last seen title forward).",
+    "Only 0% of field_name values look like human labels (they look like codes/dates/junk) - fix label selection."
+   ],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    1,
+    "not_audited",
+    2,
+    0
+   ],
+   "became_best": false
+  }
+ ]
+}

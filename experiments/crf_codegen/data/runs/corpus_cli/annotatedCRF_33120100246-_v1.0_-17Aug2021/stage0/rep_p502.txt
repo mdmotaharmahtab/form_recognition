@@ -1,0 +1,45 @@
+x=  47.8 y=  66.1 sz=14.4 #004c99   | Follow-Up Phone Call
+x=  41.2 y= 140.3 sz=10.5 black   B | (Repeatable row added with Add Row button)
+x=  45.2 y= 162.4 sz= 9.2 black     | Were you able to contact the
+x= 173.3 y= 162.4 sz= 9.2 black     | Date of Contact/Attempt
+x= 301.4 y= 162.4 sz= 9.2 black     | Type of Contact
+x= 429.6 y= 162.4 sz= 9.2 black     | Method of Contact
+x=  45.2 y= 175.5 sz= 9.2 black     | Subject?
+x= 494.9 y= 236.2 sz= 9.2 #454545   | Yes
+x= 527.0 y= 236.2 sz= 9.2 #454545   | No
+x=  47.8 y= 237.4 sz= 7.8 black     | Were you able to contact the Subject?
+x=  47.8 y= 259.0 sz= 7.8 #ff0000   | [DSCONT]
+x=  47.8 y= 271.4 sz= 7.8 #ff0000   | [TYPE: enumeration (values: Yes, No)]
+x=  47.8 y= 298.2 sz= 7.8 black     | Date of Contact/Attempt
+x=  47.8 y= 321.1 sz= 7.8 #ff0000   | [DSSTDAT]
+x=  47.8 y= 333.6 sz= 7.8 #ff0000   | [TYPE: date]
+x=  47.8 y= 360.3 sz= 7.8 black     | Type of Contact
+x= 445.2 y= 398.4 sz= 9.2 black     | Final Contact
+x= 445.2 y= 420.6 sz= 9.2 black     | First Failed Attempt
+x= 445.2 y= 442.8 sz= 9.2 black     | Second Failed Attempt
+x= 445.2 y= 465.1 sz= 9.2 black     | Third Failed Attempt
+x=  47.8 y= 491.7 sz= 7.8 #ff0000   | [DSCTNTYP]
+x=  47.8 y= 504.2 sz= 7.8 #ff0000   | [TYPE: enumeration (values: Final Contact, First Failed Attempt, Second Failed Attempt, Third Failed Attempt)]
+x= 373.2 y= 529.8 sz= 9.2 #454545   | Phone
+x= 416.0 y= 529.8 sz= 9.2 #454545   | Office Visit
+x= 476.1 y= 529.8 sz= 9.2 #454545   | Letter
+x= 515.8 y= 529.8 sz= 9.2 #454545   | Other
+x=  47.8 y= 531.0 sz= 7.8 black     | Method of Contact
+x=  47.8 y= 552.6 sz= 7.8 #ff0000   | [DSCONTCT]
+x=  47.8 y= 565.0 sz= 7.8 #ff0000   | [TYPE: enumeration (values: Phone, Office Visit, Letter, Other)]
+x=  47.8 y= 591.8 sz= 7.8 black     | Specify Contact if Other
+x=  47.8 y= 614.6 sz= 7.8 #ff0000   | [DSCONSP]
+x=  47.8 y= 627.1 sz= 7.8 #ff0000   | [TYPE: text]
+x= 494.9 y= 652.7 sz= 9.2 #454545   | Yes
+x= 527.0 y= 652.7 sz= 9.2 #454545   | No
+x=  47.8 y= 653.9 sz= 7.8 black     | Was the subject reminded of the birth control restrictions for 30 days postdose?
+x=  47.8 y= 675.5 sz= 7.8 #ff0000   | [DSRPYN]
+x=  47.8 y= 687.9 sz= 7.8 #ff0000   | [TYPE: enumeration (values: Yes, No)]
+x= 494.9 y= 713.5 sz= 9.2 #454545   | Yes
+x= 527.0 y= 713.5 sz= 9.2 #454545   | No
+x=  47.8 y= 714.7 sz= 7.8 black     | Has the subject had any adverse events since the last visit?
+x=  47.8 y= 736.2 sz= 7.8 #ff0000   | [DSAEYN]
+x=  47.8 y= 748.7 sz= 7.8 #ff0000   | [TYPE: enumeration (values: Yes, No)]
+x= 494.9 y= 774.3 sz= 9.2 #454545   | Yes
+x= 527.0 y= 774.3 sz= 9.2 #454545   | No
+x=  47.8 y= 775.5 sz= 7.8 black     | Has subject taken any ConMeds?

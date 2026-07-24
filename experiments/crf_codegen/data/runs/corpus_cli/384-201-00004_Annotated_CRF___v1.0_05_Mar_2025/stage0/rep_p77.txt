@@ -1,0 +1,128 @@
+x=  36.0 y=  11.5 sz= 9.0 black     | 384-201-00004
+x= 452.1 y=  35.2 sz= 5.6 black     | Mandatory?: No
+x= 452.1 y=  41.8 sz= 5.6 black     | Disallow Future Date: Yes
+x= 452.1 y=  64.0 sz= 5.6 black   B | EGTESTCD
+x= 452.1 y=  70.6 sz= 5.6 black     | Format: $200
+x= 452.1 y=  77.1 sz= 5.6 black     | Data Type: text
+x= 452.1 y=  83.6 sz= 5.6 black     | Origin: CRF
+x= 452.1 y=  90.2 sz= 5.6 black     | Requires Role: Investigator
+x= 452.1 y=  96.7 sz= 5.6 black     | Conditionally Visible
+x=  46.5 y= 101.7 sz= 7.5 black     | Abnormality Reason
+x= 452.1 y= 103.2 sz= 5.6 black     | Conditional Item:
+x= 452.1 y= 109.7 sz= 5.6 black     | EG_INTERPRETATION
+x= 248.5 y= 114.8 sz= 7.5 black     | [____________________]
+x= 452.1 y= 116.3 sz= 5.6 black     | Visible If Value: ABNORMAL =
+x=  46.5 y= 119.1 sz= 7.5 black     | [EG_ABNORMAL REASON]
+x= 452.1 y= 122.8 sz= 5.6 black     | Abnormal
+x=  46.5 y= 127.8 sz= 7.5 black     | [SAS Field Name: EGTESTCD]
+x= 452.1 y= 129.3 sz= 5.6 black     | SDS Var Name: EGDESC
+x= 452.1 y= 135.8 sz= 5.6 black     | Aliases:
+x= 455.1 y= 142.4 sz= 5.6 black     | Odm OID = I.5879
+x= 452.1 y= 148.9 sz= 5.6 black     | Description: ECG Test or Examination
+x= 452.1 y= 155.4 sz= 5.6 black     | Short Name
+x= 452.1 y= 161.9 sz= 5.6 black     | Mandatory?: Yes
+x= 452.1 y= 168.5 sz= 5.6 black     | Disallow Future Date: Yes
+x=  43.5 y= 188.8 sz=10.5 #31708f   | Electrocardiogram 2
+x= 314.2 y= 189.4 sz= 8.4 #31708f B | Origin: CRF; Repeating: No; Conditionally Visible; Domain: EG
+x=  49.5 y= 204.0 sz= 6.8 #808080 B | Comment: Reading 2
+x= 303.2 y= 204.0 sz= 6.8 #808080 B | Description: RScribe
+x= 452.1 y= 226.8 sz= 5.6 black   B | EGTESTCD
+x= 452.1 y= 233.3 sz= 5.6 black     | Format: N(3)
+x= 452.1 y= 239.9 sz= 5.6 black     | Data Type: integer
+x= 452.1 y= 246.4 sz= 5.6 black     | Origin: CRF
+x= 452.1 y= 252.9 sz= 5.6 black     | ?
+x= 452.1 y= 259.4 sz= 5.6 black     | Range (soft): 100-200
+x=  46.5 y= 264.5 sz= 7.5 black     | PR
+x= 452.1 y= 266.0 sz= 5.6 black     | Range (hard): 0-500
+x= 452.1 y= 272.5 sz= 5.6 black     | Units:
+x= 248.5 y= 277.5 sz= 7.5 black     | [_|_|_]
+x= 455.1 y= 279.0 sz= 5.6 black     | ms = ms
+x=  46.5 y= 281.9 sz= 7.5 black     | [PR]
+x= 452.1 y= 285.5 sz= 5.6 black     | SDS Var Name: PRAG
+x=  46.5 y= 290.6 sz= 7.5 black     | [SAS Field Name: EGTESTCD]
+x= 452.1 y= 292.1 sz= 5.6 black     | Device Parameter: RScribe; PR
+x= 452.1 y= 298.6 sz= 5.6 black     | Aliases:
+x= 455.1 y= 305.1 sz= 5.6 black     | Odm OID = I.5864
+x= 452.1 y= 311.6 sz= 5.6 black     | Description: ECG Test or Examination
+x= 452.1 y= 318.2 sz= 5.6 black     | Short Name
+x= 452.1 y= 324.7 sz= 5.6 black     | Mandatory?: Yes
+x= 452.1 y= 331.2 sz= 5.6 black     | Disallow Future Date: Yes
+x= 452.1 y= 353.5 sz= 5.6 black   B | EGTESTCD
+x= 452.1 y= 360.1 sz= 5.6 black     | Format: N(3)
+x= 452.1 y= 366.6 sz= 5.6 black     | Data Type: integer
+x= 452.1 y= 373.1 sz= 5.6 black     | Origin: CRF
+x= 452.1 y= 379.6 sz= 5.6 black     | ?
+x= 452.1 y= 386.2 sz= 5.6 black     | Range (soft): 70-120
+x=  46.5 y= 391.2 sz= 7.5 black     | QRS
+x= 452.1 y= 392.7 sz= 5.6 black     | Range (hard): 0-500
+x= 452.1 y= 399.2 sz= 5.6 black     | Units:
+x= 248.5 y= 404.2 sz= 7.5 black     | [_|_|_]
+x= 455.1 y= 405.7 sz= 5.6 black     | ms = ms
+x=  46.5 y= 408.6 sz= 7.5 black     | [QRS]
+x= 452.1 y= 412.3 sz= 5.6 black     | SDS Var Name: QRSAG
+x=  46.5 y= 417.3 sz= 7.5 black     | [SAS Field Name: EGTESTCD]
+x= 452.1 y= 418.8 sz= 5.6 black     | Device Parameter: RScribe; QRS
+x= 452.1 y= 425.3 sz= 5.6 black     | Aliases:
+x= 455.1 y= 431.8 sz= 5.6 black     | Odm OID = I.5865
+x= 452.1 y= 438.4 sz= 5.6 black     | Description: ECG Test or Examination
+x= 452.1 y= 444.9 sz= 5.6 black     | Short Name
+x= 452.1 y= 451.4 sz= 5.6 black     | Mandatory?: Yes
+x= 452.1 y= 457.9 sz= 5.6 black     | Disallow Future Date: Yes
+x= 452.1 y= 480.2 sz= 5.6 black   B | EGTESTCD
+x= 452.1 y= 486.8 sz= 5.6 black     | Format: N(3)
+x= 452.1 y= 493.3 sz= 5.6 black     | Data Type: integer
+x= 452.1 y= 499.8 sz= 5.6 black     | Origin: CRF
+x= 452.1 y= 506.3 sz= 5.6 black     | Units:
+x=  46.5 y= 508.1 sz= 7.5 black     | QT
+x= 455.1 y= 512.9 sz= 5.6 black     | ms = ms
+x= 452.1 y= 519.4 sz= 5.6 black     | SDS Var Name: QTAG
+x= 248.5 y= 521.1 sz= 7.5 black     | [_|_|_]
+x=  46.5 y= 525.5 sz= 7.5 black     | [QT]
+x= 452.1 y= 525.9 sz= 5.6 black     | Device Parameter: RScribe; QT
+x= 452.1 y= 532.4 sz= 5.6 black     | Aliases:
+x=  46.5 y= 534.2 sz= 7.5 black     | [SAS Field Name: EGTESTCD]
+x= 455.1 y= 539.0 sz= 5.6 black     | Odm OID = I.5866
+x= 452.1 y= 545.5 sz= 5.6 black     | Description: ECG Test or Examination
+x= 452.1 y= 552.0 sz= 5.6 black     | Short Name
+x= 452.1 y= 558.5 sz= 5.6 black     | Mandatory?: Yes
+x= 452.1 y= 565.1 sz= 5.6 black     | Disallow Future Date: Yes
+x= 452.1 y= 587.3 sz= 5.6 black   B | EGTESTCD
+x= 452.1 y= 593.9 sz= 5.6 black     | Format: N(3)
+x= 452.1 y= 600.4 sz= 5.6 black     | Data Type: integer
+x= 452.1 y= 607.0 sz= 5.6 black     | Origin: CRF
+x= 452.1 y= 613.5 sz= 5.6 black     | Units:
+x= 455.1 y= 620.0 sz= 5.6 black     | ms = ms
+x= 452.1 y= 626.5 sz= 5.6 black     | SDS Var Name: QTCFAG
+x= 452.1 y= 633.1 sz= 5.6 black     | Device Parameter: RScribe; QTcF
+x= 452.1 y= 639.6 sz= 5.6 black     | Aliases:
+x= 455.1 y= 646.1 sz= 5.6 black     | Odm OID = I.5868
+x=  46.5 y= 648.2 sz= 7.5 black     | QTcF
+x= 452.1 y= 652.6 sz= 5.6 black     | Description: ECG Test or Examination
+x= 452.1 y= 659.2 sz= 5.6 black     | Short Name
+x= 248.5 y= 661.2 sz= 7.5 black     | [_|_|_]
+x=  46.5 y= 665.6 sz= 7.5 black     | [QTcF]
+x= 452.1 y= 665.7 sz= 5.6 black     | Edit Checks:
+x= 455.1 y= 672.3 sz= 5.6 black   B | Name: TEMPLATE_QTcF002:
+x= 534.5 y= 672.4 sz= 5.6 black     | Value
+x=  46.5 y= 674.3 sz= 7.5 black     | [SAS Field Name: EGTESTCD]
+x= 455.1 y= 679.0 sz= 5.6 black   B | >=
+x= 461.7 y= 679.1 sz= 5.6 black     | 360
+x= 455.1 y= 685.6 sz= 5.6 black     | Description: Value should be >=360
+x= 455.1 y= 692.3 sz= 5.6 black   B | Name: TEMPLATE_QTcF001:
+x= 455.1 y= 698.9 sz= 5.6 black     | Formal Expression; Context: Formal
+x= 455.1 y= 705.4 sz= 5.6 black     | Expression
+x= 455.1 y= 711.9 sz= 5.6 black     | Description: Query if male subject
+x= 455.1 y= 718.4 sz= 5.6 black     | and value >= 451, if female subject
+x= 455.1 y= 725.0 sz= 5.6 black     | and value >= 471
+x= 452.1 y= 731.5 sz= 5.6 black     | Mandatory?: Yes
+x= 452.1 y= 738.0 sz= 5.6 black     | Disallow Future Date: Yes
+x= 452.1 y= 760.3 sz= 5.6 black   B | EGTESTCD
+x= 452.1 y= 766.9 sz= 5.6 black     | Format: N(3)
+x= 452.1 y= 773.4 sz= 5.6 black     | Data Type: integer
+x= 452.1 y= 779.9 sz= 5.6 black     | Origin: CRF
+x=  46.5 y= 784.5 sz= 7.5 black     | QTcB
+x= 452.1 y= 786.4 sz= 5.6 black     | Units:
+x= 455.1 y= 793.0 sz= 5.6 black     | ms = ms
+x=  36.0 y= 817.4 sz= 9.0 black     | Annotated CRF
+x= 278.9 y= 817.4 sz= 9.0 black     | 74 of 238
+x= 445.8 y= 817.4 sz= 9.0 black     | https://drvince.clinspark.com

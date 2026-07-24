@@ -1,0 +1,994 @@
+{
+ "stop_reason": "budget",
+ "versions": 6,
+ "best_version": 5,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 6182,
+    "pages_total": 913,
+    "pages_with_fields": 832,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 43,
+    "labels_look_human_pct": 99,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 77,
+    "fields_per_form": 80.3,
+    "forms_per_100_pages": 8.4,
+    "form_same_page_evidence_records": 2614,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [
+     "Reason Not Performed"
+    ],
+    "pages_covered_pct": 91
+   },
+   "problems": [
+    "Extreme content-fitted blocklist. The program filters by 33 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "warnings": [
+    "form_name empty for 57% of records - if the document does print form/section names, fix the form_name strategy (consider carrying the last seen title forward).",
+    "These field_name values were extracted on >=70% of ALL pages: 'Reason Not Performed'. Text recurring on nearly every page is usually page template furniture (watermark/footer/stamp), not a field - verify against the page dumps and stop extracting it unless it is genuinely a per-page data-entry field."
+   ],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    1,
+    "not_audited",
+    2,
+    -832
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "confirm",
+   "metrics": {
+    "engine": "codegen",
+    "records": 7648,
+    "pages_total": 913,
+    "pages_with_fields": 870,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 82,
+    "fields_per_form": 93.3,
+    "forms_per_100_pages": 9.0,
+    "form_same_page_evidence_records": 7612,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 95
+   },
+   "problems": [],
+   "outcome": "extended_program"
+  },
+  {
+   "version": 2,
+   "kind": "revise_gates",
+   "metrics": {
+    "engine": "codegen",
+    "records": 7611,
+    "pages_total": 913,
+    "pages_with_fields": 863,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 82,
+    "fields_per_form": 92.8,
+    "forms_per_100_pages": 9.0,
+    "form_same_page_evidence_records": 7575,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 95
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    0,
+    "not_audited",
+    0,
+    -863
+   ],
+   "became_best": true
+  },
+  {
+   "version": 3,
+   "kind": "confirm_extension",
+   "metrics": {
+    "engine": "codegen",
+    "records": 7648,
+    "pages_total": 913,
+    "pages_with_fields": 870,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 82,
+    "fields_per_form": 93.3,
+    "forms_per_100_pages": 9.0,
+    "form_same_page_evidence_records": 7612,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 95
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 46,
+   "audit_pages": [
+    1,
+    2,
+    4,
+    6,
+    54,
+    134,
+    163,
+    195,
+    376,
+    555,
+    734
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [],
+     "false": [
+      "Yes"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 4,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 6,
+     "missed": [],
+     "false": [
+      "Yes"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 54,
+     "missed": [],
+     "false": [
+      "Name"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 134,
+     "missed": [],
+     "false": [
+      "Yes"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 163,
+     "missed": [
+      "Pupillometry Date",
+      "Position Rest Time",
+      "Pupillometry Start Time",
+      "Readings downloaded onto a spreadsheet via Bluetooth from the pupilometer device.",
+      "Reviewed, signed and dated by a physician",
+      "Reason not review, signed and dated",
+      "PLR diameter init",
+      "PLR MAX constriction velocity",
+      "PLR dilation velocity",
+      "Pupil Area (Calculated)",
+      "ACA (Calculated)",
+      "Dilation Velocity at T75 (Calculated)"
+     ],
+     "false": [
+      "Yes",
+      "Repeat",
+      "Not",
+      "Done",
+      "Date",
+      "Rest Time",
+      "Start Time",
+      "spreadsheet via Bluetooth from the",
+      "and dated by a",
+      "and dated",
+      "diameter",
+      "constriction",
+      "(Calculated)",
+      "Velocity at",
+      "pupilometer device.",
+      "physician",
+      "init",
+      "velocity"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 195,
+     "missed": [
+      "1. Wish to be Dead",
+      "2. Non-Specific Active Suicidal Thoughts",
+      "3. Active Suicidal Ideation with Any Methods (Not Plan) without Intent to Act",
+      "4. Active Suicidal Ideation with Some Intent to Act, without Specific Plan",
+      "5. Active Suicidal Ideation with Specific Plan and Intent"
+     ],
+     "false": [
+      "Yes",
+      "3. Active Suicidal Ideation with Any",
+      "4. Active Suicidal Ideation with Some",
+      "5. Active Suicidal Ideation with"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 376,
+     "missed": [],
+     "false": [
+      "Name"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 555,
+     "missed": [],
+     "false": [
+      "Yes"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 734,
+     "missed": [],
+     "false": [
+      "Name"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    46,
+    0,
+    -870
+   ],
+   "became_best": true
+  },
+  {
+   "version": 4,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 7089,
+    "pages_total": 913,
+    "pages_with_fields": 872,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 97,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 82,
+    "fields_per_form": 86.5,
+    "forms_per_100_pages": 9.0,
+    "form_same_page_evidence_records": 7037,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 96
+   },
+   "problems": [],
+   "warnings": [
+    "The program filters by 28 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": 75,
+   "audit_pages": [
+    1,
+    2,
+    4,
+    6,
+    16,
+    25,
+    54,
+    80,
+    134,
+    163,
+    195,
+    376,
+    555,
+    734
+   ],
+   "audit_partial": null,
+   "audit_promoted": [
+    16,
+    25
+   ],
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 4,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 6,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 16,
+     "missed": [],
+     "false": [
+      "CSS0409B",
+      "CSS0410A",
+      "CSS0410B",
+      "CSS0411A",
+      "CSS0411B",
+      "CSS0412A",
+      "CSS0412B",
+      "CSS0413A",
+      "CSS0413B",
+      "CSS0413C",
+      "CSS0414A",
+      "CSS0414B",
+      "CSS0415A",
+      "CSS0415B",
+      "CSS0416A",
+      "CSS0416B",
+      "CSS0416C",
+      "CSS0417A",
+      "CSS0417B",
+      "CSS0418A",
+      "CSS0418B",
+      "CSS0418C",
+      "CSS0419A",
+      "CSS0419B",
+      "CSS0419C",
+      "CSS0420A",
+      "CSS0420B",
+      "CSS0421A",
+      "CSS0422A",
+      "CSS0423A",
+      "CSS0421B"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 25,
+     "missed": [
+      "14. Genital Symptoms",
+      "15. Hypochondriasis"
+     ],
+     "false": [],
+     "wrong_form": [
+      "16. Loss of Weight (Rate either a OR b)",
+      "17. Insight",
+      "Total Score"
+     ]
+    },
+    {
+     "page": 54,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 80,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 134,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 163,
+     "missed": [
+      "Repeat",
+      "Not Done",
+      "Pupillometry Date",
+      "Position Rest Time",
+      "Pupillometry Start Time",
+      "Readings downloaded onto a spreadsheet via Bluetooth from the pupilometer device.",
+      "Reviewed, signed and dated by a physician",
+      "Reason not review, signed and dated",
+      "PLR diameter init",
+      "PLR MAX constriction velocity",
+      "PLR dilation velocity",
+      "Pupil Area (Calculated)",
+      "ACA (Calculated)",
+      "Dilation Velocity at T75 (Calculated)"
+     ],
+     "false": [
+      "Reason Not Done",
+      "Reviewed, signed",
+      "PLR MAX",
+      "PLR T75",
+      "Pupil Area",
+      "Dilation",
+      "Date",
+      "Rest Time",
+      "Start Time",
+      "spreadsheet via Bluetooth from the",
+      "and dated by a",
+      "and dated",
+      "diameter",
+      "constriction",
+      "(Calculated)",
+      "Velocity at",
+      "pupilometer device.",
+      "init",
+      "velocity"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 195,
+     "missed": [
+      "1. Wish to be Dead",
+      "2. Non-Specific Active Suicidal Thoughts",
+      "4. Active Suicidal Ideation with Some Intent to Act, without Specific Plan"
+     ],
+     "false": [],
+     "wrong_form": [
+      "3. Active Suicidal Ideation with Any",
+      "4. Active Suicidal Ideation with Some",
+      "5. Active Suicidal Ideation with"
+     ]
+    },
+    {
+     "page": 376,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 555,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 734,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    75,
+    1,
+    -872
+   ],
+   "became_best": true
+  },
+  {
+   "version": 5,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 6559,
+    "pages_total": 913,
+    "pages_with_fields": 846,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 83,
+    "fields_per_form": 79.0,
+    "forms_per_100_pages": 9.1,
+    "form_same_page_evidence_records": 6507,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 93
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 68,
+   "audit_pages": [
+    1,
+    2,
+    4,
+    6,
+    16,
+    25,
+    54,
+    81,
+    134,
+    163,
+    195,
+    376,
+    555,
+    734
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 4,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 6,
+     "missed": [
+      "Sex",
+      "Race"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 16,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 25,
+     "missed": [
+      "14. Genital Symptoms",
+      "15. Hypochondriasis"
+     ],
+     "false": [],
+     "wrong_form": [
+      "14. Genital Symptoms",
+      "16. Loss of Weight (Rate either a OR b)",
+      "17. Insight",
+      "Total Score"
+     ]
+    },
+    {
+     "page": 54,
+     "missed": [
+      "Test"
+     ],
+     "false": [],
+     "wrong_form": [
+      "Vital Signs Performed",
+      "Reason Not Performed",
+      "Repetition Number",
+      "Details",
+      "Location",
+      "Position",
+      "Other, Please Specify",
+      "Vital Signs Date",
+      "Position Time",
+      "Vital Signs Time",
+      "Not Done",
+      "Result",
+      "Interpretation",
+      "Reason Not Done"
+     ]
+    },
+    {
+     "page": 81,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 134,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 163,
+     "missed": [
+      "Pupillometry Assessment Performed",
+      "Reason Not Performed",
+      "Timepoint  [3]",
+      "Eye  [4]",
+      "Repeat",
+      "Not",
+      "Reason Not Done  [7]",
+      "Pupillometry",
+      "Position",
+      "Pupillometry",
+      "Readings downloaded onto a",
+      "Reviewed, signed",
+      "PLR",
+      "PLR",
+      "Pupillometry Date  [8]",
+      "Position Rest Time",
+      "Pupillometry Start Time",
+      "spreadsheet via Bluetooth from the",
+      "and dated by a",
+      "pupilometer device.  [11]",
+      "physician  [12]"
+     ],
+     "false": [
+      "Reason not review, signed",
+      "PLR MAX",
+      "PLR T75",
+      "Pupil Area",
+      "Dilation",
+      "and dated  [13]",
+      "diameter",
+      "constriction",
+      "(Calculated)",
+      "Velocity at",
+      "init  [14]",
+      "velocity  [15]",
+      "velocity"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 195,
+     "missed": [
+      "1. Wish to be Dead",
+      "2. Non-Specific Active Suicidal Thoughts"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 376,
+     "missed": [],
+     "false": [],
+     "wrong_form": [
+      "Visit Date"
+     ]
+    },
+    {
+     "page": 555,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 734,
+     "missed": [],
+     "false": [],
+     "wrong_form": [
+      "Sample Performed",
+      "Reason Not Performed",
+      "Sample Date",
+      "Sample Time",
+      "Parameter",
+      "Not Done",
+      "Reason Not Done",
+      "Interpretation"
+     ]
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    68,
+    0,
+    -846
+   ],
+   "became_best": true
+  },
+  {
+   "version": 6,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 8184,
+    "pages_total": 913,
+    "pages_with_fields": 891,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 97,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 85,
+    "fields_per_form": 96.3,
+    "forms_per_100_pages": 9.3,
+    "form_same_page_evidence_records": 8150,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 98
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 116,
+   "audit_pages": [
+    1,
+    2,
+    4,
+    6,
+    16,
+    25,
+    54,
+    134,
+    136,
+    163,
+    195,
+    376,
+    555,
+    734
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [],
+     "false": [
+      "Informed Consent",
+      "Yes"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 4,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 6,
+     "missed": [],
+     "false": [
+      "Demographics",
+      "Yes"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 16,
+     "missed": [],
+     "false": [],
+     "wrong_form": [
+      "CSS0409B",
+      "CSS0410A",
+      "CSS0410B",
+      "CSS0411A",
+      "CSS0411B",
+      "CSS0412A",
+      "CSS0412B",
+      "CSS0413A",
+      "CSS0413B",
+      "CSS0413C",
+      "CSS0414A",
+      "CSS0414B",
+      "CSS0415A",
+      "CSS0415B",
+      "CSS0416A",
+      "CSS0416B",
+      "CSS0416C",
+      "CSS0417A",
+      "CSS0417B",
+      "CSS0418A",
+      "CSS0418B",
+      "CSS0418C",
+      "CSS0419A",
+      "CSS0419B",
+      "CSS0419C",
+      "CSS0420A",
+      "CSS0420B",
+      "CSS0421A",
+      "CSS0422A",
+      "CSS0423A",
+      "CSS0421B"
+     ]
+    },
+    {
+     "page": 25,
+     "missed": [],
+     "false": [],
+     "wrong_form": [
+      "14. Genital Symptoms",
+      "15. Hypochondriasis",
+      "16. Loss of Weight (Rate either a OR b)",
+      "17. Insight",
+      "Total Score"
+     ]
+    },
+    {
+     "page": 54,
+     "missed": [
+      "Test"
+     ],
+     "false": [],
+     "wrong_form": [
+      "Vital Signs Performed",
+      "Reason Not Performed",
+      "Repetition Number",
+      "Details",
+      "Location",
+      "Position",
+      "Other, Please Specify",
+      "Vital Signs Date",
+      "Position Time",
+      "Vital Signs Time",
+      "Not Done",
+      "Result",
+      "Interpretation",
+      "Reason Not Done"
+     ]
+    },
+    {
+     "page": 134,
+     "missed": [],
+     "false": [
+      "Sleep EEG - In Clinic",
+      "Yes"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 136,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 163,
+     "missed": [
+      "Pupillometry Assessment Performed",
+      "Reason Not Performed",
+      "Timepoint  [3]",
+      "Eye  [4]",
+      "Repeat",
+      "Not",
+      "Reason Not Done  [7]",
+      "Pupillometry",
+      "Position",
+      "Pupillometry",
+      "Readings downloaded onto a",
+      "Reviewed, signed",
+      "PLR",
+      "PLR",
+      "[5]",
+      "Done",
+      "Date  [8]",
+      "Rest Time",
+      "Start Time",
+      "spreadsheet via Bluetooth from the",
+      "and dated by a",
+      "diameter",
+      "constriction",
+      "dilation",
+      "[6]",
+      "[9]",
+      "[10]",
+      "pupilometer device.  [11]",
+      "physician  [12]",
+      "[16]",
+      "[17]",
+      "[18]",
+      "[19]",
+      "T75",
+      "[20]"
+     ],
+     "false": [
+      "Reason not review, signed",
+      "PLR MAX",
+      "PLR T75",
+      "Pupil Area",
+      "Dilation",
+      "and dated  [13]",
+      "(Calculated)",
+      "Velocity at",
+      "init  [14]",
+      "velocity  [15]",
+      "velocity"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 195,
+     "missed": [],
+     "false": [
+      "C-SSRS (Since Last Visit)",
+      "Yes"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 376,
+     "missed": [],
+     "false": [],
+     "wrong_form": [
+      "Visit Date"
+     ]
+    },
+    {
+     "page": 555,
+     "missed": [],
+     "false": [
+      "Urine Dipstick",
+      "Yes"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 734,
+     "missed": [],
+     "false": [],
+     "wrong_form": [
+      "Sample Performed",
+      "Reason Not Performed",
+      "Sample Date",
+      "Sample Time",
+      "Parameter",
+      "Not Done",
+      "Reason Not Done",
+      "Interpretation"
+     ]
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    116,
+    0,
+    -891
+   ],
+   "became_best": false
+  }
+ ]
+}

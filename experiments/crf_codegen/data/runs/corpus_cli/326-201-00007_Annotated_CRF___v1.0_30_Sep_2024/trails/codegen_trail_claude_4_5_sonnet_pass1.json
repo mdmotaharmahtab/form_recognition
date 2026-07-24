@@ -1,0 +1,514 @@
+{
+ "stop_reason": "budget",
+ "versions": 5,
+ "best_version": 3,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 763,
+    "pages_total": 109,
+    "pages_with_fields": 109,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 95,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 6,
+    "fields_per_form": 127.2,
+    "forms_per_100_pages": 5.5,
+    "furniture_candidates": [],
+    "pages_covered_pct": 100
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 25,
+   "audit_pages": [
+    1,
+    2,
+    4,
+    38,
+    47,
+    76
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [
+      "Informed Consent: Photo ID #1",
+      "Group Information: Group Info Session #1",
+      "Group Information: Group info held by #1",
+      "Informed Consent: Study ICF Database Check #1",
+      "Informed Consent: Study ICF Participant  #1",
+      "Informed Consent: Study ICF Date #1"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [],
+     "false": [
+      "(Version must be checked against ICF present in the RSF \u2013 escalate any discrepancies)",
+      "Informed Consent: Study ICF Time #1",
+      "Informed Consent: Study ICF Part #1",
+      "Informed Consent: Study ICF Version #1"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 4,
+     "missed": [],
+     "false": [
+      "Informed Consent Addition: Add ICF Time #1",
+      "Informed Consent Addition: Add ICF Signed by Physician/Nurse #1",
+      "System: Available #1"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 38,
+     "missed": [],
+     "false": [
+      "Exclusion: E22 #1",
+      "the trial.",
+      "Exclusion: E23 #1"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 47,
+     "missed": [],
+     "false": [
+      "C-SSRS Baseline: 1. Wish to be Dead (month) #1",
+      "Subject endorses thoughts about a wish to be dead or not alive anymore, or a wish to fall asleep and not wake up. (Have you wished you were dead or wished you could go to sleep and not wake up?)",
+      "C-SSRS Baseline: 2. Non-specific Thoughts (lifetime) #1",
+      "General non-specific thoughts of wanting to end one's life / commit suicide (e.g. \"I've thought about killing myself\") without thoughts of ways to kill oneself / associated methods, intent, or plan during the assessment period. (Have you actually had any thoughts of killing yourself?)",
+      "C-SSRS Baseline: 2. Non-specific Thoughts (month) #1"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 76,
+     "missed": [],
+     "false": [
+      "Adverse Event: Progress Notes #1",
+      "Medical History: Body System #1"
+     ],
+     "wrong_form": [
+      "Medical History: Body System #1",
+      "Affected Body System"
+     ]
+    }
+   ],
+   "score": [
+    0,
+    25,
+    0,
+    -109
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "confirm",
+   "metrics": {
+    "engine": "codegen",
+    "records": 607,
+    "pages_total": 109,
+    "pages_with_fields": 109,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 6,
+    "fields_per_form": 101.2,
+    "forms_per_100_pages": 5.5,
+    "furniture_candidates": [],
+    "pages_covered_pct": 100
+   },
+   "problems": [],
+   "outcome": "extended_program"
+  },
+  {
+   "version": 2,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 353,
+    "pages_total": 109,
+    "pages_with_fields": 106,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 6,
+    "fields_per_form": 58.8,
+    "forms_per_100_pages": 5.5,
+    "furniture_candidates": [],
+    "pages_covered_pct": 97
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_verdicts": null,
+   "score": [
+    0,
+    "not_audited",
+    0,
+    -106
+   ],
+   "became_best": false
+  },
+  {
+   "version": 3,
+   "kind": "confirm_extension",
+   "metrics": {
+    "engine": "codegen",
+    "records": 607,
+    "pages_total": 109,
+    "pages_with_fields": 109,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 6,
+    "fields_per_form": 101.2,
+    "forms_per_100_pages": 5.5,
+    "furniture_candidates": [],
+    "pages_covered_pct": 100
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 10,
+   "audit_pages": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    38,
+    47,
+    76
+   ],
+   "audit_partial": null,
+   "audit_promoted": [
+    5
+   ],
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [
+      "(Version must be checked against ICF present in the RSF \u2013 escalate any discrepancies)"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 3,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 4,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 5,
+     "missed": [],
+     "false": [
+      "Please ensure that a Protocol Deviation is completed"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 38,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 47,
+     "missed": [
+      "(Have you wished you were dead or wished you could go to sleep and not wake up?)",
+      "(Have you actually had any thoughts of killing yourself?)"
+     ],
+     "false": [
+      "Subject endorses thoughts about a wish to be dead or not alive anymore, or a wish to fall asleep",
+      "and not wake up.",
+      "General non-specific thoughts of wanting to end one's life / commit suicide (e.g. \"I've thought",
+      "about killing myself\") without thoughts of ways to kill oneself / associated methods, intent, or",
+      "plan during the assessment period."
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 76,
+     "missed": [],
+     "false": [],
+     "wrong_form": [
+      "Affected Body System"
+     ]
+    }
+   ],
+   "score": [
+    0,
+    10,
+    0,
+    -109
+   ],
+   "became_best": true
+  },
+  {
+   "version": 4,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 640,
+    "pages_total": 109,
+    "pages_with_fields": 109,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 6,
+    "fields_per_form": 106.7,
+    "forms_per_100_pages": 5.5,
+    "furniture_candidates": [],
+    "pages_covered_pct": 100
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 20,
+   "audit_pages": [
+    1,
+    2,
+    4,
+    5,
+    6,
+    38,
+    47,
+    76
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [],
+     "false": [
+      "(Version must be checked against ICF present in the RSF \u2013 escalate any discrepancies)"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 4,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 5,
+     "missed": [],
+     "false": [
+      "Sponsor Specific Participation Number (given",
+      "sequentially from S00001)",
+      "Has the participant consumed any food containing poppy seeds within 48 hours prior to",
+      "Screening visit?",
+      "Has the participant taken part in any unaccustomed strenuous exercise within 72 hours prior to",
+      "Please ensure that a Protocol Deviation is completed"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 6,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 38,
+     "missed": [],
+     "false": [
+      "Exclusion 22. Any participant who, in the opinion of the investigator, should not participate in",
+      "the trial."
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 47,
+     "missed": [],
+     "false": [
+      "1. Wish to be dead (Months)",
+      "Subject endorses thoughts about a wish to be dead or not alive anymore, or a wish to fall asleep",
+      "and not wake up.",
+      "(Have you wished you were dead or wished you could go to sleep and not wake up?)",
+      "2. Non-specific Active Suicidal Thoughts (Lifetime)",
+      "General non-specific thoughts of wanting to end one's life / commit suicide (e.g. \"I've thought",
+      "about killing myself\") without thoughts of ways to kill oneself / associated methods, intent, or",
+      "plan during the assessment period.",
+      "(Have you actually had any thoughts of killing yourself?)"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 76,
+     "missed": [],
+     "false": [],
+     "wrong_form": [
+      "Progress Notes (Progress Notes)",
+      "Affected Body System"
+     ]
+    }
+   ],
+   "score": [
+    0,
+    20,
+    0,
+    -109
+   ],
+   "became_best": false
+  },
+  {
+   "version": 5,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 319,
+    "pages_total": 109,
+    "pages_with_fields": 103,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 6,
+    "fields_per_form": 53.2,
+    "forms_per_100_pages": 5.5,
+    "furniture_candidates": [],
+    "pages_covered_pct": 94
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 13,
+   "audit_pages": [
+    1,
+    2,
+    4,
+    5,
+    9,
+    38,
+    47,
+    76
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 4,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 5,
+     "missed": [
+      "Year of Birth"
+     ],
+     "false": [
+      "Sponsor Specific Participation Number (given",
+      "sequentially from S00001)",
+      "Has the participant consumed any food containing poppy seeds within 48 hours prior to",
+      "Screening visit?",
+      "Has the participant taken part in any unaccustomed strenuous exercise within 72 hours prior to"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 9,
+     "missed": [
+      "Select all contraception options that apply:"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 38,
+     "missed": [
+      "Exclusion 21. Participants with no permanent place of residence.",
+      "Exclusion 22. Any participant who, in the opinion of the investigator, should not participate in the trial.",
+      "Exclusion 23. Previous exposure to OPC-224333."
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 47,
+     "missed": [
+      "1. Wish to be dead (Months)",
+      "2. Non-specific Active Suicidal Thoughts (Lifetime)"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 76,
+     "missed": [
+      "Affected Body System"
+     ],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "score": [
+    0,
+    13,
+    0,
+    -103
+   ],
+   "became_best": false
+  }
+ ]
+}

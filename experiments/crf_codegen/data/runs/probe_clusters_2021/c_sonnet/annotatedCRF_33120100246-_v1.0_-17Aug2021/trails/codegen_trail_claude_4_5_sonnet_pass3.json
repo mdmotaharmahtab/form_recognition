@@ -1,0 +1,716 @@
+{
+ "stop_reason": "plateau",
+ "versions": 5,
+ "best_version": 3,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "confirm",
+   "metrics": {
+    "error": "generated extractor crashed:\nTraceback (most recent call last):\n  File \"D:\\ubuntu\\codes\\ZS\\otsuka\\ECS\\experiments\\recipe_prototype\\scripts\\sandbox_runner.py\", line 128, in main\n    raw = fn(pages)\n          ^^^^^^^^^\n  File \"<generated_extractor>\", line 26, in extract\n  File \"<generated_extractor>\", line 54, in extract_fields_from_page\nAttributeError: 'Line' object has no attribute 'color'\n"
+   },
+   "problems": [
+    "Program failed to run: generated extractor crashed:\nTraceback (most recent call last):\n  File \"D:\\ubuntu\\codes\\ZS\\otsuka\\ECS\\experiments\\recipe_prototype\\scripts\\sandbox_runner.py\", line 128, in main\n    raw = fn(pages)\n          ^^^^^^^^^\n  File \"<generated_extractor>\", line 26, in extract\n  File \"<generated_extractor>\", line 54, in extract_fields_from_page\nAttributeError: 'Line' object has no attribute 'color'\n"
+   ],
+   "outcome": "extension_rejected"
+  },
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 268,
+    "pages_total": 47,
+    "pages_with_fields": 41,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 91,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 1,
+    "fields_per_form": 268.0,
+    "forms_per_100_pages": 2.1,
+    "form_same_page_evidence_records": 268,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 87
+   },
+   "problems": [],
+   "warnings": [
+    "The program filters by 29 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": 36,
+   "audit_pages": [
+    37,
+    42,
+    66,
+    71,
+    198,
+    423
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 37,
+     "missed": [
+      "Skin and Mucosae",
+      "Neurological",
+      "Extremities"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 42,
+     "missed": [
+      "Manufacturer",
+      "Item #",
+      "Lot"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 66,
+     "missed": [
+      "Was Urine Drug Screen Performed?",
+      "Manufacturer",
+      "Item #",
+      "Lot"
+     ],
+     "false": [
+      "If not done reason",
+      "Expiration Date",
+      "Date of Sample",
+      "Time of Sample"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 71,
+     "missed": [
+      "Rater's initials"
+     ],
+     "false": [
+      "Ask questions 1 and 2. If both are negative, proceed to \"Suicidal Behavior\" Section. If the answer to question 2 is \"yes\", ask questions 3,4 and 5. If the answer to question 1 and/or 2 is \"yes\", complete \"Intensity of Ideation section below",
+      "Subject endorses thoughts about a wish to be dead or not alive anymore, or wish to fall asleep and not wake up.",
+      "Have you wished you were dead or wished you could go to sleep and not wake",
+      "up?",
+      "General non-specific thoughts of wanting to end one's life/commit suicide (e.g. \"I've thought about killing myself\") without thoughts of way to kill oneself/associated"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 198,
+     "missed": [
+      "Controllability",
+      "Deterrents"
+     ],
+     "false": [
+      "Could/can you stop thinking about killing yourself or wanting to die if you want to?",
+      "Are there things - anyone or anything - that stopped you from wanting to die or acting on thoughts of committing suicide?",
+      "Reasons for Ideation",
+      "What sort of reasons did you have for thinking about wanting to die or killing yourself? Was it to end the pain or stop the way you were feeling (in other",
+      "words you couldn't go on living with this pain or how you were feeling) or was it to get attention, revenge or a reaction from others? or both?",
+      "not go on living with the pain or how you were feeling)",
+      "were feeling)"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 423,
+     "missed": [
+      "Frequency",
+      "Duration"
+     ],
+     "false": [
+      "The following features should be rated with respect to the most severe type of ideation (i.e. 1-5 from above, with 1 being the least severe and 5 being the most severe). Ask about time he/she was feeling the most suicidal.",
+      "Most severe ideation",
+      "Description of Ideation",
+      "How many times have you had these thoughts?",
+      "When you have the thoughts, how long do they last?"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    36,
+    1,
+    -41
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "revise_audit",
+   "metrics": {
+    "error": "generated extractor crashed:\nTraceback (most recent call last):\n  File \"D:\\ubuntu\\codes\\ZS\\otsuka\\ECS\\experiments\\recipe_prototype\\scripts\\sandbox_runner.py\", line 128, in main\n    raw = fn(pages)\n          ^^^^^^^^^\n  File \"<generated_extractor>\", line 24, in extract\n  File \"<generated_extractor>\", line 42, in extract_fields_from_page\n  File \"<generated_extractor>\", line 62, in extract_tabular_fields\nAttributeError: 'Line' object has no attribute 'color'\n"
+   },
+   "problems": [
+    "Program failed to run: generated extractor crashed:\nTraceback (most recent call last):\n  File \"D:\\ubuntu\\codes\\ZS\\otsuka\\ECS\\experiments\\recipe_prototype\\scripts\\sandbox_runner.py\", line 128, in main\n    raw = fn(pages)\n          ^^^^^^^^^\n  File \"<generated_extractor>\", line 24, in extract\n  File \"<generated_extractor>\", line 42, in extract_fields_from_page\n  File \"<generated_extractor>\", line 62, in extract_tabular_fields\nAttributeError: 'Line' object has no attribute 'color'\n"
+   ],
+   "warnings": [],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    1,
+    "not_audited",
+    0,
+    0
+   ],
+   "became_best": false
+  },
+  {
+   "version": 3,
+   "kind": "revise_gates",
+   "metrics": {
+    "engine": "codegen",
+    "records": 263,
+    "pages_total": 47,
+    "pages_with_fields": 47,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 1,
+    "fields_per_form": 263.0,
+    "forms_per_100_pages": 2.1,
+    "form_same_page_evidence_records": 262,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 100
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 55,
+   "audit_pages": [
+    37,
+    42,
+    66,
+    71,
+    78,
+    136,
+    198,
+    423
+   ],
+   "audit_partial": null,
+   "audit_promoted": [
+    78
+   ],
+   "audit_verdicts": [
+    {
+     "page": 37,
+     "missed": [],
+     "false": [
+      "Skin and Mucosae",
+      "Neurological",
+      "Extremities"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 42,
+     "missed": [
+      "Glycated Hemoglobin",
+      "Scan",
+      "Barcode Number"
+     ],
+     "false": [
+      "Sample"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 66,
+     "missed": [
+      "Test",
+      "Result"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 71,
+     "missed": [
+      "Suicidal Ideation",
+      "Lifetime",
+      "Past 3 Month"
+     ],
+     "false": [
+      "Subject endorses thoughts about a wish to be dead or not alive anymore, or wish to fall asleep and not wake up.",
+      "Have you wished you were dead or wished you could go to sleep and not wake",
+      "up?"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 78,
+     "missed": [
+      "Suicidal Behaviour",
+      "Lifetime",
+      "Past 6 Month",
+      "Actual attempt:",
+      "If Yes, Total number of attempts",
+      "If Yes, describe"
+     ],
+     "false": [
+      "Have you made a suicide attempt?",
+      "Have you done anything to harm yourself?",
+      "Have you done anything dangerous where you could have died?",
+      "What did you do?",
+      "Did you ______ as a way to end your life?",
+      "Did you want to die (even a little) when you ____?",
+      "Were trying to end your life when you ____?",
+      "Or did you think it was possible you could have died from ____?"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 136,
+     "missed": [
+      "Intensity of Ideation",
+      "Since Last Visit",
+      "Most severe ideation",
+      "Description of Ideation",
+      "Frequency",
+      "Duration"
+     ],
+     "false": [
+      "about time he/she was feeling the most suicidal.",
+      "(2) Less than 1 hour/some of the time (3) 1-4 hours/a lot of time (4) 4-8 hours/most of day (5) More than 8 hours/persistent or continuous",
+      "or minutes, (2) Less than 1 hour/some of the time, (3) 1- 4 hours/a lot of time, (4) 4-8 hours/most of day, (5) More than 8 hours/persistent or continuous)"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 198,
+     "missed": [
+      "Controllability",
+      "Deterrents",
+      "Reasons for Ideation"
+     ],
+     "false": [
+      "to?",
+      "(4) Can control thoughts with a lot of difficulty (5) Unable to control thoughts (0) Does not attempt to control thoughts",
+      "control thoughts with a lot of difficulty, (5) Unable to control thoughts, (0) Does not attempt to control thoughts)]",
+      "to get attention, revenge or a reaction from others? or both?",
+      "were feeling) (0) Does not apply"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 423,
+     "missed": [
+      "Intensity of Ideation",
+      "Since Last Visit",
+      "Most severe ideation",
+      "Description of Ideation",
+      "Frequency",
+      "Duration"
+     ],
+     "false": [
+      "about time he/she was feeling the most suicidal.",
+      "(2) Less than 1 hour/some of the time (3) 1-4 hours/a lot of time (4) 4-8 hours/most of day (5) More than 8 hours/persistent or continuous",
+      "or minutes, (2) Less than 1 hour/some of the time, (3) 1- 4 hours/a lot of time, (4) 4-8 hours/most of day, (5) More than 8 hours/persistent or continuous)"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    55,
+    0,
+    -47
+   ],
+   "became_best": true
+  },
+  {
+   "version": 4,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 479,
+    "pages_total": 47,
+    "pages_with_fields": 47,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 1,
+    "fields_per_form": 479.0,
+    "forms_per_100_pages": 2.1,
+    "form_same_page_evidence_records": 479,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 100
+   },
+   "problems": [],
+   "warnings": [
+    "The program filters by 24 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": 68,
+   "audit_pages": [
+    37,
+    42,
+    66,
+    71,
+    78,
+    137,
+    198,
+    423
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 37,
+     "missed": [],
+     "false": [
+      "Not Done"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 42,
+     "missed": [
+      "Glycated Hemoglobin"
+     ],
+     "false": [
+      "Scan)] [VISIBILIT Y: site only]"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 66,
+     "missed": [
+      "Test",
+      "Result"
+     ],
+     "false": [
+      "Test",
+      "Result",
+      "Not Done"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 71,
+     "missed": [
+      "Suicidal Ideation",
+      "Lifetime",
+      "Past 3 Month",
+      "If Yes, describe"
+     ],
+     "false": [
+      "Version Number 14-Jan-2009",
+      "Row 1",
+      "Row 2",
+      "Row 3",
+      "Row 4",
+      "Subject endorses thoughts about a wish to be dead or not alive anymore, or wish to fall asleep and not wake up."
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 78,
+     "missed": [
+      "Suicidal Behaviour",
+      "Lifetime",
+      "Past 6 Month",
+      "If Yes, Total number of attempts",
+      "If Yes, describe"
+     ],
+     "false": [
+      "Row 1",
+      "Row 2",
+      "Actual attempt",
+      "be 100%. If there is any intent/desire to die associated with the act, then it can be",
+      "considered an actual suicide attempt. There does not have to be any injury or harm, just the potential for injury or harm. If a person pulls the trigger while gun is in",
+      "harm, just the potential for injury or harm. If a person pulls the trigger while gun is in",
+      "Were trying to end your life when you ____?",
+      "to happen? (Self-Injurious Behavior without suicidal intent)",
+      "Row 3",
+      "Row 4",
+      "Row 5",
+      "Row 6"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 137,
+     "missed": [
+      "Intensity of Ideation",
+      "Since Last Visit",
+      "Reasons for Ideation"
+     ],
+     "false": [
+      "Row 5",
+      "Row 6",
+      "Row 7",
+      "Could/can you stop thinking about killing yourself or wanting to die if you want to?",
+      "to?",
+      "Are there things - anyone or anything - that stopped you from wanting to die or acting on thoughts of committing suicide?",
+      "acting on thoughts of committing suicide?",
+      "What sort of reasons did you have for thinking about wanting to die or killing yourself? Was it to end the pain or stop the way you were feeling (in other",
+      "yourself? Was it to end the pain or stop the way you were feeling (in other",
+      "were feeling)"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 198,
+     "missed": [
+      "Intensity of Ideation",
+      "Since Last Visit",
+      "Reasons for Ideation"
+     ],
+     "false": [
+      "Row 5",
+      "Row 6",
+      "Row 7",
+      "Could/can you stop thinking about killing yourself or wanting to die if you want to?",
+      "to?",
+      "Are there things - anyone or anything - that stopped you from wanting to die or acting on thoughts of committing suicide?",
+      "acting on thoughts of committing suicide?",
+      "What sort of reasons did you have for thinking about wanting to die or killing yourself? Was it to end the pain or stop the way you were feeling (in other",
+      "yourself? Was it to end the pain or stop the way you were feeling (in other",
+      "were feeling)"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 423,
+     "missed": [
+      "Intensity of Ideation",
+      "Since Last Visit"
+     ],
+     "false": [
+      "Row 1",
+      "Row 2",
+      "Row 3",
+      "Row 4",
+      "(3) 1-4 hours/a lot of time"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    68,
+    1,
+    -47
+   ],
+   "became_best": false
+  },
+  {
+   "version": 5,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 549,
+    "pages_total": 47,
+    "pages_with_fields": 47,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 1,
+    "fields_per_form": 549.0,
+    "forms_per_100_pages": 2.1,
+    "form_same_page_evidence_records": 549,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 100
+   },
+   "problems": [],
+   "warnings": [
+    "The program filters by 15 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": 80,
+   "audit_pages": [
+    37,
+    42,
+    66,
+    71,
+    78,
+    106,
+    198,
+    423
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 37,
+     "missed": [],
+     "false": [
+      "Yes",
+      "No)]"
+     ],
+     "wrong_form": [
+      "Skin and Mucosae",
+      "Neurological",
+      "Extremities"
+     ]
+    },
+    {
+     "page": 42,
+     "missed": [
+      "Date of Collection",
+      "Barcode Number"
+     ],
+     "false": [
+      "Glycated Hemoglobin",
+      "Sample",
+      "Scan",
+      "[SCANNE",
+      "[TYPE:",
+      "enumerati",
+      "(values:",
+      "Scan)]"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 66,
+     "missed": [
+      "Test"
+     ],
+     "false": [
+      "Positive"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 71,
+     "missed": [
+      "Rater's initials",
+      "Suicidal Ideation",
+      "Lifetime",
+      "Past 3 Month",
+      "If Yes, describe"
+     ],
+     "false": [
+      "Version Number 14-Jan-2009",
+      "Have you wished you were dead or wished you could go to sleep and not wake",
+      "up?"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 78,
+     "missed": [
+      "Suicidal Behaviour",
+      "Lifetime",
+      "Past 6 Month",
+      "If Yes, Total number of attempts",
+      "If Yes, describe"
+     ],
+     "false": [
+      "Actual attempt",
+      "be 100%. If there is any intent/desire to die associated with the act, then it can be",
+      "harm, just the potential for injury or harm. If a person pulls the trigger while gun is in",
+      "Have you made a suicide attempt?",
+      "Have you done anything to harm yourself?",
+      "Have you done anything dangerous where you could have died?",
+      "What did you do?",
+      "Did you ______ as a way to end your life?",
+      "Did you want to die (even a little) when you ____?",
+      "Were trying to end your life when you ____?",
+      "Or did you think it was possible you could have died from ____?",
+      "to happen? (Self-Injurious Behavior without suicidal intent)",
+      "Has subject engaged in Non-Suicidal self-injurious behavior?",
+      "Yes"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 106,
+     "missed": [],
+     "false": [
+      "Yes",
+      "No)]"
+     ],
+     "wrong_form": [
+      "Skin and Mucosae",
+      "Neurological",
+      "Extremities"
+     ]
+    },
+    {
+     "page": 198,
+     "missed": [
+      "Controllability",
+      "Reasons for Ideation"
+     ],
+     "false": [
+      "Could/can you stop thinking about killing yourself or wanting to die if you want to?",
+      "to?",
+      "Deterrents",
+      "Are there things - anyone or anything - that stopped you from wanting to die or acting on thoughts of committing suicide?",
+      "acting on thoughts of committing suicide?",
+      "What sort of reasons did you have for thinking about wanting to die or killing yourself? Was it to end the pain or stop the way you were feeling (in other",
+      "yourself? Was it to end the pain or stop the way you were feeling (in other",
+      "words you couldn't go on living with this pain or how you were feeling) or was it to get attention, revenge or a reaction from others? or both?",
+      "to get attention, revenge or a reaction from others? or both?",
+      "(5) Unable to control thoughts",
+      "attempting suicide",
+      "(0) Does not apply",
+      "reaction from others",
+      "feeling)",
+      "were feeling)"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 423,
+     "missed": [
+      "Intensity of Ideation",
+      "Since Last Visit"
+     ],
+     "false": [
+      "about time he/she was feeling the most suicidal.",
+      "(1) Wish to be dead",
+      "(not plan) w/out intent to act",
+      "act w/out specific plan",
+      "intent",
+      "(1) Less than once a week",
+      "[TYPE: enumeration",
+      "(2) Once a week",
+      "(values: (1) Less than",
+      "once a week, (2) Once",
+      "(3) 1-4 hours/a lot of time",
+      "(4) 4-8 hours/most of day"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    80,
+    1,
+    -47
+   ],
+   "became_best": false
+  }
+ ]
+}

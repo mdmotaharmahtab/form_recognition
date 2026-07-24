@@ -1,0 +1,418 @@
+{
+ "stop_reason": "budget",
+ "versions": 5,
+ "best_version": 2,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "confirm",
+   "outcome": "confirmed_no_fields"
+  },
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 6,
+    "pages_total": 8,
+    "pages_with_fields": 1,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 1,
+    "fields_per_form": 6.0,
+    "forms_per_100_pages": 12.5,
+    "furniture_candidates": [],
+    "pages_covered_pct": 12
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 3,
+   "audit_pages": [
+    1,
+    2,
+    3,
+    243,
+    245
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [
+      "Lora Adriano, Study Manager or designee",
+      "Becky Sease, Lead Data Manager or designee",
+      "Lorri Cefalone, Senior Data Manager"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 3,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 243,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 245,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "score": [
+    0,
+    3,
+    0,
+    -1
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 10,
+    "pages_total": 8,
+    "pages_with_fields": 3,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 2,
+    "fields_per_form": 5.0,
+    "forms_per_100_pages": 25.0,
+    "furniture_candidates": [],
+    "pages_covered_pct": 38
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 4,
+   "audit_pages": [
+    1,
+    2,
+    3,
+    242,
+    243,
+    245
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 3,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 242,
+     "missed": [],
+     "false": [
+      "Becky Sease, Lead Data Manager",
+      "Lead Data Manager",
+      "Lora Adriano"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 243,
+     "missed": [],
+     "false": [
+      "Lorri Cefalone"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 245,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "score": [
+    0,
+    4,
+    0,
+    -3
+   ],
+   "became_best": true
+  },
+  {
+   "version": 3,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 6,
+    "pages_total": 8,
+    "pages_with_fields": 1,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 1,
+    "fields_per_form": 6.0,
+    "forms_per_100_pages": 12.5,
+    "furniture_candidates": [],
+    "pages_covered_pct": 12
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 3,
+   "audit_pages": [
+    1,
+    2,
+    3,
+    243,
+    244,
+    245
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [
+      "Lora Adriano, Study Manager or designee",
+      "Becky Sease, Lead Data Manager or designee",
+      "Lorri Cefalone, Senior Data Manager"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 3,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 243,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 244,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 245,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "score": [
+    0,
+    3,
+    0,
+    -1
+   ],
+   "became_best": false
+  },
+  {
+   "version": 4,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 12,
+    "pages_total": 8,
+    "pages_with_fields": 4,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 1,
+    "fields_per_form": 12.0,
+    "forms_per_100_pages": 12.5,
+    "furniture_candidates": [],
+    "pages_covered_pct": 50
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 2,
+   "audit_pages": [
+    1,
+    2,
+    3,
+    243,
+    245,
+    246
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 3,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 243,
+     "missed": [],
+     "false": [
+      "Carbon Copy Events, Sr. Project Manager",
+      "Jeff Heinzman, Sr. Project Manager"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 245,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 246,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "score": [
+    0,
+    2,
+    0,
+    -4
+   ],
+   "became_best": false
+  },
+  {
+   "version": 5,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 9,
+    "pages_total": 8,
+    "pages_with_fields": 2,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 1,
+    "fields_per_form": 9.0,
+    "forms_per_100_pages": 12.5,
+    "furniture_candidates": [],
+    "pages_covered_pct": 25
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 0,
+   "audit_pages": [
+    1,
+    2,
+    3,
+    243,
+    244,
+    245
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 3,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 243,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 244,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 245,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "score": [
+    0,
+    0,
+    0,
+    -2
+   ],
+   "became_best": false
+  }
+ ]
+}

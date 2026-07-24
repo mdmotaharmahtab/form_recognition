@@ -1,0 +1,443 @@
+{
+ "stop_reason": "budget",
+ "versions": 5,
+ "best_version": 2,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "confirm",
+   "metrics": {
+    "engine": "codegen",
+    "records": 520,
+    "pages_total": 246,
+    "pages_with_fields": 115,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 97,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 83,
+    "fields_per_form": 6.3,
+    "forms_per_100_pages": 33.7,
+    "form_same_page_evidence_records": 493,
+    "form_same_page_persistence_pct": 86,
+    "furniture_candidates": [],
+    "pages_covered_pct": 47
+   },
+   "problems": [],
+   "outcome": "extended_program"
+  },
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 485,
+    "pages_total": 246,
+    "pages_with_fields": 113,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 96,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 70,
+    "fields_per_form": 6.9,
+    "forms_per_100_pages": 28.5,
+    "form_same_page_evidence_records": 458,
+    "form_same_page_persistence_pct": 93,
+    "furniture_candidates": [],
+    "pages_covered_pct": 46
+   },
+   "problems": [],
+   "warnings": [
+    "The program filters by 26 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    0,
+    "not_audited",
+    1,
+    -113
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "confirm_extension",
+   "metrics": {
+    "engine": "codegen",
+    "records": 520,
+    "pages_total": 246,
+    "pages_with_fields": 115,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 97,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 83,
+    "fields_per_form": 6.3,
+    "forms_per_100_pages": 33.7,
+    "form_same_page_evidence_records": 493,
+    "form_same_page_persistence_pct": 86,
+    "furniture_candidates": [],
+    "pages_covered_pct": 47
+   },
+   "problems": [],
+   "warnings": [
+    "The program filters by 26 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": 4,
+   "audit_pages": [
+    1,
+    5,
+    6,
+    81,
+    143,
+    203
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 5,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 6,
+     "missed": [
+      "Vital Signs - Orthostatic Screening/Admission",
+      "Disposition",
+      "Stipend Earned"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 81,
+     "missed": [
+      "Abnormality Reason"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 143,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 203,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    4,
+    1,
+    -115
+   ],
+   "became_best": true
+  },
+  {
+   "version": 3,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 926,
+    "pages_total": 246,
+    "pages_with_fields": 128,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 99,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 83,
+    "fields_per_form": 11.2,
+    "forms_per_100_pages": 33.7,
+    "form_same_page_evidence_records": 913,
+    "form_same_page_persistence_pct": 93,
+    "furniture_candidates": [],
+    "pages_covered_pct": 52
+   },
+   "problems": [
+    "Extreme content-fitted blocklist. The program filters by 33 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "warnings": [],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    1,
+    "not_audited",
+    0,
+    -128
+   ],
+   "became_best": false
+  },
+  {
+   "version": 4,
+   "kind": "revise_gates",
+   "metrics": {
+    "engine": "codegen",
+    "records": 1103,
+    "pages_total": 246,
+    "pages_with_fields": 160,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 99,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 96,
+    "fields_per_form": 11.5,
+    "forms_per_100_pages": 39.0,
+    "form_same_page_evidence_records": 1082,
+    "form_same_page_persistence_pct": 94,
+    "furniture_candidates": [],
+    "pages_covered_pct": 65
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 37,
+   "audit_pages": [
+    1,
+    2,
+    5,
+    6,
+    81,
+    143,
+    203,
+    244
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 5,
+     "missed": [],
+     "false": [
+      "Physical Examination - Screening",
+      "Lifestyle History",
+      "Demographics",
+      "Concomitant Medications - Screening",
+      "Urine Collection - Screening",
+      "Medical History",
+      "Reminders",
+      "ECG (RScribe) Screening",
+      "Contraception - Female",
+      "Disposition",
+      "C-SSRS - Baseline/Screening",
+      "Mapping Questions",
+      "Height / Weight / BMI",
+      "Stipend Earned",
+      "Contraception - Male",
+      "Vital Signs - Orthostatic Screening/Admission",
+      "Blood Collection - Screening",
+      "Re-Screen"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 6,
+     "missed": [
+      "Disposition",
+      "Stipend Earned"
+     ],
+     "false": [
+      "Bag Check Admission",
+      "Snack End",
+      "Admission Questionnaire",
+      "Physical Examination - Full",
+      "Blood Collection - Admission Day -2",
+      "Urine Collection - Admission",
+      "ECG (RScribe) Admission",
+      "Dinner End",
+      "C-SSRS - Since Last Visit",
+      "Snack Start",
+      "Lunch Start",
+      "Dinner Start",
+      "Lunch End",
+      "Weight / BMI"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 81,
+     "missed": [
+      "Abnormality Reason"
+     ],
+     "false": [],
+     "wrong_form": [
+      "What is the Average QTcF?",
+      "[QTCF_AVERAGE_RSCRIBE]"
+     ]
+    },
+    {
+     "page": 143,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 203,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 244,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    37,
+    0,
+    -160
+   ],
+   "became_best": false
+  },
+  {
+   "version": 5,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 519,
+    "pages_total": 246,
+    "pages_with_fields": 137,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 97,
+    "labels_look_human_pct": 98,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 69,
+    "fields_per_form": 7.5,
+    "forms_per_100_pages": 28.0,
+    "form_same_page_evidence_records": 470,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 56
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 7,
+   "audit_pages": [
+    1,
+    3,
+    4,
+    5,
+    6,
+    81,
+    143,
+    203
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [
+      "Sponsor Name",
+      "Protocol Number",
+      "Protocol Title",
+      "aCRF Version",
+      "Prepared by",
+      "Date"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 3,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 4,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 5,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 6,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 81,
+     "missed": [
+      "Abnormality Reason"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 143,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 203,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    7,
+    0,
+    -137
+   ],
+   "became_best": false
+  }
+ ]
+}

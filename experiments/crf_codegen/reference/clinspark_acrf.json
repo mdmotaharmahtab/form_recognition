@@ -1,0 +1,31 @@
+{
+  "format_id": "clinspark_acrf",
+  "description": "Clinspark aCRF: left column carries field label + [BRACKET_OID] + [SAS Field Name: X]; right sidebar repeats OID with metadata. Blue banner = form name.",
+  "authored_from": "out/384-201-00004_aCRF_16JAN2025/rep_p*.txt (pages 1,2,29,46,48,52,76,105,145,163,181,185)",
+  "detect": {
+    "all": ["clinspark", "\\[SAS Field Name:"]
+  },
+  "form_name": {
+    "strategy": "colored_font",
+    "min_size": 11,
+    "carry_forward": true,
+    "noise": ["Origin:", "Annotated CRF", "clinspark", "^\\d", "Aliases"]
+  },
+  "fields": {
+    "engine": "adjacent_annotation",
+    "column_x_max": 240,
+    "oid_regex": "^\\[SAS Field Name:\\s*([A-Z][A-Z0-9_]*)\\]",
+    "alt_regex": "^\\[([A-Z][A-Z0-9_]*)\\]$",
+    "alt_is_primary": false,
+    "oid_color_non_black": false,
+    "annotation_group_dy": 16,
+    "label_max_dy": 120,
+    "label_noise": [
+      "^Origin:", "^Aliases", "^Odm OID", "^Code List", "^Format:", "^Data Type",
+      "^Mandatory", "^Description:", "^Disallow", "^Conditional", "^Visible If",
+      "^Requires Role", "Annotated CRF", "^\\d+ of \\d+$", "clinspark",
+      "Role Restriction", "^SAS Dataset", "^Edit Checks", "^O\\s", "^\\[_"
+    ]
+  }
+}
+

@@ -1,0 +1,26 @@
+{
+  "format_id": "rave_unique_crf",
+  "description": "Medidata Rave 'Unique CRF' export: data pages (label + field number right column) joined to 'Field Name / Include Field OID' definition pages per form.",
+  "authored_from": "out/384-201-00002_Annotated_Unique_CRF_04Nov2024/rep_p*.txt (pages 1,2,116,133,144,175,211,231,252,271,276,337)",
+  "detect": {
+    "all": ["Form:", "Generated On", "Field OID"]
+  },
+  "form_name": {
+    "strategy": "regex",
+    "regex": "^Form:\\s*(.+)$"
+  },
+  "fields": {
+    "engine": "numbered_join",
+    "definition_page_all": ["^Field Name", "^Field OID$"],
+    "oid_header": "Include",
+    "row_number_x_max": 108,
+    "data_number_regex": "^(\\d+)$",
+    "data_number_x_min": 480,
+    "data_label_x_max": 330,
+    "label_noise": [
+      "^Form:", "^Generated On", "Unique CRF", "^\\d+ of \\d+$",
+      "^dd\\b", "^HH:mm", "^_", "^\\(", "GMK \\(\\d+\\)$"
+    ]
+  }
+}
+

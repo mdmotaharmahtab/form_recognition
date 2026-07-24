@@ -1,0 +1,121 @@
+{
+ "stage0_s": 6.419,
+ "llm_s": 294.443,
+ "llm_calls": 11,
+ "llm_prompt_chars": 359596,
+ "llm_reply_chars": 62254,
+ "llm_by_kind": {
+  "generate": {
+   "calls": 1,
+   "s": 34.614,
+   "prompt_chars": 40498,
+   "reply_chars": 6634
+  },
+  "audit": {
+   "calls": 6,
+   "s": 138.076,
+   "prompt_chars": 265737,
+   "reply_chars": 21744
+  },
+  "revise_audit": {
+   "calls": 4,
+   "s": 121.753,
+   "prompt_chars": 53361,
+   "reply_chars": 33876
+  }
+ },
+ "sandbox_validate_s": 9.184,
+ "sandbox_validate_calls": 5,
+ "export_s": 1.546,
+ "total_s": 305.575,
+ "calls": [
+  {
+   "seq": 1,
+   "kind": "generate",
+   "version": 1,
+   "s": 34.614,
+   "prompt_chars": 40498,
+   "reply_chars": 6634
+  },
+  {
+   "seq": 2,
+   "kind": "audit",
+   "version": 1,
+   "s": 23.295,
+   "prompt_chars": 35775,
+   "reply_chars": 3462
+  },
+  {
+   "seq": 3,
+   "kind": "revise_audit",
+   "version": 2,
+   "s": 32.793,
+   "prompt_chars": 12998,
+   "reply_chars": 7363
+  },
+  {
+   "seq": 4,
+   "kind": "audit",
+   "version": 2,
+   "s": 20.355,
+   "prompt_chars": 43831,
+   "reply_chars": 3286
+  },
+  {
+   "seq": 5,
+   "kind": "revise_audit",
+   "version": 3,
+   "s": 26.091,
+   "prompt_chars": 11971,
+   "reply_chars": 7854
+  },
+  {
+   "seq": 6,
+   "kind": "audit",
+   "version": 3,
+   "s": 22.069,
+   "prompt_chars": 44437,
+   "reply_chars": 3316
+  },
+  {
+   "seq": 7,
+   "kind": "revise_audit",
+   "version": 4,
+   "s": 30.025,
+   "prompt_chars": 13640,
+   "reply_chars": 8873
+  },
+  {
+   "seq": 8,
+   "kind": "audit",
+   "version": 4,
+   "s": 30.039,
+   "prompt_chars": 51908,
+   "reply_chars": 5410
+  },
+  {
+   "seq": 9,
+   "kind": "revise_audit",
+   "version": 5,
+   "s": 32.844,
+   "prompt_chars": 14752,
+   "reply_chars": 9786
+  },
+  {
+   "seq": 10,
+   "kind": "audit",
+   "version": 5,
+   "s": 19.683,
+   "prompt_chars": 44813,
+   "reply_chars": 2637
+  },
+  {
+   "seq": 11,
+   "kind": "audit",
+   "version": 5,
+   "s": 22.635,
+   "prompt_chars": 44973,
+   "reply_chars": 3633
+  }
+ ]
+}

@@ -1,0 +1,26 @@
+x=  71.7 y= 157.6 sz=16.5 #004c99   | Dose
+x=  64.2 y= 225.4 sz= 9.0 black     | Date of Administration
+x=  64.2 y= 251.3 sz= 9.0 #ff0000   | [EXSTDAT1]
+x=  64.2 y= 265.4 sz= 9.0 #ff0000   | [TYPE: date]
+x=  64.2 y= 296.4 sz= 9.0 black     | Time of Administration
+x=  64.2 y= 322.3 sz= 9.0 #ff0000   | [EXSTTIM1]
+x=  64.2 y= 336.4 sz= 9.0 #ff0000   | [TYPE: partialtime (hour, minutes)]
+x=  64.2 y= 367.3 sz= 9.0 black     | Reason
+x= 442.4 y= 406.0 sz=10.5 black     | As per protocol
+x= 442.4 y= 431.5 sz=10.5 black     | Adverse Event
+x= 442.4 y= 457.0 sz=10.5 black     | Dosing error
+x= 442.4 y= 482.5 sz=10.5 black     | Dispensing error
+x= 442.4 y= 508.0 sz=10.5 black     | Technical problems
+x= 442.4 y= 533.5 sz=10.5 black     | Subject/guardian decision
+x= 442.4 y= 559.0 sz=10.5 black     | Physician decision
+x=  64.2 y= 589.7 sz= 9.0 #ff0000   | [EXADJ1]
+x=  64.2 y= 603.8 sz= 9.0 #ff0000   | [TYPE: enumeration (values: As per protocol, Adverse Event, Dosing error, Dispensing error, Technical problems, Subject/guardian
+x=  64.2 y= 614.2 sz= 9.0 #ff0000   | decision, Physician decision)]
+x= 468.9 y= 643.3 sz=10.5 #999999   | Yes
+x= 502.9 y= 643.3 sz=10.5 #999999   | No
+x= 534.5 y= 643.3 sz=10.5 #999999   | NA
+x=  64.2 y= 645.1 sz= 9.0 black     | Was water restricted for 2 hours following dosing?
+x=  64.2 y= 669.5 sz= 9.0 #ff0000   | [WR2H]
+x=  64.2 y= 683.6 sz= 9.0 #ff0000   | [TYPE: enumeration (values: Yes, No, NA)]
+x=  64.2 y= 714.6 sz= 9.0 black     | Dosing Comments (optional)
+x= 264.4 y= 798.3 sz=12.0 black     | Page 275 of 1083

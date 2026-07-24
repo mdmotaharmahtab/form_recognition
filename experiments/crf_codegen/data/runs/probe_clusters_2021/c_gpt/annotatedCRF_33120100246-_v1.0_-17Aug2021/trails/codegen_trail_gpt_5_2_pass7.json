@@ -1,0 +1,348 @@
+{
+ "stop_reason": "plateau",
+ "versions": 4,
+ "best_version": 2,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "confirm",
+   "metrics": {
+    "engine": "codegen",
+    "records": 16,
+    "pages_total": 6,
+    "pages_with_fields": 6,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 6,
+    "fields_per_form": 2.7,
+    "forms_per_100_pages": 100.0,
+    "form_same_page_evidence_records": 15,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 100
+   },
+   "problems": [],
+   "outcome": "extended_program"
+  },
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 11,
+    "pages_total": 6,
+    "pages_with_fields": 3,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 3,
+    "fields_per_form": 3.7,
+    "forms_per_100_pages": 50.0,
+    "form_same_page_evidence_records": 11,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 50
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    0,
+    "not_audited",
+    0,
+    -3
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "confirm_extension",
+   "metrics": {
+    "engine": "codegen",
+    "records": 16,
+    "pages_total": 6,
+    "pages_with_fields": 6,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 6,
+    "fields_per_form": 2.7,
+    "forms_per_100_pages": 100.0,
+    "form_same_page_evidence_records": 15,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 100
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 5,
+   "audit_pages": [
+    73,
+    499,
+    502,
+    519,
+    520,
+    550
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 73,
+     "missed": [
+      "If Yes, describe"
+     ],
+     "false": [
+      "Row 15"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 499,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 502,
+     "missed": [
+      "Type of Contact",
+      "Has subject taken any ConMeds?"
+     ],
+     "false": [
+      "Third Failed Attempt"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 519,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 520,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 550,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    5,
+    0,
+    -6
+   ],
+   "became_best": true
+  },
+  {
+   "version": 3,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 16,
+    "pages_total": 6,
+    "pages_with_fields": 6,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 6,
+    "fields_per_form": 2.7,
+    "forms_per_100_pages": 100.0,
+    "form_same_page_evidence_records": 15,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 100
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 5,
+   "audit_pages": [
+    73,
+    499,
+    502,
+    519,
+    520,
+    550
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 73,
+     "missed": [
+      "If Yes, describe"
+     ],
+     "false": [
+      "Row 15"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 499,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 502,
+     "missed": [
+      "Type of Contact",
+      "Has subject taken any ConMeds?"
+     ],
+     "false": [
+      "Third Failed Attempt"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 519,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 520,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 550,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    5,
+    0,
+    -6
+   ],
+   "became_best": false
+  },
+  {
+   "version": 4,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 16,
+    "pages_total": 6,
+    "pages_with_fields": 6,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 6,
+    "fields_per_form": 2.7,
+    "forms_per_100_pages": 100.0,
+    "form_same_page_evidence_records": 15,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 100
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 9,
+   "audit_pages": [
+    73,
+    499,
+    502,
+    519,
+    520,
+    550
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 73,
+     "missed": [
+      "If Yes, describe"
+     ],
+     "false": [
+      "Row 15"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 499,
+     "missed": [],
+     "false": [
+      "Diastolic Blood Pressure (mmHg)",
+      "Heart Rate (bpm)"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 502,
+     "missed": [
+      "Type of Contact",
+      "Has subject taken any ConMeds?"
+     ],
+     "false": [
+      "Third Failed Attempt"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 519,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 520,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 550,
+     "missed": [],
+     "false": [
+      "Diastolic Blood Pressure (mmHg)",
+      "Heart Rate (bpm)"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    9,
+    0,
+    -6
+   ],
+   "became_best": false
+  }
+ ]
+}

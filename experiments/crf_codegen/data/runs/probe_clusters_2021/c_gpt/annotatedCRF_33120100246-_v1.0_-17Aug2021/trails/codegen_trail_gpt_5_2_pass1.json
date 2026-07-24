@@ -1,0 +1,568 @@
+{
+ "stop_reason": "budget",
+ "versions": 5,
+ "best_version": 4,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "confirm",
+   "metrics": {
+    "engine": "codegen",
+    "records": 1584,
+    "pages_total": 369,
+    "pages_with_fields": 348,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 88,
+    "fields_per_form": 18.0,
+    "forms_per_100_pages": 23.8,
+    "form_same_page_evidence_records": 1573,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 94
+   },
+   "problems": [],
+   "outcome": "extended_program"
+  },
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 1584,
+    "pages_total": 369,
+    "pages_with_fields": 348,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 88,
+    "fields_per_form": 18.0,
+    "forms_per_100_pages": 23.8,
+    "form_same_page_evidence_records": 1573,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 94
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    0,
+    "not_audited",
+    0,
+    -348
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "confirm_extension",
+   "metrics": {
+    "engine": "codegen",
+    "records": 1584,
+    "pages_total": 369,
+    "pages_with_fields": 348,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 88,
+    "fields_per_form": 18.0,
+    "forms_per_100_pages": 23.8,
+    "form_same_page_evidence_records": 1573,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 94
+   },
+   "problems": [],
+   "warnings": [
+    "The program filters by 12 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": 14,
+   "audit_pages": [
+    1,
+    19,
+    58,
+    82,
+    217,
+    334,
+    386
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 19,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 58,
+     "missed": [
+      "Urinalysis clinically significant abnormal assay # 5"
+     ],
+     "false": [
+      "Microscopic analysis if indicated"
+     ],
+     "wrong_form": [
+      "Urinalysis abnormal assay # 5 Investigator comment",
+      "Are there additional urinalysis clinically significant abnormal results to be entered?",
+      "Investigator`s signature for Local Laboratory Results Review"
+     ]
+    },
+    {
+     "page": 82,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 217,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 334,
+     "missed": [
+      "Sample Status",
+      "Time of Collection",
+      "Backup Barcode Number"
+     ],
+     "false": [
+      "Row 1 - Collection",
+      "Row 1 - Number",
+      "Row 1 - Collected",
+      "Prazosin PK",
+      "Row 2 - Prazosin PK",
+      "Row 2 - Collected"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 386,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    14,
+    1,
+    -348
+   ],
+   "became_best": true
+  },
+  {
+   "version": 3,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 1077,
+    "pages_total": 369,
+    "pages_with_fields": 334,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 85,
+    "fields_per_form": 12.7,
+    "forms_per_100_pages": 23.0,
+    "form_same_page_evidence_records": 1033,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 91
+   },
+   "problems": [],
+   "warnings": [
+    "The program filters by 24 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": 19,
+   "audit_pages": [
+    1,
+    19,
+    28,
+    58,
+    82,
+    217,
+    334,
+    386,
+    511
+   ],
+   "audit_partial": null,
+   "audit_promoted": [
+    511
+   ],
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 19,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 28,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 58,
+     "missed": [
+      "Urinalysis clinically significant abnormal assay # 5",
+      "Urinalysis abnormal assay # 5 Investigator comment",
+      "Investigator`s signature for Local Laboratory Results Review"
+     ],
+     "false": [
+      "Microscopic analysis if indicated"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 82,
+     "missed": [
+      "Has the subject had any changes to their health since previous visit?",
+      "Are there any changes in concomitant medications including dose changes to be reported?"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 217,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 334,
+     "missed": [
+      "Was PK Collection Performed?",
+      "If not performed, Reason:",
+      "Date of Collection",
+      "Timepoint",
+      "Sample Status",
+      "Time of Collection",
+      "Barcode Number",
+      "Backup Barcode Number"
+     ],
+     "false": [
+      "Row 1 - Collection",
+      "Row 1 - Number",
+      "Row 1 - Barcode Number",
+      "Row 2 - Collected"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 386,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 511,
+     "missed": [
+      "Route of Administration"
+     ],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    19,
+    1,
+    -334
+   ],
+   "became_best": false
+  },
+  {
+   "version": 4,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 1622,
+    "pages_total": 369,
+    "pages_with_fields": 348,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 88,
+    "fields_per_form": 18.4,
+    "forms_per_100_pages": 23.8,
+    "form_same_page_evidence_records": 1610,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 94
+   },
+   "problems": [],
+   "warnings": [
+    "The program filters by 24 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": 12,
+   "audit_pages": [
+    1,
+    19,
+    58,
+    82,
+    217,
+    233,
+    334,
+    386,
+    511
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 19,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 58,
+     "missed": [
+      "Urinalysis clinically significant abnormal assay # 5"
+     ],
+     "false": [
+      "Microscopic analysis if indicated"
+     ],
+     "wrong_form": [
+      "Urinalysis abnormal assay # 5 Investigator comment",
+      "Are there additional urinalysis clinically significant abnormal results to be entered?",
+      "Investigator`s signature for Local Laboratory Results Review"
+     ]
+    },
+    {
+     "page": 82,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 217,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 233,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 334,
+     "missed": [],
+     "false": [
+      "Row 1 - Timepoint",
+      "Row 1 - Sample",
+      "Row 2 - Timepoint",
+      "Row 2 - Sample"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 386,
+     "missed": [],
+     "false": [],
+     "wrong_form": [
+      "Time Placed in Position",
+      "Time of Vitals Measurement #3"
+     ]
+    },
+    {
+     "page": 511,
+     "missed": [
+      "Route of Administration"
+     ],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    12,
+    1,
+    -348
+   ],
+   "became_best": true
+  },
+  {
+   "version": 5,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 1521,
+    "pages_total": 369,
+    "pages_with_fields": 348,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 97,
+    "fields_per_form": 15.7,
+    "forms_per_100_pages": 26.3,
+    "form_same_page_evidence_records": 1510,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 94
+   },
+   "problems": [],
+   "warnings": [
+    "The program filters by 12 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": 23,
+   "audit_pages": [
+    1,
+    2,
+    19,
+    58,
+    82,
+    217,
+    334,
+    386,
+    511
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 19,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 58,
+     "missed": [
+      "Urinalysis clinically significant abnormal assay # 5"
+     ],
+     "false": [
+      "Microscopic analysis if indicated"
+     ],
+     "wrong_form": [
+      "Urinalysis abnormal assay # 5 Investigator comment",
+      "Are there additional urinalysis clinically significant abnormal results to be entered?",
+      "Investigator`s signature for Local Laboratory Results Review"
+     ]
+    },
+    {
+     "page": 82,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 217,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 334,
+     "missed": [
+      "Was PK Collection Performed?",
+      "If not performed, Reason:",
+      "Date of Collection",
+      "Sample Status",
+      "Time of Collection",
+      "Barcode Number",
+      "Backup Barcode Number"
+     ],
+     "false": [
+      "Row 1 - Collection",
+      "Row 1 - Number",
+      "Row 1 - Barcode Number",
+      "Row 1 - Prazosin PK",
+      "Row 2 - Collection",
+      "Row 2 - Number",
+      "Row 2 - Barcode Number",
+      "Row 2 - Prazosin PK"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 386,
+     "missed": [],
+     "false": [],
+     "wrong_form": [
+      "Time Placed in Position",
+      "Time of Vitals Measurement #3"
+     ]
+    },
+    {
+     "page": 511,
+     "missed": [
+      "Route of Administration"
+     ],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    23,
+    1,
+    -348
+   ],
+   "became_best": false
+  }
+ ]
+}

@@ -1,0 +1,242 @@
+{
+ "stop_reason": "plateau",
+ "versions": 3,
+ "best_version": 1,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "confirm",
+   "outcome": "confirmed_no_fields"
+  },
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 173,
+    "pages_total": 109,
+    "pages_with_fields": 59,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 24,
+    "fields_per_form": 7.2,
+    "forms_per_100_pages": 22.0,
+    "form_same_page_evidence_records": 170,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 54
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 10,
+   "audit_pages": [
+    2,
+    12,
+    21,
+    42,
+    479,
+    490
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 2,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 12,
+     "missed": [],
+     "false": [
+      "Version",
+      "Date 15-Jul-2021",
+      "Changed By Andreea Hardut / Alexan dru Giucal",
+      "Details updates according to feedback sheet"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 21,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 42,
+     "missed": [
+      "Abstinence (must remain abstinent from the time of screening until at least 90 days after the last dose of study drug)",
+      "Vasectomy",
+      "Tubal ligation"
+     ],
+     "false": [
+      "Of Childbearing Potential"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 479,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 490,
+     "missed": [],
+     "false": [
+      "Intensity of Ideation",
+      "Since Last Visit"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    10,
+    0,
+    -59
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 83,
+    "pages_total": 109,
+    "pages_with_fields": 17,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 77,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 5,
+    "fields_per_form": 16.6,
+    "forms_per_100_pages": 4.6,
+    "form_same_page_evidence_records": 83,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 16
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 5,
+   "audit_pages": [
+    2,
+    12,
+    21,
+    42,
+    122,
+    261,
+    479,
+    490
+   ],
+   "audit_partial": null,
+   "audit_promoted": [
+    122
+   ],
+   "audit_verdicts": [
+    {
+     "page": 2,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 12,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 21,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 42,
+     "missed": [
+      "Abstinence (must remain abstinent from the time of screening until at least 90 days after the last dose of study drug)"
+     ],
+     "false": [
+      "Of Childbearing Potential",
+      "Vasectomy",
+      "Tubal ligation"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 122,
+     "missed": [
+      "Are there things - anyone or anything - that stopped you from wanting to die or acting on thoughts of committing suicide?"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 261,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 479,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 490,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    5,
+    0,
+    -17
+   ],
+   "became_best": false
+  },
+  {
+   "version": 3,
+   "kind": "revise_audit",
+   "metrics": {
+    "error": "generated extractor crashed:\nTraceback (most recent call last):\n  File \"D:\\ubuntu\\codes\\ZS\\otsuka\\ECS\\experiments\\recipe_prototype\\scripts\\sandbox_runner.py\", line 128, in main\n    raw = fn(pages)\n          ^^^^^^^^^\n  File \"<generated_extractor>\", line 68, in extract\n  File \"<generated_extractor>\", line 492, in _extract_question_fields\nTypeError: unhashable type: 'Line'\n"
+   },
+   "problems": [
+    "Program failed to run: generated extractor crashed:\nTraceback (most recent call last):\n  File \"D:\\ubuntu\\codes\\ZS\\otsuka\\ECS\\experiments\\recipe_prototype\\scripts\\sandbox_runner.py\", line 128, in main\n    raw = fn(pages)\n          ^^^^^^^^^\n  File \"<generated_extractor>\", line 68, in extract\n  File \"<generated_extractor>\", line 492, in _extract_question_fields\nTypeError: unhashable type: 'Line'\n"
+   ],
+   "warnings": [],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    1,
+    "not_audited",
+    0,
+    0
+   ],
+   "became_best": false
+  }
+ ]
+}

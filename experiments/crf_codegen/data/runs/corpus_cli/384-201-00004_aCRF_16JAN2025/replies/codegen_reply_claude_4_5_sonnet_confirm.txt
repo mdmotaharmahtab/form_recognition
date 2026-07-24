@@ -1,0 +1,194 @@
+Looking at the sample pages, I can see:
+
+1. **Pages 27, 54 (cluster 0)**: These contain data-entry fields like "Total number of aborted attempts", "If yes, describe:", "PR", "QRS", "QT" - fields the program should be extracting but is missing some.
+
+2. **Pages 150, 163 (cluster 1)**: These are code list/legend pages showing "Coded/Decode" tables - genuinely no data-entry fields.
+
+3. **Pages 43, 49 (cluster 3)**: These appear to be continuation/overflow pages with only metadata visible - likely no actual fields.
+
+The main issue is cluster 0 (40% coverage). Looking at pages 27 and 54, I see the program is missing fields because:
+- Some field labels appear WITHOUT the machine code in brackets on the same or adjacent line
+- The label-continuation logic stops too early when it hits certain patterns
+- Fields like "PR", "QRS", "QT" are very short and getting filtered out
+
+Here's the updated program:
+
+```python
+import re
+from collections import defaultdict
+
+def extract(pages):
+    results = []
+    
+    for page_idx, lines in pages:
+        page_num = page_idx + 1
+        
+        # Extract form name from white header (sz=12.0, color=#ffffff)
+        form_name = ""
+        for line in lines:
+            if abs(line.size - 12.0) < 0.5 and line.non_black and line.x0 < 100:
+                form_name = line.text.strip()
+                break
+        
+        # Skip if no form name found (likely index/title page)
+        if not form_name:
+            continue
+        
+        # Skip known non-field pages by structural signature
+        # Family B: code list pages with "Coded" and "Decode" headers
+        has_codelist_header = False
+        for i, line in enumerate(lines):
+            if (line.text == "Coded" and 
+                abs(line.x0 - 45.8) < 5 and
+                abs(line.size - 10.5) < 1.0):
+                # Check if next few lines have "Decode" header
+                for j in range(i+1, min(i+3, len(lines))):
+                    if lines[j].text == "Decode" and abs(lines[j].x0 - 299.9) < 10:
+                        has_codelist_header = True
+                        break
+        
+        if has_codelist_header:
+            continue
+        
+        # Skip pages with table headers but no actual field content
+        has_table_header = any(
+            "Category Visit" in line.text or
+            (line.text == "Name" and line.x0 < 50 and "Forms" in [l.text for l in lines])
+            for line in lines
+        )
+        if has_table_header:
+            continue
+        
+        # Collect potential field labels
+        field_labels = []
+        i = 0
+        while i < len(lines):
+            line = lines[i]
+            
+            # Field labels: left column, medium size, not metadata
+            if (40 < line.x0 < 250 and 
+                6.5 < line.size < 9.0 and 
+                not line.non_black and
+                line.text and
+                not line.text.startswith('[') and
+                not line.text.startswith('O ')):
+                
+                # Skip metadata labels
+                skip_terms = ['Aliases:', 'Description:', 'SAS Field Name:', 
+                             'Origin:', 'Format:', 'Data Type:', 'Mandatory?:',
+                             'Disallow Future Date:', 'Edit Checks:', 'Units:',
+                             'Range', 'Device Parameter:', 'SDS Var Name:',
+                             'Requires', 'Conditionally', 'Conditional',
+                             'Default Item Value:', 'Visible If', 'Comment:',
+                             'Code List', 'Formal Expression', 'Domain:',
+                             'Odm OID']
+                if any(term in line.text for term in skip_terms):
+                    i += 1
+                    continue
+                
+                # Skip technical codes in brackets
+                if re.match(r'^\[[A-Z_0-9]+\]$', line.text.strip()):
+                    i += 1
+                    continue
+                
+                # Skip metadata section headers (colored)
+                if line.non_black:
+                    i += 1
+                    continue
+                
+                # Skip pure option markers and common option values
+                option_words = ['Yes', 'No', 'Unknown', 'Negative', 'Positive',
+                               'NCS', 'CS', 'Normal', 'Abnormal', 'TOPICAL',
+                               'ORAL', 'INTRAVENOUS', 'mg', 'mL', 'DROP', 'IU',
+                               'ms']
+                if line.text.strip() in option_words:
+                    i += 1
+                    continue
+                
+                # Skip date/time format strings
+                if 'MMM' in line.text or line.text.count('_') > 3:
+                    i += 1
+                    continue
+                
+                # Collect this line and potential continuation lines
+                label_parts = [line.text.strip()]
+                j = i + 1
+                
+                # Look ahead for wrapped continuation lines
+                while j < len(lines):
+                    next_line = lines[j]
+                    y_diff = next_line.y0 - lines[j-1].y0
+                    
+                    # Stop if too far vertically
+                    if y_diff > 20:
+                        break
+                    
+                    # Check if it's a continuation
+                    if (40 < next_line.x0 < 250 and
+                        abs(next_line.size - line.size) < 1.5 and
+                        not next_line.non_black and
+                        not next_line.text.startswith('[') and
+                        not next_line.text.startswith('O ') and
+                        y_diff < 12):
+                        
+                        # Stop at metadata
+                        if any(term in next_line.text for term in skip_terms):
+                            break
+                        
+                        # Stop at option values that appear after label
+                        if next_line.text.strip() in option_words:
+                            break
+                        
+                        label_parts.append(next_line.text.strip())
+                        j += 1
+                    else:
+                        break
+                
+                # Join multi-line labels
+                full_label = ' '.join(label_parts).strip()
+                
+                # Filter out noise
+                if full_label and len(full_label) > 0:
+                    # Skip pure technical patterns (all caps/numbers/underscores)
+                    if re.match(r'^[A-Z_0-9]+$', full_label) and len(full_label) > 10:
+                        i = j
+                        continue
+                    
+                    # Skip checkbox option values
+                    if full_label in option_words:
+                        i = j
+                        continue
+                    
+                    # Skip pure punctuation or form field markers
+                    if re.match(r'^[\[\]_\|\s\?]+$', full_label):
+                        i = j
+                        continue
+                    
+                    # Accept short technical field codes (like PR, QRS, QT)
+                    # These are valid ECG parameter names
+                    if len(full_label) >= 2 or full_label == '?':
+                        field_labels.append(full_label)
+                
+                i = j
+            else:
+                i += 1
+        
+        # Deduplicate and add to results
+        seen = set()
+        for label in field_labels:
+            # Clean up the label
+            label = label.strip()
+            if not label or label == '?':
+                continue
+                
+            key = (form_name, label)
+            if key not in seen:
+                seen.add(key)
+                results.append({
+                    "form_name": form_name,
+                    "field_name": label,
+                    "page": page_num
+                })
+    
+    return results
+```

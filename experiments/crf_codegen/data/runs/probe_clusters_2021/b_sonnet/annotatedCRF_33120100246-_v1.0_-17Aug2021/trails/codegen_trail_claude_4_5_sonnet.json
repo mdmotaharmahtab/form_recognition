@@ -1,0 +1,550 @@
+{
+ "stop_reason": "budget",
+ "versions": 5,
+ "best_version": 3,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 6833,
+    "pages_total": 596,
+    "pages_with_fields": 541,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 111,
+    "fields_per_form": 61.6,
+    "forms_per_100_pages": 18.6,
+    "form_same_page_evidence_records": 6820,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 91
+   },
+   "problems": [
+    "Extreme content-fitted blocklist. The program filters by 76 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "warnings": [],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    1,
+    "not_audited",
+    0,
+    -541
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "confirm",
+   "metrics": {
+    "engine": "codegen",
+    "records": 7111,
+    "pages_total": 596,
+    "pages_with_fields": 555,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 111,
+    "fields_per_form": 64.1,
+    "forms_per_100_pages": 18.6,
+    "form_same_page_evidence_records": 7091,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 93
+   },
+   "problems": [],
+   "outcome": "extended_program"
+  },
+  {
+   "version": 2,
+   "kind": "revise_gates",
+   "metrics": {
+    "engine": "codegen",
+    "records": 6717,
+    "pages_total": 596,
+    "pages_with_fields": 542,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 111,
+    "fields_per_form": 60.5,
+    "forms_per_100_pages": 18.6,
+    "form_same_page_evidence_records": 6705,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 91
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    0,
+    "not_audited",
+    0,
+    -542
+   ],
+   "became_best": true
+  },
+  {
+   "version": 3,
+   "kind": "confirm_extension",
+   "metrics": {
+    "engine": "codegen",
+    "records": 7111,
+    "pages_total": 596,
+    "pages_with_fields": 555,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 111,
+    "fields_per_form": 64.1,
+    "forms_per_100_pages": 18.6,
+    "form_same_page_evidence_records": 7091,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 93
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 29,
+   "audit_pages": [
+    1,
+    19,
+    27,
+    70,
+    141,
+    176,
+    313,
+    452
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 19,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 27,
+     "missed": [
+      "Has any applicable reproductive status and/or medications been transcribed to the Medical History Page and/or Con Med Page?"
+     ],
+     "false": [
+      "after the last dose of IMP?- mark the selected methods below"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 70,
+     "missed": [],
+     "false": [
+      "Baseline/Screening Version",
+      "Mann, J.",
+      "Disclaimer:",
+      "the judgment of the individual administering the scale.",
+      "10032; inquiries and training requirements contact posnerk@nyspi.columbia.edu",
+      "\u00a9 2008 The Research Foundation for Mental Hygiene, Inc."
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 141,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 176,
+     "missed": [],
+     "false": [],
+     "wrong_form": [
+      "Time Placed in Position",
+      "Time of Vitals Measurement #3"
+     ]
+    },
+    {
+     "page": 313,
+     "missed": [],
+     "false": [
+      "Reason",
+      "As per protocol",
+      "Adverse Event",
+      "Dosing error",
+      "Dispensing error",
+      "Technical problems",
+      "Subject/guardian decision",
+      "Physician decision",
+      "Physician decision)]"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 452,
+     "missed": [],
+     "false": [
+      "1h postdose",
+      "1.5h postdose",
+      "2h postdose",
+      "2.5h postdose",
+      "3h postdose",
+      "4h postdose",
+      "6h postdose",
+      "8h postdose",
+      "8h postdose)",
+      "position for 3 minutes."
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    29,
+    0,
+    -555
+   ],
+   "became_best": true
+  },
+  {
+   "version": 4,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 2780,
+    "pages_total": 596,
+    "pages_with_fields": 294,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 58,
+    "fields_per_form": 47.9,
+    "forms_per_100_pages": 9.7,
+    "form_same_page_evidence_records": 2767,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 49
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 39,
+   "audit_pages": [
+    1,
+    19,
+    27,
+    46,
+    70,
+    141,
+    167,
+    176,
+    313,
+    452
+   ],
+   "audit_partial": null,
+   "audit_promoted": [
+    46
+   ],
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 19,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 27,
+     "missed": [
+      "Sexually Active?",
+      "If sexually active does the subject commit to utilizing 2 different approved methods of birth control during the trial and for 30 days after the last dose of IMP?- mark the selected methods below",
+      "Vasectomy",
+      "Tubal ligation",
+      "Nonhormonal intrauterine device",
+      "Condom with spermicide",
+      "Sponge with spermicide",
+      "Occlusive cap (vaginal diaphragm or cervical/vault cap) with spermicide",
+      "Has any applicable reproductive status and/or medications been transcribed to the Medical History Page and/or Con Med Page?",
+      "If no, reason not transcribed to medical history"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 46,
+     "missed": [
+      "Chemistry clinically significant abnormal assay # 1:",
+      "Chemistry abnormal assay # 1 Investigator comment"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 70,
+     "missed": [],
+     "false": [
+      "Baseline/Screening Version",
+      "Posner, K.; Brent, D.; Lucas, C.; Gould, M.; Stanley, B.; Brown, G.; Fisher, P.; Zelazny, J.; Burke, A.; Oquendo, M.;",
+      "Mann, J.",
+      "Disclaimer:",
+      "This scale is intended to be used by individuals who have received training in its administration. The questions contained in the Columbia-",
+      "Suicide Severity Rating Scale are suggested probes. Ultimately, the determination of the presence of suicidal ideation or behavior depends on",
+      "the judgment of the individual administering the scale.",
+      "Definitions of behavioral suicidal events in this scale are based on those used in **The Columbia Suicide History Form**, developed by John",
+      "Mann, MD and Maria Oquendo, MD, Conte Center for the Neuroscience of Mental Disorders (CCNMD), New York State Psychiatric Institute,",
+      "1051 Riverside Drive, New York, NY, 10032. (Oquendo M. A., Halberstam B. & Mann J. J., Risk factors for suicidal behavior: utility and",
+      "limitations of research instruments. In M.B. First [Ed.] Standardized Evaluation in Clinical Practice, pp. 103 -130, 2003.)",
+      "10032; inquiries and training requirements contact posnerk@nyspi.columbia.edu"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 141,
+     "missed": [
+      "Suicidal behavior was present during the assessment period?",
+      "Suicide:"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 167,
+     "missed": [
+      "Suicidal behavior was present during the assessment period?",
+      "Suicide:"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 176,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 313,
+     "missed": [
+      "Reason",
+      "Dosing Comments (optional)",
+      "Was Brexpiprazole administered?",
+      "If no, reason",
+      "Treatment",
+      "Dose Unit",
+      "Dose Form",
+      "Date of Administration"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 452,
+     "missed": [],
+     "false": [
+      "8h postdose)]",
+      "Collect vital signs after subject has been resting in a supine position for at least 5 minutes and again after the subject has been in a standing",
+      "position for 3 minutes."
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    39,
+    0,
+    -294
+   ],
+   "became_best": false
+  },
+  {
+   "version": 5,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 3593,
+    "pages_total": 596,
+    "pages_with_fields": 304,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 58,
+    "fields_per_form": 61.9,
+    "forms_per_100_pages": 9.7,
+    "form_same_page_evidence_records": 3581,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 51
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 35,
+   "audit_pages": [
+    1,
+    19,
+    27,
+    46,
+    70,
+    141,
+    176,
+    202,
+    313,
+    452
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 19,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 27,
+     "missed": [
+      "Sexually Active?",
+      "If sexually active does the subject commit to utilizing 2 different approved methods of birth control during the trial and for 30 days after the last dose of IMP?- mark the selected methods below",
+      "Vasectomy",
+      "Tubal ligation",
+      "Nonhormonal intrauterine device",
+      "Condom with spermicide",
+      "Sponge with spermicide",
+      "Occlusive cap (vaginal diaphragm or cervical/vault cap) with spermicide",
+      "Has any applicable reproductive status and/or medications been transcribed to the Medical History Page and/or Con Med Page?",
+      "If no, reason not transcribed to medical history"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 46,
+     "missed": [
+      "Chemistry clinically significant abnormal assay # 1:",
+      "Chemistry abnormal assay # 1 Investigator comment"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 70,
+     "missed": [],
+     "false": [
+      "Baseline/Screening Version",
+      "Mann, J.",
+      "the judgment of the individual administering the scale.",
+      "Mann, MD and Maria Oquendo, MD, Conte Center for the Neuroscience of Mental Disorders (CCNMD), New York State Psychiatric Institute,",
+      "1051 Riverside Drive, New York, NY, 10032. (Oquendo M. A., Halberstam B. & Mann J. J., Risk factors for suicidal behavior: utility and",
+      "limitations of research instruments. In M.B. First [Ed.] Standardized Evaluation in Clinical Practice, pp. 103 -130, 2003.)",
+      "10032; inquiries and training requirements contact posnerk@nyspi.columbia.edu"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 141,
+     "missed": [
+      "Suicidal behavior was present during the assessment period?"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 176,
+     "missed": [],
+     "false": [],
+     "wrong_form": [
+      "Time Placed in Position",
+      "Time of Vitals Measurement #3"
+     ]
+    },
+    {
+     "page": 202,
+     "missed": [
+      "Suicidal behavior was present during the assessment period?"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 313,
+     "missed": [
+      "Reason",
+      "Dosing Comments (optional)",
+      "Was Brexpiprazole administered?",
+      "If no, reason",
+      "Treatment",
+      "Dose Unit",
+      "Dose Form",
+      "Date of Administration"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 452,
+     "missed": [],
+     "false": [
+      "N/A",
+      "Predose",
+      "8h postdose)]",
+      "position for 3 minutes."
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    35,
+    0,
+    -304
+   ],
+   "became_best": false
+  }
+ ]
+}

@@ -1,0 +1,89 @@
+{
+ "stop_reason": "converged",
+ "versions": 1,
+ "best_version": 1,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "confirm",
+   "outcome": "confirmed_no_fields"
+  },
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 6,
+    "pages_total": 8,
+    "pages_with_fields": 1,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 1,
+    "fields_per_form": 6.0,
+    "forms_per_100_pages": 12.5,
+    "furniture_candidates": [],
+    "pages_covered_pct": 12
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 0,
+   "audit_pages": [
+    1,
+    2,
+    3,
+    243,
+    245
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 3,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 243,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 245,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "score": [
+    0,
+    0,
+    0,
+    -1
+   ],
+   "became_best": true
+  }
+ ]
+}

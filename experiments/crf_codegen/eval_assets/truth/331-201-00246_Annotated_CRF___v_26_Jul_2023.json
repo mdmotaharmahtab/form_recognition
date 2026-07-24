@@ -1,0 +1,142 @@
+{
+  "doc_key": "331-201-00246_Annotated_CRF___v_26_Jul_2023",
+  "annotator_notes": "Viedoc-style annotated eCRF, 1085 pages (a re-versioned twin of the 04 Jul 2023 book). Machine markers '[OID]'/'[TYPE:...]' precede human prompt labels; option values, '[Read-only field]', '[VISIBILITY:...]', 'Row N', and the 'Page N of 1085' footer are NOT fields. All ten sampled pages happen to be continuation pages (no printed form banner) - form_source=carryover throughout, so form accuracy is not scored on this document's sample; form_name is best-effort context from the bookmark tree.",
+  "pages": [
+    {
+      "page": 74,
+      "form_name": "Laboratory results review",
+      "form_source": "carryover",
+      "fields": [
+        "Chemistry abnormal assay # 2 Investigator comment",
+        "Chemistry clinically significant abnormal assay # 3"
+      ],
+      "acceptable_extras": [],
+      "notes": "Chemistry lab-review continuation; the analyte list at top are enumeration values of LBCCS2."
+    },
+    {
+      "page": 149,
+      "form_name": "Exclusion criteria",
+      "form_source": "carryover",
+      "fields": [
+        "25. Subjects who fail to capture daily dosing of sertraline during the sertraline steady-state assurance period on Days -14 to -2.",
+        "26. Subjects without a permanent physical residence.",
+        "27. Any subject who, in the opinion of the investigator, should not participate in the trial.",
+        "28. Subjects taking multiple medications deemed necessary to maintain psychiatric stability or those taking medication regimens where wash out is impractical should not be enrolled"
+      ],
+      "acceptable_extras": [],
+      "notes": "Exclusion criteria 25-28, each an [IEORRES] Met/Not Met field."
+    },
+    {
+      "page": 447,
+      "form_name": "Triplicate Orthostatic BP and HR",
+      "form_source": "carryover",
+      "fields": [
+        "Time of Vitals Measurement #1",
+        "Time of Vitals Measurement #2",
+        "Time of Vitals Measurement #3"
+      ],
+      "acceptable_extras": [],
+      "notes": "Standing-vitals time continuation (VSSTVTIM1/2/3)."
+    },
+    {
+      "page": 467,
+      "form_name": "Laboratory results review",
+      "form_source": "carryover",
+      "fields": [
+        "Chemistry clinically significant abnormal assay # 4"
+      ],
+      "acceptable_extras": [],
+      "notes": "Lab-review continuation (LBRR10 site-only text); analyte list are enumeration values."
+    },
+    {
+      "page": 487,
+      "form_name": "C-SSRS - Since Last Visit",
+      "form_source": "carryover",
+      "fields": [
+        "Frequency",
+        "Duration"
+      ],
+      "acceptable_extras": [
+        "How many times have you had these thoughts?",
+        "When you have the thoughts, how long do they last?",
+        "Intensity of Ideation",
+        "Controllability"
+      ],
+      "notes": "C-SSRS Intensity-of-Ideation continuation: Frequency (CSS0207) and Duration (CSS0208); 'Controllability' begins at the page bottom with its label but the OID is on the next page."
+    },
+    {
+      "page": 551,
+      "form_name": "Physical Exam",
+      "form_source": "carryover",
+      "fields": [
+        "Region/Body System",
+        "Result",
+        "Abnormal Findings",
+        "Clinically Significant"
+      ],
+      "acceptable_extras": [
+        "HEENT",
+        "Thorax",
+        "Abdomen",
+        "Skin and Mucosae"
+      ],
+      "notes": "Physical-exam grid; column headers are the fields (PETEST/PERES/PEDESC/PECLSIG). Body-system names are the grid rows."
+    },
+    {
+      "page": 660,
+      "form_name": "Triplicate Orthostatic BP and HR",
+      "form_source": "carryover",
+      "fields": [
+        "Time Placed in Position",
+        "Time of Vitals Measurement #1",
+        "Time of Vitals Measurement #2",
+        "Time of Vitals Measurement #3"
+      ],
+      "acceptable_extras": [
+        "Supine",
+        "Standing"
+      ],
+      "notes": "Supine/Standing vitals-time continuation. Supine/Standing are position sub-headers; 'Time Placed in Position' repeats under each."
+    },
+    {
+      "page": 733,
+      "form_name": "Triplicate Orthostatic BP and HR",
+      "form_source": "carryover",
+      "fields": [
+        "Time Placed in Position",
+        "Time of Vitals Measurement #1",
+        "Time of Vitals Measurement #2",
+        "Time of Vitals Measurement #3"
+      ],
+      "acceptable_extras": [
+        "Supine",
+        "Standing"
+      ],
+      "notes": "Identical template to p660 at a later visit - consistency check."
+    },
+    {
+      "page": 833,
+      "form_name": "Triplicate Orthostatic BP and HR",
+      "form_source": "carryover",
+      "fields": [
+        "Time Placed in Position",
+        "Time of Vitals Measurement #1",
+        "Time of Vitals Measurement #2",
+        "Time of Vitals Measurement #3"
+      ],
+      "acceptable_extras": [
+        "Supine",
+        "Standing"
+      ],
+      "notes": "Identical template to p660/p733 - consistency check."
+    },
+    {
+      "page": 938,
+      "form_name": "Prior and Concomitant Medications",
+      "form_source": "carryover",
+      "fields": [],
+      "acceptable_extras": [],
+      "notes": "Dose-form dropdown values (Emulsion, Gel, Graft...) - option/code-list dump, zero data-entry fields (false-positive probe)."
+    }
+  ]
+}

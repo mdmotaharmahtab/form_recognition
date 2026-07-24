@@ -1,0 +1,649 @@
+{
+ "stop_reason": "plateau",
+ "versions": 5,
+ "best_version": 3,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "confirm",
+   "outcome": "confirmed_no_fields"
+  },
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 1671,
+    "pages_total": 369,
+    "pages_with_fields": 346,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 87,
+    "fields_per_form": 19.2,
+    "forms_per_100_pages": 23.6,
+    "form_same_page_evidence_records": 1662,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 94
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 12,
+   "audit_pages": [
+    1,
+    19,
+    58,
+    82,
+    217,
+    334,
+    386
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 19,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 58,
+     "missed": [
+      "Urinalysis clinically significant abnormal assay # 5"
+     ],
+     "false": [
+      "Microscopic analysis if indicated"
+     ],
+     "wrong_form": [
+      "Urinalysis abnormal assay # 5 Investigator comment",
+      "Are there additional urinalysis clinically significant abnormal results to be entered?",
+      "Investigator`s signature for Local Laboratory Results Review"
+     ]
+    },
+    {
+     "page": 82,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 217,
+     "missed": [],
+     "false": [
+      "8h postdose"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 334,
+     "missed": [
+      "Was PK Collection Performed?",
+      "If not performed, Reason:",
+      "Date of Collection"
+     ],
+     "false": [
+      "Sample",
+      "Row 1 Sample",
+      "Row 2 Sample"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 386,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    12,
+    0,
+    -346
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 1641,
+    "pages_total": 369,
+    "pages_with_fields": 349,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 104,
+    "fields_per_form": 15.8,
+    "forms_per_100_pages": 28.2,
+    "form_same_page_evidence_records": 1631,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 95
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 27,
+   "audit_pages": [
+    1,
+    19,
+    36,
+    54,
+    58,
+    82,
+    217,
+    334,
+    386
+   ],
+   "audit_partial": null,
+   "audit_promoted": [
+    36
+   ],
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 19,
+     "missed": [],
+     "false": [],
+     "wrong_form": [
+      "Visit Date"
+     ]
+    },
+    {
+     "page": 36,
+     "missed": [],
+     "false": [
+      "Planned Timepoint",
+      "Evaluator",
+      "Region/Body System",
+      "Not Done"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 54,
+     "missed": [
+      "Urinalysis clinically significant abnormal assay # 1"
+     ],
+     "false": [
+      "Microscopic analysis if indicated"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 58,
+     "missed": [
+      "Urinalysis clinically significant abnormal assay # 5"
+     ],
+     "false": [
+      "Microscopic analysis if indicated"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 82,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 217,
+     "missed": [
+      "Planned Timepoint"
+     ],
+     "false": [
+      "8h postdose"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 334,
+     "missed": [
+      "Was PK Collection Performed?",
+      "If not performed, Reason:",
+      "Date of Collection",
+      "Sample",
+      "Timepoint",
+      "Sample Status",
+      "Time of Collection",
+      "Backup Barcode Number"
+     ],
+     "false": [
+      "Row 1 Timepoint",
+      "Row 1 Time of Collection",
+      "Row 1 Barcode Number",
+      "Prazosin PK",
+      "Row 2 Timepoint",
+      "Row 2 Time of Collection",
+      "Row 2 Barcode Number",
+      "Row 2"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 386,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    27,
+    0,
+    -349
+   ],
+   "became_best": false
+  },
+  {
+   "version": 3,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 1313,
+    "pages_total": 369,
+    "pages_with_fields": 349,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 99,
+    "fields_per_form": 13.3,
+    "forms_per_100_pages": 26.8,
+    "form_same_page_evidence_records": 1303,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 95
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 16,
+   "audit_pages": [
+    1,
+    19,
+    36,
+    55,
+    58,
+    82,
+    217,
+    334,
+    386
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 19,
+     "missed": [],
+     "false": [],
+     "wrong_form": [
+      "Visit Date"
+     ]
+    },
+    {
+     "page": 36,
+     "missed": [
+      "Planned Timepoint",
+      "Examination Date",
+      "Examination Time",
+      "Clinically Significant",
+      "HEENT",
+      "Thorax",
+      "Abdomen"
+     ],
+     "false": [
+      "Yes No",
+      "Region/Body System",
+      "Not Done"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 55,
+     "missed": [],
+     "false": [
+      "Microscopic analysis if indicated"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 58,
+     "missed": [],
+     "false": [
+      "Microscopic analysis if indicated"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 82,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 217,
+     "missed": [
+      "Planned Timepoint"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 334,
+     "missed": [
+      "Sample Status",
+      "Backup Barcode Number"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 386,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    16,
+    0,
+    -349
+   ],
+   "became_best": true
+  },
+  {
+   "version": 4,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 1382,
+    "pages_total": 369,
+    "pages_with_fields": 349,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 101,
+    "fields_per_form": 13.7,
+    "forms_per_100_pages": 27.4,
+    "form_same_page_evidence_records": 1372,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 95
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 17,
+   "audit_pages": [
+    1,
+    19,
+    28,
+    36,
+    58,
+    82,
+    217,
+    334,
+    386
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 19,
+     "missed": [],
+     "false": [],
+     "wrong_form": [
+      "Visit Date"
+     ]
+    },
+    {
+     "page": 28,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 36,
+     "missed": [
+      "Planned Timepoint",
+      "Examination Date",
+      "Examination Time",
+      "HEENT",
+      "Thorax",
+      "Abdomen"
+     ],
+     "false": [
+      "Yes No",
+      "Region/Body System",
+      "Abnormal Findings",
+      "Result",
+      "Not Done"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 58,
+     "missed": [
+      "Urinalysis clinically significant abnormal assay # 5"
+     ],
+     "false": [
+      "Microscopic analysis if indicated"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 82,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 217,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 334,
+     "missed": [
+      "Sample",
+      "Sample Status",
+      "Backup Barcode Number"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 386,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    17,
+    0,
+    -349
+   ],
+   "became_best": false
+  },
+  {
+   "version": 5,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 859,
+    "pages_total": 369,
+    "pages_with_fields": 253,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 106,
+    "fields_per_form": 8.1,
+    "forms_per_100_pages": 28.7,
+    "form_same_page_evidence_records": 828,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 69
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 24,
+   "audit_pages": [
+    1,
+    2,
+    19,
+    36,
+    58,
+    82,
+    217,
+    334,
+    386
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 19,
+     "missed": [],
+     "false": [],
+     "wrong_form": [
+      "Visit Date"
+     ]
+    },
+    {
+     "page": 36,
+     "missed": [
+      "Planned Timepoint",
+      "Examination Date",
+      "Examination Time",
+      "Evaluator",
+      "HEENT",
+      "Thorax",
+      "Abdomen"
+     ],
+     "false": [
+      "Clinically Significant",
+      "Region/Body System",
+      "Abnormal Findings",
+      "Yes No",
+      "Not Done"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 58,
+     "missed": [
+      "Urinalysis clinically significant abnormal assay # 5",
+      "Urinalysis abnormal assay # 5 Investigator comment",
+      "Investigator`s signature for Local Laboratory Results Review"
+     ],
+     "false": [],
+     "wrong_form": [
+      "Are there additional urinalysis clinically significant abnormal results to be entered?"
+     ]
+    },
+    {
+     "page": 82,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 217,
+     "missed": [
+      "Collection Date",
+      "Planned Timepoint",
+      "Time Placed in Position"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 334,
+     "missed": [
+      "Sample Status",
+      "Backup Barcode Number"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 386,
+     "missed": [
+      "Time Placed in Position",
+      "Time of Vitals Measurement #3"
+     ],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    24,
+    0,
+    -253
+   ],
+   "became_best": false
+  }
+ ]
+}

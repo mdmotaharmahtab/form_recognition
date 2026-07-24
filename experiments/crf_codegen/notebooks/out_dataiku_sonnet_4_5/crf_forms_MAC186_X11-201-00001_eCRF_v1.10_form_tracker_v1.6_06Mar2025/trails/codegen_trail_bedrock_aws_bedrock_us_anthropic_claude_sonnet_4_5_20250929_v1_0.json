@@ -1,0 +1,502 @@
+{
+ "stop_reason": "plateau",
+ "versions": 5,
+ "best_version": 4,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "confirm",
+   "metrics": {
+    "engine": "codegen",
+    "records": 5029,
+    "pages_total": 913,
+    "pages_with_fields": 683,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 99,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 75,
+    "fields_per_form": 67.1,
+    "forms_per_100_pages": 8.2,
+    "pages_covered_pct": 75
+   },
+   "problems": [],
+   "outcome": "extended_program"
+  },
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 5029,
+    "pages_total": 913,
+    "pages_with_fields": 683,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 99,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 75,
+    "fields_per_form": 67.1,
+    "forms_per_100_pages": 8.2,
+    "pages_covered_pct": 75
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_verdicts": null,
+   "score": [
+    0,
+    "not_audited",
+    0,
+    -683
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "confirm_extension",
+   "metrics": {
+    "engine": "codegen",
+    "records": 5029,
+    "pages_total": 913,
+    "pages_with_fields": 683,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 99,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 75,
+    "fields_per_form": 67.1,
+    "forms_per_100_pages": 8.2,
+    "pages_covered_pct": 75
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 39,
+   "audit_pages": [
+    1,
+    2,
+    4,
+    431,
+    434,
+    470
+   ],
+   "audit_partial": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 4,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 431,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 434,
+     "missed": [],
+     "false": [
+      "Not",
+      "Pupillometry",
+      "Position",
+      "Readings downloaded onto a",
+      "Reviewed, signed",
+      "Reason not review, signed",
+      "PLR",
+      "PLR MAX",
+      "PLR T75",
+      "Pupil Area",
+      "ACA",
+      "Dilation",
+      "Done",
+      "Date",
+      "Rest Time",
+      "Start Time",
+      "spreadsheet via Bluetooth from the",
+      "and dated by a",
+      "and dated",
+      "diameter",
+      "constriction",
+      "(Calculated)",
+      "Velocity at",
+      "pupilometer device.",
+      "physician",
+      "init",
+      "velocity",
+      "T75"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 470,
+     "missed": [
+      "Specimen Appearance",
+      "Specimen Appearance, Other Specify",
+      "Specimen Appearance Interpretation",
+      "Glucose",
+      "pH",
+      "Protein",
+      "Colour",
+      "Colour, Other Specify"
+     ],
+     "false": [
+      "Occult Blood",
+      "\u22641.005",
+      "Colour Interpretation"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "score": [
+    0,
+    39,
+    0,
+    -683
+   ],
+   "became_best": true
+  },
+  {
+   "version": 3,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 4645,
+    "pages_total": 913,
+    "pages_with_fields": 687,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 75,
+    "fields_per_form": 61.9,
+    "forms_per_100_pages": 8.2,
+    "pages_covered_pct": 75
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 27,
+   "audit_pages": [
+    1,
+    2,
+    4,
+    431,
+    434,
+    470
+   ],
+   "audit_partial": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 4,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 431,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 434,
+     "missed": [
+      "Eye",
+      "Repeat",
+      "Not Done",
+      "Pupillometry Date",
+      "Position Rest Time",
+      "Pupillometry Start Time",
+      "Reviewed, signed and dated by a physician",
+      "Reason not review, signed and dated",
+      "PLR diameter init",
+      "PLR MAX constriction velocity",
+      "PLR dilation velocity",
+      "PLR T75",
+      "Pupil Area (Calculated)",
+      "ACA (Calculated)",
+      "Dilation Velocity at T75 (Calculated)"
+     ],
+     "false": [
+      "Reason Not Done",
+      "Readings downloaded onto a",
+      "Reason not review, signed",
+      "Rest Time",
+      "Start Time",
+      "spreadsheet via Bluetooth from the",
+      "and dated by a"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 470,
+     "missed": [
+      "Specimen Appearance",
+      "Specimen Appearance, Other Specify",
+      "Specimen Appearance Interpretation",
+      "Specific Gravity (SG)",
+      "Sent for Microscopy"
+     ],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "score": [
+    0,
+    27,
+    0,
+    -687
+   ],
+   "became_best": true
+  },
+  {
+   "version": 4,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 5085,
+    "pages_total": 913,
+    "pages_with_fields": 706,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 75,
+    "fields_per_form": 67.8,
+    "forms_per_100_pages": 8.2,
+    "pages_covered_pct": 77
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 27,
+   "audit_pages": [
+    1,
+    2,
+    4,
+    431,
+    434,
+    470
+   ],
+   "audit_partial": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 4,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 431,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 434,
+     "missed": [
+      "Eye",
+      "Repeat",
+      "Not Done",
+      "Pupillometry Date",
+      "Position Rest Time",
+      "Pupillometry Start Time",
+      "Readings downloaded onto a spreadsheet via Bluetooth from the pupilometer device.",
+      "Reviewed, signed and dated by a physician",
+      "PLR diameter init",
+      "PLR MAX constriction velocity",
+      "PLR dilation velocity",
+      "PLR T75",
+      "Pupil Area (Calculated)",
+      "ACA (Calculated)",
+      "Dilation Velocity at T75 (Calculated)"
+     ],
+     "false": [
+      "Pupillometry - Single Time Point",
+      "Reason Not Done",
+      "Reason not review, signed",
+      "Date",
+      "Rest Time",
+      "Start Time",
+      "and dated by a",
+      "and dated",
+      "pupilometer device."
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 470,
+     "missed": [
+      "Specimen Appearance",
+      "Specimen Appearance, Other Specify",
+      "Specimen Appearance Interpretation"
+     ],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "score": [
+    0,
+    27,
+    0,
+    -706
+   ],
+   "became_best": true
+  },
+  {
+   "version": 5,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 4682,
+    "pages_total": 913,
+    "pages_with_fields": 686,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 75,
+    "fields_per_form": 62.4,
+    "forms_per_100_pages": 8.2,
+    "pages_covered_pct": 75
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 28,
+   "audit_pages": [
+    1,
+    2,
+    4,
+    431,
+    434,
+    470
+   ],
+   "audit_partial": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 4,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 431,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 434,
+     "missed": [
+      "Pupillometry Assessment Performed",
+      "Not Done",
+      "Pupillometry Date",
+      "Position Rest Time",
+      "Pupillometry Start Time",
+      "Readings downloaded onto a spreadsheet via Bluetooth from the pupilometer device.",
+      "Reviewed, signed and dated by a physician",
+      "Reason not review, signed and dated",
+      "PLR diameter init",
+      "PLR MAX constriction velocity",
+      "PLR dilation velocity",
+      "PLR T75",
+      "Pupil Area (Calculated)",
+      "ACA (Calculated)",
+      "Dilation Velocity at T75 (Calculated)"
+     ],
+     "false": [
+      "Reason Not Performed",
+      "Eye",
+      "Repeat",
+      "Reason Not Done",
+      "Rest Time",
+      "Start Time",
+      "pupilometer device.",
+      "physician",
+      "init",
+      "velocity"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 470,
+     "missed": [
+      "Specimen Appearance",
+      "Specimen Appearance, Other Specify",
+      "Specimen Appearance Interpretation"
+     ],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "score": [
+    0,
+    28,
+    0,
+    -686
+   ],
+   "became_best": false
+  }
+ ]
+}

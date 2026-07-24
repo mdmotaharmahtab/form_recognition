@@ -1,0 +1,419 @@
+doc,stage,version,severity,code,detail
+annotatedCRF_33120100246-_v1.0_-17Aug2021,gates,2,quality,warn_text_blocklists,"The program filters by 12 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. "
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p58: Urinalysis clinically significant abnormal assay # 5
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p58: Microscopic analysis if indicated
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_wrong_form,p58: Urinalysis abnormal assay # 5 Investigator comment
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_wrong_form,p58: Are there additional urinalysis clinically significant abnormal results to be entered?
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_wrong_form,p58: Investigator`s signature for Local Laboratory Results Review
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p334: Sample Status
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p334: Time of Collection
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p334: Backup Barcode Number
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p334: Row 1 - Collection
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p334: Row 1 - Number
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p334: Row 1 - Collected
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p334: Prazosin PK
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p334: Row 2 - Prazosin PK
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p334: Row 2 - Collected
+annotatedCRF_33120100246-_v1.0_-17Aug2021,gates,3,quality,warn_text_blocklists,"The program filters by 24 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. "
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p58: Urinalysis clinically significant abnormal assay # 5
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p58: Urinalysis abnormal assay # 5 Investigator comment
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p58: Investigator`s signature for Local Laboratory Results Review
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_false_positive,p58: Microscopic analysis if indicated
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p82: Has the subject had any changes to their health since previous visit?
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p82: Are there any changes in concomitant medications including dose changes to be reported?
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p334: Was PK Collection Performed?
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,"p334: If not performed, Reason:"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p334: Date of Collection
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p334: Timepoint
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p334: Sample Status
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p334: Time of Collection
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p334: Barcode Number
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p334: Backup Barcode Number
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_false_positive,p334: Row 1 - Collection
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_false_positive,p334: Row 1 - Number
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_false_positive,p334: Row 1 - Barcode Number
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_false_positive,p334: Row 2 - Collected
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p511: Route of Administration
+annotatedCRF_33120100246-_v1.0_-17Aug2021,gates,4,quality,warn_text_blocklists,"The program filters by 24 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. "
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p58: Urinalysis clinically significant abnormal assay # 5
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_false_positive,p58: Microscopic analysis if indicated
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_wrong_form,p58: Urinalysis abnormal assay # 5 Investigator comment
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_wrong_form,p58: Are there additional urinalysis clinically significant abnormal results to be entered?
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_wrong_form,p58: Investigator`s signature for Local Laboratory Results Review
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_false_positive,p334: Row 1 - Timepoint
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_false_positive,p334: Row 1 - Sample
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_false_positive,p334: Row 2 - Timepoint
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_false_positive,p334: Row 2 - Sample
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_wrong_form,p386: Time Placed in Position
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_wrong_form,p386: Time of Vitals Measurement #3
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p511: Route of Administration
+annotatedCRF_33120100246-_v1.0_-17Aug2021,gates,5,quality,warn_text_blocklists,"The program filters by 12 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. "
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_missed,p58: Urinalysis clinically significant abnormal assay # 5
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_false_positive,p58: Microscopic analysis if indicated
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_wrong_form,p58: Urinalysis abnormal assay # 5 Investigator comment
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_wrong_form,p58: Are there additional urinalysis clinically significant abnormal results to be entered?
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_wrong_form,p58: Investigator`s signature for Local Laboratory Results Review
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_missed,p334: Was PK Collection Performed?
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_missed,"p334: If not performed, Reason:"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_missed,p334: Date of Collection
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_missed,p334: Sample Status
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_missed,p334: Time of Collection
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_missed,p334: Barcode Number
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_missed,p334: Backup Barcode Number
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_false_positive,p334: Row 1 - Collection
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_false_positive,p334: Row 1 - Number
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_false_positive,p334: Row 1 - Barcode Number
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_false_positive,p334: Row 1 - Prazosin PK
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_false_positive,p334: Row 2 - Collection
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_false_positive,p334: Row 2 - Number
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_false_positive,p334: Row 2 - Barcode Number
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_false_positive,p334: Row 2 - Prazosin PK
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_wrong_form,p386: Time Placed in Position
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_wrong_form,p386: Time of Vitals Measurement #3
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_missed,p511: Route of Administration
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_missed,p46: Chemistry clinically significant abnormal assay # 1:
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_missed,p50: Chemistry clinically significant abnormal assay # 5
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_missed,p53: Hematology clinically significant abnormal assay # 5
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_missed,p413: Hematology clinically significant abnormal assay # 5
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p46: Chemistry clinically significant abnormal assay # 1:
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p46: Chemistry abnormal assay # 1 Investigator comment
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,"p46: lipoprotein;and; high density lipoprotein), Creatine phosphokinase, Creatinine, Gamma glutamyl transferase, Glucose, Lactate dehydrogenase, Magnesium, Phosphorus, Potassium, Prolactin, Total bilirubin, Total protein, Triglycerides, Sodium, Urea nitrogen, Uric acid)] Chemistry abnormal assay # 1"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p47: Chemistry clinically significant abnormal assay # 2
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p47: Chemistry abnormal assay # 2 Investigator comment
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,"p47: lipoprotein;and; high density lipoprotein), Creatine phosphokinase, Creatinine, Gamma glutamyl transferase, Glucose, Lactate dehydrogenase, Magnesium, Phosphorus, Potassium, Prolactin, Total bilirubin, Total protein, Triglycerides, Sodium, Urea nitrogen, Uric acid)] Chemistry abnormal assay # 2"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p50: Chemistry clinically significant abnormal assay # 5
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p50: Chemistry abnormal assay # 5 Investigator comment
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,"p50: lipoprotein;and; high density lipoprotein), Creatine phosphokinase, Creatinine, Gamma glutamyl transferase, Glucose, Lactate dehydrogenase, Magnesium, Phosphorus, Potassium, Prolactin, Total bilirubin, Total protein, Triglycerides, Sodium, Urea nitrogen, Uric acid)] Chemistry abnormal assay # 5"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p51: Hematology clinically significant abnormal assay # 1
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p51: Hematology abnormal assay # 1 Investigator comment
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p51: Hematology clinically significant abnormal assay # 2
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p51: Hematology abnormal assay # 2 Investigator comment
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,"p51: Red blood cell count, White blood cell count (absolute and differential), Glycated Hemoglobin)] Hematology abnormal assay # 1 Investigator comment"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,"p51: Red blood cell count, White blood cell count (absolute and differential), Glycated Hemoglobin)] Hematology abnormal assay # 2 Investigator comment"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p53: Hematology clinically significant abnormal assay # 5
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p53: Hematology abnormal assay # 5 Investigator comment
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,"p53: Red blood cell count, White blood cell count (absolute and differential), Glycated Hemoglobin)] Hematology abnormal assay # 5 Investigator comment"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p413: Hematology clinically significant abnormal assay # 5
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p413: Hematology abnormal assay # 5 Investigator comment
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,"p413: Red blood cell count, White blood cell count (absolute and differential), Glycated Hemoglobin)] Hematology abnormal assay # 5 Investigator comment"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p46: Chemistry clinically significant abnormal assay # 1:
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p47: Chemistry clinically significant abnormal assay # 2
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p48: Chemistry clinically significant abnormal assay # 3
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p50: Chemistry clinically significant abnormal assay # 5
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p53: Hematology clinically significant abnormal assay # 5
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_false_positive,"p53: Red blood cell count, White blood cell count (absolute and differential), Glycated Hemoglobin)]"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p413: Hematology clinically significant abnormal assay # 5
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_false_positive,"p413: Red blood cell count, White blood cell count (absolute and differential), Glycated Hemoglobin)]"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p46: Chemistry clinically significant abnormal assay # 1:
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p47: Chemistry clinically significant abnormal assay # 2
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p50: Chemistry clinically significant abnormal assay # 5
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p53: Hematology clinically significant abnormal assay # 5
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,"p83: \4.\ In good health as determined by: a) Medical history b) Physical examination c) Vital signs d) Electrocardiogram (ECG) e) Serum/urine chemistry, hematology, and serology tests"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,"p84: \2.\ Heterosexually active males or females of childbearing potential (FOCBP), or their partners, who do not agree to practice 2 different approved methods of birth control or remain fully abstinent (periodic abstinence or withdrawal are not acceptable methods of contraception) during the trial"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,"p84: \4.\ Clinically significant abnormality in past medical history, or at the screening physical examination, that in the investigator’s or sponsor’s opinion may place the subject at risk or interfere with outcome variables including absorption, distribution, metabolism, and excretion of the IMP. "
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,"p84: \5.\ Subjects with abnormal clinical laboratory assessment results, vital signs results, or ECG findings, unless, based on the investigator’s judgment, the findings are not medically significant and would not impact the safety of the subject or the interpretation of the trial results. The medic"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p413: Hematology clinically significant abnormal assay # 5
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_missed,p46: Chemistry clinically significant abnormal assay # 1:
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_missed,p47: Chemistry clinically significant abnormal assay # 2
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_missed,p50: Chemistry clinically significant abnormal assay # 5
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_missed,p52: Hematology clinically significant abnormal assay # 3
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_missed,p52: Hematology clinically significant abnormal assay # 4
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_missed,p53: Hematology clinically significant abnormal assay # 5
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_missed,p53: Were there any clinically significant abnormal urinalysis results?
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_false_positive,p53: Please go to Add-On Forms and select Additional Local Lab Results Review form to add to this visit. Were there any clinically significant abnormal urinalysis results?
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_missed,p84: \1.\Females who are breast-feeding and/or who have a positive pregnancy test result prior to receiving IMP.
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_missed,"p84: \2.\ Heterosexually active males or females of childbearing potential (FOCBP), or their partners, who do not agree to practice 2 different approved methods of birth control or remain fully abstinent (periodic abstinence or withdrawal are not acceptable methods of contraception) during the trial"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_missed,p84: \3.\ Male subjects who do not agree to not donate sperm from trial screening through 30 days after the last dose of IMP.
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_missed,"p84: \4.\ Clinically significant abnormality in past medical history, or at the screening physical examination, that in the investigator’s or sponsor’s opinion may place the subject at risk or interfere with outcome variables including absorption, distribution, metabolism, and excretion of the IMP. "
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_missed,"p84: \5.\ Subjects with abnormal clinical laboratory assessment results, vital signs results, or ECG findings, unless, based on the investigator’s judgment, the findings are not medically significant and would not impact the safety of the subject or the interpretation of the trial results. The medic"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_missed,"p84: \6.\ Subjects with diagnosed hypertension (including treated or untreated hypertension), or orthostatic hypotension which is defined as a decrease of = 20 mmHg decrease in SBP and a >= 25 bpm increase in HR from s"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_false_positive,"p84: If any answers to the Exclusion Criteria are “Met”, EXCLUDE subject from the study. \1. Females who are breast-feeding and/or who have a positive pregnancy test result prior to receiving IMP."
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_false_positive,"p84: agree to practice 2 different approved methods of birth control or remain fully abstinent (periodic abstinence or withdrawal are not acceptable methods of contraception) during the trial and for 30 days after the last dose of IMP. If employing birth control, 2 of the following methods must be u"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_false_positive,p84: cap (vaginal diaphragm or cervical/vault cap) with spermicide. \3. Male subjects who do not agree to not donate sperm from trial screening through 30 days after the last dose of IMP.
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_false_positive,"p84: \4. Clinically significant abnormality in past medical history, or at the screening physical examination, that in the investigator’s or sponsor’s opinion may place the subject at risk or interfere with outcome variables including absorption, distribution, metabolism, and excretion of the IMP. T"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_false_positive,"p84: hematologic, and immunologic disease. \5. Subjects with abnormal clinical laboratory assessment results, vital signs results, or ECG findings, unless, based on the investigator’s judgment, the findings are not medically significant and would not impact the safety of the subject or the interpret"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_false_positive,"p84: excluding a subject based on the criteria noted above. \6. Subjects with diagnosed hypertension (including treated or untreated hypertension), or orthostatic hypotension which is defined as a decrease of = 20 mmHg decrease in SBP and a >= 25 bpm increase in HR from supine to standing, OR"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_missed,p202: Suicidal behavior was present during the assessment period?
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_false_positive,p202: Suicidal behavior Suicidal behavior was present during the assessment period?
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_missed,p413: Hematology clinically significant abnormal assay # 5
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_missed,p413: Were there any clinically significant abnormal urinalysis results?
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_false_positive,p413: Please go to Add-On Forms and select Additional Local Lab Results Review form to add to this visit. Were there any clinically significant abnormal urinalysis results?
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_missed,p37: Skin and Mucosae
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_missed,p37: Neurological
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_missed,p37: Extremities
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_false_positive,p37: Normal - Yes
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_false_positive,p37: Normal - Skin and Mucosae
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_false_positive,p37: Normal
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_false_positive,p37: Normal - Neurological
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_false_positive,p37: Normal - Not Done
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_false_positive,p37: Normal - Extremities
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_missed,p42: Was Blood sample Collected for Glycated Hemoglobin?
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_missed,p42: Barcode Number
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_false_positive,p42: Glycated Hemoglobin - Glycated Hemoglobin
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_false_positive,p42: enumerati on (values: Scan)]
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_missed,p71: Have you wished you were dead or wished you could go to sleep and not wake up? - Lifetime
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_missed,p71: Have you wished you were dead or wished you could go to sleep and not wake up? - Past 3 Month
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_missed,p71: 2. Non-specific active suicidal thoughts - Lifetime
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_missed,p71: 2. Non-specific active suicidal thoughts - Past 3 Month
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_false_positive,p71: Have you wished you were dead or wished you could go to sleep and not wake - Lifetime
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_false_positive,p71: Have you wished you were dead or wished you could go to sleep and not wake - Past 3 Month
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_false_positive,"p71: methods,intent or plan during the assessment period."
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_missed,p136: Most severe ideation
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_missed,p136: Description of Ideation
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_missed,p136: How many times have you had these thoughts?
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_missed,"p136: When you have the thoughts, how long do they last?"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_false_positive,p136: (1) Wish to be dead (2) Non-specific active suicidal thoughts (3) Active suicidal ideation with any method (not plan) w/out intent to act (4) Active suicidal ideation w/ some intent to act w/out specific plan (5) Active suicidal ideation w/ specific plan and intent
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_false_positive,"p136: Non-specific active suicidal thoughts, (3) Active suicidal ideation with any method (not plan) w/out intent to act, (4) Active suicidal ideation w/ some intent to act w/out specific plan, (5) Active suicidal ideation w/ specific plan and intent)]"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_false_positive,p136: (1) Less than once a week
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_false_positive,p136: (1) Fleeting few seconds or minutes (2) Less than 1 hour/some of the time (3) 1-4 hours/a lot of time (4) 4-8 hours/most of day (5) More than 8 hours/persistent or continuous
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_missed,p198: Could/can you stop thinking about killing yourself or wanting to die if you want to?
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_missed,p198: Are there things - anyone or anything - that stopped you from wanting to die or acting on thoughts of committing suicide?
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_missed,"p198: What sort of reasons did you have for thinking about wanting to die or killing yourself? Was it to end the pain or stop the way you were feeling (in other words you couldn't go on living with this pain or how you were feeling) or was it to get attention, revenge or a reaction from others? or b"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_false_positive,p198: (1) Easily able to control thoughts (2) Can control thoughts with little difficulty (3) Can control thoughts with some difficulty (4) Can control thoughts with a lot of difficulty (5) Unable to control thoughts (0) Does not attempt to control thoughts
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_false_positive,p198: (1) Deterrents definitely stopped you from attempting suicide (2) Deterrents probably stopped you (3) Uncertain that deterrents stopped you (4) Deterrents most likely did not stop you (5) Deterrents definitely did not stop you (0) Does not apply
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_false_positive,p198: (1) Completely to get attention/ revenge or a reaction from others (2) Mostly to get attention/ revenge or a reaction from others (3) Equally to get attention/ revenge or a reaction from others and to end/stop the pain (4) Mostly to end or stop the pain (you could not go on living with the pai
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_missed,p423: Most severe ideation
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_missed,p423: Description of Ideation
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_missed,p423: How many times have you had these thoughts?
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_missed,"p423: When you have the thoughts, how long do they last?"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_false_positive,p423: (1) Wish to be dead (2) Non-specific active suicidal thoughts (3) Active suicidal ideation with any method (not plan) w/out intent to act (4) Active suicidal ideation w/ some intent to act w/out specific plan (5) Active suicidal ideation w/ specific plan and intent
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_false_positive,"p423: Non-specific active suicidal thoughts, (3) Active suicidal ideation with any method (not plan) w/out intent to act, (4) Active suicidal ideation w/ some intent to act w/out specific plan, (5) Active suicidal ideation w/ specific plan and intent)]"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_false_positive,p423: (1) Less than once a week
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_false_positive,p423: (1) Fleeting few seconds or minutes (2) Less than 1 hour/some of the time (3) 1-4 hours/a lot of time (4) 4-8 hours/most of day (5) More than 8 hours/persistent or continuous
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p37: Done)]
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,"p37: (values: Normal, Abnormal, Not Done)]"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p42: Was Blood sample Collected for Glycated Hemoglobin?
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p42: Date of Collection
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p42: Time of Collection
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p42: Scan
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p42: Barcode Number
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p42: Sample Glycated Hemoglobin
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p42: enumerati on (values: Scan)]
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p66: Amphetamines
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p66: Barbiturates
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p66: Amphetamines - Positive
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p66: Amphetamines - Amphetamines
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p71: Have you wished you were dead or wished you could go to sleep and not wake up?
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p71: 2. Non-specific active suicidal thoughts
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,"p71: Subject endorses thoughts about a wish to be dead or not alive anymore, or wish to fall asleep and not wake up."
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,"p71: methods,intent or plan during the assessment period."
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p106: Done)]
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,"p106: (values: Normal, Abnormal, Not Done)]"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p136: Most severe ideation
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p136: Description of Ideation
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p136: How many times have you had these thoughts?
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,"p136: When you have the thoughts, how long do they last?"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p136: (1) Wish to be dead (2) Non-specific active suicidal thoughts (3) Active suicidal ideation with any method (not plan) w/out intent to act (4) Active suicidal ideation w/ some intent to act w/out specific plan (5) Active suicidal ideation w/ specific plan and intent
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,"p136: Non-specific active suicidal thoughts, (3) Active suicidal ideation with any method (not plan) w/out intent to act, (4) Active suicidal ideation w/ some intent to act w/out specific plan, (5) Active suicidal ideation w/ specific plan and intent)]"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p136: (values: (1) Less than
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p136: (1) Fleeting few seconds or minutes (2) Less than 1 hour/some of the time (3) 1-4 hours/a lot of time (4) 4-8 hours/most of day (5) More than 8 hours/persistent or continuous
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p198: Could/can you stop thinking about killing yourself or wanting to die if you want to?
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p198: Are there things - anyone or anything - that stopped you from wanting to die or acting on thoughts of committing suicide?
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,"p198: What sort of reasons did you have for thinking about wanting to die or killing yourself? Was it to end the pain or stop the way you were feeling (in other words you couldn't go on living with this pain or how you were feeling) or was it to get attention, revenge or a reaction from others? or b"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p198: (1) Easily able to control thoughts (2) Can control thoughts with little difficulty (3) Can control thoughts with some difficulty (4) Can control thoughts with a lot of difficulty (5) Unable to control thoughts (0) Does not attempt to control thoughts
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p198: (1) Deterrents definitely stopped you from attempting suicide (2) Deterrents probably stopped you (3) Uncertain that deterrents stopped you (4) Deterrents most likely did not stop you (5) Deterrents definitely did not stop you (0) Does not apply
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p198: (1) Completely to get attention/ revenge or a reaction from others (2) Mostly to get attention/ revenge or a reaction from others (3) Equally to get attention/ revenge or a reaction from others and to end/stop the pain (4) Mostly to end or stop the pain (you could not go on living with the pai
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p423: Most severe ideation
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p423: Description of Ideation
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p423: How many times have you had these thoughts?
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,"p423: When you have the thoughts, how long do they last?"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p423: (1) Wish to be dead (2) Non-specific active suicidal thoughts (3) Active suicidal ideation with any method (not plan) w/out intent to act (4) Active suicidal ideation w/ some intent to act w/out specific plan (5) Active suicidal ideation w/ specific plan and intent
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,"p423: Non-specific active suicidal thoughts, (3) Active suicidal ideation with any method (not plan) w/out intent to act, (4) Active suicidal ideation w/ some intent to act w/out specific plan, (5) Active suicidal ideation w/ specific plan and intent)]"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p423: (values: (1) Less than
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p423: (1) Fleeting few seconds or minutes (2) Less than 1 hour/some of the time (3) 1-4 hours/a lot of time (4) 4-8 hours/most of day (5) More than 8 hours/persistent or continuous
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_false_positive,p37: Abnormal
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p42: Was Blood sample Collected for Glycated Hemoglobin?
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p42: Date of Collection
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p42: Time of Collection
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p42: Scan
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p42: Barcode Number
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_false_positive,p42: Sample Glycated Hemoglobin
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_false_positive,p42: Y: site
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p66: Barbiturates
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p71: Have you wished you were dead or wished you could go to sleep and not wake up?
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p71: 2. Non-specific active suicidal thoughts
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_false_positive,p71: Have you wished you were dead or wished you could go to sleep and not wake
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_false_positive,"p71: methods,intent or plan during the assessment period."
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p78: Actual attempt:
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,"p78: If Yes, Total number of attempts"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p78: Has subject engaged in Non-Suicidal self-injurious behavior?
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_false_positive,p78: act. Behaviour was in part thought of as method to kill oneself. Intent does not have to
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_false_positive,p78: Yes No
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p136: Most severe ideation
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p136: Frequency
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p136: Duration
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_false_positive,p136: intent
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_false_positive,p136: (2) Once a week
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_false_positive,p136: (5) More than 8 hours/persistent or continuous
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p198: Controllability
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p198: Deterrents
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p198: Reasons for Ideation
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_false_positive,p198: (0) Does not attempt to control thoughts
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_false_positive,p198: (0) Does not apply
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p423: Most severe ideation
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p423: Frequency
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p423: Duration
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_false_positive,p423: intent
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_false_positive,p423: (2) Once a week
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_false_positive,p423: (5) More than 8 hours/persistent or continuous
+annotatedCRF_33120100246-_v1.0_-17Aug2021,gates,4,blocking,gate_other,"Extreme content-fitted blocklist. The program filters by 54 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,gates,5,blocking,gate_other,"Extreme content-fitted blocklist. The program filters by 48 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,blocking,transport_error,"agent CLI exited 1: NonRetriableError: Agent Looping Detected The model got stuck in a repeating response pattern, so this turn was stopped. Please try again with a different model or start a new conversation. If the problem persists, please contact support.
+"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_missed,p44: Collected
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_missed,p44: Scan
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_false_positive,p44: Urinalysis Collected
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_false_positive,p44: Not
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_false_positive,p44: [TYPE: enumeration
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_false_positive,p62: Current
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_false_positive,p62: Never
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_false_positive,p62: [TYPE:
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_missed,p142: Actual Lethality/Medical Damage:
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_missed,p142: Potential Lethality: Only answer if Actual Lethality=0
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_false_positive,"p142: sprains) \2.\ Moderate physical damage; medical attention needed (e.g. conscious but sleepy; somewhat responsive, second-degree burns; bleeding of major vessel \3.\"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_false_positive,p142: mouth and pulled the trigger but gun fails to fire so no medical damage; laying on train tracks with oncoming train but pulled away before run over).
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_missed,p368: Actual Lethality/Medical Damage:
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_missed,p368: Potential Lethality: Only answer if Actual Lethality=0
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_false_positive,"p368: sprains) \2.\ Moderate physical damage; medical attention needed (e.g. conscious but sleepy; somewhat responsive, second-degree burns; bleeding of major vessel \3.\"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_false_positive,p368: mouth and pulled the trigger but gun fails to fire so no medical damage; laying on train tracks with oncoming train but pulled away before run over).
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p44: Collected
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p44: Scan
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p62: Current
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p62: Per Day
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p62: Cartridge
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p62: Never
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p108: Collected
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p108: Scan
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p142: Actual Lethality/Medical Damage:
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p142: Potential Lethality: Only answer if Actual Lethality=0
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,"p142: sprains) \2.\ Moderate physical damage; medical attention needed (e.g. conscious but sleepy; somewhat responsive, second-degree burns; bleeding of major vessel \3.\"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p142: mouth and pulled the trigger but gun fails to fire so no medical damage; laying on train tracks with oncoming train but pulled away before run over).
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p168: Actual Lethality/Medical Damage:
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p168: Potential Lethality: Only answer if Actual Lethality=0
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,"p168: sprains) \2.\ Moderate physical damage; medical attention needed (e.g. conscious but sleepy; somewhat responsive, second-degree burns; bleeding of major vessel \3.\"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p168: mouth and pulled the trigger but gun fails to fire so no medical damage; laying on train tracks with oncoming train but pulled away before run over).
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p368: Actual Lethality/Medical Damage:
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p368: Potential Lethality: Only answer if Actual Lethality=0
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,"p368: sprains) \2.\ Moderate physical damage; medical attention needed (e.g. conscious but sleepy; somewhat responsive, second-degree burns; bleeding of major vessel \3.\"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p368: mouth and pulled the trigger but gun fails to fire so no medical damage; laying on train tracks with oncoming train but pulled away before run over).
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_false_positive,p44: Urinalysis
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_false_positive,p44: Applicable
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_wrong_form,p44: Urinalysis
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_wrong_form,p44: Applicable
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_wrong_form,p44: Collected
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_wrong_form,p44: Scan
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_false_positive,p62: Never
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_false_positive,p62: Per Week
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_false_positive,p62: None
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_false_positive,p62: Current
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_false_positive,p62: Per Day
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_false_positive,p62: Cartridge
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_wrong_form,p62: Never
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_wrong_form,p62: Per Week
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_wrong_form,p62: None
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_wrong_form,p62: Current
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_wrong_form,p62: Per Day
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_wrong_form,p62: Cartridge
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_false_positive,p108: Urinalysis
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_false_positive,p108: Applicable
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_wrong_form,p108: Urinalysis
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_wrong_form,p108: Applicable
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_wrong_form,p108: Collected
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_wrong_form,p108: Scan
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p142: Actual Lethality/Medical Damage:
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p142: Potential Lethality: Only answer if Actual Lethality=0
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_false_positive,p142: mouth and pulled the trigger but gun fails to fire so no medical damage; laying on train tracks with oncoming train but pulled away before run over).
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_false_positive,p235: Urinalysis
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_false_positive,p235: Applicable
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_wrong_form,p235: Urinalysis
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_wrong_form,p235: Applicable
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_wrong_form,p235: Collected
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_wrong_form,p235: Scan
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p368: Actual Lethality/Medical Damage:
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p368: Potential Lethality: Only answer if Actual Lethality=0
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_false_positive,p368: mouth and pulled the trigger but gun fails to fire so no medical damage; laying on train tracks with oncoming train but pulled away before run over).
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p44: Collected
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p44: Scan
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p108: Collected
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p108: Scan
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_false_positive,p142: tracks with oncoming train but pulled away before run over).
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_false_positive,p368: tracks with oncoming train but pulled away before run over).
+annotatedCRF_33120100246-_v1.0_-17Aug2021,gates,1,blocking,gate_crash,"Program failed to run: generated extractor crashed:
+Traceback (most recent call last):
+  File ""D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\scripts\sandbox_runner.py"", line 128, in main
+    raw = fn(pages)
+          ^^^^^^^^^
+  File ""<generated_extractor>"", line 233, in extract
+  File "
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p498: Time Placed in Position
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p498: Time of Vitals Measurement
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p498: Systolic Blood Pressure (mmHg)
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p498: Systolic Blood Pressure (mmHg)
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p498: Diastolic Blood Pressure (mmHg)
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p498: Heart Rate (bpm)
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p498: Standing
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p498: Difference between Standing and Supine
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p498: Heart Rate (bpm)
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p498: Time of Vitals Measurement
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p498: Systolic Blood Pressure (mmHg)
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p498: Diastolic Blood Pressure (mmHg)
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p498: Heart Rate (bpm)
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_false_positive,p498: Difference between Standing and Supine
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p559: Signed by
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p498: Time of Vitals Measurement
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p498: Heart Rate (bpm)
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p498: Time Placed in Position
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_false_positive,p498: Difference between Standing and Supine
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p523: Number of Brexpiprazole - 2 mg bottles Dispensed
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p523: Bottle Number(s) Brexpiprazole - 3 mg
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p523: Number of Brexpiprazole - 3 mg bottles Dispensed
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p523: Date Bottles Returned
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p523: Number of Sertraline - 50 mg Capsules Returned
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_wrong_form,p523: Number of Brexpiprazole - 2 mg Capsules Dispensed (total)
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_wrong_form,p523: Number of Brexpiprazole - 3 mg Capsules Dispensed (total)
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_wrong_form,p523: Number of Brexpiprazole - 1 mg Capsules Returned
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_wrong_form,p523: Number of Brexpiprazole - 2 mg Capsules Returned
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_wrong_form,p523: Number of Brexpiprazole - 3 mg Capsules Returned
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p559: Signed by
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_wrong_form,p559: ICF was reviewed and verified and the original ICF has been filed in with subject's source documents
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_missed,p498: Time of Vitals Measurement
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_missed,p498: Time of Vitals Measurement
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_missed,p498: Heart Rate (bpm)
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_missed,p498: Heart Rate (bpm)
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_missed,p498: Time Placed in Position
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_missed,p498: Systolic Blood Pressure (mmHg)
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_missed,p498: Systolic Blood Pressure (mmHg)
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_missed,p498: Diastolic Blood Pressure (mmHg)
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_false_positive,p498: Difference between Standing and Supine
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_missed,p523: Number of Brexpiprazole - 2 mg bottles Dispensed
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_missed,p523: Bottle Number(s) Brexpiprazole - 3 mg
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_missed,p523: Number of Brexpiprazole - 3 mg bottles Dispensed
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_missed,p523: Date Bottles Returned
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_missed,p523: Number of Sertraline - 50 mg Capsules Returned
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_wrong_form,p523: Number of Brexpiprazole - 2 mg Capsules Dispensed (total)
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_wrong_form,p523: Number of Brexpiprazole - 3 mg Capsules Dispensed (total)
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_wrong_form,p523: Number of Brexpiprazole - 1 mg Capsules Returned
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_wrong_form,p523: Number of Brexpiprazole - 2 mg Capsules Returned
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_wrong_form,p523: Number of Brexpiprazole - 3 mg Capsules Returned
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_missed,p559: Signed by
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_wrong_form,p559: ICF was reviewed and verified and the original ICF has been filed in with subject's source documents
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,"p73: If Yes, describe"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p73: Row 15
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p502: Type of Contact
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p502: Has subject taken any ConMeds?
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p502: Third Failed Attempt
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,"p73: If Yes, describe"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_false_positive,p73: Row 15
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p502: Type of Contact
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p502: Has subject taken any ConMeds?
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_false_positive,p502: Third Failed Attempt
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,"p73: If Yes, describe"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_false_positive,p73: Row 15
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_false_positive,p499: Diastolic Blood Pressure (mmHg)
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_false_positive,p499: Heart Rate (bpm)
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p502: Type of Contact
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p502: Has subject taken any ConMeds?
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_false_positive,p502: Third Failed Attempt
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_false_positive,p550: Diastolic Blood Pressure (mmHg)
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_false_positive,p550: Heart Rate (bpm)
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,,quality,never_page_verified,audit errored; parser passed gates but was never checked against pages

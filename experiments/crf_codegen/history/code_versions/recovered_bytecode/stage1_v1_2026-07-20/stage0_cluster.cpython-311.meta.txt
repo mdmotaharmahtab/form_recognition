@@ -1,0 +1,69 @@
+# module: D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\stage0_cluster.py
+# top-level names: ['__doc__', 'glob', 'json', 'os', 'fitz', 'common', 'OUT_DIR', 'cluster_pages', 'doc_key', 'dump_rep_page', 'list_root_pdfs', 'str', 'dict', 'run', '__name__', 'summary', 'path', 'm', 'append', 'get', 'flag', 'print', 'len', 'sum', 'total_pages', 'total_reps']
+
+=== module()  [line 1] ===
+  [STR]
+    | Stage 0: cluster every page of every CRF by layout fingerprint, save representative
+    | page dumps (structured text) and PNGs. These representatives are the ONLY thing the
+    | recipe-induction step (LLM in production, hand-authored in this prototype) may look at.
+  [STR] 'path'
+  [STR] 'return'
+  [STR] '__main__'
+  [STR] 'status'
+  [STR] 'ok'
+  [STR] '  ['
+  [STR] ' - skipping induction]'
+  [STR] 'file'
+  [STR] '60s'
+  [STR] ' pages='
+  [STR] 'pages'
+  [STR] '5d'
+  [STR] ' clusters='
+  [STR] 'n_clusters'
+  [STR] '3d'
+  [STR] ' reps='
+  [STR] 'representative_pages_1based'
+  [STR]
+    | 
+    | TOTAL pages=
+  [STR] '  representative pages='
+  [STR] ' ('
+  [STR] '.1f'
+  [STR] '% would go to the LLM)'
+
+=== run(path)  [line 14] ===
+  [STR]
+    | Cluster one document; returns meta. Documents the pipeline cannot process
+    |     are detected HERE, before any LLM budget is spent, and marked with a non-ok
+    |     status in the meta (drivers must check it): encrypted PDFs, and scanned/
+    |     image-only PDFs with no text layer (OCR is out of scope - fail loudly).
+  [STR] 'rep_*'
+  [STR] 'encrypted'
+  [STR] 'clusters.json'
+  [STR] 'w'
+  [STR] 'utf-8'
+  [STR] 'clusters'
+  [STR] 'page_lines'
+  [STR] 'representatives'
+  [STR] 'rep_p'
+  [STR] '.txt'
+  [STR] '.png'
+  [STR] 'ok'
+  [STR] 'no_text_layer'
+
+=== <genexpr>(.0)  [line 36] ===
+
+=== <listcomp>(.0)  [line 50] ===
+
+=== <listcomp>(.0)  [line 51] ===
+  [STR] 'header'
+  [STR] 'signature'
+
+=== <dictcomp>(.0)  [line 51] ===
+  [STR] 'signature'
+
+=== <genexpr>(.0)  [line 66] ===
+  [STR] 'pages'
+
+=== <genexpr>(.0)  [line 67] ===
+  [STR] 'representative_pages_1based'

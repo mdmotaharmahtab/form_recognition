@@ -1,0 +1,964 @@
+DOCUMENT: 384-201-00004_aCRF_16JAN2025.pdf
+doc_key: 384-201-00004_aCRF_16JAN2025
+pages: 206 | text_layer_pct: 100
+sampled pages (1-based): [18, 24, 36, 78, 85, 113, 137, 155, 165, 196]
+
+PDF BOOKMARKS (level, title, page):
+  L1 p1: Cover Page
+  L1 p2: Study Events
+  L2 p2: Subject
+  L3 p3: AE / CM
+  L3 p64: Genomic ICF
+  L3 p86: Protocol Deviations
+  L3 p94: Subject Eligibility
+  L3 p99: Subject Informed Consent
+  L3 p104: Urine Collection - PK - Interval Start (0-2)
+  L3 p105: Urine Collection - PK - Interval Start (12-24)
+  L3 p106: Urine Collection - PK - Interval Start (2-4)
+  L3 p107: Urine Collection - PK - Interval Start (4-8)
+  L3 p108: Urine Collection - PK - Interval Start (8-12)
+  L3 p109: Urine Collection - PK - Interval Stop (0-2)
+  L3 p110: Urine Collection - PK - Interval Stop (12-24)
+  L3 p111: Urine Collection - PK - Interval Stop (2-4)
+  L3 p112: Urine Collection - PK - Interval Stop (4-8)
+  L3 p113: Urine Collection - PK - Interval Stop (8-12)
+  L2 p2: Unscheduled
+  L2 p2: AE/CM / Protocol Deviation
+  L3 p3: AE / CM
+  L3 p64: Genomic ICF
+  L3 p86: Protocol Deviations
+  L3 p94: Subject Eligibility
+  L3 p99: Subject Informed Consent
+  L3 p104: Urine Collection - PK - Interval Start (0-2)
+  L3 p105: Urine Collection - PK - Interval Start (12-24)
+  L3 p106: Urine Collection - PK - Interval Start (2-4)
+  L3 p107: Urine Collection - PK - Interval Start (4-8)
+  L3 p108: Urine Collection - PK - Interval Start (8-12)
+  L3 p109: Urine Collection - PK - Interval Stop (0-2)
+  L3 p110: Urine Collection - PK - Interval Stop (12-24)
+  L3 p111: Urine Collection - PK - Interval Stop (2-4)
+  L3 p112: Urine Collection - PK - Interval Stop (4-8)
+  L3 p113: Urine Collection - PK - Interval Stop (8-12)
+  L2 p2: Day -28 to Day -3
+  L2 p2: Day -2
+  L2 p2: Day -1
+  L2 p2: Day 1
+  L2 p2: Day 2
+  L2 p2: Day 3
+  L2 p2: Day 4
+  L2 p2: Day 5
+  L2 p2: Day 6
+  L2 p2: Day 7
+  L2 p2: Day 8
+  L2 p2: Day 9
+  L2 p2: Day 10
+  L2 p2: Day 11
+  L2 p2: Follow Up Day 37
+  L2 p2: Early Termination
+  L1 p2: Forms
+  L2 p3: AE / CM
+  L3 p2: Subject
+  L3 p2: AE/CM / Protocol Deviation
+  L2 p9: Blood Collection - PGx (Predose)
+  L2 p10: Blood Collection - PK SEP
+  L2 p11: Blood Collection - PK SEP/PD Creatine
+  L2 p12: Blood Collection - PK SEP/PD Creatinine/Safety Day 1
+  L2 p13: Blood Collection - PK SEP/PK Quinidine
+  L2 p14: Blood Collection - PK SEP/PK Quinidine/Safety Day 7
+  L2 p15: C-SSRS - Baseline/Screening
+  L2 p23: C-SSRS - Since Last Visit
+  L2 p29: CM related to MH
+  L2 p31: Concomitant Medications - Screening
+  L2 p33: Demographics
+  L2 p35: Disposition
+  L2 p38: ECG (RScribe)
+  L2 p41: ECG (RScribe) Admission
+  L2 p44: ECG (RScribe) Screening
+  L2 p47: ECG (RScribe) Unscheduled
+  L2 p50: ECG Triplicate (RScribe)
+  L2 p57: ECG Triplicate (RScribe) - Baseline
+  L2 p64: Genomic ICF
+  L2 p65: Height / Weight / BMI
+  L2 p66: Medical History
+  L2 p67: Physical Examination - Full
+  L2 p74: Physical Examination - Screening
+  L2 p81: Physical Examination - Targeted
+  L2 p85: Principal Investigator Approval
+  L2 p86: Protocol Deviations
+  L3 p2: Subject
+  L3 p2: AE/CM / Protocol Deviation
+  L2 p88: Randomization
+  L2 p89: Re-Screen
+  L2 p90: Study Drug Administration - Quinidine
+  L2 p92: Study Drug Administration - SEP-380135
+  L2 p94: Subject Eligibility
+  L2 p99: Subject Informed Consent
+  L2 p100: Urine Collection - Admission
+  L2 p104: Urine Collection - PK - Interval Start (0-2)
+  L2 p105: Urine Collection - PK - Interval Start (12-24)
+  L2 p106: Urine Collection - PK - Interval Start (2-4)
+  L2 p107: Urine Collection - PK - Interval Start (4-8)
+  L2 p108: Urine Collection - PK - Interval Start (8-12)
+  L2 p109: Urine Collection - PK - Interval Stop (0-2)
+  L2 p110: Urine Collection - PK - Interval Stop (12-24)
+  L2 p111: Urine Collection - PK - Interval Stop (2-4)
+  L2 p112: Urine Collection - PK - Interval Stop (4-8)
+  L2 p113: Urine Collection - PK - Interval Stop (8-12)
+  L2 p114: Urine Collection - PK - Spot Collection
+  L2 p115: Urine Collection - Screening
+  L2 p118: Vital Signs - Orthostatic (3 min Standing)
+  L2 p123: Vital Signs - Orthostatic Screening/Admission (3 min Standing) 
+  L2 p128: Vital Signs - Unscheduled
+  L2 p132: Vital Signs - Unscheduled - Orthostatic (3 min Standing)
+  L2 p136: Weight / BMI
+  L1 p136: Units of Measure
+  L1 p137: Code Lists
+  L2 p138: AE Action Taken
+  L2 p139: AE Outcome
+  L2 p140: AE Relationship
+  L2 p141: AE Severity
+  L2 p142: CM Dose Form
+  L2 p143: CM Dose Frequency
+  L2 p144: CM Dose Frequency
+  L2 p145: CM Dose Route
+  L2 p146: CM Dose Units
+  L2 p147: CM Dose Units
+  L2 p148: CSSRS Actual Lethality/Medical Damage
+  L2 p149: CSSRS Controllability
+  L2 p150: CSSRS Deterrents
+  L2 p151: CSSRS Duration
+  L2 p152: CSSRS Frequency
+  L2 p153: CSSRS Potential Lethality
+  L2 p154: CSSRS Reason for Ideation
+  L2 p155: Cuff Size
+  L2 p156: Deviation Categories
+  L2 p157: Deviation Categories (Important)
+  L2 p158: Deviation Codes
+  L2 p159: Deviation Timepoints
+  L2 p160: Deviation Visits
+  L2 p161: DEVIATION_SEVERITY
+  L2 p162: Disposition Reasoning
+  L2 p163: DM Ethnic
+  L2 p164: DM Sex
+  L2 p165: Dose Formulation
+  L2 p166: Dose Route
+  L2 p167: DOSE UNIT
+  L2 p168: Drug Name - Drug Dispensed
+  L2 p169: Drug Name - Drug Dispensed - Quinidine
+  L2 p170: Drug Name - Study Drug Admin
+  L2 p171: Drug Name - Study Drug Admin - Quinidine
+  L2 p172: DSREAS4
+  L2 p173: ECG Position selection
+  L2 p174: ECG Position selection
+  L2 p175: EG Significance
+  L2 p176: EG_INTERPRETATION
+  L2 p177: ICF - Yes/No
+  L2 p178: IE - Item Met
+  L2 p179: IE - Not Met
+  L2 p180: MH Significance
+  L2 p181: NCS/CS
+  L2 p182: Number List 1-5
+  L2 p183: PE Cardiovascular
+  L2 p184: PE Dermatologic
+  L2 p185: PE Gastrointestinal
+  L2 p186: PE General Appearance
+  L2 p187: PE HEENT
+  L2 p188: PE Musculoskeletal / Extremities
+  L2 p189: PE Neck/Lymphatic
+  L2 p190: PE Neurological
+  L2 p191: PE Other
+  L2 p192: PE Respiratory
+  L2 p193: PE Significance
+  L2 p194: PE Urogenital
+  L2 p195: PE_RESULT
+  L2 p196: PE_RESULT Urogenital
+  L2 p197: Quantity
+  L2 p198: Total Dose
+  L2 p199: UDS Results
+  L2 p200: Vital Signs Arm Used
+  L2 p201: Vital Signs Position Restriction
+  L2 p202: Vital Signs Position Restriction
+  L2 p203: VS Significance
+  L2 p204: YES/ N/A
+  L2 p205: YES/ NO/ N/A - Male
+  L2 p206: Yes/No
+
+======================================================================
+=== PAGE 18 (cluster 0) ===
+--- page text ---
+384-201-00004
+Annotated CRF
+18 of 206
+https://drvince.clinspark.com
+Most severe ideation. (Past 6 Months). 
+[QSCSS0306C] 
+[SAS Field Name: CSS0306C]
+O 1
+O 2
+O 3
+O 4
+O 5
+Code List: Number List 1-5
+CSS0306C
+Format: N(1)
+Data Type: integer
+Origin: CRF
+Aliases:
+Odm OID = I.937
+Description: CSS03-Most Severe Idea-
+P6M
+Mandatory?: Yes
+Disallow Future Date: Yes
+Description of most severe ideation. (Past 6 Months). 
+[QSCSS0306D] 
+[SAS Field Name: CSS0306D]
+[____________________]
+CSS0306D
+Format: $200
+Data Type: text
+Origin: CRF
+Aliases:
+Odm OID = I.938
+Description: CSS03-Most Severe 
+Idea, Desc-P6M
+Mandatory?: Yes
+Disallow Future Date: Yes
+Frequency (Lifetime) 
+[QSCSS0307A] 
+[SAS Field Name: CSS0307A]
+How many times have you had these thoughts? (Lifetime).
+O (1) Less than once a week
+O (2) Once a week
+O (3) 2-5 times in week
+O (4) Daily or almost daily
+O (5) Many times each day
+Code List: CSSRS Frequency
+CSS0307A
+Format: $1
+Data Type: string
+Origin: CRF
+Aliases:
+Odm OID = I.939
+Description: CSS03-Most Severe 
+Idea, Frequency-Life
+Mandatory?: Yes
+Disallow Future Date: Yes
+Frequency (Past 6 Months) 
+[QSCSS0307B] 
+[SAS Field Name: CSS0307B]
+How many times have you had these thoughts? (Past 6 Months).
+O (1) Less than once a week
+O (2) Once a week
+O (3) 2-5 times in week
+O (4) Daily or almost daily
+O (5) Many times each day
+Code List: CSSRS Frequency
+CSS0307B
+Format: $1
+Data Type: string
+Origin: CRF
+Aliases:
+Odm OID = I.940
+Description: CSS03-Most Severe 
+Idea, Frequency-P6M
+Mandatory?: Yes
+Disallow Future Date: Yes
+Duration (Lifetime) 
+[QSCSS0308A] 
+[SAS Field Name: CSS0308A]
+When you have the thoughts how long do they last? (Lifetime).
+O (1) Fleeting - few seconds or minutes
+O (2) Less than 1 hour/some of the time
+O (3) 1-4 hours/a lot of time
+O (4) 4-8 hours/most of the day
+O (5) More than 8 hours/persistent or continuous
+Code List: CSSRS Duration
+CSS0308A
+Format: $1
+Data Type: string
+Origin: CRF
+Aliases:
+Odm OID = I.941
+Description: CSS03-Most Severe 
+Idea, Duration-Life
+Mandatory?: Yes
+Disallow Future Date: Yes
+Duration (Past 6 Months) 
+[QSCSS0308B] 
+[SAS Field Name: CSS0308B]
+When you have the thoughts how long do they last? (Past 6 
+Months).
+O (1) Fleeting - few seconds or minutes
+O (2) Less than 1 hour/some of the time
+O (3) 1-4 hours/a lot of time
+O (4) 4-8 hours/most of the day
+O (5) More than 8 hours/persistent or continuous
+Code List: CSSRS Duration
+CSS0308B
+Format: $1
+Data Type: string
+Origin: CRF
+Aliases:
+Odm OID = I.942
+Description: CSS03-Most Severe 
+Idea, Duration-P6M
+Mandatory?: Yes
+Disallow Future Date: Yes
+Controllability (Lifetime) 
+[QSCSS0309A] 
+[SAS Field Name: CSS0309A]
+Could/can you stop thinking about killing yourself or wanting to die 
+if you want to? (Lifetime).
+O (1) Easily able to control thoughts
+O (2) Can control thoughts with little difficulty
+O (3) Can control thoughts with some difficulty
+O (4) Can control thoughts with a lot of difficulty
+O (5) Unable to control thoughts
+O (0) Does not attempt to control thoughts
+Code List: CSSRS Controllability
+CSS0309A
+Format: $1
+Data Type: string
+Origin: CRF
+Aliases:
+Odm OID = I.945
+Description: CSS03-Most Severe 
+Idea, Control-Life
+Mandatory?: Yes
+Disallow Future Date: Yes
+Controllability (Past 6 Months) 
+[QSCSS0309B] 
+[SAS Field Name: CSS0309B]
+Could/can you stop thinking about killing yourself or wanting to die 
+if you want to? (Past 6 Months).
+O (1) Easily able to control thoughts
+O (2) Can control thoughts with little difficulty
+O (3) Can control thoughts with some difficulty
+O (4) Can control thoughts with a lot of difficulty
+O (5) Unable to control thoughts
+O (0) Does not attempt to control thoughts
+Code List: CSSRS Controllability
+CSS0309B
+Format: $1
+Data Type: string
+Origin: CRF
+Aliases:
+Odm OID = I.946
+Description: CSS03-Most Severe 
+Idea, Control-P6M
+Mandatory?: Yes
+Disallow Future Date: Yes
+Deterrents (Lifetime) 
+[QSCSS0310A] 
+[SAS Field Name: CSS0310A]
+Are there things-anyone or anything (e.g., family, religion, pain of 
+death) - that stopped you from wanting to die or acting on thoughts 
+of committing suicide? (Lifetime).
+O (1) Deterrents definitely stopped you from attempting suicide
+O (2) Deterrents probably stopped you
+O (3) Uncertain that deterrents stopped you
+O (4) Deterrents most likely did not stop you
+O (5) Deterrents definitely did not stop you
+O (0) Does not Apply
+Code List: CSSRS Deterrents
+CSS0310A
+Format: $1
+Data Type: string
+Origin: CRF
+Aliases:
+Odm OID = I.943
+Description: CSS03-Most Severe 
+Idea, Deterrents-Life
+Mandatory?: Yes
+[... truncated ...]
+
+======================================================================
+=== PAGE 24 (cluster 0) ===
+--- page text ---
+384-201-00004
+Annotated CRF
+24 of 206
+https://drvince.clinspark.com
+Origin: CRF; Repeating: No; Conditionally Visible; Domain: QS
+Origin: CRF; Repeating: No; Conditionally Visible; Domain: QS
+Origin: CRF; Repeating: No; Conditionally Visible; Domain: QS
+If yes, describe: 
+[QSCSS0203A] 
+[SAS Field Name: CSS0203A]
+[____________________]
+CSS0203A
+Format: $200
+Data Type: text
+Origin: CRF
+Conditionally Visible
+Conditional Item: QSCSS0203
+Visible If Value: Y = Yes
+Aliases:
+Odm OID = I.1057
+Description: CSS02-Suicidal Ideation-
+No Intent, Descr
+Mandatory?: Yes
+Disallow Future Date: Yes
+4. Active Suicidal Ideation with Some Intent to Act, 
+without Specific Plan
+Help Text: 4. Active Suicidal Ideation with Some Intent to Act, without Specific Plan Active suicidal thoughts of 
+killing oneself and subject reports having some intent to act on such thoughts, as opposed to “I have the thoughts 
+but I definitely will not do anything about them”.
+Comment: 4. Active Suicidal 
+Ideation with Some Intent to Act, 
+without Specific Plan
+ 
+Aliases:
+Odm OID 
+= IG.251
+Have you had these thoughts and had some intention of 
+acting on them since last visit? 
+[QSCSS0204] 
+[SAS Field Name: CSS0204]
+O Yes
+O No
+Code List: Yes/No
+CSS0204
+Format: $1
+Data Type: string
+Origin: CRF
+Description: CSS02-Ideation With 
+Intent, No Plan
+Mandatory?: Yes
+Disallow Future Date: Yes
+If yes, describe: 
+[QSCSS0204A] 
+[SAS Field Name: CSS0204A]
+[____________________]
+CSS0204A
+Format: $200
+Data Type: text
+Origin: CRF
+Conditionally Visible
+Conditional Item: QSCSS0204
+Visible If Value: Y = Yes
+Aliases:
+Odm OID = I.1059
+Description: CSS02-Ideation With 
+Intent No Plan Descr
+Mandatory?: Yes
+Disallow Future Date: Yes
+5. Active Suicidal Ideation with Specific Plan and Intent
+Help Text: Thoughts of killing oneself with details of plan fully or partially worked out and 
+subject has some intent to carry it out.
+Comment: 5. Active Suicidal Ideation with 
+Specific Plan and Intent
+ Odm OID 
+Aliases:
+= IG.252
+Have you started to work out or worked out the details of 
+how to kill yourself since your last visit? Do you intend to 
+carry out this plan? 
+[QSCSS0205] 
+[SAS Field Name: CSS0205]
+O Yes
+O No
+Code List: Yes/No
+CSS0205
+Format: $1
+Data Type: string
+Origin: CRF
+Description: CSS02-Ideation With Plan
+/Intent
+Mandatory?: Yes
+Disallow Future Date: Yes
+If yes, describe: 
+[QSCSS0205A] 
+[SAS Field Name: CSS0205A]
+[____________________]
+CSS0205A
+Format: $200
+Data Type: text
+Origin: CRF
+Conditionally Visible
+Conditional Item: QSCSS0205
+Visible If Value: Y = Yes
+Aliases:
+Odm OID = I.1061
+Description: CSS02-Ideation With Plan
+/Intent, Descr
+Mandatory?: Yes
+Disallow Future Date: Yes
+INTENSITY OF IDEATION
+Help Text: The following features should be rated with respect to the most severe type of ideation (i.e.,1-5 from above, 
+with 1 being the least severe and 5 being the most severe).
+Comment: INTENSITY 
+OF IDEATION
+ Odm 
+Aliases:
+OID = IG.253
+Most Severe Ideation 
+[QSCSS0206] 
+[SAS Field Name: CSS0206]
+O 1
+O 2
+O 3
+O 4
+O 5
+Code List: Number List 1-5
+CSS0206
+Format: N(1)
+Data Type: integer
+Origin: CRF
+Aliases:
+Odm OID = I.1062
+Description: CSS02-Most Severe 
+Ideation
+Mandatory?: Yes
+Disallow Future Date: Yes
+Description of Ideation 
+[QSCSS0206A] 
+[SAS Field Name: CSS0206A]
+[____________________]
+CSS0206A
+Format: $200
+Data Type: text
+Origin: CRF
+Aliases:
+Odm OID = I.1063
+Description: CSS02-Most Severe 
+Ideation, Description
+Mandatory?: Yes
+Disallow Future Date: Yes
+
+
+======================================================================
+=== PAGE 36 (cluster 0) ===
+--- page text ---
+384-201-00004
+Annotated CRF
+36 of 206
+https://drvince.clinspark.com
+Why was the volunteer not needed? 
+[DSREAS4] 
+[SAS Field Name: DSREAS4]
+O Back up volunteer, not dosed
+O Back up volunteer, not dosed, moved to another cohort/group
+O Other
+Code List: DSREAS4
+Conditionally Visible
+Conditional Item: DSDECOD
+Visible If Value: MET ELIGIBILITY 
+CRITERIA BUT NOT NEEDED = Met 
+eligibility criteria but not needed
+Aliases:
+Odm OID = I.5855
+Description: Why was the volunteer 
+not needed?
+Mandatory?: Yes
+Disallow Future Date: Yes
+Other, Specify: 
+[DSREAS4_OTH] 
+[SAS Field Name: DSREAS4O]
+[____________________]
+DSREAS4O
+Format: $200
+Data Type: text
+Origin: CRF
+Conditionally Visible
+Conditional Item: DSREAS4
+Visible If Value: OTHER = Other
+Description: Other, Why was the 
+volunteer not needed?
+Mandatory?: Yes
+Disallow Future Date: Yes
+How was the volunteer non-compliant with the study drug? 
+[DSREAS5] 
+[SAS Field Name: DSREAS5]
+[____________________]
+DSREAS5
+Format: $200
+Data Type: text
+Origin: CRF
+Conditionally Visible
+Conditional Item: DSDECOD
+Visible If Value: NON-COMPLIANCE 
+WITH STUDY DRUG = Non-
+compliance with study drug
+Aliases:
+Odm OID = I.5857
+Description: How was the volunteer 
+non-compliant with the study drug?
+Mandatory?: Yes
+Disallow Future Date: Yes
+How was the volunteer non-compliant with the study 
+schedule? 
+[DSREAS6] 
+[SAS Field Name: DSREAS6]
+[____________________]
+DSREAS6
+Format: $200
+Data Type: text
+Origin: CRF
+Conditionally Visible
+Conditional Item: DSDECOD
+Visible If Value: NON-COMPLIANCE 
+WITH STUDY SCHEDULE = Non-
+compliance with study schedule
+Aliases:
+Odm OID = I.5858
+Description: How was the volunteer 
+non-compliant with the study 
+schedule?
+Mandatory?: Yes
+Disallow Future Date: Yes
+Reason for physician decision 
+[DSREAS7] 
+[SAS Field Name: DSREAS7]
+[____________________]
+DSREAS7
+Format: $200
+Data Type: text
+Origin: CRF
+Conditionally Visible
+Conditional Item: DSDECOD
+Visible If Value: PHYSICIAN 
+DECISION = Physician Decision
+Aliases:
+Odm OID = I.5859
+Description: Reason for physician 
+decision
+Mandatory?: Yes
+Disallow Future Date: Yes
+What withdrawal criteria was met? 
+[DSREAS8] 
+[SAS Field Name: DSREAS8]
+[____________________]
+DSREAS8
+Format: $200
+Data Type: text
+Origin: CRF
+Conditionally Visible
+Conditional Item: DSDECOD
+Visible If Value: PROTOCOL-
+SPECIFIED WITHDRAWAL 
+CRITERION MET = Protocol-specified 
+withdrawal criterion met
+Aliases:
+Odm OID = I.5860
+Description: What withdrawal criteria 
+was met?
+Mandatory?: Yes
+Disallow Future Date: Yes
+Why was the volunteer discontinued at sponsor request? 
+[DSREAS9] 
+[SAS Field Name: DSREAS9]
+[____________________]
+DSREAS9
+Format: $200
+Data Type: text
+Origin: CRF
+Conditionally Visible
+Conditional Item: DSDECOD
+Visible If Value: SPONSOR 
+REQUEST = Sponsor request
+Aliases:
+Odm OID = I.5861
+Description: Why was the volunteer 
+discontinued at sponsor request?
+Mandatory?: Yes
+Disallow Future Date: Yes
+DSREAS10
+Format: $200
+Data Type: text
+Origin: CRF
+
+
+======================================================================
+=== PAGE 78 (cluster 0) ===
+--- page text ---
+384-201-00004
+Annotated CRF
+78 of 206
+https://drvince.clinspark.com
+Origin: CRF; Repeating: No; Conditionally Visible; Domain: PE
+Origin: CRF; Repeating: No; Conditionally Visible; Domain: PE
+Abnormal findings 
+[PEDESC] 
+[SAS Field Name: PEDESC]
+[____________________]
+PEDESC
+Format: $200
+Data Type: text
+Origin: CRF
+Conditionally Visible
+Conditional Item: PEORRES
+Visible If Value: ABNORMAL = 
+Abnormal
+Aliases:
+Odm OID = I.6775
+Description: Abnormal Description PE
+Mandatory?: Yes
+Disallow Future Date: Yes
+Musculoskeletal/Extremities
+ Odm OID = IG.1781
+Aliases:
+ Investigator
+Role Restriction:
+Body system 
+[PETEST_EXTREMITIES] 
+[SAS Field Name: PETEST]
+O Musculoskeletal /Extremities
+Code List: PE Musculoskeletal / Extremities
+PETEST
+Format: $27
+Data Type: string
+Origin: CRF
+Default Item Value: 
+MUSCULOSKELETAL/EXTREMITIES
+Aliases:
+Odm OID = I.6781
+Description: Body system - 
+EXTREMITIES
+Mandatory?: Yes
+Disallow Future Date: Yes
+Examination result 
+[PEORRES] 
+[SAS Field Name: PEORRES]
+O Normal
+O Abnormal
+Code List: PE_RESULT
+PEORRES
+Format: $200
+Data Type: string
+Origin: CRF
+Aliases:
+Odm OID = I.6774
+Description: Examination result
+Mandatory?: Yes
+Disallow Future Date: Yes
+Clinical significance 
+[PECLSIG] 
+[SAS Field Name: PECLSIG]
+O CS
+O NCS
+Code List: PE Significance
+PECLSIG
+Format: $3
+Data Type: string
+Origin: CRF
+Conditionally Visible
+Conditional Item: PEORRES
+Visible If Value: ABNORMAL = 
+Abnormal
+Aliases:
+Odm OID = I.5937
+Description: Clinical significance
+Edit Checks:
+Name: TEMPLATE_PECLSIG: 
+  NCS
+Value =
+Description: Value should = NCS
+Mandatory?: Yes
+Disallow Future Date: Yes
+Abnormal findings 
+[PEDESC] 
+[SAS Field Name: PEDESC]
+[____________________]
+PEDESC
+Format: $200
+Data Type: text
+Origin: CRF
+Conditionally Visible
+Conditional Item: PEORRES
+Visible If Value: ABNORMAL = 
+Abnormal
+Aliases:
+Odm OID = I.6775
+Description: Abnormal Description PE
+Mandatory?: Yes
+Disallow Future Date: Yes
+Dermatologic/Mucosae
+ Odm OID = IG.1782
+Aliases:
+ Investigator
+Role Restriction:
+Body system 
+[PETEST_DERMATOLOGIC] 
+[SAS Field Name: PETEST]
+O Dermatologic
+Code List: PE Dermatologic
+PETEST
+Format: $12
+Data Type: string
+Origin: CRF
+Default Item Value: DERMATOLOGIC
+Aliases:
+Odm OID = I.6782
+Description: Body system - 
+DERMATOLOGIC
+Mandatory?: Yes
+Disallow Future Date: Yes
+Examination result 
+[PEORRES] 
+[SAS Field Name: PEORRES]
+O Normal
+O Abnormal
+Code List: PE_RESULT
+PEORRES
+Format: $200
+Data Type: string
+Origin: CRF
+Aliases:
+Odm OID = I.6774
+Description: Examination result
+Mandatory?: Yes
+Disallow Future Date: Yes
+PECLSIG
+Format: $3
+Data Type: string
+Origin: CRF
+Conditionally Visible
+
+
+======================================================================
+=== PAGE 85 (cluster 0) ===
+--- page text ---
+384-201-00004
+Annotated CRF
+85 of 206
+https://drvince.clinspark.com
+Origin: CRF; Repeating: No; Domain: DS
+Origin: CRF
+Principal Investigator Approval
+Principal Investigator Approval
+I acknowledge that I have reviewed and approved all data 
+for this volunteer. 
+[PISIGN] 
+[SAS Field Name: PISIGN]
+O Yes
+O No
+Code List: Yes/No
+PISIGN
+Format: $
+Data Type: string
+Origin: CRF
+Aliases:
+PI Signature = PISIGN
+Description: PI Review and Approval
+Mandatory?: Yes
+Disallow Future Date: Yes
+
+
+======================================================================
+=== PAGE 113 (cluster 0) ===
+--- page text ---
+384-201-00004
+Annotated CRF
+113 of 206
+https://drvince.clinspark.com
+Origin: CRF; Repeating: No; Domain: PC
+Origin: CRF
+Urine Collection - PK - Interval Stop (8-12)
+Interval PK Stop (8-12)
+Date and time of last collection. 
+[PCENDTC] 
+[SAS Field Name: PCENDTC]
+Save and return form to populate collection time of last void. 
+Transcribe this date and time into Collection stop date and 
+time field.
+[_|_] - [_|_|_] - [_|_|_|_] [_|_] : [_|_] : [_|_]
+dd-MMM-yyyy HH:mm:ss
+PCENDTC
+Format: dd-MMM-yyyy HH:mm:ss
+Data Type: datetime
+Origin: CRF
+Conditionally Visible
+Conditional Item: 
+PROCEDURE_PERFORMED_LEADING_QUESTION
+Visible If Value: Y = Yes
+Description: Collection stop date and time.
+Requires Barcode Verification
+Value Calculated via Method: Interval Start From 
+Final Previous Interval Collection (8-12)
+Mandatory?: Yes
+Disallow Future Date: Yes
+
+
+======================================================================
+=== PAGE 137 (cluster 1) ===
+--- page text ---
+384-201-00004
+Annotated CRF
+137 of 206
+https://drvince.clinspark.com
+Units of Measure
+Name
+Symbol
+%
+%
+BPM
+BPM
+Breaths Per Minute
+Breaths Per Minute
+C
+C
+Years
+Years
+cm
+cm
+kg
+kg
+kg/m2
+kg/m2
+mmHg
+mmHg
+ms
+ms
+
+
+======================================================================
+=== PAGE 155 (cluster 1) ===
+--- page text ---
+384-201-00004
+Annotated CRF
+155 of 206
+https://drvince.clinspark.com
+Cuff Size
+Coded
+Decode
+SMALL ADULT
+Small Adult
+ADULT
+Adult
+LARGE ADULT
+Large Adult
+
+
+======================================================================
+=== PAGE 165 (cluster 1) ===
+--- page text ---
+384-201-00004
+Annotated CRF
+165 of 206
+https://drvince.clinspark.com
+Dose Formulation
+Coded
+Decode
+CAPSULES
+Capsules
+TABLET
+Tablet
+
+
+======================================================================
+=== PAGE 196 (cluster 1) ===
+--- page text ---
+384-201-00004
+Annotated CRF
+196 of 206
+https://drvince.clinspark.com
+PE_RESULT Urogenital
+Coded
+Decode
+NORMAL
+Normal
+ABNORMAL
+Abnormal
+NOT DONE
+Not Done

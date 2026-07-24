@@ -1,0 +1,572 @@
+{
+ "stop_reason": "budget",
+ "versions": 5,
+ "best_version": 5,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 972,
+    "pages_total": 104,
+    "pages_with_fields": 104,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 25,
+    "labels_look_human_pct": 97,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 4,
+    "fields_per_form": 243.0,
+    "forms_per_100_pages": 3.8,
+    "form_same_page_evidence_records": 242,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 100
+   },
+   "problems": [],
+   "warnings": [
+    "form_name empty for 75% of records - if the document does print form/section names, fix the form_name strategy (consider carrying the last seen title forward).",
+    "The program filters by 16 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": 40,
+   "audit_pages": [
+    46,
+    47,
+    52,
+    84,
+    241,
+    427
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 46,
+     "missed": [],
+     "false": [
+      "Chemistry clinically significant abnormal assay # 1:",
+      "low density lipoprotein;and; high density lipoprotein)",
+      "Gamma glutamyl transferase",
+      "lipoprotein;and; high density lipoprotein), Creatine phosphokinase, Creatinine, Gamma glutamyl transferase, Glucose, Lactate dehydrogenase,",
+      "Magnesium, Phosphorus, Potassium, Prolactin, Total bilirubin, Total protein, Triglycerides, Sodium, Urea nitrogen, Uric acid)]"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 47,
+     "missed": [],
+     "false": [
+      "Chemistry clinically significant abnormal assay # 2",
+      "low density lipoprotein;and; high density lipoprotein)",
+      "Gamma glutamyl transferase",
+      "lipoprotein;and; high density lipoprotein), Creatine phosphokinase, Creatinine, Gamma glutamyl transferase, Glucose, Lactate dehydrogenase,",
+      "Magnesium, Phosphorus, Potassium, Prolactin, Total bilirubin, Total protein, Triglycerides, Sodium, Urea nitrogen, Uric acid)]"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 52,
+     "missed": [],
+     "false": [
+      "Mean corpuscular hemoglobin concentration",
+      "Mean corpuscular volume",
+      "Red blood cell count",
+      "White blood cell count (absolute and differential)",
+      "Red blood cell count, White blood cell count (absolute and differential), Glycated Hemoglobin)"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 84,
+     "missed": [],
+     "false": [
+      "If any answers to the Exclusion Criteria are \"Met\", EXCLUDE subject from the study.",
+      "Not Met, N/A)]",
+      "= 20 mmHg decrease in SBP and a >= 25 bpm increase in HR from supine to standing, OR"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 241,
+     "missed": [],
+     "false": [
+      "low density lipoprotein;and; high density lipoprotein)",
+      "Gamma glutamyl transferase",
+      "lipoprotein;and; high density lipoprotein), Creatine phosphokinase, Creatinine, Gamma glutamyl transferase, Glucose, Lactate dehydrogenase,",
+      "Magnesium, Phosphorus, Potassium, Prolactin, Total bilirubin, Total protein, Triglycerides, Sodium, Urea nitrogen, Uric acid)]"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 427,
+     "missed": [
+      "If Yes, Total number of interrupted attempts",
+      "If Yes, describe",
+      "If Yes, Total number of aborted attempts",
+      "If Yes, describe"
+     ],
+     "false": [
+      "this becomes an attempt rather than an interrupted attempt. Shooting: Person has gun pointed toward self, gun is taken away by someone else, or is",
+      "somehow prevent from pulling trigger. Once they pull the trigger, even if the gun fails to fire, it is an attempt.",
+      "Jumping: Person is poised to jump, is grabbed and taken down from ledge. Hanging: Person has noose around neck but has not yet started to hang - is stopped from",
+      "Has there been a time when you started to do something to end your life but someone or something stopped you before you actually did anything?",
+      "Aborted attempt:",
+      "When person begins to take steps toward making a suicide attempt, but stops themselves before",
+      "they actually have engaged in any self destructive behaviour. Examples are similar to interrupted",
+      "attempts, except that the individual stops him/herself, instead of being stopped by something else. Has there been a time when you started to do something to try to end your life but you",
+      "stopped yourself before you actually did anything?",
+      "Preparatory acts or behavior:",
+      "Acts or preparation towards imminently making a suicide attempt. This can include anything beyond",
+      "a verbalization or thought such as assembling a specific method (e.g., buying pills, purchasing a",
+      "gun) or preparing for one's death by suicide (e.g., giving things away, writing a suicide note) Have you taken any step towards making a suicide attempt or preparing to kill yourself (such",
+      "as collecting pills, getting a gun, giving valuables away or writing a suicide note?)"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    40,
+    2,
+    -104
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "confirm",
+   "metrics": {
+    "engine": "codegen",
+    "records": 177,
+    "pages_total": 104,
+    "pages_with_fields": 61,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 6,
+    "fields_per_form": 29.5,
+    "forms_per_100_pages": 5.8,
+    "form_same_page_evidence_records": 151,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 59
+   },
+   "problems": [],
+   "outcome": "extended_program"
+  },
+  {
+   "version": 2,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 177,
+    "pages_total": 104,
+    "pages_with_fields": 61,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 6,
+    "fields_per_form": 29.5,
+    "forms_per_100_pages": 5.8,
+    "form_same_page_evidence_records": 151,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 59
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    0,
+    "not_audited",
+    0,
+    -61
+   ],
+   "became_best": false
+  },
+  {
+   "version": 3,
+   "kind": "confirm_extension",
+   "metrics": {
+    "engine": "codegen",
+    "records": 177,
+    "pages_total": 104,
+    "pages_with_fields": 61,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 6,
+    "fields_per_form": 29.5,
+    "forms_per_100_pages": 5.8,
+    "form_same_page_evidence_records": 151,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 59
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 27,
+   "audit_pages": [
+    46,
+    47,
+    48,
+    52,
+    83,
+    84,
+    241,
+    427
+   ],
+   "audit_partial": null,
+   "audit_promoted": [
+    48
+   ],
+   "audit_verdicts": [
+    {
+     "page": 46,
+     "missed": [
+      "Chemistry abnormal assay # 1 Investigator comment"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 47,
+     "missed": [
+      "Chemistry clinically significant abnormal assay # 2",
+      "Chemistry abnormal assay # 2 Investigator comment"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 48,
+     "missed": [
+      "Chemistry clinically significant abnormal assay # 3",
+      "Chemistry abnormal assay # 3 Investigator comment"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 52,
+     "missed": [
+      "Hematology clinically significant abnormal assay # 3",
+      "Hematology abnormal assay # 3 Investigator comment",
+      "Hematology clinically significant abnormal assay # 4",
+      "Hematology abnormal assay # 4 Investigator comment"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 83,
+     "missed": [
+      "\\1.\\ Diagnosis of MDD, as determined by the Diagnostic and Statistical Manual of Mental Disorders, Fifth Edition (DSM-5) criteria, and are considered clinically stable per investigator's judgment while currently receiving sertraline for at least 90 days and maintained on stable sertraline doses of \u2265 100 mg/day for at least 30 days at the time of screening visit 1 and stable sertraline doses of \u2265 150 mg/day for at least 5 days at the time of screening visit 2.",
+      "\\2.\\ Male or female subjects between 18 and 65 years of age (inclusive).",
+      "\\3.\\ Body mass index (BMI) between 19.0 to 35.0 kg/m2 (inclusive).",
+      "\\4.\\ In good health as determined by: a) Medical history b) Physical examination c) Vital signs d) Electrocardiogram (ECG) e) Serum/urine chemistry, hematology, and serology tests",
+      "\\5.\\ Ability to provide written, informed consent prior to initiation of any trial-related procedures, and ability, in the opinion of the investigator, to comply with all the requirements of the trial."
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 84,
+     "missed": [
+      "\\1.\\Females who are breast-feeding and/or who have a positive pregnancy test result prior to receiving IMP.",
+      "\\2.\\ Heterosexually active males or females of childbearing potential (FOCBP), or their partners, who do not agree to practice 2 different approved methods of birth control or remain fully abstinent (periodic abstinence or withdrawal are not acceptable methods of contraception) during the trial and for 30 days after the last dose of IMP. If employing birth control, 2 of the following methods must be used: vasectomy, bilateral tubal ligation, nonhormonal intrauterine device, condom with spermicide, sponge with spermicide, or occlusive cap (vaginal diaphragm or cervical/vault cap) with spermicide.",
+      "\\3.\\ Male subjects who do not agree to not donate sperm from trial screening through 30 days after the last dose of IMP.",
+      "\\4.\\ Clinically significant abnormality in past medical history, or at the screening physical examination, that in the investigator's or sponsor's opinion may place the subject at risk or interfere with outcome variables including absorption, distribution, metabolism, and excretion of the IMP. This includes, but is not limited to, history of or concurrent cardiac, hepatic, renal, neurologic, endocrine, gastrointestinal, respiratory, hematologic, and immunologic disease.",
+      "\\5.\\ Subjects with abnormal clinical laboratory assessment results, vital signs results, or ECG findings, unless, based on the investigator's judgment, the findings are not medically significant and would not impact the safety of the subject or the interpretation of the trial results. The medical monitor should be contacted to discuss individual cases, as needed. In addition, subjects with any of the following clinical laboratory assessments or ECG results at screening must be excluded from the trial: - Platelets <= 75000/mm3 - Hemoglobin <= 9 g/dL - Neutrophils, absolute <= 1000/mm3 - Aspartate aminotransferase (AST) > 2 \u00d7 upper limit or normal (ULN) - Alanine aminotransferase (ALT) > 2 \u00d7 ULN - Creatinine phosphokinase > 3 \u00d7 ULN, unless discussed with and approved by the medical monitor - Creatinine >= 2 mg/dL - QT interval corrected for heart rate using Friedericia formula (QTcF)>= 450 msec in men and >= 470 msec in women, unless due to ventricular pacing Tests with exclusionary results should be repeated once to ensure reproducibility of the abnormality before excluding a subject based on the criteria noted above.",
+      "\\6.\\ Subjects with diagnosed hypertension (including treated or untreated hypertension), or orthostatic hypotension which is defined as a decrease of"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 241,
+     "missed": [
+      "Chemistry clinically significant abnormal assay # 5",
+      "Chemistry abnormal assay # 5 Investigator comment"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 427,
+     "missed": [
+      "If Yes, Total number of interrupted attempts",
+      "If Yes, describe",
+      "If Yes, Total number of aborted attempts",
+      "If Yes, describe",
+      "If Yes, describe"
+     ],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    27,
+    0,
+    -61
+   ],
+   "became_best": false
+  },
+  {
+   "version": 4,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 302,
+    "pages_total": 104,
+    "pages_with_fields": 93,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 6,
+    "fields_per_form": 50.3,
+    "forms_per_100_pages": 5.8,
+    "form_same_page_evidence_records": 276,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 89
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 21,
+   "audit_pages": [
+    46,
+    47,
+    48,
+    52,
+    84,
+    86,
+    241,
+    427
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 46,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 47,
+     "missed": [
+      "Chemistry clinically significant abnormal assay # 2"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 48,
+     "missed": [
+      "Chemistry clinically significant abnormal assay # 3"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 52,
+     "missed": [
+      "Hematology clinically significant abnormal assay # 3",
+      "Hematology clinically significant abnormal assay # 4"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 84,
+     "missed": [
+      "\\1.\\Females who are breast-feeding and/or who have a positive pregnancy test result prior to receiving IMP.",
+      "\\2.\\ Heterosexually active males or females of childbearing potential (FOCBP), or their partners, who do not agree to practice 2 different approved methods of birth control or remain fully abstinent (periodic abstinence or withdrawal are not acceptable methods of contraception) during the trial and for 30 days after the last dose of IMP. If employing birth control, 2 of the following methods must be used: vasectomy, bilateral tubal ligation, nonhormonal intrauterine device, condom with spermicide, sponge with spermicide, or occlusive cap (vaginal diaphragm or cervical/vault cap) with spermicide.",
+      "\\3.\\ Male subjects who do not agree to not donate sperm from trial screening through 30 days after the last dose of IMP.",
+      "\\4.\\ Clinically significant abnormality in past medical history, or at the screening physical examination, that in the investigator's or sponsor's opinion may place the subject at risk or interfere with outcome variables including absorption, distribution, metabolism, and excretion of the IMP. This includes, but is not limited to, history of or concurrent cardiac, hepatic, renal, neurologic, endocrine, gastrointestinal, respiratory, hematologic, and immunologic disease.",
+      "\\5.\\ Subjects with abnormal clinical laboratory assessment results, vital signs results, or ECG findings, unless, based on the investigator's judgment, the findings are not medically significant and would not impact the safety of the subject or the interpretation of the trial results. The medical monitor should be contacted to discuss individual cases, as needed. In addition, subjects with any of the following clinical laboratory assessments or ECG results at screening must be excluded from the trial: - Platelets <= 75000/mm3 - Hemoglobin <= 9 g/dL - Neutrophils, absolute <= 1000/mm3 - Aspartate aminotransferase (AST) > 2 \u00d7 upper limit or normal (ULN) - Alanine aminotransferase (ALT) > 2 \u00d7 ULN - Creatinine phosphokinase > 3 \u00d7 ULN, unless discussed with and approved by the medical monitor - Creatinine >= 2 mg/dL - QT interval corrected for heart rate using Friedericia formula (QTcF)>= 450 msec in men and >= 470 msec in women, unless due to ventricular pacing Tests with exclusionary results should be repeated once to ensure reproducibility of the abnormality before excluding a subject based on the criteria noted above.",
+      "\\6.\\ Subjects with diagnosed hypertension (including treated or untreated hypertension), or orthostatic hypotension which is defined as a decrease of"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 86,
+     "missed": [
+      "\\15.\\ Any history of difficulty in donating blood.",
+      "\\16.\\ History of drug and/or alcohol abuse within 2 years prior to the screening visit based on investigator judgment.",
+      "\\17.\\ Subjects who have a positive urine alcohol or drug screen that, in the judgment of the investigator with concurrence of the medical monitor, indicates substance abuse that could compromise the subject's safety or ability to comply with the trial procedures that could interfere with the interpretation of trial results.",
+      "\\18.\\ Use of tobacco products within 2 months prior to the screening visit, or urine cotinine concentrations > 200 ng/mL or serum cotinine concentrations > 20 ng/mL at the screening visit or at check-in to the trial site.",
+      "\\19.\\ Subjects having taken an investigational drug within 30 days prior to the screening visit.",
+      "\\20.\\ Subjects who would be likely to require prohibited concomitant therapy during the trial. The sponsor may allow exceptions only if the medication's administration is deemed unlikely to impact the results of the trial.",
+      "\\21.\\ Consumption of food and beverages containing caffeine and methylxanthines (eg, coffee, chocolate, tea) within 48 hours prior to Day -1 or grapefruit, grapefruit juice, Seville oranges, or Seville orange juice within 7 days prior to Day -14.",
+      "\\22.\\ History of any medically significant drug allergy or known or suspected hypersensitivity to antipsychotics or adrenergic antagonists, in particular brexpiprazole, prazosin, or propranolol."
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 241,
+     "missed": [
+      "Chemistry clinically significant abnormal assay # 5"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 427,
+     "missed": [],
+     "false": [
+      "If Yes, describe",
+      "If Yes, describe"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    21,
+    0,
+    -93
+   ],
+   "became_best": false
+  },
+  {
+   "version": 5,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 303,
+    "pages_total": 104,
+    "pages_with_fields": 96,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 7,
+    "fields_per_form": 43.3,
+    "forms_per_100_pages": 6.7,
+    "form_same_page_evidence_records": 274,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 92
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 11,
+   "audit_pages": [
+    46,
+    47,
+    48,
+    51,
+    52,
+    84,
+    241,
+    427
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 46,
+     "missed": [
+      "Chemistry clinically significant abnormal assay # 1:"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 47,
+     "missed": [
+      "Chemistry clinically significant abnormal assay # 2"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 48,
+     "missed": [
+      "Chemistry clinically significant abnormal assay # 3"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 51,
+     "missed": [
+      "Hematology clinically significant abnormal assay # 1",
+      "Hematology clinically significant abnormal assay # 2"
+     ],
+     "false": [
+      "Please go to Add-On Forms and select Additional Local Lab Results Review form to add to this visit."
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 52,
+     "missed": [
+      "Hematology clinically significant abnormal assay # 3",
+      "Hematology clinically significant abnormal assay # 4"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 84,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 241,
+     "missed": [
+      "Chemistry clinically significant abnormal assay # 5"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 427,
+     "missed": [
+      "If Yes, describe",
+      "If Yes, describe"
+     ],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    11,
+    0,
+    -96
+   ],
+   "became_best": true
+  }
+ ]
+}

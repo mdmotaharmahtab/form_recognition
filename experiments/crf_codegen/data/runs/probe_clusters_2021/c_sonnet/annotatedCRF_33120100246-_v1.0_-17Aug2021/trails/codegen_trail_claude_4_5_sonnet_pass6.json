@@ -1,0 +1,338 @@
+{
+ "stop_reason": "plateau",
+ "versions": 3,
+ "best_version": 1,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "confirm",
+   "outcome": "confirmed_no_fields"
+  },
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 29,
+    "pages_total": 13,
+    "pages_with_fields": 8,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 4,
+    "fields_per_form": 7.2,
+    "forms_per_100_pages": 30.8,
+    "form_same_page_evidence_records": 26,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 62
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 10,
+   "audit_pages": [
+    9,
+    11,
+    12,
+    15,
+    518,
+    559
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 9,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 11,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 12,
+     "missed": [],
+     "false": [
+      "Control Period Day 2",
+      "Control Period Day 3"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 15,
+     "missed": [],
+     "false": [
+      "page enrols if DSAI101= Yes on Aicure Device - Distribution page"
+     ],
+     "wrong_form": [
+      "Treatment Period Day 21"
+     ]
+    },
+    {
+     "page": 518,
+     "missed": [
+      "End Date (if applicable)",
+      "End Time (if applicable)"
+     ],
+     "false": [],
+     "wrong_form": [
+      "End Time (if applicable)"
+     ]
+    },
+    {
+     "page": 559,
+     "missed": [
+      "ICF was reviewed and verified and the original ICF has been filed in with subject's source documents",
+      "Signed by"
+     ],
+     "false": [],
+     "wrong_form": [
+      "ICF was reviewed and verified and the original ICF has been filed in with subject's source documents"
+     ]
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    10,
+    0,
+    -8
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 14,
+    "pages_total": 13,
+    "pages_with_fields": 5,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 3,
+    "fields_per_form": 4.7,
+    "forms_per_100_pages": 23.1,
+    "form_same_page_evidence_records": 12,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 38
+   },
+   "problems": [],
+   "warnings": [
+    "The program filters by 13 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": 8,
+   "audit_pages": [
+    9,
+    10,
+    11,
+    12,
+    14,
+    15,
+    518,
+    559
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 9,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 10,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 11,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 12,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 14,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 15,
+     "missed": [],
+     "false": [
+      "Body Temperature and Respiratory Rate"
+     ],
+     "wrong_form": [
+      "Yes on Aicure Device - Distribution page"
+     ]
+    },
+    {
+     "page": 518,
+     "missed": [
+      "End Date (if applicable)",
+      "End Time (if applicable)"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 559,
+     "missed": [
+      "Protocol Version for Consent"
+     ],
+     "false": [
+      "ICF was reviewed and verified and the original ICF has been filed in with subject's source documents"
+     ],
+     "wrong_form": [
+      "End of Screening",
+      "End of Screening"
+     ]
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    8,
+    1,
+    -5
+   ],
+   "became_best": false
+  },
+  {
+   "version": 3,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 25,
+    "pages_total": 13,
+    "pages_with_fields": 5,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 2,
+    "fields_per_form": 12.5,
+    "forms_per_100_pages": 15.4,
+    "form_same_page_evidence_records": 25,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 38
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 11,
+   "audit_pages": [
+    9,
+    11,
+    12,
+    13,
+    15,
+    498,
+    518,
+    559
+   ],
+   "audit_partial": null,
+   "audit_promoted": [
+    498
+   ],
+   "audit_verdicts": [
+    {
+     "page": 9,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 11,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 12,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 13,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 15,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 498,
+     "missed": [
+      "Time of Vitals Measurement",
+      "Systolic Blood Pressure (mmHg)",
+      "Diastolic Blood Pressure (mmHg)",
+      "Heart Rate (bpm)"
+     ],
+     "false": [],
+     "wrong_form": [
+      "Time of Vitals Measurement",
+      "Systolic Blood Pressure (mmHg)",
+      "Diastolic Blood Pressure (mmHg)",
+      "Heart Rate (bpm)",
+      "Time Placed in Position"
+     ]
+    },
+    {
+     "page": 518,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 559,
+     "missed": [],
+     "false": [
+      "ICF Verification",
+      "ICF was reviewed and verified and the original ICF has been filed in with subject's source documents"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    11,
+    0,
+    -5
+   ],
+   "became_best": false
+  }
+ ]
+}

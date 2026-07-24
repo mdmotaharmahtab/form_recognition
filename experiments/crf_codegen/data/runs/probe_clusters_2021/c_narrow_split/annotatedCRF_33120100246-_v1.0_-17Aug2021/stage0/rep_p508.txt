@@ -1,0 +1,36 @@
+x=  47.8 y=  66.1 sz=14.4 #004c99   | Prior and Concomitant Medications
+x= 494.9 y= 115.3 sz= 9.2 #454545   | Yes
+x= 527.0 y= 115.3 sz= 9.2 #454545   | No
+x=  47.8 y= 116.5 sz= 7.8 black     | Are There any Prior/Concomitant Medications to Report?
+x=  47.8 y= 138.1 sz= 7.8 #ff0000   | [CMYN]
+x=  47.8 y= 150.5 sz= 7.8 #ff0000   | [TYPE: enumeration (values: Yes, No)]
+x=  41.2 y= 201.1 sz=10.5 black   B | (Repeatable row added with Add Row button)
+x=  45.2 y= 223.2 sz= 9.2 black     | ID
+x= 122.3 y= 223.2 sz= 9.2 black     | Medication
+x= 276.6 y= 223.2 sz= 9.2 black     | Indication
+x= 353.7 y= 223.2 sz= 9.2 black     | Start date
+x= 455.7 y= 223.2 sz= 9.2 black     | Start time
+x=  47.8 y= 285.2 sz= 7.8 black     | Record
+x=  47.8 y= 308.1 sz= 7.8 #ff0000   | [CMSPID]
+x=  47.8 y= 320.5 sz= 7.8 #ff0000   | [TYPE: integer]
+x=  47.8 y= 332.9 sz= 7.8 #ff0000   | [Read-only field]
+x=  47.8 y= 359.7 sz= 7.8 black     | Drug Name
+x=  47.8 y= 382.6 sz= 7.8 #ff0000   | [CMTRT]
+x=  47.8 y= 395.0 sz= 7.8 #ff0000   | [TYPE: text]
+x=  47.8 y= 421.8 sz= 7.8 black     | Dose
+x=  47.8 y= 444.7 sz= 7.8 #ff0000   | [CMDSTXT]
+x=  47.8 y= 457.1 sz= 7.8 #ff0000   | [TYPE: text]
+x=  47.8 y= 483.9 sz= 7.8 black     | Dose Unit
+x= 445.2 y= 521.9 sz= 9.2 black     | Number of Tablets
+x= 445.2 y= 544.2 sz= 9.2 black     | Other
+x=  47.8 y= 570.9 sz= 7.8 #ff0000   | [CMDOSU]
+x=  47.8 y= 583.3 sz= 7.8 #ff0000   | [TYPE: enumeration (values: Number of Tablets, Other)]
+x=  47.8 y= 610.1 sz= 7.8 black     | Other Unit, specify
+x=  47.8 y= 633.0 sz= 7.8 #ff0000   | [CMDOSUO]
+x=  47.8 y= 645.4 sz= 7.8 #ff0000   | [TYPE: text]
+x=  47.8 y= 672.2 sz= 7.8 black     | Dose Form
+x= 445.2 y= 710.2 sz= 9.2 black     | Aerosol
+x= 445.2 y= 732.5 sz= 9.2 black     | Bar Chewable
+x= 445.2 y= 754.7 sz= 9.2 black     | Bead
+x= 445.2 y= 776.9 sz= 9.2 black     | Capsule
+x= 445.2 y= 799.2 sz= 9.2 black     | Concentrate

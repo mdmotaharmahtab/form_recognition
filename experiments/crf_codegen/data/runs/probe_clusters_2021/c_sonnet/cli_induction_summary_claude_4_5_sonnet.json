@@ -1,0 +1,192 @@
+[
+ {
+  "doc": "annotatedCRF_33120100246-_v1.0_-17Aug2021",
+  "status": "ok_audit_issues",
+  "multipass": 7,
+  "version_budget": 5,
+  "versions": 33,
+  "stop_reason": "p1:budget;p2:budget;p3:plateau;p4:budget;p5:budget;p6:plateau;p7:budget",
+  "fields": 2458,
+  "forms": 105,
+  "pages_with_fields": 539,
+  "audit_issues": 132,
+  "passes": [
+   {
+    "doc": "annotatedCRF_33120100246-_v1.0_-17Aug2021",
+    "versions": 5,
+    "stop_reason": "budget",
+    "status": "ok_audit_issues",
+    "best_version": 5,
+    "fields": 1437,
+    "forms": 89,
+    "pages_with_fields": 350,
+    "audit_issues": 5,
+    "warnings": [],
+    "elapsed_s": 272.899,
+    "stage0_s": 6.419,
+    "llm_s": 261.008,
+    "llm_calls": 8,
+    "pass": 1,
+    "clusters": [
+     0,
+     1,
+     2,
+     3,
+     16,
+     19,
+     23,
+     24,
+     25,
+     26,
+     27,
+     28,
+     29,
+     30,
+     31,
+     32,
+     33,
+     34
+    ]
+   },
+   {
+    "doc": "annotatedCRF_33120100246-_v1.0_-17Aug2021",
+    "versions": 5,
+    "stop_reason": "budget",
+    "status": "ok_audit_issues",
+    "best_version": 4,
+    "fields": 589,
+    "forms": 8,
+    "pages_with_fields": 104,
+    "audit_issues": 51,
+    "warnings": [],
+    "elapsed_s": 305.575,
+    "stage0_s": 6.419,
+    "llm_s": 294.443,
+    "llm_calls": 11,
+    "pass": 2,
+    "clusters": [
+     4,
+     5,
+     6
+    ]
+   },
+   {
+    "doc": "annotatedCRF_33120100246-_v1.0_-17Aug2021",
+    "versions": 5,
+    "stop_reason": "plateau",
+    "status": "ok_audit_issues",
+    "best_version": 3,
+    "fields": 263,
+    "forms": 1,
+    "pages_with_fields": 47,
+    "audit_issues": 55,
+    "warnings": [],
+    "elapsed_s": 386.793,
+    "stage0_s": 6.419,
+    "llm_s": 374.412,
+    "llm_calls": 10,
+    "pass": 3,
+    "clusters": [
+     7,
+     8,
+     9
+    ]
+   },
+   {
+    "doc": "annotatedCRF_33120100246-_v1.0_-17Aug2021",
+    "versions": 5,
+    "stop_reason": "budget",
+    "status": "ok_audit_issues",
+    "best_version": 3,
+    "fields": 86,
+    "forms": 6,
+    "pages_with_fields": 15,
+    "audit_issues": 2,
+    "warnings": [
+     "The program filters by 10 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+    ],
+    "elapsed_s": 255.496,
+    "stage0_s": 6.419,
+    "llm_s": 245.633,
+    "llm_calls": 9,
+    "pass": 4,
+    "clusters": [
+     10,
+     11,
+     12
+    ]
+   },
+   {
+    "doc": "annotatedCRF_33120100246-_v1.0_-17Aug2021",
+    "versions": 5,
+    "stop_reason": "budget",
+    "status": "ok_audit_issues",
+    "best_version": 5,
+    "fields": 40,
+    "forms": 3,
+    "pages_with_fields": 10,
+    "audit_issues": 4,
+    "warnings": [
+     "The program filters by 25 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+    ],
+    "elapsed_s": 271.27,
+    "stage0_s": 6.419,
+    "llm_s": 261.509,
+    "llm_calls": 9,
+    "pass": 5,
+    "clusters": [
+     13,
+     14,
+     15
+    ]
+   },
+   {
+    "doc": "annotatedCRF_33120100246-_v1.0_-17Aug2021",
+    "versions": 3,
+    "stop_reason": "plateau",
+    "status": "ok_audit_issues",
+    "best_version": 1,
+    "fields": 29,
+    "forms": 4,
+    "pages_with_fields": 8,
+    "audit_issues": 10,
+    "warnings": [],
+    "elapsed_s": 212.875,
+    "stage0_s": 6.419,
+    "llm_s": 206.27,
+    "llm_calls": 7,
+    "pass": 6,
+    "clusters": [
+     17,
+     18,
+     20
+    ]
+   },
+   {
+    "doc": "annotatedCRF_33120100246-_v1.0_-17Aug2021",
+    "versions": 5,
+    "stop_reason": "budget",
+    "status": "ok_audit_issues",
+    "best_version": 4,
+    "fields": 14,
+    "forms": 5,
+    "pages_with_fields": 5,
+    "audit_issues": 5,
+    "warnings": [],
+    "elapsed_s": 222.404,
+    "stage0_s": 6.419,
+    "llm_s": 212.26,
+    "llm_calls": 9,
+    "pass": 7,
+    "clusters": [
+     21,
+     22
+    ]
+   }
+  ],
+  "elapsed_s": 1928.951,
+  "stage0_s": 6.419,
+  "llm_s": 1855.535,
+  "llm_calls": 63
+ }
+]

@@ -1,0 +1,12 @@
+Looking at the sample pages from cluster 6, I can see these are table-of-contents or index pages listing form sections with numbered entries like "3.120. Triplicate Orthostatic BP and HR - 6h Postdose". These are navigation/reference pages, not data-entry forms themselves.
+
+Key observations:
+- All text is in blue (#2477cc) color at size 15.0
+- They are structured lists of form titles with section numbers
+- No actual data-entry fields are present - these pages just list what forms exist elsewhere in the document
+- The current program correctly filters out size >= 14 text (these are 15.0)
+- The current program correctly filters out colored text in certain contexts
+
+These are genuinely field-free pages - they serve as an index/table of contents for the actual forms that appear elsewhere in the document.
+
+CONFIRM_NO_FIELDS

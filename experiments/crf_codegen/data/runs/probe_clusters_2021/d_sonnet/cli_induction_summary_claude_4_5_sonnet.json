@@ -1,0 +1,158 @@
+[
+ {
+  "doc": "annotatedCRF_33120100246-_v1.0_-17Aug2021",
+  "status": "ok_audit_issues",
+  "multipass": 5,
+  "version_budget": 5,
+  "versions": 20,
+  "stop_reason": "p1:budget;p2:budget;p3:audit_error;p4:plateau;p5:plateau",
+  "fields": 2389,
+  "forms": 112,
+  "pages_with_fields": 542,
+  "audit_issues": 95,
+  "passes": [
+   {
+    "doc": "annotatedCRF_33120100246-_v1.0_-17Aug2021",
+    "versions": 5,
+    "stop_reason": "budget",
+    "status": "ok_audit_issues",
+    "best_version": 4,
+    "fields": 1528,
+    "forms": 89,
+    "pages_with_fields": 350,
+    "audit_issues": 2,
+    "warnings": [
+     "The program filters by 14 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+    ],
+    "elapsed_s": 302.409,
+    "stage0_s": 6.739,
+    "llm_s": 291.546,
+    "llm_calls": 9,
+    "pass": 1,
+    "clusters": [
+     0,
+     1,
+     2,
+     3,
+     16,
+     19,
+     23,
+     24,
+     25,
+     26,
+     27,
+     28,
+     29,
+     30,
+     31,
+     32,
+     33,
+     34
+    ]
+   },
+   {
+    "doc": "annotatedCRF_33120100246-_v1.0_-17Aug2021",
+    "versions": 5,
+    "stop_reason": "budget",
+    "status": "ok_audit_issues",
+    "best_version": 5,
+    "fields": 303,
+    "forms": 7,
+    "pages_with_fields": 96,
+    "audit_issues": 11,
+    "warnings": [],
+    "elapsed_s": 371.751,
+    "stage0_s": 6.739,
+    "llm_s": 358.884,
+    "llm_calls": 9,
+    "pass": 2,
+    "clusters": [
+     4,
+     5,
+     6
+    ]
+   },
+   {
+    "doc": "annotatedCRF_33120100246-_v1.0_-17Aug2021",
+    "versions": 2,
+    "stop_reason": "audit_error",
+    "status": "ok_audit_issues",
+    "best_version": 1,
+    "fields": 223,
+    "forms": 12,
+    "pages_with_fields": 41,
+    "audit_issues": 28,
+    "warnings": [
+     "The program filters by 23 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+    ],
+    "elapsed_s": 193.59,
+    "stage0_s": 6.739,
+    "llm_s": 185.085,
+    "llm_calls": 5,
+    "pass": 3,
+    "clusters": [
+     7,
+     8,
+     9,
+     10
+    ]
+   },
+   {
+    "doc": "annotatedCRF_33120100246-_v1.0_-17Aug2021",
+    "versions": 4,
+    "stop_reason": "plateau",
+    "status": "ok_audit_issues",
+    "best_version": 2,
+    "fields": 282,
+    "forms": 7,
+    "pages_with_fields": 41,
+    "audit_issues": 49,
+    "warnings": [
+     "The program filters by 15 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+    ],
+    "elapsed_s": 301.366,
+    "stage0_s": 6.739,
+    "llm_s": 292.201,
+    "llm_calls": 7,
+    "pass": 4,
+    "clusters": [
+     11,
+     12,
+     13,
+     14,
+     15,
+     17
+    ]
+   },
+   {
+    "doc": "annotatedCRF_33120100246-_v1.0_-17Aug2021",
+    "versions": 4,
+    "stop_reason": "plateau",
+    "status": "ok_audit_issues",
+    "best_version": 2,
+    "fields": 53,
+    "forms": 10,
+    "pages_with_fields": 14,
+    "audit_issues": 5,
+    "warnings": [
+     "The program filters by 13 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+    ],
+    "elapsed_s": 232.285,
+    "stage0_s": 6.739,
+    "llm_s": 222.709,
+    "llm_calls": 8,
+    "pass": 5,
+    "clusters": [
+     18,
+     20,
+     21,
+     22
+    ]
+   }
+  ],
+  "elapsed_s": 1403.456,
+  "stage0_s": 6.739,
+  "llm_s": 1350.425,
+  "llm_calls": 38
+ }
+]

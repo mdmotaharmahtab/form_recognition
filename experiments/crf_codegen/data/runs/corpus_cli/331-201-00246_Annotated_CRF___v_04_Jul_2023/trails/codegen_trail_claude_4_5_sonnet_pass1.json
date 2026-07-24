@@ -1,0 +1,396 @@
+{
+ "stop_reason": "budget",
+ "versions": 6,
+ "best_version": 5,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 5234,
+    "pages_total": 974,
+    "pages_with_fields": 862,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 0,
+    "labels_look_human_pct": 96,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 0,
+    "fields_per_form": 5234.0,
+    "forms_per_100_pages": 0.0,
+    "form_same_page_evidence_records": 0,
+    "form_same_page_persistence_pct": null,
+    "furniture_candidates": [],
+    "pages_covered_pct": 89
+   },
+   "problems": [
+    "Extreme content-fitted blocklist. The program filters by 34 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "warnings": [
+    "form_name empty for 100% of records - if the document does print form/section names, fix the form_name strategy (consider carrying the last seen title forward)."
+   ],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    1,
+    "not_audited",
+    1,
+    -862
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "revise_gates",
+   "metrics": {
+    "engine": "codegen",
+    "records": 0,
+    "pages_total": 974,
+    "pages_with_fields": 0,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 0,
+    "labels_look_human_pct": 0,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 0,
+    "fields_per_form": 0.0,
+    "forms_per_100_pages": 0.0,
+    "form_same_page_evidence_records": 0,
+    "form_same_page_persistence_pct": null,
+    "furniture_candidates": [],
+    "pages_covered_pct": 0
+   },
+   "problems": [
+    "The program extracted ZERO records from the document."
+   ],
+   "warnings": [
+    "form_name empty for 100% of records - if the document does print form/section names, fix the form_name strategy (consider carrying the last seen title forward).",
+    "Only 0% of field_name values look like human labels (they look like codes/dates/junk) - fix label selection."
+   ],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    1,
+    "not_audited",
+    2,
+    0
+   ],
+   "became_best": false
+  },
+  {
+   "version": 3,
+   "kind": "revise_gates",
+   "metrics": {
+    "engine": "codegen",
+    "records": 0,
+    "pages_total": 974,
+    "pages_with_fields": 0,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 0,
+    "labels_look_human_pct": 0,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 0,
+    "fields_per_form": 0.0,
+    "forms_per_100_pages": 0.0,
+    "form_same_page_evidence_records": 0,
+    "form_same_page_persistence_pct": null,
+    "furniture_candidates": [],
+    "pages_covered_pct": 0
+   },
+   "problems": [
+    "The program extracted ZERO records from the document."
+   ],
+   "warnings": [
+    "form_name empty for 100% of records - if the document does print form/section names, fix the form_name strategy (consider carrying the last seen title forward).",
+    "Only 0% of field_name values look like human labels (they look like codes/dates/junk) - fix label selection."
+   ],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    1,
+    "not_audited",
+    2,
+    0
+   ],
+   "became_best": false
+  },
+  {
+   "version": 4,
+   "kind": "confirm",
+   "metrics": {
+    "engine": "codegen",
+    "records": 6125,
+    "pages_total": 974,
+    "pages_with_fields": 879,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 96,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 113,
+    "fields_per_form": 54.2,
+    "forms_per_100_pages": 11.6,
+    "form_same_page_evidence_records": 6095,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 90
+   },
+   "problems": [],
+   "outcome": "extended_program"
+  },
+  {
+   "version": 4,
+   "kind": "revise_gates",
+   "metrics": {
+    "engine": "codegen",
+    "records": 5968,
+    "pages_total": 974,
+    "pages_with_fields": 879,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 96,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 113,
+    "fields_per_form": 52.8,
+    "forms_per_100_pages": 11.6,
+    "form_same_page_evidence_records": 5938,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 90
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    0,
+    "not_audited",
+    0,
+    -879
+   ],
+   "became_best": true
+  },
+  {
+   "version": 5,
+   "kind": "confirm_extension",
+   "metrics": {
+    "engine": "codegen",
+    "records": 6125,
+    "pages_total": 974,
+    "pages_with_fields": 879,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 96,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 113,
+    "fields_per_form": 54.2,
+    "forms_per_100_pages": 11.6,
+    "form_same_page_evidence_records": 6095,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 90
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 33,
+   "audit_pages": [
+    1,
+    30,
+    44,
+    65,
+    103,
+    161,
+    255,
+    275,
+    472,
+    676,
+    871
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 30,
+     "missed": [],
+     "false": [
+      "Page Label",
+      "Repeat Pages"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 44,
+     "missed": [],
+     "false": [
+      "Vasectomy"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 65,
+     "missed": [
+      "Status",
+      "Time of Collection",
+      "Barcode Number"
+     ],
+     "false": [
+      "Scan Barcode Number"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 103,
+     "missed": [
+      "Amphetamines",
+      "Barbiturates",
+      "Benzodiazepines",
+      "Cannabinoids",
+      "Cocaine"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 161,
+     "missed": [],
+     "false": [
+      "administration is deemed unlikely to impact the results of the trial."
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 255,
+     "missed": [],
+     "false": [
+      "Suicidal Ideation",
+      "Since Last Visit",
+      "Active suicidal thoughts of killing oneself and subject reports having some intent to act on such thoughts, as opposed",
+      "to \"I have thoughts but I definitely will not do anything about them\""
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 275,
+     "missed": [],
+     "false": [
+      "Dosing error Dispensing error Technical problems"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 472,
+     "missed": [],
+     "false": [
+      "Hematocrit",
+      "Hemoglobin",
+      "Mean corpuscular hemoglobin concentration",
+      "Mean corpuscular volume",
+      "Platelet count",
+      "Red blood cell count",
+      "White blood cell count (absolute and differential)",
+      "Glycated Hemoglobin"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 676,
+     "missed": [],
+     "false": [
+      "Suicidal Ideation",
+      "Since Last Visit",
+      "Subject endorses thoughts of suicide and has thought of at least one method during the assessment period. This is",
+      "different than a specific plan with a time, place or method details worked out (e.g. thought of method to kill self but",
+      "not a specific plan). Includes a person who would say: \"I thought about taking an overdose but i never made a specific plan as to when, where or how I would actually do it. . . and I would never go through with it\""
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 871,
+     "missed": [],
+     "false": [
+      "Occult blood pH",
+      "Color Glucose"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    33,
+    0,
+    -879
+   ],
+   "became_best": true
+  },
+  {
+   "version": 6,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 5591,
+    "pages_total": 974,
+    "pages_with_fields": 873,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 99,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 113,
+    "fields_per_form": 49.5,
+    "forms_per_100_pages": 11.6,
+    "form_same_page_evidence_records": 5563,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 90
+   },
+   "problems": [],
+   "warnings": [
+    "The program filters by 19 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_partial": true,
+   "audit_promoted": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    0,
+    "not_audited",
+    1,
+    -873
+   ],
+   "became_best": false
+  }
+ ]
+}

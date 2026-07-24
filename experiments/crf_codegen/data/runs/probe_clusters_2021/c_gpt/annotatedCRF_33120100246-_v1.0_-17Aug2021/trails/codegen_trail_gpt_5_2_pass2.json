@@ -1,0 +1,586 @@
+{
+ "stop_reason": "plateau",
+ "versions": 5,
+ "best_version": 1,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 287,
+    "pages_total": 104,
+    "pages_with_fields": 104,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 79,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 8,
+    "fields_per_form": 35.9,
+    "forms_per_100_pages": 7.7,
+    "form_same_page_evidence_records": 252,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 100
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 4,
+   "audit_pages": [
+    46,
+    50,
+    53,
+    84,
+    202,
+    413
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 46,
+     "missed": [
+      "Chemistry clinically significant abnormal assay # 1:"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 50,
+     "missed": [
+      "Chemistry clinically significant abnormal assay # 5"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 53,
+     "missed": [
+      "Hematology clinically significant abnormal assay # 5"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 84,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 202,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 413,
+     "missed": [
+      "Hematology clinically significant abnormal assay # 5"
+     ],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    4,
+    0,
+    -104
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 287,
+    "pages_total": 104,
+    "pages_with_fields": 104,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 66,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 8,
+    "fields_per_form": 35.9,
+    "forms_per_100_pages": 7.7,
+    "form_same_page_evidence_records": 252,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 100
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 21,
+   "audit_pages": [
+    46,
+    47,
+    50,
+    51,
+    53,
+    84,
+    202,
+    413
+   ],
+   "audit_partial": null,
+   "audit_promoted": [
+    47
+   ],
+   "audit_verdicts": [
+    {
+     "page": 46,
+     "missed": [
+      "Chemistry clinically significant abnormal assay # 1:",
+      "Chemistry abnormal assay # 1 Investigator comment"
+     ],
+     "false": [
+      "lipoprotein;and; high density lipoprotein), Creatine phosphokinase, Creatinine, Gamma glutamyl transferase, Glucose, Lactate dehydrogenase, Magnesium, Phosphorus, Potassium, Prolactin, Total bilirubin, Total protein, Triglycerides, Sodium, Urea nitrogen, Uric acid)] Chemistry abnormal assay # 1 Investigator comment"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 47,
+     "missed": [
+      "Chemistry clinically significant abnormal assay # 2",
+      "Chemistry abnormal assay # 2 Investigator comment"
+     ],
+     "false": [
+      "lipoprotein;and; high density lipoprotein), Creatine phosphokinase, Creatinine, Gamma glutamyl transferase, Glucose, Lactate dehydrogenase, Magnesium, Phosphorus, Potassium, Prolactin, Total bilirubin, Total protein, Triglycerides, Sodium, Urea nitrogen, Uric acid)] Chemistry abnormal assay # 2 Investigator comment"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 50,
+     "missed": [
+      "Chemistry clinically significant abnormal assay # 5",
+      "Chemistry abnormal assay # 5 Investigator comment"
+     ],
+     "false": [
+      "lipoprotein;and; high density lipoprotein), Creatine phosphokinase, Creatinine, Gamma glutamyl transferase, Glucose, Lactate dehydrogenase, Magnesium, Phosphorus, Potassium, Prolactin, Total bilirubin, Total protein, Triglycerides, Sodium, Urea nitrogen, Uric acid)] Chemistry abnormal assay # 5 Investigator comment"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 51,
+     "missed": [
+      "Hematology clinically significant abnormal assay # 1",
+      "Hematology abnormal assay # 1 Investigator comment",
+      "Hematology clinically significant abnormal assay # 2",
+      "Hematology abnormal assay # 2 Investigator comment"
+     ],
+     "false": [
+      "Red blood cell count, White blood cell count (absolute and differential), Glycated Hemoglobin)] Hematology abnormal assay # 1 Investigator comment",
+      "Red blood cell count, White blood cell count (absolute and differential), Glycated Hemoglobin)] Hematology abnormal assay # 2 Investigator comment"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 53,
+     "missed": [
+      "Hematology clinically significant abnormal assay # 5",
+      "Hematology abnormal assay # 5 Investigator comment"
+     ],
+     "false": [
+      "Red blood cell count, White blood cell count (absolute and differential), Glycated Hemoglobin)] Hematology abnormal assay # 5 Investigator comment"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 84,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 202,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 413,
+     "missed": [
+      "Hematology clinically significant abnormal assay # 5",
+      "Hematology abnormal assay # 5 Investigator comment"
+     ],
+     "false": [
+      "Red blood cell count, White blood cell count (absolute and differential), Glycated Hemoglobin)] Hematology abnormal assay # 5 Investigator comment"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    21,
+    0,
+    -104
+   ],
+   "became_best": false
+  },
+  {
+   "version": 3,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 311,
+    "pages_total": 104,
+    "pages_with_fields": 104,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 81,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 8,
+    "fields_per_form": 38.9,
+    "forms_per_100_pages": 7.7,
+    "form_same_page_evidence_records": 276,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 100
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 8,
+   "audit_pages": [
+    46,
+    47,
+    48,
+    50,
+    53,
+    84,
+    202,
+    413
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 46,
+     "missed": [
+      "Chemistry clinically significant abnormal assay # 1:"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 47,
+     "missed": [
+      "Chemistry clinically significant abnormal assay # 2"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 48,
+     "missed": [
+      "Chemistry clinically significant abnormal assay # 3"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 50,
+     "missed": [
+      "Chemistry clinically significant abnormal assay # 5"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 53,
+     "missed": [
+      "Hematology clinically significant abnormal assay # 5"
+     ],
+     "false": [
+      "Red blood cell count, White blood cell count (absolute and differential), Glycated Hemoglobin)]"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 84,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 202,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 413,
+     "missed": [
+      "Hematology clinically significant abnormal assay # 5"
+     ],
+     "false": [
+      "Red blood cell count, White blood cell count (absolute and differential), Glycated Hemoglobin)]"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    8,
+    0,
+    -104
+   ],
+   "became_best": false
+  },
+  {
+   "version": 4,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 287,
+    "pages_total": 104,
+    "pages_with_fields": 104,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 84,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 8,
+    "fields_per_form": 35.9,
+    "forms_per_100_pages": 7.7,
+    "form_same_page_evidence_records": 252,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 100
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 9,
+   "audit_pages": [
+    46,
+    47,
+    50,
+    53,
+    83,
+    84,
+    202,
+    413
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 46,
+     "missed": [
+      "Chemistry clinically significant abnormal assay # 1:"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 47,
+     "missed": [
+      "Chemistry clinically significant abnormal assay # 2"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 50,
+     "missed": [
+      "Chemistry clinically significant abnormal assay # 5"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 53,
+     "missed": [
+      "Hematology clinically significant abnormal assay # 5"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 83,
+     "missed": [
+      "\\4.\\ In good health as determined by: a) Medical history b) Physical examination c) Vital signs d) Electrocardiogram (ECG) e) Serum/urine chemistry, hematology, and serology tests"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 84,
+     "missed": [
+      "\\2.\\ Heterosexually active males or females of childbearing potential (FOCBP), or their partners, who do not agree to practice 2 different approved methods of birth control or remain fully abstinent (periodic abstinence or withdrawal are not acceptable methods of contraception) during the trial and for 30 days after the last dose of IMP. If employing birth control, 2 of the following methods must be used: vasectomy, bilateral tubal ligation, nonhormonal intrauterine device, condom with spermicide, sponge with spermicide, or occlusive cap (vaginal diaphragm or cervical/vault cap) with spermicide.",
+      "\\4.\\ Clinically significant abnormality in past medical history, or at the screening physical examination, that in the investigator\u2019s or sponsor\u2019s opinion may place the subject at risk or interfere with outcome variables including absorption, distribution, metabolism, and excretion of the IMP. This includes, but is not limited to, history of or concurrent cardiac, hepatic, renal, neurologic, endocrine, gastrointestinal, respiratory, hematologic, and immunologic disease.",
+      "\\5.\\ Subjects with abnormal clinical laboratory assessment results, vital signs results, or ECG findings, unless, based on the investigator\u2019s judgment, the findings are not medically significant and would not impact the safety of the subject or the interpretation of the trial results. The medical monitor should be contacted to discuss individual cases, as needed. In addition, subjects with any of the following clinical laboratory assessments or ECG results at screening must be excluded from the trial: - Platelets <= 75000/mm3 - Hemoglobin <= 9 g/dL - Neutrophils, absolute <= 1000/mm3 - Aspartate aminotransferase (AST) > 2 \u00d7 upper limit or normal (ULN) - Alanine aminotransferase (ALT) > 2 \u00d7 ULN - Creatinine phosphokinase > 3 \u00d7 ULN, unless discussed with and approved by the medical monitor - Creatinine >= 2 mg/dL - QT interval corrected for heart rate using Friedericia formula (QTcF)>= 450 msec in men and >= 470 msec in women, unless due to ventricular pacing Tests with exclusionary results should be repeated once to ensure reproducibility of the abnormality before excluding a subject based on the criteria noted above."
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 202,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 413,
+     "missed": [
+      "Hematology clinically significant abnormal assay # 5"
+     ],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    9,
+    0,
+    -104
+   ],
+   "became_best": false
+  },
+  {
+   "version": 5,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 296,
+    "pages_total": 104,
+    "pages_with_fields": 104,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 85,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 8,
+    "fields_per_form": 37.0,
+    "forms_per_100_pages": 7.7,
+    "form_same_page_evidence_records": 261,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 100
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 25,
+   "audit_pages": [
+    46,
+    47,
+    50,
+    52,
+    53,
+    84,
+    202,
+    413
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 46,
+     "missed": [
+      "Chemistry clinically significant abnormal assay # 1:"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 47,
+     "missed": [
+      "Chemistry clinically significant abnormal assay # 2"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 50,
+     "missed": [
+      "Chemistry clinically significant abnormal assay # 5"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 52,
+     "missed": [
+      "Hematology clinically significant abnormal assay # 3",
+      "Hematology clinically significant abnormal assay # 4"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 53,
+     "missed": [
+      "Hematology clinically significant abnormal assay # 5",
+      "Were there any clinically significant abnormal urinalysis results?"
+     ],
+     "false": [
+      "Please go to Add-On Forms and select Additional Local Lab Results Review form to add to this visit. Were there any clinically significant abnormal urinalysis results?"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 84,
+     "missed": [
+      "\\1.\\Females who are breast-feeding and/or who have a positive pregnancy test result prior to receiving IMP.",
+      "\\2.\\ Heterosexually active males or females of childbearing potential (FOCBP), or their partners, who do not agree to practice 2 different approved methods of birth control or remain fully abstinent (periodic abstinence or withdrawal are not acceptable methods of contraception) during the trial and for 30 days after the last dose of IMP. If employing birth control, 2 of the following methods must be used: vasectomy, bilateral tubal ligation, nonhormonal intrauterine device, condom with spermicide, sponge with spermicide, or occlusive cap (vaginal diaphragm or cervical/vault cap) with spermicide.",
+      "\\3.\\ Male subjects who do not agree to not donate sperm from trial screening through 30 days after the last dose of IMP.",
+      "\\4.\\ Clinically significant abnormality in past medical history, or at the screening physical examination, that in the investigator\u2019s or sponsor\u2019s opinion may place the subject at risk or interfere with outcome variables including absorption, distribution, metabolism, and excretion of the IMP. This includes, but is not limited to, history of or concurrent cardiac, hepatic, renal, neurologic, endocrine, gastrointestinal, respiratory, hematologic, and immunologic disease.",
+      "\\5.\\ Subjects with abnormal clinical laboratory assessment results, vital signs results, or ECG findings, unless, based on the investigator\u2019s judgment, the findings are not medically significant and would not impact the safety of the subject or the interpretation of the trial results. The medical monitor should be contacted to discuss individual cases, as needed. In addition, subjects with any of the following clinical laboratory assessments or ECG results at screening must be excluded from the trial: - Platelets <= 75000/mm3 - Hemoglobin <= 9 g/dL - Neutrophils, absolute <= 1000/mm3 - Aspartate aminotransferase (AST) > 2 \u00d7 upper limit or normal (ULN) - Alanine aminotransferase (ALT) > 2 \u00d7 ULN - Creatinine phosphokinase > 3 \u00d7 ULN, unless discussed with and approved by the medical monitor - Creatinine >= 2 mg/dL - QT interval corrected for heart rate using Friedericia formula (QTcF)>= 450 msec in men and >= 470 msec in women, unless due to ventricular pacing Tests with exclusionary results should be repeated once to ensure reproducibility of the abnormality before excluding a subject based on the criteria noted above.",
+      "\\6.\\ Subjects with diagnosed hypertension (including treated or untreated hypertension), or orthostatic hypotension which is defined as a decrease of = 20 mmHg decrease in SBP and a >= 25 bpm increase in HR from s"
+     ],
+     "false": [
+      "If any answers to the Exclusion Criteria are \u201cMet\u201d, EXCLUDE subject from the study. \\1. Females who are breast-feeding and/or who have a positive pregnancy test result prior to receiving IMP.",
+      "agree to practice 2 different approved methods of birth control or remain fully abstinent (periodic abstinence or withdrawal are not acceptable methods of contraception) during the trial and for 30 days after the last dose of IMP. If employing birth control, 2 of the following methods must be used: vasectomy, bilateral tubal ligation, nonhormonal intrauterine device, condom with spermicide, sponge with spermicide, or occlusive cap (vaginal diaphragm or cervical/vault cap) with spermicide.",
+      "cap (vaginal diaphragm or cervical/vault cap) with spermicide. \\3. Male subjects who do not agree to not donate sperm from trial screening through 30 days after the last dose of IMP.",
+      "\\4. Clinically significant abnormality in past medical history, or at the screening physical examination, that in the investigator\u2019s or sponsor\u2019s opinion may place the subject at risk or interfere with outcome variables including absorption, distribution, metabolism, and excretion of the IMP. This includes, but is not limited to, hematologic, and immunologic disease.",
+      "hematologic, and immunologic disease. \\5. Subjects with abnormal clinical laboratory assessment results, vital signs results, or ECG findings, unless, based on the investigator\u2019s judgment, the findings are not medically significant and would not impact the safety of the subject or the interpretation of the trial results. The medical monitor should be contacted to discuss individual cases, as needed. In addition, subjects with any of the following clinical laboratory assessments or ECG results at screening must be excluded from the trial - Platelets <= 75000/mm3 - Hemoglobin <= 9 g/dL - Neutrophils, absolute <= 1000/mm3 - Aspartate aminotransferase (AST) > 2 \u00d7 upper limit or normal (ULN) - Alanine aminotransferase (ALT) > 2 \u00d7 ULN - Creatinine phosphokinase > 3 \u00d7 ULN, unless discussed with and approved by the medical monitor - Creatinine >= 2 mg/dL",
+      "excluding a subject based on the criteria noted above. \\6. Subjects with diagnosed hypertension (including treated or untreated hypertension), or orthostatic hypotension which is defined as a decrease of = 20 mmHg decrease in SBP and a >= 25 bpm increase in HR from supine to standing, OR"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 202,
+     "missed": [
+      "Suicidal behavior was present during the assessment period?"
+     ],
+     "false": [
+      "Suicidal behavior Suicidal behavior was present during the assessment period?"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 413,
+     "missed": [
+      "Hematology clinically significant abnormal assay # 5",
+      "Were there any clinically significant abnormal urinalysis results?"
+     ],
+     "false": [
+      "Please go to Add-On Forms and select Additional Local Lab Results Review form to add to this visit. Were there any clinically significant abnormal urinalysis results?"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    25,
+    0,
+    -104
+   ],
+   "became_best": false
+  }
+ ]
+}

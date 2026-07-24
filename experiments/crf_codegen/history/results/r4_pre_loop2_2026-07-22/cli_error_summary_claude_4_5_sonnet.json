@@ -1,0 +1,20 @@
+{
+ "generated_at": "2026-07-23T02:32:17Z",
+ "documents": 1,
+ "events": 19,
+ "by_severity": {
+  "quality": 19
+ },
+ "by_stage": {
+  "audit": 18,
+  "loop": 1
+ },
+ "by_code": {
+  "audit_false_positive": 10,
+  "audit_missed": 8,
+  "stopped_with_open_issues": 1
+ },
+ "by_doc": {
+  "QSC302573_Final_AnnotatedCRFs_16Oct2024-326-201-00007_1_": 19
+ }
+}

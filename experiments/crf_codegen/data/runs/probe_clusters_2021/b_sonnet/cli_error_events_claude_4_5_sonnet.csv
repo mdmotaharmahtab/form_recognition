@@ -1,0 +1,106 @@
+doc,stage,version,severity,code,detail
+annotatedCRF_33120100246-_v1.0_-17Aug2021,gates,1,blocking,gate_other,"Extreme content-fitted blocklist. The program filters by 76 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p27: Has any applicable reproductive status and/or medications been transcribed to the Medical History Page and/or Con Med Page?
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_false_positive,p27: after the last dose of IMP?- mark the selected methods below
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_false_positive,p70: Baseline/Screening Version
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_false_positive,"p70: Mann, J."
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_false_positive,p70: Disclaimer:
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_false_positive,p70: the judgment of the individual administering the scale.
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_false_positive,p70: 10032; inquiries and training requirements contact posnerk@nyspi.columbia.edu
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_false_positive,"p70: © 2008 The Research Foundation for Mental Hygiene, Inc."
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_wrong_form,p176: Time Placed in Position
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_wrong_form,p176: Time of Vitals Measurement #3
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_false_positive,p313: Reason
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_false_positive,p313: As per protocol
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_false_positive,p313: Adverse Event
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_false_positive,p313: Dosing error
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_false_positive,p313: Dispensing error
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_false_positive,p313: Technical problems
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_false_positive,p313: Subject/guardian decision
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_false_positive,p313: Physician decision
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_false_positive,p313: Physician decision)]
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_false_positive,p452: 1h postdose
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_false_positive,p452: 1.5h postdose
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_false_positive,p452: 2h postdose
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_false_positive,p452: 2.5h postdose
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_false_positive,p452: 3h postdose
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_false_positive,p452: 4h postdose
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_false_positive,p452: 6h postdose
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_false_positive,p452: 8h postdose
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_false_positive,p452: 8h postdose)
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_false_positive,p452: position for 3 minutes.
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p27: Sexually Active?
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p27: If sexually active does the subject commit to utilizing 2 different approved methods of birth control during the trial and for 30 days after the last dose of IMP?- mark the selected methods below
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p27: Vasectomy
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p27: Tubal ligation
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p27: Nonhormonal intrauterine device
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p27: Condom with spermicide
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p27: Sponge with spermicide
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p27: Occlusive cap (vaginal diaphragm or cervical/vault cap) with spermicide
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p27: Has any applicable reproductive status and/or medications been transcribed to the Medical History Page and/or Con Med Page?
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,"p27: If no, reason not transcribed to medical history"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p46: Chemistry clinically significant abnormal assay # 1:
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p46: Chemistry abnormal assay # 1 Investigator comment
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_false_positive,p70: Baseline/Screening Version
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_false_positive,"p70: Posner, K.; Brent, D.; Lucas, C.; Gould, M.; Stanley, B.; Brown, G.; Fisher, P.; Zelazny, J.; Burke, A.; Oquendo, M.;"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_false_positive,"p70: Mann, J."
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_false_positive,p70: Disclaimer:
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_false_positive,p70: This scale is intended to be used by individuals who have received training in its administration. The questions contained in the Columbia-
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_false_positive,"p70: Suicide Severity Rating Scale are suggested probes. Ultimately, the determination of the presence of suicidal ideation or behavior depends on"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_false_positive,p70: the judgment of the individual administering the scale.
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_false_positive,"p70: Definitions of behavioral suicidal events in this scale are based on those used in **The Columbia Suicide History Form**, developed by John"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_false_positive,"p70: Mann, MD and Maria Oquendo, MD, Conte Center for the Neuroscience of Mental Disorders (CCNMD), New York State Psychiatric Institute,"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_false_positive,"p70: 1051 Riverside Drive, New York, NY, 10032. (Oquendo M. A., Halberstam B. & Mann J. J., Risk factors for suicidal behavior: utility and"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_false_positive,"p70: limitations of research instruments. In M.B. First [Ed.] Standardized Evaluation in Clinical Practice, pp. 103 -130, 2003.)"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_false_positive,p70: 10032; inquiries and training requirements contact posnerk@nyspi.columbia.edu
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p141: Suicidal behavior was present during the assessment period?
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p141: Suicide:
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p167: Suicidal behavior was present during the assessment period?
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p167: Suicide:
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p313: Reason
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p313: Dosing Comments (optional)
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p313: Was Brexpiprazole administered?
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,"p313: If no, reason"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p313: Treatment
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p313: Dose Unit
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p313: Dose Form
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p313: Date of Administration
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_false_positive,p452: 8h postdose)]
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_false_positive,p452: Collect vital signs after subject has been resting in a supine position for at least 5 minutes and again after the subject has been in a standing
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_false_positive,p452: position for 3 minutes.
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_missed,p27: Sexually Active?
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_missed,p27: If sexually active does the subject commit to utilizing 2 different approved methods of birth control during the trial and for 30 days after the last dose of IMP?- mark the selected methods below
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_missed,p27: Vasectomy
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_missed,p27: Tubal ligation
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_missed,p27: Nonhormonal intrauterine device
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_missed,p27: Condom with spermicide
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_missed,p27: Sponge with spermicide
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_missed,p27: Occlusive cap (vaginal diaphragm or cervical/vault cap) with spermicide
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_missed,p27: Has any applicable reproductive status and/or medications been transcribed to the Medical History Page and/or Con Med Page?
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_missed,"p27: If no, reason not transcribed to medical history"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_missed,p46: Chemistry clinically significant abnormal assay # 1:
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_missed,p46: Chemistry abnormal assay # 1 Investigator comment
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_false_positive,p70: Baseline/Screening Version
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_false_positive,"p70: Mann, J."
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_false_positive,p70: the judgment of the individual administering the scale.
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_false_positive,"p70: Mann, MD and Maria Oquendo, MD, Conte Center for the Neuroscience of Mental Disorders (CCNMD), New York State Psychiatric Institute,"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_false_positive,"p70: 1051 Riverside Drive, New York, NY, 10032. (Oquendo M. A., Halberstam B. & Mann J. J., Risk factors for suicidal behavior: utility and"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_false_positive,"p70: limitations of research instruments. In M.B. First [Ed.] Standardized Evaluation in Clinical Practice, pp. 103 -130, 2003.)"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_false_positive,p70: 10032; inquiries and training requirements contact posnerk@nyspi.columbia.edu
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_missed,p141: Suicidal behavior was present during the assessment period?
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_wrong_form,p176: Time Placed in Position
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_wrong_form,p176: Time of Vitals Measurement #3
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_missed,p202: Suicidal behavior was present during the assessment period?
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_missed,p313: Reason
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_missed,p313: Dosing Comments (optional)
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_missed,p313: Was Brexpiprazole administered?
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_missed,"p313: If no, reason"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_missed,p313: Treatment
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_missed,p313: Dose Unit
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_missed,p313: Dose Form
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_missed,p313: Date of Administration
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_false_positive,p452: N/A
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_false_positive,p452: Predose
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_false_positive,p452: 8h postdose)]
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_false_positive,p452: position for 3 minutes.
+annotatedCRF_33120100246-_v1.0_-17Aug2021,loop,,quality,stopped_with_open_issues,"stop=budget, open audit issues=29"

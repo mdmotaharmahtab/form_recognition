@@ -1,0 +1,22 @@
+=== MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025
+    v1 [generate]: calling claude-4.5-sonnet ...
+    coverage confirmation (uncovered: [(0, 387), (4, 27), (6, 18), (7, 9), (8, 8)]) ...
+    extended program adopted as v2: {"engine": "codegen", "records": 778, "pages_total": 913, "pages_with_fields": 843, "definition_pages_seen": 0, "forms_nonempty_pct": 100, "labels_look_human_pct": 100, "oids_present_pct": 0, "oids_look_like_codes_pct": 0, "distinct_forms": 80, "fields_per_form": 9.7, "forms_per_100_pages": 8.8, "pages_covered_pct": 92}
+    audit: 8 issue(s) on pages [2, 4, 6, 63, 139, 169]
+    v3 [revise_audit]: calling claude-4.5-sonnet ...
+    audit: 11 issue(s) on pages [2, 4, 6, 63, 139, 169]
+    -> {'doc': 'MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025', 'versions': 3, 'stop_reason': 'plateau', 'status': 'ok_audit_issues', 'best_version': 2, 'fields': 778, 'forms': 80, 'pages_with_fields': 843, 'audit_issues': 8, 'warnings': []}
+[
+ {
+  "doc": "MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025",
+  "versions": 3,
+  "stop_reason": "plateau",
+  "status": "ok_audit_issues",
+  "best_version": 2,
+  "fields": 778,
+  "forms": 80,
+  "pages_with_fields": 843,
+  "audit_issues": 8,
+  "warnings": []
+ }
+]

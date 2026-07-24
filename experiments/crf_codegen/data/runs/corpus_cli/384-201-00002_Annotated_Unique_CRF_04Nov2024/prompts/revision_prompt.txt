@@ -1,0 +1,89 @@
+Your previous recipe was executed on the SAME representative pages. It did not pass the quality gates.
+
+Previous recipe:
+{
+ "format_id": "unique_crf_numbered_join",
+ "reasoning": "Every form is printed as two page types: content pages show the human question text starting at x=90 with a small integer in a far-right column (x=524.5-527), while separate definition pages (with the repeated header row 'Field Name Data Type / Units / Values / Pre-Filled Values / Include Field OID') repeat the same integers at x=93-95.5 and print machine codes such as LBCAT, MIPERF and PANSS122_RSORRES in the Field OID column at x=410. Joining labels to codes via these shared integers is exactly the numbered_join engine. The form name is available on every page from the bold 'Form: ...' header line, so form_name uses the regex strategy.",
+ "detect": {
+  "all": [
+   "^01\\.025 GMK: Unique CRF$",
+   "^Form:\\s*.+$",
+   "^Generated On:"
+  ]
+ },
+ "skip_page_if": [
+  "^Subject Case Report Forms$",
+  "Signature Prompt:"
+ ],
+ "form_name": {
+  "strategy": "regex",
+  "regex": "^Form:\\s*(.+)$"
+ },
+ "fields": {
+  "engine": "numbered_join",
+  "definition_page_all": [
+   "^Field Name Data Type$",
+   "^Field OID$",
+   "^Pre-Filled$"
+  ],
+  "oid_header": "Field OID",
+  "row_number_x_max": 105,
+  "data_number_regex": "^(\\d{1,3})$",
+  "data_number_x_min": 515,
+  "data_label_x_max": 200,
+  "label_noise": [
+   "^01\\.025 GMK",
+   "^Form:",
+   "^Generated On:",
+   "^\\d+ of \\d+$",
+   "^Fixed Unit:",
+   "^(Yes|No)$"
+  ]
+ }
+}
+
+Execution metrics:
+{
+ "engine": "numbered_join",
+ "records": 795,
+ "pages_total": 404,
+ "pages_with_fields": 149,
+ "definition_pages_seen": 249,
+ "forms_nonempty_pct": 100,
+ "labels_look_human_pct": 98,
+ "oids_present_pct": 66,
+ "oids_look_like_codes_pct": 77,
+ "distinct_forms": 76
+}
+
+Sample of extracted records (form_name | field_name | field_oid):
+Visit Date | Was visit performed? | VISPERF
+Visit Date | If No, please provide reason | VISREASND
+Visit Date | Visit Date | VISDAT
+Visit Date | Folder OID (auto-populated) | FOLDER_OID2 of 403
+Unscheduled Visit | Vital Signs | UNSVS
+Unscheduled Visit | Vital Signs-Standing | UNSVS_STAND
+Unscheduled Visit | Body Measurements | UNSVS_BM
+Unscheduled Visit | Physical Exam | UNSPE
+Unscheduled Visit | Neurological Examination | UNSNV
+Unscheduled Visit | 12-Lead ECG Triplicate | UNSEG
+Unscheduled Visit | Central Laboratory Sample Collection Summary | UNSLB_CNTRL
+Unscheduled Visit | Drug Screen Test | UNSLB_SUUNSLB_PREGUNSLB_FSHUNSPCUNSMI_FB5 of 403
+Unscheduled Visit | Pregnancy Test | None
+Unscheduled Visit | Central Laboratory - FSH | None
+Unscheduled Visit | PK Plasma Sample | None
+Unscheduled Visit | Fluid Biomarkers | None
+Unscheduled Visit | Barnes Akathisia Rating Scale | None
+Unscheduled Visit | Abnormal Involuntary Movement Scale (AIMS) | None
+Unscheduled Visit | Simpson-Angus Scale (SAS) | None
+Unscheduled Visit | Positive and Negative Syndrome Scale (PANSS) | None
+Unscheduled Visit | Clinical Global Impression - Severity of Illness | None
+Unscheduled Visit | Drug Effects Questionnaire | None
+Unscheduled Visit | (CADSS) | None
+Unscheduled Visit | Calgary Depression Scale for Schizophrenia (CDSS) | None
+Unscheduled Visit | Last Visit | None
+
+Problems to fix (in priority order):
+- Extracted field_oid values often don't look like machine codes (77% ok) - tighten oid_regex.
+
+Emit a corrected recipe now. Same output format: JSON only, no prose. You may switch engine entirely.

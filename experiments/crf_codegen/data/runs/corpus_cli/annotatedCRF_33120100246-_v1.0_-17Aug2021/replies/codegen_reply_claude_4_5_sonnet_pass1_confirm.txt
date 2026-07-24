@@ -1,0 +1,9 @@
+Looking at the sample pages:
+
+- **Pages 4, 6 (cluster 10)**: These are pure table-of-contents/index pages - all lines are blue hyperlinks with section numbers (e.g., "3.137. Urine Drug Screen"). No data-entry fields, just navigation links.
+
+- **Pages 349, 462 (cluster 9)**: These contain only red technical metadata annotations (`[TYPE: enumeration...]`). No visible form content or fields.
+
+All shown layouts are genuinely field-free navigation/metadata pages. Your program correctly produces zero records for them.
+
+CONFIRM_NO_FIELDS

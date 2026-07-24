@@ -1,0 +1,3188 @@
+{
+ "multipass": 7,
+ "stop_reason": "p1:budget;p2:plateau;p3:budget;p4:audit_error;p5:plateau;p6:budget;p7:plateau",
+ "versions": 30,
+ "best_version": null,
+ "passes": [
+  {
+   "pass": 1,
+   "clusters": [
+    0,
+    1,
+    2,
+    3,
+    16,
+    19,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34
+   ],
+   "status": "ok_audit_issues",
+   "stop_reason": "budget",
+   "versions": 5,
+   "best_version": 4,
+   "fields": 1622
+  },
+  {
+   "pass": 2,
+   "clusters": [
+    4,
+    5,
+    6
+   ],
+   "status": "ok_audit_issues",
+   "stop_reason": "plateau",
+   "versions": 5,
+   "best_version": 1,
+   "fields": 287
+  },
+  {
+   "pass": 3,
+   "clusters": [
+    7,
+    8,
+    9
+   ],
+   "status": "ok_audit_issues",
+   "stop_reason": "budget",
+   "versions": 5,
+   "best_version": 3,
+   "fields": 199
+  },
+  {
+   "pass": 4,
+   "clusters": [
+    10,
+    11,
+    12
+   ],
+   "status": "ok_unaudited",
+   "stop_reason": "audit_error",
+   "versions": 2,
+   "best_version": 1,
+   "fields": 60
+  },
+  {
+   "pass": 5,
+   "clusters": [
+    13,
+    14,
+    15
+   ],
+   "status": "ok_audit_issues",
+   "stop_reason": "plateau",
+   "versions": 4,
+   "best_version": 4,
+   "fields": 36
+  },
+  {
+   "pass": 6,
+   "clusters": [
+    17,
+    18,
+    20
+   ],
+   "status": "ok_audit_issues",
+   "stop_reason": "budget",
+   "versions": 5,
+   "best_version": 4,
+   "fields": 14
+  },
+  {
+   "pass": 7,
+   "clusters": [
+    21,
+    22
+   ],
+   "status": "ok_audit_issues",
+   "stop_reason": "plateau",
+   "versions": 4,
+   "best_version": 2,
+   "fields": 16
+  }
+ ],
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "confirm",
+   "metrics": {
+    "engine": "codegen",
+    "records": 1584,
+    "pages_total": 369,
+    "pages_with_fields": 348,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 88,
+    "fields_per_form": 18.0,
+    "forms_per_100_pages": 23.8,
+    "form_same_page_evidence_records": 1573,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 94
+   },
+   "problems": [],
+   "outcome": "extended_program",
+   "pass": 1
+  },
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 1584,
+    "pages_total": 369,
+    "pages_with_fields": 348,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 88,
+    "fields_per_form": 18.0,
+    "forms_per_100_pages": 23.8,
+    "form_same_page_evidence_records": 1573,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 94
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    0,
+    "not_audited",
+    0,
+    -348
+   ],
+   "became_best": true,
+   "pass": 1
+  },
+  {
+   "version": 2,
+   "kind": "confirm_extension",
+   "metrics": {
+    "engine": "codegen",
+    "records": 1584,
+    "pages_total": 369,
+    "pages_with_fields": 348,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 88,
+    "fields_per_form": 18.0,
+    "forms_per_100_pages": 23.8,
+    "form_same_page_evidence_records": 1573,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 94
+   },
+   "problems": [],
+   "warnings": [
+    "The program filters by 12 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": 14,
+   "audit_pages": [
+    1,
+    19,
+    58,
+    82,
+    217,
+    334,
+    386
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 19,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 58,
+     "missed": [
+      "Urinalysis clinically significant abnormal assay # 5"
+     ],
+     "false": [
+      "Microscopic analysis if indicated"
+     ],
+     "wrong_form": [
+      "Urinalysis abnormal assay # 5 Investigator comment",
+      "Are there additional urinalysis clinically significant abnormal results to be entered?",
+      "Investigator`s signature for Local Laboratory Results Review"
+     ]
+    },
+    {
+     "page": 82,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 217,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 334,
+     "missed": [
+      "Sample Status",
+      "Time of Collection",
+      "Backup Barcode Number"
+     ],
+     "false": [
+      "Row 1 - Collection",
+      "Row 1 - Number",
+      "Row 1 - Collected",
+      "Prazosin PK",
+      "Row 2 - Prazosin PK",
+      "Row 2 - Collected"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 386,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    14,
+    1,
+    -348
+   ],
+   "became_best": true,
+   "pass": 1
+  },
+  {
+   "version": 3,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 1077,
+    "pages_total": 369,
+    "pages_with_fields": 334,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 85,
+    "fields_per_form": 12.7,
+    "forms_per_100_pages": 23.0,
+    "form_same_page_evidence_records": 1033,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 91
+   },
+   "problems": [],
+   "warnings": [
+    "The program filters by 24 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": 19,
+   "audit_pages": [
+    1,
+    19,
+    28,
+    58,
+    82,
+    217,
+    334,
+    386,
+    511
+   ],
+   "audit_partial": null,
+   "audit_promoted": [
+    511
+   ],
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 19,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 28,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 58,
+     "missed": [
+      "Urinalysis clinically significant abnormal assay # 5",
+      "Urinalysis abnormal assay # 5 Investigator comment",
+      "Investigator`s signature for Local Laboratory Results Review"
+     ],
+     "false": [
+      "Microscopic analysis if indicated"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 82,
+     "missed": [
+      "Has the subject had any changes to their health since previous visit?",
+      "Are there any changes in concomitant medications including dose changes to be reported?"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 217,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 334,
+     "missed": [
+      "Was PK Collection Performed?",
+      "If not performed, Reason:",
+      "Date of Collection",
+      "Timepoint",
+      "Sample Status",
+      "Time of Collection",
+      "Barcode Number",
+      "Backup Barcode Number"
+     ],
+     "false": [
+      "Row 1 - Collection",
+      "Row 1 - Number",
+      "Row 1 - Barcode Number",
+      "Row 2 - Collected"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 386,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 511,
+     "missed": [
+      "Route of Administration"
+     ],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    19,
+    1,
+    -334
+   ],
+   "became_best": false,
+   "pass": 1
+  },
+  {
+   "version": 4,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 1622,
+    "pages_total": 369,
+    "pages_with_fields": 348,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 88,
+    "fields_per_form": 18.4,
+    "forms_per_100_pages": 23.8,
+    "form_same_page_evidence_records": 1610,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 94
+   },
+   "problems": [],
+   "warnings": [
+    "The program filters by 24 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": 12,
+   "audit_pages": [
+    1,
+    19,
+    58,
+    82,
+    217,
+    233,
+    334,
+    386,
+    511
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 19,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 58,
+     "missed": [
+      "Urinalysis clinically significant abnormal assay # 5"
+     ],
+     "false": [
+      "Microscopic analysis if indicated"
+     ],
+     "wrong_form": [
+      "Urinalysis abnormal assay # 5 Investigator comment",
+      "Are there additional urinalysis clinically significant abnormal results to be entered?",
+      "Investigator`s signature for Local Laboratory Results Review"
+     ]
+    },
+    {
+     "page": 82,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 217,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 233,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 334,
+     "missed": [],
+     "false": [
+      "Row 1 - Timepoint",
+      "Row 1 - Sample",
+      "Row 2 - Timepoint",
+      "Row 2 - Sample"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 386,
+     "missed": [],
+     "false": [],
+     "wrong_form": [
+      "Time Placed in Position",
+      "Time of Vitals Measurement #3"
+     ]
+    },
+    {
+     "page": 511,
+     "missed": [
+      "Route of Administration"
+     ],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    12,
+    1,
+    -348
+   ],
+   "became_best": true,
+   "pass": 1
+  },
+  {
+   "version": 5,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 1521,
+    "pages_total": 369,
+    "pages_with_fields": 348,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 97,
+    "fields_per_form": 15.7,
+    "forms_per_100_pages": 26.3,
+    "form_same_page_evidence_records": 1510,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 94
+   },
+   "problems": [],
+   "warnings": [
+    "The program filters by 12 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": 23,
+   "audit_pages": [
+    1,
+    2,
+    19,
+    58,
+    82,
+    217,
+    334,
+    386,
+    511
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 19,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 58,
+     "missed": [
+      "Urinalysis clinically significant abnormal assay # 5"
+     ],
+     "false": [
+      "Microscopic analysis if indicated"
+     ],
+     "wrong_form": [
+      "Urinalysis abnormal assay # 5 Investigator comment",
+      "Are there additional urinalysis clinically significant abnormal results to be entered?",
+      "Investigator`s signature for Local Laboratory Results Review"
+     ]
+    },
+    {
+     "page": 82,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 217,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 334,
+     "missed": [
+      "Was PK Collection Performed?",
+      "If not performed, Reason:",
+      "Date of Collection",
+      "Sample Status",
+      "Time of Collection",
+      "Barcode Number",
+      "Backup Barcode Number"
+     ],
+     "false": [
+      "Row 1 - Collection",
+      "Row 1 - Number",
+      "Row 1 - Barcode Number",
+      "Row 1 - Prazosin PK",
+      "Row 2 - Collection",
+      "Row 2 - Number",
+      "Row 2 - Barcode Number",
+      "Row 2 - Prazosin PK"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 386,
+     "missed": [],
+     "false": [],
+     "wrong_form": [
+      "Time Placed in Position",
+      "Time of Vitals Measurement #3"
+     ]
+    },
+    {
+     "page": 511,
+     "missed": [
+      "Route of Administration"
+     ],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    23,
+    1,
+    -348
+   ],
+   "became_best": false,
+   "pass": 1
+  },
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 287,
+    "pages_total": 104,
+    "pages_with_fields": 104,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 79,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 8,
+    "fields_per_form": 35.9,
+    "forms_per_100_pages": 7.7,
+    "form_same_page_evidence_records": 252,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 100
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 4,
+   "audit_pages": [
+    46,
+    50,
+    53,
+    84,
+    202,
+    413
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 46,
+     "missed": [
+      "Chemistry clinically significant abnormal assay # 1:"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 50,
+     "missed": [
+      "Chemistry clinically significant abnormal assay # 5"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 53,
+     "missed": [
+      "Hematology clinically significant abnormal assay # 5"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 84,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 202,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 413,
+     "missed": [
+      "Hematology clinically significant abnormal assay # 5"
+     ],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    4,
+    0,
+    -104
+   ],
+   "became_best": true,
+   "pass": 2
+  },
+  {
+   "version": 2,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 287,
+    "pages_total": 104,
+    "pages_with_fields": 104,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 66,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 8,
+    "fields_per_form": 35.9,
+    "forms_per_100_pages": 7.7,
+    "form_same_page_evidence_records": 252,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 100
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 21,
+   "audit_pages": [
+    46,
+    47,
+    50,
+    51,
+    53,
+    84,
+    202,
+    413
+   ],
+   "audit_partial": null,
+   "audit_promoted": [
+    47
+   ],
+   "audit_verdicts": [
+    {
+     "page": 46,
+     "missed": [
+      "Chemistry clinically significant abnormal assay # 1:",
+      "Chemistry abnormal assay # 1 Investigator comment"
+     ],
+     "false": [
+      "lipoprotein;and; high density lipoprotein), Creatine phosphokinase, Creatinine, Gamma glutamyl transferase, Glucose, Lactate dehydrogenase, Magnesium, Phosphorus, Potassium, Prolactin, Total bilirubin, Total protein, Triglycerides, Sodium, Urea nitrogen, Uric acid)] Chemistry abnormal assay # 1 Investigator comment"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 47,
+     "missed": [
+      "Chemistry clinically significant abnormal assay # 2",
+      "Chemistry abnormal assay # 2 Investigator comment"
+     ],
+     "false": [
+      "lipoprotein;and; high density lipoprotein), Creatine phosphokinase, Creatinine, Gamma glutamyl transferase, Glucose, Lactate dehydrogenase, Magnesium, Phosphorus, Potassium, Prolactin, Total bilirubin, Total protein, Triglycerides, Sodium, Urea nitrogen, Uric acid)] Chemistry abnormal assay # 2 Investigator comment"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 50,
+     "missed": [
+      "Chemistry clinically significant abnormal assay # 5",
+      "Chemistry abnormal assay # 5 Investigator comment"
+     ],
+     "false": [
+      "lipoprotein;and; high density lipoprotein), Creatine phosphokinase, Creatinine, Gamma glutamyl transferase, Glucose, Lactate dehydrogenase, Magnesium, Phosphorus, Potassium, Prolactin, Total bilirubin, Total protein, Triglycerides, Sodium, Urea nitrogen, Uric acid)] Chemistry abnormal assay # 5 Investigator comment"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 51,
+     "missed": [
+      "Hematology clinically significant abnormal assay # 1",
+      "Hematology abnormal assay # 1 Investigator comment",
+      "Hematology clinically significant abnormal assay # 2",
+      "Hematology abnormal assay # 2 Investigator comment"
+     ],
+     "false": [
+      "Red blood cell count, White blood cell count (absolute and differential), Glycated Hemoglobin)] Hematology abnormal assay # 1 Investigator comment",
+      "Red blood cell count, White blood cell count (absolute and differential), Glycated Hemoglobin)] Hematology abnormal assay # 2 Investigator comment"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 53,
+     "missed": [
+      "Hematology clinically significant abnormal assay # 5",
+      "Hematology abnormal assay # 5 Investigator comment"
+     ],
+     "false": [
+      "Red blood cell count, White blood cell count (absolute and differential), Glycated Hemoglobin)] Hematology abnormal assay # 5 Investigator comment"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 84,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 202,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 413,
+     "missed": [
+      "Hematology clinically significant abnormal assay # 5",
+      "Hematology abnormal assay # 5 Investigator comment"
+     ],
+     "false": [
+      "Red blood cell count, White blood cell count (absolute and differential), Glycated Hemoglobin)] Hematology abnormal assay # 5 Investigator comment"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    21,
+    0,
+    -104
+   ],
+   "became_best": false,
+   "pass": 2
+  },
+  {
+   "version": 3,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 311,
+    "pages_total": 104,
+    "pages_with_fields": 104,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 81,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 8,
+    "fields_per_form": 38.9,
+    "forms_per_100_pages": 7.7,
+    "form_same_page_evidence_records": 276,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 100
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 8,
+   "audit_pages": [
+    46,
+    47,
+    48,
+    50,
+    53,
+    84,
+    202,
+    413
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 46,
+     "missed": [
+      "Chemistry clinically significant abnormal assay # 1:"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 47,
+     "missed": [
+      "Chemistry clinically significant abnormal assay # 2"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 48,
+     "missed": [
+      "Chemistry clinically significant abnormal assay # 3"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 50,
+     "missed": [
+      "Chemistry clinically significant abnormal assay # 5"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 53,
+     "missed": [
+      "Hematology clinically significant abnormal assay # 5"
+     ],
+     "false": [
+      "Red blood cell count, White blood cell count (absolute and differential), Glycated Hemoglobin)]"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 84,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 202,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 413,
+     "missed": [
+      "Hematology clinically significant abnormal assay # 5"
+     ],
+     "false": [
+      "Red blood cell count, White blood cell count (absolute and differential), Glycated Hemoglobin)]"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    8,
+    0,
+    -104
+   ],
+   "became_best": false,
+   "pass": 2
+  },
+  {
+   "version": 4,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 287,
+    "pages_total": 104,
+    "pages_with_fields": 104,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 84,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 8,
+    "fields_per_form": 35.9,
+    "forms_per_100_pages": 7.7,
+    "form_same_page_evidence_records": 252,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 100
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 9,
+   "audit_pages": [
+    46,
+    47,
+    50,
+    53,
+    83,
+    84,
+    202,
+    413
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 46,
+     "missed": [
+      "Chemistry clinically significant abnormal assay # 1:"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 47,
+     "missed": [
+      "Chemistry clinically significant abnormal assay # 2"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 50,
+     "missed": [
+      "Chemistry clinically significant abnormal assay # 5"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 53,
+     "missed": [
+      "Hematology clinically significant abnormal assay # 5"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 83,
+     "missed": [
+      "\\4.\\ In good health as determined by: a) Medical history b) Physical examination c) Vital signs d) Electrocardiogram (ECG) e) Serum/urine chemistry, hematology, and serology tests"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 84,
+     "missed": [
+      "\\2.\\ Heterosexually active males or females of childbearing potential (FOCBP), or their partners, who do not agree to practice 2 different approved methods of birth control or remain fully abstinent (periodic abstinence or withdrawal are not acceptable methods of contraception) during the trial and for 30 days after the last dose of IMP. If employing birth control, 2 of the following methods must be used: vasectomy, bilateral tubal ligation, nonhormonal intrauterine device, condom with spermicide, sponge with spermicide, or occlusive cap (vaginal diaphragm or cervical/vault cap) with spermicide.",
+      "\\4.\\ Clinically significant abnormality in past medical history, or at the screening physical examination, that in the investigator\u2019s or sponsor\u2019s opinion may place the subject at risk or interfere with outcome variables including absorption, distribution, metabolism, and excretion of the IMP. This includes, but is not limited to, history of or concurrent cardiac, hepatic, renal, neurologic, endocrine, gastrointestinal, respiratory, hematologic, and immunologic disease.",
+      "\\5.\\ Subjects with abnormal clinical laboratory assessment results, vital signs results, or ECG findings, unless, based on the investigator\u2019s judgment, the findings are not medically significant and would not impact the safety of the subject or the interpretation of the trial results. The medical monitor should be contacted to discuss individual cases, as needed. In addition, subjects with any of the following clinical laboratory assessments or ECG results at screening must be excluded from the trial: - Platelets <= 75000/mm3 - Hemoglobin <= 9 g/dL - Neutrophils, absolute <= 1000/mm3 - Aspartate aminotransferase (AST) > 2 \u00d7 upper limit or normal (ULN) - Alanine aminotransferase (ALT) > 2 \u00d7 ULN - Creatinine phosphokinase > 3 \u00d7 ULN, unless discussed with and approved by the medical monitor - Creatinine >= 2 mg/dL - QT interval corrected for heart rate using Friedericia formula (QTcF)>= 450 msec in men and >= 470 msec in women, unless due to ventricular pacing Tests with exclusionary results should be repeated once to ensure reproducibility of the abnormality before excluding a subject based on the criteria noted above."
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 202,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 413,
+     "missed": [
+      "Hematology clinically significant abnormal assay # 5"
+     ],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    9,
+    0,
+    -104
+   ],
+   "became_best": false,
+   "pass": 2
+  },
+  {
+   "version": 5,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 296,
+    "pages_total": 104,
+    "pages_with_fields": 104,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 85,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 8,
+    "fields_per_form": 37.0,
+    "forms_per_100_pages": 7.7,
+    "form_same_page_evidence_records": 261,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 100
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 25,
+   "audit_pages": [
+    46,
+    47,
+    50,
+    52,
+    53,
+    84,
+    202,
+    413
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 46,
+     "missed": [
+      "Chemistry clinically significant abnormal assay # 1:"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 47,
+     "missed": [
+      "Chemistry clinically significant abnormal assay # 2"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 50,
+     "missed": [
+      "Chemistry clinically significant abnormal assay # 5"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 52,
+     "missed": [
+      "Hematology clinically significant abnormal assay # 3",
+      "Hematology clinically significant abnormal assay # 4"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 53,
+     "missed": [
+      "Hematology clinically significant abnormal assay # 5",
+      "Were there any clinically significant abnormal urinalysis results?"
+     ],
+     "false": [
+      "Please go to Add-On Forms and select Additional Local Lab Results Review form to add to this visit. Were there any clinically significant abnormal urinalysis results?"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 84,
+     "missed": [
+      "\\1.\\Females who are breast-feeding and/or who have a positive pregnancy test result prior to receiving IMP.",
+      "\\2.\\ Heterosexually active males or females of childbearing potential (FOCBP), or their partners, who do not agree to practice 2 different approved methods of birth control or remain fully abstinent (periodic abstinence or withdrawal are not acceptable methods of contraception) during the trial and for 30 days after the last dose of IMP. If employing birth control, 2 of the following methods must be used: vasectomy, bilateral tubal ligation, nonhormonal intrauterine device, condom with spermicide, sponge with spermicide, or occlusive cap (vaginal diaphragm or cervical/vault cap) with spermicide.",
+      "\\3.\\ Male subjects who do not agree to not donate sperm from trial screening through 30 days after the last dose of IMP.",
+      "\\4.\\ Clinically significant abnormality in past medical history, or at the screening physical examination, that in the investigator\u2019s or sponsor\u2019s opinion may place the subject at risk or interfere with outcome variables including absorption, distribution, metabolism, and excretion of the IMP. This includes, but is not limited to, history of or concurrent cardiac, hepatic, renal, neurologic, endocrine, gastrointestinal, respiratory, hematologic, and immunologic disease.",
+      "\\5.\\ Subjects with abnormal clinical laboratory assessment results, vital signs results, or ECG findings, unless, based on the investigator\u2019s judgment, the findings are not medically significant and would not impact the safety of the subject or the interpretation of the trial results. The medical monitor should be contacted to discuss individual cases, as needed. In addition, subjects with any of the following clinical laboratory assessments or ECG results at screening must be excluded from the trial: - Platelets <= 75000/mm3 - Hemoglobin <= 9 g/dL - Neutrophils, absolute <= 1000/mm3 - Aspartate aminotransferase (AST) > 2 \u00d7 upper limit or normal (ULN) - Alanine aminotransferase (ALT) > 2 \u00d7 ULN - Creatinine phosphokinase > 3 \u00d7 ULN, unless discussed with and approved by the medical monitor - Creatinine >= 2 mg/dL - QT interval corrected for heart rate using Friedericia formula (QTcF)>= 450 msec in men and >= 470 msec in women, unless due to ventricular pacing Tests with exclusionary results should be repeated once to ensure reproducibility of the abnormality before excluding a subject based on the criteria noted above.",
+      "\\6.\\ Subjects with diagnosed hypertension (including treated or untreated hypertension), or orthostatic hypotension which is defined as a decrease of = 20 mmHg decrease in SBP and a >= 25 bpm increase in HR from s"
+     ],
+     "false": [
+      "If any answers to the Exclusion Criteria are \u201cMet\u201d, EXCLUDE subject from the study. \\1. Females who are breast-feeding and/or who have a positive pregnancy test result prior to receiving IMP.",
+      "agree to practice 2 different approved methods of birth control or remain fully abstinent (periodic abstinence or withdrawal are not acceptable methods of contraception) during the trial and for 30 days after the last dose of IMP. If employing birth control, 2 of the following methods must be used: vasectomy, bilateral tubal ligation, nonhormonal intrauterine device, condom with spermicide, sponge with spermicide, or occlusive cap (vaginal diaphragm or cervical/vault cap) with spermicide.",
+      "cap (vaginal diaphragm or cervical/vault cap) with spermicide. \\3. Male subjects who do not agree to not donate sperm from trial screening through 30 days after the last dose of IMP.",
+      "\\4. Clinically significant abnormality in past medical history, or at the screening physical examination, that in the investigator\u2019s or sponsor\u2019s opinion may place the subject at risk or interfere with outcome variables including absorption, distribution, metabolism, and excretion of the IMP. This includes, but is not limited to, hematologic, and immunologic disease.",
+      "hematologic, and immunologic disease. \\5. Subjects with abnormal clinical laboratory assessment results, vital signs results, or ECG findings, unless, based on the investigator\u2019s judgment, the findings are not medically significant and would not impact the safety of the subject or the interpretation of the trial results. The medical monitor should be contacted to discuss individual cases, as needed. In addition, subjects with any of the following clinical laboratory assessments or ECG results at screening must be excluded from the trial - Platelets <= 75000/mm3 - Hemoglobin <= 9 g/dL - Neutrophils, absolute <= 1000/mm3 - Aspartate aminotransferase (AST) > 2 \u00d7 upper limit or normal (ULN) - Alanine aminotransferase (ALT) > 2 \u00d7 ULN - Creatinine phosphokinase > 3 \u00d7 ULN, unless discussed with and approved by the medical monitor - Creatinine >= 2 mg/dL",
+      "excluding a subject based on the criteria noted above. \\6. Subjects with diagnosed hypertension (including treated or untreated hypertension), or orthostatic hypotension which is defined as a decrease of = 20 mmHg decrease in SBP and a >= 25 bpm increase in HR from supine to standing, OR"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 202,
+     "missed": [
+      "Suicidal behavior was present during the assessment period?"
+     ],
+     "false": [
+      "Suicidal behavior Suicidal behavior was present during the assessment period?"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 413,
+     "missed": [
+      "Hematology clinically significant abnormal assay # 5",
+      "Were there any clinically significant abnormal urinalysis results?"
+     ],
+     "false": [
+      "Please go to Add-On Forms and select Additional Local Lab Results Review form to add to this visit. Were there any clinically significant abnormal urinalysis results?"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    25,
+    0,
+    -104
+   ],
+   "became_best": false,
+   "pass": 2
+  },
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 243,
+    "pages_total": 47,
+    "pages_with_fields": 47,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 81,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 14,
+    "fields_per_form": 17.4,
+    "forms_per_100_pages": 29.8,
+    "form_same_page_evidence_records": 243,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 100
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 42,
+   "audit_pages": [
+    37,
+    42,
+    71,
+    136,
+    198,
+    423
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 37,
+     "missed": [
+      "Skin and Mucosae",
+      "Neurological",
+      "Extremities"
+     ],
+     "false": [
+      "Normal - Yes",
+      "Normal - Skin and Mucosae",
+      "Normal",
+      "Normal - Neurological",
+      "Normal - Not Done",
+      "Normal - Extremities"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 42,
+     "missed": [
+      "Was Blood sample Collected for Glycated Hemoglobin?",
+      "Barcode Number"
+     ],
+     "false": [
+      "Glycated Hemoglobin - Glycated Hemoglobin",
+      "enumerati on (values: Scan)]"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 71,
+     "missed": [
+      "Have you wished you were dead or wished you could go to sleep and not wake up? - Lifetime",
+      "Have you wished you were dead or wished you could go to sleep and not wake up? - Past 3 Month",
+      "2. Non-specific active suicidal thoughts - Lifetime",
+      "2. Non-specific active suicidal thoughts - Past 3 Month"
+     ],
+     "false": [
+      "Have you wished you were dead or wished you could go to sleep and not wake - Lifetime",
+      "Have you wished you were dead or wished you could go to sleep and not wake - Past 3 Month",
+      "methods,intent or plan during the assessment period."
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 136,
+     "missed": [
+      "Most severe ideation",
+      "Description of Ideation",
+      "How many times have you had these thoughts?",
+      "When you have the thoughts, how long do they last?"
+     ],
+     "false": [
+      "(1) Wish to be dead (2) Non-specific active suicidal thoughts (3) Active suicidal ideation with any method (not plan) w/out intent to act (4) Active suicidal ideation w/ some intent to act w/out specific plan (5) Active suicidal ideation w/ specific plan and intent",
+      "Non-specific active suicidal thoughts, (3) Active suicidal ideation with any method (not plan) w/out intent to act, (4) Active suicidal ideation w/ some intent to act w/out specific plan, (5) Active suicidal ideation w/ specific plan and intent)]",
+      "(1) Less than once a week",
+      "(1) Fleeting few seconds or minutes (2) Less than 1 hour/some of the time (3) 1-4 hours/a lot of time (4) 4-8 hours/most of day (5) More than 8 hours/persistent or continuous"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 198,
+     "missed": [
+      "Could/can you stop thinking about killing yourself or wanting to die if you want to?",
+      "Are there things - anyone or anything - that stopped you from wanting to die or acting on thoughts of committing suicide?",
+      "What sort of reasons did you have for thinking about wanting to die or killing yourself? Was it to end the pain or stop the way you were feeling (in other words you couldn't go on living with this pain or how you were feeling) or was it to get attention, revenge or a reaction from others? or both?"
+     ],
+     "false": [
+      "(1) Easily able to control thoughts (2) Can control thoughts with little difficulty (3) Can control thoughts with some difficulty (4) Can control thoughts with a lot of difficulty (5) Unable to control thoughts (0) Does not attempt to control thoughts",
+      "(1) Deterrents definitely stopped you from attempting suicide (2) Deterrents probably stopped you (3) Uncertain that deterrents stopped you (4) Deterrents most likely did not stop you (5) Deterrents definitely did not stop you (0) Does not apply",
+      "(1) Completely to get attention/ revenge or a reaction from others (2) Mostly to get attention/ revenge or a reaction from others (3) Equally to get attention/ revenge or a reaction from others and to end/stop the pain (4) Mostly to end or stop the pain (you could not go on living with the pain or how you were feeling) (5) Completely to end or stop the pain (you could not go on living with the pain or how you were feeling) (0) Does not apply"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 423,
+     "missed": [
+      "Most severe ideation",
+      "Description of Ideation",
+      "How many times have you had these thoughts?",
+      "When you have the thoughts, how long do they last?"
+     ],
+     "false": [
+      "(1) Wish to be dead (2) Non-specific active suicidal thoughts (3) Active suicidal ideation with any method (not plan) w/out intent to act (4) Active suicidal ideation w/ some intent to act w/out specific plan (5) Active suicidal ideation w/ specific plan and intent",
+      "Non-specific active suicidal thoughts, (3) Active suicidal ideation with any method (not plan) w/out intent to act, (4) Active suicidal ideation w/ some intent to act w/out specific plan, (5) Active suicidal ideation w/ specific plan and intent)]",
+      "(1) Less than once a week",
+      "(1) Fleeting few seconds or minutes (2) Less than 1 hour/some of the time (3) 1-4 hours/a lot of time (4) 4-8 hours/most of day (5) More than 8 hours/persistent or continuous"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    42,
+    0,
+    -47
+   ],
+   "became_best": true,
+   "pass": 3
+  },
+  {
+   "version": 2,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 221,
+    "pages_total": 47,
+    "pages_with_fields": 47,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 80,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 14,
+    "fields_per_form": 15.8,
+    "forms_per_100_pages": 29.8,
+    "form_same_page_evidence_records": 221,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 100
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 41,
+   "audit_pages": [
+    37,
+    42,
+    66,
+    71,
+    106,
+    136,
+    198,
+    423
+   ],
+   "audit_partial": null,
+   "audit_promoted": [
+    66
+   ],
+   "audit_verdicts": [
+    {
+     "page": 37,
+     "missed": [],
+     "false": [
+      "Done)]",
+      "(values: Normal, Abnormal, Not Done)]"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 42,
+     "missed": [
+      "Was Blood sample Collected for Glycated Hemoglobin?",
+      "Date of Collection",
+      "Time of Collection",
+      "Scan",
+      "Barcode Number"
+     ],
+     "false": [
+      "Sample Glycated Hemoglobin",
+      "enumerati on (values: Scan)]"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 66,
+     "missed": [
+      "Amphetamines",
+      "Barbiturates"
+     ],
+     "false": [
+      "Amphetamines - Positive",
+      "Amphetamines - Amphetamines"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 71,
+     "missed": [
+      "Have you wished you were dead or wished you could go to sleep and not wake up?",
+      "2. Non-specific active suicidal thoughts"
+     ],
+     "false": [
+      "Subject endorses thoughts about a wish to be dead or not alive anymore, or wish to fall asleep and not wake up.",
+      "methods,intent or plan during the assessment period."
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 106,
+     "missed": [],
+     "false": [
+      "Done)]",
+      "(values: Normal, Abnormal, Not Done)]"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 136,
+     "missed": [
+      "Most severe ideation",
+      "Description of Ideation",
+      "How many times have you had these thoughts?",
+      "When you have the thoughts, how long do they last?"
+     ],
+     "false": [
+      "(1) Wish to be dead (2) Non-specific active suicidal thoughts (3) Active suicidal ideation with any method (not plan) w/out intent to act (4) Active suicidal ideation w/ some intent to act w/out specific plan (5) Active suicidal ideation w/ specific plan and intent",
+      "Non-specific active suicidal thoughts, (3) Active suicidal ideation with any method (not plan) w/out intent to act, (4) Active suicidal ideation w/ some intent to act w/out specific plan, (5) Active suicidal ideation w/ specific plan and intent)]",
+      "(values: (1) Less than",
+      "(1) Fleeting few seconds or minutes (2) Less than 1 hour/some of the time (3) 1-4 hours/a lot of time (4) 4-8 hours/most of day (5) More than 8 hours/persistent or continuous"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 198,
+     "missed": [
+      "Could/can you stop thinking about killing yourself or wanting to die if you want to?",
+      "Are there things - anyone or anything - that stopped you from wanting to die or acting on thoughts of committing suicide?",
+      "What sort of reasons did you have for thinking about wanting to die or killing yourself? Was it to end the pain or stop the way you were feeling (in other words you couldn't go on living with this pain or how you were feeling) or was it to get attention, revenge or a reaction from others? or both?"
+     ],
+     "false": [
+      "(1) Easily able to control thoughts (2) Can control thoughts with little difficulty (3) Can control thoughts with some difficulty (4) Can control thoughts with a lot of difficulty (5) Unable to control thoughts (0) Does not attempt to control thoughts",
+      "(1) Deterrents definitely stopped you from attempting suicide (2) Deterrents probably stopped you (3) Uncertain that deterrents stopped you (4) Deterrents most likely did not stop you (5) Deterrents definitely did not stop you (0) Does not apply",
+      "(1) Completely to get attention/ revenge or a reaction from others (2) Mostly to get attention/ revenge or a reaction from others (3) Equally to get attention/ revenge or a reaction from others and to end/stop the pain (4) Mostly to end or stop the pain (you could not go on living with the pain or how you were feeling) (5) Completely to end or stop the pain (you could not go on living with the pain or how you were feeling) (0) Does not apply"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 423,
+     "missed": [
+      "Most severe ideation",
+      "Description of Ideation",
+      "How many times have you had these thoughts?",
+      "When you have the thoughts, how long do they last?"
+     ],
+     "false": [
+      "(1) Wish to be dead (2) Non-specific active suicidal thoughts (3) Active suicidal ideation with any method (not plan) w/out intent to act (4) Active suicidal ideation w/ some intent to act w/out specific plan (5) Active suicidal ideation w/ specific plan and intent",
+      "Non-specific active suicidal thoughts, (3) Active suicidal ideation with any method (not plan) w/out intent to act, (4) Active suicidal ideation w/ some intent to act w/out specific plan, (5) Active suicidal ideation w/ specific plan and intent)]",
+      "(values: (1) Less than",
+      "(1) Fleeting few seconds or minutes (2) Less than 1 hour/some of the time (3) 1-4 hours/a lot of time (4) 4-8 hours/most of day (5) More than 8 hours/persistent or continuous"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    41,
+    0,
+    -47
+   ],
+   "became_best": true,
+   "pass": 3
+  },
+  {
+   "version": 3,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 199,
+    "pages_total": 47,
+    "pages_with_fields": 47,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 14,
+    "fields_per_form": 14.2,
+    "forms_per_100_pages": 29.8,
+    "form_same_page_evidence_records": 199,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 100
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 35,
+   "audit_pages": [
+    37,
+    42,
+    66,
+    71,
+    78,
+    136,
+    198,
+    423
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 37,
+     "missed": [],
+     "false": [
+      "Abnormal"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 42,
+     "missed": [
+      "Was Blood sample Collected for Glycated Hemoglobin?",
+      "Date of Collection",
+      "Time of Collection",
+      "Scan",
+      "Barcode Number"
+     ],
+     "false": [
+      "Sample Glycated Hemoglobin",
+      "Y: site"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 66,
+     "missed": [
+      "Barbiturates"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 71,
+     "missed": [
+      "Have you wished you were dead or wished you could go to sleep and not wake up?",
+      "2. Non-specific active suicidal thoughts"
+     ],
+     "false": [
+      "Have you wished you were dead or wished you could go to sleep and not wake",
+      "methods,intent or plan during the assessment period."
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 78,
+     "missed": [
+      "Actual attempt:",
+      "If Yes, Total number of attempts",
+      "Has subject engaged in Non-Suicidal self-injurious behavior?"
+     ],
+     "false": [
+      "act. Behaviour was in part thought of as method to kill oneself. Intent does not have to",
+      "Yes No"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 136,
+     "missed": [
+      "Most severe ideation",
+      "Frequency",
+      "Duration"
+     ],
+     "false": [
+      "intent",
+      "(2) Once a week",
+      "(5) More than 8 hours/persistent or continuous"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 198,
+     "missed": [
+      "Controllability",
+      "Deterrents",
+      "Reasons for Ideation"
+     ],
+     "false": [
+      "(0) Does not attempt to control thoughts",
+      "(0) Does not apply"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 423,
+     "missed": [
+      "Most severe ideation",
+      "Frequency",
+      "Duration"
+     ],
+     "false": [
+      "intent",
+      "(2) Once a week",
+      "(5) More than 8 hours/persistent or continuous"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    35,
+    0,
+    -47
+   ],
+   "became_best": true,
+   "pass": 3
+  },
+  {
+   "version": 4,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 194,
+    "pages_total": 47,
+    "pages_with_fields": 47,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 14,
+    "fields_per_form": 13.9,
+    "forms_per_100_pages": 29.8,
+    "form_same_page_evidence_records": 194,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 100
+   },
+   "problems": [
+    "Extreme content-fitted blocklist. The program filters by 54 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "warnings": [],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    1,
+    "not_audited",
+    0,
+    -47
+   ],
+   "became_best": false,
+   "pass": 3
+  },
+  {
+   "version": 5,
+   "kind": "revise_gates",
+   "metrics": {
+    "engine": "codegen",
+    "records": 231,
+    "pages_total": 47,
+    "pages_with_fields": 47,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 14,
+    "fields_per_form": 16.5,
+    "forms_per_100_pages": 29.8,
+    "form_same_page_evidence_records": 231,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 100
+   },
+   "problems": [
+    "Extreme content-fitted blocklist. The program filters by 48 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "warnings": [],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    1,
+    "not_audited",
+    0,
+    -47
+   ],
+   "became_best": false,
+   "pass": 3
+  },
+  {
+   "version": 1,
+   "kind": "confirm",
+   "metrics": {
+    "engine": "codegen",
+    "records": 60,
+    "pages_total": 30,
+    "pages_with_fields": 10,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 3,
+    "fields_per_form": 20.0,
+    "forms_per_100_pages": 10.0,
+    "form_same_page_evidence_records": 60,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 33
+   },
+   "problems": [],
+   "outcome": "extended_program",
+   "pass": 4
+  },
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 60,
+    "pages_total": 30,
+    "pages_with_fields": 10,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 3,
+    "fields_per_form": 20.0,
+    "forms_per_100_pages": 10.0,
+    "form_same_page_evidence_records": 60,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 33
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    0,
+    "not_audited",
+    0,
+    -10
+   ],
+   "became_best": true,
+   "pass": 4
+  },
+  {
+   "version": 2,
+   "kind": "audit",
+   "transport_error": "agent CLI exited 1: NonRetriableError: Agent Looping Detected The model got stuck in a repeating response pattern, so this turn was stopped. Please try again with a different model or start a new conversation. If the problem persists, please contact support.\n",
+   "pass": 4
+  },
+  {
+   "version": 2,
+   "kind": "confirm_extension",
+   "metrics": {
+    "engine": "codegen",
+    "records": 60,
+    "pages_total": 30,
+    "pages_with_fields": 10,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 3,
+    "fields_per_form": 20.0,
+    "forms_per_100_pages": 10.0,
+    "form_same_page_evidence_records": 60,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 33
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    0,
+    "not_audited",
+    0,
+    -10
+   ],
+   "became_best": false,
+   "pass": 4
+  },
+  {
+   "version": 1,
+   "kind": "confirm",
+   "outcome": "confirmed_no_fields",
+   "pass": 5
+  },
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 55,
+    "pages_total": 27,
+    "pages_with_fields": 18,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 6,
+    "fields_per_form": 9.2,
+    "forms_per_100_pages": 22.2,
+    "form_same_page_evidence_records": 55,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 67
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 16,
+   "audit_pages": [
+    44,
+    62,
+    138,
+    142,
+    326,
+    368
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 44,
+     "missed": [
+      "Collected",
+      "Scan"
+     ],
+     "false": [
+      "Urinalysis Collected",
+      "Not",
+      "[TYPE: enumeration"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 62,
+     "missed": [],
+     "false": [
+      "Current",
+      "Never",
+      "[TYPE:"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 138,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 142,
+     "missed": [
+      "Actual Lethality/Medical Damage:",
+      "Potential Lethality: Only answer if Actual Lethality=0"
+     ],
+     "false": [
+      "sprains) \\2.\\ Moderate physical damage; medical attention needed (e.g. conscious but sleepy; somewhat responsive, second-degree burns; bleeding of major vessel \\3.\\",
+      "mouth and pulled the trigger but gun fails to fire so no medical damage; laying on train tracks with oncoming train but pulled away before run over)."
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 326,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 368,
+     "missed": [
+      "Actual Lethality/Medical Damage:",
+      "Potential Lethality: Only answer if Actual Lethality=0"
+     ],
+     "false": [
+      "sprains) \\2.\\ Moderate physical damage; medical attention needed (e.g. conscious but sleepy; somewhat responsive, second-degree burns; bleeding of major vessel \\3.\\",
+      "mouth and pulled the trigger but gun fails to fire so no medical damage; laying on train tracks with oncoming train but pulled away before run over)."
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    16,
+    0,
+    -18
+   ],
+   "became_best": true,
+   "pass": 5
+  },
+  {
+   "version": 2,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 31,
+    "pages_total": 27,
+    "pages_with_fields": 10,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 3,
+    "fields_per_form": 10.3,
+    "forms_per_100_pages": 11.1,
+    "form_same_page_evidence_records": 31,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 37
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 20,
+   "audit_pages": [
+    44,
+    62,
+    108,
+    138,
+    142,
+    168,
+    326,
+    368
+   ],
+   "audit_partial": null,
+   "audit_promoted": [
+    108
+   ],
+   "audit_verdicts": [
+    {
+     "page": 44,
+     "missed": [
+      "Collected",
+      "Scan"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 62,
+     "missed": [],
+     "false": [
+      "Current",
+      "Per Day",
+      "Cartridge",
+      "Never"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 108,
+     "missed": [
+      "Collected",
+      "Scan"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 138,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 142,
+     "missed": [
+      "Actual Lethality/Medical Damage:",
+      "Potential Lethality: Only answer if Actual Lethality=0"
+     ],
+     "false": [
+      "sprains) \\2.\\ Moderate physical damage; medical attention needed (e.g. conscious but sleepy; somewhat responsive, second-degree burns; bleeding of major vessel \\3.\\",
+      "mouth and pulled the trigger but gun fails to fire so no medical damage; laying on train tracks with oncoming train but pulled away before run over)."
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 168,
+     "missed": [
+      "Actual Lethality/Medical Damage:",
+      "Potential Lethality: Only answer if Actual Lethality=0"
+     ],
+     "false": [
+      "sprains) \\2.\\ Moderate physical damage; medical attention needed (e.g. conscious but sleepy; somewhat responsive, second-degree burns; bleeding of major vessel \\3.\\",
+      "mouth and pulled the trigger but gun fails to fire so no medical damage; laying on train tracks with oncoming train but pulled away before run over)."
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 326,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 368,
+     "missed": [
+      "Actual Lethality/Medical Damage:",
+      "Potential Lethality: Only answer if Actual Lethality=0"
+     ],
+     "false": [
+      "sprains) \\2.\\ Moderate physical damage; medical attention needed (e.g. conscious but sleepy; somewhat responsive, second-degree burns; bleeding of major vessel \\3.\\",
+      "mouth and pulled the trigger but gun fails to fire so no medical damage; laying on train tracks with oncoming train but pulled away before run over)."
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": [
+    44,
+    108,
+    235,
+    290,
+    404,
+    465,
+    530,
+    564
+   ],
+   "score": [
+    0,
+    20,
+    0,
+    -10
+   ],
+   "became_best": true,
+   "pass": 5
+  },
+  {
+   "version": 3,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 56,
+    "pages_total": 27,
+    "pages_with_fields": 18,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 4,
+    "fields_per_form": 14.0,
+    "forms_per_100_pages": 14.8,
+    "form_same_page_evidence_records": 56,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 67
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 36,
+   "audit_pages": [
+    44,
+    62,
+    108,
+    138,
+    142,
+    235,
+    326,
+    368
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 44,
+     "missed": [],
+     "false": [
+      "Urinalysis",
+      "Applicable"
+     ],
+     "wrong_form": [
+      "Urinalysis",
+      "Applicable",
+      "Collected",
+      "Scan"
+     ]
+    },
+    {
+     "page": 62,
+     "missed": [],
+     "false": [
+      "Never",
+      "Per Week",
+      "None",
+      "Current",
+      "Per Day",
+      "Cartridge"
+     ],
+     "wrong_form": [
+      "Never",
+      "Per Week",
+      "None",
+      "Current",
+      "Per Day",
+      "Cartridge"
+     ]
+    },
+    {
+     "page": 108,
+     "missed": [],
+     "false": [
+      "Urinalysis",
+      "Applicable"
+     ],
+     "wrong_form": [
+      "Urinalysis",
+      "Applicable",
+      "Collected",
+      "Scan"
+     ]
+    },
+    {
+     "page": 138,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 142,
+     "missed": [
+      "Actual Lethality/Medical Damage:",
+      "Potential Lethality: Only answer if Actual Lethality=0"
+     ],
+     "false": [
+      "mouth and pulled the trigger but gun fails to fire so no medical damage; laying on train tracks with oncoming train but pulled away before run over)."
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 235,
+     "missed": [],
+     "false": [
+      "Urinalysis",
+      "Applicable"
+     ],
+     "wrong_form": [
+      "Urinalysis",
+      "Applicable",
+      "Collected",
+      "Scan"
+     ]
+    },
+    {
+     "page": 326,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 368,
+     "missed": [
+      "Actual Lethality/Medical Damage:",
+      "Potential Lethality: Only answer if Actual Lethality=0"
+     ],
+     "false": [
+      "mouth and pulled the trigger but gun fails to fire so no medical damage; laying on train tracks with oncoming train but pulled away before run over)."
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    36,
+    0,
+    -18
+   ],
+   "became_best": false,
+   "pass": 5
+  },
+  {
+   "version": 4,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 36,
+    "pages_total": 27,
+    "pages_with_fields": 9,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 2,
+    "fields_per_form": 18.0,
+    "forms_per_100_pages": 7.4,
+    "form_same_page_evidence_records": 36,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 33
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 6,
+   "audit_pages": [
+    44,
+    62,
+    108,
+    138,
+    142,
+    164,
+    326,
+    368
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 44,
+     "missed": [
+      "Collected",
+      "Scan"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 62,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 108,
+     "missed": [
+      "Collected",
+      "Scan"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 138,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 142,
+     "missed": [],
+     "false": [
+      "tracks with oncoming train but pulled away before run over)."
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 164,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 326,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 368,
+     "missed": [],
+     "false": [
+      "tracks with oncoming train but pulled away before run over)."
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    6,
+    0,
+    -9
+   ],
+   "became_best": true,
+   "pass": 5
+  },
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "error": "generated extractor crashed:\nTraceback (most recent call last):\n  File \"D:\\ubuntu\\codes\\ZS\\otsuka\\ECS\\experiments\\recipe_prototype\\scripts\\sandbox_runner.py\", line 128, in main\n    raw = fn(pages)\n          ^^^^^^^^^\n  File \"<generated_extractor>\", line 233, in extract\n  File \"<generated_extractor>\", line 206, in _label_for_code\nTypeError: unhashable type: 'Line'\n"
+   },
+   "problems": [
+    "Program failed to run: generated extractor crashed:\nTraceback (most recent call last):\n  File \"D:\\ubuntu\\codes\\ZS\\otsuka\\ECS\\experiments\\recipe_prototype\\scripts\\sandbox_runner.py\", line 128, in main\n    raw = fn(pages)\n          ^^^^^^^^^\n  File \"<generated_extractor>\", line 233, in extract\n  File \"<generated_extractor>\", line 206, in _label_for_code\nTypeError: unhashable type: 'Line'\n"
+   ],
+   "warnings": [],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    1,
+    "not_audited",
+    0,
+    0
+   ],
+   "became_best": true,
+   "pass": 6
+  },
+  {
+   "version": 2,
+   "kind": "confirm",
+   "outcome": "confirmed_no_fields",
+   "pass": 6
+  },
+  {
+   "version": 2,
+   "kind": "revise_gates",
+   "metrics": {
+    "engine": "codegen",
+    "records": 25,
+    "pages_total": 13,
+    "pages_with_fields": 5,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 5,
+    "fields_per_form": 5.0,
+    "forms_per_100_pages": 38.5,
+    "form_same_page_evidence_records": 25,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 38
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 8,
+   "audit_pages": [
+    9,
+    11,
+    13,
+    15,
+    498,
+    559
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 9,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 11,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 13,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 15,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 498,
+     "missed": [
+      "Time Placed in Position",
+      "Time of Vitals Measurement",
+      "Systolic Blood Pressure (mmHg)",
+      "Systolic Blood Pressure (mmHg)",
+      "Diastolic Blood Pressure (mmHg)",
+      "Heart Rate (bpm)"
+     ],
+     "false": [
+      "Standing",
+      "Difference between Standing and Supine"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 559,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    8,
+    0,
+    -5
+   ],
+   "became_best": true,
+   "pass": 6
+  },
+  {
+   "version": 3,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 19,
+    "pages_total": 13,
+    "pages_with_fields": 5,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 5,
+    "fields_per_form": 3.8,
+    "forms_per_100_pages": 38.5,
+    "form_same_page_evidence_records": 18,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 38
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 7,
+   "audit_pages": [
+    9,
+    10,
+    11,
+    13,
+    15,
+    498,
+    518,
+    559
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 9,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 10,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 11,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 13,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 15,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 498,
+     "missed": [
+      "Heart Rate (bpm)",
+      "Time of Vitals Measurement",
+      "Systolic Blood Pressure (mmHg)",
+      "Diastolic Blood Pressure (mmHg)",
+      "Heart Rate (bpm)"
+     ],
+     "false": [
+      "Difference between Standing and Supine"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 518,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 559,
+     "missed": [
+      "Signed by"
+     ],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    7,
+    0,
+    -5
+   ],
+   "became_best": true,
+   "pass": 6
+  },
+  {
+   "version": 4,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 14,
+    "pages_total": 13,
+    "pages_with_fields": 5,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 5,
+    "fields_per_form": 2.8,
+    "forms_per_100_pages": 38.5,
+    "form_same_page_evidence_records": 13,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 38
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 16,
+   "audit_pages": [
+    9,
+    11,
+    12,
+    13,
+    15,
+    498,
+    523,
+    559
+   ],
+   "audit_partial": null,
+   "audit_promoted": [
+    523
+   ],
+   "audit_verdicts": [
+    {
+     "page": 9,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 11,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 12,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 13,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 15,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 498,
+     "missed": [
+      "Time of Vitals Measurement",
+      "Heart Rate (bpm)",
+      "Time Placed in Position"
+     ],
+     "false": [
+      "Difference between Standing and Supine"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 523,
+     "missed": [
+      "Number of Brexpiprazole - 2 mg bottles Dispensed",
+      "Bottle Number(s) Brexpiprazole - 3 mg",
+      "Number of Brexpiprazole - 3 mg bottles Dispensed",
+      "Date Bottles Returned",
+      "Number of Sertraline - 50 mg Capsules Returned"
+     ],
+     "false": [],
+     "wrong_form": [
+      "Number of Brexpiprazole - 2 mg Capsules Dispensed (total)",
+      "Number of Brexpiprazole - 3 mg Capsules Dispensed (total)",
+      "Number of Brexpiprazole - 1 mg Capsules Returned",
+      "Number of Brexpiprazole - 2 mg Capsules Returned",
+      "Number of Brexpiprazole - 3 mg Capsules Returned"
+     ]
+    },
+    {
+     "page": 559,
+     "missed": [
+      "Signed by"
+     ],
+     "false": [],
+     "wrong_form": [
+      "ICF was reviewed and verified and the original ICF has been filed in with subject's source documents"
+     ]
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    16,
+    0,
+    -5
+   ],
+   "became_best": true,
+   "pass": 6
+  },
+  {
+   "version": 5,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 14,
+    "pages_total": 13,
+    "pages_with_fields": 5,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 5,
+    "fields_per_form": 2.8,
+    "forms_per_100_pages": 38.5,
+    "form_same_page_evidence_records": 13,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 38
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 21,
+   "audit_pages": [
+    9,
+    11,
+    13,
+    14,
+    15,
+    498,
+    523,
+    559
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 9,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 11,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 13,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 14,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 15,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 498,
+     "missed": [
+      "Time of Vitals Measurement",
+      "Time of Vitals Measurement",
+      "Heart Rate (bpm)",
+      "Heart Rate (bpm)",
+      "Time Placed in Position",
+      "Systolic Blood Pressure (mmHg)",
+      "Systolic Blood Pressure (mmHg)",
+      "Diastolic Blood Pressure (mmHg)"
+     ],
+     "false": [
+      "Difference between Standing and Supine"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 523,
+     "missed": [
+      "Number of Brexpiprazole - 2 mg bottles Dispensed",
+      "Bottle Number(s) Brexpiprazole - 3 mg",
+      "Number of Brexpiprazole - 3 mg bottles Dispensed",
+      "Date Bottles Returned",
+      "Number of Sertraline - 50 mg Capsules Returned"
+     ],
+     "false": [],
+     "wrong_form": [
+      "Number of Brexpiprazole - 2 mg Capsules Dispensed (total)",
+      "Number of Brexpiprazole - 3 mg Capsules Dispensed (total)",
+      "Number of Brexpiprazole - 1 mg Capsules Returned",
+      "Number of Brexpiprazole - 2 mg Capsules Returned",
+      "Number of Brexpiprazole - 3 mg Capsules Returned"
+     ]
+    },
+    {
+     "page": 559,
+     "missed": [
+      "Signed by"
+     ],
+     "false": [],
+     "wrong_form": [
+      "ICF was reviewed and verified and the original ICF has been filed in with subject's source documents"
+     ]
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    21,
+    0,
+    -5
+   ],
+   "became_best": false,
+   "pass": 6
+  },
+  {
+   "version": 1,
+   "kind": "confirm",
+   "metrics": {
+    "engine": "codegen",
+    "records": 16,
+    "pages_total": 6,
+    "pages_with_fields": 6,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 6,
+    "fields_per_form": 2.7,
+    "forms_per_100_pages": 100.0,
+    "form_same_page_evidence_records": 15,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 100
+   },
+   "problems": [],
+   "outcome": "extended_program",
+   "pass": 7
+  },
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 11,
+    "pages_total": 6,
+    "pages_with_fields": 3,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 3,
+    "fields_per_form": 3.7,
+    "forms_per_100_pages": 50.0,
+    "form_same_page_evidence_records": 11,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 50
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    0,
+    "not_audited",
+    0,
+    -3
+   ],
+   "became_best": true,
+   "pass": 7
+  },
+  {
+   "version": 2,
+   "kind": "confirm_extension",
+   "metrics": {
+    "engine": "codegen",
+    "records": 16,
+    "pages_total": 6,
+    "pages_with_fields": 6,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 6,
+    "fields_per_form": 2.7,
+    "forms_per_100_pages": 100.0,
+    "form_same_page_evidence_records": 15,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 100
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 5,
+   "audit_pages": [
+    73,
+    499,
+    502,
+    519,
+    520,
+    550
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 73,
+     "missed": [
+      "If Yes, describe"
+     ],
+     "false": [
+      "Row 15"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 499,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 502,
+     "missed": [
+      "Type of Contact",
+      "Has subject taken any ConMeds?"
+     ],
+     "false": [
+      "Third Failed Attempt"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 519,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 520,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 550,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    5,
+    0,
+    -6
+   ],
+   "became_best": true,
+   "pass": 7
+  },
+  {
+   "version": 3,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 16,
+    "pages_total": 6,
+    "pages_with_fields": 6,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 6,
+    "fields_per_form": 2.7,
+    "forms_per_100_pages": 100.0,
+    "form_same_page_evidence_records": 15,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 100
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 5,
+   "audit_pages": [
+    73,
+    499,
+    502,
+    519,
+    520,
+    550
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 73,
+     "missed": [
+      "If Yes, describe"
+     ],
+     "false": [
+      "Row 15"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 499,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 502,
+     "missed": [
+      "Type of Contact",
+      "Has subject taken any ConMeds?"
+     ],
+     "false": [
+      "Third Failed Attempt"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 519,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 520,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 550,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    5,
+    0,
+    -6
+   ],
+   "became_best": false,
+   "pass": 7
+  },
+  {
+   "version": 4,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 16,
+    "pages_total": 6,
+    "pages_with_fields": 6,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 6,
+    "fields_per_form": 2.7,
+    "forms_per_100_pages": 100.0,
+    "form_same_page_evidence_records": 15,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 100
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 9,
+   "audit_pages": [
+    73,
+    499,
+    502,
+    519,
+    520,
+    550
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 73,
+     "missed": [
+      "If Yes, describe"
+     ],
+     "false": [
+      "Row 15"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 499,
+     "missed": [],
+     "false": [
+      "Diastolic Blood Pressure (mmHg)",
+      "Heart Rate (bpm)"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 502,
+     "missed": [
+      "Type of Contact",
+      "Has subject taken any ConMeds?"
+     ],
+     "false": [
+      "Third Failed Attempt"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 519,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 520,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 550,
+     "missed": [],
+     "false": [
+      "Diastolic Blood Pressure (mmHg)",
+      "Heart Rate (bpm)"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    9,
+    0,
+    -6
+   ],
+   "became_best": false,
+   "pass": 7
+  }
+ ]
+}

@@ -1,0 +1,98 @@
+# module: D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\subagent_bridge.py
+# top-level names: ['__doc__', 'json', 'os', 'sys', 'fitz', 'codegen', 'build_code_revision_prompt', 'build_codegen_prompt', 'build_coverage_confirm_prompt', 'extract_source', 'run_extractor', 'validate_generated', 'common', 'OUT_DIR', 'doc_key', 'list_root_pdfs', 'induction', 'PROMPT_TEMPLATE', 'build_revision_prompt', 'load_rep_pages', 'parse_recipe', 'validate_recipe', 'replay', 'str', 'pdf_for', 'cmd_prompts', '_load_reply', 'cmd_validate', 'cmd_finalize', 'cmd_prompts_code', 'cmd_validate_code', 'cmd_finalize_code', '__name__', 'len', 'argv', 'cmd', 'SystemExit']
+
+=== module()  [line 1] ===
+  [STR]
+    | Bridge for running induction with an external LLM that communicates via files.
+    | 
+    | Recipe mode (engine catalog - kept for comparison):
+    |   prompts                      write out/<doc>/induction_prompt.txt for every document
+    |   validate <dockey> <reply>    execute the replied recipe over the full pdf, print
+    |                                metrics/problems; on failure write revision_prompt.txt
+    |   finalize <dockey> <reply>    accept the recipe, write induced_recipe.json +
+    |                                fields_induced.csv
+    | 
+    | Codegen mode (no catalog, no few-shots - the format-agnostic path):
+    |   prompts-code                     write out/<doc>/codegen_prompt.txt for every document
+    |   validate-code <dockey> <reply>   run the replied PROGRAM over the full pdf in a
+    |                                    sandbox, print metrics/problems; on failure write
+    |                                    code_revision_prompt.txt
+    |   finalize-code <dockey> <reply>   accept the program, write generated_extractor.py +
+    |                                    fields_codegen.csv
+  [STR] 'dockey'
+  [STR] 'return'
+  [STR] 'path'
+  [STR] 'reply_path'
+  [STR] '__main__'
+  [STR] 'prompts'
+  [STR] 'validate'
+  [STR] 'finalize'
+  [STR] 'prompts-code'
+  [STR] 'validate-code'
+  [STR] 'finalize-code'
+
+=== pdf_for(dockey)  [line 33] ===
+  [STR] 'no pdf for dockey '
+
+=== cmd_prompts()  [line 40] ===
+  [STR] 'induction_prompt.txt'
+  [STR] 'w'
+  [STR] 'utf-8'
+  [STR] ': '
+  [STR] ' chars -> '
+
+=== _load_reply(path)  [line 54] ===
+  [STR] 'utf-8'
+
+=== cmd_validate(dockey, reply_path)  [line 59] ===
+  [STR] 'problems'
+  [STR] 'metrics'
+  [STR] 'revision_prompt.txt'
+  [STR] 'w'
+  [STR] 'utf-8'
+  [STR] 'revision prompt -> '
+
+=== cmd_finalize(dockey, reply_path)  [line 73] ===
+  [STR] 'induced_recipe.json'
+  [STR] 'w'
+  [STR] 'utf-8'
+  [STR] 'fields_induced.csv'
+  [STR] 'format_id'
+  [STR] 'fields'
+  [STR] 'engine'
+
+=== <genexpr>(.0)  [line 90] ===
+
+=== <setcomp>(.0)  [line 91] ===
+
+=== cmd_prompts_code()  [line 95] ===
+  [STR] 'codegen_prompt.txt'
+  [STR] 'w'
+  [STR] 'utf-8'
+  [STR] ': '
+  [STR] ' chars -> '
+
+=== cmd_validate_code(dockey, reply_path)  [line 106] ===
+  [STR]
+    | NOTE: the bridge runs gates + one prompt only. It does NOT run the
+    |     confirmation/audit rounds run_cli_induction (and production) run - a program
+    |     that is 'ok' here would still face those challenges in the real loop.
+  [STR] 'problems'
+  [STR] 'metrics'
+  [STR] 'warnings'
+  [STR] 'weak_clusters'
+  [STR] 'code_revision_prompt.txt'
+  [STR] 'w'
+  [STR] 'utf-8'
+  [STR] 'revision prompt -> '
+  [STR] 'cluster_feedback'
+  [STR] 'coverage_confirm_prompt.txt'
+  [STR] 'coverage confirmation prompt -> '
+
+=== cmd_finalize_code(dockey, reply_path)  [line 131] ===
+  [STR] 'generated_extractor.py'
+  [STR] 'w'
+  [STR] 'utf-8'
+  [STR] 'fields_codegen.csv'
+
+=== <setcomp>(.0)  [line 147] ===

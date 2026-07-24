@@ -1,0 +1,522 @@
+{
+ "stop_reason": "budget",
+ "versions": 5,
+ "best_version": 3,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 243,
+    "pages_total": 47,
+    "pages_with_fields": 47,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 81,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 14,
+    "fields_per_form": 17.4,
+    "forms_per_100_pages": 29.8,
+    "form_same_page_evidence_records": 243,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 100
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 42,
+   "audit_pages": [
+    37,
+    42,
+    71,
+    136,
+    198,
+    423
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 37,
+     "missed": [
+      "Skin and Mucosae",
+      "Neurological",
+      "Extremities"
+     ],
+     "false": [
+      "Normal - Yes",
+      "Normal - Skin and Mucosae",
+      "Normal",
+      "Normal - Neurological",
+      "Normal - Not Done",
+      "Normal - Extremities"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 42,
+     "missed": [
+      "Was Blood sample Collected for Glycated Hemoglobin?",
+      "Barcode Number"
+     ],
+     "false": [
+      "Glycated Hemoglobin - Glycated Hemoglobin",
+      "enumerati on (values: Scan)]"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 71,
+     "missed": [
+      "Have you wished you were dead or wished you could go to sleep and not wake up? - Lifetime",
+      "Have you wished you were dead or wished you could go to sleep and not wake up? - Past 3 Month",
+      "2. Non-specific active suicidal thoughts - Lifetime",
+      "2. Non-specific active suicidal thoughts - Past 3 Month"
+     ],
+     "false": [
+      "Have you wished you were dead or wished you could go to sleep and not wake - Lifetime",
+      "Have you wished you were dead or wished you could go to sleep and not wake - Past 3 Month",
+      "methods,intent or plan during the assessment period."
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 136,
+     "missed": [
+      "Most severe ideation",
+      "Description of Ideation",
+      "How many times have you had these thoughts?",
+      "When you have the thoughts, how long do they last?"
+     ],
+     "false": [
+      "(1) Wish to be dead (2) Non-specific active suicidal thoughts (3) Active suicidal ideation with any method (not plan) w/out intent to act (4) Active suicidal ideation w/ some intent to act w/out specific plan (5) Active suicidal ideation w/ specific plan and intent",
+      "Non-specific active suicidal thoughts, (3) Active suicidal ideation with any method (not plan) w/out intent to act, (4) Active suicidal ideation w/ some intent to act w/out specific plan, (5) Active suicidal ideation w/ specific plan and intent)]",
+      "(1) Less than once a week",
+      "(1) Fleeting few seconds or minutes (2) Less than 1 hour/some of the time (3) 1-4 hours/a lot of time (4) 4-8 hours/most of day (5) More than 8 hours/persistent or continuous"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 198,
+     "missed": [
+      "Could/can you stop thinking about killing yourself or wanting to die if you want to?",
+      "Are there things - anyone or anything - that stopped you from wanting to die or acting on thoughts of committing suicide?",
+      "What sort of reasons did you have for thinking about wanting to die or killing yourself? Was it to end the pain or stop the way you were feeling (in other words you couldn't go on living with this pain or how you were feeling) or was it to get attention, revenge or a reaction from others? or both?"
+     ],
+     "false": [
+      "(1) Easily able to control thoughts (2) Can control thoughts with little difficulty (3) Can control thoughts with some difficulty (4) Can control thoughts with a lot of difficulty (5) Unable to control thoughts (0) Does not attempt to control thoughts",
+      "(1) Deterrents definitely stopped you from attempting suicide (2) Deterrents probably stopped you (3) Uncertain that deterrents stopped you (4) Deterrents most likely did not stop you (5) Deterrents definitely did not stop you (0) Does not apply",
+      "(1) Completely to get attention/ revenge or a reaction from others (2) Mostly to get attention/ revenge or a reaction from others (3) Equally to get attention/ revenge or a reaction from others and to end/stop the pain (4) Mostly to end or stop the pain (you could not go on living with the pain or how you were feeling) (5) Completely to end or stop the pain (you could not go on living with the pain or how you were feeling) (0) Does not apply"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 423,
+     "missed": [
+      "Most severe ideation",
+      "Description of Ideation",
+      "How many times have you had these thoughts?",
+      "When you have the thoughts, how long do they last?"
+     ],
+     "false": [
+      "(1) Wish to be dead (2) Non-specific active suicidal thoughts (3) Active suicidal ideation with any method (not plan) w/out intent to act (4) Active suicidal ideation w/ some intent to act w/out specific plan (5) Active suicidal ideation w/ specific plan and intent",
+      "Non-specific active suicidal thoughts, (3) Active suicidal ideation with any method (not plan) w/out intent to act, (4) Active suicidal ideation w/ some intent to act w/out specific plan, (5) Active suicidal ideation w/ specific plan and intent)]",
+      "(1) Less than once a week",
+      "(1) Fleeting few seconds or minutes (2) Less than 1 hour/some of the time (3) 1-4 hours/a lot of time (4) 4-8 hours/most of day (5) More than 8 hours/persistent or continuous"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    42,
+    0,
+    -47
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 221,
+    "pages_total": 47,
+    "pages_with_fields": 47,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 80,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 14,
+    "fields_per_form": 15.8,
+    "forms_per_100_pages": 29.8,
+    "form_same_page_evidence_records": 221,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 100
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 41,
+   "audit_pages": [
+    37,
+    42,
+    66,
+    71,
+    106,
+    136,
+    198,
+    423
+   ],
+   "audit_partial": null,
+   "audit_promoted": [
+    66
+   ],
+   "audit_verdicts": [
+    {
+     "page": 37,
+     "missed": [],
+     "false": [
+      "Done)]",
+      "(values: Normal, Abnormal, Not Done)]"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 42,
+     "missed": [
+      "Was Blood sample Collected for Glycated Hemoglobin?",
+      "Date of Collection",
+      "Time of Collection",
+      "Scan",
+      "Barcode Number"
+     ],
+     "false": [
+      "Sample Glycated Hemoglobin",
+      "enumerati on (values: Scan)]"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 66,
+     "missed": [
+      "Amphetamines",
+      "Barbiturates"
+     ],
+     "false": [
+      "Amphetamines - Positive",
+      "Amphetamines - Amphetamines"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 71,
+     "missed": [
+      "Have you wished you were dead or wished you could go to sleep and not wake up?",
+      "2. Non-specific active suicidal thoughts"
+     ],
+     "false": [
+      "Subject endorses thoughts about a wish to be dead or not alive anymore, or wish to fall asleep and not wake up.",
+      "methods,intent or plan during the assessment period."
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 106,
+     "missed": [],
+     "false": [
+      "Done)]",
+      "(values: Normal, Abnormal, Not Done)]"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 136,
+     "missed": [
+      "Most severe ideation",
+      "Description of Ideation",
+      "How many times have you had these thoughts?",
+      "When you have the thoughts, how long do they last?"
+     ],
+     "false": [
+      "(1) Wish to be dead (2) Non-specific active suicidal thoughts (3) Active suicidal ideation with any method (not plan) w/out intent to act (4) Active suicidal ideation w/ some intent to act w/out specific plan (5) Active suicidal ideation w/ specific plan and intent",
+      "Non-specific active suicidal thoughts, (3) Active suicidal ideation with any method (not plan) w/out intent to act, (4) Active suicidal ideation w/ some intent to act w/out specific plan, (5) Active suicidal ideation w/ specific plan and intent)]",
+      "(values: (1) Less than",
+      "(1) Fleeting few seconds or minutes (2) Less than 1 hour/some of the time (3) 1-4 hours/a lot of time (4) 4-8 hours/most of day (5) More than 8 hours/persistent or continuous"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 198,
+     "missed": [
+      "Could/can you stop thinking about killing yourself or wanting to die if you want to?",
+      "Are there things - anyone or anything - that stopped you from wanting to die or acting on thoughts of committing suicide?",
+      "What sort of reasons did you have for thinking about wanting to die or killing yourself? Was it to end the pain or stop the way you were feeling (in other words you couldn't go on living with this pain or how you were feeling) or was it to get attention, revenge or a reaction from others? or both?"
+     ],
+     "false": [
+      "(1) Easily able to control thoughts (2) Can control thoughts with little difficulty (3) Can control thoughts with some difficulty (4) Can control thoughts with a lot of difficulty (5) Unable to control thoughts (0) Does not attempt to control thoughts",
+      "(1) Deterrents definitely stopped you from attempting suicide (2) Deterrents probably stopped you (3) Uncertain that deterrents stopped you (4) Deterrents most likely did not stop you (5) Deterrents definitely did not stop you (0) Does not apply",
+      "(1) Completely to get attention/ revenge or a reaction from others (2) Mostly to get attention/ revenge or a reaction from others (3) Equally to get attention/ revenge or a reaction from others and to end/stop the pain (4) Mostly to end or stop the pain (you could not go on living with the pain or how you were feeling) (5) Completely to end or stop the pain (you could not go on living with the pain or how you were feeling) (0) Does not apply"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 423,
+     "missed": [
+      "Most severe ideation",
+      "Description of Ideation",
+      "How many times have you had these thoughts?",
+      "When you have the thoughts, how long do they last?"
+     ],
+     "false": [
+      "(1) Wish to be dead (2) Non-specific active suicidal thoughts (3) Active suicidal ideation with any method (not plan) w/out intent to act (4) Active suicidal ideation w/ some intent to act w/out specific plan (5) Active suicidal ideation w/ specific plan and intent",
+      "Non-specific active suicidal thoughts, (3) Active suicidal ideation with any method (not plan) w/out intent to act, (4) Active suicidal ideation w/ some intent to act w/out specific plan, (5) Active suicidal ideation w/ specific plan and intent)]",
+      "(values: (1) Less than",
+      "(1) Fleeting few seconds or minutes (2) Less than 1 hour/some of the time (3) 1-4 hours/a lot of time (4) 4-8 hours/most of day (5) More than 8 hours/persistent or continuous"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    41,
+    0,
+    -47
+   ],
+   "became_best": true
+  },
+  {
+   "version": 3,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 199,
+    "pages_total": 47,
+    "pages_with_fields": 47,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 14,
+    "fields_per_form": 14.2,
+    "forms_per_100_pages": 29.8,
+    "form_same_page_evidence_records": 199,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 100
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 35,
+   "audit_pages": [
+    37,
+    42,
+    66,
+    71,
+    78,
+    136,
+    198,
+    423
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 37,
+     "missed": [],
+     "false": [
+      "Abnormal"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 42,
+     "missed": [
+      "Was Blood sample Collected for Glycated Hemoglobin?",
+      "Date of Collection",
+      "Time of Collection",
+      "Scan",
+      "Barcode Number"
+     ],
+     "false": [
+      "Sample Glycated Hemoglobin",
+      "Y: site"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 66,
+     "missed": [
+      "Barbiturates"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 71,
+     "missed": [
+      "Have you wished you were dead or wished you could go to sleep and not wake up?",
+      "2. Non-specific active suicidal thoughts"
+     ],
+     "false": [
+      "Have you wished you were dead or wished you could go to sleep and not wake",
+      "methods,intent or plan during the assessment period."
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 78,
+     "missed": [
+      "Actual attempt:",
+      "If Yes, Total number of attempts",
+      "Has subject engaged in Non-Suicidal self-injurious behavior?"
+     ],
+     "false": [
+      "act. Behaviour was in part thought of as method to kill oneself. Intent does not have to",
+      "Yes No"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 136,
+     "missed": [
+      "Most severe ideation",
+      "Frequency",
+      "Duration"
+     ],
+     "false": [
+      "intent",
+      "(2) Once a week",
+      "(5) More than 8 hours/persistent or continuous"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 198,
+     "missed": [
+      "Controllability",
+      "Deterrents",
+      "Reasons for Ideation"
+     ],
+     "false": [
+      "(0) Does not attempt to control thoughts",
+      "(0) Does not apply"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 423,
+     "missed": [
+      "Most severe ideation",
+      "Frequency",
+      "Duration"
+     ],
+     "false": [
+      "intent",
+      "(2) Once a week",
+      "(5) More than 8 hours/persistent or continuous"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    35,
+    0,
+    -47
+   ],
+   "became_best": true
+  },
+  {
+   "version": 4,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 194,
+    "pages_total": 47,
+    "pages_with_fields": 47,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 14,
+    "fields_per_form": 13.9,
+    "forms_per_100_pages": 29.8,
+    "form_same_page_evidence_records": 194,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 100
+   },
+   "problems": [
+    "Extreme content-fitted blocklist. The program filters by 54 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "warnings": [],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    1,
+    "not_audited",
+    0,
+    -47
+   ],
+   "became_best": false
+  },
+  {
+   "version": 5,
+   "kind": "revise_gates",
+   "metrics": {
+    "engine": "codegen",
+    "records": 231,
+    "pages_total": 47,
+    "pages_with_fields": 47,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 14,
+    "fields_per_form": 16.5,
+    "forms_per_100_pages": 29.8,
+    "form_same_page_evidence_records": 231,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 100
+   },
+   "problems": [
+    "Extreme content-fitted blocklist. The program filters by 48 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "warnings": [],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    1,
+    "not_audited",
+    0,
+    -47
+   ],
+   "became_best": false
+  }
+ ]
+}

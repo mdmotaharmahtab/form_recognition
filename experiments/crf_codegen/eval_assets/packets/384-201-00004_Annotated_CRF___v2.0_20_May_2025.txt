@@ -1,0 +1,1138 @@
+DOCUMENT: 384-201-00004 Annotated CRF__ v2.0 20 May 2025.pdf
+doc_key: 384-201-00004_Annotated_CRF___v2.0_20_May_2025
+pages: 246 | text_layer_pct: 100
+sampled pages (1-based): [30, 44, 79, 113, 133, 155, 212, 215, 219, 229]
+
+PDF BOOKMARKS (level, title, page):
+  L1 p4: Cover Page
+  L1 p17: Study Events
+  L2 p17: Day -28 to Day -3
+  L3 p39: Blood Collection - Screening
+  L3 p40: C-SSRS - Baseline/Screening
+  L3 p56: Concomitant Medications - Screening
+  L3 p58: Demographics
+  L3 p60: Disposition
+  L3 p69: ECG (RScribe) Screening
+  L3 p90: Height / Weight / BMI
+  L3 p91: Medical History
+  L3 p99: Physical Examination - Screening
+  L3 p111: Re-Screen
+  L3 p140: Urine Collection - Screening
+  L3 p149: Vital Signs - Orthostatic Screening/Admission
+  L2 p17: Day -2
+  L3 p27: Blood Collection - Admission Day -2
+  L3 p48: C-SSRS - Since Last Visit
+  L3 p60: Disposition
+  L3 p66: ECG (RScribe) Admission
+  L3 p92: Physical Examination - Full
+  L3 p125: Urine Collection - Admission
+  L3 p149: Vital Signs - Orthostatic Screening/Admission
+  L3 p163: Weight / BMI
+  L2 p17: Day -1
+  L3 p28: Blood Collection - Baseline Day -1
+  L3 p29: Blood Collection - PD Creatinine
+  L3 p48: C-SSRS - Since Last Visit
+  L3 p82: ECG Triplicate (RScribe) - Baseline
+  L3 p89: Enrollment
+  L3 p92: Physical Examination - Full
+  L3 p129: Urine Collection - PK - Active Interval Collection (0-2)
+  L3 p131: Urine Collection - PK - Active Interval Collection (12-24)
+  L3 p132: Urine Collection - PK - Active Interval Collection (2-4)
+  L3 p133: Urine Collection - PK - Active Interval Collection (4-8)
+  L3 p134: Urine Collection - PK - Active Interval Collection (8-12)
+  L3 p135: Urine Collection - PK - Interval End (0-2) – LAB USE ONLY
+  L3 p137: Urine Collection - PK - Interval End (2-4) – LAB USE ONLY
+  L3 p138: Urine Collection - PK - Interval End (4-8) – LAB USE ONLY
+  L3 p139: Urine Collection - PK - Interval End (8-12) – LAB USE ONLY
+  L3 p144: Vital Signs - Orthostatic
+  L3 p163: Weight / BMI
+  L2 p18: Day 1
+  L3 p31: Blood Collection - PK SEP
+  L3 p33: Blood Collection - PK SEP/PD Creatine
+  L3 p34: Blood Collection - PK SEP/PD Creatine/Glucose/Insulin
+  L3 p35: Blood Collection - PK SEP/PD Creatinine/PGx/ Safety Day 1
+  L3 p63: ECG (RScribe)
+  L3 p75: ECG Triplicate (RScribe)
+  L3 p117: Study Drug Administration - SEP-380135
+  L3 p130: Urine Collection - PK - Active Interval Collection (0-2) - Day 1
+  L3 p131: Urine Collection - PK - Active Interval Collection (12-24)
+  L3 p132: Urine Collection - PK - Active Interval Collection (2-4)
+  L3 p133: Urine Collection - PK - Active Interval Collection (4-8)
+  L3 p134: Urine Collection - PK - Active Interval Collection (8-12)
+  L3 p135: Urine Collection - PK - Interval End (0-2) – LAB USE ONLY
+  L3 p136: Urine Collection - PK - Interval End (12-24) – LAB USE ONLY
+  L3 p137: Urine Collection - PK - Interval End (2-4) – LAB USE ONLY
+  L3 p138: Urine Collection - PK - Interval End (4-8) – LAB USE ONLY
+  L3 p139: Urine Collection - PK - Interval End (8-12) – LAB USE ONLY
+  L3 p144: Vital Signs - Orthostatic
+  L2 p18: Day 2
+  L3 p31: Blood Collection - PK SEP
+  L3 p33: Blood Collection - PK SEP/PD Creatine
+  L3 p136: Urine Collection - PK - Interval End (12-24) – LAB USE ONLY
+  L3 p144: Vital Signs - Orthostatic
+  L2 p18: Day 3
+  L3 p31: Blood Collection - PK SEP
+  L3 p144: Vital Signs - Orthostatic
+  L2 p18: Day 4
+  L3 p31: Blood Collection - PK SEP
+  L3 p144: Vital Signs - Orthostatic
+  L2 p18: Day 5
+  L3 p29: Blood Collection - PD Creatinine
+  L3 p33: Blood Collection - PK SEP/PD Creatine
+  L3 p129: Urine Collection - PK - Active Interval Collection (0-2)
+  L3 p131: Urine Collection - PK - Active Interval Collection (12-24)
+  L3 p132: Urine Collection - PK - Active Interval Collection (2-4)
+  L3 p133: Urine Collection - PK - Active Interval Collection (4-8)
+  L3 p134: Urine Collection - PK - Active Interval Collection (8-12)
+  L3 p135: Urine Collection - PK - Interval End (0-2) – LAB USE ONLY
+  L3 p137: Urine Collection - PK - Interval End (2-4) – LAB USE ONLY
+  L3 p138: Urine Collection - PK - Interval End (4-8) – LAB USE ONLY
+  L3 p139: Urine Collection - PK - Interval End (8-12) – LAB USE ONLY
+  L3 p144: Vital Signs - Orthostatic
+  L2 p18: Day 6
+  L3 p29: Blood Collection - PD Creatinine
+  L3 p115: Study Drug Administration - Quinidine
+  L3 p136: Urine Collection - PK - Interval End (12-24) – LAB USE ONLY
+  L3 p144: Vital Signs - Orthostatic
+  L2 p18: Day 7
+  L3 p31: Blood Collection - PK SEP
+  L3 p36: Blood Collection - PK SEP/PK Quinidine
+  L3 p37: Blood Collection - PK SEP/PK Quinidine/Safety Day 7
+  L3 p63: ECG (RScribe)
+  L3 p75: ECG Triplicate (RScribe)
+  L3 p112: Study Drug Administration - Combined
+  L3 p144: Vital Signs - Orthostatic
+  L2 p19: Day 8
+  L3 p30: Blood Collection - PK Quinidine
+  L3 p31: Blood Collection - PK SEP
+  L3 p115: Study Drug Administration - Quinidine
+  L3 p144: Vital Signs - Orthostatic
+  L2 p19: Day 9
+  L3 p30: Blood Collection - PK Quinidine
+  L3 p31: Blood Collection - PK SEP
+  L3 p115: Study Drug Administration - Quinidine
+  L3 p144: Vital Signs - Orthostatic
+  L2 p19: Day 10
+  L3 p30: Blood Collection - PK Quinidine
+  L3 p31: Blood Collection - PK SEP
+  L3 p115: Study Drug Administration - Quinidine
+  L3 p144: Vital Signs - Orthostatic
+  L2 p19: Day 11
+  L3 p32: Blood Collection - PK SEP and Safety
+  L3 p48: C-SSRS - Since Last Visit
+  L3 p63: ECG (RScribe)
+  L3 p92: Physical Examination - Full
+  L3 p144: Vital Signs - Orthostatic
+  L3 p163: Weight / BMI
+  L2 p19: Follow Up Day 37
+  L3 p60: Disposition
+  L2 p19: Early Termination
+  L3 p32: Blood Collection - PK SEP and Safety
+  L3 p48: C-SSRS - Since Last Visit
+  L3 p60: Disposition
+  L3 p63: ECG (RScribe)
+  L3 p92: Physical Examination - Full
+  L3 p144: Vital Signs - Orthostatic
+  L3 p163: Weight / BMI
+  L2 p19: Unscheduled
+  L2 p19: AE/CM / Protocol Deviation
+  L3 p21: AE / CM
+  L3 p119: Subject Eligibility
+  L3 p124: Subject Informed Consent
+  L3 p129: Urine Collection - PK - Active Interval Collection (0-2)
+  L3 p130: Urine Collection - PK - Active Interval Collection (0-2) - Day 1
+  L3 p131: Urine Collection - PK - Active Interval Collection (12-24)
+  L3 p132: Urine Collection - PK - Active Interval Collection (2-4)
+  L3 p133: Urine Collection - PK - Active Interval Collection (4-8)
+  L3 p134: Urine Collection - PK - Active Interval Collection (8-12)
+  L3 p135: Urine Collection - PK - Interval End (0-2) – LAB USE ONLY
+  L3 p136: Urine Collection - PK - Interval End (12-24) – LAB USE ONLY
+  L3 p137: Urine Collection - PK - Interval End (2-4) – LAB USE ONLY
+  L3 p138: Urine Collection - PK - Interval End (4-8) – LAB USE ONLY
+  L3 p139: Urine Collection - PK - Interval End (8-12) – LAB USE ONLY
+  L2 p20: Subject
+  L3 p21: AE / CM
+  L3 p119: Subject Eligibility
+  L3 p124: Subject Informed Consent
+  L3 p129: Urine Collection - PK - Active Interval Collection (0-2)
+  L3 p130: Urine Collection - PK - Active Interval Collection (0-2) - Day 1
+  L3 p131: Urine Collection - PK - Active Interval Collection (12-24)
+  L3 p132: Urine Collection - PK - Active Interval Collection (2-4)
+  L3 p133: Urine Collection - PK - Active Interval Collection (4-8)
+  L3 p134: Urine Collection - PK - Active Interval Collection (8-12)
+  L3 p135: Urine Collection - PK - Interval End (0-2) – LAB USE ONLY
+  L3 p136: Urine Collection - PK - Interval End (12-24) – LAB USE ONLY
+  L3 p137: Urine Collection - PK - Interval End (2-4) – LAB USE ONLY
+  L3 p138: Urine Collection - PK - Interval End (4-8) – LAB USE ONLY
+  L3 p139: Urine Collection - PK - Interval End (8-12) – LAB USE ONLY
+  L1 p4: Activity Plans
+  L2 p5: Screening
+  L2 p6: Admission
+  L2 p7: Baseline
+  L2 p8: Treatment
+  L1 p20: Forms
+  L2 p21: AE / CM
+  L3 p19: AE/CM / Protocol Deviation
+  L3 p20: Subject
+  L2 p27: Blood Collection - Admission Day -2
+  L3 p17: Day -2
+  L2 p28: Blood Collection - Baseline Day -1
+  L3 p17: Day -1
+  L2 p29: Blood Collection - PD Creatinine
+  L3 p17: Day -1
+  L3 p18: Day 5
+  L3 p18: Day 6
+  L2 p30: Blood Collection - PK Quinidine
+  L3 p19: Day 8
+  L3 p19: Day 9
+  L3 p19: Day 10
+  L2 p31: Blood Collection - PK SEP
+  L3 p18: Day 1
+  L3 p18: Day 2
+  L3 p18: Day 3
+  L3 p18: Day 4
+  L3 p18: Day 7
+  L3 p19: Day 8
+  L3 p19: Day 9
+  L3 p19: Day 10
+  L2 p32: Blood Collection - PK SEP and Safety
+  L3 p19: Day 11
+  L3 p19: Early Termination
+  L2 p33: Blood Collection - PK SEP/PD Creatine
+  L3 p18: Day 1
+  L3 p18: Day 2
+  L3 p18: Day 5
+  L2 p34: Blood Collection - PK SEP/PD Creatine/Glucose/Insulin
+  L3 p18: Day 1
+  L2 p35: Blood Collection - PK SEP/PD Creatinine/PGx/ Safety Day 1
+  L3 p18: Day 1
+  L2 p36: Blood Collection - PK SEP/PK Quinidine
+  L3 p18: Day 7
+  L2 p37: Blood Collection - PK SEP/PK Quinidine/Safety Day 7
+  L3 p18: Day 7
+  L2 p38: Blood Collection - Safety
+  L2 p39: Blood Collection - Screening
+  L3 p17: Day -28 to Day -3
+  L2 p40: C-SSRS - Baseline/Screening
+  L3 p17: Day -28 to Day -3
+  L2 p48: C-SSRS - Since Last Visit
+  L3 p17: Day -2
+  L3 p17: Day -1
+  L3 p19: Day 11
+  L3 p19: Early Termination
+  L2 p54: CM related to MH
+  L2 p56: Concomitant Medications - Screening
+  L3 p17: Day -28 to Day -3
+  L2 p58: Demographics
+  L3 p17: Day -28 to Day -3
+  L2 p60: Disposition
+  L3 p17: Day -28 to Day -3
+  L3 p17: Day -2
+  L3 p19: Follow Up Day 37
+  L3 p19: Early Termination
+  L2 p63: ECG (RScribe)
+  L3 p18: Day 1
+  L3 p18: Day 7
+  L3 p19: Day 11
+  L3 p19: Early Termination
+  L2 p66: ECG (RScribe) Admission
+  L3 p17: Day -2
+  L2 p69: ECG (RScribe) Screening
+  L3 p17: Day -28 to Day -3
+  L2 p72: ECG (RScribe) Unscheduled
+  L2 p75: ECG Triplicate (RScribe)
+  L3 p18: Day 1
+  L3 p18: Day 7
+  L2 p82: ECG Triplicate (RScribe) - Baseline
+  L3 p17: Day -1
+  L2 p89: Enrollment
+  L3 p17: Day -1
+  L2 p90: Height / Weight / BMI
+  L3 p17: Day -28 to Day -3
+  L2 p91: Medical History
+  L3 p17: Day -28 to Day -3
+  L2 p92: Physical Examination - Full
+  L3 p17: Day -2
+  L3 p17: Day -1
+  L3 p19: Day 11
+  L3 p19: Early Termination
+  L2 p99: Physical Examination - Screening
+  L3 p17: Day -28 to Day -3
+  L2 p106: Physical Examination - Targeted
+  L2 p110: Principal Investigator Approval
+  L2 p111: Re-Screen
+  L3 p17: Day -28 to Day -3
+  L2 p112: Study Drug Administration - Combined
+  L3 p18: Day 7
+  L2 p115: Study Drug Administration - Quinidine
+  L3 p18: Day 6
+  L3 p19: Day 8
+  L3 p19: Day 9
+  L3 p19: Day 10
+  L2 p117: Study Drug Administration - SEP-380135
+  L3 p18: Day 1
+  L2 p119: Subject Eligibility
+  L2 p124: Subject Informed Consent
+  L2 p125: Urine Collection - Admission
+  L3 p17: Day -2
+  L2 p129: Urine Collection - PK - Active Interval Collection (0-2)
+  L3 p17: Day -1
+  L3 p18: Day 5
+  L2 p130: Urine Collection - PK - Active Interval Collection (0-2) - Day 1
+  L3 p18: Day 1
+  L2 p131: Urine Collection - PK - Active Interval Collection (12-24)
+  L3 p17: Day -1
+  L3 p18: Day 1
+  L3 p18: Day 5
+  L2 p132: Urine Collection - PK - Active Interval Collection (2-4)
+  L3 p17: Day -1
+  L3 p18: Day 1
+  L3 p18: Day 5
+  L2 p133: Urine Collection - PK - Active Interval Collection (4-8)
+  L3 p17: Day -1
+  L3 p18: Day 1
+  L3 p18: Day 5
+  L2 p134: Urine Collection - PK - Active Interval Collection (8-12)
+  L3 p17: Day -1
+  L3 p18: Day 1
+  L3 p18: Day 5
+  L2 p135: Urine Collection - PK - Interval End (0-2) – LAB USE ONLY
+  L3 p17: Day -1
+  L3 p18: Day 1
+  L3 p18: Day 5
+  L2 p136: Urine Collection - PK - Interval End (12-24) – LAB USE ONLY
+  L3 p18: Day 1
+  L3 p18: Day 2
+  L3 p18: Day 6
+  L2 p137: Urine Collection - PK - Interval End (2-4) – LAB USE ONLY
+  L3 p17: Day -1
+  L3 p18: Day 1
+  L3 p18: Day 5
+  L2 p138: Urine Collection - PK - Interval End (4-8) – LAB USE ONLY
+  L3 p17: Day -1
+  L3 p18: Day 1
+  L3 p18: Day 5
+  L2 p139: Urine Collection - PK - Interval End (8-12) – LAB USE ONLY
+  L3 p17: Day -1
+  L3 p18: Day 1
+  L3 p18: Day 5
+  L2 p140: Urine Collection - Screening
+  L3 p17: Day -28 to Day -3
+  L2 p144: Vital Signs - Orthostatic
+  L3 p17: Day -1
+  L3 p18: Day 1
+  L3 p18: Day 2
+  L3 p18: Day 3
+  L3 p18: Day 4
+  L3 p18: Day 5
+  L3 p18: Day 6
+  L3 p18: Day 7
+  L3 p19: Day 8
+  L3 p19: Day 9
+  L3 p19: Day 10
+  L3 p19: Day 11
+  L3 p19: Early Termination
+  L2 p149: Vital Signs - Orthostatic Screening/Admission
+  L3 p17: Day -28 to Day -3
+  L3 p17: Day -2
+  L2 p154: Vital Signs - Unscheduled
+  L2 p158: Vital Signs - Unscheduled - Orthostatic
+  L2 p163: Weight / BMI
+  L3 p17: Day -2
+  L3 p17: Day -1
+  L3 p19: Day 11
+  L3 p19: Early Termination
+  L1 p163: Units of Measure
+  L1 p164: Code Lists
+  L2 p165: AE Action Taken
+  L2 p166: AE Outcome
+  L2 p167: AE Relationship
+  L2 p168: AE Severity
+  L2 p169: CM Dose Form
+  L2 p170: CM Dose Frequency
+  L2 p171: CM Dose Frequency
+  L2 p172: CM Dose Route
+  L2 p173: CM Dose Units
+  L2 p174: CM Dose Units
+  L2 p175: CSSRS Actual Lethality/Medical Damage
+  L2 p176: CSSRS Controllability
+  L2 p177: CSSRS Deterrents
+  L2 p178: CSSRS Duration
+  L2 p179: CSSRS Frequency
+  L2 p180: CSSRS Potential Lethality
+  L2 p181: CSSRS Reason for Ideation
+  L2 p182: Cuff Size
+  L2 p183: Disposition Reasoning
+  L2 p184: DM Ethnic
+  L2 p185: DM Sex
+  L2 p186: Dose Formulation
+  L2 p187: Dose Route
+  L2 p188: DOSE UNIT
+  L2 p189: Drug Name - Drug Dispensed
+  L2 p190: Drug Name - Drug Dispensed - Combined
+  L2 p191: Drug Name - Drug Dispensed - Quinidine
+  L2 p192: Drug Name - Study Drug Admin
+  L2 p193: Drug Name - Study Drug Admin - Quinidine
+  L2 p194: DSREAS4
+  L2 p195: ECG Position selection
+  L2 p196: EG Significance
+  L2 p197: EG_INTERPRETATION
+  L2 p198: ICF - Yes/No
+  L2 p199: IE - Item Met
+  L2 p200: IE - Not Met
+  L2 p201: MH Significance
+  L2 p202: NCS/CS
+  L2 p203: Number List 1-5
+  L2 p204: PE Cardiovascular
+  L2 p205: PE Dermatologic
+  L2 p206: PE Gastrointestinal
+  L2 p207: PE General Appearance
+  L2 p208: PE HEENT
+  L2 p209: PE Musculoskeletal / Extremities
+  L2 p210: PE Neck/Lymphatic
+  L2 p211: PE Neurological
+  L2 p212: PE Other
+  L2 p213: PE Respiratory
+  L2 p214: PE Significance
+  L2 p215: PE Urogenital
+  L2 p216: PE_RESULT
+  L2 p217: PE_RESULT Urogenital
+  L2 p218: Quantity
+  L2 p219: Total Dose
+  L2 p220: UDS Results
+  L2 p221: Vital Signs Arm Used
+  L2 p222: Vital Signs Position Restriction
+  L2 p223: Vital Signs Position Restriction
+  L2 p224: VS Significance
+  L2 p225: YES/ N/A
+  L2 p226: YES/ NO (F-NPM/MALE)
+  L2 p227: YES/ NO/ N/A - Male
+  L2 p228: Yes/No
+  L1 p228: Study Lab Panels
+  L2 p229: Chemistry Non-Stat Panel
+  L2 p230: Chemistry On Study Panel
+  L2 p231: Chemistry Screening Panel
+  L2 p232: Chemistry Stat Panel
+  L2 p233: Coagulation Panel
+  L2 p234: FSH Panel
+  L2 p235: Glucose
+  L2 p236: Hematology Panel
+  L2 p237: Insulin Panel
+  L2 p238: Prolactin Panel
+  L2 p239: Serology Panel
+  L2 p240: Thyroid Panel
+  L2 p241: UA w/ hCG Panel
+
+======================================================================
+=== PAGE 30 (cluster 0) ===
+--- page text ---
+384-201-00004
+Annotated CRF
+27 of 238
+https://drvince.clinspark.com
+Origin: CRF; Repeating: No; Domain: PC
+Origin: CRF
+Blood Collection - PK Quinidine
+ Odm OID = F.1177
+Aliases:
+Blood Collection - PK Quinidine
+ Odm OID = IG.1535
+Aliases:
+Was the sample collected? 
+[PCPERF] 
+[SAS Field Name: PCSTAT]
+O Yes
+O No
+Code List: Yes/No
+PCSTAT
+Format: $1
+Data Type: string
+Origin: CRF
+Aliases:
+Odm OID = I.5726
+Description: Was the sample 
+collected?
+Edit Checks:
+Name: TEMPLATE_PCPERF: 
+ 
+Value
+ Y
+=
+Description: Value should = Y
+Mandatory?: Yes
+Disallow Future Date: Yes
+PK Quinidine collection date and time 
+[PCDTC_PKQ] 
+[SAS Field Name: PCQDTC]
+Collect a 4mL purple K2EDTA tube. Immediately gently invert 8-10 
+times and place upright in room temperature rack
+[_|_] - [_|_|_] - [_|_|_|_] [_|_] : [_|_] : [_|_]
+dd-MMM-yyyy HH:mm:ss
+PCQDTC
+Format: dd-MMM-yyyy HH:mm:ss
+Data Type: datetime
+Origin: CRF
+Conditionally Visible
+Conditional Item: PCPERF
+Visible If Value: Y = Yes
+Description: PK Quinidine collection 
+date and time
+Sample Path: Quinidine PK
+Requires Barcode Verification
+Mandatory?: Yes
+Disallow Future Date: Yes
+
+
+======================================================================
+=== PAGE 44 (cluster 0) ===
+--- page text ---
+384-201-00004
+Annotated CRF
+41 of 238
+https://drvince.clinspark.com
+Origin: CRF; Repeating: No; Domain: QS
+[QSCSS0310B] 
+[SAS Field Name: CSS0310B]
+Are there things-anyone or anything (e.g., family, religion, pain of 
+death) - that stopped you from wanting to die or acting on thoughts 
+of committing suicide? (Past 12 Months).
+O (4) Deterrents most likely did not stop you
+O (5) Deterrents definitely did not stop you
+O (0) Does not Apply
+Code List: CSSRS Deterrents
+Aliases:
+Odm OID = I.944
+Description: CSS03-Most Severe 
+Idea, Deterrents-P12M
+Mandatory?: Yes
+Disallow Future Date: Yes
+Reasons for Ideation (Lifetime) 
+[QSCSS0311A] 
+[SAS Field Name: CSS0311A]
+What sort of reasons did you have for thinking about wanting to die 
+or killing yourself? Was it to end the pain or stop the way you were 
+feeling (in other words you couldn't go on living with this pain or 
+how you were feeling) or was it to get attention, revenge or a 
+reaction from others? Or both? (Lifetime).
+O (1) Completely to get attention, revenge or a reaction from others
+O (2) Mostly to get attention, revenge or a reaction from others
+O (3) Equally to get attention, revenge or a reaction from others and to 
+end/stop the pain
+O (4) Mostly to end or stop the pain (you couldn't go on living with the 
+pain or how you were feeling)
+O (5) Completely to end or stop the pain (you couldn't go on living with 
+the pain or how you were feeling)
+O (0) Does not apply
+Code List: CSSRS Reason for Ideation
+CSS0311A
+Format: $1
+Data Type: string
+Origin: CRF
+Aliases:
+Odm OID = I.947
+Description: CSS03-Most Severe 
+Idea, Reasons-Life
+Mandatory?: Yes
+Disallow Future Date: Yes
+Reasons for Ideation (Past 12 Months) 
+[QSCSS0311B] 
+[SAS Field Name: CSS0311B]
+What sort of reasons did you have for thinking about wanting to die 
+or killing yourself? Was it to end the pain or stop the way you were 
+feeling (in other words you couldn't go on living with this pain or 
+how you were feeling) or was it to get attention, revenge or a 
+reaction from others? Or both? (Past 12 Months).
+O (1) Completely to get attention, revenge or a reaction from others
+O (2) Mostly to get attention, revenge or a reaction from others
+O (3) Equally to get attention, revenge or a reaction from others and to 
+end/stop the pain
+O (4) Mostly to end or stop the pain (you couldn't go on living with the 
+pain or how you were feeling)
+O (5) Completely to end or stop the pain (you couldn't go on living with 
+the pain or how you were feeling)
+O (0) Does not apply
+Code List: CSSRS Reason for Ideation
+CSS0311B
+Format: $1
+Data Type: string
+Origin: CRF
+Aliases:
+Odm OID = I.948
+Description: CSS03-Most Severe 
+Idea, Reasons-P12M
+Mandatory?: Yes
+Disallow Future Date: Yes
+SUICIDAL BEHAVIOR
+Help Text: (Check all that apply, so long as these are separate events; must ask about all types)
+Comment: SUICIDAL BEHAVIOR
+ Odm OID = IG.227
+Aliases:
+Actual Attempt: Have you made a suicide attempt? Have 
+you done anything to harm yourself? Have you done 
+anything dangerous where you could have died? What did 
+you do? Did you ___ as a way to end your life? Did you 
+want to die (even a little) when you ___? Were you trying to 
+end your life when you ___? Or Did you think it was 
+possible you could have died from ___? Or did you do it 
+purely for other reasons / without ANY intention of killing 
+yourself (like to relieve stress, feel better, get sympathy, or 
+get something else to happen)? (Self-Injurious Behavior 
+without suicidal intent) 
+[QSCSS0312] 
+[SAS Field Name: CSS0312]
+A potentially self-injurious act committed with at least some wish to 
+die, as a result of act. Behavior was in part thought of as method to 
+kill oneself. Intent does not have to be 100%. If there is any intent
+/desire to die associated with the act, then it can be considered an 
+actual suicide attempt. There does not have to be any injury or 
+harm, just the potential for injury or harm. If person pulls trigger 
+while gun is in mouth but gun is broken so no injury results, this is 
+considered an attempt. Inferring Intent: Even if an individual denies 
+intent/wish to die, it may be inferred clinically from the behavior or 
+circumstances. For example, a highly lethal act that is clearly not an 
+accident so no other intent but suicide can be inferred (e.g., 
+gunshot to head, jumping from window of a high floor/story). Also, if 
+someone denies intent to die, but they thought that what they did 
+could be lethal, intent may be inferred.
+O Yes
+O No
+Code List: Yes/No
+CSS0312
+Fo
+[... truncated ...]
+
+======================================================================
+=== PAGE 79 (cluster 0) ===
+--- page text ---
+384-201-00004
+Annotated CRF
+76 of 238
+https://drvince.clinspark.com
+Origin: CRF; Repeating: No; Conditionally Visible; Domain: EG
+Disallow Future Date: Yes
+Abnormality Reason 
+[EG_ABNORMAL REASON] 
+[SAS Field Name: EGTESTCD]
+[____________________]
+EGTESTCD
+Format: $200
+Data Type: text
+Origin: CRF
+Requires Role: Investigator
+Conditionally Visible
+Conditional Item: 
+EG_INTERPRETATION
+Visible If Value: ABNORMAL = 
+Abnormal
+SDS Var Name: EGDESC
+Aliases:
+Odm OID = I.5879
+Description: ECG Test or Examination 
+Short Name
+Mandatory?: Yes
+Disallow Future Date: Yes
+Electrocardiogram 3
+Comment: Reading 3
+Description: RScribe
+PR 
+[PR] 
+[SAS Field Name: EGTESTCD]
+[_|_|_]
+EGTESTCD
+Format: N(3)
+Data Type: integer
+Origin: CRF
+?
+Range (soft): 100-200
+Range (hard): 0-500
+Units:
+ms = ms
+SDS Var Name: PRAG
+Device Parameter: RScribe; PR
+Aliases:
+Odm OID = I.5864
+Description: ECG Test or Examination 
+Short Name
+Mandatory?: Yes
+Disallow Future Date: Yes
+QRS 
+[QRS] 
+[SAS Field Name: EGTESTCD]
+[_|_|_]
+EGTESTCD
+Format: N(3)
+Data Type: integer
+Origin: CRF
+?
+Range (soft): 70-120
+Range (hard): 0-500
+Units:
+ms = ms
+SDS Var Name: QRSAG
+Device Parameter: RScribe; QRS
+Aliases:
+Odm OID = I.5865
+Description: ECG Test or Examination 
+Short Name
+Mandatory?: Yes
+Disallow Future Date: Yes
+QT 
+[QT] 
+[SAS Field Name: EGTESTCD]
+[_|_|_]
+EGTESTCD
+Format: N(3)
+Data Type: integer
+Origin: CRF
+Units:
+ms = ms
+SDS Var Name: QTAG
+Device Parameter: RScribe; QT
+Aliases:
+Odm OID = I.5866
+Description: ECG Test or Examination 
+Short Name
+Mandatory?: Yes
+Disallow Future Date: Yes
+QTcF 
+[QTcF] 
+[SAS Field Name: EGTESTCD]
+[_|_|_]
+EGTESTCD
+Format: N(3)
+Data Type: integer
+Origin: CRF
+Units:
+ms = ms
+SDS Var Name: QTCFAG
+Device Parameter: RScribe; QTcF
+Aliases:
+Odm OID = I.5868
+Description: ECG Test or Examination 
+Short Name
+Edit Checks:
+Name: TEMPLATE_QTcF001: 
+Formal Expression; Context: Formal 
+Expression
+Description: Query if male subject 
+and value >= 451, if female subject 
+and value >= 471
+Name: TEMPLATE_QTcF002: 
+ 
+Value
+ 360
+>=
+Description: Value should be >=360
+Mandatory?: Yes
+Disallow Future Date: Yes
+QTcB 
+[QTcB] 
+[_|_|_]
+EGTESTCD
+Format: N(3)
+Data Type: integer
+Origin: CRF
+Units:
+ms = ms
+SDS Var Name: QTCBAG
+
+
+======================================================================
+=== PAGE 113 (cluster 0) ===
+--- page text ---
+384-201-00004
+Annotated CRF
+110 of 238
+https://drvince.clinspark.com
+Origin: CRF; Repeating: No; Domain: EX
+Dose is swallowed whole, and a hand and mouth check are 
+performed.
+Comments 
+[EX_ADMINISTERED_PER_PROTOCOL_REASONS] 
+[SAS Field Name: EXVERTXT]
+[____________________]
+EXVERTXT
+Format: $200
+Data Type: text
+Origin: CRF
+Requires Role: Doser
+Conditionally Visible
+Conditional Item: 
+EX_DOSE_PER_PROTOCOL
+Visible If Value: N = No
+Aliases:
+Odm OID = I.6003
+Description: Comments
+Mandatory?: Yes
+Disallow Future Date: Yes
+Study Drug Administration - Quinidine Combined
+ Odm OID = IG.1596
+Aliases:
+Route of administration 
+[ROUTE_OF_ADMIN - Quinidine] 
+[SAS Field Name: EXROUTE]
+O Oral
+Code List: Dose Route
+EXROUTE
+Format: $
+Data Type: string
+Origin: CRF
+Default Item Value: ORAL
+Requires Role: Doser
+Aliases:
+Odm OID = I.5995
+Description: Route of Administration
+Mandatory?: Yes
+Disallow Future Date: Yes
+Date and time of administration 
+[EXSTDTC] 
+[SAS Field Name: EXSTDTC]
+[_|_] - [_|_|_] - [_|_|_|_] [_|_] : [_|_] : [_|_]
+dd-MMM-yyyy HH:mm:ss
+EXSTDTC
+Format: dd-MMM-yyyy HH:mm:ss
+Data Type: datetime
+Origin: CRF
+Requires Role: Doser
+Description: Start Date/Time of 
+Treatment
+Value Calculated via Method: 
+Transcribe Dose Time - Combined - 
+Quinidine
+Mandatory?: Yes
+Disallow Future Date: Yes
+Drug name given 
+[EXTREAT - Quinidine] 
+[SAS Field Name: EXTRT]
+O Quinidine Gluconate
+Code List: Drug Name - Study Drug Admin - Quinidine
+EXTRT
+Format: $
+Data Type: string
+Origin: CRF
+Default Item Value: Quinidine 
+Gluconate
+Requires Role: Doser
+Aliases:
+Odm OID = I.6602
+Description: Name of Treatment
+Mandatory?: Yes
+Disallow Future Date: Yes
+Total dose 
+[EXDOSE - Quinidine] 
+[SAS Field Name: EXDOSE]
+O 9
+O 324
+Code List: Total Dose
+EXDOSE
+Format: $
+Data Type: string
+Origin: CRF
+Default Item Value: 324
+Requires Role: Doser
+Aliases:
+Odm OID = I.6603
+Description: Dose
+Mandatory?: Yes
+Disallow Future Date: Yes
+Unit 
+[DOSING_UNIT - Quinidine] 
+[SAS Field Name: EXDOSU]
+O mg
+Code List: DOSE UNIT
+EXDOSU
+Format: $
+Data Type: string
+Origin: CRF
+Default Item Value: mg
+Requires Role: Doser
+Aliases:
+Odm OID = I.5993
+Description: Dose Units
+Mandatory?: Yes
+Disallow Future Date: Yes
+Formulation of study drug 
+[DRUG_FORMULATION - Quinidine] 
+[SAS Field Name: EXDOSFRM]
+O Capsules
+O Tablet
+Code List: Dose Formulation
+EXDOSFRM
+Format: $
+Data Type: string
+Origin: CRF
+Default Item Value: TABLET
+Requires Role: Doser
+Aliases:
+Odm OID = I.5994
+Description: Dose Form
+Mandatory?: Yes
+Disallow Future Date: Yes
+Quantity administered 
+[EX_QUANTITY_ADMINISTERED_Q] 
+[SAS Field Name: EXQTY]
+O 3
+O 1
+Code List: Quantity
+EXQTY
+Format: $
+Data Type: string
+Origin: CRF
+Default Item Value: 1
+Requires Role: Doser
+Aliases:
+Odm OID = I.5996
+Description: Quantity administered
+
+
+======================================================================
+=== PAGE 133 (cluster 0) ===
+--- page text ---
+384-201-00004
+Annotated CRF
+130 of 238
+https://drvince.clinspark.com
+Origin: CRF; Repeating: No; Domain: PC
+Origin: CRF
+Urine Collection - PK - Active Interval Collection (4-8)
+Interval PK Start (4-8)
+Collection start date and time 
+[PCDTC] 
+[SAS Field Name: PCDTC]
+[_|_] - [_|_|_] - [_|_|_|_] [_|_] : [_|_] : [_|_]
+dd-MMM-yyyy HH:mm:ss
+PCDTC
+Format: dd-MMM-yyyy HH:mm:ss
+Data Type: datetime
+Origin: CRF
+Value Calculated via Method: Interval 
+Start From Final Previous Interval 
+Collection (2-4)
+Mandatory?: Yes
+Disallow Future Date: Yes
+
+
+======================================================================
+=== PAGE 155 (cluster 0) ===
+--- page text ---
+384-201-00004
+Annotated CRF
+152 of 238
+https://drvince.clinspark.com
+Clinical significance 
+[VSCLSIG_DIABPSIG] 
+[SAS Field Name: DIABPSIG]
+O CS
+O NCS
+Code List: VS Significance
+Format: $3
+Data Type: string
+Origin: CRF
+Requires Role: Investigator
+Conditionally Visible
+Conditional Item: 
+VSDBPOOR_UNSCHEDULED
+Visible If Value: Y = Yes
+Aliases:
+Odm OID = I.7863
+Description: Clinical significance
+Edit Checks:
+Name: 
+TEMPLATE_VSCLSIG_DIABPSIG: 
+  NCS
+Value =
+Description: Value should = NCS
+Mandatory?: Yes
+Disallow Future Date: Yes
+Heart Rate 
+[HR] 
+[SAS Field Name: HR]
+[_|_|_]
+HR
+Format: N(3)
+Data Type: integer
+Origin: CRF
+?
+Range (soft): 50-100
+Range (hard): 1-210
+Units:
+BPM = BPM
+Device Parameter: Welch Allyn Vitals; 
+HR
+Aliases:
+Odm OID = I.6033
+Description: Heart Rate
+Mandatory?: Yes
+Disallow Future Date: Yes
+Is heart rate out of range? 
+[VSHROOR_UNSCHEDULED] 
+[SAS Field Name: HROR]
+O Yes
+O No
+Code List: Yes/No
+HROR
+Format: $1
+Data Type: string
+Origin: CRF
+Aliases:
+Odm OID = I.7864
+Description: Out of Range Indicator
+Value Calculated via Method: Vital 
+Signs HR OOR Unscheduled
+Mandatory?: Yes
+Disallow Future Date: Yes
+Clinical significance 
+[VSCLSIG_HRSIG] 
+[SAS Field Name: HRSIG]
+O CS
+O NCS
+Code List: VS Significance
+HRSIG
+Format: $3
+Data Type: string
+Origin: CRF
+Requires Role: Investigator
+Conditionally Visible
+Conditional Item: 
+VSHROOR_UNSCHEDULED
+Visible If Value: Y = Yes
+Aliases:
+Odm OID = I.7865
+Description: Clinical significance
+Edit Checks:
+Name: 
+TEMPLATE_VSCLSIG_HRSIG: 
+  NCS
+Value =
+Description: Value should = NCS
+Mandatory?: Yes
+Disallow Future Date: Yes
+Temperature 
+[TEMPERATURE] 
+[SAS Field Name: TEMP]
+[_|_|_] . [_]
+TEMP
+Format: N(3.1)
+Data Type: float
+Origin: CRF
+?
+Range (soft): 36.1-37.2
+Range (hard): 1.0-100.0
+Units:
+C = C
+Device Parameter: Welch Allyn Vitals; 
+Temperature
+Aliases:
+CC Mapping = Temperature
+CC Mapping = Oral Temperature
+Odm OID = I.6034
+Description: Body Temperature
+Edit Checks:
+Name: TEMPLATE_Temperature 
+Decimal Check: Formal Expression; 
+Context: Formal Expression
+Description: Query if temperature 
+value does not have the format ##.# 
+or if result is outside of range. SOP 
+range: 36.1-37.2.
+Mandatory?: Yes
+Disallow Future Date: Yes
+Is temperature out of range? 
+[VSTEMPOOR_UNSCHEDULED] 
+[SAS Field Name: TEMPOR]
+O Yes
+O No
+Code List: Yes/No
+TEMPOR
+Format: $1
+Data Type: string
+Origin: CRF
+Aliases:
+Odm OID = I.7866
+Description: Out of Range Indicator
+Value Calculated via Method: Vital 
+Signs Temp OOR Unscheduled
+Mandatory?: Yes
+Disallow Future Date: Yes
+TEMPSIG
+Format: $3
+
+
+======================================================================
+=== PAGE 212 (cluster 1) ===
+--- page text ---
+384-201-00004
+Annotated CRF
+209 of 238
+https://drvince.clinspark.com
+PE Other
+Coded
+Decode
+OTHER
+Other
+
+
+======================================================================
+=== PAGE 215 (cluster 1) ===
+--- page text ---
+384-201-00004
+Annotated CRF
+212 of 238
+https://drvince.clinspark.com
+PE Urogenital
+Coded
+Decode
+UROGENITAL
+Urogenital
+
+
+======================================================================
+=== PAGE 219 (cluster 1) ===
+--- page text ---
+384-201-00004
+Annotated CRF
+216 of 238
+https://drvince.clinspark.com
+Total Dose
+Coded
+Decode
+9
+9
+324
+324
+
+
+======================================================================
+=== PAGE 229 (cluster 1) ===
+--- page text ---
+384-201-00004
+Annotated CRF
+226 of 238
+https://drvince.clinspark.com
+Chemistry Non-Stat Panel
+Name
+Order ID
+Container
+Units
+Sex
+CHOLESTEROL, TOTAL
+334
+Both
+DIRECT LDL
+8293
+Both
+GGT
+482
+Both
+HDL CHOLESTEROL
+608
+Both
+LDH, TOTAL
+593
+Both
+MAGNESIUM
+622
+Both
+TRIGLYCERIDES
+896
+Both

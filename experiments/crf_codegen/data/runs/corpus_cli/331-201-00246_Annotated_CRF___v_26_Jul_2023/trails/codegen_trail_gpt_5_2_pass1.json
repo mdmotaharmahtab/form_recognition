@@ -1,0 +1,712 @@
+{
+ "stop_reason": "plateau",
+ "versions": 5,
+ "best_version": 3,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "confirm",
+   "metrics": {
+    "engine": "codegen",
+    "records": 2875,
+    "pages_total": 976,
+    "pages_with_fields": 863,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 98,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 106,
+    "fields_per_form": 27.1,
+    "forms_per_100_pages": 10.9,
+    "form_same_page_evidence_records": 2777,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 88
+   },
+   "problems": [],
+   "outcome": "extended_program"
+  },
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 2849,
+    "pages_total": 976,
+    "pages_with_fields": 846,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 98,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 106,
+    "fields_per_form": 26.9,
+    "forms_per_100_pages": 10.9,
+    "form_same_page_evidence_records": 2759,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 87
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    0,
+    "not_audited",
+    0,
+    -846
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "confirm_extension",
+   "metrics": {
+    "engine": "codegen",
+    "records": 2875,
+    "pages_total": 976,
+    "pages_with_fields": 863,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 98,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 106,
+    "fields_per_form": 27.1,
+    "forms_per_100_pages": 10.9,
+    "form_same_page_evidence_records": 2777,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 88
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 20,
+   "audit_pages": [
+    1,
+    31,
+    44,
+    65,
+    103,
+    161,
+    263,
+    275,
+    473,
+    676,
+    870
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 31,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 44,
+     "missed": [
+      "Vasectomy"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 65,
+     "missed": [],
+     "false": [
+      "Not Applicable"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 103,
+     "missed": [
+      "Amphetamines",
+      "Barbiturates",
+      "Benzodiazepines",
+      "Cannabinoids",
+      "Cocaine"
+     ],
+     "false": [
+      "Amphetamines Result Positive",
+      "Barbiturates Result Positive",
+      "Benzodiazepines Result Positive",
+      "Cannabinoids Result Positive"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 161,
+     "missed": [],
+     "false": [],
+     "wrong_form": [
+      "\\25.\\ Subjects who fail to capture daily dosing of sertraline during the sertraline steady-state assurance period on Days -14 to -2. Met/Not Met Met",
+      "\\26.\\ Subjects without a permanent physical residence. Met/Not Met Met",
+      "\\27.\\ Any subject who, in the opinion of the investigator, should not participate in the trial. Met/Not Met Met",
+      "\\28.\\ Subjects taking multiple medications deemed necessary to maintain psychiatric stability or those taking medication regimens where washout is impractical should not be enrolled. The investigator with concurrence of the medical monitor may allow exceptions if the medication\u2019s Met/Not Met Met"
+     ]
+    },
+    {
+     "page": 263,
+     "missed": [],
+     "false": [],
+     "wrong_form": [
+      "Actual attempt Since Last Visit"
+     ]
+    },
+    {
+     "page": 275,
+     "missed": [
+      "Dosing Comments (optional)"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 473,
+     "missed": [
+      "Urinalysis clinically significant abnormal assay # 1"
+     ],
+     "false": [
+      "Glycated Hemoglobin"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 676,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 870,
+     "missed": [],
+     "false": [
+      "Glycated Hemoglobin"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    20,
+    0,
+    -863
+   ],
+   "became_best": true
+  },
+  {
+   "version": 3,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 2763,
+    "pages_total": 976,
+    "pages_with_fields": 855,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 96,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 107,
+    "fields_per_form": 25.8,
+    "forms_per_100_pages": 11.0,
+    "form_same_page_evidence_records": 2672,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 88
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 15,
+   "audit_pages": [
+    1,
+    31,
+    32,
+    44,
+    58,
+    65,
+    103,
+    104,
+    161,
+    263,
+    275,
+    473,
+    676,
+    870
+   ],
+   "audit_partial": null,
+   "audit_promoted": [
+    58,
+    104
+   ],
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 31,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 32,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 44,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 58,
+     "missed": [
+      "Skin and Mucosae",
+      "Skin and Mucosae Abnormal Findings",
+      "Skin and Mucosae Clinically Significant"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 65,
+     "missed": [],
+     "false": [
+      "Not Applicable"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 103,
+     "missed": [
+      "Cocaine"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 104,
+     "missed": [],
+     "false": [
+      "Test"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 161,
+     "missed": [],
+     "false": [],
+     "wrong_form": [
+      "\\ Subjects who fail to capture daily dosing of sertraline during the sertraline steady-state assurance period on Days -14 to -2. Met/Not",
+      "\\ Subjects without a permanent physical residence. Met/Not",
+      "\\ Any subject who, in the opinion of the investigator, should not participate in the trial. Met/Not",
+      "\\ Subjects taking multiple medications deemed necessary to maintain psychiatric stability or those taking medication regimens where washout is impractical should not be enrolled. The investigator with concurrence of the medical monitor may allow exceptions if the medication\u2019s Met/Not"
+     ]
+    },
+    {
+     "page": 263,
+     "missed": [
+      "Actual attempt:"
+     ],
+     "false": [
+      "A potentially self-injurious act committed with at least some wish to die, as a result of act. Behaviour was in part thought of as method to Since Last Visit"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 275,
+     "missed": [
+      "Dosing Comments (optional)"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 473,
+     "missed": [],
+     "false": [
+      "Glycated Hemoglobin"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 676,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 870,
+     "missed": [],
+     "false": [
+      "Glycated Hemoglobin"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    15,
+    0,
+    -855
+   ],
+   "became_best": true
+  },
+  {
+   "version": 4,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 2703,
+    "pages_total": 976,
+    "pages_with_fields": 848,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 99,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 106,
+    "fields_per_form": 25.5,
+    "forms_per_100_pages": 10.9,
+    "form_same_page_evidence_records": 2587,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 87
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 15,
+   "audit_pages": [
+    1,
+    31,
+    44,
+    58,
+    65,
+    103,
+    104,
+    108,
+    161,
+    263,
+    275,
+    473,
+    676,
+    870
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [
+      "Annotated CRF"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 31,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 44,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 58,
+     "missed": [
+      "Skin and Mucosae",
+      "Skin and Mucosae Abnormal Findings",
+      "Skin and Mucosae Clinically Significant"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 65,
+     "missed": [],
+     "false": [
+      "Scan)]"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 103,
+     "missed": [
+      "Cocaine"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 104,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 108,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 161,
+     "missed": [
+      "\\25.\\ Subjects who fail to capture daily dosing of sertraline during the sertraline steady-state assurance period on Days -14 to -2.",
+      "\\28.\\ Subjects taking multiple medications deemed necessary to maintain psychiatric stability or those taking medication regimens where washout is impractical should not be enrolled. The investigator with concurrence of the medical monitor may allow exceptions if the medication\u2019s administration is deemed unlikely to impact the results of the trial."
+     ],
+     "false": [
+      "Row 29 Met/Not Met"
+     ],
+     "wrong_form": [
+      "\\ Subjects without a permanent physical residence. Met/Not",
+      "\\ Any subject who, in the opinion of the investigator, should not participate in the trial. Met/Not"
+     ]
+    },
+    {
+     "page": 263,
+     "missed": [],
+     "false": [],
+     "wrong_form": [
+      "Actual attempt Since Last Visit"
+     ]
+    },
+    {
+     "page": 275,
+     "missed": [
+      "Dosing Comments (optional)"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 473,
+     "missed": [],
+     "false": [
+      "Glycated Hemoglobin"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 676,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 870,
+     "missed": [],
+     "false": [
+      "White blood cell count (absolute and differential)"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    15,
+    0,
+    -848
+   ],
+   "became_best": false
+  },
+  {
+   "version": 5,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 2720,
+    "pages_total": 976,
+    "pages_with_fields": 854,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 97,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 118,
+    "fields_per_form": 23.1,
+    "forms_per_100_pages": 12.1,
+    "form_same_page_evidence_records": 2607,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 88
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 21,
+   "audit_pages": [
+    1,
+    31,
+    44,
+    58,
+    65,
+    103,
+    104,
+    137,
+    161,
+    263,
+    275,
+    473,
+    676,
+    870
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [
+      "Informed Consent",
+      "Reproductive Status - Female",
+      "Reproductive Status - Male",
+      "Medical/Psychiatric History",
+      "Body Temperature and Respiratory Rate",
+      "Triplicate Orthostatic BP and HR - Central",
+      "Height and Weight",
+      "Physical Exam",
+      "Triplicate ECG Assessments",
+      "Glycated Hemoglobin",
+      "Clinical Laboratory Assessments",
+      "Laboratory results review",
+      "FSH Blood Sample",
+      "Pregnancy test"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 31,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 44,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 58,
+     "missed": [
+      "Skin and Mucosae"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 65,
+     "missed": [],
+     "false": [
+      "Collected, Not"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 103,
+     "missed": [
+      "Cocaine"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 104,
+     "missed": [
+      "Methadone"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 137,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 161,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 263,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 275,
+     "missed": [
+      "Dosing Comments (optional)"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 473,
+     "missed": [],
+     "false": [
+      "Glycated Hemoglobin"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 676,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 870,
+     "missed": [],
+     "false": [
+      "White blood cell count (absolute and differential)"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    21,
+    0,
+    -854
+   ],
+   "became_best": false
+  }
+ ]
+}

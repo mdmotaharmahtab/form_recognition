@@ -1,0 +1,28 @@
+{
+  "format_id": "veeva_pack",
+  "description": "Veeva-style annotated pack: numbered TOC at front; form pages have a large colored section title, black field labels and red [OID] [TYPE: ...] annotations underneath.",
+  "authored_from": "out/331-201-00246_Annotated_CRF___v_26_Jul_2023/rep_p*.txt (pages 1,2,244,308,318,364,402,520,576,582,612,690)",
+  "detect": {
+    "all": ["Pack Version", "\\[TYPE:"]
+  },
+  "form_name": {
+    "strategy": "colored_font",
+    "min_size": 14,
+    "carry_forward": true,
+    "noise": ["^Page \\d+", "Annotated CRF"]
+  },
+  "fields": {
+    "engine": "adjacent_annotation",
+    "column_x_max": 320,
+    "oid_regex": "^\\[([A-Z][A-Z0-9_]*\\d*)\\]$",
+    "alt_regex": null,
+    "oid_color_non_black": true,
+    "annotation_group_dy": 18,
+    "label_max_dy": 160,
+    "label_noise": [
+      "^Page \\d+", "^Yes$", "^No$", "^N/A$", "^\\[", "^\\d+\\.\\d+\\.",
+      "^Pack Version", "^CHANGE HISTORY", "^SCHEDULE OF ASSESSMENT", "^PAGES$"
+    ]
+  }
+}
+

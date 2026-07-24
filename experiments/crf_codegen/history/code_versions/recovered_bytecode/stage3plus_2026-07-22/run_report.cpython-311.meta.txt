@@ -1,0 +1,156 @@
+# module: D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\run_report.py
+# top-level names: ['__doc__', 'csv', 'json', 'os', 'time', 'collections', 'Counter', 'FATAL', 'BLOCKING', 'QUALITY', 'KIND_STAGE', '_PROBLEM_CODES', '_WARNING_CODES', 'str', 'classify_problem', 'classify_warning', 'dict', 'list', 'events_for_doc', 'mapping_events', 'collect_run_events', 'tuple', 'write_reports']
+
+=== module()  [line 1] ===
+  [STR]
+    | Stage-attributed error report: WHERE in the pipeline do errors come from?
+    | 
+    | Derived post-hoc from artifacts the pipeline already writes - each document's
+    | codegen_trail_<tag>.json plus the run's summary rows - so the loop controller
+    | carries no reporting logic and PAST runs can be re-analyzed with this same
+    | module. One flat event row per finding:
+    | 
+    |     doc, stage, version, severity, code, detail
+    | 
+    |   stage     stage0 | generate | revise | confirm | audit | gates | loop |
+    |             export | mapping | driver
+    |   severity  fatal    the document yielded nothing usable (skipped, crashed,
+    |                      no version ever passed gates, export failed)
+    |             blocking a parser version was rejected or a call failed; the loop
+    |                      handled it (revision / retry) but it cost budget
+    |             quality  review signals: audit findings, soft gate warnings,
+    |                      partial audit replies, open issues at stop
+    | 
+    | Stage attribution comes from the trail's structure (cycle `kind`, doc status),
+    | never from parsing prose. The finer `code` classifies known gate/warning
+    | strings by stable prefixes/substrings with an `*_other` fallback - so a new
+    | gate message degrades to a coarser code, never to a wrong one.
+    | 
+    | Artifacts written by write_reports (at the run root, next to the summary):
+    |   <prefix>error_events_<tag>.csv    the flat event log (analysis-friendly)
+    |   <prefix>error_summary_<tag>.json  counts by stage / code / severity / doc
+  [STR] 'generate'
+  [STR] 'revise'
+  [STR] 'confirm'
+  [STR] 'audit'
+  [STR] 'p'
+  [STR] 'return'
+  [STR] 'w'
+  [STR] 'doc'
+  [STR] 'trail_obj'
+  [STR] 'row'
+  [STR] 'results'
+  [STR] 'out_dir'
+  [STR] 'tag'
+  [STR] 'summary'
+  [STR] 'events'
+  [STR] 'prefix'
+
+=== classify_problem(p)  [line 67] ===
+  [STR] 'gate_other'
+
+=== classify_warning(w)  [line 74] ===
+  [STR] 'warn_other'
+
+=== events_for_doc(doc, trail_obj, row)  [line 81] ===
+  [STR]
+    | All events for one document, from its trail + its summary row.
+    | 
+    |     trail_obj is the codegen_trail_<tag>.json object ({} when the document
+    |     never reached the loop); row is its summary row ({} tolerated).
+  [STR] 'cycles'
+  [STR] 'version'
+  [STR] 'kind'
+  [STR] 'loop'
+  [STR] 'transport_error'
+  [STR] 'problems'
+  [STR] 'gates'
+  [STR] 'warnings'
+  [STR] 'audit_verdicts'
+  [STR] 'page'
+  [STR] 'audit'
+  [STR] 'p'
+  [STR] ': '
+  [STR] 'audit_partial'
+  [STR] 'audit_partial_reply'
+  [STR]
+    | audit reply did not cover every sampled page
+  [STR] 'confirm'
+  [STR] 'outcome'
+  [STR] 'extension_rejected'
+  [STR] 'confirm_extension_rejected'
+  [STR]
+    | coverage extension regressed or failed gates; kept prior program
+  [STR] 'status'
+  [STR] 'stop_reason'
+  [STR] 'skipped_'
+  [STR] 'stage0'
+  [STR] 'error'
+  [STR]
+    | document not processable (see clusters.json status)
+  [STR] 'needs_manual_template'
+  [STR] 'no_version_passed_gates'
+  [STR] 'stop='
+  [STR] 'export_failed'
+  [STR] 'export'
+  [STR] 'driver'
+  [STR] 'unhandled_exception'
+  [STR] 'ok_unaudited'
+  [STR] 'never_page_verified'
+  [STR]
+    | audit errored; parser passed gates but was never checked against pages
+  [STR] 'ok_audit_issues'
+  [STR] 'stopped_with_open_issues'
+  [STR] ', open audit issues='
+  [STR] 'audit_issues'
+
+=== add(stage, severity, code, detail, version)  [line 88] ===
+
+=== mapping_events(doc, results)  [line 139] ===
+  [STR]
+    | Aggregate unmapped/abstained OID-mapping outcomes into per-reason events
+    |     (one row per reason with a count - thousands of per-pair rows would drown
+    |     the report). `results` are oid_mapping.MapResult objects.
+
+=== <genexpr>(.0)  [line 143] ===
+  [STR] 'mapped'
+  [STR] 'unspecified'
+
+=== <listcomp>(.0)  [line 145] ===
+  [STR] 'mapping'
+  [STR] 'mapping_'
+  [STR] ' pair(s) not mapped'
+
+=== collect_run_events(out_dir, tag, summary)  [line 151] ===
+  [STR]
+    | Events for every document in a run summary (trails loaded from disk).
+  [STR] 'doc'
+  [STR] 'codegen_trail_'
+  [STR] '.json'
+  [STR] 'utf-8'
+  [STR] 'driver'
+  [STR] 'corrupt_trail'
+  [STR] 'unparseable '
+
+=== write_reports(out_dir, tag, summary, events, prefix)  [line 170] ===
+  [STR]
+    | Write the event CSV + aggregate JSON at the run root; returns both paths.
+  [STR] 'error_events_'
+  [STR] '.csv'
+  [STR] 'w'
+  [STR] 'utf-8'
+  [STR] '%Y-%m-%dT%H:%M:%SZ'
+  [STR] 'error_summary_'
+  [STR] '.json'
+
+=== <genexpr>(.0)  [line 184] ===
+  [STR] 'severity'
+
+=== <genexpr>(.0)  [line 185] ===
+  [STR] 'stage'
+
+=== <genexpr>(.0)  [line 186] ===
+  [STR] 'code'
+
+=== <genexpr>(.0)  [line 187] ===
+  [STR] 'doc'

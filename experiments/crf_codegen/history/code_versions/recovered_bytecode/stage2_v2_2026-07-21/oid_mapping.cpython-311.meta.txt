@@ -1,0 +1,161 @@
+# module: D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\oid_mapping.py
+# top-level names: ['__doc__', 'json', 're', 'dataclasses', 'dataclass', 'field', 'dc_field', 'rapidfuzz', 'fuzz', 'FORM_SCOPE_T', 'FIELD_T', 'MARGIN', 'MAX_CANDIDATES', 'RANKER_CHUNK', 'MAPPED', 'ABSTAIN', 'UNMAPPED', 'MapResult', 'str', 'list', 'dict', 'scope_form', 'map_field', 'build_ranker_prompt', '_extract_json_array', 'int', 'parse_ranker_reply', 'rank_cases', 'tuple', 'map_pairs']
+
+=== module()  [line 1] ===
+  [STR]
+    | Name -> OID mapping for non-Rave CRFs: the form-first funnel.
+    | 
+    | Annotated Rave books carry printed OIDs, so production never had a
+    | name->OID step -- its rule matcher starts from OIDs it reads off the page
+    | (review_table.fuzzy_match_fields). Non-Rave books yield only
+    | (form_name, field_name), so this module reconstructs the missing OIDs
+    | against the ecs_index library and hands them to that same downstream.
+    | 
+    | The funnel (each layer narrows, the last one judges):
+    | 
+    |   layer 1  FORM scoping    partial_ratio >= FORM_SCOPE_T (70) -- the exact
+    |                            scorer/threshold production already uses to match
+    |                            form names (review_table.get_standard_crf).
+    |                            No form match -> unmapped.
+    |   layer 2  FIELD in form   token_sort_ratio >= FIELD_T (85) against the
+    |                            scoped rows only, best row per distinct OID ->
+    |                            a shortlist of 1..MAX_CANDIDATES OIDs.
+    |   layer 3  LLM ranker      EVERY shortlisted case is judged: pick one of the
+    |                            listed OIDs or null. Single candidates are
+    |                            confirm-or-null, not auto-accepted -- measured on
+    |                            the Rave book, both lexical-layer errors were
+    |                            lone candidates that passed the gate while the
+    |                            right row was absent from the library ("Contact
+    |                            Method" at similarity 100 from the WRONG
+    |                            follow-up form). String scores generate
+    |                            candidates; they never certify them.
+    | 
+    | Without an LLM (llm=None) the module runs deterministic-only: a single
+    | candidate or a clear leader (>= MARGIN points) maps lexically, near-ties
+    | abstain. That mode exists for offline smoke runs and A/B comparison.
+    | 
+    | Everything unresolved exits as unmapped, which is safe by design:
+    | production writes LLM-generated rules for unmapped fields from their names
+    | alone. The harmful failure is a *mismap* (silently attaches the wrong
+    | form's library rules); every layer here is shaped to minimize that -- the
+    | shortlist bound means the ranker can never introduce an OID, though it can
+    | still echo a listed-but-wrong one, so mismap risk is reduced, not zero.
+    | 
+    | Inputs are pre-normalized strings (caller owns normalization); library
+    | entries are dicts with keys: field, form (normalized), oid, and optionally
+    | field_raw / form_raw for human-readable ranker prompts.
+  [STR] 'mapped'
+  [STR] 'abstain'
+  [STR] 'unmapped'
+  [STR] 'MapResult'
+  [STR] 'form'
+  [STR] 'lib'
+  [STR] 'return'
+  [STR] 'field'
+  [STR] 'cases'
+  [STR] 'reply'
+  [STR] 'pairs'
+
+=== MapResult()  [line 60] ===
+  [STR] 'MapResult'
+  [STR] 'form'
+  [STR] 'field'
+  [STR] 'status'
+  [STR] 'oid'
+  [STR] 'score'
+  [STR] 'lexical'
+  [STR] 'via'
+  [STR] 'candidates'
+
+=== scope_form(form, lib)  [line 71] ===
+  [STR]
+    | Layer 1: only library rows whose form name matches the extracted one.
+    | 
+    |     Set semantics deliberately mirror production: get_standard_crf calls
+    |     process.extract(..., score_cutoff=70, limit=len(all_form_names)) -- ALL
+    |     forms above the cutoff, not the single best one. Related forms
+    |     ("Adverse Events" / "Adverse Events - Serious") therefore co-exist in
+    |     one scope; the ranker sees each candidate's library form and judges.
+
+=== <listcomp>(.0)  [line 79] ===
+  [STR] 'form'
+
+=== map_field(form, field, lib)  [line 83] ===
+  [STR]
+    | Layers 1-2, deterministic decision. Candidates are always attached so
+    |     an LLM ranker can re-judge even lexically 'clear' picks (see map_pairs).
+  [STR] 'field'
+  [STR] 'oid'
+
+=== <genexpr>(.0)  [line 104] ===
+
+=== <lambda>(t)  [line 105] ===
+
+=== <listcomp>(.0)  [line 107] ===
+  [STR] 'oid'
+  [STR] 'field_raw'
+  [STR] 'field'
+  [STR] 'form_raw'
+  [STR] 'form'
+
+=== build_ranker_prompt(cases)  [line 119] ===
+  [STR] 'Case '
+  [STR] ':'
+  [STR] '  form (as printed):  '
+  [STR] '  field (as printed): '
+  [STR] '  candidates:'
+  [STR] '    - '
+  [STR] '  (library label: "'
+  [STR] '", library form: "'
+  [STR] '", similarity '
+  [STR] '.0f'
+  [STR] ')'
+
+=== _extract_json_array(reply)  [line 155] ===
+  [STR]
+    | First JSON array in the reply, tolerant of prose/markdown around it.
+    | 
+    |     A greedy first-'['-to-last-']' regex would break as soon as the prose
+    |     contains any bracket, silently unmapping a whole chunk -- so parse the
+    |     whole reply first, then raw_decode from each '[' until a list parses.
+  [STR] '\\['
+
+=== parse_ranker_reply(reply, cases)  [line 178] ===
+  [STR]
+    | case index (1-based) -> chosen OID (canonical library casing) or None.
+    | 
+    |     Anything malformed, out-of-range, or not on the case's shortlist is
+    |     treated as None -- the ranker can never introduce an OID.
+  [STR] 'case'
+  [STR] 'oid'
+
+=== <dictcomp>(.0)  [line 198] ===
+
+=== rank_cases(cases, llm)  [line 203] ===
+  [STR]
+    | Judge every candidate-bearing MapResult with the ranker.
+    | 
+    |     llm: callable prompt -> reply text (CLI locally, LLM Mesh in Dataiku).
+    |     A case the ranker declines (or answers invalidly) becomes unmapped --
+    |     including cases the lexical layer had marked mapped.
+    | 
+    |     All chunks are judged BEFORE any result is mutated: if the llm raises
+    |     mid-batch, no case has changed state and the exception propagates, so a
+    |     caller can never ship a half-ranked mixture of ranker and lexical
+    |     verdicts (the caller decides whether to retry or fail the document).
+  [STR] 'ranker-confirm'
+  [STR] 'ranker-pick'
+
+=== <genexpr>(.0)  [line 218] ===
+
+=== map_pairs(pairs, lib, llm)  [line 231] ===
+  [STR]
+    | Run the full funnel over (form, field) pairs.
+    | 
+    |     With an llm, EVERY pair that produced candidates is judged by the
+    |     ranker (confirm-or-null for single candidates, pick-or-null for ties).
+    |     Without one, lexical decisions stand and near-ties stay ABSTAIN.
+
+=== <listcomp>(.0)  [line 238] ===
+
+=== <listcomp>(.0)  [line 240] ===

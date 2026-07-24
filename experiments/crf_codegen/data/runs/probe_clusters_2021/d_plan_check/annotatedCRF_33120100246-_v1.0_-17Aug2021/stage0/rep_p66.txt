@@ -1,0 +1,46 @@
+x=  47.8 y=  66.1 sz=14.4 #004c99   | Urine Drug Screen
+x= 494.9 y= 115.3 sz= 9.2 #454545   | Yes
+x= 527.0 y= 115.3 sz= 9.2 #454545   | No
+x=  47.8 y= 116.5 sz= 7.8 black     | Was Urine Drug Screen Performed?
+x=  47.8 y= 138.1 sz= 7.8 #ff0000   | [LBYN3]
+x=  47.8 y= 150.5 sz= 7.8 #ff0000   | [TYPE: enumeration (values: Yes, No)]
+x=  47.8 y= 177.3 sz= 7.8 black     | If not done reason
+x=  47.8 y= 200.2 sz= 7.8 #ff0000   | [LBREAS3]
+x=  47.8 y= 212.6 sz= 7.8 #ff0000   | [TYPE: text]
+x=  47.8 y= 239.4 sz= 7.8 black     | Manufacturer
+x=  47.8 y= 262.3 sz= 7.8 #ff0000   | [LBMANU3]
+x=  47.8 y= 274.7 sz= 7.8 #ff0000   | [TYPE: text]
+x=  47.8 y= 287.1 sz= 7.8 #ff0000   | [VISIBILITY: site only]
+x=  47.8 y= 313.9 sz= 7.8 black     | Item #
+x=  47.8 y= 336.8 sz= 7.8 #ff0000   | [LBITEM3]
+x=  47.8 y= 349.2 sz= 7.8 #ff0000   | [TYPE: text]
+x=  47.8 y= 361.7 sz= 7.8 #ff0000   | [VISIBILITY: site only]
+x=  47.8 y= 388.5 sz= 7.8 black     | Lot
+x=  47.8 y= 411.3 sz= 7.8 #ff0000   | [LBBTCH3]
+x=  47.8 y= 423.8 sz= 7.8 #ff0000   | [TYPE: text]
+x=  47.8 y= 436.2 sz= 7.8 #ff0000   | [VISIBILITY: site only]
+x=  47.8 y= 463.0 sz= 7.8 black     | Expiration Date
+x=  47.8 y= 485.9 sz= 7.8 #ff0000   | [LBEXPDT3]
+x=  47.8 y= 498.3 sz= 7.8 #ff0000   | [TYPE: date]
+x=  47.8 y= 510.7 sz= 7.8 #ff0000   | [VISIBILITY: site only]
+x=  47.8 y= 537.5 sz= 7.8 black     | Date of Sample
+x=  47.8 y= 560.4 sz= 7.8 #ff0000   | [LBDAT3]
+x=  47.8 y= 572.8 sz= 7.8 #ff0000   | [TYPE: date]
+x=  47.8 y= 599.6 sz= 7.8 black     | Time of Sample
+x=  47.8 y= 622.5 sz= 7.8 #ff0000   | [LBTIM3]
+x=  47.8 y= 634.9 sz= 7.8 #ff0000   | [TYPE: partialtime (hour, minutes)]
+x=  45.2 y= 689.3 sz= 9.2 black     | Test
+x= 301.4 y= 689.3 sz= 9.2 black     | Result
+x=  46.5 y= 710.8 sz= 7.8 #454545   | Amphetamines
+x= 310.6 y= 715.5 sz= 9.2 #454545   | Positive
+x= 359.0 y= 715.5 sz= 9.2 #454545   | Negative
+x= 411.5 y= 715.5 sz= 9.2 #454545   | Not Done
+x= 302.1 y= 735.6 sz= 7.8 #ff0000   | [LBORRES3]
+x=  45.8 y= 736.9 sz= 7.8 #ff0000   | [LBTEST3]
+x= 302.1 y= 750.0 sz= 7.8 #ff0000   | [TYPE: enumeration (values: Positive, Negative, Not Done)]
+x=  45.8 y= 751.3 sz= 7.8 #ff0000   | [TYPE: text]
+x=  45.8 y= 765.7 sz= 7.8 #ff0000   | [Read-only field]
+x=  46.5 y= 785.9 sz= 7.8 #454545   | Barbiturates
+x= 310.6 y= 790.6 sz= 9.2 #454545   | Positive
+x= 359.0 y= 790.6 sz= 9.2 #454545   | Negative
+x= 411.5 y= 790.6 sz= 9.2 #454545   | Not Done

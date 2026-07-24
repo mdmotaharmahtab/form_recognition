@@ -1,0 +1,145 @@
+==== a_baseline / claude-4.5-sonnet ====
+OUT_DIR=D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\data\outputs\probe_clusters_2021\a_sonnet
+---- stage 0 ----
+=== CONFIG: a_baseline ===
+OUT_DIR          : D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\data\outputs\probe_clusters_2021\a_sonnet
+doc              : annotatedCRF_33120100246-_v1.0_-17Aug2021
+pages            : 596
+theta*           : 0.5
+n_clusters       : 35
+budgeted reps    : 16  -> pages [1, 2, 50, 53, 58, 68, 71, 82, 84, 88, 90, 136, 141, 334, 516, 522]
+all reps (w/tail): 39
+reps/cluster dist: {0: 1, 1: 31, 2: 2, 4: 1}  (clusters with >=2 reps: 3)
+PLAN passes      : 2
+  clusters/pass  : [23, 12]
+  reps/pass      : [16, 14]
+env knobs        : REPS_PER_CLUSTER=4 MAX_REPS=10 REP_BUDGET=14 MAX_PASSES=4 MIN_TAIL_REPS=8 MIN_TAIL_CONTENT=20
+---- induction ----
+=== annotatedCRF_33120100246-_v1.0_-17Aug2021
+    multi-pass: 2 passes (generalist + tail specialists; [23, 12] clusters each)
+    -- pass 1/2: 23 clusters, 509 pages, reps [1, 2, 50, 53, 58, 68, 71, 82, 84, 88, 90, 136, 141, 334, 516, 522]
+    v1 [generate]: calling claude-4.5-sonnet ...
+    problems: ['Extreme content-fitted blocklist. The program filters by 32 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers.']
+    v2 [revise_gates]: calling claude-4.5-sonnet ...
+    coverage confirmation (uncovered: [(10, 4), (9, 6)]) ...
+    extended program adopted as v3: {"engine": "codegen", "records": 3099, "pages_total": 509, "pages_with_fields": 490, "definition_pages_seen": 0, "forms_nonempty_pct": 100, "labels_look_human_pct": 97, "oids_present_pct": 0, "oids_look_like_codes_pct": 0, "distinct_forms": 102, "fields_per_form": 30.4, "forms_per_100_pages": 20.0, "form_same_page_evidence_records": 3062, "form_same_page_persistence_pct": 100, "furniture_candidates": [], "pages_covered_pct": 96}
+    audit: 90 issue(s) on pages [1, 7, 50, 71, 136, 171, 302, 442]
+    v4 [revise_audit]: calling claude-4.5-sonnet ...
+    audit: 68 issue(s) on pages [1, 7, 46, 50, 71, 83, 136, 171, 302, 442]
+    audit core grew by [46] (now 9 pages)
+    v5 [revise_audit]: calling claude-4.5-sonnet ...
+    audit: 73 issue(s) on pages [1, 7, 46, 50, 71, 84, 136, 171, 302, 442]
+    warnings: ['The program filters by 16 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers.']
+    -- pass 2/2: 12 clusters, 87 pages, reps [1, 2, 10, 15, 42, 62, 67, 70, 72, 73, 138, 142, 502, 559]
+    v1 [generate]: calling claude-4.5-sonnet ...
+    problems: ['Extreme content-fitted blocklist. The program filters by 47 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers.']
+    v2 [revise_gates]: calling claude-4.5-sonnet ...
+    coverage confirmation (uncovered: [(1, 10), (5, 9), (4, 9)]) ...
+    extension rejected (regression or gate failure); keeping current
+    audit: 61 issue(s) on pages [9, 10, 12, 72, 309, 399]
+    v3 [revise_audit]: calling claude-4.5-sonnet ...
+    problems: ['Extreme content-fitted blocklist. The program filters by 41 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers.']
+    no improvement over v2 (stall 1/2); one more try
+    v4 [revise_gates]: calling claude-4.5-sonnet ...
+    audit: 70 issue(s) on pages [9, 10, 12, 44, 72, 138, 309, 399]
+    v5 [revise_audit]: calling claude-4.5-sonnet ...
+    problems: ['Extreme content-fitted blocklist. The program filters by 33 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers.']
+    no improvement over v4 (stall 1/2); one more try
+    -> {'doc': 'annotatedCRF_33120100246-_v1.0_-17Aug2021', 'status': 'ok_audit_issues', 'multipass': 2, 'version_budget': 5, 'versions': 10, 'stop_reason': 'p1:budget;p2:budget', 'fields': 3415, 'forms': 112, 'pages_with_fields': 547, 'audit_issues': 134, 'passes': [{'doc': 'annotatedCRF_33120100246-_v1.0_-17Aug2021', 'versions': 5, 'stop_reason': 'budget', 'status': 'ok_audit_issues', 'best_version': 5, 'fields': 2976, 'forms': 101, 'pages_with_fields': 489, 'audit_issues': 73, 'warnings': ['The program filters by 16 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers.'], 'elapsed_s': 355.931, 'stage0_s': 5.378, 'llm_s': 344.168, 'llm_calls': 8, 'pass': 1, 'clusters': [0, 1, 2, 3, 4, 5, 6, 7, 8, 16, 19, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34]}, {'doc': 'annotatedCRF_33120100246-_v1.0_-17Aug2021', 'versions': 5, 'stop_reason': 'budget', 'status': 'ok_audit_issues', 'best_version': 2, 'fields': 439, 'forms': 21, 'pages_with_fields': 58, 'audit_issues': 61, 'warnings': [], 'elapsed_s': 445.961, 'stage0_s': 5.378, 'llm_s': 432.152, 'llm_calls': 8, 'pass': 2, 'clusters': [9, 10, 11, 12, 13, 14, 15, 17, 18, 20, 21, 22]}], 'elapsed_s': 802.937, 'stage0_s': 5.378, 'llm_s': 776.32, 'llm_calls': 16}
+[
+ {
+  "doc": "annotatedCRF_33120100246-_v1.0_-17Aug2021",
+  "status": "ok_audit_issues",
+  "multipass": 2,
+  "version_budget": 5,
+  "versions": 10,
+  "stop_reason": "p1:budget;p2:budget",
+  "fields": 3415,
+  "forms": 112,
+  "pages_with_fields": 547,
+  "audit_issues": 134,
+  "passes": [
+   {
+    "doc": "annotatedCRF_33120100246-_v1.0_-17Aug2021",
+    "versions": 5,
+    "stop_reason": "budget",
+    "status": "ok_audit_issues",
+    "best_version": 5,
+    "fields": 2976,
+    "forms": 101,
+    "pages_with_fields": 489,
+    "audit_issues": 73,
+    "warnings": [
+     "The program filters by 16 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+    ],
+    "elapsed_s": 355.931,
+    "stage0_s": 5.378,
+    "llm_s": 344.168,
+    "llm_calls": 8,
+    "pass": 1,
+    "clusters": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     16,
+     19,
+     23,
+     24,
+     25,
+     26,
+     27,
+     28,
+     29,
+     30,
+     31,
+     32,
+     33,
+     34
+    ]
+   },
+   {
+    "doc": "annotatedCRF_33120100246-_v1.0_-17Aug2021",
+    "versions": 5,
+    "stop_reason": "budget",
+    "status": "ok_audit_issues",
+    "best_version": 2,
+    "fields": 439,
+    "forms": 21,
+    "pages_with_fields": 58,
+    "audit_issues": 61,
+    "warnings": [],
+    "elapsed_s": 445.961,
+    "stage0_s": 5.378,
+    "llm_s": 432.152,
+    "llm_calls": 8,
+    "pass": 2,
+    "clusters": [
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15,
+     17,
+     18,
+     20,
+     21,
+     22
+    ]
+   }
+  ],
+  "elapsed_s": 802.937,
+  "stage0_s": 5.378,
+  "llm_s": 776.32,
+  "llm_calls": 16
+ }
+]
+error report: 370 event(s) {'gates': 6, 'audit': 362, 'confirm': 1, 'loop': 1} -> D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\data\outputs\probe_clusters_2021\a_sonnet\cli_error_events_claude_4_5_sonnet.csv
+==== DONE a_baseline / claude-4.5-sonnet ====

@@ -1,0 +1,1377 @@
+  0           0 RESUME                   0
+
+  1           2 LOAD_CONST               0 ('Stage 1 shared scoring/gates + the LEGACY recipe-induction path.\n\nPRODUCTION-INTENT parts of this module: load_rep_pages, score, gate_problems,\ngate_warnings (codegen.py imports them). The recipe/engine-catalog prompt and\ninduce_recipe below are the LEGACY comparison path - production induction is\ncodegen.py, where the LLM writes the extraction program itself.\n\nThe ONLY prior knowledge is: "this is a CRF". The LLM never gets a list of known\nvendor formats. It sees the stage-0 representative pages (structured text dumps\nwith geometry + font info, optionally page images) and must emit a recipe JSON\nthat parameterises one of the generic layout engines in replay.py.\n\nLoop (all bounded, all artifacts saved):\n  1. build induction prompt from representative pages\n  2. LLM -> recipe JSON\n  3. validate: replay the recipe over the representative pages only, compute\n     quality metrics, and check them against acceptance gates\n  4. if gates fail: send the metrics + a sample of the (bad) output back to the\n     LLM for ONE revision round (2 attempts total by default)\n  5. if still failing: mark document as needs-manual-template (fail loudly)\n\nLLM transport is pluggable:\n  - Dataiku LLM Mesh (production; see notebook)\n  - local HTTP/CLI shims for testing\n')
+              4 STORE_NAME               0 (__doc__)
+
+ 26           6 LOAD_CONST               1 (0)
+              8 LOAD_CONST               2 (('annotations',))
+             10 IMPORT_NAME              1 (__future__)
+             12 IMPORT_FROM              2 (annotations)
+             14 STORE_NAME               2 (annotations)
+             16 POP_TOP
+
+ 28          18 LOAD_CONST               1 (0)
+             20 LOAD_CONST               3 (None)
+             22 IMPORT_NAME              3 (json)
+             24 STORE_NAME               3 (json)
+
+ 29          26 LOAD_CONST               1 (0)
+             28 LOAD_CONST               3 (None)
+             30 IMPORT_NAME              4 (os)
+             32 STORE_NAME               4 (os)
+
+ 30          34 LOAD_CONST               1 (0)
+             36 LOAD_CONST               3 (None)
+             38 IMPORT_NAME              5 (re)
+             40 STORE_NAME               5 (re)
+
+ 32          42 LOAD_CONST               1 (0)
+             44 LOAD_CONST               4 (('ENGINES', 'ReplayResult', 'replay'))
+             46 IMPORT_NAME              6 (replay)
+             48 IMPORT_FROM              7 (ENGINES)
+             50 STORE_NAME               7 (ENGINES)
+             52 IMPORT_FROM              8 (ReplayResult)
+             54 STORE_NAME               8 (ReplayResult)
+             56 IMPORT_FROM              6 (replay)
+             58 STORE_NAME               6 (replay)
+             60 POP_TOP
+
+ 34          62 LOAD_CONST               5 ('You are configuring a deterministic PDF extraction engine for a clinical Case Report Form (CRF) document. You will see a small sample of REPRESENTATIVE PAGES (one or two per page-layout cluster) from a document that is {n_pages} pages long. The whole document is repetitive: what you see is representative of everything.\n\nEach page is given as structured text lines with geometry:\n    x=<left> y=<top> sz=<font-size> <color> <B if bold> | <text>\n\n# Your task\n\nProduce a JSON "recipe" that tells the engine how to extract, for EVERY field on EVERY page of the document:\n  - form_name   : the name of the CRF form/section the field belongs to\n  - field_name  : the human-readable field label/question\n  - field_oid   : the machine identifier (OID / SAS name / export name / variable\n                  code) if the document prints one; null if the document is not\n                  annotated with machine codes\n\n# Engines you can parameterise (pick exactly one)\n\n1. "adjacent_annotation" - machine codes are printed on their own annotation lines\n   (often bracketed, often colored) directly next to/under the field label, in the\n   same column. Params: column_x_max, oid_regex (capture group 1 = code),\n   alt_regex/alt_is_primary (a second code on nearby lines), oid_color_non_black,\n   annotation_group_dy, label_max_dy, label_noise (regexes for lines that are\n   never labels).\n2. "anchored_blocks" - each field starts at a repeated anchor row (e.g. a bold\n   \'Prefix: Activity #1\' line with a number in a far-right column); everything\n   until the next anchor belongs to that field. Params: activity_regex (group 1 =\n   form, group 2 = field), activity_x [min,max], line_number_x_min, oid_regex.\n3. "numbered_join" - two page types per form: content pages print each label with\n   a join number, definition pages map the same numbers to codes in a column\n   under a header. Params: definition_page_all (regexes that all appear on\n   definition pages), oid_header (text of the column header the codes sit under),\n   row_number_x_max (join keys on definition pages must start left of this),\n   data_number_regex (group 1 = join key; same regex applies on BOTH page types),\n   data_number_x_min, data_label_x_max, label_noise,\n   number_embedded_in_label (true when the join key is printed on/next to the\n   label line itself, e.g. \'Consent Date  [2]\', rather than in a separate far\n   column; the engine then searches the regex inside lines right of\n   data_number_x_min and takes the remaining text on that row as the label),\n   definition_form_from_carry (true when definition pages do NOT print the form\n   name; they are then attributed to the most recent content-page form).\n   form_name.strategy must be "regex" for this engine (carry_forward supported).\n4. "column_table" - definition tables with an explicit header row; label and code\n   are cells of configurable columns. Params: definition_page_regex, row_key_regex,\n   name_header, oid_header, type_header.\n5. "line_pattern" - fallback: a code regex over lines, label = nearest previous\n   line matching label_regex within label_window_lines. Params: code_regex,\n   code_search (true = search inside line), label_regex, label_window_lines,\n   label_noise.\n\n# form_name strategies\n\n- {{"strategy":"regex","regex":"^Form:\\\\s*(.+)$"}} - a header line matches a regex (group 1 = name)\n- {{"strategy":"colored_font","min_size":14,"carry_forward":true,"noise":[...]}} - the form title is the big colored heading; carry_forward repeats the last seen title on continuation pages\n- {{"strategy":"font","min_size":14,"carry_forward":true,"noise":[...]}} - same but title is not colored\n- for engine anchored_blocks the form name comes from activity_regex group 1 automatically\n\n# Output format (JSON only, no prose)\n\n{{\n  "format_id": "<short slug you invent>",\n  "reasoning": "<2-4 sentences: what layout you saw and why you chose the engine>",\n  "detect": {{"all": ["<2-3 regexes that identify this layout>"]}},\n  "skip_page_if": ["<optional regexes: pages to skip entirely (title/TOC/approval)>"],\n  "form_name": {{...}},\n  "fields": {{"engine": "<one of the 5>", ...params...}}\n}}\n\n# Rules\n\n- Regexes are Python re syntax inside JSON strings (escape backslashes).\n- Codes are machine identifiers like AESTDAT / QVAL_GENDOTH - short, uppercase,\n  underscores/digits allowed. Human text, dates and option values are NOT codes.\n- Prefer the most specific engine that fits; use line_pattern only if nothing fits.\n- If the document prints NO machine codes at all, still extract form_name +\n  field_name (choose the engine that best yields labels; oid_regex may then match\n  nothing) and say so in "reasoning".\n- Numbers like x/y/size in the dumps are points; use them to set column bounds.\n\n# Representative pages\n\n{pages}\n')
+             64 STORE_NAME               9 (PROMPT_TEMPLATE)
+
+116          66 LOAD_CONST               6 ('Your previous recipe was executed on the SAME representative pages. It did not pass the quality gates.\n\nPrevious recipe:\n{recipe}\n\nExecution metrics:\n{metrics}\n\nSample of extracted records (form_name | field_name | field_oid):\n{sample}\n\nProblems to fix (in priority order):\n{problems}\n\nEmit a corrected recipe now. Same output format: JSON only, no prose. You may switch engine entirely.\n')
+             68 STORE_NAME              10 (REVISION_TEMPLATE)
+
+134          70 LOAD_CONST              35 ((3600,))
+             72 LOAD_CONST              36 (('outdir', 'str', 'max_chars_per_page', 'int', 'return', 'tuple[str, list[int]]'))
+             74 LOAD_CONST              14 (<code object load_rep_pages at 0x00000290C1B071E0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\induction.py", line 134>)
+             76 MAKE_FUNCTION            5 (defaults, annotations)
+             78 STORE_NAME              11 (load_rep_pages)
+
+151          80 LOAD_CONST              37 (('raw', 'str', 'return', 'dict'))
+             82 LOAD_CONST              17 (<code object parse_recipe at 0x00000290C377B030, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\induction.py", line 151>)
+             84 MAKE_FUNCTION            4 (annotations)
+             86 STORE_NAME              12 (parse_recipe)
+
+176          88 PUSH_NULL
+             90 LOAD_NAME                5 (re)
+             92 LOAD_ATTR               13 (compile)
+            102 LOAD_CONST              18 ('^[A-Z][A-Z0-9_]{1,39}$')
+            104 PRECALL                  1
+            108 CALL                     1
+            118 STORE_NAME              14 (CODE_SHAPE)
+
+179         120 LOAD_CONST              38 (('result', 'ReplayResult', 'engine', 'str', 'return', 'dict'))
+            122 LOAD_CONST              22 (<code object score at 0x00000290C1B266A0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\induction.py", line 179>)
+            124 MAKE_FUNCTION            4 (annotations)
+            126 STORE_NAME              15 (score)
+
+216         128 LOAD_CONST              39 (('m', 'dict', 'return', 'list[str]'))
+            130 LOAD_CONST              25 (<code object gate_problems at 0x00000290C3762010, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\induction.py", line 216>)
+            132 MAKE_FUNCTION            4 (annotations)
+            134 STORE_NAME              16 (gate_problems)
+
+240         136 LOAD_CONST              39 (('m', 'dict', 'return', 'list[str]'))
+            138 LOAD_CONST              26 (<code object gate_warnings at 0x00000290C1B131A0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\induction.py", line 240>)
+            140 MAKE_FUNCTION            4 (annotations)
+            142 STORE_NAME              17 (gate_warnings)
+
+273         144 LOAD_CONST              40 (('pdf_path', 'str', 'raw_reply', 'str', 'return', 'dict'))
+            146 LOAD_CONST              29 (<code object validate_recipe at 0x00000290C1AE5050, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\induction.py", line 273>)
+            148 MAKE_FUNCTION            4 (annotations)
+            150 STORE_NAME              18 (validate_recipe)
+
+292         152 LOAD_CONST              41 (('raw_reply', 'str', 'verdict', 'dict', 'return', 'str'))
+            154 LOAD_CONST              31 (<code object build_revision_prompt at 0x00000290C37625B0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\induction.py", line 292>)
+            156 MAKE_FUNCTION            4 (annotations)
+            158 STORE_NAME              19 (build_revision_prompt)
+
+301         160 LOAD_CONST              42 ((3,))
+            162 LOAD_CONST              43 (('pdf_path', 'str', 'outdir', 'str', 'max_attempts', 'int', 'return', 'dict'))
+            164 LOAD_CONST              34 (<code object induce_recipe at 0x00000290C1B03640, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\induction.py", line 301>)
+            166 MAKE_FUNCTION            5 (defaults, annotations)
+            168 STORE_NAME              20 (induce_recipe)
+            170 LOAD_CONST               3 (None)
+            172 RETURN_VALUE
+
+Disassembly of <code object load_rep_pages at 0x00000290C1B071E0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\induction.py", line 134>:
+              0 MAKE_CELL                9 (p)
+
+134           2 RESUME                   0
+
+136           4 LOAD_GLOBAL              1 (NULL + open)
+             16 LOAD_GLOBAL              2 (os)
+             28 LOAD_ATTR                2 (path)
+             38 LOAD_METHOD              3 (join)
+             60 LOAD_FAST                0 (outdir)
+             62 LOAD_CONST               1 ('clusters.json')
+             64 PRECALL                  2
+             68 CALL                     2
+             78 LOAD_CONST               2 ('utf-8')
+             80 KW_NAMES                 3
+             82 PRECALL                  2
+             86 CALL                     2
+             96 BEFORE_WITH
+             98 STORE_FAST               2 (f)
+
+137         100 LOAD_GLOBAL              9 (NULL + json)
+            112 LOAD_ATTR                5 (load)
+            122 LOAD_FAST                2 (f)
+            124 PRECALL                  1
+            128 CALL                     1
+            138 STORE_FAST               3 (meta)
+
+136         140 LOAD_CONST               4 (None)
+            142 LOAD_CONST               4 (None)
+            144 LOAD_CONST               4 (None)
+            146 PRECALL                  2
+            150 CALL                     2
+            160 POP_TOP
+            162 JUMP_FORWARD            11 (to 186)
+        >>  164 PUSH_EXC_INFO
+            166 WITH_EXCEPT_START
+            168 POP_JUMP_FORWARD_IF_TRUE     4 (to 178)
+            170 RERAISE                  2
+        >>  172 COPY                     3
+            174 POP_EXCEPT
+            176 RERAISE                  1
+        >>  178 POP_TOP
+            180 POP_EXCEPT
+            182 POP_TOP
+            184 POP_TOP
+
+138     >>  186 LOAD_FAST                3 (meta)
+            188 LOAD_CONST               5 ('representative_pages_1based')
+            190 BINARY_SUBSCR
+            200 STORE_FAST               4 (reps)
+
+139         202 BUILD_LIST               0
+            204 STORE_FAST               5 (blocks)
+
+140         206 LOAD_FAST                4 (reps)
+            208 GET_ITER
+        >>  210 FOR_ITER               204 (to 620)
+            212 STORE_DEREF              9 (p)
+
+141         214 LOAD_GLOBAL              2 (os)
+            226 LOAD_ATTR                2 (path)
+            236 LOAD_METHOD              3 (join)
+            258 LOAD_FAST                0 (outdir)
+            260 LOAD_CONST               6 ('rep_p')
+            262 LOAD_DEREF               9 (p)
+            264 FORMAT_VALUE             0
+            266 LOAD_CONST               7 ('.txt')
+            268 BUILD_STRING             3
+            270 PRECALL                  2
+            274 CALL                     2
+            284 STORE_FAST               6 (path)
+
+142         286 LOAD_GLOBAL              1 (NULL + open)
+            298 LOAD_FAST                6 (path)
+            300 LOAD_CONST               2 ('utf-8')
+            302 KW_NAMES                 3
+            304 PRECALL                  2
+            308 CALL                     2
+            318 BEFORE_WITH
+            320 STORE_FAST               2 (f)
+
+143         322 LOAD_FAST                2 (f)
+            324 LOAD_METHOD              6 (read)
+            346 PRECALL                  0
+            350 CALL                     0
+            360 STORE_FAST               7 (body)
+
+142         362 LOAD_CONST               4 (None)
+            364 LOAD_CONST               4 (None)
+            366 LOAD_CONST               4 (None)
+            368 PRECALL                  2
+            372 CALL                     2
+            382 POP_TOP
+            384 JUMP_FORWARD            11 (to 408)
+        >>  386 PUSH_EXC_INFO
+            388 WITH_EXCEPT_START
+            390 POP_JUMP_FORWARD_IF_TRUE     4 (to 400)
+            392 RERAISE                  2
+        >>  394 COPY                     3
+            396 POP_EXCEPT
+            398 RERAISE                  1
+        >>  400 POP_TOP
+            402 POP_EXCEPT
+            404 POP_TOP
+            406 POP_TOP
+
+144     >>  408 LOAD_GLOBAL             15 (NULL + next)
+            420 LOAD_CLOSURE             9 (p)
+            422 BUILD_TUPLE              1
+            424 LOAD_CONST               8 (<code object <genexpr> at 0x00000290C3A516B0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\induction.py", line 144>)
+            426 MAKE_FUNCTION            8 (closure)
+            428 LOAD_FAST                3 (meta)
+            430 LOAD_CONST               9 ('clusters')
+            432 BINARY_SUBSCR
+            442 GET_ITER
+            444 PRECALL                  0
+            448 CALL                     0
+            458 LOAD_CONST              10 (1)
+            460 PRECALL                  2
+            464 CALL                     2
+            474 STORE_FAST               8 (cluster_size)
+
+145         476 LOAD_GLOBAL             17 (NULL + len)
+            488 LOAD_FAST                7 (body)
+            490 PRECALL                  1
+            494 CALL                     1
+            504 LOAD_FAST                1 (max_chars_per_page)
+            506 COMPARE_OP               4 (>)
+            512 POP_JUMP_FORWARD_IF_FALSE    13 (to 540)
+
+146         514 LOAD_FAST                7 (body)
+            516 LOAD_CONST               4 (None)
+            518 LOAD_FAST                1 (max_chars_per_page)
+            520 BUILD_SLICE              2
+            522 BINARY_SUBSCR
+            532 LOAD_CONST              11 ('\n<...page truncated...>\n')
+            534 BINARY_OP                0 (+)
+            538 STORE_FAST               7 (body)
+
+147     >>  540 LOAD_FAST                5 (blocks)
+            542 LOAD_METHOD              9 (append)
+            564 LOAD_CONST              12 ('--- page ')
+            566 LOAD_DEREF               9 (p)
+            568 FORMAT_VALUE             0
+            570 LOAD_CONST              13 (' of ')
+            572 LOAD_FAST                3 (meta)
+            574 LOAD_CONST              14 ('pages')
+            576 BINARY_SUBSCR
+            586 FORMAT_VALUE             0
+            588 LOAD_CONST              15 (' (layout cluster covers ~')
+            590 LOAD_FAST                8 (cluster_size)
+            592 FORMAT_VALUE             0
+            594 LOAD_CONST              16 (' pages) ---\n')
+            596 LOAD_FAST                7 (body)
+            598 FORMAT_VALUE             0
+            600 BUILD_STRING             8
+            602 PRECALL                  1
+            606 CALL                     1
+            616 POP_TOP
+            618 JUMP_BACKWARD          205 (to 210)
+
+148     >>  620 LOAD_CONST              17 ('\n')
+            622 LOAD_METHOD              3 (join)
+            644 LOAD_FAST                5 (blocks)
+            646 PRECALL                  1
+            650 CALL                     1
+            660 LOAD_CONST              18 (<code object <listcomp> at 0x00000290C3A6D140, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\induction.py", line 148>)
+            662 MAKE_FUNCTION            0
+            664 LOAD_FAST                4 (reps)
+            666 GET_ITER
+            668 PRECALL                  0
+            672 CALL                     0
+            682 BUILD_TUPLE              2
+            684 RETURN_VALUE
+ExceptionTable:
+  98 to 138 -> 164 [1] lasti
+  164 to 170 -> 172 [3] lasti
+  178 to 178 -> 172 [3] lasti
+  320 to 360 -> 386 [2] lasti
+  386 to 392 -> 394 [4] lasti
+  400 to 400 -> 394 [4] lasti
+
+Disassembly of <code object <genexpr> at 0x00000290C3A516B0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\induction.py", line 144>:
+              0 COPY_FREE_VARS           1
+
+144           2 RETURN_GENERATOR
+              4 POP_TOP
+              6 RESUME                   0
+              8 LOAD_FAST                0 (.0)
+        >>   10 FOR_ITER                39 (to 90)
+             12 STORE_FAST               1 (c)
+             14 LOAD_DEREF               2 (p)
+             16 LOAD_CONST               0 (1)
+             18 BINARY_OP               10 (-)
+             22 LOAD_FAST                1 (c)
+             24 LOAD_METHOD              0 (get)
+             46 LOAD_CONST               1 ('representatives')
+             48 BUILD_LIST               0
+             50 PRECALL                  2
+             54 CALL                     2
+             64 CONTAINS_OP              0
+             66 POP_JUMP_BACKWARD_IF_FALSE    29 (to 10)
+             68 LOAD_FAST                1 (c)
+             70 LOAD_CONST               2 ('n_pages')
+             72 BINARY_SUBSCR
+             82 YIELD_VALUE
+             84 RESUME                   1
+             86 POP_TOP
+             88 JUMP_BACKWARD           40 (to 10)
+        >>   90 LOAD_CONST               3 (None)
+             92 RETURN_VALUE
+
+Disassembly of <code object <listcomp> at 0x00000290C3A6D140, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\induction.py", line 148>:
+148           0 RESUME                   0
+              2 BUILD_LIST               0
+              4 LOAD_FAST                0 (.0)
+        >>    6 FOR_ITER                 7 (to 22)
+              8 STORE_FAST               1 (p)
+             10 LOAD_FAST                1 (p)
+             12 LOAD_CONST               0 (1)
+             14 BINARY_OP               10 (-)
+             18 LIST_APPEND              2
+             20 JUMP_BACKWARD            8 (to 6)
+        >>   22 RETURN_VALUE
+
+Disassembly of <code object parse_recipe at 0x00000290C377B030, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\induction.py", line 151>:
+151           0 RESUME                   0
+
+155           2 LOAD_GLOBAL              1 (NULL + json)
+             14 LOAD_ATTR                1 (JSONDecoder)
+             24 PRECALL                  0
+             28 CALL                     0
+             38 STORE_FAST               1 (dec)
+
+156          40 LOAD_FAST                0 (raw)
+             42 LOAD_METHOD              2 (find)
+             64 LOAD_CONST               1 ('{')
+             66 PRECALL                  1
+             70 CALL                     1
+             80 STORE_FAST               2 (idx)
+
+157          82 LOAD_FAST                2 (idx)
+             84 LOAD_CONST               2 (-1)
+             86 COMPARE_OP               3 (!=)
+             92 POP_JUMP_FORWARD_IF_FALSE   102 (to 298)
+
+158     >>   94 NOP
+
+159          96 LOAD_FAST                1 (dec)
+             98 LOAD_METHOD              3 (raw_decode)
+            120 LOAD_FAST                0 (raw)
+            122 LOAD_FAST                2 (idx)
+            124 PRECALL                  2
+            128 CALL                     2
+            138 UNPACK_SEQUENCE          2
+            142 STORE_FAST               3 (out)
+            144 STORE_FAST               4 (_)
+
+160         146 LOAD_GLOBAL              9 (NULL + isinstance)
+            158 LOAD_FAST                3 (out)
+            160 LOAD_GLOBAL             10 (dict)
+            172 PRECALL                  2
+            176 CALL                     2
+            186 POP_JUMP_FORWARD_IF_FALSE     2 (to 192)
+
+161         188 LOAD_FAST                3 (out)
+            190 RETURN_VALUE
+
+160     >>  192 JUMP_FORWARD            21 (to 236)
+        >>  194 PUSH_EXC_INFO
+
+162         196 LOAD_GLOBAL              0 (json)
+            208 LOAD_ATTR                6 (JSONDecodeError)
+            218 CHECK_EXC_MATCH
+            220 POP_JUMP_FORWARD_IF_FALSE     3 (to 228)
+            222 POP_TOP
+
+163         224 POP_EXCEPT
+            226 JUMP_FORWARD             4 (to 236)
+
+162     >>  228 RERAISE                  0
+        >>  230 COPY                     3
+            232 POP_EXCEPT
+            234 RERAISE                  1
+
+164     >>  236 LOAD_FAST                0 (raw)
+            238 LOAD_METHOD              2 (find)
+            260 LOAD_CONST               1 ('{')
+            262 LOAD_FAST                2 (idx)
+            264 LOAD_CONST               3 (1)
+            266 BINARY_OP                0 (+)
+            270 PRECALL                  2
+            274 CALL                     2
+            284 STORE_FAST               2 (idx)
+
+157         286 LOAD_FAST                2 (idx)
+            288 LOAD_CONST               2 (-1)
+            290 COMPARE_OP               3 (!=)
+            296 POP_JUMP_BACKWARD_IF_TRUE   102 (to 94)
+
+165     >>  298 LOAD_GLOBAL             15 (NULL + ValueError)
+            310 LOAD_CONST               4 ('no JSON object in LLM reply')
+            312 PRECALL                  1
+            316 CALL                     1
+            326 RAISE_VARARGS            1
+ExceptionTable:
+  96 to 188 -> 194 [0]
+  194 to 222 -> 230 [1] lasti
+  228 to 228 -> 230 [1] lasti
+
+Disassembly of <code object score at 0x00000290C1B266A0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\induction.py", line 179>:
+179           0 RESUME                   0
+
+180           2 LOAD_FAST                0 (result)
+              4 LOAD_ATTR                0 (records)
+             14 STORE_FAST               2 (recs)
+
+181          16 LOAD_GLOBAL              3 (NULL + len)
+             28 LOAD_FAST                2 (recs)
+             30 PRECALL                  1
+             34 CALL                     1
+             44 STORE_FAST               3 (n)
+
+183          46 LOAD_FAST                1 (engine)
+
+184          48 LOAD_FAST                3 (n)
+
+185          50 LOAD_FAST                0 (result)
+             52 LOAD_ATTR                2 (pages_total)
+
+186          62 LOAD_FAST                0 (result)
+             64 LOAD_ATTR                3 (pages_with_fields)
+
+187          74 LOAD_FAST                0 (result)
+             76 LOAD_ATTR                4 (definition_pages_seen)
+
+188          86 LOAD_FAST                3 (n)
+             88 POP_JUMP_FORWARD_IF_FALSE    44 (to 178)
+             90 LOAD_GLOBAL             11 (NULL + round)
+            102 LOAD_CONST               1 (100)
+            104 LOAD_GLOBAL             13 (NULL + sum)
+            116 LOAD_CONST               2 (<code object <genexpr> at 0x00000290C3A6A230, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\induction.py", line 188>)
+            118 MAKE_FUNCTION            0
+            120 LOAD_FAST                2 (recs)
+            122 GET_ITER
+            124 PRECALL                  0
+            128 CALL                     0
+            138 PRECALL                  1
+            142 CALL                     1
+            152 BINARY_OP                5 (*)
+            156 LOAD_FAST                3 (n)
+            158 BINARY_OP               11 (/)
+            162 PRECALL                  1
+            166 CALL                     1
+            176 JUMP_FORWARD             1 (to 180)
+        >>  178 LOAD_CONST               3 (0)
+
+200     >>  180 LOAD_FAST                3 (n)
+
+196         182 POP_JUMP_FORWARD_IF_FALSE    44 (to 272)
+            184 LOAD_GLOBAL             11 (NULL + round)
+            196 LOAD_CONST               1 (100)
+            198 LOAD_GLOBAL             13 (NULL + sum)
+            210 LOAD_CONST               4 (<code object <genexpr> at 0x00000290C37623D0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\induction.py", line 196>)
+            212 MAKE_FUNCTION            0
+
+197         214 LOAD_FAST                2 (recs)
+
+196         216 GET_ITER
+            218 PRECALL                  0
+            222 CALL                     0
+            232 PRECALL                  1
+            236 CALL                     1
+            246 BINARY_OP                5 (*)
+
+200         250 LOAD_FAST                3 (n)
+
+196         252 BINARY_OP               11 (/)
+            256 PRECALL                  1
+            260 CALL                     1
+            270 JUMP_FORWARD             1 (to 274)
+
+200     >>  272 LOAD_CONST               3 (0)
+
+203     >>  274 LOAD_FAST                3 (n)
+            276 POP_JUMP_FORWARD_IF_FALSE    44 (to 366)
+            278 LOAD_GLOBAL             11 (NULL + round)
+            290 LOAD_CONST               1 (100)
+            292 LOAD_GLOBAL             13 (NULL + sum)
+            304 LOAD_CONST               5 (<code object <genexpr> at 0x00000290C3A0DDF0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\induction.py", line 203>)
+            306 MAKE_FUNCTION            0
+            308 LOAD_FAST                2 (recs)
+            310 GET_ITER
+            312 PRECALL                  0
+            316 CALL                     0
+            326 PRECALL                  1
+            330 CALL                     1
+            340 BINARY_OP                5 (*)
+            344 LOAD_FAST                3 (n)
+            346 BINARY_OP               11 (/)
+            350 PRECALL                  1
+            354 CALL                     1
+            364 JUMP_FORWARD             1 (to 368)
+        >>  366 LOAD_CONST               3 (0)
+
+204     >>  368 LOAD_GLOBAL             11 (NULL + round)
+            380 LOAD_CONST               1 (100)
+            382 LOAD_GLOBAL             13 (NULL + sum)
+            394 LOAD_CONST               6 (<code object <genexpr> at 0x00000290C3816F70, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\induction.py", line 204>)
+            396 MAKE_FUNCTION            0
+
+205         398 LOAD_FAST                2 (recs)
+
+204         400 GET_ITER
+            402 PRECALL                  0
+            406 CALL                     0
+            416 PRECALL                  1
+            420 CALL                     1
+            430 BINARY_OP                5 (*)
+
+206         434 LOAD_GLOBAL             15 (NULL + max)
+            446 LOAD_CONST               7 (1)
+            448 LOAD_GLOBAL             13 (NULL + sum)
+            460 LOAD_CONST               8 (<code object <genexpr> at 0x00000290C3A0FAD0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\induction.py", line 206>)
+            462 MAKE_FUNCTION            0
+            464 LOAD_FAST                2 (recs)
+            466 GET_ITER
+            468 PRECALL                  0
+            472 CALL                     0
+            482 PRECALL                  1
+            486 CALL                     1
+            496 PRECALL                  2
+            500 CALL                     2
+
+204         510 BINARY_OP               11 (/)
+            514 PRECALL                  1
+            518 CALL                     1
+
+207         528 LOAD_GLOBAL              3 (NULL + len)
+            540 LOAD_CONST               9 (<code object <setcomp> at 0x00000290C38170C0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\induction.py", line 207>)
+            542 MAKE_FUNCTION            0
+            544 LOAD_FAST                2 (recs)
+            546 GET_ITER
+            548 PRECALL                  0
+            552 CALL                     0
+            562 PRECALL                  1
+            566 CALL                     1
+
+182         576 LOAD_CONST              10 (('engine', 'records', 'pages_total', 'pages_with_fields', 'definition_pages_seen', 'forms_nonempty_pct', 'labels_look_human_pct', 'oids_present_pct', 'oids_look_like_codes_pct', 'distinct_forms'))
+            578 BUILD_CONST_KEY_MAP     10
+            580 STORE_FAST               4 (m)
+
+211         582 LOAD_GLOBAL             11 (NULL + round)
+            594 LOAD_FAST                3 (n)
+            596 LOAD_GLOBAL             15 (NULL + max)
+            608 LOAD_CONST               7 (1)
+            610 LOAD_FAST                4 (m)
+            612 LOAD_CONST              11 ('distinct_forms')
+            614 BINARY_SUBSCR
+            624 PRECALL                  2
+            628 CALL                     2
+            638 BINARY_OP               11 (/)
+            642 LOAD_CONST               7 (1)
+            644 PRECALL                  2
+            648 CALL                     2
+            658 LOAD_FAST                4 (m)
+            660 LOAD_CONST              12 ('fields_per_form')
+            662 STORE_SUBSCR
+
+212         666 LOAD_GLOBAL             11 (NULL + round)
+            678 LOAD_CONST               1 (100)
+            680 LOAD_FAST                4 (m)
+            682 LOAD_CONST              11 ('distinct_forms')
+            684 BINARY_SUBSCR
+            694 BINARY_OP                5 (*)
+            698 LOAD_GLOBAL             15 (NULL + max)
+            710 LOAD_CONST               7 (1)
+            712 LOAD_FAST                0 (result)
+            714 LOAD_ATTR                2 (pages_total)
+            724 PRECALL                  2
+            728 CALL                     2
+            738 BINARY_OP               11 (/)
+            742 LOAD_CONST               7 (1)
+            744 PRECALL                  2
+            748 CALL                     2
+            758 LOAD_FAST                4 (m)
+            760 LOAD_CONST              13 ('forms_per_100_pages')
+            762 STORE_SUBSCR
+
+213         766 LOAD_FAST                4 (m)
+            768 RETURN_VALUE
+
+Disassembly of <code object <genexpr> at 0x00000290C3A6A230, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\induction.py", line 188>:
+188           0 RETURN_GENERATOR
+              2 POP_TOP
+              4 RESUME                   0
+              6 LOAD_FAST                0 (.0)
+        >>    8 FOR_ITER                31 (to 72)
+             10 STORE_FAST               1 (r)
+             12 LOAD_FAST                1 (r)
+             14 LOAD_ATTR                0 (form_name)
+             24 LOAD_METHOD              1 (strip)
+             46 PRECALL                  0
+             50 CALL                     0
+             60 POP_JUMP_BACKWARD_IF_FALSE    27 (to 8)
+             62 LOAD_CONST               0 (1)
+             64 YIELD_VALUE
+             66 RESUME                   1
+             68 POP_TOP
+             70 JUMP_BACKWARD           32 (to 8)
+        >>   72 LOAD_CONST               1 (None)
+             74 RETURN_VALUE
+
+Disassembly of <code object <genexpr> at 0x00000290C37623D0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\induction.py", line 196>:
+196           0 RETURN_GENERATOR
+              2 POP_TOP
+              4 RESUME                   0
+              6 LOAD_FAST                0 (.0)
+        >>    8 FOR_ITER               141 (to 292)
+
+197          10 STORE_FAST               1 (r)
+
+198          12 LOAD_GLOBAL              1 (NULL + re)
+             24 LOAD_ATTR                1 (search)
+             34 LOAD_CONST               0 ('[^\\W\\d_]')
+             36 LOAD_FAST                1 (r)
+             38 LOAD_ATTR                2 (field_name)
+             48 PRECALL                  2
+             52 CALL                     2
+
+196          62 POP_JUMP_FORWARD_IF_FALSE   113 (to 290)
+
+198          64 LOAD_CONST               1 (2)
+             66 LOAD_GLOBAL              7 (NULL + len)
+             78 LOAD_FAST                1 (r)
+             80 LOAD_ATTR                2 (field_name)
+             90 PRECALL                  1
+             94 CALL                     1
+            104 SWAP                     2
+            106 COPY                     2
+            108 COMPARE_OP               1 (<=)
+            114 POP_JUMP_FORWARD_IF_FALSE     6 (to 128)
+            116 LOAD_CONST               2 (200)
+            118 COMPARE_OP               1 (<=)
+            124 POP_JUMP_BACKWARD_IF_FALSE    59 (to 8)
+            126 JUMP_FORWARD             2 (to 132)
+        >>  128 POP_TOP
+            130 JUMP_FORWARD            79 (to 290)
+
+199     >>  132 LOAD_GLOBAL              8 (CODE_SHAPE)
+            144 LOAD_METHOD              5 (match)
+            166 LOAD_FAST                1 (r)
+            168 LOAD_ATTR                2 (field_name)
+            178 LOAD_METHOD              6 (strip)
+            200 PRECALL                  0
+            204 CALL                     0
+            214 PRECALL                  1
+            218 CALL                     1
+
+198         228 POP_JUMP_FORWARD_IF_FALSE    26 (to 282)
+
+200         230 LOAD_GLOBAL              1 (NULL + re)
+            242 LOAD_ATTR                1 (search)
+            252 LOAD_CONST               3 ('[\\d_]')
+            254 LOAD_FAST                1 (r)
+            256 LOAD_ATTR                2 (field_name)
+            266 PRECALL                  2
+            270 CALL                     2
+
+198         280 POP_JUMP_BACKWARD_IF_TRUE   137 (to 8)
+
+197     >>  282 LOAD_CONST               4 (1)
+
+198         284 YIELD_VALUE
+            286 RESUME                   1
+            288 POP_TOP
+        >>  290 JUMP_BACKWARD          142 (to 8)
+
+196     >>  292 LOAD_CONST               5 (None)
+            294 RETURN_VALUE
+
+Disassembly of <code object <genexpr> at 0x00000290C3A0DDF0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\induction.py", line 203>:
+203           0 RETURN_GENERATOR
+              2 POP_TOP
+              4 RESUME                   0
+              6 LOAD_FAST                0 (.0)
+        >>    8 FOR_ITER                13 (to 36)
+             10 STORE_FAST               1 (r)
+             12 LOAD_FAST                1 (r)
+             14 LOAD_ATTR                0 (field_oid)
+             24 POP_JUMP_BACKWARD_IF_FALSE     9 (to 8)
+             26 LOAD_CONST               0 (1)
+             28 YIELD_VALUE
+             30 RESUME                   1
+             32 POP_TOP
+             34 JUMP_BACKWARD           14 (to 8)
+        >>   36 LOAD_CONST               1 (None)
+             38 RETURN_VALUE
+
+Disassembly of <code object <genexpr> at 0x00000290C3816F70, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\induction.py", line 204>:
+204           0 RETURN_GENERATOR
+              2 POP_TOP
+              4 RESUME                   0
+              6 LOAD_FAST                0 (.0)
+        >>    8 FOR_ITER                62 (to 134)
+
+205          10 STORE_FAST               1 (r)
+             12 LOAD_FAST                1 (r)
+             14 LOAD_ATTR                0 (field_oid)
+
+204          24 POP_JUMP_BACKWARD_IF_FALSE     9 (to 8)
+
+205          26 LOAD_GLOBAL              2 (CODE_SHAPE)
+             38 LOAD_METHOD              2 (match)
+             60 LOAD_FAST                1 (r)
+             62 LOAD_ATTR                0 (field_oid)
+             72 LOAD_METHOD              3 (strip)
+             94 PRECALL                  0
+             98 CALL                     0
+            108 PRECALL                  1
+            112 CALL                     1
+
+204         122 POP_JUMP_BACKWARD_IF_FALSE    58 (to 8)
+
+205         124 LOAD_CONST               0 (1)
+
+204         126 YIELD_VALUE
+            128 RESUME                   1
+            130 POP_TOP
+            132 JUMP_BACKWARD           63 (to 8)
+        >>  134 LOAD_CONST               1 (None)
+            136 RETURN_VALUE
+
+Disassembly of <code object <genexpr> at 0x00000290C3A0FAD0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\induction.py", line 206>:
+206           0 RETURN_GENERATOR
+              2 POP_TOP
+              4 RESUME                   0
+              6 LOAD_FAST                0 (.0)
+        >>    8 FOR_ITER                13 (to 36)
+             10 STORE_FAST               1 (r)
+             12 LOAD_FAST                1 (r)
+             14 LOAD_ATTR                0 (field_oid)
+             24 POP_JUMP_BACKWARD_IF_FALSE     9 (to 8)
+             26 LOAD_CONST               0 (1)
+             28 YIELD_VALUE
+             30 RESUME                   1
+             32 POP_TOP
+             34 JUMP_BACKWARD           14 (to 8)
+        >>   36 LOAD_CONST               1 (None)
+             38 RETURN_VALUE
+
+Disassembly of <code object <setcomp> at 0x00000290C38170C0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\induction.py", line 207>:
+207           0 RESUME                   0
+              2 BUILD_SET                0
+              4 LOAD_FAST                0 (.0)
+        >>    6 FOR_ITER                70 (to 148)
+              8 STORE_FAST               1 (r)
+             10 LOAD_FAST                1 (r)
+             12 LOAD_ATTR                0 (form_name)
+             22 LOAD_METHOD              1 (strip)
+             44 PRECALL                  0
+             48 CALL                     0
+             58 POP_JUMP_BACKWARD_IF_FALSE    27 (to 6)
+             60 LOAD_FAST                1 (r)
+             62 LOAD_ATTR                0 (form_name)
+             72 LOAD_METHOD              1 (strip)
+             94 PRECALL                  0
+             98 CALL                     0
+            108 LOAD_METHOD              2 (lower)
+            130 PRECALL                  0
+            134 CALL                     0
+            144 SET_ADD                  2
+            146 JUMP_BACKWARD           71 (to 6)
+        >>  148 RETURN_VALUE
+
+Disassembly of <code object gate_problems at 0x00000290C3762010, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\induction.py", line 216>:
+216           0 RESUME                   0
+
+225           2 BUILD_LIST               0
+              4 STORE_FAST               1 (problems)
+
+226           6 LOAD_FAST                0 (m)
+              8 LOAD_CONST               1 ('records')
+             10 BINARY_SUBSCR
+             20 LOAD_CONST               2 (0)
+             22 COMPARE_OP               2 (==)
+             28 POP_JUMP_FORWARD_IF_FALSE    23 (to 76)
+
+227          30 LOAD_FAST                1 (problems)
+             32 LOAD_METHOD              0 (append)
+             54 LOAD_CONST               3 ('The program extracted ZERO records from the document.')
+             56 PRECALL                  1
+             60 CALL                     1
+             70 POP_TOP
+
+228          72 LOAD_FAST                1 (problems)
+             74 RETURN_VALUE
+
+229     >>   76 LOAD_FAST                0 (m)
+             78 LOAD_CONST               1 ('records')
+             80 BINARY_SUBSCR
+             90 LOAD_CONST               4 (5)
+             92 COMPARE_OP               0 (<)
+             98 POP_JUMP_FORWARD_IF_FALSE    52 (to 204)
+            100 LOAD_FAST                0 (m)
+            102 LOAD_CONST               5 ('pages_total')
+            104 BINARY_SUBSCR
+            114 LOAD_CONST               6 (20)
+            116 COMPARE_OP               5 (>=)
+            122 POP_JUMP_FORWARD_IF_FALSE    40 (to 204)
+
+230         124 LOAD_FAST                1 (problems)
+            126 LOAD_METHOD              0 (append)
+            148 LOAD_CONST               7 ('Only ')
+            150 LOAD_FAST                0 (m)
+            152 LOAD_CONST               1 ('records')
+            154 BINARY_SUBSCR
+            164 FORMAT_VALUE             0
+            166 LOAD_CONST               8 (' records from a ')
+            168 LOAD_FAST                0 (m)
+            170 LOAD_CONST               5 ('pages_total')
+            172 BINARY_SUBSCR
+            182 FORMAT_VALUE             0
+            184 LOAD_CONST               9 ('-page document - the program is effectively not extracting.')
+            186 BUILD_STRING             5
+            188 PRECALL                  1
+            192 CALL                     1
+            202 POP_TOP
+
+231     >>  204 LOAD_FAST                0 (m)
+            206 LOAD_CONST               1 ('records')
+            208 BINARY_SUBSCR
+            218 POP_JUMP_FORWARD_IF_FALSE    29 (to 278)
+            220 LOAD_FAST                0 (m)
+            222 LOAD_CONST              10 ('pages_with_fields')
+            224 BINARY_SUBSCR
+            234 POP_JUMP_FORWARD_IF_TRUE    21 (to 278)
+
+234         236 LOAD_FAST                1 (problems)
+            238 LOAD_METHOD              0 (append)
+            260 LOAD_CONST              11 ('Records carry no valid 1-based `page` numbers - the `page` field of every returned record must be the page the field appears on.')
+            262 PRECALL                  1
+            266 CALL                     1
+            276 POP_TOP
+
+237     >>  278 LOAD_FAST                1 (problems)
+            280 RETURN_VALUE
+
+Disassembly of <code object gate_warnings at 0x00000290C1B131A0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\induction.py", line 240>:
+240           0 RESUME                   0
+
+245           2 BUILD_LIST               0
+              4 STORE_FAST               1 (warnings)
+
+246           6 LOAD_CONST               1 (0)
+              8 LOAD_FAST                0 (m)
+             10 LOAD_CONST               2 ('records')
+             12 BINARY_SUBSCR
+             22 SWAP                     2
+             24 COPY                     2
+             26 COMPARE_OP               0 (<)
+             32 POP_JUMP_FORWARD_IF_FALSE     6 (to 46)
+             34 LOAD_CONST               3 (5)
+             36 COMPARE_OP               0 (<)
+             42 POP_JUMP_FORWARD_IF_FALSE    55 (to 154)
+             44 JUMP_FORWARD             2 (to 50)
+        >>   46 POP_TOP
+             48 JUMP_FORWARD            52 (to 154)
+        >>   50 LOAD_FAST                0 (m)
+             52 LOAD_CONST               4 ('pages_total')
+             54 BINARY_SUBSCR
+             64 LOAD_CONST               5 (20)
+             66 COMPARE_OP               0 (<)
+             72 POP_JUMP_FORWARD_IF_FALSE    40 (to 154)
+
+247          74 LOAD_FAST                1 (warnings)
+             76 LOAD_METHOD              0 (append)
+             98 LOAD_CONST               6 ('Only ')
+            100 LOAD_FAST                0 (m)
+            102 LOAD_CONST               2 ('records')
+            104 BINARY_SUBSCR
+            114 FORMAT_VALUE             0
+            116 LOAD_CONST               7 (' records from this ')
+            118 LOAD_FAST                0 (m)
+            120 LOAD_CONST               4 ('pages_total')
+            122 BINARY_SUBSCR
+            132 FORMAT_VALUE             0
+            134 LOAD_CONST               8 ('-page document - plausible for a document this small, but make sure no fields were missed.')
+            136 BUILD_STRING             5
+            138 PRECALL                  1
+            142 CALL                     1
+            152 POP_TOP
+
+250     >>  154 LOAD_FAST                0 (m)
+            156 LOAD_CONST               9 ('forms_nonempty_pct')
+            158 BINARY_SUBSCR
+            168 LOAD_CONST              10 (70)
+            170 COMPARE_OP               0 (<)
+            176 POP_JUMP_FORWARD_IF_FALSE    34 (to 246)
+
+251         178 LOAD_FAST                1 (warnings)
+            180 LOAD_METHOD              0 (append)
+            202 LOAD_CONST              11 ('form_name empty for ')
+            204 LOAD_CONST              12 (100)
+            206 LOAD_FAST                0 (m)
+            208 LOAD_CONST               9 ('forms_nonempty_pct')
+            210 BINARY_SUBSCR
+            220 BINARY_OP               10 (-)
+            224 FORMAT_VALUE             0
+            226 LOAD_CONST              13 ('% of records - if the document does print form/section names, fix the form_name strategy (consider carrying the last seen title forward).')
+            228 BUILD_STRING             3
+            230 PRECALL                  1
+            234 CALL                     1
+            244 POP_TOP
+
+252     >>  246 LOAD_FAST                0 (m)
+            248 LOAD_CONST              14 ('labels_look_human_pct')
+            250 BINARY_SUBSCR
+            260 LOAD_CONST              15 (60)
+            262 COMPARE_OP               0 (<)
+            268 POP_JUMP_FORWARD_IF_FALSE    31 (to 332)
+
+253         270 LOAD_FAST                1 (warnings)
+            272 LOAD_METHOD              0 (append)
+            294 LOAD_CONST               6 ('Only ')
+            296 LOAD_FAST                0 (m)
+            298 LOAD_CONST              14 ('labels_look_human_pct')
+            300 BINARY_SUBSCR
+            310 FORMAT_VALUE             0
+            312 LOAD_CONST              16 ('% of field_name values look like human labels (they look like codes/dates/junk) - fix label selection.')
+            314 BUILD_STRING             3
+            316 PRECALL                  1
+            320 CALL                     1
+            330 POP_TOP
+
+254     >>  332 LOAD_FAST                0 (m)
+            334 LOAD_CONST              17 ('oids_present_pct')
+            336 BINARY_SUBSCR
+            346 LOAD_CONST               1 (0)
+            348 COMPARE_OP               4 (>)
+            354 POP_JUMP_FORWARD_IF_FALSE    43 (to 442)
+            356 LOAD_FAST                0 (m)
+            358 LOAD_CONST              18 ('oids_look_like_codes_pct')
+            360 BINARY_SUBSCR
+            370 LOAD_CONST              19 (80)
+            372 COMPARE_OP               0 (<)
+            378 POP_JUMP_FORWARD_IF_FALSE    31 (to 442)
+
+255         380 LOAD_FAST                1 (warnings)
+            382 LOAD_METHOD              0 (append)
+            404 LOAD_CONST              20 ("Extracted field_oid values often don't look like machine codes (")
+            406 LOAD_FAST                0 (m)
+            408 LOAD_CONST              18 ('oids_look_like_codes_pct')
+            410 BINARY_SUBSCR
+            420 FORMAT_VALUE             0
+            422 LOAD_CONST              21 ('% ok) - tighten oid_regex.')
+            424 BUILD_STRING             3
+            426 PRECALL                  1
+            430 CALL                     1
+            440 POP_TOP
+
+256     >>  442 LOAD_FAST                0 (m)
+            444 LOAD_CONST              22 ('engine')
+            446 BINARY_SUBSCR
+            456 LOAD_CONST              23 ('numbered_join')
+            458 COMPARE_OP               2 (==)
+            464 POP_JUMP_FORWARD_IF_FALSE    63 (to 592)
+            466 LOAD_FAST                0 (m)
+            468 LOAD_CONST              24 ('definition_pages_seen')
+            470 BINARY_SUBSCR
+            480 LOAD_CONST               1 (0)
+            482 COMPARE_OP               4 (>)
+            488 POP_JUMP_FORWARD_IF_FALSE    51 (to 592)
+            490 LOAD_FAST                0 (m)
+            492 LOAD_CONST              17 ('oids_present_pct')
+            494 BINARY_SUBSCR
+            504 LOAD_CONST              25 (10)
+            506 COMPARE_OP               0 (<)
+            512 POP_JUMP_FORWARD_IF_FALSE    39 (to 592)
+
+257         514 LOAD_FAST                1 (warnings)
+            516 LOAD_METHOD              0 (append)
+
+258         538 LOAD_FAST                0 (m)
+            540 LOAD_CONST              24 ('definition_pages_seen')
+            542 BINARY_SUBSCR
+            552 FORMAT_VALUE             0
+            554 LOAD_CONST              26 (' definition pages were detected but codes were joined to only ')
+
+259         556 LOAD_FAST                0 (m)
+            558 LOAD_CONST              17 ('oids_present_pct')
+            560 BINARY_SUBSCR
+
+258         570 FORMAT_VALUE             0
+            572 LOAD_CONST              27 ("% of labels. The join is broken: check data_number_regex (group 1 must capture the SAME key on both page types), row_number_x_max, oid_header, and consider number_embedded_in_label:true (key printed on the label line) or definition_form_from_carry:true (definition pages don't print the form name; attribute them to the most recent content-page form).")
+            574 BUILD_STRING             4
+
+257         576 PRECALL                  1
+            580 CALL                     1
+            590 POP_TOP
+
+264     >>  592 LOAD_FAST                0 (m)
+            594 LOAD_CONST              28 ('distinct_forms')
+            596 BINARY_SUBSCR
+            606 LOAD_GLOBAL              3 (NULL + max)
+            618 LOAD_CONST              25 (10)
+            620 LOAD_FAST                0 (m)
+            622 LOAD_CONST               2 ('records')
+            624 BINARY_SUBSCR
+            634 LOAD_CONST              29 (2)
+            636 BINARY_OP                2 (//)
+            640 PRECALL                  2
+            644 CALL                     2
+            654 COMPARE_OP               4 (>)
+            660 POP_JUMP_FORWARD_IF_FALSE    39 (to 740)
+
+265         662 LOAD_FAST                1 (warnings)
+            664 LOAD_METHOD              0 (append)
+
+266         686 LOAD_FAST                0 (m)
+            688 LOAD_CONST              28 ('distinct_forms')
+            690 BINARY_SUBSCR
+            700 FORMAT_VALUE             0
+            702 LOAD_CONST              30 (' distinct form_names for ')
+            704 LOAD_FAST                0 (m)
+            706 LOAD_CONST               2 ('records')
+            708 BINARY_SUBSCR
+            718 FORMAT_VALUE             0
+            720 LOAD_CONST              31 (' records - check whether form detection is picking up field labels or body text as form names; if so, make the form_name pattern stricter (font size / color / position) or carry the last seen title forward. If the document genuinely has this many forms, keep it as is.')
+            722 BUILD_STRING             4
+
+265         724 PRECALL                  1
+            728 CALL                     1
+            738 POP_TOP
+
+270     >>  740 LOAD_FAST                1 (warnings)
+            742 RETURN_VALUE
+
+Disassembly of <code object validate_recipe at 0x00000290C1AE5050, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\induction.py", line 273>:
+273           0 RESUME                   0
+
+277           2 NOP
+
+278           4 LOAD_GLOBAL              1 (NULL + parse_recipe)
+             16 LOAD_FAST                1 (raw_reply)
+             18 PRECALL                  1
+             22 CALL                     1
+             32 STORE_FAST               2 (recipe)
+
+279          34 LOAD_GLOBAL              3 (NULL + replay)
+             46 LOAD_FAST                0 (pdf_path)
+             48 LOAD_FAST                2 (recipe)
+             50 PRECALL                  2
+             54 CALL                     2
+             64 STORE_FAST               3 (result)
+
+280          66 LOAD_GLOBAL              5 (NULL + score)
+             78 LOAD_FAST                3 (result)
+             80 LOAD_FAST                2 (recipe)
+             82 LOAD_METHOD              3 (get)
+            104 LOAD_CONST               1 ('fields')
+            106 BUILD_MAP                0
+            108 PRECALL                  2
+            112 CALL                     2
+            122 LOAD_METHOD              3 (get)
+            144 LOAD_CONST               2 ('engine')
+            146 LOAD_CONST               3 ('?')
+            148 PRECALL                  2
+            152 CALL                     2
+            162 PRECALL                  2
+            166 CALL                     2
+            176 STORE_FAST               4 (metrics)
+
+282         178 LOAD_GLOBAL              9 (NULL + gate_problems)
+            190 LOAD_FAST                4 (metrics)
+            192 PRECALL                  1
+            196 CALL                     1
+            206 LOAD_GLOBAL             11 (NULL + gate_warnings)
+            218 LOAD_FAST                4 (metrics)
+            220 PRECALL                  1
+            224 CALL                     1
+            234 BINARY_OP                0 (+)
+            238 STORE_FAST               5 (problems)
+
+283         240 LOAD_CONST               4 ('\n')
+            242 LOAD_METHOD              6 (join)
+            264 LOAD_CONST               5 (<code object <genexpr> at 0x00000290C3A16330, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\induction.py", line 283>)
+            266 MAKE_FUNCTION            0
+
+284         268 LOAD_FAST                3 (result)
+            270 LOAD_ATTR                7 (records)
+            280 LOAD_CONST               6 (None)
+            282 LOAD_CONST               7 (25)
+            284 BUILD_SLICE              2
+            286 BINARY_SUBSCR
+
+283         296 GET_ITER
+            298 PRECALL                  0
+            302 CALL                     0
+            312 PRECALL                  1
+            316 CALL                     1
+            326 JUMP_IF_TRUE_OR_POP      1 (to 330)
+
+284         328 LOAD_CONST               8 ('(none)')
+
+283     >>  330 STORE_FAST               6 (sample)
+            332 JUMP_FORWARD            53 (to 440)
+        >>  334 PUSH_EXC_INFO
+
+285         336 LOAD_GLOBAL             16 (Exception)
+            348 CHECK_EXC_MATCH
+            350 POP_JUMP_FORWARD_IF_FALSE    40 (to 432)
+            352 STORE_FAST               7 (e)
+
+286         354 LOAD_CONST               9 ((None, None))
+            356 UNPACK_SEQUENCE          2
+            360 STORE_FAST               2 (recipe)
+            362 STORE_FAST               3 (result)
+
+287         364 LOAD_CONST              10 ('error')
+            366 LOAD_GLOBAL             19 (NULL + str)
+            378 LOAD_FAST                7 (e)
+            380 PRECALL                  1
+            384 CALL                     1
+            394 BUILD_MAP                1
+            396 LOAD_CONST              11 ('Recipe failed to execute: ')
+            398 LOAD_FAST                7 (e)
+            400 FORMAT_VALUE             0
+            402 BUILD_STRING             2
+            404 BUILD_LIST               1
+            406 LOAD_CONST               8 ('(none)')
+            408 STORE_FAST               6 (sample)
+            410 STORE_FAST               5 (problems)
+            412 STORE_FAST               4 (metrics)
+            414 POP_EXCEPT
+            416 LOAD_CONST               6 (None)
+            418 STORE_FAST               7 (e)
+            420 DELETE_FAST              7 (e)
+            422 JUMP_FORWARD             8 (to 440)
+        >>  424 LOAD_CONST               6 (None)
+            426 STORE_FAST               7 (e)
+            428 DELETE_FAST              7 (e)
+            430 RERAISE                  1
+
+285     >>  432 RERAISE                  0
+        >>  434 COPY                     3
+            436 POP_EXCEPT
+            438 RERAISE                  1
+
+288     >>  440 LOAD_FAST                2 (recipe)
+            442 LOAD_FAST                3 (result)
+            444 LOAD_FAST                4 (metrics)
+
+289         446 LOAD_FAST                5 (problems)
+            448 LOAD_FAST                6 (sample)
+
+288         450 LOAD_CONST              12 (('recipe', 'result', 'metrics', 'problems', 'sample'))
+            452 BUILD_CONST_KEY_MAP      5
+            454 RETURN_VALUE
+ExceptionTable:
+  4 to 330 -> 334 [0]
+  334 to 352 -> 434 [1] lasti
+  354 to 412 -> 424 [1] lasti
+  424 to 432 -> 434 [1] lasti
+
+Disassembly of <code object <genexpr> at 0x00000290C3A16330, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\induction.py", line 283>:
+283           0 RETURN_GENERATOR
+              2 POP_TOP
+              4 RESUME                   0
+              6 LOAD_FAST                0 (.0)
+        >>    8 FOR_ITER                29 (to 68)
+
+284          10 STORE_FAST               1 (r)
+
+283          12 LOAD_FAST                1 (r)
+             14 LOAD_ATTR                0 (form_name)
+             24 FORMAT_VALUE             0
+             26 LOAD_CONST               0 (' | ')
+             28 LOAD_FAST                1 (r)
+             30 LOAD_ATTR                1 (field_name)
+             40 FORMAT_VALUE             0
+             42 LOAD_CONST               0 (' | ')
+             44 LOAD_FAST                1 (r)
+             46 LOAD_ATTR                2 (field_oid)
+             56 FORMAT_VALUE             0
+             58 BUILD_STRING             5
+             60 YIELD_VALUE
+             62 RESUME                   1
+             64 POP_TOP
+             66 JUMP_BACKWARD           30 (to 8)
+        >>   68 LOAD_CONST               1 (None)
+             70 RETURN_VALUE
+
+Disassembly of <code object build_revision_prompt at 0x00000290C37625B0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\induction.py", line 292>:
+292           0 RESUME                   0
+
+293           2 LOAD_GLOBAL              0 (REVISION_TEMPLATE)
+             14 LOAD_METHOD              1 (format)
+
+294          36 LOAD_FAST                1 (verdict)
+             38 LOAD_CONST               1 ('recipe')
+             40 BINARY_SUBSCR
+             50 POP_JUMP_FORWARD_IF_FALSE    28 (to 108)
+             52 LOAD_GLOBAL              5 (NULL + json)
+             64 LOAD_ATTR                3 (dumps)
+             74 LOAD_FAST                1 (verdict)
+             76 LOAD_CONST               1 ('recipe')
+             78 BINARY_SUBSCR
+             88 LOAD_CONST               2 (1)
+             90 KW_NAMES                 3
+             92 PRECALL                  2
+             96 CALL                     2
+            106 JUMP_FORWARD             9 (to 126)
+        >>  108 LOAD_FAST                0 (raw_reply)
+            110 LOAD_CONST               0 (None)
+            112 LOAD_CONST               4 (2000)
+            114 BUILD_SLICE              2
+            116 BINARY_SUBSCR
+
+295     >>  126 LOAD_GLOBAL              5 (NULL + json)
+            138 LOAD_ATTR                3 (dumps)
+            148 LOAD_FAST                1 (verdict)
+            150 LOAD_CONST               5 ('metrics')
+            152 BINARY_SUBSCR
+            162 LOAD_CONST               2 (1)
+            164 KW_NAMES                 3
+            166 PRECALL                  2
+            170 CALL                     2
+
+296         180 LOAD_FAST                1 (verdict)
+            182 LOAD_CONST               6 ('sample')
+            184 BINARY_SUBSCR
+
+297         194 LOAD_CONST               7 ('\n')
+            196 LOAD_METHOD              4 (join)
+            218 LOAD_CONST               8 (<code object <genexpr> at 0x00000290C3A0FD70, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\induction.py", line 297>)
+            220 MAKE_FUNCTION            0
+            222 LOAD_FAST                1 (verdict)
+            224 LOAD_CONST               9 ('problems')
+            226 BINARY_SUBSCR
+            236 GET_ITER
+            238 PRECALL                  0
+            242 CALL                     0
+            252 PRECALL                  1
+            256 CALL                     1
+
+293         266 KW_NAMES                10
+            268 PRECALL                  4
+            272 CALL                     4
+            282 RETURN_VALUE
+
+Disassembly of <code object <genexpr> at 0x00000290C3A0FD70, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\induction.py", line 297>:
+297           0 RETURN_GENERATOR
+              2 POP_TOP
+              4 RESUME                   0
+              6 LOAD_FAST                0 (.0)
+        >>    8 FOR_ITER                 9 (to 28)
+             10 STORE_FAST               1 (p)
+             12 LOAD_CONST               0 ('- ')
+             14 LOAD_FAST                1 (p)
+             16 FORMAT_VALUE             0
+             18 BUILD_STRING             2
+             20 YIELD_VALUE
+             22 RESUME                   1
+             24 POP_TOP
+             26 JUMP_BACKWARD           10 (to 8)
+        >>   28 LOAD_CONST               1 (None)
+             30 RETURN_VALUE
+
+Disassembly of <code object induce_recipe at 0x00000290C1B03640, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\induction.py", line 301>:
+301           0 RESUME                   0
+
+303           2 LOAD_CONST               1 (0)
+              4 LOAD_CONST               2 (None)
+              6 IMPORT_NAME              0 (fitz)
+              8 STORE_FAST               4 (fitz)
+
+304          10 LOAD_GLOBAL              3 (NULL + load_rep_pages)
+             22 LOAD_FAST                1 (outdir)
+             24 PRECALL                  1
+             28 CALL                     1
+             38 UNPACK_SEQUENCE          2
+             42 STORE_FAST               5 (pages_text)
+             44 STORE_FAST               6 (_)
+
+305          46 LOAD_FAST                4 (fitz)
+             48 LOAD_METHOD              2 (open)
+             70 LOAD_FAST                0 (pdf_path)
+             72 PRECALL                  1
+             76 CALL                     1
+             86 LOAD_ATTR                3 (page_count)
+             96 STORE_FAST               7 (n_pages)
+
+306          98 LOAD_GLOBAL              8 (PROMPT_TEMPLATE)
+            110 LOAD_METHOD              5 (format)
+            132 LOAD_FAST                7 (n_pages)
+            134 LOAD_FAST                5 (pages_text)
+            136 KW_NAMES                 3
+            138 PRECALL                  2
+            142 CALL                     2
+            152 STORE_FAST               8 (prompt)
+
+308         154 BUILD_LIST               0
+            156 STORE_FAST               9 (trail)
+
+309         158 LOAD_GLOBAL             13 (NULL + range)
+            170 LOAD_CONST               4 (1)
+            172 LOAD_FAST                3 (max_attempts)
+            174 LOAD_CONST               4 (1)
+            176 BINARY_OP                0 (+)
+            180 PRECALL                  2
+            184 CALL                     2
+            194 GET_ITER
+        >>  196 FOR_ITER               112 (to 422)
+            198 STORE_FAST              10 (attempt)
+
+310         200 PUSH_NULL
+            202 LOAD_FAST                2 (call_llm)
+            204 LOAD_FAST                8 (prompt)
+            206 PRECALL                  1
+            210 CALL                     1
+            220 STORE_FAST              11 (raw)
+
+311         222 LOAD_GLOBAL             15 (NULL + validate_recipe)
+            234 LOAD_FAST                0 (pdf_path)
+            236 LOAD_FAST               11 (raw)
+            238 PRECALL                  2
+            242 CALL                     2
+            252 STORE_FAST              12 (verdict)
+
+312         254 LOAD_FAST                9 (trail)
+            256 LOAD_METHOD              8 (append)
+            278 LOAD_FAST               10 (attempt)
+            280 LOAD_FAST               11 (raw)
+            282 LOAD_FAST               12 (verdict)
+            284 LOAD_CONST               5 ('recipe')
+            286 BINARY_SUBSCR
+
+313         296 LOAD_FAST               12 (verdict)
+            298 LOAD_CONST               6 ('metrics')
+            300 BINARY_SUBSCR
+            310 LOAD_FAST               12 (verdict)
+            312 LOAD_CONST               7 ('problems')
+            314 BINARY_SUBSCR
+
+312         324 LOAD_CONST               8 (('attempt', 'raw_reply', 'recipe', 'metrics', 'problems'))
+            326 BUILD_CONST_KEY_MAP      5
+            328 PRECALL                  1
+            332 CALL                     1
+            342 POP_TOP
+
+314         344 LOAD_FAST               12 (verdict)
+            346 LOAD_CONST               7 ('problems')
+            348 BINARY_SUBSCR
+            358 POP_JUMP_FORWARD_IF_TRUE    14 (to 388)
+
+315         360 LOAD_CONST               9 ('ok')
+            362 LOAD_FAST               12 (verdict)
+            364 LOAD_CONST               5 ('recipe')
+            366 BINARY_SUBSCR
+            376 LOAD_FAST                9 (trail)
+            378 LOAD_CONST              10 (('status', 'recipe', 'attempts'))
+            380 BUILD_CONST_KEY_MAP      3
+            382 SWAP                     2
+            384 POP_TOP
+            386 RETURN_VALUE
+
+316     >>  388 LOAD_GLOBAL             19 (NULL + build_revision_prompt)
+            400 LOAD_FAST               11 (raw)
+            402 LOAD_FAST               12 (verdict)
+            404 PRECALL                  2
+            408 CALL                     2
+            418 STORE_FAST               8 (prompt)
+            420 JUMP_BACKWARD          113 (to 196)
+
+317     >>  422 LOAD_CONST              11 ('needs_manual_template')
+            424 LOAD_CONST               2 (None)
+            426 LOAD_FAST                9 (trail)
+            428 LOAD_CONST              10 (('status', 'recipe', 'attempts'))
+            430 BUILD_CONST_KEY_MAP      3
+            432 RETURN_VALUE

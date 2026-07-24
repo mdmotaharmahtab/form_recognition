@@ -1,0 +1,34 @@
+Looking at the sample pages, I can see they are from **cluster 0** (249 pages, 0% covered). These pages have the structural signature:
+
+```
+Field Name Data Type
+Units
+Values
+Pre-Filled
+Include
+...
+```
+
+This is exactly what your program identifies as "data dictionary pages" and **correctly skips**. These pages document the technical structure of fields (field codes like `MHYN`, `PERES`, data types like `$1`, `$25`, and value mappings like `Y = Yes`, `N = No`). They are **NOT data-entry fields** where clinicians would record patient data.
+
+Your program already has this logic:
+
+```python
+# Family D: Data dictionary pages have "Field Name Data Type" header around y≈155-167
+is_data_dictionary = False
+for line in lines:
+    if 150 <= line.y0 <= 170 and "Field Name Data Type" in line.text:
+        is_data_dictionary = True
+        break
+
+if is_data_dictionary:
+    continue
+```
+
+The samples confirm:
+- **Page 26**: Shows `MHYN` field definition with values `Y = Yes`, `N = No` - this is metadata
+- **Page 52**: Shows `PERES`, `PEDESC`, `PECLSIG` field definitions - also metadata
+
+These are specification/dictionary pages, not forms where data is entered. Zero coverage here is **correct**.
+
+CONFIRM_NO_FIELDS

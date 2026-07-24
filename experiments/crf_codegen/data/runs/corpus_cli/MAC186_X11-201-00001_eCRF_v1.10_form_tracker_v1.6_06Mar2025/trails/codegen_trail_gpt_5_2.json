@@ -1,0 +1,809 @@
+{
+ "stop_reason": "audit_error",
+ "versions": 4,
+ "best_version": 2,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "confirm",
+   "metrics": {
+    "engine": "codegen",
+    "records": 8001,
+    "pages_total": 913,
+    "pages_with_fields": 877,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 92,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 75,
+    "fields_per_form": 106.7,
+    "forms_per_100_pages": 8.2,
+    "form_same_page_evidence_records": 7973,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 96
+   },
+   "problems": [],
+   "outcome": "extension_rejected"
+  },
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 8199,
+    "pages_total": 913,
+    "pages_with_fields": 877,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 92,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 75,
+    "fields_per_form": 109.3,
+    "forms_per_100_pages": 8.2,
+    "form_same_page_evidence_records": 8183,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 96
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 94,
+   "audit_pages": [
+    1,
+    2,
+    4,
+    6,
+    54,
+    134,
+    163,
+    198,
+    378,
+    555,
+    731
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [],
+     "false": [
+      "Yes No"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 4,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 6,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 54,
+     "missed": [],
+     "false": [
+      "Vital Signs Performed",
+      "Reason Not Performed",
+      "Repetition Number",
+      "Details",
+      "Location",
+      "Position",
+      "Other, Please Specify",
+      "Vital Signs Date",
+      "Position Time",
+      "Vital Signs Time",
+      "Not Done",
+      "Test",
+      "Result",
+      "Interpretation",
+      "Reason Not Done"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 134,
+     "missed": [],
+     "false": [
+      "Yes No"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 163,
+     "missed": [
+      "Pupillometry Assessment Performed",
+      "Reason Not Performed",
+      "Timepoint",
+      "Eye",
+      "Repeat",
+      "Not Done",
+      "Reason Not Done",
+      "Pupillometry Date",
+      "Position Rest Time",
+      "Pupillometry Start Time",
+      "Readings downloaded onto a spreadsheet via Bluetooth from the pupilometer device.",
+      "Reviewed, signed and dated by a physician",
+      "Reason not review, signed and dated",
+      "PLR diameter",
+      "PLR MAX constriction velocity",
+      "PLR dilation velocity",
+      "PLR T75",
+      "Pupil Area (Calculated)",
+      "ACA (Calculated)",
+      "Dilation Velocity at T75 (Calculated)"
+     ],
+     "false": [
+      "Done",
+      "pupilometer device.",
+      "(Calculated)"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 198,
+     "missed": [],
+     "false": [
+      "C-SSRS Performed",
+      "Reason Not Performed",
+      "C-SSRS Date",
+      "C-SSRS Time",
+      "Rater Initials",
+      "CSS0201",
+      "CSS0201A",
+      "CSS0202",
+      "CSS0202A",
+      "CSS0203",
+      "CSS0203A",
+      "CSS0204",
+      "CSS0204A",
+      "CSS0205",
+      "CSS0205A",
+      "CSS0206",
+      "CSS0206A",
+      "CSS0207",
+      "CSS0208",
+      "CSS0209",
+      "CSS0210",
+      "CSS0211"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 378,
+     "missed": [],
+     "false": [
+      "Physical Examination Performed",
+      "Reason Not Performed",
+      "Examination Date",
+      "Examination Time",
+      "Body System Examined",
+      "Other, Please Specify",
+      "Not Done",
+      "Reason Not Done",
+      "Interpretation",
+      "Abnormal Findings"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 555,
+     "missed": [],
+     "false": [
+      "Yes No"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 731,
+     "missed": [
+      "Alanine Aminotransferase",
+      "Alkaline Phosphatase",
+      "Aspartate Aminotransferase",
+      "Bilirubin",
+      "Calcium",
+      "Cholesterol",
+      "Creatinine",
+      "Gamma Glutamyl Transferase",
+      "Glucose",
+      "Lactate Dehydrogenase",
+      "Potassium",
+      "Protein",
+      "Sodium",
+      "Triglycerides",
+      "Urea Nitrogen"
+     ],
+     "false": [
+      "Not Done",
+      "Reason Not Done",
+      "Parameter",
+      "Interpretation",
+      "Yes No",
+      "Not Done Reason Not Done"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    94,
+    0,
+    -877
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 6895,
+    "pages_total": 913,
+    "pages_with_fields": 859,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 97,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 76,
+    "fields_per_form": 90.7,
+    "forms_per_100_pages": 8.3,
+    "form_same_page_evidence_records": 6844,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 94
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 82,
+   "audit_pages": [
+    1,
+    2,
+    4,
+    6,
+    16,
+    34,
+    46,
+    54,
+    134,
+    163,
+    198,
+    378,
+    555,
+    731
+   ],
+   "audit_partial": null,
+   "audit_promoted": [
+    34
+   ],
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [
+      "Informed Consent Date"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 4,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 6,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 16,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 34,
+     "missed": [
+      "MGH Assessment Performed",
+      "Reason Not Performed",
+      "MGH Assessment Date",
+      "MGH Assessment Time",
+      "Rater Initials",
+      "Medication Type"
+     ],
+     "false": [
+      "dose at optional level",
+      "Doxepin, 150mg/d, 250mg/d",
+      "Clomipramine, 150mg/d, 250mg/d",
+      "Amoxapine, 150mg/d, 250mg/d",
+      "Amitriptyline, 150mg/d, 250mg/d",
+      "Maprotiline, 150mg/d, 250mg/d",
+      "Desipramine, 150mg/d, 250mg/d",
+      "Nortriptyline, 75mg/d, 125mg/d",
+      "Trimipramine, 150mg/d, 250mg/d",
+      "Imipramine, 150mg/d, 250mg/d",
+      "Protriptyline, 30mg/d, 60mg/d",
+      "Pipofezine, 150mg/d, 300mg/d",
+      "Noxiptiline, 100mg/d, 200mg/d",
+      "Monoamine Oxidase Inhibitors (MAOIs)"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 46,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 54,
+     "missed": [],
+     "false": [
+      "Vital Signs Performed",
+      "Reason Not Performed",
+      "Repetition Number",
+      "Details",
+      "Location",
+      "Position",
+      "Other, Please Specify",
+      "Vital Signs Date",
+      "Position Time",
+      "Vital Signs Time",
+      "Not Done",
+      "Test",
+      "Result",
+      "Interpretation",
+      "Reason Not Done"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 134,
+     "missed": [
+      "EEG Start Date",
+      "EEG Start Time"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 163,
+     "missed": [
+      "Pupillometry Assessment Performed",
+      "Reason Not Performed",
+      "Timepoint",
+      "Eye",
+      "Repeat",
+      "Not Done",
+      "Reason Not Done",
+      "Pupillometry Date",
+      "Position Rest Time",
+      "Pupillometry Start Time",
+      "Readings downloaded onto a spreadsheet via Bluetooth from the pupilometer device.",
+      "Reviewed, signed and dated by a physician",
+      "Reason not review, signed and dated",
+      "PLR diameter init",
+      "PLR MAX constriction velocity",
+      "PLR dilation velocity",
+      "PLR T75",
+      "Pupil Area (Calculated)",
+      "ACA (Calculated)",
+      "Dilation Velocity at T75 (Calculated)"
+     ],
+     "false": [
+      "Done",
+      "pupilometer device."
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 198,
+     "missed": [],
+     "false": [
+      "Name",
+      "Export Name",
+      "Type",
+      "Max length",
+      "Categories"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 378,
+     "missed": [],
+     "false": [
+      "Physical Examination Performed",
+      "Reason Not Performed",
+      "Examination Date",
+      "Examination Time",
+      "Body System Examined",
+      "Other, Please Specify",
+      "Not Done",
+      "Reason Not Done",
+      "Interpretation",
+      "Abnormal Findings"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 555,
+     "missed": [
+      "Sample Date",
+      "Sample Time",
+      "Analysis Lab"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 731,
+     "missed": [
+      "Sample Performed",
+      "Reason Not Performed",
+      "Sample Date",
+      "Sample Time"
+     ],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    82,
+    0,
+    -859
+   ],
+   "became_best": true
+  },
+  {
+   "version": 3,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 7123,
+    "pages_total": 913,
+    "pages_with_fields": 841,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 97,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 76,
+    "fields_per_form": 93.7,
+    "forms_per_100_pages": 8.3,
+    "form_same_page_evidence_records": 7064,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 92
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 125,
+   "audit_pages": [
+    1,
+    2,
+    4,
+    6,
+    34,
+    53,
+    54,
+    131,
+    134,
+    163,
+    198,
+    378,
+    555,
+    731
+   ],
+   "audit_partial": null,
+   "audit_promoted": [
+    53
+   ],
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [
+      "Informed Consent Date"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 4,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 6,
+     "missed": [],
+     "false": [
+      "American Indian or Alaska Native",
+      "Not Reported Other"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 34,
+     "missed": [
+      "MGH Assessment Performed",
+      "Reason Not Performed",
+      "MGH Assessment Date",
+      "MGH Assessment Time",
+      "Rater Initials",
+      "Medication Type",
+      "Medication, Minimally adequate dose level, Minimal dose at optional level",
+      "Taken during THIS current episode",
+      "Minimally adequate dose",
+      "Minimal dose at optimal level",
+      "Scale for % Improvement"
+     ],
+     "false": [
+      "dose at optional level",
+      "Doxepin, 150mg/d, 250mg/d",
+      "Clomipramine, 150mg/d, 250mg/d",
+      "Amoxapine, 150mg/d, 250mg/d",
+      "Amitriptyline, 150mg/d, 250mg/d",
+      "Maprotiline, 150mg/d, 250mg/d",
+      "Desipramine, 150mg/d, 250mg/d",
+      "Nortriptyline, 75mg/d, 125mg/d",
+      "Trimipramine, 150mg/d, 250mg/d",
+      "Imipramine, 150mg/d, 250mg/d",
+      "Protriptyline, 30mg/d, 60mg/d",
+      "Pipofezine, 150mg/d, 300mg/d",
+      "Noxiptiline, 100mg/d, 200mg/d",
+      "Monoamine Oxidase Inhibitors (MAOIs)"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 53,
+     "missed": [
+      "Repetition Number",
+      "Details",
+      "Location",
+      "Position",
+      "Vital Signs Date",
+      "Position Time",
+      "Vital Signs Time",
+      "Not Done",
+      "Test",
+      "Result",
+      "Interpretation",
+      "Reason Not Done"
+     ],
+     "false": [
+      "Vital Signs - Single Time Point",
+      "Yes",
+      "No",
+      "Vital Signs Details",
+      "Temperature (\u00b0C)",
+      "Respiratory Rate (breaths/min)",
+      "Systolic Blood Pressure (mmHg)",
+      "Diastolic Blood Pressure (mmHg)",
+      "Pulse Rate (beats/min)",
+      "SPO2"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 54,
+     "missed": [],
+     "false": [
+      "Vital Signs Performed",
+      "Reason Not Performed",
+      "Repetition Number",
+      "Details",
+      "Location",
+      "Position",
+      "Other, Please Specify",
+      "Vital Signs Date",
+      "Position Time",
+      "Vital Signs Time",
+      "Not Done",
+      "Test",
+      "Result",
+      "Interpretation",
+      "Reason Not Done"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 131,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 134,
+     "missed": [
+      "EEG Start Date",
+      "EEG Start Time"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 163,
+     "missed": [
+      "Pupillometry Assessment Performed",
+      "Reason Not Performed",
+      "Timepoint",
+      "Eye",
+      "Repeat",
+      "Not Done",
+      "Reason Not Done",
+      "Pupillometry Date",
+      "Position Rest Time",
+      "Start Time",
+      "Readings downloaded onto a spreadsheet via Bluetooth from the pupilometer device.",
+      "Reviewed, signed and dated by a physician",
+      "Reason not review, signed and dated",
+      "PLR diameter init",
+      "PLR MAX constriction velocity",
+      "PLR dilation velocity",
+      "PLR T75",
+      "Pupil Area (Calculated)",
+      "ACA (Calculated)",
+      "Dilation Velocity at T75 (Calculated)"
+     ],
+     "false": [
+      "Done",
+      "pupilometer device."
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 198,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 378,
+     "missed": [],
+     "false": [
+      "Physical Examination Performed",
+      "Reason Not Performed",
+      "Examination Date",
+      "Examination Time",
+      "Body System Examined",
+      "Other, Please Specify",
+      "Not Done",
+      "Reason Not Done",
+      "Interpretation",
+      "Abnormal Findings"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 555,
+     "missed": [
+      "Sample Date",
+      "Sample Time",
+      "Analysis Lab"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 731,
+     "missed": [
+      "Sample Performed",
+      "Reason Not Performed",
+      "Sample Date",
+      "Sample Time",
+      "Parameter",
+      "Not Done",
+      "Reason Not Done",
+      "Interpretation"
+     ],
+     "false": [
+      "Alanine Aminotransferase",
+      "Alkaline Phosphatase",
+      "Aspartate Aminotransferase",
+      "Bilirubin",
+      "Calcium",
+      "Cholesterol",
+      "Creatinine",
+      "Gamma Glutamyl Transferase",
+      "Glucose",
+      "Lactate Dehydrogenase",
+      "Potassium",
+      "Protein",
+      "Sodium",
+      "Triglycerides",
+      "Urea Nitrogen"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    125,
+    0,
+    -841
+   ],
+   "became_best": false
+  },
+  {
+   "version": 4,
+   "kind": "audit",
+   "transport_error": "agent CLI exited 1: NonRetriableError: Agent Looping Detected The model got stuck in a repeating response pattern, so this turn was stopped. Please try again with a different model or start a new conversation. If the problem persists, please contact support.\n"
+  },
+  {
+   "version": 4,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 6259,
+    "pages_total": 913,
+    "pages_with_fields": 647,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 93,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 78,
+    "fields_per_form": 80.2,
+    "forms_per_100_pages": 8.5,
+    "form_same_page_evidence_records": 6207,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 71
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    0,
+    "not_audited",
+    0,
+    -647
+   ],
+   "became_best": false
+  }
+ ]
+}

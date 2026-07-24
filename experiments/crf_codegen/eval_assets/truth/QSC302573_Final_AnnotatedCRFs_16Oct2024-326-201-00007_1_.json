@@ -1,0 +1,137 @@
+{
+  "doc_key": "QSC302573_Final_AnnotatedCRFs_16Oct2024-326-201-00007_1_",
+  "annotator_notes": "QSC-vendor schedule format, 609 pages, 'Final v1.0' schedules. Form name = 'Schedule Category & Name' header value; study prefix 'S_QSC302573, ' optional. Truth field = activity question text; named answer slots as acceptable_extras.",
+  "pages": [
+    {
+      "page": 57,
+      "form_name": "S_QSC302573, 03 - Screening Final v1.0",
+      "form_source": "printed",
+      "fields": [
+        "Deterrents (Months)",
+        "Reasons for Ideation (Lifetime)"
+      ],
+      "acceptable_extras": [],
+      "notes": "Question texts carry long parenthetical interview scripts; short title accepted. Page top is an option continuation of the lifetime-deterrents item."
+    },
+    {
+      "page": 100,
+      "form_name": "S_QSC302573, 04 - Admission/Predose Final v1.0",
+      "form_source": "printed",
+      "fields": [
+        "C-SSRS Questionnaire - Date and Time (Transcribe from C-SSRS paper source workbook)"
+      ],
+      "acceptable_extras": [
+        "Date",
+        "Time"
+      ],
+      "notes": "Page top is the sleepiness-scale option continuation."
+    },
+    {
+      "page": 170,
+      "form_name": "S_QSC302573, 05a - Period 1 Final v1.0",
+      "form_source": "printed",
+      "fields": [
+        "What was the nitrite result? (Perform urinalysis and read results)",
+        "Record pH value (Perform urinalysis and read results)"
+      ],
+      "acceptable_extras": [],
+      "notes": "Page top is the erythrocyte option continuation."
+    },
+    {
+      "page": 219,
+      "form_name": "S_QSC302573, 05b - Period 2 Final v1.0",
+      "form_source": "printed",
+      "fields": [
+        "Targeted Neurological Examination: Does the participant require a targeted neurological examination? (If yes, please specify the reason)",
+        "If yes, were there any clinically significant abnormal findings?",
+        "Targeted Neurological Examination Category"
+      ],
+      "acceptable_extras": []
+    },
+    {
+      "page": 226,
+      "form_name": "S_QSC302573, 05b - Period 2 Final v1.0",
+      "form_source": "printed",
+      "fields": [
+        "Is there a drop in SYSTOLIC BP from supine to standing?",
+        "Is there a drop in DIASTOLIC BP from supine to standing?",
+        "Vital Signs Difference for SYSTOLIC Drop"
+      ],
+      "acceptable_extras": [
+        "Systolic",
+        "Diastolic",
+        "Heart Rate",
+        "Systolic Drop"
+      ],
+      "notes": "Page top is the Systolic/Diastolic/Heart-Rate answer-slot continuation of the previous page's standing-vitals question."
+    },
+    {
+      "page": 242,
+      "form_name": "S_QSC302573, 05b - Period 2 Final v1.0",
+      "form_source": "printed",
+      "fields": [
+        "What was the nitrite result? (Perform urinalysis and read results)",
+        "Record pH value (Perform urinalysis and read results)"
+      ],
+      "acceptable_extras": []
+    },
+    {
+      "page": 256,
+      "form_name": "S_QSC302573, 05b - Period 2 Final v1.0",
+      "form_source": "printed",
+      "fields": [
+        "Vital Signs Difference for SYSTOLIC Drop",
+        "Vital Signs Difference for DIASTOLIC Drop",
+        "Clinical Assessment of Standing Vital Signs (Medic or Nurse to assess vital signs)",
+        "Vital Sign Findings"
+      ],
+      "acceptable_extras": [
+        "Systolic Drop",
+        "Diastolic Drop",
+        "Open Field"
+      ]
+    },
+    {
+      "page": 355,
+      "form_name": "S_QSC302573, 05c - Period 3 Parts 1 and 2 Final v1.0",
+      "form_source": "printed",
+      "fields": [
+        "Detailed findings of Physical Examination"
+      ],
+      "acceptable_extras": [
+        "Other (Specify)"
+      ],
+      "notes": "Page top is the physical-exam category option continuation."
+    },
+    {
+      "page": 384,
+      "form_name": "S_QSC302573, 05d - Period 3 Part 3 Final v1.0",
+      "form_source": "printed",
+      "fields": [
+        "Detailed findings of Targeted Neurological Examination",
+        "Vital Signs"
+      ],
+      "acceptable_extras": [
+        "Other (Specify)",
+        "Systolic",
+        "Diastolic",
+        "Heart Rate",
+        "Respiratory Rate",
+        "Oral Temperature - Degrees Celsius"
+      ],
+      "notes": "'Vital Signs' question carries '(Supine for at least 3 minutes)' on the following line."
+    },
+    {
+      "page": 453,
+      "form_name": "S_QSC302573, 05e - Period 4 Part 3 Final v1.0",
+      "form_source": "printed",
+      "fields": [
+        "Targeted Physical Examination: Does the participant require a targeted physical examination? (If yes, please specify the reason)",
+        "If yes, were there any clinically significant abnormal findings?",
+        "Physical Examination Category"
+      ],
+      "acceptable_extras": [],
+      "notes": "Page top is the sleepiness-scale option continuation."
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "format_id": "tracker_table",
+  "description": "eCRF + form tracker: form pages show labels with [n] refs; 'Variable details' pages carry the table Name / Export Name / Type / Max length / Categories. Export Name is the OID.",
+  "authored_from": "out/MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025/rep_p*.txt (pages 1,2,168,227,247,254,335,429,455,458,497,503)",
+  "detect": {
+    "all": ["Variable details", "Export Name"]
+  },
+  "form_name": {
+    "strategy": "font",
+    "min_size": 14,
+    "carry_forward": true,
+    "noise": ["^MAC186", "^Visit:"]
+  },
+  "fields": {
+    "engine": "column_table",
+    "definition_page_regex": "^Variable details$",
+    "row_key_regex": "^\\[(\\d+)\\]$",
+    "name_header": "Name",
+    "oid_header": "Export Name",
+    "type_header": "Type"
+  }
+}
+

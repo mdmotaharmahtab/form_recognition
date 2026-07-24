@@ -1,0 +1,64 @@
+[
+ {
+  "doc": "384-201-00004_Annotated_CRF___v1.0_05_Mar_2025",
+  "status": "needs_manual_template",
+  "multipass": 2,
+  "version_budget": 5,
+  "versions": 8,
+  "stop_reason": "p1:converged;p2:budget",
+  "fields": 589,
+  "forms": 58,
+  "pages_with_fields": 127,
+  "audit_issues": null,
+  "passes": [
+   {
+    "doc": "384-201-00004_Annotated_CRF___v1.0_05_Mar_2025",
+    "versions": 3,
+    "stop_reason": "converged",
+    "status": "ok",
+    "best_version": 3,
+    "fields": 589,
+    "forms": 58,
+    "pages_with_fields": 127,
+    "audit_issues": 0,
+    "warnings": [],
+    "elapsed_s": 182.687,
+    "stage0_s": 3.291,
+    "llm_s": 177.268,
+    "llm_calls": 7,
+    "pass": 1,
+    "clusters": [
+     0,
+     1,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11
+    ]
+   },
+   {
+    "doc": "384-201-00004_Annotated_CRF___v1.0_05_Mar_2025",
+    "versions": 5,
+    "stop_reason": "budget",
+    "status": "needs_manual_template",
+    "elapsed_s": 235.026,
+    "stage0_s": 3.291,
+    "llm_s": 226.263,
+    "llm_calls": 5,
+    "pass": 2,
+    "clusters": [
+     2,
+     3
+    ]
+   }
+  ],
+  "elapsed_s": 418.644,
+  "stage0_s": 3.291,
+  "llm_s": 403.531,
+  "llm_calls": 12
+ }
+]

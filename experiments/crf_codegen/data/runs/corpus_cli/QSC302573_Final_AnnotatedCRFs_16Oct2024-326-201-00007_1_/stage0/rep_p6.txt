@@ -1,0 +1,73 @@
+x= 235.9 y=  39.1 sz=20.0 #4682b4 B | Annotated CRF
+x=  29.9 y=  71.2 sz=11.0 black   B | Study, Site:
+x= 238.7 y=  71.2 sz=11.0 black   B | Group, Visit:
+x= 445.2 y=  71.2 sz=11.0 black   B | Slot:
+x=  29.9 y=  93.9 sz=11.0 black   B | Schedule Category & Name:
+x= 167.7 y=  93.9 sz=11.0 black     | S_QSC302573, 03 - Screening Final v1.0
+x=  29.9 y= 116.4 sz=10.0 #4682b4 B | Timepoint
+x= 167.7 y= 116.4 sz=10.0 #4682b4 B | Activity
+x= 488.4 y= 116.4 sz=10.0 #4682b4 B | Line #
+x=  29.9 y= 133.4 sz=10.0 black     | _ _ - _ _ _ - _ _ _ _
+x= 116.7 y= 133.4 sz=10.0 black     | _ _ : _ _
+x= 167.7 y= 133.4 sz=10.0 black   B | Please ensure that a Protocol Deviation is completed
+x=  29.9 y= 145.6 sz=10.0 black     | dd - MMM - yyyy
+x= 116.7 y= 145.6 sz=10.0 black     | HH:mm
+x=  30.9 y= 160.8 sz=10.0 #4682b4 B | Staff Initials:
+x=  29.9 y= 176.7 sz=10.0 #4682b4 B | Comment:
+x=  29.9 y= 199.4 sz=10.0 black     | Day 0 (0), -00:00.00
+x= 167.7 y= 199.4 sz=10.0 black   B | On Study Demographics: Year of Birth #1
+x= 488.4 y= 199.4 sz=10.0 black     | 7.0
+x=  29.9 y= 216.4 sz=10.0 black     | _ _ - _ _ _ - _ _ _ _
+x= 116.7 y= 216.4 sz=10.0 black     | _ _ : _ _
+x= 167.7 y= 216.4 sz=10.0 black   B | Year of Birth
+x=  29.9 y= 228.6 sz=10.0 black     | dd - MMM - yyyy
+x= 116.7 y= 228.6 sz=10.0 black     | HH:mm
+x=  30.9 y= 243.8 sz=10.0 #4682b4 B | Staff Initials:
+x= 167.7 y= 259.8 sz=10.0 #4682b4 B | Answer(s):
+x= 238.7 y= 259.8 sz=10.0 black     | _  _  _  _   (####)
+x= 238.7 y= 276.7 sz=10.0 black     | [BRTH_YEAR] SAS:[Name=BRTH_YEAR, Length=50, DataType=Char]
+x=  29.9 y= 293.8 sz=10.0 #4682b4 B | Comment:
+x=  29.9 y= 316.5 sz=10.0 black     | Day 0 (0), -00:00.00
+x= 167.7 y= 316.5 sz=10.0 black   B | On Study Demographics: Age #1
+x= 488.4 y= 316.5 sz=10.0 black     | 8.0
+x=  29.9 y= 333.5 sz=10.0 black     | _ _ - _ _ _ - _ _ _ _
+x= 116.7 y= 333.5 sz=10.0 black     | _ _ : _ _
+x= 167.7 y= 333.5 sz=10.0 black   B | Age 18 to 55 years inclusive at time of signing informed consent
+x=  29.9 y= 345.7 sz=10.0 black     | dd - MMM - yyyy
+x= 116.7 y= 345.7 sz=10.0 black     | HH:mm
+x=  30.9 y= 360.8 sz=10.0 #4682b4 B | Staff Initials:
+x= 167.7 y= 376.8 sz=10.0 #4682b4 B | Answer(s):
+x= 238.7 y= 376.8 sz=10.0 black     | _  _   (##)
+x= 238.7 y= 393.8 sz=10.0 black     | [DMAGE] SAS:[Name=DMAGE, Length=50, DataType=Char]
+x=  29.9 y= 410.8 sz=10.0 #4682b4 B | Comment:
+x=  29.9 y= 433.5 sz=10.0 black     | Day 0 (0), -00:00.00
+x= 167.7 y= 433.5 sz=10.0 black   B | On Study Demographics: Ethnicity #1
+x= 488.4 y= 433.5 sz=10.0 black     | 9.0
+x=  29.9 y= 450.5 sz=10.0 black     | _ _ - _ _ _ - _ _ _ _
+x= 116.7 y= 450.5 sz=10.0 black     | _ _ : _ _
+x= 167.7 y= 450.5 sz=10.0 black   B | What is the ethnicity of the participant?
+x=  29.9 y= 462.7 sz=10.0 black     | dd - MMM - yyyy
+x= 116.7 y= 462.7 sz=10.0 black     | HH:mm
+x=  30.9 y= 477.8 sz=10.0 #4682b4 B | Staff Initials:
+x= 167.7 y= 493.8 sz=10.0 #4682b4 B | Answer(s):
+x= 238.7 y= 493.8 sz=10.0 black     | O Hispanic or Latino
+x= 238.7 y= 510.9 sz=10.0 black     | [ETHNIC] SAS:[Name=ETHNIC, Length=50, DataType=Char]
+x= 238.7 y= 527.9 sz=10.0 black     | O Not Hispanic or Latino
+x= 238.7 y= 544.9 sz=10.0 black     | [ETHNIC] SAS:[Name=ETHNIC, Length=50, DataType=Char]
+x=  29.9 y= 561.9 sz=10.0 #4682b4 B | Comment:
+x=  29.9 y= 584.5 sz=10.0 black     | Day 0 (0), -00:00.00
+x= 167.7 y= 584.5 sz=10.0 black   B | On Study Demographics: Race #1
+x= 488.4 y= 584.5 sz=10.0 black     | 10.0
+x=  29.9 y= 601.6 sz=10.0 black     | _ _ - _ _ _ - _ _ _ _
+x= 116.7 y= 601.6 sz=10.0 black     | _ _ : _ _
+x= 167.7 y= 601.6 sz=10.0 black   B | What is the race of the participant?
+x=  29.9 y= 613.8 sz=10.0 black     | dd - MMM - yyyy
+x= 116.7 y= 613.8 sz=10.0 black     | HH:mm
+x=  30.9 y= 628.9 sz=10.0 #4682b4 B | Staff Initials:
+x= 167.7 y= 645.0 sz=10.0 #4682b4 B | Answer(s):
+x= 238.7 y= 645.0 sz=10.0 black     | O White
+x= 238.7 y= 661.9 sz=10.0 black     | [RACE] SAS:[Name=RACE, Length=50, DataType=Char]
+x= 238.7 y= 678.9 sz=10.0 black     | O Black or African American
+x= 238.7 y= 695.9 sz=10.0 black     | [RACE] SAS:[Name=RACE, Length=50, DataType=Char]
+x=  29.9 y= 749.6 sz=10.0 black     | Date Created: 16-Oct-2024 16:44 (UTC)
+x= 511.5 y= 749.6 sz=10.0 black     | Page 6 of 609

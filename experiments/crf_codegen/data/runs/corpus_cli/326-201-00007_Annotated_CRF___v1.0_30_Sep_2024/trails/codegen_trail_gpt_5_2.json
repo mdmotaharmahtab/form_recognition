@@ -1,0 +1,433 @@
+{
+ "stop_reason": "plateau",
+ "versions": 3,
+ "best_version": 1,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 335,
+    "pages_total": 112,
+    "pages_with_fields": 110,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 96,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 6,
+    "fields_per_form": 55.8,
+    "forms_per_100_pages": 5.4,
+    "form_same_page_evidence_records": 326,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 98
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 22,
+   "audit_pages": [
+    1,
+    3,
+    4,
+    39,
+    56,
+    77
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": [
+      "Does the participant have a valid photo ID?",
+      "Did participant complete group information or remote information session?",
+      "Record who held Group Information Session (full name)",
+      "Does the Anju study number match the study number in the participants' paper PIS/ICF?",
+      "Study ICF Signed and Dated by the participant?"
+     ]
+    },
+    {
+     "page": 3,
+     "missed": [],
+     "false": [],
+     "wrong_form": [
+      "Study ICF signed and dated by the physician/nurse?",
+      "Was a copy of the Study ICF given to the participant?",
+      "Has the participant read, understood and signed the consent for the Future Use Sub Study, where a DNA sample will be taken and other data collected may be used for potential future research?",
+      "Additional ICF Signed and Dated by the Participant?",
+      "Date Additional ICF was signed by participant"
+     ]
+    },
+    {
+     "page": 4,
+     "missed": [],
+     "false": [],
+     "wrong_form": [
+      "Time Additional ICF was signed by participant",
+      "Additional ICF signed and dated by the physician/nurse?",
+      "What is the status of the subject?"
+     ]
+    },
+    {
+     "page": 39,
+     "missed": [],
+     "false": [],
+     "wrong_form": [
+      "Exclusion 24. Consumption of alcohol and/or food and beverages containing methylxanthines (caffeinated coffee, caffeinated tea, caffeinated soda, and chocolate), pomelo, grapefruit, grapefruit juice, Seville oranges, Seville orange juice, blueberry juice, or cranberry juice within 72 hours prior to dosing.",
+      "Exclusion 25. Participants with active suicidal ideation or suicidal behavior within the last 6 months, at the screening visit (Baseline/Screening version), and/or prior to dosing (as evidenced by clinical examination or an answer of \u201cyes\u201d on Questions 4 or 5 of the C SSRS Since Last Visit version) or suicidal behavior is present in the C-SSRS.",
+      "Exclusion 26. Not able to consume the FDA HFM (High Fat Meal) for Part 2 and Part 3 within 20 minutes.",
+      "Exclusion 27. Participant has any significant primary sleep disorder. Participants with known untreated moderate or severe sleep apnea, other major untreated sleep disorders, or a known diagnosis of a circadian rhythm disorder. Participants adequately treated for obstructive sleep apnea are not excluded."
+     ]
+    },
+    {
+     "page": 56,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 77,
+     "missed": [
+      "Other (Specify)"
+     ],
+     "false": [],
+     "wrong_form": [
+      "What is the verbatim term for the medical history condition/event?",
+      "What was the date the Medical History event or condition started?",
+      "Is the Medical History event or condition still ongoing?",
+      "What was the date the Medical History event or condition ended?"
+     ]
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    22,
+    0,
+    -110
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 335,
+    "pages_total": 112,
+    "pages_with_fields": 110,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 96,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 6,
+    "fields_per_form": 55.8,
+    "forms_per_100_pages": 5.4,
+    "form_same_page_evidence_records": 326,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 98
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 42,
+   "audit_pages": [
+    1,
+    2,
+    3,
+    4,
+    39,
+    56,
+    77,
+    108
+   ],
+   "audit_partial": null,
+   "audit_promoted": [
+    2
+   ],
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [
+      "Staff Initials:",
+      "Comment:"
+     ],
+     "false": [],
+     "wrong_form": [
+      "Does the participant have a valid photo ID?",
+      "Did participant complete group information or remote information session?",
+      "Record who held Group Information Session (full name)",
+      "Does the Anju study number match the study number in the participants' paper PIS/ICF?",
+      "Study ICF Signed and Dated by the participant?"
+     ]
+    },
+    {
+     "page": 2,
+     "missed": [
+      "Staff Initials:",
+      "Comment:",
+      "Study ICF Version Number"
+     ],
+     "false": [
+      "Study ICF Version Number (Version must be checked against ICF present in the RSF \u2013 escalate any discrepancies)"
+     ],
+     "wrong_form": [
+      "Date Study ICF was signed by participant",
+      "Time Study ICF was signed by participant",
+      "Study ICF Part Number",
+      "Study ICF Version Number (Version must be checked against ICF present in the RSF \u2013 escalate any discrepancies)"
+     ]
+    },
+    {
+     "page": 3,
+     "missed": [
+      "Staff Initials:",
+      "Comment:"
+     ],
+     "false": [],
+     "wrong_form": [
+      "Study ICF signed and dated by the physician/nurse?",
+      "Was a copy of the Study ICF given to the participant?",
+      "Has the participant read, understood and signed the consent for the Future Use Sub Study, where a DNA sample will be taken and other data collected may be used for potential future research?",
+      "Additional ICF Signed and Dated by the Participant?",
+      "Date Additional ICF was signed by participant"
+     ]
+    },
+    {
+     "page": 4,
+     "missed": [
+      "Staff Initials:",
+      "Comment:"
+     ],
+     "false": [],
+     "wrong_form": [
+      "Time Additional ICF was signed by participant",
+      "Additional ICF signed and dated by the physician/nurse?",
+      "What is the status of the subject?"
+     ]
+    },
+    {
+     "page": 39,
+     "missed": [
+      "Staff Initials:",
+      "Comment:"
+     ],
+     "false": [],
+     "wrong_form": [
+      "Exclusion 24. Consumption of alcohol and/or food and beverages containing methylxanthines (caffeinated coffee, caffeinated tea, caffeinated soda, and chocolate), pomelo, grapefruit, grapefruit juice, Seville oranges, Seville orange juice, blueberry juice, or cranberry juice within 72 hours prior to dosing.",
+      "Exclusion 25. Participants with active suicidal ideation or suicidal behavior within the last 6 months, at the screening visit (Baseline/Screening version), and/or prior to dosing (as evidenced by clinical examination or an answer of \u201cyes\u201d on Questions 4 or 5 of the C SSRS Since Last Visit version) or suicidal behavior is present in the C-SSRS.",
+      "Exclusion 26. Not able to consume the FDA HFM (High Fat Meal) for Part 2 and Part 3 within 20 minutes.",
+      "Exclusion 27. Participant has any significant primary sleep disorder. Participants with known untreated moderate or severe sleep apnea, other major untreated sleep disorders, or a known diagnosis of a circadian rhythm disorder. Participants adequately treated for obstructive sleep apnea are not excluded."
+     ]
+    },
+    {
+     "page": 56,
+     "missed": [
+      "Staff Initials:",
+      "Comment:"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 77,
+     "missed": [
+      "Other (Specify)",
+      "Staff Initials:",
+      "Comment:"
+     ],
+     "false": [],
+     "wrong_form": [
+      "What is the verbatim term for the medical history condition/event?",
+      "What was the date the Medical History event or condition started?",
+      "Is the Medical History event or condition still ongoing?",
+      "What was the date the Medical History event or condition ended?"
+     ]
+    },
+    {
+     "page": 108,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    42,
+    0,
+    -110
+   ],
+   "became_best": false
+  },
+  {
+   "version": 3,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 349,
+    "pages_total": 112,
+    "pages_with_fields": 110,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 96,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 64,
+    "fields_per_form": 5.5,
+    "forms_per_100_pages": 57.1,
+    "form_same_page_evidence_records": 340,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 98
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 48,
+   "audit_pages": [
+    1,
+    2,
+    3,
+    4,
+    39,
+    56,
+    77,
+    81
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [
+      "Comment:",
+      "Comment:",
+      "Comment:",
+      "Comment:",
+      "Comment:"
+     ],
+     "false": [],
+     "wrong_form": [
+      "Did participant complete group information or remote information session?",
+      "Record who held Group Information Session (full name)",
+      "Does the Anju study number match the study number in the participants' paper PIS/ICF?",
+      "Study ICF Signed and Dated by the participant?"
+     ]
+    },
+    {
+     "page": 2,
+     "missed": [
+      "Comment:",
+      "Comment:",
+      "Comment:",
+      "Comment:"
+     ],
+     "false": [],
+     "wrong_form": [
+      "Date Study ICF was signed by participant",
+      "Time Study ICF was signed by participant",
+      "Study ICF Part Number",
+      "Study ICF Version Number"
+     ]
+    },
+    {
+     "page": 3,
+     "missed": [
+      "Comment:",
+      "Comment:",
+      "Comment:",
+      "Comment:",
+      "Comment:"
+     ],
+     "false": [],
+     "wrong_form": [
+      "Was a copy of the Study ICF given to the participant?",
+      "Has the participant read, understood and signed the consent for the Future Use Sub Study, where a DNA sample will be taken and other data collected may be used for potential future research?",
+      "Additional ICF Signed and Dated by the Participant?",
+      "Date Additional ICF was signed by participant"
+     ]
+    },
+    {
+     "page": 4,
+     "missed": [
+      "Comment:",
+      "Comment:",
+      "Comment:"
+     ],
+     "false": [],
+     "wrong_form": [
+      "Additional ICF signed and dated by the physician/nurse?",
+      "What is the status of the subject?"
+     ]
+    },
+    {
+     "page": 39,
+     "missed": [
+      "Comment:",
+      "Comment:",
+      "Comment:"
+     ],
+     "false": [],
+     "wrong_form": [
+      "Exclusion 25. Participants with active suicidal ideation or suicidal behavior within the last 6 months, at the screening visit (Baseline/Screening version), and/or prior to dosing (as evidenced by clinical examination or an answer of \u201cyes\u201d on Questions 4 or 5 of the C SSRS Since Last Visit version) or suicidal behavior is present in the C-SSRS.",
+      "Exclusion 26. Not able to consume the FDA HFM (High Fat Meal) for Part 2 and Part 3 within 20 minutes.",
+      "Exclusion 27. Participant has any significant primary sleep disorder. Participants with known untreated moderate or severe sleep apnea, other major untreated sleep disorders, or a known diagnosis of a circadian rhythm disorder. Participants adequately treated for obstructive sleep apnea are not excluded."
+     ]
+    },
+    {
+     "page": 56,
+     "missed": [
+      "Comment:"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 77,
+     "missed": [
+      "Comment:",
+      "Comment:",
+      "Comment:",
+      "Comment:"
+     ],
+     "false": [],
+     "wrong_form": [
+      "What is the verbatim term for the medical history condition/event?",
+      "What was the date the Medical History event or condition started?",
+      "Is the Medical History event or condition still ongoing?",
+      "What was the date the Medical History event or condition ended?"
+     ]
+    },
+    {
+     "page": 81,
+     "missed": [
+      "Comment:"
+     ],
+     "false": [],
+     "wrong_form": [
+      "What was the frequency of the medication? (Frequency)"
+     ]
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    48,
+    0,
+    -110
+   ],
+   "became_best": false
+  }
+ ]
+}

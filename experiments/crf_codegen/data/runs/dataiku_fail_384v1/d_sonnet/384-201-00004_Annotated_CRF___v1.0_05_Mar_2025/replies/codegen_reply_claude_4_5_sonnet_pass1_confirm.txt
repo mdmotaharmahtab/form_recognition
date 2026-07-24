@@ -1,0 +1,11 @@
+Looking at the sample pages:
+
+- **Pages 174, 187 (cluster 1)**: These are reference/lookup tables showing code lists (dose units, dose routes with "Coded/Decode" columns). These are NOT data-entry fields - they're definition pages that the program correctly identifies and skips.
+
+- **Pages 128, 157 (cluster 0)**: These show technical metadata annotations (SAS field names in brackets, edit checks, descriptions). The program already extracts fields from cluster 0 pages (94% covered). The 8 uncovered pages in cluster 0 are likely similar metadata-only sections without actual data-entry fields.
+
+- **Cluster 2** (2 pages): Likely cover/TOC pages based on the small count.
+
+All sampled pages are correctly skipped - they contain no data-entry fields, only reference tables and technical annotations.
+
+CONFIRM_NO_FIELDS

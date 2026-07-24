@@ -1,0 +1,15 @@
+Looking at the sample pages, I can see that **cluster 1 (94 pages, 0% covered) contains actual data-entry pages** that my program is missing.
+
+**Page 20** shows form names in blue (#0000ff) at x≈216.8, which is a completely different layout from the cyan (#31708f) headers I was looking for. The forms are listed vertically with "Subject" and "Common" labels.
+
+**Page 175** shows a code list reference table (CSSRS Actual Lethality/Medical Damage) with "Coded" and "Decode" columns - this appears to be a definition/reference page without data-entry fields.
+
+The key issue: **my program only looks for cyan (#31708f) form headers, but these pages use blue (#0000ff) form names at a different x-position (≈216.8 vs <100)**.
+
+However, examining page 20 more carefully: these blue texts appear to be **form names in a schedule or navigation context**, not field labels for data entry. There's no evidence of actual field labels with their characteristic left-aligned position around x=46.5. The "Subject" text at x=44.2 might be a section header, but there are no field labels following the pattern of the pages I successfully extracted from.
+
+Page 175 is clearly a **reference table** (code list definitions), not a data-entry form.
+
+Let me reconsider: Are these pages actually showing **form titles/navigation** rather than data-entry layouts? Without seeing the actual field structure (labels at x≈46.5 with metadata on the right), these appear to be **index, navigation, or reference pages** rather than data-entry forms.
+
+**CONFIRM_NO_FIELDS**

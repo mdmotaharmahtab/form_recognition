@@ -1,0 +1,29 @@
+{
+  "format_id": "red_oid_annotated_crf",
+  "reasoning": "Field labels are black ~9pt lines immediately followed by red (#ff0000) bracketed annotation lines: the machine code like [LBYN8] and then [TYPE: ...] metadata, grouped in the same column region. Form titles are large 16.5pt colored (#004c99) headings that appear only on the first page of each form, so carry_forward is required for continuation pages. This is the classic adjacent_annotation layout; on C-SSRS grid pages the annotation column sits at x~500-572, so column_x_max is set wide and enumeration option columns / Row markers are declared label noise. Pages 1-2 are title/TOC pages and are skipped.",
+  "detect": {"all": ["^\\[[A-Z][A-Z0-9_]+\\]$", "^\\[TYPE: ", "^Page \\d+ of \\d+$"]},
+  "skip_page_if": ["^Annotated CRF$", "^\\d+\\.\\d+\\.\\s", "^CHANGE HISTORY$", "^SCHEDULE OF ASSESSMENT$"],
+  "form_name": {"strategy": "colored_font", "min_size": 16, "carry_forward": true, "noise": ["^Annotated CRF$", "^Page \\d+ of \\d+$"]},
+  "fields": {
+    "engine": "adjacent_annotation",
+    "column_x_max": 620,
+    "oid_regex": "^\\[([A-Z][A-Z0-9_]{1,})\\]$",
+    "oid_color_non_black": true,
+    "annotation_group_dy": 20,
+    "label_max_dy": 320,
+    "label_noise": [
+      "^\\[",
+      "\\)\\]$",
+      "^Page \\d+ of \\d+$",
+      "^Row \\d+$",
+      "^(Yes|No|N/A)$",
+      "^(INCL|EXCL)\\d+\\b",
+      "^\\(\\d+\\)",
+      "^(Urine|Breath|Negative|Positive|Predose|Discharge)$",
+      "^\\d+(\\.\\d+)?h [Pp]ostdose$",
+      "^(w/out intent to act|specific plan|suicidal thoughts)",
+      "^Since Last Visit$",
+      "^Procedure Specification\\(s\\):$"
+    ]
+  }
+}

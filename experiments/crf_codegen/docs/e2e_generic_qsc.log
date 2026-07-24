@@ -1,0 +1,20 @@
+=== QSC302573_Final_AnnotatedCRFs_16Oct2024-326-201-00007_1_
+    v1 [generate]: calling claude-4.5-sonnet ...
+    audit: 2 issue(s) on pages [1, 2, 3, 171, 305, 406]
+    v2 [revise_audit]: calling claude-4.5-sonnet ...
+    problems: ['Program failed to run: generated extractor crashed:\nTraceback (most recent call last):\n  File "D:\\ubuntu\\codes\\ZS\\otsuka\\ECS\\experiments\\recipe_prototype\\sandbox_runner.py", line 99, in main\n    raw = fn(pages)\n          ^^^^^^^^^\n  File "<generated_extractor>", line 126, in extract\nTypeError: unsupported operand type(s) for -: \'float\' and \'str\'\n']
+    -> {'doc': 'QSC302573_Final_AnnotatedCRFs_16Oct2024-326-201-00007_1_', 'versions': 2, 'stop_reason': 'plateau', 'status': 'ok_audit_issues', 'best_version': 1, 'fields': 1318, 'forms': 16, 'pages_with_fields': 592, 'audit_issues': 2, 'warnings': []}
+[
+ {
+  "doc": "QSC302573_Final_AnnotatedCRFs_16Oct2024-326-201-00007_1_",
+  "versions": 2,
+  "stop_reason": "plateau",
+  "status": "ok_audit_issues",
+  "best_version": 1,
+  "fields": 1318,
+  "forms": 16,
+  "pages_with_fields": 592,
+  "audit_issues": 2,
+  "warnings": []
+ }
+]

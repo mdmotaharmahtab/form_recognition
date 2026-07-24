@@ -1,0 +1,63 @@
+# module: D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\evaluate.py
+# top-level names: ['__doc__', 'ast', 'csv', 'json', 'os', 're', 'sys', 'common', 'BASE', 'OUT_DIR', 'path', 'join', 'GT', 'INDEX', 'RAVE_KEY', 'str', 'norm', 'list', 'dict', 'load_fields', 'eval_rave', 'set', 'load_index_oids', 'eval_index_coverage', '__name__', 'report', 'open', 'f', 'dump', 'print', 'dumps']
+
+=== module()  [line 1] ===
+  [STR]
+    | Evaluate induced-recipe extractions.
+    | 
+    | 1. Rave document vs production ground truth (data/outputs/.../digitized.csv):
+    |    recall/precision of (form, oid) and oid-only sets.
+    | 2. Every document vs the ecs_index rule library: how many extracted OIDs appear
+    |    in the library's field_oids (the signal Phase-2 matching runs on).
+  [STR] 'data'
+  [STR] 'outputs'
+  [STR]
+    | outputs_from_384_201_00002_annotated_unique_crf
+  [STR] 'digitized.csv'
+  [STR] 'index'
+  [STR] 'ecs_index.csv'
+  [STR]
+    | 384-201-00002_Annotated_Unique_CRF_04Nov2024
+  [STR] 's'
+  [STR] 'return'
+  [STR] 'key'
+  [STR] '__main__'
+  [STR] 'evaluation.json'
+  [STR] 'w'
+  [STR] 'utf-8'
+
+=== norm(s)  [line 22] ===
+  [STR] '\\s+'
+
+=== load_fields(key)  [line 26] ===
+  [STR] 'fields_induced.csv'
+  [STR] 'utf-8'
+
+=== eval_rave()  [line 34] ===
+  [STR] 'utf-8'
+
+=== <setcomp>(.0)  [line 39] ===
+  [STR] 'field_oid'
+
+=== <setcomp>(.0)  [line 40] ===
+  [STR] 'field_oid'
+
+=== <setcomp>(.0)  [line 41] ===
+  [STR] 'field_oid'
+  [STR] 'form_name'
+
+=== <setcomp>(.0)  [line 42] ===
+  [STR] 'field_oid'
+  [STR] 'form_name'
+
+=== load_index_oids()  [line 58] ===
+  [STR] 'utf-8'
+  [STR] 'field_oids'
+  [STR] '['
+
+=== eval_index_coverage()  [line 73] ===
+
+=== <setcomp>(.0)  [line 80] ===
+  [STR] 'field_oid'
+
+=== <genexpr>(.0)  [line 81] ===

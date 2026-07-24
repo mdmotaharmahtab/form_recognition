@@ -1,0 +1,142 @@
+x=  36.0 y=  11.5 sz= 9.0 black     | 384-201-00004
+x= 453.5 y=  35.4 sz= 5.6 black   B | PEDESC
+x= 453.5 y=  41.9 sz= 5.6 black     | Format: $200
+x= 453.5 y=  48.5 sz= 5.6 black     | Data Type: text
+x= 453.5 y=  55.0 sz= 5.6 black     | Origin: CRF
+x=  46.5 y=  55.2 sz= 7.5 black     | Abnormal findings
+x= 453.5 y=  61.5 sz= 5.6 black     | Conditionally Visible
+x= 453.5 y=  68.0 sz= 5.6 black     | Conditional Item: PEORRES
+x= 249.2 y=  70.1 sz= 7.5 black     | [____________________]
+x=  46.5 y=  72.6 sz= 7.5 black     | [PEDESC]
+x= 453.5 y=  74.6 sz= 5.6 black     | Visible If Value: ABNORMAL =
+x= 453.5 y=  81.1 sz= 5.6 black     | Abnormal
+x=  46.5 y=  81.3 sz= 7.5 black     | [SAS Field Name: PEDESC]
+x= 453.5 y=  87.6 sz= 5.6 black     | Aliases:
+x= 456.5 y=  94.1 sz= 5.6 black     | Odm OID = I.6775
+x= 453.5 y= 100.7 sz= 5.6 black     | Description: Abnormal Description PE
+x= 453.5 y= 107.2 sz= 5.6 black     | Mandatory?: Yes
+x= 453.5 y= 113.7 sz= 5.6 black     | Disallow Future Date: Yes
+x=  43.5 y= 134.1 sz=10.5 #31708f   | Musculoskeletal/Extremities
+x= 315.1 y= 134.6 sz= 8.4 #31708f B | Origin: CRF; Repeating: No; Conditionally Visible; Domain: PE
+x=  49.5 y= 149.2 sz= 6.8 #808080 B | Aliases:
+x=  75.7 y= 149.2 sz= 6.8 #808080   | Odm OID = IG.1781
+x= 297.9 y= 149.2 sz= 6.8 #808080 B | Role Restriction:
+x= 352.5 y= 149.2 sz= 6.8 #808080   | Investigator
+x= 453.5 y= 172.0 sz= 5.6 black   B | PETEST
+x= 453.5 y= 178.6 sz= 5.6 black     | Format: $27
+x= 453.5 y= 185.1 sz= 5.6 black     | Data Type: string
+x= 453.5 y= 191.6 sz= 5.6 black     | Origin: CRF
+x=  46.5 y= 193.4 sz= 7.5 black     | Body system
+x= 453.5 y= 198.2 sz= 5.6 black     | Default Item Value:
+x= 249.2 y= 200.9 sz= 7.5 black     | O Musculoskeletal /Extremities
+x= 453.5 y= 204.7 sz= 5.6 black     | MUSCULOSKELETAL/EXTREMITIES
+x=  46.5 y= 210.8 sz= 7.5 black     | [PETEST_EXTREMITIES]
+x= 453.5 y= 211.2 sz= 5.6 black     | Aliases:
+x= 253.0 y= 213.5 sz= 6.4 #808080   | Code List: PE Musculoskeletal / Extremities
+x= 456.5 y= 217.7 sz= 5.6 black     | Odm OID = I.6781
+x=  46.5 y= 219.5 sz= 7.5 black     | [SAS Field Name: PETEST]
+x= 453.5 y= 224.3 sz= 5.6 black     | Description: Body system -
+x= 453.5 y= 230.8 sz= 5.6 black     | EXTREMITIES
+x= 453.5 y= 237.3 sz= 5.6 black     | Mandatory?: Yes
+x= 453.5 y= 243.8 sz= 5.6 black     | Disallow Future Date: Yes
+x= 453.5 y= 266.1 sz= 5.6 black   B | PEORRES
+x= 453.5 y= 272.7 sz= 5.6 black     | Format: $200
+x=  46.5 y= 277.7 sz= 7.5 black     | Examination result
+x= 453.5 y= 279.2 sz= 5.6 black     | Data Type: string
+x= 249.2 y= 280.8 sz= 7.5 black     | O Normal
+x= 453.5 y= 285.7 sz= 5.6 black     | Origin: CRF
+x= 249.2 y= 289.5 sz= 7.5 black     | O Abnormal
+x= 453.5 y= 292.3 sz= 5.6 black     | Aliases:
+x=  46.5 y= 295.1 sz= 7.5 black     | [PEORRES]
+x= 456.5 y= 298.8 sz= 5.6 black     | Odm OID = I.6774
+x= 253.0 y= 302.2 sz= 6.4 #808080   | Code List: PE_RESULT
+x=  46.5 y= 303.8 sz= 7.5 black     | [SAS Field Name: PEORRES]
+x= 453.5 y= 305.3 sz= 5.6 black     | Description: Examination result
+x= 453.5 y= 311.8 sz= 5.6 black     | Mandatory?: Yes
+x= 453.5 y= 318.4 sz= 5.6 black     | Disallow Future Date: Yes
+x= 453.5 y= 340.6 sz= 5.6 black   B | PECLSIG
+x= 453.5 y= 347.2 sz= 5.6 black     | Format: $3
+x= 453.5 y= 353.7 sz= 5.6 black     | Data Type: string
+x= 453.5 y= 360.2 sz= 5.6 black     | Origin: CRF
+x= 453.5 y= 366.8 sz= 5.6 black     | Conditionally Visible
+x= 453.5 y= 373.3 sz= 5.6 black     | Conditional Item: PEORRES
+x=  46.5 y= 378.5 sz= 7.5 black     | Clinical significance
+x= 453.5 y= 379.8 sz= 5.6 black     | Visible If Value: ABNORMAL =
+x= 249.2 y= 381.6 sz= 7.5 black     | O CS
+x= 453.5 y= 386.3 sz= 5.6 black     | Abnormal
+x= 249.2 y= 390.3 sz= 7.5 black     | O NCS
+x= 453.5 y= 392.9 sz= 5.6 black     | Aliases:
+x=  46.5 y= 395.9 sz= 7.5 black     | [PECLSIG]
+x= 456.5 y= 399.4 sz= 5.6 black     | Odm OID = I.5937
+x= 253.0 y= 403.0 sz= 6.4 #808080   | Code List: PE Significance
+x=  46.5 y= 404.6 sz= 7.5 black     | [SAS Field Name: PECLSIG]
+x= 453.5 y= 405.9 sz= 5.6 black     | Description: Clinical significance
+x= 453.5 y= 412.4 sz= 5.6 black     | Edit Checks:
+x= 456.5 y= 419.1 sz= 5.6 black   B | Name: TEMPLATE_PECLSIG:
+x= 456.5 y= 425.8 sz= 5.6 black   B | Value =
+x= 470.9 y= 425.8 sz= 5.6 black     | NCS
+x= 456.5 y= 432.4 sz= 5.6 black     | Description: Value should = NCS
+x= 453.5 y= 438.9 sz= 5.6 black     | Mandatory?: Yes
+x= 453.5 y= 445.4 sz= 5.6 black     | Disallow Future Date: Yes
+x= 453.5 y= 467.7 sz= 5.6 black   B | PEDESC
+x= 453.5 y= 474.3 sz= 5.6 black     | Format: $200
+x= 453.5 y= 480.8 sz= 5.6 black     | Data Type: text
+x= 453.5 y= 487.3 sz= 5.6 black     | Origin: CRF
+x=  46.5 y= 492.3 sz= 7.5 black     | Abnormal findings
+x= 453.5 y= 493.9 sz= 5.6 black     | Conditionally Visible
+x= 453.5 y= 500.4 sz= 5.6 black     | Conditional Item: PEORRES
+x= 249.2 y= 505.4 sz= 7.5 black     | [____________________]
+x= 453.5 y= 506.9 sz= 5.6 black     | Visible If Value: ABNORMAL =
+x=  46.5 y= 509.7 sz= 7.5 black     | [PEDESC]
+x= 453.5 y= 513.4 sz= 5.6 black     | Abnormal
+x=  46.5 y= 518.4 sz= 7.5 black     | [SAS Field Name: PEDESC]
+x= 453.5 y= 520.0 sz= 5.6 black     | Aliases:
+x= 456.5 y= 526.5 sz= 5.6 black     | Odm OID = I.6775
+x= 453.5 y= 533.0 sz= 5.6 black     | Description: Abnormal Description PE
+x= 453.5 y= 539.5 sz= 5.6 black     | Mandatory?: Yes
+x= 453.5 y= 546.1 sz= 5.6 black     | Disallow Future Date: Yes
+x=  43.5 y= 566.4 sz=10.5 #31708f   | Dermatologic/Mucosae
+x= 315.1 y= 567.0 sz= 8.4 #31708f B | Origin: CRF; Repeating: No; Conditionally Visible; Domain: PE
+x=  49.5 y= 581.5 sz= 6.8 #808080 B | Aliases:
+x= 297.9 y= 581.5 sz= 6.8 #808080 B | Role Restriction:
+x=  75.7 y= 581.6 sz= 6.8 #808080   | Odm OID = IG.1782
+x= 352.5 y= 581.6 sz= 6.8 #808080   | Investigator
+x= 453.5 y= 604.3 sz= 5.6 black   B | PETEST
+x= 453.5 y= 610.9 sz= 5.6 black     | Format: $12
+x= 453.5 y= 617.5 sz= 5.6 black     | Data Type: string
+x=  46.5 y= 622.5 sz= 7.5 black     | Body system
+x= 453.5 y= 624.0 sz= 5.6 black     | Origin: CRF
+x= 249.2 y= 630.0 sz= 7.5 black     | O Dermatologic
+x= 453.5 y= 630.5 sz= 5.6 black     | Default Item Value: DERMATOLOGIC
+x= 453.5 y= 637.0 sz= 5.6 black     | Aliases:
+x=  46.5 y= 639.9 sz= 7.5 black     | [PETEST_DERMATOLOGIC]
+x= 253.0 y= 642.6 sz= 6.4 #808080   | Code List: PE Dermatologic
+x= 456.5 y= 643.6 sz= 5.6 black     | Odm OID = I.6782
+x=  46.5 y= 648.6 sz= 7.5 black     | [SAS Field Name: PETEST]
+x= 453.5 y= 650.1 sz= 5.6 black     | Description: Body system -
+x= 453.5 y= 656.6 sz= 5.6 black     | DERMATOLOGIC
+x= 453.5 y= 663.1 sz= 5.6 black     | Mandatory?: Yes
+x= 453.5 y= 669.7 sz= 5.6 black     | Disallow Future Date: Yes
+x= 453.5 y= 691.9 sz= 5.6 black   B | PEORRES
+x= 453.5 y= 698.5 sz= 5.6 black     | Format: $200
+x=  46.5 y= 703.5 sz= 7.5 black     | Examination result
+x= 453.5 y= 705.0 sz= 5.6 black     | Data Type: string
+x= 249.2 y= 706.7 sz= 7.5 black     | O Normal
+x= 453.5 y= 711.5 sz= 5.6 black     | Origin: CRF
+x= 249.2 y= 715.4 sz= 7.5 black     | O Abnormal
+x= 453.5 y= 718.1 sz= 5.6 black     | Aliases:
+x=  46.5 y= 720.9 sz= 7.5 black     | [PEORRES]
+x= 456.5 y= 724.6 sz= 5.6 black     | Odm OID = I.6774
+x= 253.0 y= 728.0 sz= 6.4 #808080   | Code List: PE_RESULT
+x=  46.5 y= 729.6 sz= 7.5 black     | [SAS Field Name: PEORRES]
+x= 453.5 y= 731.1 sz= 5.6 black     | Description: Examination result
+x= 453.5 y= 737.6 sz= 5.6 black     | Mandatory?: Yes
+x= 453.5 y= 744.2 sz= 5.6 black     | Disallow Future Date: Yes
+x= 453.5 y= 766.4 sz= 5.6 black   B | PECLSIG
+x= 453.5 y= 773.0 sz= 5.6 black     | Format: $3
+x= 453.5 y= 779.5 sz= 5.6 black     | Data Type: string
+x= 453.5 y= 786.1 sz= 5.6 black     | Origin: CRF
+x= 453.5 y= 792.6 sz= 5.6 black     | Conditionally Visible
+x=  36.0 y= 817.4 sz= 9.0 black     | Annotated CRF
+x= 278.9 y= 817.4 sz= 9.0 black     | 71 of 206
+x= 445.8 y= 817.4 sz= 9.0 black     | https://drvince.clinspark.com

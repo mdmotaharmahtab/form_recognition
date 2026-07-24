@@ -1,0 +1,97 @@
+=== MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025
+    v1 [generate]: calling claude-4.5-sonnet ...
+    coverage confirmation (uncovered: [(0, 387), (4, 27), (5, 24), (6, 18), (7, 9), (8, 8)]) ...
+    extended program adopted as v2: {"engine": "codegen", "records": 4274, "pages_total": 913, "pages_with_fields": 640, "definition_pages_seen": 0, "forms_nonempty_pct": 100, "labels_look_human_pct": 100, "oids_present_pct": 0, "oids_look_like_codes_pct": 0, "distinct_forms": 47, "fields_per_form": 90.9, "forms_per_100_pages": 5.1, "furniture_candidates": [], "pages_covered_pct": 70}
+    audit: 52 issue(s) on pages [1, 3, 234, 430, 434, 471]
+    v3 [revise_audit]: calling claude-4.5-sonnet ...
+    audit: 46 issue(s) on pages [1, 3, 234, 430, 434, 471]
+    v4 [revise_audit]: calling claude-4.5-sonnet ...
+    audit: 45 issue(s) on pages [1, 3, 234, 430, 434, 471]
+    v5 [revise_audit]: calling claude-4.5-sonnet ...
+    audit: 44 issue(s) on pages [1, 3, 234, 430, 434, 471]
+    -> {'doc': 'MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025', 'versions': 5, 'stop_reason': 'budget', 'status': 'ok_audit_issues', 'best_version': 5, 'fields': 3942, 'forms': 59, 'pages_with_fields': 670, 'audit_issues': 44, 'warnings': [], 'elapsed_s': 367.991, 'stage0_s': 8.687, 'llm_s': 320.288, 'llm_calls': 9}
+[
+ {
+  "doc": "MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025",
+  "versions": 5,
+  "stop_reason": "budget",
+  "status": "ok_audit_issues",
+  "best_version": 5,
+  "fields": 3942,
+  "forms": 59,
+  "pages_with_fields": 670,
+  "audit_issues": 44,
+  "warnings": [],
+  "elapsed_s": 367.991,
+  "stage0_s": 8.687,
+  "llm_s": 320.288,
+  "llm_calls": 9
+ }
+]
+error report: 188 event(s) {'audit': 187, 'loop': 1} -> D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\data\outputs\out\cli_error_events_claude_4_5_sonnet.csv
+=== DOC1 DONE exit=0 ===
+=== annotatedCRF_33120100246-_v1.0_-17Aug2021
+    v1 [generate]: calling claude-4.5-sonnet ...
+    coverage confirmation (uncovered: [(1, 76), (3, 42), (4, 40), (6, 27), (8, 18), (9, 11), (10, 10), (11, 10), (13, 9), (14, 9), (15, 9), (16, 6), (17, 5), (19, 4)]) ...
+    extended program adopted as v2: {"engine": "codegen", "records": 964, "pages_total": 596, "pages_with_fields": 158, "definition_pages_seen": 0, "forms_nonempty_pct": 100, "labels_look_human_pct": 97, "oids_present_pct": 0, "oids_look_like_codes_pct": 0, "distinct_forms": 104, "fields_per_form": 9.3, "forms_per_100_pages": 17.4, "furniture_candidates": [], "pages_covered_pct": 27}
+    audit: 16 issue(s) on pages [1, 19, 20, 190, 309, 426]
+    v3 [revise_audit]: calling claude-4.5-sonnet ...
+    audit: 16 issue(s) on pages [1, 19, 20, 190, 309, 426]
+    no improvement over v2 (stall 1/2); one more try
+    v4 [revise_audit]: calling claude-4.5-sonnet ...
+    problems: ['Program failed to run: generated extractor crashed:\nTraceback (most recent call last):\n  File "D:\\ubuntu\\codes\\ZS\\otsuka\\ECS\\experiments\\recipe_prototype\\scripts\\sandbox_runner.py", line 121, in main\n    raw = fn(pages)\n          ^^^^^^^^^\n  File "<generated_extractor>", line 133, in extract\nIndexError: list index out of range\n']
+    -> {'doc': 'annotatedCRF_33120100246-_v1.0_-17Aug2021', 'versions': 4, 'stop_reason': 'plateau', 'status': 'ok_audit_issues', 'best_version': 2, 'fields': 964, 'forms': 104, 'pages_with_fields': 158, 'audit_issues': 16, 'warnings': [], 'elapsed_s': 189.574, 'stage0_s': 4.198, 'llm_s': 179.893, 'llm_calls': 6}
+[
+ {
+  "doc": "annotatedCRF_33120100246-_v1.0_-17Aug2021",
+  "versions": 4,
+  "stop_reason": "plateau",
+  "status": "ok_audit_issues",
+  "best_version": 2,
+  "fields": 964,
+  "forms": 104,
+  "pages_with_fields": 158,
+  "audit_issues": 16,
+  "warnings": [],
+  "elapsed_s": 189.574,
+  "stage0_s": 4.198,
+  "llm_s": 179.893,
+  "llm_calls": 6
+ }
+]
+error report: 34 event(s) {'audit': 32, 'gates': 1, 'loop': 1} -> D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\data\outputs\out\cli_error_events_claude_4_5_sonnet.csv
+=== DOC2 DONE exit=0 ===
+=== QSC302573_Final_AnnotatedCRFs_16Oct2024-326-201-00007_1_
+    v1 [generate]: calling claude-4.5-sonnet ...
+    audit: 12 issue(s) on pages [1, 3, 58, 152, 205, 407]
+    v2 [revise_audit]: calling claude-4.5-sonnet ...
+    audit: 34 issue(s) on pages [1, 3, 58, 152, 205, 407]
+    no improvement over v1 (stall 1/2); one more try
+    v3 [revise_audit]: calling claude-4.5-sonnet ...
+    audit: 12 issue(s) on pages [1, 3, 58, 152, 205, 407]
+    v4 [revise_audit]: calling claude-4.5-sonnet ...
+    audit: 14 issue(s) on pages [1, 3, 58, 152, 205, 407]
+    no improvement over v3 (stall 1/2); one more try
+    v5 [revise_audit]: calling claude-4.5-sonnet ...
+    audit: 12 issue(s) on pages [1, 3, 58, 152, 205, 407]
+    -> {'doc': 'QSC302573_Final_AnnotatedCRFs_16Oct2024-326-201-00007_1_', 'versions': 5, 'stop_reason': 'budget', 'status': 'ok_audit_issues', 'best_version': 1, 'fields': 4545, 'forms': 16, 'pages_with_fields': 601, 'audit_issues': 12, 'warnings': [], 'elapsed_s': 259.116, 'stage0_s': 2.737, 'llm_s': 244.699, 'llm_calls': 10}
+[
+ {
+  "doc": "QSC302573_Final_AnnotatedCRFs_16Oct2024-326-201-00007_1_",
+  "versions": 5,
+  "stop_reason": "budget",
+  "status": "ok_audit_issues",
+  "best_version": 1,
+  "fields": 4545,
+  "forms": 16,
+  "pages_with_fields": 601,
+  "audit_issues": 12,
+  "warnings": [],
+  "elapsed_s": 259.116,
+  "stage0_s": 2.737,
+  "llm_s": 244.699,
+  "llm_calls": 10
+ }
+]
+error report: 85 event(s) {'audit': 84, 'loop': 1} -> D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\data\outputs\out\cli_error_events_claude_4_5_sonnet.csv
+=== DOC3 DONE exit=0 ===

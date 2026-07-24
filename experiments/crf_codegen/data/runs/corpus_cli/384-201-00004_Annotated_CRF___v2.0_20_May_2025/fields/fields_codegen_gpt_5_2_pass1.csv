@@ -1,0 +1,608 @@
+form_name,field_name,page
+AE / CM,Were any adverse events experienced?,21
+AE / CM,Start date and time,21
+AE / CM,Ongoing?,21
+AE / CM,End date and time,21
+AE / CM,Adverse event term,21
+AE / CM,Is this a treatment emergent adverse event?,21
+AE / CM,Is this an Immediately Reportable Event (IRE)?,21
+,Severity,22
+,Relationship to investigational product,22
+,Action taken with investigational product,22
+,Was a concomitant medication given?,22
+,Were any other actions taken in response to this adverse event?,22
+,Other action taken,22
+,Annotated CRF,22
+,Was the serious adverse event associated with a congenital anomaly or birth defect?,23
+,Did the serious adverse event result in persistent significant disability or incapacity?,23
+,Death date,23
+,Did the serious adverse event result in initial or prolonged hospitalization for the volunteer?,23
+,Is the serious adverse event life threatening?,24
+,Was the adverse event a medically important event not covered by other serious criteria?,24
+,Concomitant medication or therapy,24
+,Indication,24
+,Route of administration,24
+,Total dose,24
+,Dose unit,25
+,Dose form,25
+,Frequency,25
+,Administration start date and time,25
+,Administration ongoing?,25
+,Annotated CRF,25
+Blood Collection - Admission Day -2,Were the sample(s) collected?,27
+Blood Collection - Baseline Day -1,Were the sample(s) collected?,28
+Blood Collection - Baseline Day -1,Creatinine collection date and time,28
+Blood Collection - PD Creatinine,Was the sample collected?,29
+Blood Collection - PD Creatinine,Creatinine collection date and time,29
+Blood Collection - PK Quinidine,Was the sample collected?,30
+Blood Collection - PK Quinidine,PK Quinidine collection date and time,30
+Blood Collection - PK SEP,Was the sample collected?,31
+Blood Collection - PK SEP,PK SEP collection date and time,31
+Blood Collection - PK SEP and Safety,Were the sample(s) collected?,32
+Blood Collection - PK SEP and Safety,PK SEP collection date and time,32
+Blood Collection - PK SEP/PD Creatine,Was the sample collected?,33
+Blood Collection - PK SEP/PD Creatine,PK SEP collection date and time,33
+Blood Collection - PK SEP/PD Creatine,Creatinine collection date and time,33
+Blood Collection - PK SEP/PD Creatine/Glucose/Insulin,Was the sample collected?,34
+Blood Collection - PK SEP/PD Creatine/Glucose/Insulin,PK SEP collection date and time,34
+Blood Collection - PK SEP/PD Creatine/Glucose/Insulin,Creatinine collection date and time,34
+Blood Collection - PK SEP/PD Creatinine/PGx/ Safety Day 1,Were the sample(s) collected?,35
+Blood Collection - PK SEP/PD Creatinine/PGx/ Safety Day 1,PK SEP collection date and time,35
+Blood Collection - PK SEP/PD Creatinine/PGx/ Safety Day 1,Creatinine collection date and time,35
+Blood Collection - PK SEP/PD Creatinine/PGx/ Safety Day 1,PGx collection date and time,35
+Blood Collection - PK SEP/PK Quinidine,Was the sample collected?,36
+Blood Collection - PK SEP/PK Quinidine,PK SEP collection date and time,36
+Blood Collection - PK SEP/PK Quinidine,PK Quinidine collection date and time,36
+Blood Collection - PK SEP/PK Quinidine/Safety Day 7,Were the sample(s) collected?,37
+Blood Collection - PK SEP/PK Quinidine/Safety Day 7,PK SEP collection date and time,37
+Blood Collection - PK SEP/PK Quinidine/Safety Day 7,PK Quinidine collection date and time,37
+Blood Collection - Safety,Were the sample(s) collected?,38
+Blood Collection - Screening,Were the sample(s) collected?,39
+C-SSRS - Baseline/Screening,Date and Time of Collection,40
+C-SSRS - Baseline/Screening,Have you wished you were dead or wished you could go to sleep and not wake up? (Lifetime).,40
+C-SSRS - Baseline/Screening,Have you wished you were dead or wished you could go to sleep and not wake up? (Past 12 Months).,40
+C-SSRS - Baseline/Screening,"If yes, describe:",40
+C-SSRS - Baseline/Screening,Have you actually had any thoughts of killing yourself? (Lifetime).,40
+C-SSRS - Baseline/Screening,Have you actually had any thoughts of killing yourself? (Past 12 Months).,40
+,"If yes, describe:",41
+,Have you been thinking about how you might do this? (Lifetime).,41
+,Have you been thinking about how you might do this? (Past 12 Months).,41
+,Have you had these thoughts and had some intention of acting on them? (Lifetime).,41
+,"If yes, describe:",42
+,Have you started to work out or worked out the details of how to kill yourself? Do you intend to carry out this plan? (Lifetime).,42
+,Have you started to work out or worked out the details of how to kill yourself? Do you intend to carry out this plan? (Past 12 Months).,42
+,Most severe ideation. (Lifetime).,42
+,Description of most severe ideation. (Lifetime).,42
+,Most severe ideation. (Past 12 Months).,43
+,Description of most severe ideation. (Past 12 Months).,43
+,Frequency (Lifetime),43
+,Frequency (Past 12 Months),43
+,Duration (Lifetime),43
+,Duration (Past 12 Months),43
+,Controllability (Lifetime),43
+,Controllability (Past 12 Months),43
+,Deterrents (Lifetime),43
+,Deterrents (Past 12 Months),43
+,without suicidal intent),44
+,Total number of actual attempts.,44
+,"If yes, describe:",44
+,Has the subject engaged in non-suicidal self-injurious behavior.,45
+,"If yes, describe:",45
+,yourself before you actually did anything?,45
+,Total number of aborted attempts.,45
+,Annotated CRF,45
+,"yourself (such as collecting pills, getting a gun, giving valuables away or writing a suicide note)?",46
+,"If yes, describe:",46
+,Suicidal Behavior:,46
+,Most Recent Attempt Date:,46
+,Actual Lethality/Medical Damage:,46
+,Potential Lethality: Only Answer if Actual Lethality=0,46
+,Most Lethal Attempt Date:,47
+,Actual Lethality/Medical Damage:,47
+,Potential Lethality: Only Answer if Actual Lethality=0,47
+,Initial/First attempt date,47
+,Actual lethality/medical damage.,47
+,Potential Lethality: Only answer if actual lethality = 0,47
+C-SSRS - Since Last Visit,Date and Time of Collection,48
+C-SSRS - Since Last Visit,Have you wished you were dead or wished you could go to sleep and not wake up since last visit?,48
+C-SSRS - Since Last Visit,"If yes, describe:",48
+C-SSRS - Since Last Visit,Have you actually had any thoughts of killing yourself since last visit?,48
+C-SSRS - Since Last Visit,Have you been thinking about how you might do this since last visit?,48
+,"If yes, describe:",49
+,Have you had these thoughts and had some intention of acting on them since last visit?,49
+,Have you started to work out or worked out the details of how to kill yourself since your last visit? Do you intend to carry out this plan?,49
+,Most Severe Ideation,49
+,Description of Ideation,49
+,Frequency,50
+,Duration,50
+,Controllability,50
+,Deterrents,50
+,without suicidal intent),50
+,Total number of actual attempts.,50
+,"If yes, describe:",51
+,Has the subject engaged in non-suicidal self-injurious behavior?,51
+,Total number of interrupted attempts.,51
+,yourself before you actually did anything?,51
+,Annotated CRF,51
+,If yes. describe:,52
+,valuables away or writing a suicide note)?,52
+,"If yes, describe:",52
+,Suicidal Behavior:,52
+,Suicide:,52
+,Most Lethal Attempt Date:,52
+,Actual Lethality/Medical Damage:,52
+,Potential Lethality: Only Answer if Actual Lethality=0,53
+CM related to MH,Enter medical history the concomitant medication is being given for,54
+CM related to MH,Concomitant medication or therapy,54
+CM related to MH,Route of administration,54
+CM related to MH,Total dose,54
+CM related to MH,Dose form,54
+,Dose unit,55
+,Frequency,55
+,Administration start date and time,55
+,Administration ongoing?,55
+,Administration end date and time,55
+Concomitant Medications - Screening,Were any concomitant medications taken?,56
+Concomitant Medications - Screening,Concomitant medication or therapy,56
+Concomitant Medications - Screening,Route of administration,56
+Concomitant Medications - Screening,Total dose,56
+Concomitant Medications - Screening,Dose form,56
+Concomitant Medications - Screening,Dose unit,56
+,Frequency,57
+,Administration start date and time,57
+,Administration ongoing?,57
+,Administration end date and time,57
+,Medical History Relation,57
+Demographics,Date of demographic collection,58
+Demographics,Age,58
+Demographics,Sex,58
+Demographics,Ethnicity,58
+Demographics,American Indian Or Alaska Native,58
+Demographics,Asian,58
+Demographics,Black Or African American,58
+Demographics,Native Hawaiian Or Other Pacific Islander,58
+Demographics,White,58
+,Race - Unknown,59
+Disposition,Date of volunteer completion or discontinuation,60
+Disposition,Completion/Reason for Non-Completion,60
+Disposition,Date of Death,60
+Disposition,Adverse Event term,60
+Disposition,What enrollment criteria did the volunteer not meet?,60
+Disposition,What made the volunteer a lost to follow-up?,60
+Disposition,Annotated CRF,60
+,"Other, Specify:",61
+,How was the volunteer non-compliant with the study drug?,61
+,How was the volunteer non-compliant with the study schedule?,61
+,Reason for physician decision,61
+,What withdrawal criteria was met?,61
+,Why was the volunteer discontinued at sponsor request?,61
+,Annotated CRF,61
+,Reason volunteer withdrew consent,62
+,Why was the subject screen failed?,62
+ECG (RScribe),Is this collection a repeat?,63
+ECG (RScribe),PR,63
+ECG (RScribe),QRS,63
+ECG (RScribe),QT,63
+ECG (RScribe),QTcB,63
+,RATE,64
+,RR,64
+,EGTXT,64
+,ECG Acquisition Time,64
+,ECG Interpretation,64
+,Clinical Significance Assessed by Investigator,64
+,Abnormality Reason,65
+ECG (RScribe) Admission,Is this collection a repeat?,66
+ECG (RScribe) Admission,PR,66
+ECG (RScribe) Admission,QRS,66
+ECG (RScribe) Admission,QT,66
+ECG (RScribe) Admission,QTcB,66
+,RATE,67
+,RR,67
+,EGTXT,67
+,ECG Acquisition Time,67
+,ECG Interpretation,67
+,Abnormality Reason,68
+ECG (RScribe) Screening,Is this collection a repeat?,69
+ECG (RScribe) Screening,PR,69
+ECG (RScribe) Screening,QRS,69
+ECG (RScribe) Screening,QT,69
+ECG (RScribe) Screening,QTcB,69
+,RATE,70
+,RR,70
+,EGTXT,70
+,ECG Acquisition Time,70
+,ECG Interpretation,70
+,Abnormality Reason,71
+ECG (RScribe) Unscheduled,PR,72
+ECG (RScribe) Unscheduled,QRS,72
+ECG (RScribe) Unscheduled,QT,72
+ECG (RScribe) Unscheduled,QTcB,72
+ECG (RScribe) Unscheduled,RATE,72
+,RR,73
+,EGTXT,73
+,ECG Acquisition Time,73
+,ECG Interpretation,73
+,Clinical Significance Assessed by Investigator,73
+,Abnormality Reason,73
+ECG Triplicate (RScribe),Is this collection a repeat?,75
+ECG Triplicate (RScribe),PR,75
+ECG Triplicate (RScribe),QRS,75
+ECG Triplicate (RScribe),QT,75
+ECG Triplicate (RScribe),QTcB,75
+,RATE,76
+,RR,76
+,EGTXT,76
+,ECG Acquisition Time,76
+,ECG Interpretation,76
+,Clinical Significance Assessed by Investigator,76
+,Abnormality Reason,77
+,PR,77
+,QRS,77
+,QT,77
+,QTcB,77
+,RATE,78
+,RR,78
+,EGTXT,78
+,ECG Acquisition Time,78
+,ECG Interpretation,78
+,Clinical Significance Assessed by Investigator,78
+,Abnormality Reason,79
+,PR,79
+,QRS,79
+,QT,79
+,QTcB,79
+,RATE,80
+,RR,80
+,EGTXT,80
+,ECG Acquisition Time,80
+,ECG Interpretation,80
+,Abnormality Reason,81
+,What is the Average QTcF?,81
+ECG Triplicate (RScribe) - Baseline,Is this collection a repeat?,82
+ECG Triplicate (RScribe) - Baseline,PR,82
+ECG Triplicate (RScribe) - Baseline,QRS,82
+ECG Triplicate (RScribe) - Baseline,QT,82
+ECG Triplicate (RScribe) - Baseline,QTcB,82
+,RATE,83
+,RR,83
+,EGTXT,83
+,ECG Acquisition Time,83
+,ECG Interpretation,83
+,Clinical Significance Assessed by Investigator,83
+,Abnormality Reason,84
+,PR,84
+,QRS,84
+,QT,84
+,QTcB,84
+,RATE,85
+,RR,85
+,EGTXT,85
+,ECG Acquisition Time,85
+,ECG Interpretation,85
+,Clinical Significance Assessed by Investigator,85
+,Abnormality Reason,86
+,PR,86
+,QRS,86
+,QT,86
+,QTcB,86
+,RATE,87
+,RR,87
+,EGTXT,87
+,ECG Acquisition Time,87
+,ECG Interpretation,87
+,Clinical Significance Assessed by Investigator,87
+,Abnormality Reason,88
+,What is the Average QTcF?,88
+Enrollment,Date and time of enrollment,89
+Enrollment,Enrollment number,89
+Height / Weight / BMI,Date and time of collection,90
+Height / Weight / BMI,Height,90
+Height / Weight / BMI,Weight,90
+Height / Weight / BMI,BMI,90
+Medical History,Does the volunteer have any medical history to report?,91
+Medical History,Reported term for the medical history,91
+Medical History,Start date of medical history event,91
+Medical History,End date of medical history event,91
+Medical History,Is condition ongoing?,91
+Medical History,Clinical significance,91
+Physical Examination - Full,Date and time performed,92
+Physical Examination - Full,Body system,92
+Physical Examination - Full,Examination result,92
+Physical Examination - Full,Clinical significance,92
+Physical Examination - Full,Abnormal findings,92
+,Clinical significance,93
+,Abnormal findings,93
+,Body system,93
+,Examination result,93
+,Examination result,94
+,Clinical significance,94
+,Abnormal findings,94
+,Body system,94
+Gastrointestinal,Body system,95
+Gastrointestinal,Examination result,95
+Gastrointestinal,Clinical significance,95
+Gastrointestinal,Abnormal findings,95
+,Abnormal findings,96
+,Body system,96
+,Examination result,96
+,Clinical significance,96
+,Annotated CRF,96
+,Abnormal findings,97
+,Body system,97
+,Examination result,97
+,Clinical significance,97
+,Other specify,97
+,Examination result,98
+,Clinical significance,98
+,Abnormal findings,98
+Physical Examination - Screening,Date and time performed,99
+Physical Examination - Screening,Body system,99
+Physical Examination - Screening,Examination result,99
+Physical Examination - Screening,Clinical significance,99
+Physical Examination - Screening,Abnormal findings,99
+,Clinical significance,100
+,Abnormal findings,100
+,Body system,100
+,Examination result,100
+,Examination result,101
+,Clinical significance,101
+,Abnormal findings,101
+,Body system,101
+Gastrointestinal,Body system,102
+Gastrointestinal,Examination result,102
+Gastrointestinal,Clinical significance,102
+Gastrointestinal,Abnormal findings,102
+,Abnormal findings,103
+,Body system,103
+,Examination result,103
+,Clinical significance,103
+,Annotated CRF,103
+,Abnormal findings,104
+,Body system,104
+,Examination result,104
+,Clinical significance,104
+,Other specify,104
+,Examination result,105
+,Clinical significance,105
+,Abnormal findings,105
+Physical Examination - Targeted,Date and time performed,106
+Physical Examination - Targeted,Body system,106
+Physical Examination - Targeted,Examination result,106
+Physical Examination - Targeted,Clinical significance,106
+Physical Examination - Targeted,Abnormal findings,106
+,Clinical significance,107
+,Abnormal findings,107
+,Body system,107
+,Examination result,107
+,Examination result,108
+,Clinical significance,108
+,Abnormal findings,108
+,Body system,108
+Other,Body system,109
+Other,Other specify,109
+Other,Examination result,109
+Other,Clinical significance,109
+Other,Abnormal findings,109
+Principal Investigator Approval,I acknowledge that I have reviewed and approved all data for this volunteer.,110
+Re-Screen,Is this volunteer re-screening?,111
+Re-Screen,Original Screening Number,111
+Study Drug Administration - Combined,Route of administration,112
+Study Drug Administration - Combined,Date and time of administration,112
+Study Drug Administration - Combined,Drug name given,112
+Study Drug Administration - Combined,Total dose,112
+Study Drug Administration - Combined,Unit,112
+Study Drug Administration - Combined,Formulation of study drug,112
+Study Drug Administration - Combined,Quantity administered,112
+,Comments,113
+,Route of administration,113
+,Date and time of administration,113
+,Drug name given,113
+,Total dose,113
+,Unit,113
+,Formulation of study drug,113
+,Quantity administered,113
+,Was the dose administered per protocol?,114
+,Comments,114
+Study Drug Administration - Quinidine,Route of administration,115
+Study Drug Administration - Quinidine,Date and time of administration,115
+Study Drug Administration - Quinidine,Drug name given,115
+Study Drug Administration - Quinidine,Total dose,115
+Study Drug Administration - Quinidine,Unit,115
+Study Drug Administration - Quinidine,Formulation of study drug,115
+Study Drug Administration - Quinidine,Quantity administered,115
+Study Drug Administration - Quinidine,Was the dose administered per protocol?,115
+,Comments,116
+Study Drug Administration - SEP-380135,Route of administration,117
+Study Drug Administration - SEP-380135,Date and time of administration,117
+Study Drug Administration - SEP-380135,Drug name given,117
+Study Drug Administration - SEP-380135,Total dose,117
+Study Drug Administration - SEP-380135,Unit,117
+Study Drug Administration - SEP-380135,Formulation of study drug,117
+Study Drug Administration - SEP-380135,Quantity administered,117
+,Comments,118
+Subject Eligibility,1. Male or female participants between 18 and 55 years of age (inclusive) at time of consent.,119
+Subject Eligibility,2. Body mass index from 18.0 to 32.0 kg/m2 (inclusive).,119
+Subject Eligibility,"examination e. Electrocardiogram f. Serum chemistry, lipid panel, thyroid panel, coagulation panel, urinalysis, hematology, and serology tests (from screening visit).",119
+Subject Eligibility,be hospitalized) and willing to be contacted for the safety follow-up telephone call.,119
+Subject Eligibility,"initiation of any trial-related procedures, and ability, in the opinion of the Principal Investigator, to comply with all the requirements of the trial.",119
+Subject Eligibility,1. Are breast-feeding.,119
+Subject Eligibility,2. Have a positive pregnancy test prior to receiving IMP.,119
+Subject Eligibility,"agree to practice 2 different highly effective methods of birth control or remain fully abstinent from sexual activity with the potential for conception, per the guidelines in Section 10.3.",119
+Subject Eligibility,sperm or eggs from trial screening through 90 days after the last dose of IMP.,119
+Subject Eligibility,"any clinically significant hematological (including deep vein thrombosis) or bleeding disorder, renal, metabolic, endocrine, pulmonary, gastrointestinal, urological, cardiovascular, hepatic, neurologic or allergic disease (except for untreated seasonal allergies that are asymptomatic at the time of dosing)",119
+,6. History of drug and/or alcohol abuse within 2 years prior to screening.,120
+,"permitted for participants with a prior history of infection with hepatitis A who have fully recovered and are experiencing no liver sequelae, or with hepatitis C who have been adequately treated to be considered cured with no liver sequelae.",120
+,8. History of any significant drug allergy or known or suspected hypersensitivity to any component of IMP.,120
+,for substances of abuse at screening and upon check-in to the trial site.,120
+,10. Any history of significant bleeding or hemorrhagic tendencies.,120
+,poor venous access that would cause difficulty for collecting blood samples.,120
+,12. The donation of blood or plasma within 30 days prior to the first dose of IMP.,120
+,"13. Have taken an investigational drug within 30 days or 5 half-lives, if known, (whichever is longer) prior to screening.",120
+,14. Have had previous exposure to SEP-380135.,120
+,15. Are currently participating in another clinical trial.,120
+,within 30 days prior to the first dose of IMP. The sponsor may allow exceptions only if the medication’s administration is deemed unlikely to impact the PK or PD results.,120
+,"microsomal enzymes within 30 days prior to screening (eg, occupational exposure to pesticides, organic solvents, etc).",121
+,urine cotinine concentrations > 200 ng/mL or serum cotinine concentrations > 20 ng/mL at screening or check- in to the trial site.,121
+,"is defined as a decrease of >= 20 mmHg in systolic blood pressure and/or a decrease of >= 10 mmHg in diastolic blood pressure after at least 3 minutes of standing compared with the previous supine blood pressure, at screening or check-in. Blood pressure measurements may be repeated once at the discretion of the investigator.",121
+,"may allow exceptions if the results are not considered to be clinically significant; however, this will need to be approved by the medical monitor and sponsor physician. Note: If the first heart rate measurement is abnormal, it can be repeated at the investigator’s discretion, in which case a third (confirmatory) measurement may also be required.",121
+,21. History of unexplained syncope.,121
+,"participants or > 470 msec for female participants, QRS internal > 120 msec or PR interval > 200 msec. A participant with non-clinically significant ECG abnormalities at screening and check-in requires approval from the medical monitor and the sponsor’s physician.",121
+,"beverages containing caffeine and methylxanthines (eg, coffee) within 72 hours prior to dosing.",121
+,"P450 (CYP) 1A2 (eg,charbroiled or pan-fried meats and cruciferous vegetables) within 72 hours priorto dosing.",121
+,"or induce CYP3A4, eg,pomelo, grapefruit, Seville oranges, St. John’s Wort within 72 hours prior todosing.",121
+,"the C-SSRS at screening (ie, in the past 1 month) or prior to dosing at subsequent C-SSRS assessment (ie, since Last Visit version) or suicidal behavior is present in the C- SSRS Since Last Visit version.",122
+,27. Attempted suicide within 12 months prior to screening.,122
+,28. Are at risk of harming themselves or others according to the investigator’s judgment.,122
+,"(including participants with moderate [Child-Pugh Class B] and severe [Child-Pugh Class C] hepatic impairment) or renal system (an estimated glomerular filtration rate < 90 mL/min/1.73 m2 at screening only) or a history of malabsorption (appendectomy, and hernia repair will be acceptable), bowel resection, bariatric surgery or gastric band/lap band surgery, or is on medications that might interfere with gastric motility.",122
+,"screening, except for adequately treated basal cell or squamous cell skin cancer, or in situ cervical cancer. Any history of endocrine tumor is excluded.",122
+,steroid treatment 30 days before screening or the first dosing day.,122
+,"arrhythmia, prolonged QT interval, congenital long QT syndrome, family history of long QT, or moderate to severe hypokalemia (potassium < 3.0 mmol/L). A participant with non-clinically significant ECG abnormalities at screening and check-in requires approval from the medical monitor and the sponsor’s physician.",122
+,of the reference ranges provided by the central laboratory at screening or admission. Participant with liver function test for bilirubin >= 2 × upper limit of normal (ULN) at screening or admission.,122
+,(Note: abnormal findings that may be clinically significant or of questionable significance will be discussed with the medical monitor prior to including subject. Retesting is allowed once during screening and the retest used to determine eligibility).,122
+,35. Any type of anemia with hemoglobin <= 11 g/dL.,123
+,36. Are a clinical site staff member or the relative of a clinical site staff member.,123
+,"37. In the opinion of the investigator, should not participate in the trial.",123
+,Subject eligibility result,123
+Subject Informed Consent,ICF Version,124
+Subject Informed Consent,Date and Time of Informed Consent,124
+Urine Collection - Admission,Urine collection date and time,125
+Urine Collection - Admission,Cotinine Result,125
+Urine Collection - Admission,Cotinine Clinical Significance,125
+Urine Collection - Admission,Amphetamines / Methamphetamines,125
+Urine Collection - Admission,Clinical Significance,125
+Urine Collection - Admission,Barbiturates,125
+,Clinical Significance,126
+,Benzodiazepines,126
+,Cocaine,126
+,Ethanol,126
+,Methadone,127
+,Clinical Significance,127
+,Opiates,127
+,Phencyclidine,127
+,THC,127
+Urine Collection - PK - Active Interval Collection (0-2),Collection start date and time,129
+Urine Collection - PK - Active Interval Collection (0-2) - Day 1,Collection start date and time,130
+Urine Collection - PK - Active Interval Collection (12-24),Collection start date and time,131
+Urine Collection - PK - Active Interval Collection (2-4),Collection start date and time,132
+Urine Collection - PK - Active Interval Collection (4-8),Collection start date and time,133
+Urine Collection - PK - Active Interval Collection (8-12),Collection start date and time,134
+Urine Collection - PK - Interval End (0-2) – LAB USE ONLY,Date and time of last collection.,135
+Urine Collection - PK - Interval End (0-2) – LAB USE ONLY,Did the subject provide a sample during the interval?,135
+Urine Collection - PK - Interval End (0-2) – LAB USE ONLY,Total Interval Volume,135
+Urine Collection - PK - Interval End (12-24) – LAB USE ONLY,Date and time of last collection.,136
+Urine Collection - PK - Interval End (12-24) – LAB USE ONLY,Did the subject provide a sample during the interval?,136
+Urine Collection - PK - Interval End (12-24) – LAB USE ONLY,Total Interval Volume,136
+Urine Collection - PK - Interval End (2-4) – LAB USE ONLY,Date and time of last collection.,137
+Urine Collection - PK - Interval End (2-4) – LAB USE ONLY,Did the subject provide a sample during the interval?,137
+Urine Collection - PK - Interval End (2-4) – LAB USE ONLY,Total Interval Volume,137
+Urine Collection - PK - Interval End (4-8) – LAB USE ONLY,Date and time of last collection.,138
+Urine Collection - PK - Interval End (4-8) – LAB USE ONLY,Did the subject provide a sample during the interval?,138
+Urine Collection - PK - Interval End (4-8) – LAB USE ONLY,Total Interval Volume,138
+Urine Collection - PK - Interval End (8-12) – LAB USE ONLY,Date and time of last collection.,139
+Urine Collection - PK - Interval End (8-12) – LAB USE ONLY,Did the subject provide a sample during the interval?,139
+Urine Collection - PK - Interval End (8-12) – LAB USE ONLY,Total Interval Volume,139
+Urine Collection - Screening,Urine collection date and time,140
+Urine Collection - Screening,Cotinine Result,140
+Urine Collection - Screening,Cotinine Clinical Significance,140
+Urine Collection - Screening,Amphetamines / Methamphetamines,140
+Urine Collection - Screening,Clinical Significance,140
+Urine Collection - Screening,Barbiturates,140
+,Clinical Significance,141
+,Benzodiazepines,141
+,Cocaine,141
+,Ethanol,141
+,Methadone,142
+,Clinical Significance,142
+,Opiates,142
+,Phencyclidine,142
+,THC,142
+Vital Signs - Orthostatic,Is this collection a repeat?,144
+Vital Signs - Orthostatic,Date and time of collection,144
+Vital Signs - Orthostatic,Systolic Blood Pressure,144
+Vital Signs - Orthostatic,Is systolic blood pressure out of range?,144
+Vital Signs - Orthostatic,Clinical significance,144
+Vital Signs - Orthostatic,Diastolic Blood Pressure,144
+Vital Signs - Orthostatic,Annotated CRF,144
+,Clinical significance,145
+,Heart Rate,145
+,Is heart rate out of range?,145
+,Is temperature out of range?,145
+,Clinical significance,146
+,Respiratory Rate,146
+,Is respiratory rate out of range?,146
+,Date and time of collection,146
+,Systolic Blood Pressure,146
+,Annotated CRF,146
+,Heart Rate,147
+,Did systolic blood pressure decrease by 20 or more?,147
+,Clinical significance,147
+,Did diastolic blood pressure decrease by 10 or more?,147
+,Annotated CRF,147
+,Clinical significance,148
+Vital Signs - Orthostatic Screening/Admission,Is this collection a repeat?,149
+Vital Signs - Orthostatic Screening/Admission,Date and time of collection,149
+Vital Signs - Orthostatic Screening/Admission,Systolic Blood Pressure,149
+Vital Signs - Orthostatic Screening/Admission,Is systolic blood pressure out of range?,149
+Vital Signs - Orthostatic Screening/Admission,Clinical significance,149
+Vital Signs - Orthostatic Screening/Admission,Diastolic Blood Pressure,149
+,Is diastolic blood pressure out of range?,150
+,Clinical significance,150
+,Heart Rate,150
+,Is heart rate out of range?,150
+,Is temperature out of range?,151
+,Clinical significance,151
+,Respiratory Rate,151
+,Is respiratory rate out of range?,151
+,Date and time of collection,151
+,Systolic Blood Pressure,151
+,Diastolic Blood Pressure,152
+,Heart Rate,152
+,Did systolic blood pressure decrease by 20 or more?,152
+,Clinical significance,152
+,Did diastolic blood pressure decrease by 10 or more?,152
+,Did heart rate increase by 30 or more?,153
+,Clinical significance,153
+Vital Signs - Unscheduled,Date and time of collection,154
+Vital Signs - Unscheduled,Systolic Blood Pressure,154
+Vital Signs - Unscheduled,Is systolic blood pressure out of range?,154
+Vital Signs - Unscheduled,Clinical significance,154
+Vital Signs - Unscheduled,Diastolic Blood Pressure,154
+Vital Signs - Unscheduled,Is diastolic blood pressure out of range?,154
+Vital Signs - Unscheduled,Annotated CRF,154
+,Heart Rate,155
+,Is heart rate out of range?,155
+,Clinical significance,155
+,Is temperature out of range?,155
+,Annotated CRF,155
+,Oxygen Saturation,156
+,Is oxygen saturation out of range?,156
+,Clinical significance,156
+,Respiratory Rate,156
+,Is respiratory rate out of range?,156
+Vital Signs - Unscheduled - Orthostatic,Date and time of collection,158
+Vital Signs - Unscheduled - Orthostatic,Systolic Blood Pressure,158
+Vital Signs - Unscheduled - Orthostatic,Is systolic blood pressure out of range?,158
+Vital Signs - Unscheduled - Orthostatic,Clinical significance,158
+Vital Signs - Unscheduled - Orthostatic,Diastolic Blood Pressure,158
+Vital Signs - Unscheduled - Orthostatic,Is diastolic blood pressure out of range?,158
+Vital Signs - Unscheduled - Orthostatic,Annotated CRF,158
+,Is temperature out of range?,159
+,Clinical significance,159
+,Heart Rate,159
+,Is heart rate out of range?,159
+,Annotated CRF,159
+,Respiratory Rate,160
+,Is respiratory rate out of range?,160
+,Clinical significance,160
+,Date and time of collection,160
+,Systolic Blood Pressure,160
+,Diastolic Blood Pressure,160
+,Heart Rate,161
+,Did systolic blood pressure decrease by 20 or more?,161
+,Clinical significance,161
+,Did diastolic blood pressure decrease by 10 or more?,161
+,Did heart rate increase by 30 or more?,161
+,Clinical significance,162
+Weight / BMI,Date and time of collection,163
+Weight / BMI,Weight,163
+Weight / BMI,BMI,163

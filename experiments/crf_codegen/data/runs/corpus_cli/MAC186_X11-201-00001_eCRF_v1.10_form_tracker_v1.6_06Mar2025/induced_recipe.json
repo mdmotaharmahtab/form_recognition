@@ -1,0 +1,44 @@
+{
+ "format_id": "mac186_numbered_vardetails_v2",
+ "reasoning": "Same two-page-type layout: content pages tag each field with a bracketed key ([1], [2]) that is either a standalone fragment beside the bold label or embedded in the label/option line ('Yes  [1]', 'Body System Examined  [5]'), while 'Variable details' pages map the same keys to the Name and Export Name columns. The previous join failed because definition pages print no form title, so their rows were attributed to wrong forms and the (form, key) join almost never matched, and keys embedded in label lines were missed entirely; fixed with definition_form_from_carry:true and number_embedded_in_label:true. oid_regex is tightened to capture only the leading all-caps token, so concatenated row text like 'VISDATDate11' yields VISDAT and human text like 'Date' or 'Categorical...' yields no code.",
+ "detect": {
+  "all": [
+   "MAC186_X11_201_00001_eCRF",
+   "^Variable details$",
+   "^Export Name$"
+  ]
+ },
+ "skip_page_if": [
+  "^Visit:$"
+ ],
+ "form_name": {
+  "strategy": "regex",
+  "regex": "^(?!MAC186_)(?!Variable details$)(?!Name$)(?!Export Name$)(?!Type$)(?!Max length$)(?!Categories$)(?!Visit:)([A-Za-z].+)$",
+  "carry_forward": true
+ },
+ "fields": {
+  "engine": "numbered_join",
+  "definition_page_all": [
+   "^Variable details$",
+   "^Export Name$",
+   "^Max length$"
+  ],
+  "definition_form_from_carry": true,
+  "oid_header": "Export Name",
+  "oid_regex": "^([A-Z][A-Z0-9_]*?)(?:[A-Z][a-z].*)?$",
+  "row_number_x_max": 70,
+  "data_number_regex": "\\[(\\d+)\\]",
+  "data_number_x_min": 40,
+  "data_label_x_max": 550,
+  "number_embedded_in_label": true,
+  "label_noise": [
+   "^MAC186_",
+   "^Yes\\b",
+   "^No\\b",
+   "^Version date",
+   "^\\d+$",
+   "^\\[\\d+\\]$",
+   "^Visit:"
+  ]
+ }
+}

@@ -1,0 +1,200 @@
+You are writing a deterministic extraction program for one specific clinical Case Report Form (CRF) PDF document. Below you will find a small sample of REPRESENTATIVE PAGES (one or two per page-layout cluster) from a document that is 206 pages long. The document is highly repetitive: the sampled pages cover its layouts, but the unsampled pages contain different content in the same layouts.
+
+NOTE: This document mixes more page-layout families than one program should
+handle, so the layouts are SPLIT ACROSS SEVERAL independent extraction
+programs. Your program is responsible ONLY for the layout families sampled
+below; other programs handle the rest. Your program still receives every page
+of the document: extract from every page whose layout matches the families
+shown here, and simply produce nothing for pages of other layouts (records you
+emit for foreign layouts are discarded by the harness, but wasting logic on
+them is pointless).
+
+Each sampled page is shown as structured text lines with geometry:
+    x=<left> y=<top> sz=<font-size> <color-hex or 'black'> <B if bold> | <text>
+
+# Your task
+
+Write a Python function that will run UNCHANGED over all 206 pages and extract every data-entry field of the CRF:
+  - form_name : the CRF form/section the field belongs to
+  - field_name: the human-readable field label/question
+
+That is the complete output. Some CRFs also print machine codes or technical
+annotations near fields - do NOT return those (they are resolved downstream by a
+separate system). You may still USE such markings as structural landmarks if that
+helps you locate fields reliably.
+
+# Runtime contract
+
+def extract(pages):
+    # pages: list of (page_index_0based, lines) tuples for the ENTIRE document, in
+    #        page order. lines is a list of Line objects sorted by y, then x.
+    #        NOTE: y-then-x order is NOT reading order on multi-column pages; if the
+    #        layout has side-by-side columns, use x coordinates to separate them.
+    #        For right-to-left scripts the within-row order is right-to-left, and
+    #        vertical text yields an arbitrary line order - reconstruct reading
+    #        order from the coordinates when the script needs it.
+    # Line attributes:
+    #   .text  (str, stripped visible text of one visual line)
+    #   .x0 .y0 .x1 .y1  (floats; PDF points; origin = top-left of the page)
+    #   .size  (float; font size in points; the largest span on the line)
+    #   .bold  (bool)
+    #   .non_black  (bool; True if any text on the line is printed in color)
+    # returns: list of dicts, one per extracted field occurrence:
+    #   {"form_name": str, "field_name": str, "page": int_1based}
+
+# Hard constraints
+
+- Pure computation only. These modules are already available: re, math, collections,
+  itertools, functools, string, unicodedata, bisect, statistics, json, typing,
+  dataclasses, enum, datetime. You may not import anything else, access
+  files/network, or print.
+- Deterministic, fast, simple: loops, regexes, coordinate arithmetic. It must
+  process all 206 pages in seconds.
+- Generalize from STRUCTURE, not content. The unsampled pages contain questions,
+  values and section names you have never seen. Never key your logic on specific
+  question wording from the samples; key it on geometry (x positions, font sizes,
+  color, boldness), on repeated marker/header patterns, and on the SHAPE of text
+  (regexes over character classes). The document may be in any language.
+- You may keep state across pages (the function receives the whole document) -
+  e.g. a form name announced once may govern many following pages.
+
+# Quality bar (your program's output is machine-checked before acceptance)
+
+- It must extract from every page that carries fields, not just the sampled ones.
+- form_name should be non-empty for the large majority of records. Use form/section
+  titles exactly as printed - do not invent, abbreviate, or reformat them. If the
+  document genuinely prints no form/section names, use the best available section
+  context; leave it empty only as a last resort.
+- field_name values must be human-readable label text - not machine codes, bare
+  numbers, dates, or page furniture (headers/footers/page numbers/watermarks/
+  legends).
+- A label/question may WRAP across several visual lines: join its continuation
+  lines into ONE field_name. Sentence fragments are not separate fields.
+- Answer OPTIONS are not fields: choice values (e.g. Yes / No / Unknown / list
+  items - examples here are English, apply the concept in the document's language)
+  belong to a field, they are not field_name records themselves. The same applies
+  to rating-scale anchor rows that merely explain what each numeric value means.
+- No duplicate records for the same (form_name, field_name) pair beyond what the
+  document itself repeats.
+
+# Reply format
+
+Reply with ONLY Python source code (no prose outside code comments). Start with a
+comment block (3-6 lines) stating what layout you observed in the samples and the
+extraction strategy you chose. Then define extract(pages) plus any helpers.
+
+# Representative pages of this document
+
+--- page 1 of 206 (layout cluster covers ~1 pages) ---
+x=  36.0 y=  11.5 sz= 9.0 black     | 384-201-00004
+x=  87.0 y= 244.8 sz=30.0 black   B | 384-201-00004
+x=  87.0 y= 323.3 sz=15.0 black     | A Phase 1, Open-label, Single-sequence Pharmacokinetic
+x=  87.0 y= 355.4 sz=15.0 black     | Trial to Assess the Effect of a Single Oral Dose of SEP-
+x=  87.0 y= 387.6 sz=15.0 black     | 380135 on the Potential for Cytochrome P450 2D6 Mediated
+x=  87.0 y= 419.7 sz=15.0 black     | Drug-drug Interactions in Healthy Adults
+x= 143.4 y= 468.6 sz=15.0 black     | Prepared by: Dr. Vince Clinical Research, LLC
+x= 162.1 y= 517.6 sz=15.0 black     | Generated on: 16Jan2025 14:44:24 CST
+x= 257.3 y= 647.8 sz=12.0 #0000ff   | CDISC Legend
+x=  63.5 y= 665.2 sz=10.5 black   B | Scheduled Activities Study Events Forms Item Groups Items Measurement Units Code Lists
+x=  36.0 y= 817.4 sz= 9.0 black     | Annotated CRF
+x= 281.4 y= 817.4 sz= 9.0 black     | 1 of 206
+x= 445.8 y= 817.4 sz= 9.0 black     | https://drvince.clinspark.com
+
+--- page 2 of 206 (layout cluster covers ~71 pages) ---
+x=  36.0 y=  11.5 sz= 9.0 black     | 384-201-00004
+x=  42.0 y=  34.8 sz=12.0 #ffffff   | Study Events
+x= 477.4 y=  55.9 sz=10.5 #666677 B | Category Visit
+x=  44.2 y=  62.1 sz=10.5 #666677 B | Name
+x= 216.8 y=  62.1 sz=10.5 #666677 B | Forms
+x= 387.6 y=  62.1 sz=10.5 #666677 B | Type
+x= 525.9 y=  68.4 sz=10.5 #666677 B | No
+x= 218.3 y=  93.8 sz= 9.0 #0000ff   | AE / CM
+x= 218.3 y= 104.3 sz= 9.0 #0000ff   | Genomic ICF
+x= 218.3 y= 114.7 sz= 9.0 #0000ff   | Protocol Deviations
+x= 218.3 y= 125.1 sz= 9.0 #0000ff   | Subject Eligibility
+x= 218.3 y= 135.5 sz= 9.0 #0000ff   | Subject Informed Consent
+x= 218.3 y= 146.0 sz= 9.0 #0000ff   | Urine Collection - PK - Interval Start (0-2)
+x= 218.3 y= 156.4 sz= 9.0 #0000ff   | Urine Collection - PK - Interval Start (12-
+x= 218.3 y= 166.8 sz= 9.0 #0000ff   | 24)
+x= 218.3 y= 177.2 sz= 9.0 #0000ff   | Urine Collection - PK - Interval Start (2-4)
+x=  44.2 y= 187.7 sz= 9.0 black     | Subject
+x= 218.3 y= 187.7 sz= 9.0 #0000ff   | Urine Collection - PK - Interval Start (4-8)
+x= 387.6 y= 189.3 sz= 6.8 black     | Common
+x= 218.3 y= 198.1 sz= 9.0 #0000ff   | Urine Collection - PK - Interval Start (8-
+x= 218.3 y= 208.5 sz= 9.0 #0000ff   | 12)
+x= 218.3 y= 218.9 sz= 9.0 #0000ff   | Urine Collection - PK - Interval Stop (0-2)
+x= 218.3 y= 229.4 sz= 9.0 #0000ff   | Urine Collection - PK - Interval Stop (12-
+x= 218.3 y= 239.8 sz= 9.0 #0000ff   | 24)
+x= 218.3 y= 250.2 sz= 9.0 #0000ff   | Urine Collection - PK - Interval Stop (2-4)
+x= 218.3 y= 260.6 sz= 9.0 #0000ff   | Urine Collection - PK - Interval Stop (4-8)
+x= 218.3 y= 271.1 sz= 9.0 #0000ff   | Urine Collection - PK - Interval Stop (8-
+x= 218.3 y= 281.5 sz= 9.0 #0000ff   | 12)
+x=  44.2 y= 305.0 sz= 9.0 black     | Unscheduled
+x= 387.6 y= 306.7 sz= 6.8 black     | Unscheduled
+x= 218.3 y= 328.5 sz= 9.0 #0000ff   | AE / CM
+x= 218.3 y= 338.9 sz= 9.0 #0000ff   | Genomic ICF
+x= 218.3 y= 349.4 sz= 9.0 #0000ff   | Protocol Deviations
+x= 218.3 y= 359.8 sz= 9.0 #0000ff   | Subject Eligibility
+x= 218.3 y= 370.2 sz= 9.0 #0000ff   | Subject Informed Consent
+x= 218.3 y= 380.6 sz= 9.0 #0000ff   | Urine Collection - PK - Interval Start (0-2)
+x= 218.3 y= 391.1 sz= 9.0 #0000ff   | Urine Collection - PK - Interval Start (12-
+x= 218.3 y= 401.5 sz= 9.0 #0000ff   | 24)
+x= 218.3 y= 411.9 sz= 9.0 #0000ff   | Urine Collection - PK - Interval Start (2-4)
+x=  44.2 y= 422.3 sz= 9.0 black     | AE/CM / Protocol Deviation
+x= 218.3 y= 422.3 sz= 9.0 #0000ff   | Urine Collection - PK - Interval Start (4-8)
+x= 387.6 y= 424.0 sz= 6.8 black     | Common
+x= 218.3 y= 432.8 sz= 9.0 #0000ff   | Urine Collection - PK - Interval Start (8-
+x= 218.3 y= 443.2 sz= 9.0 #0000ff   | 12)
+x= 218.3 y= 453.6 sz= 9.0 #0000ff   | Urine Collection - PK - Interval Stop (0-2)
+x= 218.3 y= 464.0 sz= 9.0 #0000ff   | Urine Collection - PK - Interval Stop (12-
+x= 218.3 y= 474.5 sz= 9.0 #0000ff   | 24)
+x= 218.3 y= 484.9 sz= 9.0 #0000ff   | Urine Collection - PK - Interval Stop (2-4)
+x= 218.3 y= 495.3 sz= 9.0 #0000ff   | Urine Collection - PK - Interval Stop (4-8)
+x= 218.3 y= 505.7 sz= 9.0 #0000ff   | Urine Collection - PK - Interval Stop (8-
+x= 218.3 y= 516.2 sz= 9.0 #0000ff   | 12)
+x=  44.2 y= 539.7 sz= 9.0 black     | Day -28 to Day -3
+x= 387.6 y= 541.3 sz= 6.8 black     | Scheduled
+x=  44.2 y= 553.1 sz= 9.0 black     | Day -2
+x= 387.6 y= 554.8 sz= 6.8 black     | Scheduled
+x=  44.2 y= 566.5 sz= 9.0 black     | Day -1
+x= 387.6 y= 568.2 sz= 6.8 black     | Scheduled
+x=  44.2 y= 579.9 sz= 9.0 black     | Day 1
+x= 387.6 y= 581.6 sz= 6.8 black     | Scheduled
+x=  44.2 y= 593.4 sz= 9.0 black     | Day 2
+x= 387.6 y= 595.0 sz= 6.8 black     | Scheduled
+x=  44.2 y= 606.8 sz= 9.0 black     | Day 3
+x= 387.6 y= 608.5 sz= 6.8 black     | Scheduled
+x=  44.2 y= 620.2 sz= 9.0 black     | Day 4
+x= 387.6 y= 621.9 sz= 6.8 black     | Scheduled
+x=  44.2 y= 633.6 sz= 9.0 black     | Day 5
+x= 387.6 y= 635.3 sz= 6.8 black     | Scheduled
+x=  44.2 y= 647.1 sz= 9.0 black     | Day 6
+x= 387.6 y= 648.7 sz= 6.8 black     | Scheduled
+x=  44.2 y= 660.5 sz= 9.0 black     | Day 7
+x= 387.6 y= 662.2 sz= 6.8 black     | Scheduled
+x=  44.2 y= 673.9 sz= 9.0 black     | Day 8
+x= 387.6 y= 675.6 sz= 6.8 black     | Scheduled
+x=  44.2 y= 687.3 sz= 9.0 black     | Day 9
+x= 387.6 y= 689.0 sz= 6.8 black     | Scheduled
+x=  44.2 y= 700.8 sz= 9.0 black     | Day 10
+x= 387.6 y= 702.4 sz= 6.8 black     | Scheduled
+x=  44.2 y= 714.2 sz= 9.0 black     | Day 11
+x= 387.6 y= 715.9 sz= 6.8 black     | Scheduled
+x=  44.2 y= 727.6 sz= 9.0 black     | Follow Up Day 37
+x= 387.6 y= 729.3 sz= 6.8 black     | Scheduled
+x=  44.2 y= 741.0 sz= 9.0 black     | Early Termination
+x= 387.6 y= 742.7 sz= 6.8 black     | Scheduled
+x=  36.0 y= 817.4 sz= 9.0 black     | Annotated CRF
+x= 281.4 y= 817.4 sz= 9.0 black     | 2 of 206
+x= 445.8 y= 817.4 sz= 9.0 black     | https://drvince.clinspark.com
+
+--- page 8 of 206 (layout cluster covers ~7 pages) ---
+x=  36.0 y=  11.5 sz= 9.0 black     | 384-201-00004
+x= 456.5 y=  35.2 sz= 5.6 black     | Description: Query if CM Start Date
+x= 456.5 y=  41.8 sz= 5.6 black     | /Time is after CM End Date/Time.
+x= 453.5 y=  48.3 sz= 5.6 black     | Mandatory?: Yes
+x= 453.5 y=  54.8 sz= 5.6 black     | Disallow Future Date: Yes
+x=  36.0 y= 817.4 sz= 9.0 black     | Annotated CRF
+x= 281.4 y= 817.4 sz= 9.0 black     | 8 of 206
+x= 445.8 y= 817.4 sz= 9.0 black     | https://drvince.clinspark.com
+

@@ -1,0 +1,480 @@
+{
+ "stop_reason": "plateau",
+ "versions": 3,
+ "best_version": 3,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "confirm",
+   "outcome": "confirmed_no_fields"
+  },
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 467,
+    "pages_total": 109,
+    "pages_with_fields": 59,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 90,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 24,
+    "fields_per_form": 19.5,
+    "forms_per_100_pages": 22.0,
+    "form_same_page_evidence_records": 466,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 54
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 127,
+   "audit_pages": [
+    2,
+    12,
+    21,
+    42,
+    479,
+    490
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 2,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 12,
+     "missed": [],
+     "false": [
+      "0.3",
+      "15-Jul-2021",
+      "Andreea Hardut / Alexan",
+      "updates according to feedback sheet",
+      "dru Giucal",
+      "0.4",
+      "21Jul2021",
+      "Andreea Rubei / Cosmin",
+      "deploy to UAT 2",
+      "Manolescu",
+      "0.5",
+      "27Jul2021",
+      "Andreea Rubei",
+      "updated informed_consent_group on Trial tab",
+      "0.6",
+      "fixes for integration",
+      "0.7",
+      "29Jul2021",
+      "deploy to UAT 3",
+      "0.8",
+      "05Aug2021",
+      "Andreea Rubei / Alexand",
+      "deploy to UAT 4",
+      "ru Giucal",
+      "0.9",
+      "06Aug2021",
+      "0.10",
+      "11Aug2021",
+      "0.11",
+      "0.12",
+      "13Aug2021",
+      "0.13",
+      "16Aug2021",
+      "implemented client feedback",
+      "1.0",
+      "17Aug2021",
+      "deployment to live",
+      "1.1",
+      "14Oct2021",
+      "Andreea Rubei/Alexandr",
+      "applied changes according to CRP",
+      "u Giucal",
+      "1.2",
+      "19Oct2021",
+      "updated answer options for variable DSDIS3 per clie nt requirement",
+      "2.0",
+      "26Nov2021",
+      "Deploy v2.0 to live",
+      "2.1",
+      "03Jan2022",
+      "Alexandru Giucal",
+      "2.2",
+      "06Jan2022",
+      "updated error message per last POE doc",
+      "2.3",
+      "18Jan2022",
+      "- removed checks sv_10 to sv_13 - removed Water Re striction End page from Day-1 and Day 18",
+      "2.4",
+      "20Jan2022",
+      "added new Water Restriction End Prompt page in Da y-1 and Day 18",
+      "2.5",
+      "25Jan2022",
+      "added new procedure instructions on Water Restrictio"
+     ],
+     "wrong_form": [
+      "0.3",
+      "15-Jul-2021",
+      "Andreea Hardut / Alexan",
+      "updates according to feedback sheet",
+      "dru Giucal",
+      "0.4",
+      "21Jul2021",
+      "Andreea Rubei / Cosmin",
+      "deploy to UAT 2",
+      "Manolescu",
+      "0.5",
+      "27Jul2021",
+      "Andreea Rubei",
+      "updated informed_consent_group on Trial tab",
+      "0.6",
+      "fixes for integration",
+      "0.7",
+      "29Jul2021",
+      "deploy to UAT 3",
+      "0.8",
+      "05Aug2021",
+      "Andreea Rubei / Alexand",
+      "deploy to UAT 4",
+      "ru Giucal",
+      "0.9",
+      "06Aug2021",
+      "0.10",
+      "11Aug2021",
+      "0.11",
+      "0.12",
+      "13Aug2021",
+      "0.13",
+      "16Aug2021",
+      "implemented client feedback",
+      "1.0",
+      "17Aug2021",
+      "deployment to live",
+      "1.1",
+      "14Oct2021",
+      "Andreea Rubei/Alexandr",
+      "applied changes according to CRP",
+      "u Giucal",
+      "1.2",
+      "19Oct2021",
+      "updated answer options for variable DSDIS3 per clie nt requirement",
+      "2.0",
+      "26Nov2021",
+      "Deploy v2.0 to live",
+      "2.1",
+      "03Jan2022",
+      "Alexandru Giucal",
+      "2.2",
+      "06Jan2022",
+      "updated error message per last POE doc",
+      "2.3",
+      "18Jan2022",
+      "- removed checks sv_10 to sv_13 - removed Water Re striction End page from Day-1 and Day 18",
+      "2.4",
+      "20Jan2022",
+      "added new Water Restriction End Prompt page in Da y-1 and Day 18",
+      "2.5",
+      "25Jan2022",
+      "added new procedure instructions on Water Restrictio"
+     ]
+    },
+    {
+     "page": 21,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 42,
+     "missed": [],
+     "false": [
+      "Bilateral Oophorectomy Bilateral Tubal Ligation"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 479,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 490,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    127,
+    0,
+    -59
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 670,
+    "pages_total": 109,
+    "pages_with_fields": 84,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 92,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 26,
+    "fields_per_form": 25.8,
+    "forms_per_100_pages": 23.9,
+    "form_same_page_evidence_records": 659,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 77
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 37,
+   "audit_pages": [
+    2,
+    12,
+    21,
+    42,
+    118,
+    261,
+    479,
+    490
+   ],
+   "audit_partial": null,
+   "audit_promoted": [
+    118
+   ],
+   "audit_verdicts": [
+    {
+     "page": 2,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 12,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 21,
+     "missed": [],
+     "false": [
+      "Body Temperature and Respirat",
+      "ory Rate",
+      "Triplicate Orthostatic BP and H",
+      "R - Predose",
+      "IMP Administration - Sertraline",
+      "and Prazosin",
+      "R - 1h Postdose",
+      "R - 1.5h Postdose",
+      "R - 2h Postdose",
+      "R - 2.5h Postdose",
+      "R - 3h Postdose",
+      "R - 4h Postdose",
+      "R - 6h Postdose"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 42,
+     "missed": [],
+     "false": [
+      "Bilateral Oophorectomy Bilateral Tubal Ligation"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 118,
+     "missed": [],
+     "false": [
+      "Intensity of Ideation",
+      "Past 3 Month",
+      "The following features should be rated with respect to the most severe type of ideation (i.e. 1-5 from above, with 1 being the least severe and 5 being the most severe). Ask about time he/she was feeling the most suicidal.",
+      "(1) Wish to be dead",
+      "Most severe ideation",
+      "(2) Non-specific",
+      "active suicidal",
+      "thoughts",
+      "(3) Active suicidal",
+      "ideation with any",
+      "method (not plan) w/",
+      "out intent to act",
+      "(4) Active suicidal",
+      "ideation w/ some",
+      "intent to act w/out",
+      "specific plan",
+      "(5) Active suicidal",
+      "ideation w/ specific",
+      "plan and intent"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 261,
+     "missed": [],
+     "false": [
+      "Intensity of Ideation"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 479,
+     "missed": [],
+     "false": [
+      "Disclaimer:",
+      "This scale is intended to be used by individuals who have received training in its administration. The questions contained in the Columbia-Suicide Severity Rating Scale are suggested probes. Ultimately, the determination of the presence of suicidal ideation or behavior depends on the judgment of the individual administering the scale."
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 490,
+     "missed": [],
+     "false": [
+      "Intensity of Ideation"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    37,
+    0,
+    -84
+   ],
+   "became_best": false
+  },
+  {
+   "version": 3,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 333,
+    "pages_total": 109,
+    "pages_with_fields": 79,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 86,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 28,
+    "fields_per_form": 11.9,
+    "forms_per_100_pages": 25.7,
+    "form_same_page_evidence_records": 312,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 72
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 9,
+   "audit_pages": [
+    2,
+    12,
+    21,
+    42,
+    118,
+    331,
+    479,
+    490
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 2,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 12,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 21,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 42,
+     "missed": [
+      "Date of Last Menstrual Cycle (All Females)"
+     ],
+     "false": [
+      "Bilateral Oophorectomy Bilateral Tubal Ligation"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 118,
+     "missed": [
+      "Most severe ideation"
+     ],
+     "false": [
+      "specific plan",
+      "ideation w/ specific",
+      "plan and intent"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 331,
+     "missed": [],
+     "false": [],
+     "wrong_form": [
+      "Since Last Visit"
+     ]
+    },
+    {
+     "page": 479,
+     "missed": [],
+     "false": [
+      "Since Last Visit"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 490,
+     "missed": [],
+     "false": [],
+     "wrong_form": [
+      "Since Last Visit"
+     ]
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    9,
+    0,
+    -79
+   ],
+   "became_best": true
+  }
+ ]
+}

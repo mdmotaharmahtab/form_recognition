@@ -1,0 +1,562 @@
+You are writing a deterministic extraction program for one specific clinical Case Report Form (CRF) PDF document. Below you will find a small sample of REPRESENTATIVE PAGES (one or two per page-layout cluster) from a document that is 206 pages long. The document is highly repetitive: the sampled pages cover its layouts, but the unsampled pages contain different content in the same layouts.
+
+NOTE: This document mixes more page-layout families than one program should
+handle, so the layouts are SPLIT ACROSS SEVERAL independent extraction
+programs. Your program is responsible ONLY for the layout families sampled
+below; other programs handle the rest. Your program still receives every page
+of the document: extract from every page whose layout matches the families
+shown here, and simply produce nothing for pages of other layouts (records you
+emit for foreign layouts are discarded by the harness, but wasting logic on
+them is pointless).
+
+Each sampled page is shown as structured text lines with geometry:
+    x=<left> y=<top> sz=<font-size> <color-hex or 'black'> <B if bold> | <text>
+
+# Your task
+
+Write a Python function that will run UNCHANGED over all 206 pages and extract every data-entry field of the CRF:
+  - form_name : the CRF form/section the field belongs to
+  - field_name: the human-readable field label/question
+
+That is the complete output. Some CRFs also print machine codes or technical
+annotations near fields - do NOT return those (they are resolved downstream by a
+separate system). You may still USE such markings as structural landmarks if that
+helps you locate fields reliably.
+
+# Runtime contract
+
+def extract(pages):
+    # pages: list of (page_index_0based, lines) tuples for the ENTIRE document, in
+    #        page order. lines is a list of Line objects sorted by y, then x.
+    #        NOTE: y-then-x order is NOT reading order on multi-column pages; if the
+    #        layout has side-by-side columns, use x coordinates to separate them.
+    #        For right-to-left scripts the within-row order is right-to-left, and
+    #        vertical text yields an arbitrary line order - reconstruct reading
+    #        order from the coordinates when the script needs it.
+    # Line attributes:
+    #   .text  (str, stripped visible text of one visual line)
+    #   .x0 .y0 .x1 .y1  (floats; PDF points; origin = top-left of the page)
+    #   .size  (float; font size in points; the largest span on the line)
+    #   .bold  (bool)
+    #   .non_black  (bool; True if any text on the line is printed in color)
+    # returns: list of dicts, one per extracted field occurrence:
+    #   {"form_name": str, "field_name": str, "page": int_1based}
+
+# Hard constraints
+
+- Pure computation only. These modules are already available: re, math, collections,
+  itertools, functools, string, unicodedata, bisect, statistics, json, typing,
+  dataclasses, enum, datetime. You may not import anything else, access
+  files/network, or print.
+- Deterministic, fast, simple: loops, regexes, coordinate arithmetic. It must
+  process all 206 pages in seconds.
+- Generalize from STRUCTURE, not content. The unsampled pages contain questions,
+  values and section names you have never seen. Never key your logic on specific
+  question wording from the samples; key it on geometry (x positions, font sizes,
+  color, boldness), on repeated marker/header patterns, and on the SHAPE of text
+  (regexes over character classes). The document may be in any language.
+- You may keep state across pages (the function receives the whole document) -
+  e.g. a form name announced once may govern many following pages.
+
+# Quality bar (your program's output is machine-checked before acceptance)
+
+- It must extract from every page that carries fields, not just the sampled ones.
+- form_name should be non-empty for the large majority of records. Use form/section
+  titles exactly as printed - do not invent, abbreviate, or reformat them. If the
+  document genuinely prints no form/section names, use the best available section
+  context; leave it empty only as a last resort.
+- field_name values must be human-readable label text - not machine codes, bare
+  numbers, dates, or page furniture (headers/footers/page numbers/watermarks/
+  legends).
+- A label/question may WRAP across several visual lines: join its continuation
+  lines into ONE field_name. Sentence fragments are not separate fields.
+- Answer OPTIONS are not fields: choice values (e.g. Yes / No / Unknown / list
+  items - examples here are English, apply the concept in the document's language)
+  belong to a field, they are not field_name records themselves. The same applies
+  to rating-scale anchor rows that merely explain what each numeric value means.
+- No duplicate records for the same (form_name, field_name) pair beyond what the
+  document itself repeats.
+
+# Reply format
+
+Reply with ONLY Python source code (no prose outside code comments). Start with a
+comment block (3-6 lines) stating what layout you observed in the samples and the
+extraction strategy you chose. Then define extract(pages) plus any helpers.
+
+# Representative pages of this document
+
+--- page 1 of 206 (layout cluster covers ~1 pages) ---
+x=  36.0 y=  11.5 sz= 9.0 black     | 384-201-00004
+x=  87.0 y= 244.8 sz=30.0 black   B | 384-201-00004
+x=  87.0 y= 323.3 sz=15.0 black     | A Phase 1, Open-label, Single-sequence Pharmacokinetic
+x=  87.0 y= 355.4 sz=15.0 black     | Trial to Assess the Effect of a Single Oral Dose of SEP-
+x=  87.0 y= 387.6 sz=15.0 black     | 380135 on the Potential for Cytochrome P450 2D6 Mediated
+x=  87.0 y= 419.7 sz=15.0 black     | Drug-drug Interactions in Healthy Adults
+x= 143.4 y= 468.6 sz=15.0 black     | Prepared by: Dr. Vince Clinical Research, LLC
+x= 162.1 y= 517.6 sz=15.0 black     | Generated on: 16Jan2025 14:44:24 CST
+x= 257.3 y= 647.8 sz=12.0 #0000ff   | CDISC Legend
+x=  63.5 y= 665.2 sz=10.5 black   B | Scheduled Activities Study Events Forms Item Groups Items Measurement Units Code Lists
+x=  36.0 y= 817.4 sz= 9.0 black     | Annotated CRF
+x= 281.4 y= 817.4 sz= 9.0 black     | 1 of 206
+x= 445.8 y= 817.4 sz= 9.0 black     | https://drvince.clinspark.com
+
+--- page 2 of 206 (layout cluster covers ~71 pages) ---
+x=  36.0 y=  11.5 sz= 9.0 black     | 384-201-00004
+x=  42.0 y=  34.8 sz=12.0 #ffffff   | Study Events
+x= 477.4 y=  55.9 sz=10.5 #666677 B | Category Visit
+x=  44.2 y=  62.1 sz=10.5 #666677 B | Name
+x= 216.8 y=  62.1 sz=10.5 #666677 B | Forms
+x= 387.6 y=  62.1 sz=10.5 #666677 B | Type
+x= 525.9 y=  68.4 sz=10.5 #666677 B | No
+x= 218.3 y=  93.8 sz= 9.0 #0000ff   | AE / CM
+x= 218.3 y= 104.3 sz= 9.0 #0000ff   | Genomic ICF
+x= 218.3 y= 114.7 sz= 9.0 #0000ff   | Protocol Deviations
+x= 218.3 y= 125.1 sz= 9.0 #0000ff   | Subject Eligibility
+x= 218.3 y= 135.5 sz= 9.0 #0000ff   | Subject Informed Consent
+x= 218.3 y= 146.0 sz= 9.0 #0000ff   | Urine Collection - PK - Interval Start (0-2)
+x= 218.3 y= 156.4 sz= 9.0 #0000ff   | Urine Collection - PK - Interval Start (12-
+x= 218.3 y= 166.8 sz= 9.0 #0000ff   | 24)
+x= 218.3 y= 177.2 sz= 9.0 #0000ff   | Urine Collection - PK - Interval Start (2-4)
+x=  44.2 y= 187.7 sz= 9.0 black     | Subject
+x= 218.3 y= 187.7 sz= 9.0 #0000ff   | Urine Collection - PK - Interval Start (4-8)
+x= 387.6 y= 189.3 sz= 6.8 black     | Common
+x= 218.3 y= 198.1 sz= 9.0 #0000ff   | Urine Collection - PK - Interval Start (8-
+x= 218.3 y= 208.5 sz= 9.0 #0000ff   | 12)
+x= 218.3 y= 218.9 sz= 9.0 #0000ff   | Urine Collection - PK - Interval Stop (0-2)
+x= 218.3 y= 229.4 sz= 9.0 #0000ff   | Urine Collection - PK - Interval Stop (12-
+x= 218.3 y= 239.8 sz= 9.0 #0000ff   | 24)
+x= 218.3 y= 250.2 sz= 9.0 #0000ff   | Urine Collection - PK - Interval Stop (2-4)
+x= 218.3 y= 260.6 sz= 9.0 #0000ff   | Urine Collection - PK - Interval Stop (4-8)
+x= 218.3 y= 271.1 sz= 9.0 #0000ff   | Urine Collection - PK - Interval Stop (8-
+x= 218.3 y= 281.5 sz= 9.0 #0000ff   | 12)
+x=  44.2 y= 305.0 sz= 9.0 black     | Unscheduled
+x= 387.6 y= 306.7 sz= 6.8 black     | Unscheduled
+x= 218.3 y= 328.5 sz= 9.0 #0000ff   | AE / CM
+x= 218.3 y= 338.9 sz= 9.0 #0000ff   | Genomic ICF
+x= 218.3 y= 349.4 sz= 9.0 #0000ff   | Protocol Deviations
+x= 218.3 y= 359.8 sz= 9.0 #0000ff   | Subject Eligibility
+x= 218.3 y= 370.2 sz= 9.0 #0000ff   | Subject Informed Consent
+x= 218.3 y= 380.6 sz= 9.0 #0000ff   | Urine Collection - PK - Interval Start (0-2)
+x= 218.3 y= 391.1 sz= 9.0 #0000ff   | Urine Collection - PK - Interval Start (12-
+x= 218.3 y= 401.5 sz= 9.0 #0000ff   | 24)
+x= 218.3 y= 411.9 sz= 9.0 #0000ff   | Urine Collection - PK - Interval Start (2-4)
+x=  44.2 y= 422.3 sz= 9.0 black     | AE/CM / Protocol Deviation
+x= 218.3 y= 422.3 sz= 9.0 #0000ff   | Urine Collection - PK - Interval Start (4-8)
+x= 387.6 y= 424.0 sz= 6.8 black     | Common
+x= 218.3 y= 432.8 sz= 9.0 #0000ff   | Urine Collection - PK - Interval Start (8-
+x= 218.3 y= 443.2 sz= 9.0 #0000ff   | 12)
+x= 218.3 y= 453.6 sz= 9.0 #0000ff   | Urine Collection - PK - Interval Stop (0-2)
+x= 218.3 y= 464.0 sz= 9.0 #0000ff   | Urine Collection - PK - Interval Stop (12-
+x= 218.3 y= 474.5 sz= 9.0 #0000ff   | 24)
+x= 218.3 y= 484.9 sz= 9.0 #0000ff   | Urine Collection - PK - Interval Stop (2-4)
+x= 218.3 y= 495.3 sz= 9.0 #0000ff   | Urine Collection - PK - Interval Stop (4-8)
+x= 218.3 y= 505.7 sz= 9.0 #0000ff   | Urine Collection - PK - Interval Stop (8-
+x= 218.3 y= 516.2 sz= 9.0 #0000ff   | 12)
+x=  44.2 y= 539.7 sz= 9.0 black     | Day -28 to Day -3
+x= 387.6 y= 541.3 sz= 6.8 black     | Scheduled
+x=  44.2 y= 553.1 sz= 9.0 black     | Day -2
+x= 387.6 y= 554.8 sz= 6.8 black     | Scheduled
+x=  44.2 y= 566.5 sz= 9.0 black     | Day -1
+x= 387.6 y= 568.2 sz= 6.8 black     | Scheduled
+x=  44.2 y= 579.9 sz= 9.0 black     | Day 1
+x= 387.6 y= 581.6 sz= 6.8 black     | Scheduled
+x=  44.2 y= 593.4 sz= 9.0 black     | Day 2
+x= 387.6 y= 595.0 sz= 6.8 black     | Scheduled
+x=  44.2 y= 606.8 sz= 9.0 black     | Day 3
+x= 387.6 y= 608.5 sz= 6.8 black     | Scheduled
+x=  44.2 y= 620.2 sz= 9.0 black     | Day 4
+x= 387.6 y= 621.9 sz= 6.8 black     | Scheduled
+x=  44.2 y= 633.6 sz= 9.0 black     | Day 5
+x= 387.6 y= 635.3 sz= 6.8 black     | Scheduled
+x=  44.2 y= 647.1 sz= 9.0 black     | Day 6
+x= 387.6 y= 648.7 sz= 6.8 black     | Scheduled
+x=  44.2 y= 660.5 sz= 9.0 black     | Day 7
+x= 387.6 y= 662.2 sz= 6.8 black     | Scheduled
+x=  44.2 y= 673.9 sz= 9.0 black     | Day 8
+x= 387.6 y= 675.6 sz= 6.8 black     | Scheduled
+x=  44.2 y= 687.3 sz= 9.0 black     | Day 9
+x= 387.6 y= 689.0 sz= 6.8 black     | Scheduled
+x=  44.2 y= 700.8 sz= 9.0 black     | Day 10
+x= 387.6 y= 702.4 sz= 6.8 black     | Scheduled
+x=  44.2 y= 714.2 sz= 9.0 black     | Day 11
+x= 387.6 y= 715.9 sz= 6.8 black     | Scheduled
+x=  44.2 y= 727.6 sz= 9.0 black     | Follow Up Day 37
+x= 387.6 y= 729.3 sz= 6.8 black     | Scheduled
+x=  44.2 y= 741.0 sz= 9.0 black     | Early Termination
+x= 387.6 y= 742.7 sz= 6.8 black     | Scheduled
+x=  36.0 y= 817.4 sz= 9.0 black     | Annotated CRF
+x= 281.4 y= 817.4 sz= 9.0 black     | 2 of 206
+x= 445.8 y= 817.4 sz= 9.0 black     | https://drvince.clinspark.com
+
+--- page 31 of 206 (layout cluster covers ~9 pages) ---
+x=  36.0 y=  11.5 sz= 9.0 black     | 384-201-00004
+x=  42.0 y=  34.8 sz=12.0 #ffffff   | Concomitant Medications - Screening
+x= 498.9 y=  36.6 sz= 9.6 #ffffff   | Origin: CRF
+x=  48.0 y=  55.2 sz= 7.8 #ffffff B | Aliases:
+x=  77.9 y=  55.3 sz= 7.8 #ffffff   | CC Mapping = Concomitant Medications, CC Mapping = Medication History
+x=  43.5 y=  72.8 sz=10.5 #31708f   | CM Leading Question
+x= 286.3 y=  73.4 sz= 8.4 #31708f   | Origin: CRF; Repeating: No; Domain:
+x= 429.5 y=  73.4 sz= 8.4 #31708f B | CM2
+x= 447.3 y=  73.4 sz= 8.4 #31708f   | ; SAS Dataset Name:
+x= 531.7 y=  73.4 sz= 8.4 #31708f B | CM2
+x=  49.5 y=  88.0 sz= 6.8 #808080 B | Aliases:
+x=  75.7 y=  88.0 sz= 6.8 #808080   | Odm OID = IG.1986
+x= 453.5 y= 110.8 sz= 5.6 black   B | CMYN
+x=  46.5 y= 113.4 sz= 7.5 black     | Were any concomitant medications taken?
+x= 453.5 y= 117.4 sz= 5.6 black     | Format: $1
+x= 453.5 y= 123.9 sz= 5.6 black     | Data Type: string
+x= 249.2 y= 128.8 sz= 7.5 black     | O Yes
+x= 453.5 y= 130.4 sz= 5.6 black     | Origin: CRF
+x=  46.5 y= 130.8 sz= 7.5 black     | [CMYN]
+x= 453.5 y= 136.9 sz= 5.6 black     | Aliases:
+x= 249.2 y= 137.5 sz= 7.5 black     | O No
+x=  46.5 y= 139.5 sz= 7.5 black     | [SAS Field Name: CMYN]
+x= 456.5 y= 143.5 sz= 5.6 black     | Odm OID = I.7705
+x= 453.5 y= 150.0 sz= 5.6 black     | Description: Any Concomitant
+x= 253.0 y= 150.1 sz= 6.4 #808080   | Code List: Yes/No
+x=  53.2 y= 150.7 sz= 6.4 #808080   | Documentation of all non-study medications, including prescription,
+x= 453.5 y= 156.5 sz= 5.6 black     | Medications Taken
+x=  53.2 y= 158.1 sz= 6.4 #808080   | over-the-counter, herbal/therapies/natural health products and
+x= 453.5 y= 163.0 sz= 5.6 black     | Mandatory?: Yes
+x=  53.2 y= 165.5 sz= 6.4 #808080   | supplements 30 days prior to screening.
+x= 453.5 y= 169.6 sz= 5.6 black     | Disallow Future Date: Yes
+x=  43.5 y= 189.9 sz=10.5 #31708f   | CM
+x= 124.2 y= 190.5 sz= 8.4 #31708f   | Origin: CRF; Repeating: Yes; User Additions: Yes; Conditionally Visible; Domain:
+x= 429.4 y= 190.5 sz= 8.4 #31708f B | CM2
+x= 447.1 y= 190.5 sz= 8.4 #31708f   | ; SAS Dataset Name:
+x= 531.6 y= 190.5 sz= 8.4 #31708f B | CM2
+x=  49.5 y= 205.0 sz= 6.8 #808080 B | Description: Concomitant Medications (Screening)
+x= 453.5 y= 227.8 sz= 5.6 black   B | CMTRT
+x= 453.5 y= 234.4 sz= 5.6 black     | Format: $200
+x=  46.5 y= 236.2 sz= 7.5 black     | Concomitant medication or therapy
+x= 453.5 y= 241.0 sz= 5.6 black     | Data Type: text
+x= 453.5 y= 247.5 sz= 5.6 black     | Origin: CRF
+x= 249.2 y= 249.2 sz= 7.5 black     | [____________________]
+x=  46.5 y= 253.6 sz= 7.5 black     | [CMTRT]
+x= 453.5 y= 254.0 sz= 5.6 black     | Description: Concomitant medication
+x= 453.5 y= 260.5 sz= 5.6 black     | or therapy
+x=  46.5 y= 262.3 sz= 7.5 black     | [SAS Field Name: CMTRT]
+x= 453.5 y= 267.1 sz= 5.6 black     | Mandatory?: Yes
+x= 453.5 y= 273.6 sz= 5.6 black     | Disallow Future Date: Yes
+x= 249.2 y= 289.1 sz= 7.5 black     | O TOPICAL
+x= 249.2 y= 297.8 sz= 7.5 black     | O ORAL
+x= 249.2 y= 306.5 sz= 7.5 black     | O AURICULAR (OTIC)
+x= 249.2 y= 315.2 sz= 7.5 black     | O EPIDURAL
+x= 249.2 y= 323.9 sz= 7.5 black     | O INTRAOCULAR
+x= 249.2 y= 332.6 sz= 7.5 black     | O INTRAMUSCULAR
+x= 249.2 y= 341.3 sz= 7.5 black     | O INTRALESIONAL
+x= 249.2 y= 350.0 sz= 7.5 black     | O INTRAPERITONEAL
+x= 249.2 y= 358.7 sz= 7.5 black     | O INTRAVENOUS
+x= 249.2 y= 367.4 sz= 7.5 black     | O INTRATHECAL
+x= 249.2 y= 376.1 sz= 7.5 black     | O INTRA-ARTICULAR
+x= 249.2 y= 384.8 sz= 7.5 black     | O INTRADERMAL
+x= 249.2 y= 393.5 sz= 7.5 black     | O INTRA-ARTERIAL
+x= 249.2 y= 402.2 sz= 7.5 black     | O INTRAUTERINE
+x= 453.5 y= 407.0 sz= 5.6 black   B | CMROUTE
+x= 249.2 y= 410.9 sz= 7.5 black     | O INTRAVAGINAL
+x=  46.5 y= 412.1 sz= 7.5 black     | Route of administration
+x= 453.5 y= 413.6 sz= 5.6 black     | Format: $100
+x= 249.2 y= 419.6 sz= 7.5 black     | O INTRAVENTRICULAR
+x= 453.5 y= 420.1 sz= 5.6 black     | Data Type: string
+x= 453.5 y= 426.7 sz= 5.6 black     | Origin: CRF
+x= 249.2 y= 428.3 sz= 7.5 black     | O LARYNGEAL
+x=  46.5 y= 429.5 sz= 7.5 black     | [CMROUTE]
+x= 453.5 y= 433.2 sz= 5.6 black     | Description: Route of Administration
+x= 249.2 y= 437.0 sz= 7.5 black     | O NASAL
+x=  46.5 y= 438.2 sz= 7.5 black     | [SAS Field Name: CMROUTE]
+x= 453.5 y= 439.7 sz= 5.6 black     | Mandatory?: No
+x= 249.2 y= 445.7 sz= 7.5 black     | O NASOGASTRIC
+x= 453.5 y= 446.2 sz= 5.6 black     | Disallow Future Date: Yes
+x= 249.2 y= 454.4 sz= 7.5 black     | O NOT APPLICABLE
+x= 249.2 y= 463.1 sz= 7.5 black     | O OPHTHALMIC
+x= 249.2 y= 471.8 sz= 7.5 black     | O PERIARTICULAR
+x= 249.2 y= 480.5 sz= 7.5 black     | O RECTAL
+x= 249.2 y= 489.2 sz= 7.5 black     | O RESPIRATION (INHALATION)
+x= 249.2 y= 497.9 sz= 7.5 black     | O RESPIRATORY (INHALATION)
+x= 249.2 y= 506.6 sz= 7.5 black     | O SUBCUTANEOUS
+x= 249.2 y= 515.3 sz= 7.5 black     | O SUBLINGUAL
+x= 249.2 y= 524.0 sz= 7.5 black     | O TRANSDERMAL
+x= 249.2 y= 532.7 sz= 7.5 black     | O UNKNOWN
+x= 249.2 y= 541.4 sz= 7.5 black     | O URETERAL
+x= 249.2 y= 550.1 sz= 7.5 black     | O VAGINAL
+x= 253.0 y= 562.7 sz= 6.4 #808080   | Code List: CM Dose Route
+x= 453.5 y= 579.7 sz= 5.6 black   B | CMDOSE
+x=  46.5 y= 584.7 sz= 7.5 black     | Total dose
+x= 453.5 y= 586.3 sz= 5.6 black     | Format: N(3.2)
+x= 453.5 y= 592.8 sz= 5.6 black     | Data Type: float
+x= 249.2 y= 597.8 sz= 7.5 black     | [_|_|_] . [_|_]
+x= 453.5 y= 599.3 sz= 5.6 black     | Origin: CRF
+x=  46.5 y= 602.1 sz= 7.5 black     | [CMDOSE]
+x= 453.5 y= 605.8 sz= 5.6 black     | Description: Total dose
+x=  46.5 y= 610.8 sz= 7.5 black     | [SAS Field Name: CMDOSE]
+x= 453.5 y= 612.4 sz= 5.6 black     | Mandatory?: No
+x= 453.5 y= 618.9 sz= 5.6 black     | Disallow Future Date: Yes
+x= 453.5 y= 641.1 sz= 5.6 black   B | CMDOSFRM
+x=  46.5 y= 646.2 sz= 7.5 black     | Dose form
+x= 453.5 y= 647.7 sz= 5.6 black     | Format: $100
+x= 453.5 y= 654.2 sz= 5.6 black     | Data Type: string
+x= 249.2 
+<...page truncated...>
+
+--- page 50 of 206 (layout cluster covers ~118 pages) ---
+x=  36.0 y=  11.5 sz= 9.0 black     | 384-201-00004
+x=  42.0 y=  34.8 sz=12.0 #ffffff   | ECG Triplicate (RScribe)
+x= 498.9 y=  36.6 sz= 9.6 #ffffff   | Origin: CRF
+x=  48.0 y=  55.2 sz= 7.8 #ffffff B | Aliases:
+x=  77.9 y=  55.3 sz= 7.8 #ffffff   | CC Mapping = 12 Lead ECG, Odm OID = F.1192
+x=  43.5 y=  72.8 sz=10.5 #31708f   | Electrocardiogram 1
+x= 314.2 y=  73.4 sz= 8.4 #31708f B | Origin: CRF; Repeating: No; Conditionally Visible; Domain: EG
+x=  49.5 y=  88.0 sz= 6.8 #808080 B | Comment: Reading 1
+x= 201.6 y=  88.0 sz= 6.8 #808080 B | Description: RScribe
+x= 352.0 y=  88.0 sz= 6.8 #808080 B | Aliases:
+x= 378.1 y=  88.0 sz= 6.8 #808080   | Odm OID = IG.1557
+x= 452.1 y= 110.8 sz= 5.6 black   B | EGTESTCD
+x= 452.1 y= 117.4 sz= 5.6 black     | Format: N(3)
+x= 452.1 y= 123.9 sz= 5.6 black     | Data Type: integer
+x= 452.1 y= 130.4 sz= 5.6 black     | Origin: CRF
+x= 452.1 y= 136.9 sz= 5.6 black     | ?
+x= 452.1 y= 143.5 sz= 5.6 black     | Range (soft): 100-200
+x=  46.5 y= 148.5 sz= 7.5 black     | PR
+x= 452.1 y= 150.0 sz= 5.6 black     | Range (hard): 0-500
+x= 452.1 y= 156.5 sz= 5.6 black     | Units:
+x= 248.5 y= 161.5 sz= 7.5 black     | [_|_|_]
+x= 455.1 y= 163.0 sz= 5.6 black     | ms = ms
+x=  46.5 y= 165.9 sz= 7.5 black     | [PR]
+x= 452.1 y= 169.6 sz= 5.6 black     | SDS Var Name: PRAG
+x=  46.5 y= 174.6 sz= 7.5 black     | [SAS Field Name: EGTESTCD]
+x= 452.1 y= 176.1 sz= 5.6 black     | Device Parameter: RScribe; PR
+x= 452.1 y= 182.6 sz= 5.6 black     | Aliases:
+x= 455.1 y= 189.1 sz= 5.6 black     | Odm OID = I.5864
+x= 452.1 y= 195.7 sz= 5.6 black     | Description: ECG Test or Examination
+x= 452.1 y= 202.2 sz= 5.6 black     | Short Name
+x= 452.1 y= 208.7 sz= 5.6 black     | Mandatory?: Yes
+x= 452.1 y= 215.2 sz= 5.6 black     | Disallow Future Date: Yes
+x= 452.1 y= 237.5 sz= 5.6 black   B | EGTESTCD
+x= 452.1 y= 244.1 sz= 5.6 black     | Format: N(3)
+x= 452.1 y= 250.6 sz= 5.6 black     | Data Type: integer
+x= 452.1 y= 257.1 sz= 5.6 black     | Origin: CRF
+x= 452.1 y= 263.6 sz= 5.6 black     | ?
+x= 452.1 y= 270.2 sz= 5.6 black     | Range (soft): 70-120
+x=  46.5 y= 275.2 sz= 7.5 black     | QRS
+x= 452.1 y= 276.7 sz= 5.6 black     | Range (hard): 0-500
+x= 452.1 y= 283.2 sz= 5.6 black     | Units:
+x= 248.5 y= 288.2 sz= 7.5 black     | [_|_|_]
+x= 455.1 y= 289.7 sz= 5.6 black     | ms = ms
+x=  46.5 y= 292.6 sz= 7.5 black     | [QRS]
+x= 452.1 y= 296.3 sz= 5.6 black     | SDS Var Name: QRSAG
+x=  46.5 y= 301.3 sz= 7.5 black     | [SAS Field Name: EGTESTCD]
+x= 452.1 y= 302.8 sz= 5.6 black     | Device Parameter: RScribe; QRS
+x= 452.1 y= 309.3 sz= 5.6 black     | Aliases:
+x= 455.1 y= 315.8 sz= 5.6 black     | Odm OID = I.5865
+x= 452.1 y= 322.4 sz= 5.6 black     | Description: ECG Test or Examination
+x= 452.1 y= 328.9 sz= 5.6 black     | Short Name
+x= 452.1 y= 335.4 sz= 5.6 black     | Mandatory?: Yes
+x= 452.1 y= 341.9 sz= 5.6 black     | Disallow Future Date: Yes
+x= 452.1 y= 364.2 sz= 5.6 black   B | EGTESTCD
+x= 452.1 y= 370.8 sz= 5.6 black     | Format: N(3)
+x= 452.1 y= 377.3 sz= 5.6 black     | Data Type: integer
+x= 452.1 y= 383.8 sz= 5.6 black     | Origin: CRF
+x= 452.1 y= 390.4 sz= 5.6 black     | Units:
+x=  46.5 y= 392.1 sz= 7.5 black     | QT
+x= 455.1 y= 396.9 sz= 5.6 black     | ms = ms
+x= 452.1 y= 403.4 sz= 5.6 black     | SDS Var Name: QTAG
+x= 248.5 y= 405.2 sz= 7.5 black     | [_|_|_]
+x=  46.5 y= 409.5 sz= 7.5 black     | [QT]
+x= 452.1 y= 409.9 sz= 5.6 black     | Device Parameter: RScribe; QT
+x= 452.1 y= 416.5 sz= 5.6 black     | Aliases:
+x=  46.5 y= 418.2 sz= 7.5 black     | [SAS Field Name: EGTESTCD]
+x= 455.1 y= 423.0 sz= 5.6 black     | Odm OID = I.5866
+x= 452.1 y= 429.5 sz= 5.6 black     | Description: ECG Test or Examination
+x= 452.1 y= 436.0 sz= 5.6 black     | Short Name
+x= 452.1 y= 442.6 sz= 5.6 black     | Mandatory?: Yes
+x= 452.1 y= 449.1 sz= 5.6 black     | Disallow Future Date: Yes
+x= 452.1 y= 471.3 sz= 5.6 black   B | EGTESTCD
+x= 452.1 y= 477.9 sz= 5.6 black     | Format: N(3)
+x= 452.1 y= 484.4 sz= 5.6 black     | Data Type: integer
+x= 452.1 y= 491.0 sz= 5.6 black     | Origin: CRF
+x= 452.1 y= 497.5 sz= 5.6 black     | Units:
+x= 455.1 y= 504.0 sz= 5.6 black     | ms = ms
+x= 452.1 y= 510.5 sz= 5.6 black     | SDS Var Name: QTCFAG
+x= 452.1 y= 517.1 sz= 5.6 black     | Device Parameter: RScribe; QTcF
+x= 452.1 y= 523.6 sz= 5.6 black     | Aliases:
+x= 455.1 y= 530.1 sz= 5.6 black     | Odm OID = I.5868
+x=  46.5 y= 532.2 sz= 7.5 black     | QTcF
+x= 452.1 y= 536.6 sz= 5.6 black     | Description: ECG Test or Examination
+x= 452.1 y= 543.2 sz= 5.6 black     | Short Name
+x= 248.5 y= 545.2 sz= 7.5 black     | [_|_|_]
+x=  46.5 y= 549.6 sz= 7.5 black     | [QTcF]
+x= 452.1 y= 549.7 sz= 5.6 black     | Edit Checks:
+x= 455.1 y= 556.3 sz= 5.6 black   B | Name: TEMPLATE_QTcF001:
+x=  46.5 y= 558.3 sz= 7.5 black     | [SAS Field Name: EGTESTCD]
+x= 455.1 y= 562.9 sz= 5.6 black     | Formal Expression; Context: Formal
+x= 455.1 y= 569.5 sz= 5.6 black     | Expression
+x= 455.1 y= 576.0 sz= 5.6 black     | Description: Query if male subject
+x= 455.1 y= 582.5 sz= 5.6 black     | and value >= 451, if female subject
+x= 455.1 y= 589.0 sz= 5.6 black     | and value >= 471
+x= 455.1 y= 595.7 sz= 5.6 black   B | Name: TEMPLATE_QTcF002:
+x= 534.5 y= 595.7 sz= 5.6 black     | Value
+x= 455.1 y= 602.4 sz= 5.6 black   B | >=
+x= 461.7 y= 602.4 sz= 5.6 black     | 360
+x= 455.1 y= 609.0 sz= 5.6 black     | Description: Value should be >=360
+x= 452.1 y= 615.5 sz= 5.6 black     | Mandatory?: Yes
+x= 452.1 y= 622.0 sz= 5.6 black     | Disallow Future Date: Yes
+x= 452.1 y= 644.3 sz= 5.6 black   B | EGTESTCD
+x= 452.1 y= 650.9 sz= 5.6 black     | Format: N(3)
+x= 452.1 y= 657.4 sz= 5.6 black     | Data Type: integer
+x= 452.1 y= 663.9 sz= 5.6 black     | Origin: CRF
+x=  46.5 y= 665.7 sz= 7.5 black     | QTcB
+x= 452.1 y= 670.4 sz= 5.6 black     | Units:
+x= 455.1 y= 677.0 sz= 5.6 black     | ms = ms
+x= 248.5 y= 678.7 sz= 7.5 black     | [_|_|_]
+x=  46.5 y= 683.1 sz= 7.5 black     | [QTcB]
+x= 452.1 y= 683.5 sz= 5.6 black   
+<...page truncated...>
+
+--- page 100 of 206 (layout cluster covers ~118 pages) ---
+x=  36.0 y=  11.5 sz= 9.0 black     | 384-201-00004
+x=  42.0 y=  34.8 sz=12.0 #ffffff   | Urine Collection - Admission
+x= 498.9 y=  36.6 sz= 9.6 #ffffff   | Origin: CRF
+x=  48.0 y=  55.2 sz= 7.8 #ffffff B | Aliases:
+x=  77.9 y=  55.3 sz= 7.8 #ffffff   | Odm OID = F.1224
+x=  43.5 y=  72.8 sz=10.5 #31708f   | Urine Collection Admission
+x= 210.1 y=  73.4 sz= 8.4 #31708f   | Origin: CRF; Repeating: No; Conditionally Visible; Domain:
+x= 433.2 y=  73.4 sz= 8.4 #31708f B | LB2
+x= 449.1 y=  73.4 sz= 8.4 #31708f   | ; SAS Dataset Name:
+x= 533.5 y=  73.4 sz= 8.4 #31708f B | LB2
+x=  49.5 y=  88.0 sz= 6.8 #808080 B | Aliases:
+x=  75.7 y=  88.0 sz= 6.8 #808080   | Odm OID = IG.1600
+x= 453.5 y= 110.8 sz= 5.6 black   B | LBDTC
+x= 453.5 y= 117.4 sz= 5.6 black     | Format: dd-MMM-yyyy HH:mm:ss
+x= 453.5 y= 123.9 sz= 5.6 black     | Data Type: datetime
+x= 453.5 y= 130.4 sz= 5.6 black     | Origin: CRF
+x= 453.5 y= 136.9 sz= 5.6 black     | SDS Var Name: URINE
+x= 453.5 y= 143.5 sz= 5.6 black     | Aliases:
+x= 456.5 y= 150.0 sz= 5.6 black     | CC Mapping = Cotinine Screen
+x=  46.5 y= 156.3 sz= 7.5 black     | Urine collection date and time
+x= 456.5 y= 156.5 sz= 5.6 black     | CC Mapping = Urinalysis
+x= 456.5 y= 163.0 sz= 5.6 black     | CC Mapping = Drug/Alcohol Screen
+x= 456.5 y= 169.6 sz= 5.6 black     | CC Mapping = Drug Screen
+x= 249.2 y= 172.3 sz= 7.5 black     | [_|_] - [_|_|_] - [_|_|_|_] [_|_] : [_|_] : [_|_]
+x=  46.5 y= 173.7 sz= 7.5 black     | [LBDTC_URINEAD]
+x= 456.5 y= 176.1 sz= 5.6 black     | CC Mapping = Pregnancy Test -
+x=  46.5 y= 182.4 sz= 7.5 black     | [SAS Field Name: LBDTC]
+x= 456.5 y= 182.6 sz= 5.6 black     | Urine
+x= 253.0 y= 184.9 sz= 6.4 #808080   | dd-MMM-yyyy HH:mm:ss
+x= 456.5 y= 189.1 sz= 5.6 black     | CC Mapping = Tricyclic
+x=  53.2 y= 193.5 sz= 6.4 #808080   | Verify urine cup temperature strip after collection and keep sample
+x= 456.5 y= 195.7 sz= 5.6 black     | Antidepressants
+x=  53.2 y= 200.9 sz= 6.4 #808080   | at room temperature.
+x= 456.5 y= 202.2 sz= 5.6 black     | CC Mapping = Alcohol Screen
+x= 456.5 y= 208.7 sz= 5.6 black     | CC Mapping = Urine Screen MPH
+x= 456.5 y= 215.2 sz= 5.6 black     | Odm OID = I.6022
+x= 453.5 y= 221.8 sz= 5.6 black     | Description: Date/Time of Specimen
+x= 453.5 y= 228.3 sz= 5.6 black     | Collection
+x= 453.5 y= 234.8 sz= 5.6 black     | Requires Barcode Verification
+x= 453.5 y= 241.3 sz= 5.6 black     | Mandatory?: Yes
+x= 453.5 y= 247.9 sz= 5.6 black     | Disallow Future Date: Yes
+x=  43.5 y= 268.2 sz=10.5 #31708f   | Urine Cotinine Results and
+x= 210.1 y= 268.8 sz= 8.4 #31708f   | Origin: CRF; Repeating: No; Conditionally Visible; Domain:
+x= 433.2 y= 268.8 sz= 8.4 #31708f B | LB2
+x= 449.1 y= 268.8 sz= 8.4 #31708f   | ; SAS Dataset Name:
+x= 533.5 y= 268.8 sz= 8.4 #31708f B | LB2
+x=  43.5 y= 280.4 sz=10.5 #31708f   | Review
+x= 453.5 y= 308.7 sz= 5.6 black   B | LBTEST
+x= 453.5 y= 315.2 sz= 5.6 black     | Format: $
+x=  46.5 y= 317.0 sz= 7.5 black     | Cotinine Result
+x= 249.2 y= 320.1 sz= 7.5 black     | O Negative
+x= 453.5 y= 321.8 sz= 5.6 black     | Data Type: string
+x= 453.5 y= 328.3 sz= 5.6 black     | Origin: CRF
+x= 249.2 y= 328.8 sz= 7.5 black     | O Positive
+x=  46.5 y= 334.4 sz= 7.5 black     | [LBTEST_COTININE_RESULT]
+x= 453.5 y= 334.8 sz= 5.6 black     | SDS Var Name: Cotinine
+x= 453.5 y= 341.3 sz= 5.6 black     | Description: Cotinine Result
+x= 253.0 y= 341.5 sz= 6.4 #808080   | Code List: UDS Results
+x=  46.5 y= 343.1 sz= 7.5 black     | [SAS Field Name: LBTEST]
+x= 453.5 y= 347.9 sz= 5.6 black     | Mandatory?: Yes
+x= 453.5 y= 354.4 sz= 5.6 black     | Disallow Future Date: Yes
+x= 453.5 y= 376.6 sz= 5.6 black   B | LBCLSIG
+x= 453.5 y= 383.2 sz= 5.6 black     | Format: $
+x= 453.5 y= 389.8 sz= 5.6 black     | Data Type: string
+x= 453.5 y= 396.3 sz= 5.6 black     | Origin: CRF
+x= 453.5 y= 402.8 sz= 5.6 black     | Requires Role: Investigator
+x=  46.5 y= 404.6 sz= 7.5 black     | Cotinine Clinical Significance
+x= 249.2 y= 407.7 sz= 7.5 black     | O NCS
+x= 453.5 y= 409.3 sz= 5.6 black     | Conditionally Visible
+x= 453.5 y= 415.9 sz= 5.6 black     | Conditional Item:
+x= 249.2 y= 416.4 sz= 7.5 black     | O CS
+x=  46.5 y= 422.0 sz= 7.5 black     | [LBCLSIG]
+x= 453.5 y= 422.4 sz= 5.6 black     | LBTEST_COTININE_RESULT
+x= 453.5 y= 428.9 sz= 5.6 black     | Visible If Value: POSITIVE = Positive
+x= 253.0 y= 429.0 sz= 6.4 #808080   | Code List: NCS/CS
+x=  46.5 y= 430.7 sz= 7.5 black     | [SAS Field Name: LBCLSIG]
+x= 453.5 y= 435.4 sz= 5.6 black     | SDS Var Name: COTSIG
+x= 453.5 y= 442.0 sz= 5.6 black     | Description: Clinical Significance -
+x= 453.5 y= 448.5 sz= 5.6 black     | Cotinine
+x= 453.5 y= 455.0 sz= 5.6 black     | Mandatory?: Yes
+x= 453.5 y= 461.5 sz= 5.6 black     | Disallow Future Date: Yes
+x=  43.5 y= 481.9 sz=10.5 #31708f   | Urine Drug Screen Results and
+x= 433.2 y= 482.4 sz= 8.4 #31708f B | LB2
+x= 533.5 y= 482.4 sz= 8.4 #31708f B | LB2
+x= 210.1 y= 482.5 sz= 8.4 #31708f   | Origin: CRF; Repeating: No; Conditionally Visible; Domain:
+x= 449.1 y= 482.5 sz= 8.4 #31708f   | ; SAS Dataset Name:
+x=  43.5 y= 494.0 sz=10.5 #31708f   | Review
+x= 332.7 y= 522.3 sz= 5.6 black   B | LBTEST
+x= 332.7 y= 528.9 sz= 5.6 black     | Format: $
+x= 332.7 y= 535.4 sz= 5.6 black     | Data Type: string
+x= 332.7 y= 542.0 sz= 5.6 black     | Origin: CRF
+x= 292.5 y= 543.0 sz= 7.5 black     | O Negative
+x=  46.5 y= 547.3 sz= 7.5 black     | Amphetamines / Methamphetamines
+x= 332.7 y= 548.5 sz= 5.6 black     | SDS Var Name: AMPMET
+x= 292.5 y= 551.7 sz= 7.5 black     | O Positive
+x= 332.7 y= 555.0 sz= 5.6 black     | Description: Amphetamines/Methamphetamines
+x= 332.7 y= 561.5 sz= 5.6 black     | Edit Checks:
+x= 296.2 y= 564.3 sz= 6.4 #808080   | Code List:
+x=  46.5 y= 564.7 sz= 7.5 black     | [LBTEST_AMPHETAMINES_AND_METHAMPHETAMINES_RESULTS]
+x= 335.7 y= 568.2 sz= 5.6 black   B | Name:
+x= 296.2 y= 571.7 sz= 6.4 #0000ff   | UDS
+x=  46.5 y= 573.4 sz= 7.5 black     | [SAS Field Name: LBTEST]
+x= 335.7 y= 574.9 sz= 5.6 black   B | TEMP
+<...page truncated...>
+
+--- page 131 of 206 (layout cluster covers ~118 pages) ---
+x=  36.0 y=  11.5 sz= 9.0 black     | 384-201-00004
+x= 456.5 y=  35.4 sz= 5.6 black   B | Name:
+x= 456.5 y=  42.1 sz= 5.6 black   B | TEMPLATE_VSCLSIG_RESPSIG:
+x= 456.5 y=  48.8 sz= 5.6 black   B | Value =
+x= 470.9 y=  48.8 sz= 5.6 black     | NCS
+x= 456.5 y=  55.4 sz= 5.6 black     | Description: Value should = NCS
+x= 453.5 y=  61.9 sz= 5.6 black     | Mandatory?: Yes
+x= 453.5 y=  68.4 sz= 5.6 black     | Disallow Future Date: Yes
+x=  36.0 y= 817.4 sz= 9.0 black     | Annotated CRF
+x= 276.3 y= 817.4 sz= 9.0 black     | 131 of 206
+x= 445.8 y= 817.4 sz= 9.0 black     | https://drvince.clinspark.com
+
+--- page 146 of 206 (layout cluster covers ~71 pages) ---
+x=  36.0 y=  11.5 sz= 9.0 black     | 384-201-00004
+x=  42.0 y=  34.8 sz=12.0 #ffffff   | CM Dose Units
+x=  45.8 y=  59.6 sz=10.5 #666677 B | Coded
+x= 299.9 y=  59.6 sz=10.5 #666677 B | Decode
+x=  45.8 y=  75.0 sz= 9.0 black     | mg
+x= 299.9 y=  75.0 sz= 9.0 black     | mg
+x=  45.8 y=  88.4 sz= 9.0 black     | DROP
+x= 299.9 y=  88.4 sz= 9.0 black     | DROP
+x=  45.8 y= 101.8 sz= 9.0 black     | g
+x= 299.9 y= 101.8 sz= 9.0 black     | g
+x=  45.8 y= 115.2 sz= 9.0 black     | IU
+x= 299.9 y= 115.2 sz= 9.0 black     | IU
+x=  45.8 y= 128.7 sz= 9.0 black     | mL
+x= 299.9 y= 128.7 sz= 9.0 black     | mL
+x=  45.8 y= 142.1 sz= 9.0 black     | oz
+x= 299.9 y= 142.1 sz= 9.0 black     | oz
+x=  45.8 y= 155.5 sz= 9.0 black     | %
+x= 299.9 y= 155.5 sz= 9.0 black     | %
+x=  45.8 y= 168.9 sz= 9.0 black     | SCOOPFUL
+x= 299.9 y= 168.9 sz= 9.0 black     | SCOOPFUL
+x=  45.8 y= 182.4 sz= 9.0 black     | ug
+x= 299.9 y= 182.4 sz= 9.0 black     | mcg
+x=  45.8 y= 195.8 sz= 9.0 black     | UNKNOWN
+x= 299.9 y= 195.8 sz= 9.0 black     | UNKNOWN
+x=  36.0 y= 817.4 sz= 9.0 black     | Annotated CRF
+x= 276.3 y= 817.4 sz= 9.0 black     | 146 of 206
+x= 445.8 y= 817.4 sz= 9.0 black     | https://drvince.clinspark.com
+

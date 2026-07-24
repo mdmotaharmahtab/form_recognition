@@ -1,0 +1,856 @@
+{
+ "stop_reason": "budget",
+ "versions": 6,
+ "best_version": 4,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 2834,
+    "pages_total": 976,
+    "pages_with_fields": 786,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 96,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 118,
+    "fields_per_form": 24.0,
+    "forms_per_100_pages": 12.1,
+    "form_same_page_evidence_records": 2687,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 81
+   },
+   "problems": [
+    "Extreme content-fitted blocklist. The program filters by 68 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "warnings": [],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    1,
+    "not_audited",
+    0,
+    -786
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "confirm",
+   "outcome": "confirmed_no_fields"
+  },
+  {
+   "version": 2,
+   "kind": "revise_gates",
+   "metrics": {
+    "engine": "codegen",
+    "records": 5094,
+    "pages_total": 976,
+    "pages_with_fields": 849,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 96,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 118,
+    "fields_per_form": 43.2,
+    "forms_per_100_pages": 12.1,
+    "form_same_page_evidence_records": 5046,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 87
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 64,
+   "audit_pages": [
+    1,
+    33,
+    44,
+    65,
+    112,
+    161,
+    270,
+    275,
+    475,
+    678,
+    868
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 33,
+     "missed": [
+      "Date of Consent"
+     ],
+     "false": [
+      "Original Version",
+      "Amendment 1",
+      "Amendment 2",
+      "Amendment 3",
+      "Amendment 4",
+      "Amendment 5",
+      "Amendment 6",
+      "Amendment 7",
+      "Amendment 8",
+      "Amendment 9",
+      "Amendment 10"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 44,
+     "missed": [
+      "Vasectomy"
+     ],
+     "false": [
+      "Not of Childbearing Potential",
+      "Of Childbearing Potential"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 65,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 112,
+     "missed": [],
+     "false": [
+      "Suicidal Ideation",
+      "1. Wish to be dead",
+      "Subject endorses thoughts about a wish to be dead or not alive anymore, or wish to fall asleep and not wake up.",
+      "2. Non-specific active suicidal thoughts",
+      "General non-specific thoughts of wanting to end one's life/commit suicide (e.g. \"I've thought about killing myself\")",
+      "without thoughts of way to kill oneself/associated methods,intent or plan during the assessment period."
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 161,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 270,
+     "missed": [],
+     "false": [
+      "Actual Attempts",
+      "Most Lethal Attempt",
+      "\\0.\\ No physical damage or very minor physical damage (e.g. surface scratches) \\1.\\ Minor physical damage (e.g.",
+      "lethargic speech, first-degree burns, mild bleeding, sprains) \\2.\\ Moderate physical damage; medical attention needed",
+      "(e.g. conscious but sleepy; somewhat responsive, second-degree burns; bleeding of major vessel \\3.\\ Moderately",
+      "severe physical damage; medical hospitalization and likely intensive care required (e.g. comatose with reflexes intact; third-degree burns less than 20% of body; extensive blood loss but can recover, major fractures) \\4.\\ Severe physical",
+      "damage; medical hospitalization with intensive care required (e.g. comatose without reflexes; third-degree burns over",
+      "20% of the body; extensive blood loss with unstable vital signs; major damage to a vital area \\5.\\ Death",
+      "Likely lethality of actual attempt if no medical damage (the following examples, while having no actual medical",
+      "damage, has potential for very serious lethality; put gun in mouth and pulled the trigger but gun fails to fire so no",
+      "medical damage; laying on train tracks with oncoming train but pulled away before run over)."
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 275,
+     "missed": [
+      "Reason",
+      "Dosing Comments (optional)"
+     ],
+     "false": [
+      "As per protocol",
+      "Adverse Event",
+      "Dosing error",
+      "Dispensing error",
+      "Technical problems",
+      "Subject/guardian decision",
+      "Physician decision"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 475,
+     "missed": [
+      "Appearance",
+      "Bilirubin",
+      "Color",
+      "Glucose",
+      "Ketones",
+      "Leucocytes",
+      "Nitrites",
+      "pH",
+      "Protein"
+     ],
+     "false": [
+      "Occult blood"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 678,
+     "missed": [],
+     "false": [
+      "Suicidal Ideation",
+      "Since Last Visit",
+      "Subject endorses thoughts of suicide and has thought of at least one method during the assessment period. This is",
+      "different than a specific plan with a time, place or method details worked out (e.g. thought of method to kill self but",
+      "not a specific plan). Includes a person who would say: \"I thought about taking an overdose but i never made a specific plan as to when, where or how I would actually do it. . . and I would never go through with it\""
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 868,
+     "missed": [
+      "Glucose",
+      "Magnesium",
+      "Phosphorus",
+      "Potassium",
+      "Prolactin",
+      "Sodium",
+      "Uric acid",
+      "Please go to Add-On Forms and select Additional Local Lab Results Review form to add to this visit."
+     ],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    64,
+    0,
+    -849
+   ],
+   "became_best": true
+  },
+  {
+   "version": 3,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 4037,
+    "pages_total": 976,
+    "pages_with_fields": 841,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 112,
+    "fields_per_form": 36.0,
+    "forms_per_100_pages": 11.5,
+    "form_same_page_evidence_records": 3970,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 86
+   },
+   "problems": [],
+   "warnings": [
+    "The program filters by 10 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": 33,
+   "audit_pages": [
+    1,
+    32,
+    33,
+    44,
+    64,
+    65,
+    103,
+    112,
+    161,
+    270,
+    275,
+    475,
+    678,
+    868
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 32,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 33,
+     "missed": [
+      "Protocol Version for Consent",
+      "Date of Consent"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 44,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 64,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 65,
+     "missed": [],
+     "false": [
+      "Date of Collection"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 103,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 112,
+     "missed": [],
+     "false": [
+      "Row 2",
+      "If Yes, describe",
+      "Row 3"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 161,
+     "missed": [],
+     "false": [
+      "Row 27",
+      "Row 28",
+      "impractical should not be enrolled. The investigator with concurrence of the medical monitor may allow exceptions if the medication's",
+      "administration is deemed unlikely to impact the results of the trial.",
+      "Row 30"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 270,
+     "missed": [],
+     "false": [
+      "Row 1",
+      "Row 2",
+      "lethargic speech, first-degree burns, mild bleeding, sprains) \\2.\\ Moderate physical damage; medical attention needed",
+      "Row 3",
+      "Likely lethality of actual attempt if no medical damage (the following examples, while having no actual medical",
+      "damage, has potential for very serious lethality; put gun in mouth and pulled the trigger but gun fails to fire so no"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 275,
+     "missed": [
+      "Reason",
+      "Dosing Comments (optional)"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 475,
+     "missed": [
+      "Urinalysis clinically significant abnormal assay # 3"
+     ],
+     "false": [
+      "Specific gravity",
+      "Urobilinogen",
+      "Microscopic analysis if indicated",
+      "Protein"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 678,
+     "missed": [],
+     "false": [
+      "Since Last Visit",
+      "Subject endorses thoughts of suicide and has thought of at least one method during the assessment period. This is",
+      "different than a specific plan with a time, place or method details worked out (e.g. thought of method to kill self but",
+      "plan as to when, where or how I would actually do it. . . and I would never go through with it\"",
+      "Have you been thinking about how you might do this?"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 868,
+     "missed": [],
+     "false": [
+      "Triglycerides",
+      "Sodium",
+      "Urea nitrogen",
+      "Uric acid"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    33,
+    1,
+    -841
+   ],
+   "became_best": true
+  },
+  {
+   "version": 4,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 2917,
+    "pages_total": 976,
+    "pages_with_fields": 791,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 112,
+    "fields_per_form": 26.0,
+    "forms_per_100_pages": 11.5,
+    "form_same_page_evidence_records": 2843,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 81
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 21,
+   "audit_pages": [
+    1,
+    33,
+    44,
+    65,
+    108,
+    112,
+    117,
+    137,
+    161,
+    270,
+    275,
+    475,
+    678,
+    868
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 33,
+     "missed": [
+      "Protocol Version for Consent",
+      "Date of Consent"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 44,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 65,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 108,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 112,
+     "missed": [
+      "1. Wish to be dead"
+     ],
+     "false": [
+      "Suicidal Ideation",
+      "General non-specific thoughts of wanting to end one's life/commit suicide (e.g. \"I've thought about killing myself\")",
+      "without thoughts of way to kill oneself/associated methods,intent or plan during the assessment period."
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 117,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 137,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 161,
+     "missed": [
+      "\\28.\\ Subjects taking multiple medications deemed necessary to maintain psychiatric stability or those taking medication regimens where washout is impractical should not be enrolled. The investigator with concurrence of the medical monitor may allow exceptions if the medication's administration is deemed unlikely to impact the results of the trial."
+     ],
+     "false": [
+      "administration is deemed unlikely to impact the results of the trial."
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 270,
+     "missed": [],
+     "false": [
+      "Actual Attempts",
+      "\\0.\\ No physical damage or very minor physical damage (e.g. surface scratches) \\1.\\ Minor physical damage (e.g.",
+      "Likely lethality of actual attempt if no medical damage (the following examples, while having no actual medical",
+      "damage, has potential for very serious lethality; put gun in mouth and pulled the trigger but gun fails to fire so no"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 275,
+     "missed": [
+      "Reason",
+      "Dosing Comments (optional)"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 475,
+     "missed": [
+      "Urinalysis abnormal assay # 2 Investigator comment",
+      "Urinalysis clinically significant abnormal assay # 3"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 678,
+     "missed": [],
+     "false": [
+      "Suicidal Ideation",
+      "Subject endorses thoughts of suicide and has thought of at least one method during the assessment period. This is",
+      "different than a specific plan with a time, place or method details worked out (e.g. thought of method to kill self but"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 868,
+     "missed": [
+      "Please go to Add-On Forms and select Additional Local Lab Results Review form to add to this visit."
+     ],
+     "false": [
+      "Uric acid"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    21,
+    0,
+    -791
+   ],
+   "became_best": true
+  },
+  {
+   "version": 5,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 3403,
+    "pages_total": 976,
+    "pages_with_fields": 817,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 98,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 112,
+    "fields_per_form": 30.4,
+    "forms_per_100_pages": 11.5,
+    "form_same_page_evidence_records": 3306,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 84
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_partial": true,
+   "audit_promoted": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    0,
+    "not_audited",
+    0,
+    -817
+   ],
+   "became_best": false
+  },
+  {
+   "version": 6,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 5528,
+    "pages_total": 976,
+    "pages_with_fields": 842,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 98,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 112,
+    "fields_per_form": 49.4,
+    "forms_per_100_pages": 11.5,
+    "form_same_page_evidence_records": 5483,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 86
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 65,
+   "audit_pages": [
+    1,
+    33,
+    44,
+    65,
+    112,
+    126,
+    134,
+    138,
+    161,
+    270,
+    275,
+    475,
+    678,
+    868
+   ],
+   "audit_partial": null,
+   "audit_promoted": [
+    134
+   ],
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 33,
+     "missed": [
+      "Protocol Version for Consent",
+      "Date of Consent"
+     ],
+     "false": [
+      "Original Version",
+      "Amendment 1",
+      "Amendment 2",
+      "Amendment 3",
+      "Amendment 4",
+      "Amendment 5",
+      "Amendment 6",
+      "Amendment 7",
+      "Amendment 8",
+      "Amendment 9",
+      "Amendment 10"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 44,
+     "missed": [
+      "Vasectomy"
+     ],
+     "false": [
+      "Not of Childbearing Potential",
+      "Of Childbearing Potential"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 65,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 112,
+     "missed": [
+      "Lifetime",
+      "Past 3 Month"
+     ],
+     "false": [
+      "Suicidal Ideation",
+      "1. Wish to be dead",
+      "Subject endorses thoughts about a wish to be dead or not alive anymore, or wish to fall asleep and not wake up.",
+      "2. Non-specific active suicidal thoughts",
+      "General non-specific thoughts of wanting to end one's life/commit suicide (e.g. \"I've thought about killing myself\")",
+      "without thoughts of way to kill oneself/associated methods,intent or plan during the assessment period."
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 126,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 134,
+     "missed": [
+      "Most Recent Attempt",
+      "Most Lethal Attempt",
+      "Initial/First Attempt"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 138,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 161,
+     "missed": [],
+     "false": [],
+     "wrong_form": [
+      "administration is deemed unlikely to impact the results of the trial."
+     ]
+    },
+    {
+     "page": 270,
+     "missed": [],
+     "false": [
+      "Actual Attempts",
+      "Most Lethal Attempt",
+      "Actual Lethality/Medical Damage:",
+      "third-degree burns less than 20% of body; extensive blood loss but can recover, major fractures) \\4.\\ Severe physical",
+      "Potential Lethality: Only answer if Actual Lethality=0",
+      "Likely lethality of actual attempt if no medical damage (the following examples, while having no actual medical",
+      "damage, has potential for very serious lethality; put gun in mouth and pulled the trigger but gun fails to fire so no"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 275,
+     "missed": [
+      "Reason",
+      "Dosing Comments (optional)"
+     ],
+     "false": [
+      "As per protocol",
+      "Adverse Event",
+      "Dosing error",
+      "Dispensing error",
+      "Technical problems",
+      "Subject/guardian decision",
+      "Physician decision"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 475,
+     "missed": [
+      "Urinalysis clinically significant abnormal assay # 3",
+      "Urinalysis abnormal assay # 2 Investigator comment"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 678,
+     "missed": [],
+     "false": [
+      "Suicidal Ideation",
+      "Since Last Visit",
+      "3. Active suicidal ideation with any methods (not plan) without intent to act",
+      "Subject endorses thoughts of suicide and has thought of at least one method during the assessment period. This is",
+      "different than a specific plan with a time, place or method details worked out (e.g. thought of method to kill self but",
+      "not a specific plan). Includes a person who would say: \"I thought about taking an overdose but i never made a specific plan as to when, where or how I would actually do it. . . and I would never go through with it\"",
+      "4. Active suicidal ideation with some intent to act, without specific plan"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 868,
+     "missed": [
+      "Glucose"
+     ],
+     "false": [
+      "Gamma glutamyl transferase",
+      "Lactate dehydrogenase",
+      "Magnesium",
+      "Phosphorus",
+      "Potassium",
+      "Prolactin",
+      "Total bilirubin",
+      "Total protein",
+      "Triglycerides",
+      "Urea nitrogen",
+      "Uric acid"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    65,
+    0,
+    -842
+   ],
+   "became_best": false
+  }
+ ]
+}

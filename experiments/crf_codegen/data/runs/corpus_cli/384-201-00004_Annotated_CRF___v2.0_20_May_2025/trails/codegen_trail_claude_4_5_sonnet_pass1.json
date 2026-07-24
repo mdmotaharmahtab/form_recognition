@@ -1,0 +1,543 @@
+{
+ "stop_reason": "budget",
+ "versions": 5,
+ "best_version": 3,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "confirm",
+   "metrics": {
+    "error": "generated extractor crashed:\nTraceback (most recent call last):\n  File \"D:\\ubuntu\\codes\\ZS\\otsuka\\ECS\\experiments\\recipe_prototype\\scripts\\sandbox_runner.py\", line 116, in main\n    exec(compile(source, \"<generated_extractor>\", \"exec\"), g)  # noqa: S102\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<generated_extractor>\", line 9\n    However, examining page 20 more carefully: these blue texts appear to be **form names in a schedule or navigation context**, not field labels for data entry. There's no evidence of actual field labels with their characteristic left-aligned position around x=46.5. The \"Subject\" text at x=44.2 might be a section header, but there are no field labels following the pattern of the pages I successfully extracted from.\n                                                                                                                                                                       ^\nSyntaxError: unterminated string literal (detected at line 9)\n"
+   },
+   "problems": [
+    "Program failed to run: generated extractor crashed:\nTraceback (most recent call last):\n  File \"D:\\ubuntu\\codes\\ZS\\otsuka\\ECS\\experiments\\recipe_prototype\\scripts\\sandbox_runner.py\", line 116, in main\n    exec(compile(source, \"<generated_extractor>\", \"exec\"), g)  # noqa: S102\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<generated_extractor>\", line 9\n    However, examining page 20 more carefully: these blue texts appear to be **form names in a schedule or navigation context**, not field labels for data entry. There's no evidence of actual field labels with their characteristic left-aligned position around x=46.5. The \"Subject\" text at x=44.2 might be a section header, but there are no field labels following the pattern of the pages I successfully extracted from.\n                                                                                                                                                                       ^\nSyntaxError: unterminated string literal (detected at line 9)\n"
+   ],
+   "outcome": "extension_rejected"
+  },
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 791,
+    "pages_total": 238,
+    "pages_with_fields": 139,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 97,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 63,
+    "fields_per_form": 12.6,
+    "forms_per_100_pages": 26.5,
+    "furniture_candidates": [],
+    "pages_covered_pct": 58
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 16,
+   "audit_pages": [
+    4,
+    21,
+    56,
+    77,
+    92,
+    192
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 4,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 21,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 56,
+     "missed": [],
+     "false": [],
+     "wrong_form": [
+      "Concomitant medication or therapy",
+      "Route of administration",
+      "Total dose",
+      "Dose form",
+      "Dose unit"
+     ]
+    },
+    {
+     "page": 77,
+     "missed": [
+      "PR",
+      "QT"
+     ],
+     "false": [],
+     "wrong_form": [
+      "Abnormality Reason",
+      "QRS",
+      "QTcF",
+      "QTcB"
+     ]
+    },
+    {
+     "page": 92,
+     "missed": [],
+     "false": [],
+     "wrong_form": [
+      "Date and time performed",
+      "Body system",
+      "Examination result",
+      "Clinical significance",
+      "Abnormal findings"
+     ]
+    },
+    {
+     "page": 192,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "score": [
+    0,
+    16,
+    0,
+    -139
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 787,
+    "pages_total": 238,
+    "pages_with_fields": 134,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 97,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 59,
+    "fields_per_form": 13.3,
+    "forms_per_100_pages": 24.8,
+    "furniture_candidates": [],
+    "pages_covered_pct": 56
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 18,
+   "audit_pages": [
+    4,
+    16,
+    21,
+    25,
+    56,
+    77,
+    92,
+    192
+   ],
+   "audit_partial": null,
+   "audit_promoted": [
+    25
+   ],
+   "audit_verdicts": [
+    {
+     "page": 4,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 16,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 21,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 25,
+     "missed": [
+      "Administration end date and time"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 56,
+     "missed": [
+      "Were any concomitant medications taken?",
+      "Concomitant medication or therapy",
+      "Route of administration",
+      "Total dose",
+      "Dose form"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 77,
+     "missed": [],
+     "false": [],
+     "wrong_form": [
+      "Abnormality Reason",
+      "PR",
+      "QRS",
+      "QT",
+      "QTcF",
+      "QTcB"
+     ]
+    },
+    {
+     "page": 92,
+     "missed": [
+      "Physical exam performed?"
+     ],
+     "false": [],
+     "wrong_form": [
+      "Date and time performed",
+      "Body system",
+      "Examination result",
+      "Clinical significance",
+      "Abnormal findings"
+     ]
+    },
+    {
+     "page": 192,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "score": [
+    0,
+    18,
+    0,
+    -134
+   ],
+   "became_best": false
+  },
+  {
+   "version": 3,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 762,
+    "pages_total": 238,
+    "pages_with_fields": 134,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 52,
+    "fields_per_form": 14.7,
+    "forms_per_100_pages": 21.8,
+    "furniture_candidates": [],
+    "pages_covered_pct": 56
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 9,
+   "audit_pages": [
+    4,
+    21,
+    25,
+    40,
+    56,
+    77,
+    92,
+    192
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 4,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 21,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 25,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 40,
+     "missed": [
+      "Date and Time of Collection",
+      "Have you wished you were dead or wished you could go to sleep and not wake up? (Lifetime).",
+      "Have you wished you were dead or wished you could go to sleep and not wake up? (Past 12 Months).",
+      "If yes, describe:"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 56,
+     "missed": [
+      "Were any concomitant medications taken?",
+      "Concomitant medication or therapy",
+      "Route of administration",
+      "Total dose",
+      "Dose form"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 77,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 92,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 192,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "score": [
+    0,
+    9,
+    0,
+    -134
+   ],
+   "became_best": true
+  },
+  {
+   "version": 4,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 762,
+    "pages_total": 238,
+    "pages_with_fields": 134,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 52,
+    "fields_per_form": 14.7,
+    "forms_per_100_pages": 21.8,
+    "furniture_candidates": [],
+    "pages_covered_pct": 56
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 6,
+   "audit_pages": [
+    4,
+    5,
+    21,
+    25,
+    56,
+    77,
+    92,
+    192
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 4,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 5,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 21,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 25,
+     "missed": [
+      "Administration end date and time"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 56,
+     "missed": [
+      "Were any concomitant medications taken?",
+      "Concomitant medication or therapy",
+      "Route of administration",
+      "Total dose",
+      "Dose form"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 77,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 92,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 192,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "score": [
+    0,
+    6,
+    0,
+    -134
+   ],
+   "became_best": false
+  },
+  {
+   "version": 5,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 771,
+    "pages_total": 238,
+    "pages_with_fields": 134,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 99,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 52,
+    "fields_per_form": 14.8,
+    "forms_per_100_pages": 21.8,
+    "furniture_candidates": [],
+    "pages_covered_pct": 56
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 7,
+   "audit_pages": [
+    4,
+    21,
+    25,
+    54,
+    56,
+    77,
+    92,
+    192
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 4,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 21,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 25,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 54,
+     "missed": [],
+     "false": [
+      "Enter medical history the concomitant medication is being",
+      "given for"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 56,
+     "missed": [
+      "Were any concomitant medications taken?",
+      "Concomitant medication or therapy",
+      "Route of administration",
+      "Total dose",
+      "Dose form"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 77,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 92,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 192,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "score": [
+    0,
+    7,
+    0,
+    -134
+   ],
+   "became_best": false
+  }
+ ]
+}

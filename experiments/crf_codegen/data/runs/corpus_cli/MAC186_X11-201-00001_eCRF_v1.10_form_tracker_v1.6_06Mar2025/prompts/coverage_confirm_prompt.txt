@@ -1,0 +1,349 @@
+You previously wrote the extraction program below for a clinical CRF PDF (task: extract form_name + field_name for every data-entry field; field labels only, never machine codes, answer options, or page furniture). It passed the aggregate quality gates, but entire layout clusters of the document produced ZERO records. Below are sample pages from those clusters (you have not seen these pages before).
+
+Your current program:
+# Layout: Viedoc-style eCRF book with two repeating field-bearing layouts. (A) Form
+# pages: bold breadcrumb form name ~y=48 under the doc-id header, large (size>=14)
+# title, bold ~7.8pt field labels each tied to a printed [n] marker (standalone at the
+# right, inline after table-column headers, or on a bold "Yes" option line). (B)
+# "Variable details" pages: [n]|Name|Export Name|... table; Name column holds labels.
+# (C) Continuation pages of repeating tables (lab parameter grids) restate the bold
+# marker-bearing column headers in the top band (~y=53) with no breadcrumb/title, so
+# marker-bearing lines are field-bearing at any y; the pre-printed parameter rows
+# (no markers) are values, not field labels. Visit divider pages carry no fields.
+# Strategy: carry form name across pages; anchor labels to markers / Name column x.
+
+import re
+
+_MARK = re.compile(r'\[\s*\d{1,3}\s*\]')
+_FULLMARK = re.compile(r'^\[\s*\d{1,3}\s*\]$')
+_OPTION_WORDS = {"yes", "no", "unknown", "na", "n/a", "not applicable"}
+
+
+def _norm(s):
+    return re.sub(r'\s+', ' ', s).strip()
+
+
+def _clean_label(s):
+    return _norm(s).strip(':').strip()
+
+
+def _has_letter(s):
+    return re.search(r'[A-Za-z]', s) is not None
+
+
+def _is_option(s):
+    return _clean_label(s).lower() in _OPTION_WORDS
+
+
+def _var_page_name_x(lines):
+    # Returns x0 of the Name column if this is a "Variable details" page, else None.
+    exp = None
+    for l in lines:
+        if l.bold and _norm(l.text).lower() == 'export name':
+            exp = l
+            break
+    has_vd = any(_norm(l.text).lower() == 'variable details' for l in lines)
+    if exp is None and not has_vd:
+        return None
+    if exp is not None:
+        for l in lines:
+            if (l.bold and _norm(l.text).lower() == 'name'
+                    and abs(l.y0 - exp.y0) <= 3.0):
+                return l.x0
+    # Fallback: infer Name column as first cell right of a row marker.
+    marks = sorted((l for l in lines if _FULLMARK.match(l.text.strip())),
+                   key=lambda l: l.y0)
+    for m in marks:
+        row = [l for l in lines
+               if l is not m and abs(l.y0 - m.y0) <= 2.0 and l.x0 > m.x1]
+        if row:
+            return min(row, key=lambda l: l.x0).x0
+    return None
+
+
+def _parse_var_page(lines, name_x):
+    # Each [n] marker in the leftmost column starts one row; the field label is the
+    # (possibly wrapped) text in the Name column between this marker and the next.
+    marks = sorted((l for l in lines
+                    if _FULLMARK.match(l.text.strip()) and l.x0 < name_x - 5.0),
+                   key=lambda l: l.y0)
+    names = []
+    for i, m in enumerate(marks):
+        y_lo = m.y0 - 3.0
+        y_hi = marks[i + 1].y0 - 3.0 if i + 1 < len(marks) else float('inf')
+        parts = sorted((l for l in lines
+                        if abs(l.x0 - name_x) <= 3.0 and y_lo <= l.y0 < y_hi),
+                       key=lambda l: (l.y0, l.x0))
+        name = _clean_label(' '.join(p.text for p in parts))
+        if name and _has_letter(name) and not _FULLMARK.match(name):
+            names.append(name)
+    return names
+
+
+def _form_title(lines):
+    big = sorted((l for l in lines
+                  if l.size >= 14.0 and l.y0 < 150.0 and _has_letter(l.text)),
+                 key=lambda l: (l.y0, l.x0))
+    if not big:
+        return None
+    group = [big[0]]
+    for b in big[1:]:
+        if b.y0 - group[-1].y0 <= max(b.size, group[-1].size) * 1.6:
+            group.append(b)
+        else:
+            break
+    return _clean_label(' '.join(g.text for g in group))
+
+
+def _breadcrumb(lines):
+    for l in lines:
+        if (l.bold and l.size < 10.0 and 40.0 < l.y0 < 64.0 and l.x0 < 60.0
+                and _has_letter(l.text) and not _MARK.search(l.text)):
+            t = _norm(l.text)
+            if t.lower() != 'variable details':
+                return t
+    return None
+
+
+def _left_label(mline, bolds):
+    # Label for a marker with no usable inline text: nearest bold line on the same
+    # row to the left, extended over vertically adjacent wrapped label lines.
+    def ok(b):
+        return (b is not mline and not _MARK.search(b.text)
+                and not _is_option(b.text) and _has_letter(b.text)
+                and b.x0 < mline.x0 - 1.0)
+
+    cands = [b for b in bolds if ok(b) and abs(b.y0 - mline.y0) <= 6.5]
+    if not cands:
+        return None
+    anchor = min(cands, key=lambda b: (abs(b.y0 - mline.y0), -b.x1))
+    pool = sorted((b for b in bolds if ok(b)), key=lambda b: (b.y0, b.x0))
+    ai = next(i for i, b in enumerate(pool) if b is anchor)
+    lo = hi = ai
+    while lo - 1 >= 0 and 0.0 < pool[lo].y0 - pool[lo - 1].y0 <= 9.5:
+        lo -= 1
+    while hi + 1 < len(pool) and 0.0 < pool[hi + 1].y0 - pool[hi].y0 <= 9.5:
+        hi += 1
+    return _clean_label(' '.join(b.text for b in pool[lo:hi + 1]))
+
+
+def _parse_form_page(lines):
+    # Every data-entry field on a visual form page carries a [n] marker. The label is
+    # the inline text preceding the marker (table headers), or - when that text is
+    # empty or a bare choice word like "Yes" - the bold label to the left of it.
+    # Marker-bearing lines are kept even in the top band (y0 <= 60): continuation
+    # pages of repeating lab tables restate their column headers at ~y=53, which is
+    # where those pages' only field labels live.
+    small = [l for l in lines
+             if l.size < 10.0 and (l.y0 > 60.0 or _MARK.search(l.text))]
+    bolds = [l for l in small if l.bold]
+    labels = []
+    for l in small:
+        matches = list(_MARK.finditer(l.text))
+        if not matches:
+            continue
+        prev_end = 0
+        for m in matches:
+            pre = _clean_label(l.text[prev_end:m.start()])
+            prev_end = m.end()
+            if pre and _has_letter(pre) and not _is_option(pre):
+                labels.append(pre)
+            else:
+                lbl = _left_label(l, bolds)
+                if lbl:
+                    labels.append(lbl)
+    return labels
+
+
+def extract(pages):
+    out = [
+
+For each sampled cluster decide: does this layout carry data-entry fields your program is missing, or is it genuinely field-free (title/TOC/instructions/definitions-only pages)?
+
+
+# Per-layout coverage
+
+Pages of this document are grouped into layout clusters (structural fingerprint).
+Coverage of your program per cluster (clusters your program extracted nothing or
+little from are the ones to investigate):
+
+  cluster   0:  190 pages,  187 with records (98%), 44 records
+  cluster   1:  118 pages,  117 with records (99%), 14 records
+  cluster   2:  111 pages,  111 with records (100%), 116 records
+  cluster   3:   72 pages,   72 with records (100%), 55 records
+  cluster   4:   68 pages,   68 with records (100%), 170 records
+  cluster   5:   44 pages,   23 with records (52%), 20 records
+  cluster   6:   43 pages,   43 with records (100%), 38 records
+  cluster   7:   23 pages,   21 with records (91%), 0 records
+  cluster   8:   21 pages,   21 with records (100%), 25 records
+  cluster   9:   20 pages,   17 with records (85%), 4 records
+  cluster  10:   20 pages,   20 with records (100%), 14 records
+  cluster  11:   19 pages,   19 with records (100%), 15 records
+  cluster  12:   18 pages,    0 with records (0%), 0 records
+  cluster  13:   18 pages,   18 with records (100%), 48 records
+  cluster  14:   16 pages,   16 with records (100%), 1 records
+  cluster  15:   16 pages,   16 with records (100%), 8 records
+  cluster  16:   16 pages,   16 with records (100%), 7 records
+  cluster  17:   12 pages,   12 with records (100%), 8 records
+  cluster  18:   12 pages,   12 with records (100%), 7 records
+  cluster  19:    8 pages,    8 with records (100%), 52 records
+  cluster  20:    6 pages,    6 with records (100%), 79 records
+  cluster  21:    6 pages,    6 with records (100%), 7 records
+  cluster  22:    6 pages,    6 with records (100%), 7 records
+  cluster  23:    5 pages,    0 with records (0%), 0 records
+  cluster  24:    3 pages,    1 with records (33%), 5 records
+  cluster  25:    3 pages,    0 with records (0%), 0 records
+  cluster  26:    3 pages,    3 with records (100%), 6 records
+  cluster  27:    2 pages,    2 with records (100%), 4 records
+  cluster  28:    2 pages,    2 with records (100%), 16 records
+  cluster  29:    2 pages,    2 with records (100%), 4 records
+  cluster  30:    2 pages,    0 with records (0%), 0 records
+  cluster  31:    2 pages,    2 with records (100%), 5 records
+
+# Sample pages from poorly-covered clusters (you have NOT seen these before)
+
+If these pages contain data-entry fields, add handling for their layout. If they
+genuinely carry no fields (title/instructions/legend pages), ignore them - zero
+coverage there is correct.
+
+--- page 374 (cluster 12, 18 pages like this, 0% covered) ---
+x= 399.2 y= 214.6 sz=20.0 black     | Visit:
+x= 389.2 y= 238.6 sz=20.0 black     | Day 15
+
+--- page 618 (cluster 12, 18 pages like this, 0% covered) ---
+x= 399.2 y= 214.6 sz=20.0 black     | Visit:
+x= 389.2 y= 238.6 sz=20.0 black     | Day 71
+
+--- page 206 (cluster 23, 5 pages like this, 0% covered) ---
+x=  33.3 y=  36.3 sz=11.4 black     | MAC186_X11_201_00001_eCRF_v1_10_form_tracker_v1_6_06Mar2025
+x=  46.5 y=  50.9 sz= 7.8 black     | 17
+x= 293.4 y=  52.7 sz= 7.8 black     | 0
+x= 308.4 y=  52.7 sz= 7.8 black     | 1
+x= 323.4 y=  52.7 sz= 7.8 black     | 2
+x= 338.4 y=  52.7 sz= 7.8 black     | 3
+x= 353.4 y=  52.7 sz= 7.8 black     | 4
+x= 368.4 y=  52.7 sz= 7.8 black     | 5
+x=  64.5 y=  53.9 sz= 7.8 black     | 17. I felt my heart beating irregularly or skipping beats
+x=  46.5 y=  71.2 sz= 7.8 black     | 18
+x= 293.4 y=  73.0 sz= 7.8 black     | 0
+x= 308.4 y=  73.0 sz= 7.8 black     | 1
+x= 323.4 y=  73.0 sz= 7.8 black     | 2
+x= 338.4 y=  73.0 sz= 7.8 black     | 3
+x= 353.4 y=  73.0 sz= 7.8 black     | 4
+x= 368.4 y=  73.0 sz= 7.8 black     | 5
+x=  64.5 y=  74.2 sz= 7.8 black     | 18. Pressure or weight in my chest or abdomen
+x=  46.5 y=  91.6 sz= 7.8 black     | 19
+x= 293.4 y=  93.4 sz= 7.8 black     | 0
+x= 308.4 y=  93.4 sz= 7.8 black     | 1
+x= 323.4 y=  93.4 sz= 7.8 black     | 2
+x= 338.4 y=  93.4 sz= 7.8 black     | 3
+x= 353.4 y=  93.4 sz= 7.8 black     | 4
+x= 368.4 y=  93.4 sz= 7.8 black     | 5
+x=  64.5 y=  94.6 sz= 7.8 black     | 19. I experienced a decreased sense of sanity
+x=  46.5 y= 112.0 sz= 7.8 black     | 20
+x= 293.4 y= 113.8 sz= 7.8 black     | 0
+x= 308.4 y= 113.8 sz= 7.8 black     | 1
+x= 323.4 y= 113.8 sz= 7.8 black     | 2
+x= 338.4 y= 113.8 sz= 7.8 black     | 3
+x= 353.4 y= 113.8 sz= 7.8 black     | 4
+x= 368.4 y= 113.8 sz= 7.8 black     | 5
+x=  64.5 y= 115.0 sz= 7.8 black     | 20. I felt as if I was dead or dying
+x=  46.5 y= 132.4 sz= 7.8 black     | 21
+x= 293.4 y= 134.2 sz= 7.8 black     | 0
+x= 308.4 y= 134.2 sz= 7.8 black     | 1
+x= 323.4 y= 134.2 sz= 7.8 black     | 2
+x= 338.4 y= 134.2 sz= 7.8 black     | 3
+x= 353.4 y= 134.2 sz= 7.8 black     | 4
+x= 368.4 y= 134.2 sz= 7.8 black     | 5
+x=  64.5 y= 135.4 sz= 7.8 black     | 21. Panic
+x=  46.5 y= 152.8 sz= 7.8 black     | 22
+x= 293.4 y= 154.6 sz= 7.8 black     | 0
+x= 308.4 y= 154.6 sz= 7.8 black     | 1
+x= 323.4 y= 154.6 sz= 7.8 black     | 2
+x= 338.4 y= 154.6 sz= 7.8 black     | 3
+x= 353.4 y= 154.6 sz= 7.8 black     | 4
+x= 368.4 y= 154.6 sz= 7.8 black     | 5
+x=  64.5 y= 155.8 sz= 7.8 black     | 22. Experience of antagonism toward people around me
+x=  46.5 y= 173.1 sz= 7.8 black     | 23
+x= 293.4 y= 174.9 sz= 7.8 black     | 0
+x= 308.4 y= 174.9 sz= 7.8 black     | 1
+x= 323.4 y= 174.9 sz= 7.8 black     | 2
+x= 338.4 y= 174.9 sz= 7.8 black     | 3
+x= 353.4 y= 174.9 sz= 7.8 black     | 4
+x= 368.4 y= 174.9 sz= 7.8 black     | 5
+x=  64.5 y= 176.1 sz= 7.8 black     | 23. Despair
+x=  46.5 y= 193.5 sz= 7.8 black     | 24
+x= 293.4 y= 195.3 sz= 7.8 black     | 0
+x= 308.4 y= 195.3 sz= 7.8 black     | 1
+x= 323.4 y= 195.3 sz= 7.8 black     | 2
+x= 338.4 y= 195.3 sz= 7.8 black     | 3
+x= 353.4 y= 195.3 sz= 7.8 black     | 4
+x= 368.4 y= 195.3 sz= 7.8 black     | 5
+x=  64.5 y= 196.5 sz= 7.8 black     | 24. I felt isolated from everything and everyone
+x=  46.5 y= 213.9 sz= 7.8 black     | 25
+x= 293.4 y= 215.7 sz= 7.8 black     | 0
+x= 308.4 y= 215.7 sz= 7.8 black     | 1
+x= 323.4 y= 215.7 sz= 7.8 black     | 2
+x= 338.4 y= 215.7 sz= 7.8 black     | 3
+x= 353.4 y= 215.7 sz= 7.8 black     | 
+<...page truncated...>
+
+--- page 824 (cluster 23, 5 pages like this, 0% covered) ---
+x=  33.3 y=  36.3 sz=11.4 black     | MAC186_X11_201_00001_eCRF_v1_10_form_tracker_v1_6_06Mar2025
+x=  46.5 y=  71.8 sz= 7.8 black     | 16
+x=  64.5 y=  74.8 sz= 7.8 black     | Monoamine Oxidase Inhibitors (MAOIs)
+x= 276.7 y=  74.8 sz= 7.8 black     | Selegiline Patch, 6mg/24hrs, 12mg/24hrs
+x=  46.5 y=  92.8 sz= 7.8 black     | 17
+x=  64.5 y=  95.8 sz= 7.8 black     | Monoamine Oxidase Inhibitors (MAOIs)
+x= 276.7 y=  95.8 sz= 7.8 black     | Moclobemide, 300mg/d, 600mg/d
+x=  46.5 y= 113.8 sz= 7.8 black     | 18
+x=  64.5 y= 116.8 sz= 7.8 black     | Monoamine Oxidase Inhibitors (MAOIs)
+x= 276.7 y= 116.8 sz= 7.8 black     | Pirlindole, 200mg/d, 300mg/d
+x=  46.5 y= 134.8 sz= 7.8 black     | 19
+x=  64.5 y= 137.8 sz= 7.8 black     | Selective Serotonin Reuptake Inhibitors (SSRIs)
+x= 276.7 y= 137.8 sz= 7.8 black     | Fluvoxamine, 50mg/d, 150mg/d
+x=  46.5 y= 155.8 sz= 7.8 black     | 20
+x=  64.5 y= 158.8 sz= 7.8 black     | Selective Serotonin Reuptake Inhibitors (SSRIs)
+x= 276.7 y= 158.8 sz= 7.8 black     | Paroxetine, 20/25mg/d, 60/75mg/d
+x=  46.5 y= 176.7 sz= 7.8 black     | 21
+x=  64.5 y= 179.7 sz= 7.8 black     | Selective Serotonin Reuptake Inhibitors (SSRIs)
+x= 276.7 y= 179.7 sz= 7.8 black     | Fluoxetine, 20mg/d, 60mg/d
+x=  46.5 y= 197.7 sz= 7.8 black     | 22
+x=  64.5 y= 200.7 sz= 7.8 black     | Selective Serotonin Reuptake Inhibitors (SSRIs)
+x= 276.7 y= 200.7 sz= 7.8 black     | Sertraline, 50mg/d, 150mg/d
+x=  46.5 y= 218.7 sz= 7.8 black     | 23
+x=  64.5 y= 221.7 sz= 7.8 black     | Selective Serotonin Reuptake Inhibitors (SSRIs)
+x= 276.7 y= 221.7 sz= 7.8 black     | Citalopram, 20mg/d, 60mg/d
+x=  46.5 y= 239.7 sz= 7.8 black     | 24
+x=  64.5 y= 242.7 sz= 7.8 black     | Selective Serotonin Reuptake Inhibitors (SSRIs)
+x= 276.7 y= 242.7 sz= 7.8 black     | Escitalopram, 10mg/d, 30mg/d
+x=  46.5 y= 260.7 sz= 7.8 black     | 25
+x=  64.5 y= 263.7 sz= 7.8 black     | Selective Serotonin Reuptake Inhibitors (SSRIs)
+x= 276.7 y= 263.7 sz= 7.8 black     | Vilazodone, 40mg/d, 80mg/d
+x=  46.5 y= 281.6 sz= 7.8 black     | 26
+x=  64.5 y= 284.6 sz= 7.8 black     | Selective Serotonin Reuptake Inhibitors (SSRIs)
+x= 276.7 y= 284.6 sz= 7.8 black     | Vortioxetine, 10mg/d, 20mg/d
+x=  46.5 y= 302.6 sz= 7.8 black     | 27
+x=  64.5 y= 305.6 sz= 7.8 black     | Serotonin-Norepinephrine Reuptake Inhibitors (SNRIs)
+x= 276.7 y= 305.6 sz= 7.8 black     | Venlafaxine / Venlafaxine XR, 150mg/d, 250mg/d
+x=  46.5 y= 323.6 sz= 7.8 black     | 28
+x=  64.5 y= 326.6 sz= 7.8 black     | Serotonin-Norepinephrine Reuptake Inhibitors (SNRIs)
+x= 276.7 y= 326.6 sz= 7.8 black     | Duloxetine, 60mg/d, 120mg/d
+x=  46.5 y= 344.6 sz= 7.8 black     | 29
+x=  64.5 y= 347.6 sz= 7.8 black     | Serotonin-Norepinephrine Reuptake Inhibitors (SNRIs)
+x= 276.7 y= 347.6 sz= 7.8 black     | Desvenlafaxine, 50mg/d, 100mg/d
+x=  46.5 y= 365.6 sz= 7.8 black     | 30
+x=  64.5 y= 368.6 sz= 7.8 black     | Serotonin-Norepinephrine Reuptake Inhibitors (SNRIs)
+x= 276.7 y= 368.6 sz= 7.8 black     | Milnacipran, 100mg/d, 200mg/d
+x=  46.5 y= 386.5 sz= 7.8 black     | 31
+x=  64.5 y= 389.5 sz= 7.8 black     | Serotonin-Norepinephrine Reuptake Inhibitors (SNRIs)
+x= 276.7 y= 389.5 sz= 7.8 black     | Levom
+<...page truncated...>
+
+
+Reply with EXACTLY one of:
+- the single line: CONFIRM_NO_FIELDS
+  (meaning: all shown layouts are genuinely field-free; the program is complete), or
+- the FULL updated Python program (same reply format: source only, define
+  extract(pages)) that keeps existing behavior for covered layouts and ADDS
+  handling for the missed ones.

@@ -1,0 +1,30 @@
+{
+ "generated_at": "2026-07-24T02:46:07Z",
+ "documents": 1,
+ "events": 452,
+ "by_severity": {
+  "quality": 448,
+  "blocking": 4
+ },
+ "by_stage": {
+  "gates": 17,
+  "audit": 432,
+  "confirm": 2,
+  "loop": 1
+ },
+ "by_code": {
+  "warn_text_blocklists": 13,
+  "audit_false_positive": 162,
+  "audit_missed": 253,
+  "audit_wrong_form": 16,
+  "warn_form_names_empty": 1,
+  "gate_other": 2,
+  "confirm_extension_rejected": 2,
+  "transport_error": 1,
+  "gate_crash": 1,
+  "stopped_with_open_issues": 1
+ },
+ "by_doc": {
+  "annotatedCRF_33120100246-_v1.0_-17Aug2021": 452
+ }
+}

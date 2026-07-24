@@ -1,0 +1,366 @@
+{
+ "stop_reason": "plateau",
+ "versions": 3,
+ "best_version": 2,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 3104,
+    "pages_total": 489,
+    "pages_with_fields": 483,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 95,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 9,
+    "fields_per_form": 344.9,
+    "forms_per_100_pages": 1.8,
+    "pages_covered_pct": 99
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 29,
+   "audit_pages": [
+    1,
+    3,
+    33,
+    122,
+    247,
+    376
+   ],
+   "audit_partial": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [
+      "Staff Initials:",
+      "Comment:"
+     ],
+     "false": [
+      "Admission Restrictions: Photo ID",
+      "Admission Restrictions: Bag Search",
+      "Admission Restrictions: Bag Search Items Removed",
+      "Admission Restrictions: ICF Check",
+      "Admission Restrictions: ICF Version/Date"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 3,
+     "missed": [
+      "Staff Initials:",
+      "Comment:"
+     ],
+     "false": [
+      "Admission Restrictions: Grapefruit",
+      "Admission Restrictions: Poppy seeds",
+      "Admission Restrictions: Activity",
+      "Admission Restrictions: Smoking",
+      "Prompts: PD Prompt",
+      "Admission Restrictions: Adverse Event"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 33,
+     "missed": [
+      "Comment:"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 122,
+     "missed": [
+      "Staff Initials:",
+      "Comment:"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 247,
+     "missed": [
+      "Staff Initials:",
+      "Comment:",
+      "QTcF",
+      "Systolic",
+      "Diastolic",
+      "Heart Rate",
+      "Respiratory Rate",
+      "Oral Temperature - Degrees Celsius"
+     ],
+     "false": [
+      "Vital Signs: Vital Signs Supine Full Set",
+      "Vital Signs: Clinical Significance"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 376,
+     "missed": [
+      "Comment:"
+     ],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "score": [
+    0,
+    29,
+    0,
+    -483
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 2755,
+    "pages_total": 489,
+    "pages_with_fields": 489,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 95,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 9,
+    "fields_per_form": 306.1,
+    "forms_per_100_pages": 1.8,
+    "pages_covered_pct": 100
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 25,
+   "audit_pages": [
+    1,
+    3,
+    33,
+    122,
+    247,
+    376
+   ],
+   "audit_partial": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [
+      "Signed ICF Version / Date",
+      "Staff Initials:",
+      "Comment:",
+      "Has the ICF version been checked?",
+      "Bag search performed?",
+      "If restricted items removed, record items here",
+      "Has the participant's photographic and wristband ID been verified and wristband applied to participant's wrist?"
+     ],
+     "false": [
+      "Admission Restrictions: ICF Version/Date"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 3,
+     "missed": [
+      "Staff Initials:",
+      "Comment:",
+      "Has participant consumed food or beverages containing pomelo, grapefruit, grapefruit juice, Seville oranges, Seville orange juice, blueberry juice, or cranberry juice within 48 hours (72hrs prior to dosing) prior to Admission visit? (If 'Yes' exclude per exclusion criteria #24)",
+      "Has the participant consumed any food containing poppy seeds within 48 hours prior to Admission visit?",
+      "Has the participant had strenuous activity (e.g. weightlifting) within 72 hours prior to Admission visit?",
+      "Has the participant use of tobacco products or experience daily exposure to second-hand smoke since Screening? (If 'Yes' exclude per exclusion criteria #14)",
+      "Please ensure that a Protocol Deviation is completed"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 33,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 122,
+     "missed": [
+      "Staff Initials:",
+      "Comment:",
+      "Most Lethal Attempt Date",
+      "Actual Lethality/Medical Damage - Most Lethal Attempt"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 247,
+     "missed": [
+      "Staff Initials:",
+      "Comment:",
+      "ECG Difference Calculation - a participant will be withdrawn where there is an increase in QTcF interval of >60 msec from baseline (confirmed following a repeat ECG)",
+      "Vital Signs",
+      "Clinical Assessment of Vital Signs (Medic or Nurse to assess vital signs)"
+     ],
+     "false": [
+      "Vital Signs (Supine for at least 3 minutes)"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 376,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "score": [
+    0,
+    25,
+    0,
+    -489
+   ],
+   "became_best": true
+  },
+  {
+   "version": 3,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 4784,
+    "pages_total": 489,
+    "pages_with_fields": 489,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 97,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 9,
+    "fields_per_form": 531.6,
+    "forms_per_100_pages": 1.8,
+    "pages_covered_pct": 100
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 45,
+   "audit_pages": [
+    1,
+    3,
+    33,
+    122,
+    247,
+    376
+   ],
+   "audit_partial": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [
+      "Has the ICF version been checked?",
+      "Signed ICF Version / Date",
+      "Staff Initials:",
+      "Comment:",
+      "Bag search performed?",
+      "If restricted items removed, record items here",
+      "Has the participant's photographic and wristband ID been verified and wristband applied to participant's wrist?"
+     ],
+     "false": [
+      "Admission Restrictions: ICF Check",
+      "Admission Restrictions: ICF Version/Date",
+      "QSC302573, 04 - Admission/Predose Draft v0.1",
+      "Date _ _ - _ _ _ - _ _ _ _ (dd-MMM-yyyy)",
+      "Version _ _ . _ (##.0)",
+      "Date Created: 30-Sep-2024 08:27 (UTC)"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 3,
+     "missed": [
+      "Has participant consumed food or beverages containing pomelo, grapefruit, grapefruit juice, Seville oranges, Seville orange juice, blueberry juice, or cranberry juice within 48 hours (72hrs prior to dosing) prior to Admission visit? (If 'Yes' exclude per exclusion criteria #24)",
+      "Has the participant consumed any food containing poppy seeds within 48 hours prior to Admission visit?",
+      "Has the participant had strenuous activity (e.g. weightlifting) within 72 hours prior to Admission visit?",
+      "Has the participant use of tobacco products or experience daily exposure to second-hand smoke since Screening?  (If 'Yes' exclude per exclusion criteria #14)",
+      "Please ensure that a Protocol Deviation is completed",
+      "Staff Initials:",
+      "Comment:"
+     ],
+     "false": [
+      "QSC302573, 04 - Admission/Predose Draft v0.1",
+      "Date Created: 30-Sep-2024 08:27 (UTC)"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 33,
+     "missed": [],
+     "false": [
+      "QSC302573, 04 - Admission/Predose Draft v0.1",
+      "Date Created: 30-Sep-2024 08:27 (UTC)"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 122,
+     "missed": [
+      "Staff Initials:",
+      "Comment:"
+     ],
+     "false": [
+      "QSC302573, 05a - Period 1 Draft v0.2",
+      "Date _ _ - _ _ _ - _ _ _ _ (dd-MMM-yyyy)",
+      "Date Created: 30-Sep-2024 08:27 (UTC)"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 247,
+     "missed": [
+      "Staff Initials:",
+      "Comment:",
+      "Vital Signs",
+      "QTcF  _  _  _  ms (##0)",
+      "Systolic  _  _  _  mmHg (##0)",
+      "Diastolic  _  _  _  mmHg (##0)",
+      "Heart Rate  _  _  _  beats/min (##0)",
+      "Respiratory Rate  _  _  _  breaths/mi (##0)",
+      "Oral Temperature - Degrees Celsius  _  _  .  _  C (##.0)",
+      "Clinical Assessment of Vital Signs (Medic or Nurse to assess vital signs)"
+     ],
+     "false": [
+      "Vital Signs (Supine for at least 3 minutes)",
+      "QSC302573, 05c - Period 3 Parts 1 and 2 Draft v0.1",
+      "Date Created: 30-Sep-2024 08:27 (UTC)"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 376,
+     "missed": [
+      "Comment:"
+     ],
+     "false": [
+      "QSC302573, 05e - Period 4 Part 3 Draft v0.1",
+      "Date Created: 30-Sep-2024 08:27 (UTC)"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "score": [
+    0,
+    45,
+    0,
+    -489
+   ],
+   "became_best": false
+  }
+ ]
+}

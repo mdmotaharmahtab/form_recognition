@@ -1,0 +1,577 @@
+{
+ "stop_reason": "budget",
+ "versions": 5,
+ "best_version": 2,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "confirm",
+   "metrics": {
+    "engine": "codegen",
+    "records": 626,
+    "pages_total": 206,
+    "pages_with_fields": 201,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 96,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 90,
+    "fields_per_form": 7.0,
+    "forms_per_100_pages": 43.7,
+    "form_same_page_evidence_records": 528,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 98
+   },
+   "problems": [],
+   "outcome": "extended_program"
+  },
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 552,
+    "pages_total": 206,
+    "pages_with_fields": 127,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 97,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 90,
+    "fields_per_form": 6.1,
+    "forms_per_100_pages": 43.7,
+    "form_same_page_evidence_records": 528,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 62
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    0,
+    "not_audited",
+    0,
+    -127
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "confirm_extension",
+   "metrics": {
+    "engine": "codegen",
+    "records": 626,
+    "pages_total": 206,
+    "pages_with_fields": 201,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 96,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 90,
+    "fields_per_form": 7.0,
+    "forms_per_100_pages": 43.7,
+    "form_same_page_evidence_records": 528,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 98
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 8,
+   "audit_pages": [
+    1,
+    2,
+    3,
+    50,
+    70,
+    140
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [],
+     "false": [
+      "Subject",
+      "Unscheduled",
+      "AE/CM / Protocol Deviation",
+      "Day -28 to Day -3 Day -2 Day -1 Day 1 Day 2 Day 3 Day 4 Day 5 Day 6 Day 7 Day 8 Day 9 Day 10 Day 11 Follow Up Day 37 Early Termination"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 3,
+     "missed": [],
+     "false": [
+      "Is this an adverse event of special interest?"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 50,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 70,
+     "missed": [
+      "Body system",
+      "Examination result"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 140,
+     "missed": [],
+     "false": [],
+     "wrong_form": [
+      "AE Relationship"
+     ]
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    8,
+    0,
+    -201
+   ],
+   "became_best": true
+  },
+  {
+   "version": 3,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 873,
+    "pages_total": 206,
+    "pages_with_fields": 201,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 92,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 105,
+    "fields_per_form": 8.3,
+    "forms_per_100_pages": 51.0,
+    "form_same_page_evidence_records": 773,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 98
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 25,
+   "audit_pages": [
+    1,
+    2,
+    3,
+    50,
+    70,
+    103,
+    131,
+    140
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [],
+     "false": [
+      "AE/CM / Protocol Deviation",
+      "Day -28 to Day -3 Day -2 Day -1 Day 1 Day 2 Day 3 Day 4 Day 5 Day 6 Day 7 Day 8 Day 9 Day 10 Day 11 Follow Up Day 37 Early Termination",
+      "Subject",
+      "Unscheduled"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 3,
+     "missed": [],
+     "false": [
+      "O Yes O No"
+     ],
+     "wrong_form": [
+      "Adverse event term",
+      "End date and time",
+      "Is this a treatment emergent adverse event?",
+      "Ongoing?",
+      "Start date and time",
+      "Were any adverse events experienced?"
+     ]
+    },
+    {
+     "page": 50,
+     "missed": [],
+     "false": [],
+     "wrong_form": [
+      "PR",
+      "QRS",
+      "QT",
+      "QTcB",
+      "QTcF"
+     ]
+    },
+    {
+     "page": 70,
+     "missed": [],
+     "false": [
+      "O CS O NCS",
+      "O Gastrointestinal",
+      "O Neurological",
+      "O Normal O Abnormal"
+     ],
+     "wrong_form": [
+      "Abnormal findings",
+      "Body system",
+      "Clinical significance",
+      "Examination result"
+     ]
+    },
+    {
+     "page": 103,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 131,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 140,
+     "missed": [],
+     "false": [
+      "Not Related"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    25,
+    0,
+    -201
+   ],
+   "became_best": false
+  },
+  {
+   "version": 4,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 317,
+    "pages_total": 206,
+    "pages_with_fields": 185,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 88,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 105,
+    "fields_per_form": 3.0,
+    "forms_per_100_pages": 51.0,
+    "form_same_page_evidence_records": 163,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 90
+   },
+   "problems": [],
+   "warnings": [
+    "105 distinct form_names for 317 records - check whether form detection is picking up field labels or body text as form names; if so, make the form_name pattern stricter (font size / color / position) or carry the last seen title forward. If the document genuinely has this many forms, keep it as is."
+   ],
+   "audit_issues": 30,
+   "audit_pages": [
+    1,
+    2,
+    3,
+    4,
+    50,
+    70,
+    137,
+    140
+   ],
+   "audit_partial": null,
+   "audit_promoted": [
+    4
+   ],
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [],
+     "false": [
+      "AE/CM / Protocol Deviation",
+      "Subject",
+      "Unscheduled"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 3,
+     "missed": [
+      "Were any adverse events experienced?",
+      "Start date and time",
+      "Ongoing?",
+      "End date and time",
+      "Adverse event term",
+      "Is this a treatment emergent adv"
+     ],
+     "false": [
+      "Any Adverse Event Mandatory?: Yes"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 4,
+     "missed": [
+      "Severity",
+      "Relationship to investigational product",
+      "Action taken with investigational product",
+      "Was a concomitant medication given?",
+      "Were any other actions taken in response to this adverse event?",
+      "Other action taken"
+     ],
+     "false": [
+      "Severity/Intensity Mandatory?: Yes"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 50,
+     "missed": [
+      "PR",
+      "QRS",
+      "QT"
+     ],
+     "false": [],
+     "wrong_form": [
+      "QTcB",
+      "QTcF"
+     ]
+    },
+    {
+     "page": 70,
+     "missed": [
+      "Body system",
+      "Examination result",
+      "Clinical significance",
+      "Abnormal findings",
+      "Body system",
+      "Examination result"
+     ],
+     "false": [
+      "Body system GASTROINTESTINAL Mandatory?: Yes"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 137,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 140,
+     "missed": [],
+     "false": [
+      "Not Related Related"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    30,
+    1,
+    -185
+   ],
+   "became_best": false
+  },
+  {
+   "version": 5,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 372,
+    "pages_total": 206,
+    "pages_with_fields": 168,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 99,
+    "labels_look_human_pct": 98,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 132,
+    "fields_per_form": 2.8,
+    "forms_per_100_pages": 64.1,
+    "form_same_page_evidence_records": 231,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 82
+   },
+   "problems": [],
+   "warnings": [
+    "132 distinct form_names for 372 records - check whether form detection is picking up field labels or body text as form names; if so, make the form_name pattern stricter (font size / color / position) or carry the last seen title forward. If the document genuinely has this many forms, keep it as is."
+   ],
+   "audit_issues": 38,
+   "audit_pages": [
+    1,
+    2,
+    3,
+    4,
+    50,
+    70,
+    140,
+    161
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [
+      "A Phase 1, Open-label, Single-sequence Pharmacokinetic Trial to Assess the Effect of a Single Oral Dose of SEP380135 on the Potential for Cytochrome P450 2D6 Mediated Drug-drug Interactions in Healthy Adults",
+      "CDISC Legend",
+      "Generated on: 16Jan2025 14:44:24 CST",
+      "Prepared by: Dr. Vince Clinical Research, LLC",
+      "Scheduled Activities Study Events Forms Item Groups Items Measurement Units Code Lists"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [],
+     "false": [
+      "AE/CM / Protocol Deviation",
+      "Forms",
+      "Genomic ICF Protocol Deviations Subject Eligibility Subject Informed Consent Urine Collection - PK - Interval Start (0-2) Urine Collection - PK - Interval Start (12Urine Collection - PK - Interval Start (2-4) Urine Collection - PK - Interval Start (4-8) Urine Collection - PK - Interval Start (8Urine Collection - PK - Interval Stop (0-2) Urine Collection - PK - Interval Stop (12Urine Collection - PK - Interval Stop (2-4) Urine Collection - PK - Interval Stop (4-8) Urine Collection - PK - Interval Stop (8-",
+      "Name",
+      "Subject",
+      "Unscheduled"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 3,
+     "missed": [
+      "Were any adverse events experienced?",
+      "Start date and time",
+      "Ongoing?",
+      "End date and time",
+      "Adverse event term",
+      "Is this a treatment emergent adv"
+     ],
+     "false": [
+      "Any Adverse Event Mandatory?: Yes"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 4,
+     "missed": [
+      "Severity",
+      "Relationship to investigational product",
+      "Action taken with investigational product",
+      "Was a concomitant medication given?",
+      "Were any other actions taken in response to this adverse event?",
+      "Other action taken"
+     ],
+     "false": [
+      "Severity/Intensity Mandatory?: Yes"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 50,
+     "missed": [
+      "PR",
+      "QRS",
+      "QT"
+     ],
+     "false": [
+      "Electrocardiogram 1",
+      "Origin: CRF; Repeating: No; Conditionally Visible; Domain: EG"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 70,
+     "missed": [
+      "Body system",
+      "Examination result",
+      "Clinical significance",
+      "Abnormal findings",
+      "Body system",
+      "Examination result"
+     ],
+     "false": [
+      "Body system GASTROINTESTINAL Mandatory?: Yes"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 140,
+     "missed": [],
+     "false": [
+      "AE Relationship"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 161,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    38,
+    1,
+    -168
+   ],
+   "became_best": false
+  }
+ ]
+}

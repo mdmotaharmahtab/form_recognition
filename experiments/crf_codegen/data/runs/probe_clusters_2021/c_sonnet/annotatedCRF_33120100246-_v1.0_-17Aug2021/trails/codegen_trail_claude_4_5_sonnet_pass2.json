@@ -1,0 +1,549 @@
+{
+ "stop_reason": "budget",
+ "versions": 5,
+ "best_version": 4,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 532,
+    "pages_total": 104,
+    "pages_with_fields": 104,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 90,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 8,
+    "fields_per_form": 66.5,
+    "forms_per_100_pages": 7.7,
+    "form_same_page_evidence_records": 529,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 100
+   },
+   "problems": [],
+   "warnings": [
+    "The program filters by 12 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": 18,
+   "audit_pages": [
+    46,
+    50,
+    53,
+    84,
+    202,
+    413
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 46,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 50,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 53,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 84,
+     "missed": [],
+     "false": [
+      "If any answers to the Exclusion Criteria are \"Met\", EXCLUDE subject from the study. Row 2 \\1.\\Females who are breast-feeding and/or who have a positive pregnancy test result prior to receiving IMP.",
+      "\\2.\\ Heterosexually active males or females of childbearing potential (FOCBP), or their partners, who do not",
+      "agree to practice 2 different approved methods of birth control or remain fully abstinent (periodic abstinence or withdrawal are not acceptable methods of contraception) during the trial and for 30 days after the last",
+      "dose of IMP. If employing birth control, 2 of the following methods must be used: vasectomy, bilateral tubal",
+      "ligation, nonhormonal intrauterine device, condom with spermicide, sponge with spermicide, or occlusive",
+      "cap (vaginal diaphragm or cervical/vault cap) with spermicide. Row 4 \\3.\\ Male subjects who do not agree to not donate sperm from trial screening through 30 days after the last",
+      "dose of IMP.",
+      "\\4.\\ Clinically significant abnormality in past medical history, or at the screening physical examination, that in",
+      "the investigator's or sponsor's opinion may place the subject at risk or interfere with outcome variables including absorption, distribution, metabolism, and excretion of the IMP. This includes, but is not limited to,",
+      "history of or concurrent cardiac, hepatic, renal, neurologic, endocrine, gastrointestinal, respiratory,",
+      "hematologic, and immunologic disease.",
+      "\\5.\\ Subjects with abnormal clinical laboratory assessment results, vital signs results, or ECG findings,",
+      "unless, based on the investigator's judgment, the findings are not medically significant and would not impact the safety of the subject or the interpretation of the trial results. The medical monitor should be contacted to",
+      "discuss individual cases, as needed. In addition, subjects with any of the following clinical laboratory",
+      "assessments or ECG results at screening must be excluded from the trial:",
+      "- Platelets <= 75000/mm3 - Hemoglobin <= 9 g/dL - Neutrophils, absolute <= 1000/mm3 - Aspartate aminotransferase (AST) > 2 \u00d7 upper limit or normal (ULN) - Alanine aminotransferase (ALT) > 2 \u00d7 ULN - Creatinine phosphokinase > 3 \u00d7 ULN, unless discussed with and approved by the medical monitor - Creatinine >= 2 mg/dL - QT interval corrected for heart rate using Friedericia formula (QTcF)>= 450 msec in men and >= 470 msec in women, unless due to ventricular pacing Tests with exclusionary results should be repeated once to ensure reproducibility of the abnormality before excluding a subject based on the criteria noted above. Row 7 \\6.\\ Subjects with diagnosed hypertension (including treated or untreated hypertension), or orthostatic",
+      "hypotension which is defined as a decrease of",
+      "= 20 mmHg decrease in SBP and a >= 25 bpm increase in HR from supine to standing, OR"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 202,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 413,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    18,
+    1,
+    -104
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 701,
+    "pages_total": 104,
+    "pages_with_fields": 104,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 94,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 8,
+    "fields_per_form": 87.6,
+    "forms_per_100_pages": 7.7,
+    "form_same_page_evidence_records": 698,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 100
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 22,
+   "audit_pages": [
+    46,
+    47,
+    50,
+    51,
+    53,
+    84,
+    202,
+    413
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 46,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 47,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 50,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 51,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 53,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 84,
+     "missed": [],
+     "false": [
+      "If any answers to the Exclusion Criteria are \"Met\", EXCLUDE subject from the study.",
+      "\\2.\\ Heterosexually active males or females of childbearing potential (FOCBP), or their partners, who do not",
+      "agree to practice 2 different approved methods of birth control or remain fully abstinent (periodic abstinence or withdrawal are not acceptable methods of contraception) during the trial and for 30 days after the last",
+      "dose of IMP. If employing birth control, 2 of the following methods must be used: vasectomy, bilateral tubal",
+      "ligation, nonhormonal intrauterine device, condom with spermicide, sponge with spermicide, or occlusive",
+      "cap (vaginal diaphragm or cervical/vault cap) with spermicide.",
+      "\\3.\\ Male subjects who do not agree to not donate sperm from trial screening through 30 days after the last",
+      "dose of IMP.",
+      "\\4.\\ Clinically significant abnormality in past medical history, or at the screening physical examination, that in",
+      "the investigator's or sponsor's opinion may place the subject at risk or interfere with outcome variables including absorption, distribution, metabolism, and excretion of the IMP. This includes, but is not limited to,",
+      "history of or concurrent cardiac, hepatic, renal, neurologic, endocrine, gastrointestinal, respiratory,",
+      "hematologic, and immunologic disease.",
+      "\\5.\\ Subjects with abnormal clinical laboratory assessment results, vital signs results, or ECG findings,",
+      "unless, based on the investigator's judgment, the findings are not medically significant and would not impact the safety of the subject or the interpretation of the trial results. The medical monitor should be contacted to",
+      "discuss individual cases, as needed. In addition, subjects with any of the following clinical laboratory",
+      "assessments or ECG results at screening must be excluded from the trial:",
+      "- Platelets <= 75000/mm3 - Hemoglobin <= 9 g/dL - Neutrophils, absolute <= 1000/mm3 - Aspartate aminotransferase (AST) > 2 \u00d7 upper limit or normal (ULN)",
+      "in women, unless due to ventricular pacing Tests with exclusionary results should be repeated once to ensure reproducibility of the abnormality before excluding a subject based on the criteria noted above.",
+      "\\6.\\ Subjects with diagnosed hypertension (including treated or untreated hypertension), or orthostatic",
+      "hypotension which is defined as a decrease of",
+      "= 20 mmHg decrease in SBP and a >= 25 bpm increase in HR from supine to standing, OR"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 202,
+     "missed": [],
+     "false": [
+      "Suicidal behavior:"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 413,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    22,
+    0,
+    -104
+   ],
+   "became_best": false
+  },
+  {
+   "version": 3,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 592,
+    "pages_total": 104,
+    "pages_with_fields": 104,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 8,
+    "fields_per_form": 74.0,
+    "forms_per_100_pages": 7.7,
+    "form_same_page_evidence_records": 572,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 100
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 29,
+   "audit_pages": [
+    46,
+    48,
+    50,
+    53,
+    83,
+    84,
+    202,
+    413
+   ],
+   "audit_partial": null,
+   "audit_promoted": [
+    83
+   ],
+   "audit_verdicts": [
+    {
+     "page": 46,
+     "missed": [
+      "Chemistry clinically significant abnormal assay # 1:"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 48,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 50,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 53,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 83,
+     "missed": [],
+     "false": [
+      "\\1.\\ Diagnosis of MDD, as determined by the Diagnostic and Statistical Manual of Mental Disorders, Fifth",
+      "least 30 days at the time of screening visit 1 and stable sertraline doses of \u2265 150 mg/day for at least 5 days",
+      "at the time of screening visit 2.",
+      "\\2.\\ Male or female subjects between 18 and 65 years of age (inclusive).",
+      "\\3.\\ Body mass index (BMI) between 19.0 to 35.0 kg/m2 (inclusive).",
+      "\\4.\\ In good health as determined by: a) Medical history",
+      "b) Physical examination c) Vital signs",
+      "d) Electrocardiogram (ECG)",
+      "e) Serum/urine chemistry, hematology, and serology tests",
+      "\\5.\\ Ability to provide written, informed consent prior to initiation of any trial-related procedures, and ability, in",
+      "the opinion of the investigator, to comply with all the requirements of the trial."
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 84,
+     "missed": [],
+     "false": [
+      "\\1.\\Females who are breast-feeding and/or who have a positive pregnancy test result prior to receiving IMP.",
+      "\\2.\\ Heterosexually active males or females of childbearing potential (FOCBP), or their partners, who do not",
+      "dose of IMP. If employing birth control, 2 of the following methods must be used: vasectomy, bilateral tubal",
+      "ligation, nonhormonal intrauterine device, condom with spermicide, sponge with spermicide, or occlusive",
+      "cap (vaginal diaphragm or cervical/vault cap) with spermicide.",
+      "\\3.\\ Male subjects who do not agree to not donate sperm from trial screening through 30 days after the last",
+      "dose of IMP.",
+      "\\4.\\ Clinically significant abnormality in past medical history, or at the screening physical examination, that in",
+      "history of or concurrent cardiac, hepatic, renal, neurologic, endocrine, gastrointestinal, respiratory,",
+      "hematologic, and immunologic disease.",
+      "\\5.\\ Subjects with abnormal clinical laboratory assessment results, vital signs results, or ECG findings,",
+      "discuss individual cases, as needed. In addition, subjects with any of the following clinical laboratory",
+      "assessments or ECG results at screening must be excluded from the trial:",
+      "- Platelets <= 75000/mm3 - Hemoglobin <= 9 g/dL - Neutrophils, absolute <= 1000/mm3 - Aspartate aminotransferase (AST) > 2 \u00d7 upper limit or normal (ULN)",
+      "\\6.\\ Subjects with diagnosed hypertension (including treated or untreated hypertension), or orthostatic",
+      "hypotension which is defined as a decrease of",
+      "= 20 mmHg decrease in SBP and a >= 25 bpm increase in HR from supine to standing, OR"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 202,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 413,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    29,
+    0,
+    -104
+   ],
+   "became_best": true
+  },
+  {
+   "version": 4,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 589,
+    "pages_total": 104,
+    "pages_with_fields": 104,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 8,
+    "fields_per_form": 73.6,
+    "forms_per_100_pages": 7.7,
+    "form_same_page_evidence_records": 577,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 100
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 51,
+   "audit_pages": [
+    46,
+    50,
+    53,
+    83,
+    84,
+    85,
+    202,
+    413
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 46,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 50,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 53,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 83,
+     "missed": [],
+     "false": [
+      "\\1.\\ Diagnosis of MDD, as determined by the Diagnostic and Statistical Manual of Mental Disorders, Fifth",
+      "least 30 days at the time of screening visit 1 and stable sertraline doses of \u2265 150 mg/day for at least 5 days",
+      "at the time of screening visit 2.",
+      "\\2.\\ Male or female subjects between 18 and 65 years of age (inclusive).",
+      "\\3.\\ Body mass index (BMI) between 19.0 to 35.0 kg/m2 (inclusive).",
+      "\\4.\\ In good health as determined by: a) Medical history",
+      "b) Physical examination c) Vital signs",
+      "d) Electrocardiogram (ECG)",
+      "e) Serum/urine chemistry, hematology, and serology tests",
+      "\\5.\\ Ability to provide written, informed consent prior to initiation of any trial-related procedures, and ability, in",
+      "the opinion of the investigator, to comply with all the requirements of the trial."
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 84,
+     "missed": [],
+     "false": [
+      "\\1.\\Females who are breast-feeding and/or who have a positive pregnancy test result prior to receiving IMP.",
+      "\\2.\\ Heterosexually active males or females of childbearing potential (FOCBP), or their partners, who do not",
+      "dose of IMP. If employing birth control, 2 of the following methods must be used: vasectomy, bilateral tubal",
+      "ligation, nonhormonal intrauterine device, condom with spermicide, sponge with spermicide, or occlusive",
+      "cap (vaginal diaphragm or cervical/vault cap) with spermicide.",
+      "\\3.\\ Male subjects who do not agree to not donate sperm from trial screening through 30 days after the last",
+      "dose of IMP.",
+      "\\4.\\ Clinically significant abnormality in past medical history, or at the screening physical examination, that in",
+      "history of or concurrent cardiac, hepatic, renal, neurologic, endocrine, gastrointestinal, respiratory,",
+      "hematologic, and immunologic disease.",
+      "\\5.\\ Subjects with abnormal clinical laboratory assessment results, vital signs results, or ECG findings,",
+      "discuss individual cases, as needed. In addition, subjects with any of the following clinical laboratory",
+      "assessments or ECG results at screening must be excluded from the trial:",
+      "\\6.\\ Subjects with diagnosed hypertension (including treated or untreated hypertension), or orthostatic",
+      "hypotension which is defined as a decrease of",
+      "= 20 mmHg decrease in SBP and a >= 25 bpm increase in HR from supine to standing, OR"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 85,
+     "missed": [],
+     "false": [
+      "development of symptoms. Note: Blood pressure measurements may be repeated once to",
+      "ensure reproducibility of the exclusionary result(s) before excluding a subject based on the",
+      "criteria noted above.",
+      "\\7.\\ Supine HR, after resting for at least 5 minutes, outside the range of 40 to 90 beats per minute (bpm).",
+      "The sponsor may allow exceptions if the results are not considered to be clinically significant.",
+      "\\8.\\ Subjects with epilepsy or a history of seizures, except for a single seizure episode; for instance",
+      "childhood febrile seizure, a post-traumatic seizure episode, or an alcohol withdrawal seizure.",
+      "\\9.\\ Subjects with a history of neuroleptic malignant syndrome or serotonin syndrome.",
+      "- Schizophrenia spectrum and other psychotic disorders - Bipolar and related disorders",
+      "- Feeding and eating disorders (including anorexia nervosa or bulimia)",
+      "- Neurocognitive disorders (including but not limited to delirium, major or mild neurocognitive disorder due to",
+      "Alzheimer's, Parkinson's, or traumatic brain injury)",
+      "\\11.\\ Subjects who have a significant risk of committing suicide based on history, routine psychiatric status",
+      "Rating Scale (C-SSRS) or subjects with any suicidal behavior during the 6 months prior to the screening",
+      "\\12.\\ History of serious mental disorders that, in the opinion of the investigator, renders the subject a poor fit",
+      "for the trial..",
+      "\\13.\\ History of diabetes mellitus (type 1 or type 2) OR subjects without a history of diabetes mellitus but",
+      "screening glycated hemoglobin >= 6.5% and glucose > 125 mg/dL (fasting) or > 200 mg/dL (nonfasting).",
+      "Nonfasting screening glucose may be repeated once in the fasted state and the retest value must be < 125",
+      "mg/dL for inclusion in the trial.",
+      "\\14.\\ History of or current hepatitis or acquired immunodeficiency syndrome or carriers of hepatitis B surface",
+      "antigen (HBsAg), hepatitis C antibodies (anti-HCV), and/or human immunodeficiency virus (HIV) antibodies.",
+      "Exceptions are permitted for subjects with a prior history of infection with hepatitis A who have fully",
+      "recovered and are experiencing no liver sequelae."
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 202,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 413,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    51,
+    0,
+    -104
+   ],
+   "became_best": true
+  },
+  {
+   "version": 5,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 570,
+    "pages_total": 104,
+    "pages_with_fields": 104,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 8,
+    "fields_per_form": 71.2,
+    "forms_per_100_pages": 7.7,
+    "form_same_page_evidence_records": 558,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 100
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_partial": true,
+   "audit_promoted": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    0,
+    "not_audited",
+    0,
+    -104
+   ],
+   "became_best": false
+  }
+ ]
+}

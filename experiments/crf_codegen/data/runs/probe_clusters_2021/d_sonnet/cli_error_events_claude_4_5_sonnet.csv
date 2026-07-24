@@ -1,0 +1,457 @@
+doc,stage,version,severity,code,detail
+annotatedCRF_33120100246-_v1.0_-17Aug2021,gates,1,quality,warn_text_blocklists,"The program filters by 18 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. "
+annotatedCRF_33120100246-_v1.0_-17Aug2021,gates,2,quality,warn_text_blocklists,"The program filters by 21 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. "
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p1: 1
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p1: 2
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p1: 3
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p1: Visit Date
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p1: Informed Consent
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p1: FBR Consent
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p1: Demography
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p1: Reproductive Status - Female
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p1: Reproductive Status - Male
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p1: Medical/Psychiatric History
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p1: Body Temperature and Respiratory Rate
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p1: Triplicate Orthostatic BP and HR - Central
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p1: Height and Weight
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p1: Physical Exam
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p1: Triplicate ECG Assessments
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p1: Serology
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p1: Glycated Hemoglobin
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p1: Clinical Laboratory Assessments
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p1: Laboratory results review
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p1: FSH Blood Sample
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p1: Pregnancy test
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p1: Tobacco Use
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p1: Alcohol Use
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p1: Alcohol Screen - Urine or Breath
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p1: Urine Drug Screen
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p1: Cotinine Screen
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p1: C-SSRS - Screening/Baseline
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p1: C-SSRS - Screening/Baseline - Page 1
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p1: C-SSRS - Screening/Baseline - Page 2
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p1: C-SSRS - Screening/Baseline - Page 3
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p1: C-SSRS - Screening/Baseline - Page 4
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p1: AE and CM prompt
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p1: Inclusion criteria
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p1: Exclusion criteria
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p1: Sertraline Titration
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p1: End of Screening
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p3: Visit Date
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p3: AE and CM prompt
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p3: Body Temperature and Respiratory Rate
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p3: Triplicate Orthostatic BP and HR - Predose
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p3: C-SSRS - Since Last Visit
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p3: C-SSRS since last visit - Page 1
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p3: C-SSRS since last visit - Page 2
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p3: C-SSRS since last visit - Page 3
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p3: C-SSRS since last visit - Page 4
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p3: IMP Administration - Sertraline and Prazosin
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p3: PK Blood Draw - Sertraline
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p3: PK Blood Draw - Prazosin
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p3: Triplicate Orthostatic BP and HR - 1h Postdose
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p3: Triplicate Orthostatic BP and HR - 1.5h Postdose
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p3: Triplicate Orthostatic BP and HR - 2h Postdose
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p3: Triplicate Orthostatic BP and HR - 2.5h Postdose
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p3: Triplicate Orthostatic BP and HR - 3h Postdose
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p3: Triplicate Orthostatic BP and HR - 4h Postdose
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p3: Triplicate Orthostatic BP and HR - 6h Postdose
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p3: Triplicate Orthostatic BP and HR - 8h Postdose
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p3: Body Temperature and Respiratory Rate - Predose
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p3: 12-lead ECG - Discharge
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p3: Clinical Laboratory Assessments
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p3: Laboratory results review
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p3: IMP Administration - Sertraline and Propranolol
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p3: PK Blood Draw - Propranolol
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p3: Physical Exam
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p3: Pregnancy test
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p3: Alcohol Screen - Urine or Breath
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p5: Clinical Laboratory Assessments
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p5: Laboratory results review
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p5: Aicure Device - Return
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p5: C-SSRS - Since Last Visit
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p5: C-SSRS since last visit - Page 1
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p5: C-SSRS since last visit - Page 2
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p5: C-SSRS since last visit - Page 3
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p5: C-SSRS since last visit - Page 4
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,"p5: IMP Administration - Sertraline, Brexpiprazole and Propranolol"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p5: PK Blood Draw - Brexpiprazole/Sertraline
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p5: PK Blood Draw - Propranolol
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p5: Triplicate Orthostatic BP and HR - 1h Postdose
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p5: Triplicate Orthostatic BP and HR - 1.5h Postdose
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p5: Triplicate Orthostatic BP and HR - 2h Postdose
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p5: Triplicate Orthostatic BP and HR - 2.5h Postdose
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p5: Triplicate Orthostatic BP and HR - 3h Postdose
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p5: Triplicate Orthostatic BP and HR - 4h Postdose
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p5: Triplicate Orthostatic BP and HR - 6h Postdose
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p5: Triplicate Orthostatic BP and HR - 8h Postdose
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p5: End of Study
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p5: Visit Date
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p5: Body Temperature and Respiratory Rate
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p5: Triplicate Orthostatic BP and HR - Predose
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p5: Physical Exam
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p5: 12-lead ECG
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p5: Glycated Hemoglobin
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p5: Aicure Device - Return
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,"p5: IMP Administration - Sertraline,Brexpiprazole and Propranolol"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p5: Orthostatic BP and HR - ET
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p5: Follow-Up Phone Call
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p5: Adverse Events
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p5: Prior and Concomitant Medications
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p5: Surgeries and medical procedures
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p5: Withdrawal of Informed Consent
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p5: IMP Missed Dose
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p5: Protocol Deviation
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p5: Admission to clinic
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p5: Discharge from clinic
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p5: Death
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p5: Drug Accountability
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p68: If not done reason
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p68: Lot
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p68: Cotinine
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,"p215: If not collected, reason:"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p215: Collect vital signs after subject has been resting in a supine position for at least 5 minutes and again after the subject has been in a standing position for 3 minutes.
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_wrong_form,p386: Time Placed in Position
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_wrong_form,p386: Time of Vitals Measurement #3
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p68: If not done reason
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p68: Lot
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,"p215: If not collected, reason:"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_false_positive,p215: position for 3 minutes.
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_wrong_form,p386: Time Placed in Position
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_wrong_form,p386: Time of Vitals Measurement #3
+annotatedCRF_33120100246-_v1.0_-17Aug2021,gates,4,quality,warn_text_blocklists,"The program filters by 14 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. "
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_wrong_form,p386: Time Placed in Position
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_wrong_form,p386: Time of Vitals Measurement #3
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_false_positive,p215: Collect vital signs after subject has been resting in a supine position for at least 5 minutes and again after the subject has been in a standing position for 3 minutes.
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_wrong_form,p386: Time Placed in Position
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_wrong_form,p386: Time of Vitals Measurement #3
+annotatedCRF_33120100246-_v1.0_-17Aug2021,gates,1,quality,warn_form_names_empty,"form_name empty for 75% of records - if the document does print form/section names, fix the form_name strategy (consider carrying the last seen title forward)."
+annotatedCRF_33120100246-_v1.0_-17Aug2021,gates,1,quality,warn_text_blocklists,"The program filters by 16 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. "
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_false_positive,p46: Chemistry clinically significant abnormal assay # 1:
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_false_positive,p46: low density lipoprotein;and; high density lipoprotein)
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_false_positive,p46: Gamma glutamyl transferase
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_false_positive,"p46: lipoprotein;and; high density lipoprotein), Creatine phosphokinase, Creatinine, Gamma glutamyl transferase, Glucose, Lactate dehydrogenase,"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_false_positive,"p46: Magnesium, Phosphorus, Potassium, Prolactin, Total bilirubin, Total protein, Triglycerides, Sodium, Urea nitrogen, Uric acid)]"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_false_positive,p47: Chemistry clinically significant abnormal assay # 2
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_false_positive,p47: low density lipoprotein;and; high density lipoprotein)
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_false_positive,p47: Gamma glutamyl transferase
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_false_positive,"p47: lipoprotein;and; high density lipoprotein), Creatine phosphokinase, Creatinine, Gamma glutamyl transferase, Glucose, Lactate dehydrogenase,"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_false_positive,"p47: Magnesium, Phosphorus, Potassium, Prolactin, Total bilirubin, Total protein, Triglycerides, Sodium, Urea nitrogen, Uric acid)]"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_false_positive,p52: Mean corpuscular hemoglobin concentration
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_false_positive,p52: Mean corpuscular volume
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_false_positive,p52: Red blood cell count
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_false_positive,p52: White blood cell count (absolute and differential)
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_false_positive,"p52: Red blood cell count, White blood cell count (absolute and differential), Glycated Hemoglobin)"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_false_positive,"p84: If any answers to the Exclusion Criteria are ""Met"", EXCLUDE subject from the study."
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_false_positive,"p84: Not Met, N/A)]"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_false_positive,"p84: = 20 mmHg decrease in SBP and a >= 25 bpm increase in HR from supine to standing, OR"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_false_positive,p241: low density lipoprotein;and; high density lipoprotein)
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_false_positive,p241: Gamma glutamyl transferase
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_false_positive,"p241: lipoprotein;and; high density lipoprotein), Creatine phosphokinase, Creatinine, Gamma glutamyl transferase, Glucose, Lactate dehydrogenase,"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_false_positive,"p241: Magnesium, Phosphorus, Potassium, Prolactin, Total bilirubin, Total protein, Triglycerides, Sodium, Urea nitrogen, Uric acid)]"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_missed,"p427: If Yes, Total number of interrupted attempts"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_missed,"p427: If Yes, describe"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_missed,"p427: If Yes, Total number of aborted attempts"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_missed,"p427: If Yes, describe"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_false_positive,"p427: this becomes an attempt rather than an interrupted attempt. Shooting: Person has gun pointed toward self, gun is taken away by someone else, or is"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_false_positive,"p427: somehow prevent from pulling trigger. Once they pull the trigger, even if the gun fails to fire, it is an attempt."
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_false_positive,"p427: Jumping: Person is poised to jump, is grabbed and taken down from ledge. Hanging: Person has noose around neck but has not yet started to hang - is stopped from"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_false_positive,p427: Has there been a time when you started to do something to end your life but someone or something stopped you before you actually did anything?
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_false_positive,p427: Aborted attempt:
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_false_positive,"p427: When person begins to take steps toward making a suicide attempt, but stops themselves before"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_false_positive,p427: they actually have engaged in any self destructive behaviour. Examples are similar to interrupted
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_false_positive,"p427: attempts, except that the individual stops him/herself, instead of being stopped by something else. Has there been a time when you started to do something to try to end your life but you"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_false_positive,p427: stopped yourself before you actually did anything?
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_false_positive,p427: Preparatory acts or behavior:
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_false_positive,p427: Acts or preparation towards imminently making a suicide attempt. This can include anything beyond
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_false_positive,"p427: a verbalization or thought such as assembling a specific method (e.g., buying pills, purchasing a"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_false_positive,"p427: gun) or preparing for one's death by suicide (e.g., giving things away, writing a suicide note) Have you taken any step towards making a suicide attempt or preparing to kill yourself (such"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_false_positive,"p427: as collecting pills, getting a gun, giving valuables away or writing a suicide note?)"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p46: Chemistry abnormal assay # 1 Investigator comment
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p47: Chemistry clinically significant abnormal assay # 2
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p47: Chemistry abnormal assay # 2 Investigator comment
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p48: Chemistry clinically significant abnormal assay # 3
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p48: Chemistry abnormal assay # 3 Investigator comment
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p52: Hematology clinically significant abnormal assay # 3
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p52: Hematology abnormal assay # 3 Investigator comment
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p52: Hematology clinically significant abnormal assay # 4
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p52: Hematology abnormal assay # 4 Investigator comment
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,"p83: \1.\ Diagnosis of MDD, as determined by the Diagnostic and Statistical Manual of Mental Disorders, Fifth Edition (DSM-5) criteria, and are considered clinically stable per investigator's judgment while currently receiving sertraline for at least 90 days and maintained on stable sertraline doses"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p83: \2.\ Male or female subjects between 18 and 65 years of age (inclusive).
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p83: \3.\ Body mass index (BMI) between 19.0 to 35.0 kg/m2 (inclusive).
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,"p83: \4.\ In good health as determined by: a) Medical history b) Physical examination c) Vital signs d) Electrocardiogram (ECG) e) Serum/urine chemistry, hematology, and serology tests"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,"p83: \5.\ Ability to provide written, informed consent prior to initiation of any trial-related procedures, and ability, in the opinion of the investigator, to comply with all the requirements of the trial."
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p84: \1.\Females who are breast-feeding and/or who have a positive pregnancy test result prior to receiving IMP.
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,"p84: \2.\ Heterosexually active males or females of childbearing potential (FOCBP), or their partners, who do not agree to practice 2 different approved methods of birth control or remain fully abstinent (periodic abstinence or withdrawal are not acceptable methods of contraception) during the trial"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p84: \3.\ Male subjects who do not agree to not donate sperm from trial screening through 30 days after the last dose of IMP.
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,"p84: \4.\ Clinically significant abnormality in past medical history, or at the screening physical examination, that in the investigator's or sponsor's opinion may place the subject at risk or interfere with outcome variables including absorption, distribution, metabolism, and excretion of the IMP. "
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,"p84: \5.\ Subjects with abnormal clinical laboratory assessment results, vital signs results, or ECG findings, unless, based on the investigator's judgment, the findings are not medically significant and would not impact the safety of the subject or the interpretation of the trial results. The medic"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,"p84: \6.\ Subjects with diagnosed hypertension (including treated or untreated hypertension), or orthostatic hypotension which is defined as a decrease of"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p241: Chemistry clinically significant abnormal assay # 5
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p241: Chemistry abnormal assay # 5 Investigator comment
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,"p427: If Yes, Total number of interrupted attempts"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,"p427: If Yes, describe"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,"p427: If Yes, Total number of aborted attempts"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,"p427: If Yes, describe"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,"p427: If Yes, describe"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p47: Chemistry clinically significant abnormal assay # 2
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p48: Chemistry clinically significant abnormal assay # 3
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p52: Hematology clinically significant abnormal assay # 3
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p52: Hematology clinically significant abnormal assay # 4
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p84: \1.\Females who are breast-feeding and/or who have a positive pregnancy test result prior to receiving IMP.
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,"p84: \2.\ Heterosexually active males or females of childbearing potential (FOCBP), or their partners, who do not agree to practice 2 different approved methods of birth control or remain fully abstinent (periodic abstinence or withdrawal are not acceptable methods of contraception) during the trial"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p84: \3.\ Male subjects who do not agree to not donate sperm from trial screening through 30 days after the last dose of IMP.
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,"p84: \4.\ Clinically significant abnormality in past medical history, or at the screening physical examination, that in the investigator's or sponsor's opinion may place the subject at risk or interfere with outcome variables including absorption, distribution, metabolism, and excretion of the IMP. "
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,"p84: \5.\ Subjects with abnormal clinical laboratory assessment results, vital signs results, or ECG findings, unless, based on the investigator's judgment, the findings are not medically significant and would not impact the safety of the subject or the interpretation of the trial results. The medic"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,"p84: \6.\ Subjects with diagnosed hypertension (including treated or untreated hypertension), or orthostatic hypotension which is defined as a decrease of"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p86: \15.\ Any history of difficulty in donating blood.
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p86: \16.\ History of drug and/or alcohol abuse within 2 years prior to the screening visit based on investigator judgment.
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,"p86: \17.\ Subjects who have a positive urine alcohol or drug screen that, in the judgment of the investigator with concurrence of the medical monitor, indicates substance abuse that could compromise the subject's safety or ability to comply with the trial procedures that could interfere with the in"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,"p86: \18.\ Use of tobacco products within 2 months prior to the screening visit, or urine cotinine concentrations > 200 ng/mL or serum cotinine concentrations > 20 ng/mL at the screening visit or at check-in to the trial site."
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p86: \19.\ Subjects having taken an investigational drug within 30 days prior to the screening visit.
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p86: \20.\ Subjects who would be likely to require prohibited concomitant therapy during the trial. The sponsor may allow exceptions only if the medication's administration is deemed unlikely to impact the results of the trial.
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,"p86: \21.\ Consumption of food and beverages containing caffeine and methylxanthines (eg, coffee, chocolate, tea) within 48 hours prior to Day -1 or grapefruit, grapefruit juice, Seville oranges, or Seville orange juice within 7 days prior to Day -14."
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,"p86: \22.\ History of any medically significant drug allergy or known or suspected hypersensitivity to antipsychotics or adrenergic antagonists, in particular brexpiprazole, prazosin, or propranolol."
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p241: Chemistry clinically significant abnormal assay # 5
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_false_positive,"p427: If Yes, describe"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_false_positive,"p427: If Yes, describe"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_missed,p46: Chemistry clinically significant abnormal assay # 1:
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_missed,p47: Chemistry clinically significant abnormal assay # 2
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_missed,p48: Chemistry clinically significant abnormal assay # 3
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_missed,p51: Hematology clinically significant abnormal assay # 1
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_missed,p51: Hematology clinically significant abnormal assay # 2
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_false_positive,p51: Please go to Add-On Forms and select Additional Local Lab Results Review form to add to this visit.
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_missed,p52: Hematology clinically significant abnormal assay # 3
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_missed,p52: Hematology clinically significant abnormal assay # 4
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_missed,p241: Chemistry clinically significant abnormal assay # 5
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_missed,"p427: If Yes, describe"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,5,quality,audit_missed,"p427: If Yes, describe"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,gates,1,blocking,gate_other,"Extreme content-fitted blocklist. The program filters by 39 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,confirm,1,quality,confirm_extension_rejected,coverage extension regressed or failed gates; kept prior program
+annotatedCRF_33120100246-_v1.0_-17Aug2021,gates,1,quality,warn_text_blocklists,"The program filters by 23 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. "
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_missed,p37: Skin and Mucosae
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_missed,p37: Neurological
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_missed,p37: Extremities
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_missed,p42: Sample
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_missed,p42: Date of Collection
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_missed,p42: Time of Collection
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_missed,p42: Scan
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_missed,p42: Barcode Number
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_missed,p78: Actual attempt:
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_missed,"p78: Or did you do it purely for other reasons/without ANY intention of killing yourself (like to relieve stress, feel better, get sympathy, or get something else to happen? (Self-Injurious Behavior without suicidal intent)"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_false_positive,p78: Have you made a suicide attempt?
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_false_positive,p78: Have you done anything to harm yourself?
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_false_positive,p78: Have you done anything dangerous where you could have died?
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_false_positive,p78: What did you do?
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_false_positive,p78: Did you ______ as a way to end your life?
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_false_positive,p78: Did you want to die (even a little) when you ____?
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_false_positive,p78: Were trying to end your life when you ____?
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_false_positive,p78: Or did you think it was possible you could have died from ____?
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_missed,p134: Rater's initials
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_missed,p134: 1. Wish to be dead
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_false_positive,"p134: Subject endorses thoughts about a wish to be dead or not alive anymore, or wish to fall asleep and not wake up."
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_false_positive,p134: Have you wished you were dead or wished you could go to sleep and not wake
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_false_positive,"p134: General non-specific thoughts of wanting to end one's life/commit suicide (e.g. ""I've thought about killing myself"") without thoughts of way to kill oneself/associated"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_missed,p360: Rater's initials
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_missed,p360: 1. Wish to be dead
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_false_positive,"p360: Subject endorses thoughts about a wish to be dead or not alive anymore, or wish to fall asleep and not wake up."
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_false_positive,p360: Have you wished you were dead or wished you could go to sleep and not wake
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_false_positive,"p360: General non-specific thoughts of wanting to end one's life/commit suicide (e.g. ""I've thought about killing myself"") without thoughts of way to kill oneself/associated"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,blocking,transport_error,'str' object has no attribute 'get'
+annotatedCRF_33120100246-_v1.0_-17Aug2021,gates,2,quality,warn_text_blocklists,"The program filters by 25 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. "
+annotatedCRF_33120100246-_v1.0_-17Aug2021,gates,1,quality,warn_text_blocklists,"The program filters by 10 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. "
+annotatedCRF_33120100246-_v1.0_-17Aug2021,gates,2,quality,warn_text_blocklists,"The program filters by 15 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. "
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p9: Respiratory Rate
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p9: Central
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p9: Page 1
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p9: Page 2
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p13: C-SSRS since last visit - Page 3
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p13: C-SSRS since last visit - Page 4
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p13: IMP Administration - Sertraline and Propranolol
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p13: PK Blood Draw - Sertraline
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p13: PK Blood Draw - Propranolol
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p13: Triplicate Orthostatic BP and HR - 1h Postdose
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p13: Triplicate Orthostatic BP and HR - 1.5h Postdose
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p13: Triplicate Orthostatic BP and HR - 2h Postdose
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p13: Triplicate Orthostatic BP and HR - 2.5h Postdose
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p13: Triplicate Orthostatic BP and HR - 3h Postdose
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p13: Triplicate Orthostatic BP and HR - 4h Postdose
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p13: Triplicate Orthostatic BP and HR - 6h Postdose
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p13: Triplicate Orthostatic BP and HR - 8h Postdose
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p13: Visit Date
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p13: AE and CM prompt
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p13: Triplicate Orthostatic BP and HR - Predose
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p13: Physical Exam
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p13: Clinical Laboratory Assessments
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p13: Laboratory results review
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p13: Pregnancy test
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p13: Alcohol Screen - Urine or Breath
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p13: Urine Drug Screen
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p13: Cotinine Screen
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p13: IMP Administration - Sertraline and Brexpiprazole
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p13: PK Blood Draw - Brexpiprazole/Sertraline
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p13: Body Temperature and
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p70: COLUMBIA-SUICIDE SEVERITY
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p70: Baseline/Screening Version
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,"p70: Posner, K.; Brent, D.; Lucas, C.; Gould, M.; Stanley, B.; Brown, G.; Fisher, P.; Zelazny, J.; Burke, A.; Oquendo, M.; Mann, J."
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,"p70: Definitions of behavioral suicidal events in this scale are based on those used in **The Columbia Suicide History Form**, developed by John Mann, MD and Maria Oquendo, MD, Conte Center for the Neuroscience of Mental Disorders (CCNMD), New York State Psychiatric Institute, 1051 Riverside Drive, "
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p108: Urinalysis
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p108: LBRSN1
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p108: Not
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p108: Applicable
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p259: Date of Attempt
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,"p422: If Yes, describe"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,"p422: If Yes, describe"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,"p422: If Yes, describe"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_wrong_form,"p422: 3. Active suicidal ideation with any methods (not plan) without intent to act Subject endorses thoughts of suicide and has thought of at least one method during the assessment period. This is different than a specific plan with a time, place or"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_wrong_form,p422: Have you been thinking about how you might do this?
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_wrong_form,"p422: 4. Active suicidal ideation with some intent to act, without specific plan Active suicidal thoughts of killing oneself and subject reports having some intent to act on such thoughts, as opposed to ""I have thoughts but I definitely will not do anything"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_wrong_form,p422: Have you had these thoughts and had some intention of acting on them?
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_wrong_form,p422: 5. Active suicidal ideation with specific plan and intent Thoughts of killing oneself with detail of plan fully or partially worked out and subject has some intent to carry it out.
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_wrong_form,p422: Have you started to work out or worked out the details of how to kill yourself?
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_wrong_form,p422: Do you intend to carry out this plan?
+annotatedCRF_33120100246-_v1.0_-17Aug2021,gates,3,quality,warn_text_blocklists,"The program filters by 28 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. "
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p13: C-SSRS since last visit - Page 3
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p13: C-SSRS since last visit - Page 4
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p13: IMP Administration - Sertraline and Propranolol
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p13: PK Blood Draw - Sertraline
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p13: PK Blood Draw - Propranolol
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p13: Triplicate Orthostatic BP and HR - 1h Postdose
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p13: Triplicate Orthostatic BP and HR - 1.5h Postdose
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p13: Triplicate Orthostatic BP and HR - 2h Postdose
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p13: Triplicate Orthostatic BP and HR - 2.5h Postdose
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p13: Triplicate Orthostatic BP and HR - 3h Postdose
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p13: Triplicate Orthostatic BP and HR - 4h Postdose
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p13: Triplicate Orthostatic BP and HR - 6h Postdose
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p13: Triplicate Orthostatic BP and HR - 8h Postdose
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p13: Visit Date
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p13: AE and CM prompt
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p13: Triplicate Orthostatic BP and HR - Predose
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p13: Physical Exam
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p13: Clinical Laboratory Assessments
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p13: Laboratory results review
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p13: Pregnancy test
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p13: Alcohol Screen - Urine or Breath
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p13: Urine Drug Screen
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p13: Cotinine Screen
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p13: IMP Administration - Sertraline and Brexpiprazole
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p13: PK Blood Draw - Brexpiprazole/Sertraline
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p13: Body Temperature and
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_false_positive,p108: Urinalysis
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_false_positive,p422: Have you been thinking about how you might do this?
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_false_positive,p422: Have you had these thoughts and had some intention of acting on them?
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_false_positive,p422: Do you intend to carry out this plan?
+annotatedCRF_33120100246-_v1.0_-17Aug2021,gates,4,quality,warn_text_blocklists,"The program filters by 11 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. "
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_false_positive,p9: Respiratory Rate
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_false_positive,p9: Central
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_false_positive,p9: Page 1
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_false_positive,p9: Page 2
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p10: C-SSRS - Screening/Baseline - Page 3
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p10: C-SSRS - Screening/Baseline - Page 4
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p10: AE and CM prompt
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p10: Inclusion criteria
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p10: Visit Date
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p10: Drug administration- Titration Period
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p10: End of Screening
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p10: Visit Date
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p10: Triplicate Orthostatic BP and HR - Central
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p10: PK Blood Draw - Sertraline
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p10: Aicure Device - Distribution
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p10: Drug administration- Titration Period
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p10: IMP Administration - Sertraline
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p10: AE and CM prompt
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p10: End of Screening
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p10: Visit Date
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p10: Triplicate Orthostatic BP and HR - Central
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p10: Physical Exam
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p10: Clinical Laboratory Assessments
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p10: Laboratory results review
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p10: Pregnancy test
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p10: Alcohol Screen - Urine or Breath
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p10: Urine Drug Screen
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p10: Cotinine Screen
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p10: PK Blood Draw - Sertraline
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p10: PGx Blood Sample
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_false_positive,p10: period
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_false_positive,p10: Central
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p13: C-SSRS since last visit - Page 3
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p13: C-SSRS since last visit - Page 4
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p13: IMP Administration - Sertraline and Propranolol
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p13: PK Blood Draw - Sertraline
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p13: PK Blood Draw - Propranolol
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p13: Triplicate Orthostatic BP and HR - 1h Postdose
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p13: Triplicate Orthostatic BP and HR - 1.5h Postdose
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p13: Triplicate Orthostatic BP and HR - 2h Postdose
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p13: Triplicate Orthostatic BP and HR - 2.5h Postdose
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p13: Triplicate Orthostatic BP and HR - 3h Postdose
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p13: Triplicate Orthostatic BP and HR - 4h Postdose
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p13: Triplicate Orthostatic BP and HR - 6h Postdose
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p13: Triplicate Orthostatic BP and HR - 8h Postdose
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p13: Visit Date
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p13: AE and CM prompt
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p13: Triplicate Orthostatic BP and HR - Predose
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p13: Physical Exam
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p13: Clinical Laboratory Assessments
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p13: Laboratory results review
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p13: Pregnancy test
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p13: Alcohol Screen - Urine or Breath
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p13: Urine Drug Screen
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p13: Cotinine Screen
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p13: IMP Administration - Sertraline and Brexpiprazole
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p13: PK Blood Draw - Brexpiprazole/Sertraline
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p13: Visit Date
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p13: AE and CM prompt
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p13: Body Temperature and Respiratory Rate
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_false_positive,p13: 1h Postdose
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_false_positive,p13: 1.5h Postdose
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_false_positive,p13: 2h Postdose
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_false_positive,p13: 2.5h Postdose
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_false_positive,p13: 3h Postdose
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_false_positive,p13: 4h Postdose
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_false_positive,p13: 6h Postdose
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_false_positive,p13: 8h Postdose
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_false_positive,p13: Predose
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_false_positive,p13: and Brexpiprazole
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_false_positive,p13: Brexpiprazole/Sertraline
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_false_positive,p13: Body Temperature and
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_false_positive,p108: Urinalysis
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_false_positive,p108: Applicable
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_wrong_form,p108: Urinalysis
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p168: Date of Attempt
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p259: Date of Attempt
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p422: 3. Active suicidal ideation with any methods (not plan) without intent to act
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,"p422: If Yes, describe"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,"p422: 4. Active suicidal ideation with some intent to act, without specific plan"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,"p422: If Yes, describe"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p422: 5. Active suicidal ideation with specific plan and intent
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,"p422: If Yes, describe"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,gates,1,blocking,gate_crash,"Program failed to run: generated extractor crashed:
+Traceback (most recent call last):
+  File ""D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\scripts\sandbox_runner.py"", line 116, in main
+    exec(compile(source, ""<generated_extractor>"", ""exec""), g)  # noqa: S102
+         ^^^^^^^^^^^^^^^"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,confirm,1,quality,confirm_extension_rejected,coverage extension regressed or failed gates; kept prior program
+annotatedCRF_33120100246-_v1.0_-17Aug2021,gates,1,quality,warn_text_blocklists,"The program filters by 12 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. "
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_missed,p549: Time of Vitals Measurement
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_missed,p549: Systolic Blood Pressure (mmHg)
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_missed,p549: Diastolic Blood Pressure (mmHg)
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_missed,p549: Heart Rate (bpm)
+annotatedCRF_33120100246-_v1.0_-17Aug2021,gates,2,quality,warn_text_blocklists,"The program filters by 13 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. "
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p502: Type of Contact
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p502: Final Contact
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p502: Were you able to contact the
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p502: Subject?
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p549: Difference between Standing and Supine
+annotatedCRF_33120100246-_v1.0_-17Aug2021,gates,3,quality,warn_text_blocklists,"The program filters by 19 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. "
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p498: Time of Vitals Measurement
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p498: Systolic Blood Pressure (mmHg)
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p498: Diastolic Blood Pressure (mmHg)
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p498: Heart Rate (bpm)
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_false_positive,p502: Were you able to contact the
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_false_positive,p502: Date of Contact/Attempt
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p549: Time of Vitals Measurement
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p549: Systolic Blood Pressure (mmHg)
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p549: Diastolic Blood Pressure (mmHg)
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p549: Heart Rate (bpm)
+annotatedCRF_33120100246-_v1.0_-17Aug2021,gates,4,blocking,gate_other,"Extreme content-fitted blocklist. The program filters by 33 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,loop,,quality,stopped_with_open_issues,"stop=p1:budget;p2:budget;p3:audit_error;p4:plateau;p5:plateau, open audit issues=95"

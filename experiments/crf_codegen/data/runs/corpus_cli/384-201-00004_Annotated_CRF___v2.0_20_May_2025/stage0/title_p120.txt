@@ -1,0 +1,193 @@
+x=  36.0 y=  11.5 sz= 9.0 black     | 384-201-00004
+x=  46.5 y=  34.9 sz= 7.5 black     | [EXC005]
+x=  46.5 y=  43.6 sz= 7.5 black     | [SAS Field Name: EXC005]
+x= 249.2 y=  61.6 sz= 7.5 black     | O N/A
+x= 453.5 y=  62.1 sz= 5.6 black   B | EXC006
+x=  46.5 y=  62.8 sz= 7.5 black     | 6. History of drug and/or alcohol abuse within 2 years prior
+x= 453.5 y=  68.6 sz= 5.6 black     | Format: $6
+x= 249.2 y=  70.3 sz= 7.5 black     | O Yes
+x=  46.5 y=  71.5 sz= 7.5 black     | to screening.
+x= 453.5 y=  75.2 sz= 5.6 black     | Data Type: string
+x= 249.2 y=  79.0 sz= 7.5 black     | O No
+x= 453.5 y=  81.7 sz= 5.6 black     | Origin: CRF
+x= 249.2 y=  87.7 sz= 7.5 black     | O Unspecified
+x= 453.5 y=  88.2 sz= 5.6 black     | Description: EXC006
+x=  46.5 y=  88.9 sz= 7.5 black     | [EXC006]
+x= 453.5 y=  94.7 sz= 5.6 black     | Mandatory?: Yes
+x=  46.5 y=  97.6 sz= 7.5 black     | [SAS Field Name: EXC006]
+x= 253.0 y= 100.3 sz= 6.4 #808080   | Code List: IE - Not Met
+x= 453.5 y= 101.3 sz= 5.6 black     | Disallow Future Date: Yes
+x=  46.5 y= 116.8 sz= 7.5 black     | 7. History of current hepatitis or acquired immunodeficiency
+x=  46.5 y= 125.5 sz= 7.5 black     | syndrome or carriers of hepatitis B surface antigen and/or
+x=  46.5 y= 134.2 sz= 7.5 black     | hepatitis C antibodies or HIV antibodies. Exceptions are
+x= 249.2 y= 141.6 sz= 7.5 black     | O N/A
+x= 453.5 y= 142.1 sz= 5.6 black   B | EXC007
+x=  46.5 y= 142.9 sz= 7.5 black     | permitted for participants with a prior history of infection
+x= 453.5 y= 148.7 sz= 5.6 black     | Format: $6
+x= 249.2 y= 150.3 sz= 7.5 black     | O Yes
+x=  46.5 y= 151.6 sz= 7.5 black     | with hepatitis A who have fully recovered and are
+x= 453.5 y= 155.2 sz= 5.6 black     | Data Type: string
+x= 249.2 y= 159.0 sz= 7.5 black     | O No
+x=  46.5 y= 160.3 sz= 7.5 black     | experiencing no liver sequelae, or with hepatitis C who
+x= 453.5 y= 161.8 sz= 5.6 black     | Origin: CRF
+x= 249.2 y= 167.7 sz= 7.5 black     | O Unspecified
+x= 453.5 y= 168.3 sz= 5.6 black     | Description: EXC007
+x=  46.5 y= 169.0 sz= 7.5 black     | have been adequately treated to be considered cured with
+x= 453.5 y= 174.8 sz= 5.6 black     | Mandatory?: Yes
+x=  46.5 y= 177.7 sz= 7.5 black     | no liver sequelae.
+x= 253.0 y= 180.4 sz= 6.4 #808080   | Code List: IE - Not Met
+x= 453.5 y= 181.3 sz= 5.6 black     | Disallow Future Date: Yes
+x=  46.5 y= 195.1 sz= 7.5 black     | [EXC007]
+x=  46.5 y= 203.8 sz= 7.5 black     | [SAS Field Name: EXC007]
+x= 249.2 y= 221.7 sz= 7.5 black     | O N/A
+x= 453.5 y= 222.2 sz= 5.6 black   B | EXC008
+x=  46.5 y= 222.9 sz= 7.5 black     | 8. History of any significant drug allergy or known or
+x= 453.5 y= 228.8 sz= 5.6 black     | Format: $6
+x= 249.2 y= 230.4 sz= 7.5 black     | O Yes
+x=  46.5 y= 231.6 sz= 7.5 black     | suspected hypersensitivity to any component of IMP.
+x= 453.5 y= 235.3 sz= 5.6 black     | Data Type: string
+x= 249.2 y= 239.1 sz= 7.5 black     | O No
+x= 453.5 y= 241.9 sz= 5.6 black     | Origin: CRF
+x= 249.2 y= 247.8 sz= 7.5 black     | O Unspecified
+x= 453.5 y= 248.4 sz= 5.6 black     | Description: EXC008
+x=  46.5 y= 249.0 sz= 7.5 black     | [EXC008]
+x= 453.5 y= 254.9 sz= 5.6 black     | Mandatory?: Yes
+x=  46.5 y= 257.7 sz= 7.5 black     | [SAS Field Name: EXC008]
+x= 253.0 y= 260.5 sz= 6.4 #808080   | Code List: IE - Not Met
+x= 453.5 y= 261.4 sz= 5.6 black     | Disallow Future Date: Yes
+x=  46.5 y= 280.1 sz= 7.5 black     | 9. A positive urine alcohol test or positive urine drug screen
+x= 249.2 y= 283.2 sz= 7.5 black     | O N/A
+x= 453.5 y= 283.7 sz= 5.6 black   B | EXC009
+x=  46.5 y= 288.8 sz= 7.5 black     | for substances of abuse at screening and upon check-in to
+x= 453.5 y= 290.3 sz= 5.6 black     | Format: $6
+x= 249.2 y= 291.9 sz= 7.5 black     | O Yes
+x= 453.5 y= 296.8 sz= 5.6 black     | Data Type: string
+x=  46.5 y= 297.5 sz= 7.5 black     | the trial site.
+x= 249.2 y= 300.6 sz= 7.5 black     | O No
+x= 453.5 y= 303.3 sz= 5.6 black     | Origin: CRF
+x= 249.2 y= 309.3 sz= 7.5 black     | O Unspecified
+x= 453.5 y= 309.8 sz= 5.6 black     | Description: EXC009
+x=  46.5 y= 314.9 sz= 7.5 black     | [EXC009]
+x= 453.5 y= 316.4 sz= 5.6 black     | Mandatory?: Yes
+x= 253.0 y= 321.9 sz= 6.4 #808080   | Code List: IE - Not Met
+x= 453.5 y= 322.9 sz= 5.6 black     | Disallow Future Date: Yes
+x=  46.5 y= 323.6 sz= 7.5 black     | [SAS Field Name: EXC009]
+x= 249.2 y= 344.7 sz= 7.5 black     | O N/A
+x= 453.5 y= 345.1 sz= 5.6 black   B | EXC010
+x=  46.5 y= 345.9 sz= 7.5 black     | 10. Any history of significant bleeding or hemorrhagic
+x= 453.5 y= 351.7 sz= 5.6 black     | Format: $6
+x= 249.2 y= 353.4 sz= 7.5 black     | O Yes
+x=  46.5 y= 354.6 sz= 7.5 black     | tendencies.
+x= 453.5 y= 358.3 sz= 5.6 black     | Data Type: string
+x= 249.2 y= 362.1 sz= 7.5 black     | O No
+x= 453.5 y= 364.8 sz= 5.6 black     | Origin: CRF
+x= 249.2 y= 370.8 sz= 7.5 black     | O Unspecified
+x= 453.5 y= 371.3 sz= 5.6 black     | Description: EXC010
+x=  46.5 y= 372.0 sz= 7.5 black     | [EXC010]
+x= 453.5 y= 377.8 sz= 5.6 black     | Mandatory?: Yes
+x=  46.5 y= 380.7 sz= 7.5 black     | [SAS Field Name: EXC010]
+x= 253.0 y= 383.4 sz= 6.4 #808080   | Code List: IE - Not Met
+x= 453.5 y= 384.4 sz= 5.6 black     | Disallow Future Date: Yes
+x=  46.5 y= 403.0 sz= 7.5 black     | 11. Participant who does not tolerate venipuncture or has
+x= 249.2 y= 406.1 sz= 7.5 black     | O N/A
+x= 453.5 y= 406.6 sz= 5.6 black   B | EXC011
+x=  46.5 y= 411.7 sz= 7.5 black     | poor venous access that would cause difficulty for
+x= 453.5 y= 413.2 sz= 5.6 black     | Format: $6
+x= 249.2 y= 414.8 sz= 7.5 black     | O Yes
+x= 453.5 y= 419.7 sz= 5.6 black     | Data Type: string
+x=  46.5 y= 420.4 sz= 7.5 black     | collecting blood samples.
+x= 249.2 y= 423.5 sz= 7.5 black     | O No
+x= 453.5 y= 426.2 sz= 5.6 black     | Origin: CRF
+x= 249.2 y= 432.2 sz= 7.5 black     | O Unspecified
+x= 453.5 y= 432.8 sz= 5.6 black     | Description: EXC011
+x=  46.5 y= 437.8 sz= 7.5 black     | [EXC011]
+x= 453.5 y= 439.3 sz= 5.6 black     | Mandatory?: Yes
+x= 253.0 y= 444.9 sz= 6.4 #808080   | Code List: IE - Not Met
+x= 453.5 y= 445.8 sz= 5.6 black     | Disallow Future Date: Yes
+x=  46.5 y= 446.5 sz= 7.5 black     | [SAS Field Name: EXC011]
+x= 249.2 y= 467.6 sz= 7.5 black     | O N/A
+x= 453.5 y= 468.1 sz= 5.6 black   B | EXC012
+x=  46.5 y= 468.8 sz= 7.5 black     | 12. The donation of blood or plasma within 30 days prior to
+x= 453.5 y= 474.7 sz= 5.6 black     | Format: $6
+x= 249.2 y= 476.3 sz= 7.5 black     | O Yes
+x=  46.5 y= 477.5 sz= 7.5 black     | the first dose of IMP.
+x= 453.5 y= 481.2 sz= 5.6 black     | Data Type: string
+x= 249.2 y= 485.0 sz= 7.5 black     | O No
+x= 453.5 y= 487.7 sz= 5.6 black     | Origin: CRF
+x= 249.2 y= 493.7 sz= 7.5 black     | O Unspecified
+x= 453.5 y= 494.2 sz= 5.6 black     | Description: EXC012
+x=  46.5 y= 494.9 sz= 7.5 black     | [EXC012]
+x= 453.5 y= 500.8 sz= 5.6 black     | Mandatory?: Yes
+x=  46.5 y= 503.6 sz= 7.5 black     | [SAS Field Name: EXC012]
+x= 253.0 y= 506.3 sz= 6.4 #808080   | Code List: IE - Not Met
+x= 453.5 y= 507.3 sz= 5.6 black     | Disallow Future Date: Yes
+x= 249.2 y= 529.1 sz= 7.5 black     | O N/A
+x= 453.5 y= 529.5 sz= 5.6 black   B | EXC013
+x=  46.5 y= 530.3 sz= 7.5 black     | 13. Have taken an investigational drug within 30 days or 5
+x= 453.5 y= 536.1 sz= 5.6 black     | Format: $6
+x= 249.2 y= 537.8 sz= 7.5 black     | O Yes
+x=  46.5 y= 539.0 sz= 7.5 black     | half-lives, if known, (whichever is longer) prior to screening.
+x= 453.5 y= 542.6 sz= 5.6 black     | Data Type: string
+x= 249.2 y= 546.5 sz= 7.5 black     | O No
+x= 453.5 y= 549.2 sz= 5.6 black     | Origin: CRF
+x= 249.2 y= 555.2 sz= 7.5 black     | O Unspecified
+x= 453.5 y= 555.7 sz= 5.6 black     | Description: EXC013
+x=  46.5 y= 556.4 sz= 7.5 black     | [EXC013]
+x= 453.5 y= 562.2 sz= 5.6 black     | Mandatory?: Yes
+x=  46.5 y= 565.1 sz= 7.5 black     | [SAS Field Name: EXC013]
+x= 253.0 y= 567.8 sz= 6.4 #808080   | Code List: IE - Not Met
+x= 453.5 y= 568.7 sz= 5.6 black     | Disallow Future Date: Yes
+x= 249.2 y= 590.5 sz= 7.5 black     | O N/A
+x= 453.5 y= 591.0 sz= 5.6 black   B | EXC014
+x=  46.5 y= 596.1 sz= 7.5 black     | 14. Have had previous exposure to SEP-380135.
+x= 453.5 y= 597.6 sz= 5.6 black     | Format: $6
+x= 249.2 y= 599.2 sz= 7.5 black     | O Yes
+x= 453.5 y= 604.1 sz= 5.6 black     | Data Type: string
+x= 249.2 y= 607.9 sz= 7.5 black     | O No
+x= 453.5 y= 610.6 sz= 5.6 black     | Origin: CRF
+x=  46.5 y= 613.5 sz= 7.5 black     | [EXC014]
+x= 249.2 y= 616.6 sz= 7.5 black     | O Unspecified
+x= 453.5 y= 617.2 sz= 5.6 black     | Description: EXC014
+x=  46.5 y= 622.2 sz= 7.5 black     | [SAS Field Name: EXC014]
+x= 453.5 y= 623.7 sz= 5.6 black     | Mandatory?: Yes
+x= 253.0 y= 629.3 sz= 6.4 #808080   | Code List: IE - Not Met
+x= 453.5 y= 630.2 sz= 5.6 black     | Disallow Future Date: Yes
+x= 249.2 y= 652.0 sz= 7.5 black     | O N/A
+x= 453.5 y= 652.5 sz= 5.6 black   B | EXC015
+x=  46.5 y= 657.5 sz= 7.5 black     | 15. Are currently participating in another clinical trial.
+x= 453.5 y= 659.0 sz= 5.6 black     | Format: $6
+x= 249.2 y= 660.7 sz= 7.5 black     | O Yes
+x= 453.5 y= 665.6 sz= 5.6 black     | Data Type: string
+x= 249.2 y= 669.4 sz= 7.5 black     | O No
+x= 453.5 y= 672.1 sz= 5.6 black     | Origin: CRF
+x=  46.5 y= 674.9 sz= 7.5 black     | [EXC015]
+x= 249.2 y= 678.1 sz= 7.5 black     | O Unspecified
+x= 453.5 y= 678.6 sz= 5.6 black     | Description: EXC015
+x=  46.5 y= 683.6 sz= 7.5 black     | [SAS Field Name: EXC015]
+x= 453.5 y= 685.1 sz= 5.6 black     | Mandatory?: Yes
+x= 253.0 y= 690.7 sz= 6.4 #808080   | Code List: IE - Not Met
+x= 453.5 y= 691.7 sz= 5.6 black     | Disallow Future Date: Yes
+x=  46.5 y= 707.2 sz= 7.5 black     | 16. Use of any new prescription, over-the-counter, or
+x=  46.5 y= 715.9 sz= 7.5 black     | herbal medications or vitamin supplements including (C
+x=  46.5 y= 724.6 sz= 7.5 black     | and D) or dietary supplements, eg, minerals (calcium, iron),
+x=  46.5 y= 733.3 sz= 7.5 black     | amino acids, enzymes, fish oil (omega-3), probiotics within
+x=  46.5 y= 742.0 sz= 7.5 black     | 14 days prior to the first dose of IMP and oral antibiotics
+x= 249.2 y= 746.1 sz= 7.5 black     | O N/A
+x= 453.5 y= 746.5 sz= 5.6 black   B | EXC016
+x=  46.5 y= 750.7 sz= 7.5 black     | within 30 days prior to the first dose of IMP. The sponsor
+x= 453.5 y= 753.1 sz= 5.6 black     | Format: $6
+x= 249.2 y= 754.8 sz= 7.5 black     | O Yes
+x=  46.5 y= 759.4 sz= 7.5 black     | may allow exceptions only if the medication’s
+x= 453.5 y= 759.7 sz= 5.6 black     | Data Type: string
+x= 249.2 y= 763.5 sz= 7.5 black     | O No
+x= 453.5 y= 766.2 sz= 5.6 black     | Origin: CRF
+x=  46.5 y= 768.1 sz= 7.5 black     | administration is deemed unlikely to impact the PK or PD
+x= 249.2 y= 772.2 sz= 7.5 black     | O Unspecified
+x= 453.5 y= 772.7 sz= 5.6 black     | Description: EXC016
+x=  46.5 y= 776.8 sz= 7.5 black     | results.
+x= 453.5 y= 779.2 sz= 5.6 black     | Mandatory?: Yes
+x= 253.0 y= 784.8 sz= 6.4 #808080   | Code List: IE - Not Met
+x= 453.5 y= 785.8 sz= 5.6 black     | Disallow Future Date: Yes
+x=  36.0 y= 817.4 sz= 9.0 black     | Annotated CRF
+x= 276.3 y= 817.4 sz= 9.0 black     | 117 of 238
+x= 445.8 y= 817.4 sz= 9.0 black     | https://drvince.clinspark.com

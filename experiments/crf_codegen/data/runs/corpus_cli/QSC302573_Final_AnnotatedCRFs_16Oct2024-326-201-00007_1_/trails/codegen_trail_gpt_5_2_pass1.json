@@ -1,0 +1,934 @@
+{
+ "stop_reason": "budget",
+ "versions": 5,
+ "best_version": 5,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 1725,
+    "pages_total": 606,
+    "pages_with_fields": 602,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 82,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 612,
+    "fields_per_form": 2.8,
+    "forms_per_100_pages": 101.0,
+    "furniture_candidates": [],
+    "pages_covered_pct": 99
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 79,
+   "audit_pages": [
+    1,
+    2,
+    3,
+    58,
+    94,
+    106,
+    157,
+    308,
+    458
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [
+      "Does the participant have a valid photo ID?",
+      "Did participant complete group information or remote information session?",
+      "Record who held Group Information Session (full name)",
+      "Study ICF Signed and Dated by the participant?",
+      "Staff Initials:",
+      "Comment:"
+     ],
+     "false": [
+      "Group, Visit: S_QSC302573, 02 - Group Info/Study ICF Final v1.0 Does the participant have a valid photo ID?",
+      "O No (Comment Required) Did participant complete group information or remote information session?",
+      "O Volunteer Completed Remote Information Session (Activates Line  5, 4) Record who held Group Information Session (full name)",
+      "O No (Comment Required) Study ICF Signed and Dated by the participant?"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [
+      "Date Study ICF was signed by participant",
+      "Study ICF Version Number",
+      "Staff Initials:",
+      "Comment:"
+     ],
+     "false": [
+      "Group, Visit: S_QSC302573, 02 - Group Info/Study ICF Final v1.0 Date Study ICF was signed by participant",
+      "O Part 3 Study ICF Version Number (Version must be checked against ICF present in the RSF \u2013 escalate any discrepancies)"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 3,
+     "missed": [
+      "Study ICF signed and dated by the physician/nurse?",
+      "Was a copy of the Study ICF given to the participant?",
+      "Has the participant read, understood and signed the consent for the Future Use Sub Study, where a DNA sample will be taken and other data collected may be used for potential future research?",
+      "Additional ICF Signed and Dated by the Participant?",
+      "Date Additional ICF was signed by participant",
+      "Staff Initials:",
+      "Comment:"
+     ],
+     "false": [
+      "Group, Visit: S_QSC302573, 02 - Group Info/Study ICF Final v1.0 Study ICF signed and dated by the physician/nurse?",
+      "O No (Comment Required) Was a copy of the Study ICF given to the participant?",
+      "O No (Comment Required) Has the participant read, understood and signed the consent for the Future Use Sub Study, where a DNA sample will be taken and other data collected may be used for potential future research?",
+      "O No Additional ICF Signed and Dated by the Participant?",
+      "O No (Comment Required) Date Additional ICF was signed by participant"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 58,
+     "missed": [
+      "Staff Initials:",
+      "Comment:"
+     ],
+     "false": [
+      "Group, Visit: S_QSC302573, 03 - Screening Final v1.0"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 94,
+     "missed": [
+      "Confirm TDL form completed:",
+      "Targeted Physical Examination:  Does the participant require a targeted physical examination?",
+      "If yes, were there any clinically significant abnormal findings?",
+      "Physical Examination Category",
+      "Staff Initials:",
+      "Comment:"
+     ],
+     "false": [
+      "Group, Visit: S_QSC302573, 04 - Admission/Predose Final v1.0 Confirm TDL form completed: - Correct form used - Correct participant label applied - Correct slot number written - Correct sex and fasting status - Correct timepoint checked - Correct sample date and time written - Correct visit - Initials signed to confirm sample collected and form correct",
+      "O No (Comment Required) Targeted Physical Examination:  Does the participant require a targeted physical examination? (If yes, please specify the reason)",
+      "74) O No findings? #1 If yes, were there any clinically significant abnormal findings?"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 106,
+     "missed": [
+      "Comment:"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 157,
+     "missed": [
+      "Confirm an AE and Conmed check has been performed (Record any AE and Conmeds if applicable)",
+      "Systolic  _  _  _  mmHg (##0)",
+      "Diastolic  _  _  _  mmHg (##0)",
+      "Heart Rate  _  _  _  beats/min (##0)",
+      "Respiratory Rate  _  _  _  breaths/mi (##0)",
+      "Oral Temperature - Degrees Celsius  _  _  .  _  C (##.0)",
+      "Clinical Assessment of Vital Signs (Medic or Nurse to assess vital signs)",
+      "Staff Initials:",
+      "Comment:"
+     ],
+     "false": [
+      "Group, Visit: S_QSC302573, 05a - Period 1 Final v1.0 Confirm an AE and Conmed check has been performed (Record any AE and Conmeds if applicable)",
+      "Vital Signs (Supine for at least 3 minutes)",
+      "Diastolic  _  _  _  mmHg (##0) Heart Rate  _  _  _  beats/min (##0) Respiratory Rate  _  _  _  breaths/mi (##0) Oral Temperature - Degrees Celsius  _  _  .  _  C (##.0) Clinical Assessment of Vital Signs (Medic or Nurse to assess vital signs)"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 308,
+     "missed": [
+      "Is there a drop in SYSTOLIC BP from supine to standing?",
+      "Is there a drop in DIASTOLIC BP from supine to standing?",
+      "Vital Signs Difference for SYSTOLIC Drop",
+      "Systolic Drop  _  _  _  _  mmHg (####)",
+      "Vital Signs Difference for DIASTOLIC Drop",
+      "Diastolic Drop  _  _  _  _  mmHg (####)",
+      "Clinical Assessment of Standing Vital Signs (Medic or Nurse to assess vital signs)",
+      "Staff Initials:",
+      "Comment:"
+     ],
+     "false": [
+      "Group, Visit: S_QSC302573, 05c - Period 3 Parts 1 and 2 Final v1.0 Is there a drop in SYSTOLIC BP from supine to standing?",
+      "O No Is there a drop in DIASTOLIC BP from supine to standing?",
+      "O No Vital Signs Difference for SYSTOLIC Drop",
+      "Vital Signs Difference for DIASTOLIC Drop"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 458,
+     "missed": [
+      "Is there a drop in SYSTOLIC BP from supine to standing?",
+      "Is there a drop in DIASTOLIC BP from supine to standing?",
+      "Vital Signs Difference for SYSTOLIC Drop",
+      "Systolic Drop  _  _  _  _  mmHg (####)",
+      "Vital Signs Difference for DIASTOLIC Drop",
+      "Diastolic Drop  _  _  _  _  mmHg (####)",
+      "Clinical Assessment of Standing Vital Signs (Medic or Nurse to assess vital signs)",
+      "Staff Initials:",
+      "Comment:"
+     ],
+     "false": [
+      "Group, Visit: S_QSC302573, 05e - Period 4 Part 3 Final v1.0 Is there a drop in SYSTOLIC BP from supine to standing?",
+      "O No Is there a drop in DIASTOLIC BP from supine to standing?",
+      "O No Vital Signs Difference for SYSTOLIC Drop",
+      "Vital Signs Difference for DIASTOLIC Drop"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "score": [
+    0,
+    79,
+    0,
+    -602
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 5003,
+    "pages_total": 606,
+    "pages_with_fields": 606,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 667,
+    "fields_per_form": 7.5,
+    "forms_per_100_pages": 110.1,
+    "furniture_candidates": [
+     "Comment:",
+     "Slot:",
+     "Staff Initials:"
+    ],
+    "pages_covered_pct": 100
+   },
+   "problems": [],
+   "warnings": [
+    "These field_name values were extracted on >=70% of ALL pages: 'Comment:'; 'Slot:'; 'Staff Initials:'. Text recurring on nearly every page is usually page template furniture (watermark/footer/stamp), not a field - verify against the page dumps and stop extracting it unless it is genuinely a per-page data-entry field."
+   ],
+   "audit_issues": 87,
+   "audit_pages": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    58,
+    94,
+    106,
+    157,
+    308,
+    458,
+    577
+   ],
+   "audit_partial": null,
+   "audit_promoted": [
+    4,
+    5
+   ],
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [
+      "Does the participant have a valid photo ID?",
+      "Did participant complete group information or remote information session?",
+      "Record who held Group Information Session (full name)",
+      "Does the Anju study number match the study number in the participants' paper PIS/ICF?",
+      "Study ICF Signed and Dated by the participant?"
+     ],
+     "false": [
+      "Slot:",
+      "_ _ : _ _ Does the participant have a valid photo ID?",
+      "_ _ : _ _ Did participant complete group information or remote information session?",
+      "_ _ : _ _ Does the Anju study number match the study number in the participants' paper PIS/ICF?",
+      "_ _ : _ _ Study ICF Signed and Dated by the participant?"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [
+      "Date Study ICF was signed by participant",
+      "Time Study ICF was signed by participant",
+      "Study ICF Part Number",
+      "Study ICF Version Number"
+     ],
+     "false": [
+      "Slot:"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 3,
+     "missed": [
+      "Study ICF signed and dated by the physician/nurse?",
+      "Was a copy of the Study ICF given to the participant?",
+      "Has the participant read, understood and signed the consent for the Future Use Sub Study, where a DNA sample will be taken and other data collected may be used for potential future research?",
+      "Additional ICF Signed and Dated by the Participant?",
+      "Date Additional ICF was signed by participant"
+     ],
+     "false": [
+      "Slot:",
+      "_ _ : _ _ Study ICF signed and dated by the physician/nurse?",
+      "_ _ : _ _ Was a copy of the Study ICF given to the participant?",
+      "where a DNA sample will be taken and other data collected may be used for potential future research?",
+      "_ _ : _ _ Additional ICF Signed and Dated by the Participant?"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 4,
+     "missed": [
+      "Time Additional ICF was signed by participant",
+      "Additional ICF signed and dated by the physician/nurse?",
+      "What is the status of the subject?"
+     ],
+     "false": [
+      "Slot:",
+      "_ _ : _ _ Additional ICF signed and dated by the physician/nurse?",
+      "_ _ : _ _ What is the status of the subject?"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 5,
+     "missed": [
+      "Sponsor Specific Participation Number (allocated sequentially from S00001)",
+      "Has the participant consumed any alcohol within 24 hours prior to Screening visit?",
+      "Has the participant consumed any food containing poppy seeds within 48 hours prior to Screening visit?",
+      "Has the participant taken part in any strenuous exercise within 72 hours prior to Screening visit?",
+      "Has the participant use of tobacco products or experience daily exposure to second-hand smoke in the previous 2 months?  (If 'Yes' exclude per exclusion criteria #14)"
+     ],
+     "false": [
+      "Slot:",
+      "_ _ : _ _ Has the participant consumed any alcohol within 24 hours prior to Screening visit?",
+      "HH:mm Screening visit?",
+      "HH:mm visit?"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 58,
+     "missed": [],
+     "false": [
+      "Slot:"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 94,
+     "missed": [
+      "Confirm TDL form completed:",
+      "Targeted Physical Examination:  Does the participant require a targeted physical examination? (If yes, please specify the reason)",
+      "If yes, were there any clinically significant abnormal findings?",
+      "Physical Examination Category"
+     ],
+     "false": [
+      "Slot:",
+      "_ _ : _ _ Confirm TDL form completed:",
+      "_ _ : _ _ Targeted Physical Examination: Does the participant require a targeted physical examination?",
+      "_ _ : _ _ If yes, were there any clinically significant abnormal findings?"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 106,
+     "missed": [],
+     "false": [
+      "Slot:"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 157,
+     "missed": [
+      "Confirm an AE and Conmed check has been performed (Record any AE and Conmeds if applicable)",
+      "Systolic",
+      "Diastolic",
+      "Heart Rate",
+      "Respiratory Rate",
+      "Oral Temperature - Degrees Celsius",
+      "Clinical Assessment of Vital Signs (Medic or Nurse to assess vital signs)"
+     ],
+     "false": [
+      "Slot:",
+      "Oral Temperature - Degrees Celsius _ _ . _ C (##.0)"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 308,
+     "missed": [
+      "Is there a drop in SYSTOLIC BP from supine to standing?",
+      "Is there a drop in DIASTOLIC BP from supine to standing?",
+      "Vital Signs Difference for SYSTOLIC Drop",
+      "Systolic Drop",
+      "Vital Signs Difference for DIASTOLIC Drop",
+      "Diastolic Drop",
+      "Clinical Assessment of Standing Vital Signs (Medic or Nurse to assess vital signs)"
+     ],
+     "false": [
+      "Slot:",
+      "_ _ : _ _ Is there a drop in SYSTOLIC BP from supine to standing?",
+      "_ _ : _ _ Is there a drop in DIASTOLIC BP from supine to standing?",
+      "Vital Signs Difference: Vital Signs Calculation BP and HR #4",
+      "_ _ : _ _ Vital Signs Difference for SYSTOLIC Drop",
+      "_ _ : _ _ Vital Signs Difference for DIASTOLIC Drop"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 458,
+     "missed": [
+      "Is there a drop in SYSTOLIC BP from supine to standing?",
+      "Is there a drop in DIASTOLIC BP from supine to standing?",
+      "Vital Signs Difference for SYSTOLIC Drop",
+      "Systolic Drop",
+      "Vital Signs Difference for DIASTOLIC Drop",
+      "Diastolic Drop",
+      "Clinical Assessment of Standing Vital Signs (Medic or Nurse to assess vital signs)"
+     ],
+     "false": [
+      "Slot:",
+      "_ _ : _ _ Is there a drop in SYSTOLIC BP from supine to standing?",
+      "_ _ : _ _ Is there a drop in DIASTOLIC BP from supine to standing?",
+      "Vital Signs Difference: Vital Signs Calculation BP and HR #1",
+      "_ _ : _ _ Vital Signs Difference for SYSTOLIC Drop",
+      "_ _ : _ _ Vital Signs Difference for DIASTOLIC Drop"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 577,
+     "missed": [
+      "For what indication was the medication/therapy taken? (Indication)"
+     ],
+     "false": [
+      "Slot:"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "score": [
+    0,
+    87,
+    1,
+    -606
+   ],
+   "became_best": true
+  },
+  {
+   "version": 3,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 5437,
+    "pages_total": 606,
+    "pages_with_fields": 605,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 99,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 666,
+    "fields_per_form": 8.2,
+    "forms_per_100_pages": 109.9,
+    "furniture_candidates": [
+     "Comment:",
+     "Staff Initials:"
+    ],
+    "pages_covered_pct": 100
+   },
+   "problems": [],
+   "warnings": [
+    "These field_name values were extracted on >=70% of ALL pages: 'Comment:'; 'Staff Initials:'. Text recurring on nearly every page is usually page template furniture (watermark/footer/stamp), not a field - verify against the page dumps and stop extracting it unless it is genuinely a per-page data-entry field."
+   ],
+   "audit_issues": 15,
+   "audit_pages": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    58,
+    94,
+    106,
+    157,
+    308,
+    458,
+    605
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [
+      "Informed Consent: Study ICF Participant #1"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [],
+     "false": [
+      "Date _ _ - _ _ _ - _ _ _ _ (dd-MMM-yyyy)",
+      "Time _ _ : _ _ (HH:mm)",
+      "Informed Consent: Study ICF Part #1",
+      "Informed Consent: Study ICF Version #1"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 3,
+     "missed": [],
+     "false": [
+      "Informed Consent Addition: Add ICF Participant #1",
+      "Date _ _ - _ _ _ - _ _ _ _ (dd-MMM-yyyy)"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 4,
+     "missed": [],
+     "false": [
+      "Time _ _ : _ _ (HH:mm)"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 5,
+     "missed": [],
+     "false": [
+      "On Study Demographics x: Sponsor Specific Participation Number #1"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 58,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 94,
+     "missed": [],
+     "false": [
+      "Targeted Physical Examination Findings: Require Targeted PE? #1",
+      "Targeted Physical Examination Findings: Physical Examination Category #1"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 106,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 157,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 308,
+     "missed": [],
+     "false": [
+      "Systolic Drop _ _ _ _ mmHg",
+      "Diastolic Drop _ _ _ _ mmHg"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 458,
+     "missed": [],
+     "false": [
+      "Systolic Drop _ _ _ _ mmHg",
+      "Diastolic Drop _ _ _ _ mmHg"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 605,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "score": [
+    0,
+    15,
+    1,
+    -605
+   ],
+   "became_best": true
+  },
+  {
+   "version": 4,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 4574,
+    "pages_total": 606,
+    "pages_with_fields": 605,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 99,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 664,
+    "fields_per_form": 6.9,
+    "forms_per_100_pages": 109.6,
+    "furniture_candidates": [
+     "Comment:",
+     "Staff Initials:"
+    ],
+    "pages_covered_pct": 100
+   },
+   "problems": [],
+   "warnings": [
+    "These field_name values were extracted on >=70% of ALL pages: 'Comment:'; 'Staff Initials:'. Text recurring on nearly every page is usually page template furniture (watermark/footer/stamp), not a field - verify against the page dumps and stop extracting it unless it is genuinely a per-page data-entry field."
+   ],
+   "audit_issues": 58,
+   "audit_pages": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    58,
+    94,
+    106,
+    157,
+    308,
+    458
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [
+      "Record who held Group Information Session (full name)"
+     ],
+     "false": [
+      "Record who held Group Information Session (full name) HH:mm"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [
+      "Staff Initials:",
+      "Date Study ICF was signed by participant",
+      "Time Study ICF was signed by participant",
+      "Study ICF Part Number",
+      "Study ICF Version Number"
+     ],
+     "false": [
+      "Date Study ICF was signed by participant HH:mm",
+      "Time Study ICF was signed by participant HH:mm",
+      "Study ICF Part Number HH:mm",
+      "Study ICF Version Number HH:mm (Version must be checked against ICF present in the RSF \u2013 escalate any discrepancies)"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 3,
+     "missed": [
+      "Staff Initials:",
+      "Has the participant read, understood and signed the consent for the Future Use Sub Study, where a DNA sample will be taken and other data collected may be used for potential future research?",
+      "Date Additional ICF was signed by participant"
+     ],
+     "false": [
+      "Has the participant read, understood and signed the consent for the Future Use Sub Study, HH:mm where a DNA sample will be taken and other data collected may be used for potential future research?",
+      "Date Additional ICF was signed by participant HH:mm"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 4,
+     "missed": [
+      "Staff Initials:",
+      "Time Additional ICF was signed by participant"
+     ],
+     "false": [
+      "Time Additional ICF was signed by participant HH:mm"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 5,
+     "missed": [
+      "Staff Initials:",
+      "Comment:",
+      "Sponsor Specific Participation Number (allocated sequentially from S00001)",
+      "Has the participant consumed any food containing poppy seeds within 48 hours prior to Screening visit?",
+      "Has the participant taken part in any strenuous exercise within 72 hours prior to Screening visit?",
+      "Has the participant use of tobacco products or experience daily exposure to second-hand smoke in the previous 2 months?  (If 'Yes' exclude per exclusion criteria #14)"
+     ],
+     "false": [
+      "Sponsor Specific Participation Number (allocated HH:mm sequentially from S00001)",
+      "Has the participant consumed any food containing poppy seeds within 48 hours prior to HH:mm Screening visit?",
+      "Has the participant taken part in any strenuous exercise within 72 hours prior to Screening HH:mm visit?",
+      "Has the participant use of tobacco products or experience daily exposure to second-hand HH:mm smoke in the previous 2 months? (If 'Yes' exclude per exclusion criteria #14)"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 6,
+     "missed": [
+      "Staff Initials:",
+      "Comment:",
+      "Year of Birth",
+      "Age 18 to 55 years inclusive at time of signing informed consent",
+      "Comment:"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 58,
+     "missed": [
+      "Staff Initials:"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 94,
+     "missed": [
+      "Yes (Specify) ______________________________ (50 char. max.) (Activates Line 74)",
+      "If yes, were there any clinically significant abnormal findings?",
+      "Physical Examination Category",
+      "Staff Initials:"
+     ],
+     "false": [
+      "Targeted Physical Examination Findings: Any clinically significant abnormal findings? #1 _ _ : _ _ If yes, were there any clinically significant abnormal findings?",
+      "Physical Examination Category HH:mm"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 106,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 157,
+     "missed": [
+      "Staff Initials:",
+      "Confirm an AE and Conmed check has been performed (Record any AE and Conmeds if applicable)",
+      "Clinical Assessment of Vital Signs (Medic or Nurse to assess vital signs)"
+     ],
+     "false": [
+      "Confirm an AE and Conmed check has been performed (Record any AE and Conmeds if HH:",
+      "Clinical Assessment of Vital Signs (Medic or Nurse to assess vital signs) HH:mm"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 308,
+     "missed": [
+      "Staff Initials:",
+      "Systolic Drop  _  _  _  _  mmHg (####)",
+      "Diastolic Drop  _  _  _  _  mmHg (####)",
+      "Staff Initials:",
+      "Clinical Assessment of Standing Vital Signs (Medic or Nurse to assess vital signs)"
+     ],
+     "false": [
+      "Clinical Assessment of Standing Vital Signs (Medic or Nurse to assess vital signs) HH:mm"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 458,
+     "missed": [
+      "Staff Initials:",
+      "Systolic Drop  _  _  _  _  mmHg (####)",
+      "Diastolic Drop  _  _  _  _  mmHg (####)",
+      "Staff Initials:",
+      "Clinical Assessment of Standing Vital Signs (Medic or Nurse to assess vital signs)"
+     ],
+     "false": [
+      "Clinical Assessment of Standing Vital Signs (Medic or Nurse to assess vital signs) HH:mm"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "score": [
+    0,
+    58,
+    1,
+    -605
+   ],
+   "became_best": false
+  },
+  {
+   "version": 5,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 5028,
+    "pages_total": 606,
+    "pages_with_fields": 605,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 99,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 666,
+    "fields_per_form": 7.5,
+    "forms_per_100_pages": 109.9,
+    "furniture_candidates": [
+     "Comment:",
+     "Staff Initials:"
+    ],
+    "pages_covered_pct": 100
+   },
+   "problems": [],
+   "warnings": [
+    "These field_name values were extracted on >=70% of ALL pages: 'Comment:'; 'Staff Initials:'. Text recurring on nearly every page is usually page template furniture (watermark/footer/stamp), not a field - verify against the page dumps and stop extracting it unless it is genuinely a per-page data-entry field."
+   ],
+   "audit_issues": 6,
+   "audit_pages": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    7,
+    58,
+    94,
+    106,
+    157,
+    308,
+    458
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [
+      "Staff Initials:"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 3,
+     "missed": [
+      "Comment:"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 4,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 5,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 7,
+     "missed": [
+      "Other (Specify)"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 58,
+     "missed": [
+      "Staff Initials:"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 94,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 106,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 157,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 308,
+     "missed": [
+      "Staff Initials:"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 458,
+     "missed": [
+      "Staff Initials:"
+     ],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "score": [
+    0,
+    6,
+    1,
+    -605
+   ],
+   "became_best": true
+  }
+ ]
+}

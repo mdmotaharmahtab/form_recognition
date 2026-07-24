@@ -1,0 +1,71 @@
+x= 235.9 y=  39.1 sz=20.0 #4682b4 B | Annotated CRF
+x=  29.9 y=  71.2 sz=11.0 black   B | Study, Site:
+x= 238.7 y=  71.2 sz=11.0 black   B | Group, Visit:
+x= 445.2 y=  71.2 sz=11.0 black   B | Slot:
+x=  29.9 y=  93.9 sz=11.0 black   B | Schedule Category & Name:
+x= 167.7 y=  93.9 sz=11.0 black     | QSC302573, 05c - Period 3 Parts 1 and 2 Draft v0.1
+x=  29.9 y= 116.4 sz=10.0 #4682b4 B | Timepoint
+x= 167.7 y= 116.4 sz=10.0 #4682b4 B | Activity
+x= 488.4 y= 116.4 sz=10.0 #4682b4 B | Line #
+x=  29.9 y= 133.4 sz=10.0 black     | _ _ - _ _ _ - _ _ _ _
+x= 116.7 y= 133.4 sz=10.0 black     | _ _ : _ _
+x= 167.7 y= 133.4 sz=10.0 black   B | ECG Rhythm assessment and interpretation
+x=  29.9 y= 145.6 sz=10.0 black     | dd - MMM - yyyy
+x= 116.7 y= 145.6 sz=10.0 black     | HH:mm
+x=  30.9 y= 160.8 sz=10.0 #4682b4 B | Staff Initials:
+x= 167.7 y= 176.7 sz=10.0 #4682b4 B | Answer(s):
+x= 238.7 y= 176.7 sz=10.0 black     | O Normal, Sinus Rhythm
+x= 238.7 y= 193.7 sz=10.0 black     | [EGORRES] SAS:[Name=EGORRES, Length=50, DataType=Char]
+x= 238.7 y= 210.7 sz=10.0 black     | O Abnormal, Sinus Rhythm (Activates Line  170, 171)
+x= 238.7 y= 227.8 sz=10.0 black     | [EGORRES] SAS:[Name=EGORRES, Length=50, DataType=Char]
+x= 238.7 y= 244.8 sz=10.0 black     | O Abnormal, Non-Sinus Rhythm (Activates Line  170, 172)
+x= 238.7 y= 261.8 sz=10.0 black     | [EGORRES] SAS:[Name=EGORRES, Length=50, DataType=Char]
+x= 238.7 y= 278.8 sz=10.0 black     | O Unevaluable (Comment Required)
+x= 238.7 y= 295.8 sz=10.0 black     | [EGORRES] SAS:[Name=EGORRES, Length=50, DataType=Char]
+x=  29.9 y= 312.8 sz=10.0 #4682b4 B | Comment:
+x=  29.9 y= 335.5 sz=10.0 black     | Day 8 (0), +24:00.00 (-10mins)
+x= 167.7 y= 335.5 sz=10.0 black   B | ECG: ECG Significance #3
+x= 488.4 y= 335.5 sz=10.0 black     | 170.0 (hidden)
+x=  29.9 y= 352.5 sz=10.0 black     | _ _ - _ _ _ - _ _ _ _
+x= 116.7 y= 352.5 sz=10.0 black     | _ _ : _ _
+x= 167.7 y= 352.5 sz=10.0 black   B | Was the ECG clinically significant? (Medic to assess)
+x=  29.9 y= 364.7 sz=10.0 black     | dd - MMM - yyyy
+x= 116.7 y= 364.7 sz=10.0 black     | HH:mm
+x=  30.9 y= 379.9 sz=10.0 #4682b4 B | Staff Initials:
+x= 167.7 y= 395.8 sz=10.0 #4682b4 B | Answer(s):
+x= 238.7 y= 395.8 sz=10.0 black     | O No
+x= 238.7 y= 412.8 sz=10.0 black     | [EGCLSIG] SAS:[Name=EGCLSIG, Length=50, DataType=Char]
+x= 238.7 y= 429.8 sz=10.0 black     | O Yes
+x= 238.7 y= 446.9 sz=10.0 black     | [EGCLSIG] SAS:[Name=EGCLSIG, Length=50, DataType=Char]
+x=  29.9 y= 463.9 sz=10.0 #4682b4 B | Comment:
+x=  29.9 y= 486.6 sz=10.0 black     | Day 8 (0), +24:00.00 (-10mins)
+x= 167.7 y= 486.6 sz=10.0 black   B | ECG: ECG Findings #3
+x= 488.4 y= 486.6 sz=10.0 black     | 171.0 (hidden)
+x=  29.9 y= 503.5 sz=10.0 black     | _ _ - _ _ _ - _ _ _ _
+x= 116.7 y= 503.5 sz=10.0 black     | _ _ : _ _
+x= 167.7 y= 503.5 sz=10.0 black   B | ECG Findings
+x=  29.9 y= 515.7 sz=10.0 black     | dd - MMM - yyyy
+x= 116.7 y= 515.7 sz=10.0 black     | HH:mm
+x=  30.9 y= 530.9 sz=10.0 #4682b4 B | Staff Initials:
+x= 167.7 y= 546.9 sz=10.0 #4682b4 B | Answer(s):
+x= 238.7 y= 546.9 sz=10.0 black     | ______________________________ (500 char. max.)
+x= 238.7 y= 563.9 sz=10.0 black     | [EGABNFND] SAS:[Name=EGABNFND, Length=500, DataType=Char]
+x=  29.9 y= 580.9 sz=10.0 #4682b4 B | Comment:
+x=  29.9 y= 603.6 sz=10.0 black     | Day 8 (0), +24:00.00 (-10mins)
+x= 167.7 y= 603.6 sz=10.0 black   B | ECG: ECG Findings inc Rhythm #3
+x= 488.4 y= 603.6 sz=10.0 black     | 172.0 (hidden)
+x=  29.9 y= 620.6 sz=10.0 black     | _ _ - _ _ _ - _ _ _ _
+x= 116.7 y= 620.6 sz=10.0 black     | _ _ : _ _
+x= 167.7 y= 620.6 sz=10.0 black   B | ECG Findings, including rhythm assessment
+x=  29.9 y= 632.8 sz=10.0 black     | dd - MMM - yyyy
+x= 116.7 y= 632.8 sz=10.0 black     | HH:mm
+x=  30.9 y= 647.9 sz=10.0 #4682b4 B | Staff Initials:
+x= 167.7 y= 664.0 sz=10.0 #4682b4 B | Answer(s):
+x= 238.7 y= 664.0 sz=10.0 black     | ______________________________ (500 char. max.)
+x= 238.7 y= 681.0 sz=10.0 black     | [EGABNFND] SAS:[Name=EGABNFND, Length=500, DataType=Char]
+x=  29.9 y= 697.9 sz=10.0 #4682b4 B | Comment:
+x=  29.9 y= 720.6 sz=10.0 black     | Day 8 (0), +24:00.00 (-10mins)
+x= 167.7 y= 720.6 sz=10.0 black   B | ECG Difference: ECG Difference Calculation #3
+x= 488.4 y= 720.6 sz=10.0 black     | 173.0
+x=  29.9 y= 749.6 sz=10.0 black     | Date Created: 30-Sep-2024 08:27 (UTC)
+x= 501.3 y= 749.6 sz=10.0 black     | Page 246 of 489

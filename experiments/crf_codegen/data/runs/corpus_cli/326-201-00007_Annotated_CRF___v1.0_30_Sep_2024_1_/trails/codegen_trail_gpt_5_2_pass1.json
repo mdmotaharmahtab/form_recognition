@@ -1,0 +1,504 @@
+{
+ "stop_reason": "plateau",
+ "versions": 3,
+ "best_version": 1,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 4876,
+    "pages_total": 486,
+    "pages_with_fields": 481,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 97,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 392,
+    "fields_per_form": 12.4,
+    "forms_per_100_pages": 80.7,
+    "furniture_candidates": [
+     "Comment:",
+     "Staff Initials:"
+    ],
+    "pages_covered_pct": 99
+   },
+   "problems": [],
+   "warnings": [
+    "These field_name values were extracted on >=70% of ALL pages: 'Comment:'; 'Staff Initials:'. Text recurring on nearly every page is usually page template furniture (watermark/footer/stamp), not a field - verify against the page dumps and stop extracting it unless it is genuinely a per-page data-entry field."
+   ],
+   "audit_issues": 22,
+   "audit_pages": [
+    1,
+    3,
+    27,
+    47,
+    117,
+    125,
+    247,
+    368
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [
+      "Date (dd-MMM-yyyy)"
+     ],
+     "false": [
+      "(9999 char. max.)"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 3,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 27,
+     "missed": [
+      "Comment:",
+      "Date (dd-MMM-yyyy)"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 47,
+     "missed": [
+      "PRE-DOSE - Vital Signs Difference for DIASTOLIC Drop (Supine)",
+      "Diastolic mmHg (####)",
+      "Staff Initials:",
+      "Comment:",
+      "Open Field (200 char. max.)"
+     ],
+     "false": [
+      "findings? #1"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 117,
+     "missed": [
+      "Reasons for Ideation (What sort of reasons did you have for thinking about wanting to die or killing yourself? Was it to end the pain or stop the way you were feeling (in other words you couldn't go on living with this pain or how you were feeling) or was it to get attention, revenge or a reaction from others? Or both?)",
+      "Staff Initials:",
+      "Comment:"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 125,
+     "missed": [
+      "Ventricular Rate beats/min (##0)"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 247,
+     "missed": [
+      "ECG Difference Calculation - a participant will be withdrawn where there is an increase in QTcF interval of >60 msec from baseline (confirmed following a repeat ECG)",
+      "QTcF ms (##0)",
+      "Staff Initials:",
+      "Comment:",
+      "Systolic mmHg (##0)"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 368,
+     "missed": [
+      "Comment:",
+      "Open Field (200 char. max.)",
+      "Barcode:"
+     ],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "score": [
+    0,
+    22,
+    1,
+    -481
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 6251,
+    "pages_total": 486,
+    "pages_with_fields": 481,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 98,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 391,
+    "fields_per_form": 16.0,
+    "forms_per_100_pages": 80.5,
+    "furniture_candidates": [
+     "Answer(s):",
+     "Comment:",
+     "Staff Initials:"
+    ],
+    "pages_covered_pct": 99
+   },
+   "problems": [],
+   "warnings": [
+    "These field_name values were extracted on >=70% of ALL pages: 'Answer(s):'; 'Comment:'; 'Staff Initials:'. Text recurring on nearly every page is usually page template furniture (watermark/footer/stamp), not a field - verify against the page dumps and stop extracting it unless it is genuinely a per-page data-entry field."
+   ],
+   "audit_issues": 34,
+   "audit_pages": [
+    1,
+    3,
+    27,
+    47,
+    117,
+    125,
+    189,
+    247,
+    275,
+    368
+   ],
+   "audit_partial": null,
+   "audit_promoted": [
+    189
+   ],
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [
+      "Date (dd-MMM-yyyy)"
+     ],
+     "false": [
+      "Answer(s):"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 3,
+     "missed": [],
+     "false": [
+      "Answer(s):",
+      "Please ensure that a Protocol Deviation is completed"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 27,
+     "missed": [
+      "Comment:",
+      "Date (dd-MMM-yyyy)"
+     ],
+     "false": [
+      "Answer(s):"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 47,
+     "missed": [
+      "PRE-DOSE - Vital Signs Difference for DIASTOLIC Drop (Supine)",
+      "Staff Initials:",
+      "Diastolic mmHg (####)",
+      "Comment:",
+      "Open Field ______________________________ (200 char. max.)",
+      "Yes (Specify) ______________________________ (50 char. max.)"
+     ],
+     "false": [
+      "Answer(s):"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 117,
+     "missed": [
+      "Reasons for Ideation (What sort of reasons did you have for thinking about wanting to die or killing yourself? Was it to end the pain or stop the way you were feeling (in other words you couldn't go on living with this pain or how you were feeling) or was it to get attention, revenge or a reaction from others? Or both?)",
+      "Staff Initials:",
+      "Comment:"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 125,
+     "missed": [
+      "Ventricular Rate beats/min (##0)"
+     ],
+     "false": [
+      "Answer(s):"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 189,
+     "missed": [
+      "Reasons for Ideation (What sort of reasons did you have for thinking about wanting to die or killing yourself? Was it to end the pain or stop the way you were feeling (in other words you couldn't go on living with this pain or how you were feeling) or was it to get attention, revenge or a reaction from others? Or both?)",
+      "Staff Initials:",
+      "Comment:"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 247,
+     "missed": [
+      "ECG Difference Calculation - a participant will be withdrawn where there is an increase in QTcF interval of >60 msec from baseline (confirmed following a repeat ECG)",
+      "Staff Initials:",
+      "QTcF ms (##0)",
+      "Comment:",
+      "Systolic mmHg (##0)"
+     ],
+     "false": [
+      "(Supine for at least 3 minutes)",
+      "Answer(s):"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 275,
+     "missed": [
+      "Reasons for Ideation (What sort of reasons did you have for thinking about wanting to die or killing yourself? Was it to end the pain or stop the way you were feeling (in other words you couldn't go on living with this pain or how you were feeling) or was it to get attention, revenge or a reaction from others? Or both?)",
+      "Staff Initials:",
+      "Comment:"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 368,
+     "missed": [
+      "Prandial state"
+     ],
+     "false": [
+      "Answer(s):"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "score": [
+    0,
+    34,
+    1,
+    -481
+   ],
+   "became_best": false
+  },
+  {
+   "version": 3,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 7384,
+    "pages_total": 486,
+    "pages_with_fields": 481,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 98,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 392,
+    "fields_per_form": 18.8,
+    "forms_per_100_pages": 80.7,
+    "furniture_candidates": [
+     "Comment:",
+     "HH:mm",
+     "Staff Initials:"
+    ],
+    "pages_covered_pct": 99
+   },
+   "problems": [],
+   "warnings": [
+    "These field_name values were extracted on >=70% of ALL pages: 'Comment:'; 'HH:mm'; 'Staff Initials:'. Text recurring on nearly every page is usually page template furniture (watermark/footer/stamp), not a field - verify against the page dumps and stop extracting it unless it is genuinely a per-page data-entry field."
+   ],
+   "audit_issues": 71,
+   "audit_pages": [
+    1,
+    3,
+    27,
+    47,
+    117,
+    125,
+    189,
+    247,
+    353,
+    368
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [
+      "Date _  _  -  _  _  _  -  _  _  _  _ (dd-MMM-yyyy)"
+     ],
+     "false": [
+      "HH:mm participant's wrist?",
+      "Has the participant's photographic and wristband ID been verified and wristband applied to",
+      "HH:mm",
+      "HH:mm (Version must be checked against ICF present in the CSF \u2013 escalate any discrepancies)",
+      "Version (##.0)"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 3,
+     "missed": [],
+     "false": [
+      "HH:mm Seville oranges, Seville orange juice, blueberry juice, or cranberry juice within 48 hours (72hrs",
+      "Seville oranges, Seville orange juice, blueberry juice, or cranberry juice within 48 hours (72hrs",
+      "HH:mm Admission visit?",
+      "Has the participant consumed any food containing poppy seeds within 48 hours prior to",
+      "HH:mm visit?",
+      "Has the participant had strenuous activity (e.g. weightlifting) within 72 hours prior to Admission",
+      "HH:mm smoke since Screening? (If 'Yes' exclude per exclusion criteria #14)",
+      "Has the participant use of tobacco products or experience daily exposure to second-hand",
+      "HH:mm",
+      ": Please ensure that a Protocol Deviation is completed"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 27,
+     "missed": [
+      "Comment:",
+      "Date _  _  -  _  _  _  -  _  _  _  _ (dd-MMM-yyyy)"
+     ],
+     "false": [
+      "HH:mm",
+      "Time (HH:mm)"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 47,
+     "missed": [
+      "Diastolic  _  _  _  _  mmHg (####)",
+      "Staff Initials:",
+      "Comment:",
+      "Open Field ______________________________ (200 char. max.)",
+      "Yes (Specify) ______________________________ (50 char. max.) (Activates Line 145)"
+     ],
+     "false": [
+      "HH:mm",
+      "HH:mm examination? (If yes, please specify the reason)",
+      "PRE-DOSE - Targeted Physical Examination: Does the participant require a targeted physical",
+      "findings? #1"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 117,
+     "missed": [
+      "Reasons for Ideation (What sort of reasons did you have for thinking about wanting to die or killing yourself? Was it to end the pain or stop the way you were feeling (in other words you couldn't go on living with this pain or how you were feeling) or was it to get attention, revenge or a reaction from others? Or both?)",
+      "Staff Initials:",
+      "Comment:"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 125,
+     "missed": [
+      "PRE-DOSE Triplicate ECG 2: 12 Lead Standard ECG (To be performed at least 2 minutes after ECG1)",
+      "Ventricular Rate  _  _  _  beats/min (##0)"
+     ],
+     "false": [
+      "HH:mm",
+      "PRE-DOSE Triplicate ECG 2: 12 Lead Standard ECG (To be performed at least 2 minutes after",
+      "HH:mm ECG1)",
+      "PR interval ms (##0)",
+      "QRS Duration ms (##0)",
+      "QT interval ms (##0)",
+      "QRS Axis deg (###0)",
+      "RR Interval ms (###0)",
+      "QTcF ms (##0)",
+      ": PRE-DOSE Triplicate ECG 2: ECG Rhythm assessment and interpretation"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 189,
+     "missed": [
+      "Reasons for Ideation (What sort of reasons did you have for thinking about wanting to die or killing yourself? Was it to end the pain or stop the way you were feeling (in other words you couldn't go on living with this pain or how you were feeling) or was it to get attention, revenge or a reaction from others? Or both?)",
+      "Staff Initials:",
+      "Comment:"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 247,
+     "missed": [
+      "QTcF  _  _  _  ms (##0)",
+      "Staff Initials:",
+      "Comment:",
+      "Systolic  _  _  _  mmHg (##0)"
+     ],
+     "false": [
+      "HH:mm (Supine for at least 3 minutes)",
+      "Diastolic mmHg (##0)",
+      "Heart Rate beats/min (##0)",
+      "Respiratory Rate breaths/mi (##0)",
+      "Oral Temperature - Degrees Celsius . C (##.0)",
+      "HH:mm"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 353,
+     "missed": [
+      "Reasons for Ideation (What sort of reasons did you have for thinking about wanting to die or killing yourself? Was it to end the pain or stop the way you were feeling (in other words you couldn't go on living with this pain or how you were feeling) or was it to get attention, revenge or a reaction from others? Or both?)",
+      "Staff Initials:",
+      "Comment:"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 368,
+     "missed": [
+      "Comment:",
+      "Open Field ______________________________ (200 char. max.)",
+      "Confirm an AE and Conmed check has been performed (Record any AE and Conmeds if applicable)"
+     ],
+     "false": [
+      "HH:mm",
+      "PK Sample for Bioanalysis - Gently invert tube 8-10 times immediately after collection and protect the sample from light (4 mL K2EDTA) SMP _ _ _ _ _ _ _ _ _",
+      "HH:mm protect the sample from light (4 mL K2EDTA)",
+      ": PK Sample for Bioanalysis - Gently invert tube 8-10 times immediately after collection and",
+      "Barcode: SMP",
+      "Confirm an AE and Conmed check has been performed (Record any AE and Conmeds if",
+      "HH:mm applicable)",
+      ": Prandial state"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "score": [
+    0,
+    71,
+    1,
+    -481
+   ],
+   "became_best": false
+  }
+ ]
+}

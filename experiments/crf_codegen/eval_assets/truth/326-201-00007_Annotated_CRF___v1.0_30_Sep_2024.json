@@ -1,0 +1,150 @@
+{
+  "doc_key": "326-201-00007_Annotated_CRF___v1.0_30_Sep_2024",
+  "annotator_notes": "QSC-vendor 'Annotated CRF' schedule format, 112 pages. Every page prints header chrome (Study/Site, Group/Visit, Slot, Schedule Category & Name) with the schedule name, e.g. 'QSC302573, 03 - Screening Draft v0.1' = form name (study prefix optional). Fields are activity blocks: 'Activity: Name #1' header, line number, then the QUESTION text, 'Staff Initials:', 'Answer(s):', option/answer slots, 'Comment:'. Truth field = question text (user-endorsed convention). Answer slots inside a block (e.g. named measurements/checklist rows) are recorded as acceptable_extras: not required, not punished. Activity headers, option values, date/time templates, SAS bracket annotations are none of them fields.",
+  "pages": [
+    {
+      "page": 9,
+      "form_name": "QSC302573, 03 - Screening Draft v0.1",
+      "form_source": "printed",
+      "fields": [
+        "Select all contraception options that apply:"
+      ],
+      "acceptable_extras": [],
+      "notes": "Page is one multi-select question plus its checkbox options (all annotate CNMALE) and instruction paragraphs."
+    },
+    {
+      "page": 11,
+      "form_name": "QSC302573, 03 - Screening Draft v0.1",
+      "form_source": "printed",
+      "fields": [
+        "Does the participant smoke, use e-cigarettes or any nicotine replacement products? (If yes, exclude participant)",
+        "If previously, date of stopping (Exclude if within the last 2 months)",
+        "Exclude participant if answer yes to smoking (Medic to exclude participant)",
+        "Does the participant have any clinically relevant medical/surgical history? (If 'Yes' complete Medical History quicklist)"
+      ],
+      "acceptable_extras": [],
+      "notes": "Trailing block 'AE/CM Surveys: CM Survey #1' has no question text on this page."
+    },
+    {
+      "page": 21,
+      "form_name": "QSC302573, 03 - Screening Draft v0.1",
+      "form_source": "printed",
+      "fields": [
+        "Drugs of abuse - Methamphetamine/Ecstasy (MET)",
+        "Drugs of abuse - Phencyclidine (PCP)",
+        "Drugs of abuse - Marijuana/Cannabis (THC)",
+        "Positive Drugs of Abuse result (Medic to exclude participant)",
+        "Alcohol breath test (Positive result > 0.02)"
+      ],
+      "acceptable_extras": []
+    },
+    {
+      "page": 23,
+      "form_name": "QSC302573, 03 - Screening Draft v0.1",
+      "form_source": "printed",
+      "fields": [
+        "12 Lead Standard ECG",
+        "ECG Rhythm assessment and interpretation",
+        "Was the ECG clinically significant? (Medic to assess)"
+      ],
+      "acceptable_extras": [
+        "Ventricular Rate",
+        "PR interval",
+        "QRS Duration",
+        "QT interval",
+        "QRS Axis",
+        "RR interval",
+        "QTcF"
+      ],
+      "notes": "Seven named ECG measurement answer slots under the '12 Lead Standard ECG' block; all annotate EGORRES."
+    },
+    {
+      "page": 24,
+      "form_name": "QSC302573, 03 - Screening Draft v0.1",
+      "form_source": "printed",
+      "fields": [
+        "ECG Findings",
+        "ECG Findings, including rhythm assessment"
+      ],
+      "acceptable_extras": [],
+      "notes": "Top of page is the Yes/No answer continuation of p23's clinical-significance question."
+    },
+    {
+      "page": 95,
+      "form_name": "QSC302573, Prior and Concomitant Medications Draft",
+      "form_source": "printed",
+      "fields": [
+        "Confirm administration is complete, and all details entered are correct (Administration Record 5)",
+        "Administration Record 6",
+        "Expiry Date (Administration Record 6)",
+        "Route Administered (Administration Record 6)"
+      ],
+      "acceptable_extras": [
+        "Confirm Volunteer ID (volunteer number, initials, date of birth)",
+        "Confirm AE number(s) medication required for",
+        "Confirm AE(s) open",
+        "Frequency since last dose checked",
+        "Total Dosage within 24 hours",
+        "Batch Number",
+        "Tick if Expiry Date available (leave blank if Date is N/A)"
+      ]
+    },
+    {
+      "page": 96,
+      "form_name": "QSC302573, Prior and Concomitant Medications Draft",
+      "form_source": "printed",
+      "fields": [
+        "Other Route (Administration Record 6)"
+      ],
+      "acceptable_extras": [],
+      "notes": "Most of the page is the option list continuation of p95's Route Administered question."
+    },
+    {
+      "page": 99,
+      "form_name": "QSC302573, Prior and Concomitant Medications Draft",
+      "form_source": "printed",
+      "fields": [
+        "Other Route (Administration Record 7)",
+        "When was the last date/time the Con Med was given? (Administration Record 7)",
+        "Dose at this administration (Administration Record 7)",
+        "Confirm administration is complete, and all details entered are correct (Administration Record 7)",
+        "Administration Record 8"
+      ],
+      "acceptable_extras": [
+        "Confirm Volunteer ID (volunteer number, initials, date of birth)"
+      ]
+    },
+    {
+      "page": 102,
+      "form_name": "QSC302573, Prior and Concomitant Medications Draft",
+      "form_source": "printed",
+      "fields": [
+        "Confirm administration is complete, and all details entered are correct (Administration Record 8)",
+        "Administration Record 9",
+        "Expiry Date (Administration Record 9)",
+        "Route Administered (Administration Record 9)"
+      ],
+      "acceptable_extras": [
+        "Confirm Volunteer ID (volunteer number, initials, date of birth)",
+        "Confirm AE number(s) medication required for",
+        "Confirm AE(s) open",
+        "Frequency since last dose checked",
+        "Total Dosage within 24 hours",
+        "Batch Number",
+        "Tick if Expiry Date available (leave blank if Date is N/A)"
+      ]
+    },
+    {
+      "page": 107,
+      "form_name": "QSC302573, Protocol Deviations Draft",
+      "form_source": "printed",
+      "fields": [
+        "Date of Deviation",
+        "Study Part",
+        "Timepoint (Period)",
+        "Timepoint (Visit)"
+      ],
+      "acceptable_extras": []
+    }
+  ]
+}

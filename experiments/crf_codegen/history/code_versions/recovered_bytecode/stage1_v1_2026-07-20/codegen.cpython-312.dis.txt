@@ -1,0 +1,2803 @@
+  0           0 RESUME                   0
+
+  1           2 LOAD_CONST               0 ('Format-agnostic induction via CODE GENERATION - no strategy catalog, no few-shots.\n\nScope: form_name + field_name only. Printed machine codes are NOT extracted;\nOID resolution happens downstream by name mapping against the rule library.\n\nThe LLM sees ONLY:\n  - the task (extract form_name / field_name for every field)\n  - the input data schema (Line objects with geometry/font attributes)\n  - the output contract (function signature + record dict shape)\n  - generic quality constraints (the same ones the gates check)\n  - the stage-0 representative pages of THIS document\n\nIt must write the extraction program itself. Nothing in the prompt encodes layout\nknowledge from any particular CRF vendor or sample. Generated code runs in a\nseparate killable process (sandbox_runner.py) and is only accepted if it passes\nfull-document contract gates; gate warnings and per-cluster coverage go back to\nthe LLM for a bounded revision loop.\n')
+              4 STORE_NAME               0 (__doc__)
+
+ 19           6 LOAD_CONST               1 (0)
+              8 LOAD_CONST               2 (('annotations',))
+             10 IMPORT_NAME              1 (__future__)
+             12 IMPORT_FROM              2 (annotations)
+             14 STORE_NAME               2 (annotations)
+             16 POP_TOP
+
+ 21          18 LOAD_CONST               1 (0)
+             20 LOAD_CONST               3 (None)
+             22 IMPORT_NAME              3 (collections)
+             24 STORE_NAME               3 (collections)
+
+ 22          26 LOAD_CONST               1 (0)
+             28 LOAD_CONST               3 (None)
+             30 IMPORT_NAME              4 (json)
+             32 STORE_NAME               4 (json)
+
+ 23          34 LOAD_CONST               1 (0)
+             36 LOAD_CONST               3 (None)
+             38 IMPORT_NAME              5 (os)
+             40 STORE_NAME               5 (os)
+
+ 24          42 LOAD_CONST               1 (0)
+             44 LOAD_CONST               3 (None)
+             46 IMPORT_NAME              6 (re)
+             48 STORE_NAME               6 (re)
+
+ 25          50 LOAD_CONST               1 (0)
+             52 LOAD_CONST               3 (None)
+             54 IMPORT_NAME              7 (subprocess)
+             56 STORE_NAME               7 (subprocess)
+
+ 26          58 LOAD_CONST               1 (0)
+             60 LOAD_CONST               3 (None)
+             62 IMPORT_NAME              8 (sys)
+             64 STORE_NAME               8 (sys)
+
+ 27          66 LOAD_CONST               1 (0)
+             68 LOAD_CONST               3 (None)
+             70 IMPORT_NAME              9 (tempfile)
+             72 STORE_NAME               9 (tempfile)
+
+ 29          74 LOAD_CONST               1 (0)
+             76 LOAD_CONST               3 (None)
+             78 IMPORT_NAME             10 (fitz)
+             80 STORE_NAME              10 (fitz)
+
+ 31          82 LOAD_CONST               1 (0)
+             84 LOAD_CONST               4 (('build_page_lines',))
+             86 IMPORT_NAME             11 (common)
+             88 IMPORT_FROM             12 (build_page_lines)
+             90 STORE_NAME              12 (build_page_lines)
+             92 POP_TOP
+
+ 32          94 LOAD_CONST               1 (0)
+             96 LOAD_CONST               5 (('gate_problems', 'gate_warnings', 'load_rep_pages', 'score'))
+             98 IMPORT_NAME             13 (induction)
+            100 IMPORT_FROM             14 (gate_problems)
+            102 STORE_NAME              14 (gate_problems)
+            104 IMPORT_FROM             15 (gate_warnings)
+            106 STORE_NAME              15 (gate_warnings)
+            108 IMPORT_FROM             16 (load_rep_pages)
+            110 STORE_NAME              16 (load_rep_pages)
+            112 IMPORT_FROM             17 (score)
+            114 STORE_NAME              17 (score)
+            116 POP_TOP
+
+ 33         118 LOAD_CONST               1 (0)
+            120 LOAD_CONST               6 (('FieldRec', 'ReplayResult'))
+            122 IMPORT_NAME             18 (replay)
+            124 IMPORT_FROM             19 (FieldRec)
+            126 STORE_NAME              19 (FieldRec)
+            128 IMPORT_FROM             20 (ReplayResult)
+            130 STORE_NAME              20 (ReplayResult)
+            132 POP_TOP
+
+ 35         134 LOAD_NAME                5 (os)
+            136 LOAD_ATTR               42 (path)
+            156 LOAD_ATTR               45 (NULL|self + dirname)
+            176 LOAD_NAME                5 (os)
+            178 LOAD_ATTR               42 (path)
+            198 LOAD_ATTR               47 (NULL|self + abspath)
+            218 LOAD_NAME               24 (__file__)
+            220 CALL                     1
+            228 CALL                     1
+            236 STORE_NAME              25 (HERE)
+
+ 37         238 LOAD_CONST               7 ('You are writing a deterministic extraction program for one specific clinical Case Report Form (CRF) PDF document. Below you will find a small sample of REPRESENTATIVE PAGES (one or two per page-layout cluster) from a document that is {n_pages} pages long. The document is highly repetitive: the sampled pages cover its layouts, but the unsampled pages contain different content in the same layouts.\n\nEach sampled page is shown as structured text lines with geometry:\n    x=<left> y=<top> sz=<font-size> <color-hex or \'black\'> <B if bold> | <text>\n\n# Your task\n\nWrite a Python function that will run UNCHANGED over all {n_pages} pages and extract every data-entry field of the CRF:\n  - form_name : the CRF form/section the field belongs to\n  - field_name: the human-readable field label/question\n\nThat is the complete output. Some CRFs also print machine codes or technical\nannotations near fields - do NOT return those (they are resolved downstream by a\nseparate system). You may still USE such markings as structural landmarks if that\nhelps you locate fields reliably.\n\n# Runtime contract\n\ndef extract(pages):\n    # pages: list of (page_index_0based, lines) tuples for the ENTIRE document, in\n    #        page order. lines is a list of Line objects sorted by y, then x.\n    #        NOTE: y-then-x order is NOT reading order on multi-column pages; if the\n    #        layout has side-by-side columns, use x coordinates to separate them.\n    # Line attributes:\n    #   .text  (str, stripped visible text of one visual line)\n    #   .x0 .y0 .x1 .y1  (floats; PDF points; origin = top-left of the page)\n    #   .size  (float; font size in points; the largest span on the line)\n    #   .bold  (bool)\n    #   .non_black  (bool; True if any text on the line is printed in color)\n    # returns: list of dicts, one per extracted field occurrence:\n    #   {{"form_name": str, "field_name": str, "page": int_1based}}\n\n# Hard constraints\n\n- Pure computation only. These modules are already available: re, math, collections,\n  itertools, functools, string, unicodedata, bisect, statistics. You may not import\n  anything else, access files/network, or print.\n- Deterministic, fast, simple: loops, regexes, coordinate arithmetic. It must\n  process all {n_pages} pages in seconds.\n- Generalize from STRUCTURE, not content. The unsampled pages contain questions,\n  values and section names you have never seen. Never key your logic on specific\n  question wording from the samples; key it on geometry (x positions, font sizes,\n  color, boldness), on repeated marker/header patterns, and on the SHAPE of text\n  (regexes over character classes). The document may be in any language.\n- You may keep state across pages (the function receives the whole document) -\n  e.g. a form name announced once may govern many following pages.\n\n# Quality bar (your program\'s output is machine-checked before acceptance)\n\n- It must extract from every page that carries fields, not just the sampled ones.\n- form_name should be non-empty for the large majority of records. If the document\n  genuinely prints no form/section names, use the best available section context;\n  leave it empty only as a last resort.\n- field_name values must be human-readable label text - not machine codes, bare\n  numbers, dates, or page furniture (headers/footers/page numbers/legends).\n- Answer OPTIONS are not fields: choice values (e.g. Yes / No / Unknown / list\n  items - examples here are English, apply the concept in the document\'s language)\n  belong to a field, they are not field_name records themselves.\n- No duplicate records for the same (form_name, field_name) pair beyond what the\n  document itself repeats.\n\n# Reply format\n\nReply with ONLY Python source code (no prose outside code comments). Start with a\ncomment block (3-6 lines) stating what layout you observed in the samples and the\nextraction strategy you chose. Then define extract(pages) plus any helpers.\n\n# Representative pages of this document\n\n{pages}\n')
+            240 STORE_NAME              26 (CODEGEN_PROMPT)
+
+109         242 LOAD_CONST               8 ('Your extraction program was executed over the FULL document. It did not pass the quality gates.\n\nYour previous program:\n{code}\n\nExecution metrics:\n{metrics}\n\nSample of extracted records (pN: form_name | field_name):\n{sample}\n\nProblems to fix (in priority order):\n{problems}\n{cluster_feedback}\nRewrite the program now. Same reply format: Python source only, define extract(pages).\nWhere your program already works, EXTEND it rather than rewriting it - do not lose\ncoverage on pages that were extracting correctly. Different page layouts may need\ndifferent handling inside the same extract() function.\n')
+            244 STORE_NAME              27 (CODE_REVISION_TEMPLATE)
+
+129         246 LOAD_CONST               9 ('\n# Per-layout coverage\n\nPages of this document are grouped into layout clusters (structural fingerprint).\nCoverage of your program per cluster (clusters your program extracted nothing or\nlittle from are the ones to investigate):\n\n{table}\n\n# Sample pages from poorly-covered parts of the document (you have NOT seen these before)\n\nIf these pages contain data-entry fields, add handling for their layout. If they\ngenuinely carry no fields (title/instructions/legend pages), ignore them - zero\ncoverage there is correct.\n\n{failing_pages}\n')
+            248 STORE_NAME              28 (CLUSTER_FEEDBACK_TEMPLATE)
+
+147         250 LOAD_CONST              10 ('You previously wrote the extraction program below for a clinical CRF PDF (task: extract form_name + field_name for every data-entry field; field labels only, never machine codes, answer options, or page furniture). It passed the aggregate quality gates, but substantial parts of the document produced ZERO records. Below are sample pages from those parts (you have not seen these pages before).\n\nYour current program:\n{code}\n\nFor each sampled page decide: does this layout carry data-entry fields your program is missing, or is it genuinely field-free (title/TOC/instructions/definitions-only pages)?\n\n{cluster_feedback}\n\nReply with EXACTLY one of:\n- the single line: CONFIRM_NO_FIELDS\n  (meaning: all shown layouts are genuinely field-free; the program is complete), or\n- the FULL updated Python program (same reply format: source only, define\n  extract(pages)) that keeps existing behavior for covered layouts and ADDS\n  handling for the missed ones.\n')
+            252 STORE_NAME              29 (COVERAGE_CONFIRM_TEMPLATE)
+
+164         254 PUSH_NULL
+            256 LOAD_NAME                6 (re)
+            258 LOAD_ATTR               60 (compile)
+            278 LOAD_CONST              11 ('```(?:python)?\\s*\\n(.*?)```')
+            280 LOAD_NAME                6 (re)
+            282 LOAD_ATTR               62 (S)
+            302 CALL                     2
+            310 STORE_NAME              32 (_FENCE)
+
+167         312 LOAD_CONST              36 (('raw', 'str', 'return', 'str'))
+            314 LOAD_CONST              12 (<code object extract_source at 0x0000029883985a70, file "/mnt/d/ubuntu/codes/ZS/otsuka/ECS/experiments/recipe_prototype/codegen.py", line 167>)
+            316 MAKE_FUNCTION            4 (annotations)
+            318 STORE_NAME              33 (extract_source)
+
+173         320 LOAD_CONST              37 ((300,))
+            322 LOAD_CONST              38 (('source', 'str', 'pdf_path', 'str', 'timeout_s', 'int', 'return', 'ReplayResult'))
+            324 LOAD_CONST              13 (<code object run_extractor at 0x0000029883c4baf0, file "/mnt/d/ubuntu/codes/ZS/otsuka/ECS/experiments/recipe_prototype/codegen.py", line 173>)
+            326 MAKE_FUNCTION            5 (defaults, annotations)
+            328 STORE_NAME              34 (run_extractor)
+
+236         330 LOAD_CONST              39 (('pdf_path', 'str', 'outdir', 'str', 'return', 'str'))
+            332 LOAD_CONST              14 (<code object build_codegen_prompt at 0x0000029883cf5000, file "/mnt/d/ubuntu/codes/ZS/otsuka/ECS/experiments/recipe_prototype/codegen.py", line 236>)
+            334 MAKE_FUNCTION            4 (annotations)
+            336 STORE_NAME              35 (build_codegen_prompt)
+
+247         338 LOAD_CONST              40 (('outdir', 'str', 'return', 'dict'))
+            340 LOAD_CONST              15 (<code object _load_cluster_meta at 0x0000029883cf5170, file "/mnt/d/ubuntu/codes/ZS/otsuka/ECS/experiments/recipe_prototype/codegen.py", line 247>)
+            342 MAKE_FUNCTION            4 (annotations)
+            344 STORE_NAME              36 (_load_cluster_meta)
+
+252         346 LOAD_CONST              41 (('meta', 'dict', 'return', 'list[dict]'))
+            348 LOAD_CONST              16 (<code object cluster_stats at 0x0000029883c3c560, file "/mnt/d/ubuntu/codes/ZS/otsuka/ECS/experiments/recipe_prototype/codegen.py", line 252>)
+            350 MAKE_FUNCTION            4 (annotations)
+            352 STORE_NAME              37 (cluster_stats)
+
+272         354 LOAD_CONST              42 ((4, 30))
+            356 LOAD_CONST              43 (('stats', 'list[dict]', 'min_pages', 'int', 'coverage_lt', 'int', 'return', 'list[dict]'))
+            358 LOAD_CONST              17 (<code object weak_clusters at 0x0000029883982530, file "/mnt/d/ubuntu/codes/ZS/otsuka/ECS/experiments/recipe_prototype/codegen.py", line 272>)
+            360 MAKE_FUNCTION            5 (defaults, annotations)
+            362 STORE_NAME              38 (weak_clusters)
+
+277         364 LOAD_CONST              44 ((3200,))
+            366 LOAD_CONST              45 (('max_chars', 'int', 'return', 'str'))
+            368 LOAD_CONST              18 (<code object _dump_lines_text at 0x0000029883c46650, file "/mnt/d/ubuntu/codes/ZS/otsuka/ECS/experiments/recipe_prototype/codegen.py", line 277>)
+            370 MAKE_FUNCTION            5 (defaults, annotations)
+            372 STORE_NAME              39 (_dump_lines_text)
+
+286         374 LOAD_CONST              46 (('items', 'list', 'k', 'int', 'return', 'list'))
+            376 LOAD_CONST              19 (<code object _spread at 0x0000029883cf52e0, file "/mnt/d/ubuntu/codes/ZS/otsuka/ECS/experiments/recipe_prototype/codegen.py", line 286>)
+            378 MAKE_FUNCTION            4 (annotations)
+            380 STORE_NAME              40 (_spread)
+
+295         382 NOP
+
+296         384 NOP
+
+294         386 LOAD_CONST              47 ((2, 2))
+
+295         388 NOP
+
+294         390 NOP
+
+295         392 NOP
+
+294         394 NOP
+
+296         396 NOP
+
+294         398 NOP
+
+296         400 NOP
+
+294         402 LOAD_CONST              48 (('pdf_path', 'str', 'weak', 'list[dict]', 'meta', 'dict', 'stats', 'list[dict]', 'max_clusters', 'int', 'pages_per_cluster', 'int', 'return', 'str'))
+            404 LOAD_CONST              20 (<code object build_cluster_feedback at 0x0000029883c4c310, file "/mnt/d/ubuntu/codes/ZS/otsuka/ECS/experiments/recipe_prototype/codegen.py", line 294>)
+            406 MAKE_FUNCTION            5 (defaults, annotations)
+            408 STORE_NAME              41 (build_cluster_feedback)
+
+324         410 NOP
+
+323         412 LOAD_CONST              49 ((40, 4))
+
+324         414 NOP
+
+323         416 NOP
+
+324         418 NOP
+
+323         420 NOP
+
+324         422 NOP
+
+323         424 LOAD_CONST              50 (('pdf_path', 'str', 'meta', 'dict', 'uncovered_pct_min', 'int', 'max_pages', 'int', 'return', 'str'))
+            426 LOAD_CONST              21 (<code object build_uncovered_feedback at 0x0000029883c7a7b0, file "/mnt/d/ubuntu/codes/ZS/otsuka/ECS/experiments/recipe_prototype/codegen.py", line 323>)
+            428 MAKE_FUNCTION            5 (defaults, annotations)
+            430 STORE_NAME              42 (build_uncovered_feedback)
+
+345         432 LOAD_CONST              51 ((None,))
+            434 LOAD_CONST              52 (('pdf_path', 'str', 'raw_reply', 'str', 'outdir', 'str | None', 'return', 'dict'))
+            436 LOAD_CONST              22 (<code object validate_generated at 0x0000029883c4c980, file "/mnt/d/ubuntu/codes/ZS/otsuka/ECS/experiments/recipe_prototype/codegen.py", line 345>)
+            438 MAKE_FUNCTION            5 (defaults, annotations)
+            440 STORE_NAME              43 (validate_generated)
+
+387         442 PUSH_NULL
+            444 LOAD_NAME               44 (float)
+            446 LOAD_CONST              23 ('inf')
+            448 CALL                     1
+            456 STORE_NAME              45 (AUDIT_NOT_RUN)
+
+390         458 LOAD_CONST              53 (('verdict', 'dict', 'audit_issue_count', 'int | None', 'return', 'tuple'))
+            460 LOAD_CONST              24 (<code object version_score at 0x00000298839d0630, file "/mnt/d/ubuntu/codes/ZS/otsuka/ECS/experiments/recipe_prototype/codegen.py", line 390>)
+            462 MAKE_FUNCTION            4 (annotations)
+            464 STORE_NAME              46 (version_score)
+
+408         466 NOP
+
+409         468 NOP
+
+407         470 LOAD_CONST              54 ((0, 0, 0.9))
+
+408         472 NOP
+
+407         474 NOP
+
+408         476 NOP
+
+407         478 NOP
+
+409         480 NOP
+
+407         482 NOP
+
+409         484 NOP
+
+407         486 LOAD_CONST              55 (('best_score', 'tuple | None', 'cand_score', 'tuple', 'best_cov', 'int', 'cand_cov', 'int', 'cov_floor', 'float', 'return', 'bool'))
+            488 LOAD_CONST              25 (<code object improves at 0x0000029883997d20, file "/mnt/d/ubuntu/codes/ZS/otsuka/ECS/experiments/recipe_prototype/codegen.py", line 407>)
+            490 MAKE_FUNCTION            5 (defaults, annotations)
+            492 STORE_NAME              47 (improves)
+
+423         494 LOAD_CONST              56 (('verdict', 'dict', 'return', 'str'))
+            496 LOAD_CONST              26 (<code object build_code_revision_prompt at 0x0000029883bfa900, file "/mnt/d/ubuntu/codes/ZS/otsuka/ECS/experiments/recipe_prototype/codegen.py", line 423>)
+            498 MAKE_FUNCTION            4 (annotations)
+            500 STORE_NAME              48 (build_code_revision_prompt)
+
+435         502 LOAD_CONST              56 (('verdict', 'dict', 'return', 'str'))
+            504 LOAD_CONST              27 (<code object build_coverage_confirm_prompt at 0x00000298839c3110, file "/mnt/d/ubuntu/codes/ZS/otsuka/ECS/experiments/recipe_prototype/codegen.py", line 435>)
+            506 MAKE_FUNCTION            4 (annotations)
+            508 STORE_NAME              49 (build_coverage_confirm_prompt)
+
+442         510 LOAD_CONST              28 ('CONFIRM_NO_FIELDS')
+            512 STORE_NAME              50 (CONFIRM_TOKEN)
+
+445         514 LOAD_CONST              57 (('reply', 'str', 'return', 'bool'))
+            516 LOAD_CONST              29 (<code object is_confirm_no_fields at 0x00000298839c3330, file "/mnt/d/ubuntu/codes/ZS/otsuka/ECS/experiments/recipe_prototype/codegen.py", line 445>)
+            518 MAKE_FUNCTION            4 (annotations)
+            520 STORE_NAME              51 (is_confirm_no_fields)
+
+459         522 LOAD_CONST              30 ('You are auditing the output of a deterministic extraction program that was run over a clinical CRF PDF. The program\'s task contract: for every data-entry field on every page, extract form_name (the CRF form/section the field belongs to) and field_name (the human-readable field label/question). Field labels only - machine codes, answer options (Yes/No/choice-list values), filled values, instructions, and page furniture (headers/footers/page numbers/legends) are NOT fields.\n\nBelow are {k} sampled pages of the document (structured text lines with geometry:\nx=<left> y=<top> sz=<font-size> <color> <B if bold> | <text>), each followed by the\nrecords the program extracted FROM THAT PAGE.\n\nAudit each page strictly against what is printed on it:\n- missed      : data-entry fields visible on the page that were not extracted\n- false       : extracted records that are not actually data-entry fields\n- wrong_form  : extracted records whose form_name does not match the form/section\n                this page belongs to\n\n# Reply format (JSON only, no prose)\n\n[\n {{"page": <n>, "missed": ["<field label>", ...], "false": ["<field_name>", ...], "wrong_form": ["<field_name>", ...]}}\n]\n\nOne object per audited page; empty lists mean that page\'s extraction is correct.\n\n{pages_and_records}\n')
+            524 STORE_NAME              52 (AUDIT_PROMPT_TEMPLATE)
+
+483         526 LOAD_CONST              58 ((6,))
+            528 LOAD_CONST              59 (('outdir', 'str', 'result', 'ReplayResult', 'max_pages', 'int', 'return', 'list[int]'))
+            530 LOAD_CONST              31 (<code object pick_audit_pages at 0x0000029883c8e470, file "/mnt/d/ubuntu/codes/ZS/otsuka/ECS/experiments/recipe_prototype/codegen.py", line 483>)
+            532 MAKE_FUNCTION            5 (defaults, annotations)
+            534 STORE_NAME              53 (pick_audit_pages)
+
+503         536 NOP
+
+502         538 LOAD_CONST              60 ((6, None))
+
+503         540 NOP
+
+502         542 NOP
+
+503         544 NOP
+
+502         546 NOP
+
+504         548 NOP
+
+502         550 LOAD_CONST              61 (('pdf_path', 'str', 'outdir', 'str', 'result', 'ReplayResult', 'max_pages', 'int', 'pages', 'list[int] | None', 'return', 'tuple[str, list[int]]'))
+            552 LOAD_CONST              32 (<code object build_audit_prompt at 0x0000029883c96750, file "/mnt/d/ubuntu/codes/ZS/otsuka/ECS/experiments/recipe_prototype/codegen.py", line 502>)
+            554 MAKE_FUNCTION            5 (defaults, annotations)
+            556 STORE_NAME              54 (build_audit_prompt)
+
+525         558 LOAD_CONST              62 (('raw', 'str', 'return', 'list[dict]'))
+            560 LOAD_CONST              33 (<code object parse_audit_reply at 0x0000029883a147f0, file "/mnt/d/ubuntu/codes/ZS/otsuka/ECS/experiments/recipe_prototype/codegen.py", line 525>)
+            562 MAKE_FUNCTION            4 (annotations)
+            564 STORE_NAME              55 (parse_audit_reply)
+
+541         566 LOAD_CONST              63 (('verdicts', 'list[dict]', 'return', 'int'))
+            568 LOAD_CONST              34 (<code object audit_issues at 0x0000029883997b40, file "/mnt/d/ubuntu/codes/ZS/otsuka/ECS/experiments/recipe_prototype/codegen.py", line 541>)
+            570 MAKE_FUNCTION            4 (annotations)
+            572 STORE_NAME              56 (audit_issues)
+
+546         574 LOAD_CONST              64 (('verdicts', 'list[dict]', 'return', 'list[str]'))
+            576 LOAD_CONST              35 (<code object audit_problem_lines at 0x0000029883a14bd0, file "/mnt/d/ubuntu/codes/ZS/otsuka/ECS/experiments/recipe_prototype/codegen.py", line 546>)
+            578 MAKE_FUNCTION            4 (annotations)
+            580 STORE_NAME              57 (audit_problem_lines)
+            582 RETURN_CONST             3 (None)
+
+Disassembly of <code object extract_source at 0x0000029883985a70, file "/mnt/d/ubuntu/codes/ZS/otsuka/ECS/experiments/recipe_prototype/codegen.py", line 167>:
+167           0 RESUME                   0
+
+169           2 LOAD_GLOBAL              0 (_FENCE)
+             12 LOAD_ATTR                3 (NULL|self + findall)
+             32 LOAD_FAST                0 (raw)
+             34 CALL                     1
+             42 STORE_FAST               1 (blocks)
+
+170          44 LOAD_FAST                1 (blocks)
+             46 POP_JUMP_IF_FALSE       31 (to 110)
+             48 LOAD_GLOBAL              5 (NULL + max)
+             58 LOAD_FAST                1 (blocks)
+             60 LOAD_GLOBAL              6 (len)
+             70 KW_NAMES                 1 (('key',))
+             72 CALL                     2
+             80 LOAD_ATTR                9 (NULL|self + strip)
+            100 CALL                     0
+            108 RETURN_VALUE
+        >>  110 LOAD_FAST                0 (raw)
+            112 LOAD_ATTR                9 (NULL|self + strip)
+            132 CALL                     0
+            140 RETURN_VALUE
+
+Disassembly of <code object run_extractor at 0x0000029883c4baf0, file "/mnt/d/ubuntu/codes/ZS/otsuka/ECS/experiments/recipe_prototype/codegen.py", line 173>:
+173           0 RESUME                   0
+
+180           2 LOAD_GLOBAL              1 (NULL + tempfile)
+             12 LOAD_ATTR                2 (NamedTemporaryFile)
+             32 LOAD_CONST               1 ('w')
+             34 LOAD_CONST               2 ('.py')
+             36 LOAD_CONST               3 (False)
+
+181          38 LOAD_CONST               4 ('utf-8')
+             40 LOAD_GLOBAL              4 (HERE)
+
+180          50 KW_NAMES                 5 (('suffix', 'delete', 'encoding', 'dir'))
+             52 CALL                     5
+             60 STORE_FAST               3 (src_file)
+
+182          62 NOP
+
+183          64 LOAD_FAST                3 (src_file)
+             66 LOAD_ATTR                7 (NULL|self + write)
+             86 LOAD_FAST                0 (source)
+             88 CALL                     1
+             96 POP_TOP
+
+184          98 LOAD_FAST                3 (src_file)
+            100 LOAD_ATTR                9 (NULL|self + close)
+            120 CALL                     0
+            128 POP_TOP
+
+185         130 LOAD_GLOBAL             11 (NULL + subprocess)
+            140 LOAD_ATTR               12 (Popen)
+
+186         160 LOAD_GLOBAL             14 (sys)
+            170 LOAD_ATTR               16 (executable)
+            190 LOAD_GLOBAL             18 (os)
+            200 LOAD_ATTR               20 (path)
+            220 LOAD_ATTR               23 (NULL|self + join)
+            240 LOAD_GLOBAL              4 (HERE)
+            250 LOAD_CONST               6 ('sandbox_runner.py')
+            252 CALL                     2
+            260 LOAD_FAST                3 (src_file)
+            262 LOAD_ATTR               24 (name)
+            282 LOAD_FAST                1 (pdf_path)
+            284 BUILD_LIST               4
+
+187         286 LOAD_GLOBAL             10 (subprocess)
+            296 LOAD_ATTR               26 (PIPE)
+            316 LOAD_GLOBAL             10 (subprocess)
+            326 LOAD_ATTR               26 (PIPE)
+            346 LOAD_GLOBAL              4 (HERE)
+
+185         356 KW_NAMES                 7 (('stdout', 'stderr', 'cwd'))
+            358 CALL                     4
+            366 STORE_FAST               4 (proc)
+
+188         368 NOP
+
+189         370 LOAD_FAST                4 (proc)
+            372 LOAD_ATTR               29 (NULL|self + communicate)
+            392 LOAD_FAST                2 (timeout_s)
+            394 KW_NAMES                 8 (('timeout',))
+            396 CALL                     1
+            404 UNPACK_SEQUENCE          2
+            408 STORE_FAST               5 (out)
+            410 STORE_FAST               6 (err)
+            412 NOP
+
+195         414 NOP
+
+196         416 LOAD_GLOBAL             19 (NULL + os)
+            426 LOAD_ATTR               36 (unlink)
+            446 LOAD_FAST                3 (src_file)
+            448 LOAD_ATTR               24 (name)
+            468 CALL                     1
+            476 POP_TOP
+
+200     >>  478 LOAD_FAST                4 (proc)
+            480 LOAD_ATTR               40 (returncode)
+            500 LOAD_CONST              12 (0)
+            502 COMPARE_OP              55 (!=)
+            506 POP_JUMP_IF_FALSE       46 (to 600)
+
+201         508 LOAD_GLOBAL             43 (NULL + RuntimeError)
+            518 LOAD_CONST              13 ('extractor process died (exit ')
+
+202         520 LOAD_FAST                4 (proc)
+            522 LOAD_ATTR               40 (returncode)
+            542 FORMAT_VALUE             0
+            544 LOAD_CONST              14 ('): ')
+            546 LOAD_FAST                6 (err)
+            548 LOAD_ATTR               45 (NULL|self + decode)
+            568 LOAD_CONST               4 ('utf-8')
+            570 LOAD_CONST              15 ('replace')
+            572 CALL                     2
+            580 LOAD_CONST              11 (None)
+            582 LOAD_CONST              16 (800)
+            584 BINARY_SLICE
+            586 FORMAT_VALUE             0
+
+201         588 BUILD_STRING             4
+            590 CALL                     1
+            598 RAISE_VARARGS            1
+
+203     >>  600 NOP
+
+204         602 LOAD_GLOBAL             47 (NULL + json)
+            612 LOAD_ATTR               48 (loads)
+            632 LOAD_FAST                5 (out)
+            634 LOAD_ATTR               45 (NULL|self + decode)
+            654 LOAD_CONST               4 ('utf-8')
+            656 LOAD_CONST              15 ('replace')
+            658 CALL                     2
+            666 CALL                     1
+            674 STORE_FAST               7 (payload)
+
+207         676 LOAD_CONST              19 ('error')
+            678 LOAD_FAST                7 (payload)
+            680 CONTAINS_OP              0
+            682 POP_JUMP_IF_FALSE       17 (to 718)
+
+208         684 LOAD_GLOBAL             43 (NULL + RuntimeError)
+            694 LOAD_CONST              20 ('generated extractor crashed:\n')
+            696 LOAD_FAST                7 (payload)
+            698 LOAD_CONST              19 ('error')
+            700 BINARY_SUBSCR
+            704 FORMAT_VALUE             0
+            706 BUILD_STRING             2
+            708 CALL                     1
+            716 RAISE_VARARGS            1
+
+210     >>  718 LOAD_FAST                7 (payload)
+            720 LOAD_CONST              21 ('records')
+            722 BINARY_SUBSCR
+            726 STORE_FAST               8 (raw)
+
+211         728 LOAD_GLOBAL             53 (NULL + ReplayResult)
+            738 LOAD_CONST              22 ('codegen')
+            740 LOAD_FAST                7 (payload)
+            742 LOAD_CONST              23 ('n_pages')
+            744 BINARY_SUBSCR
+            748 KW_NAMES                24 (('format_id', 'pages_total'))
+            750 CALL                     2
+            758 STORE_FAST               9 (result)
+
+212         760 LOAD_CONST              12 (0)
+            762 STORE_FAST              10 (malformed)
+
+213         764 LOAD_FAST                8 (raw)
+            766 GET_ITER
+        >>  768 FOR_ITER               190 (to 1152)
+            772 STORE_FAST              11 (item)
+
+214         774 LOAD_FAST               11 (item)
+            776 POP_JUMP_IF_NONE        41 (to 860)
+            778 LOAD_GLOBAL             55 (NULL + str)
+            788 LOAD_FAST               11 (item)
+            790 LOAD_ATTR               57 (NULL|self + get)
+            810 LOAD_CONST              25 ('field_name')
+            812 LOAD_CONST              26 ('')
+            814 CALL                     2
+            822 CALL                     1
+            830 LOAD_ATTR               59 (NULL|self + strip)
+            850 CALL                     0
+            858 POP_JUMP_IF_TRUE         6 (to 872)
+
+215     >>  860 LOAD_FAST               10 (malformed)
+            862 LOAD_CONST              27 (1)
+            864 BINARY_OP               13 (+=)
+            868 STORE_FAST              10 (malformed)
+
+216         870 JUMP_BACKWARD           52 (to 768)
+
+217     >>  872 NOP
+
+218         874 LOAD_GLOBAL             61 (NULL + int)
+            884 LOAD_FAST               11 (item)
+            886 LOAD_ATTR               57 (NULL|self + get)
+            906 LOAD_CONST              28 ('page')
+            908 CALL                     1
+            916 COPY                     1
+            918 POP_JUMP_IF_TRUE         2 (to 924)
+            920 POP_TOP
+            922 LOAD_CONST              12 (0)
+        >>  924 CALL                     1
+            932 STORE_FAST              12 (page)
+
+221     >>  934 LOAD_FAST                9 (result)
+            936 LOAD_ATTR               66 (records)
+            956 LOAD_ATTR               69 (NULL|self + append)
+            976 LOAD_GLOBAL             71 (NULL + FieldRec)
+
+222         986 LOAD_GLOBAL             55 (NULL + str)
+            996 LOAD_FAST               11 (item)
+            998 LOAD_ATTR               57 (NULL|self + get)
+           1018 LOAD_CONST              29 ('form_name')
+           1020 CALL                     1
+           1028 COPY                     1
+           1030 POP_JUMP_IF_TRUE         2 (to 1036)
+           1032 POP_TOP
+           1034 LOAD_CONST              26 ('')
+        >> 1036 CALL                     1
+           1044 LOAD_ATTR               59 (NULL|self + strip)
+           1064 CALL                     0
+
+223        1072 LOAD_GLOBAL             55 (NULL + str)
+           1082 LOAD_FAST               11 (item)
+           1084 LOAD_CONST              25 ('field_name')
+           1086 BINARY_SUBSCR
+           1090 CALL                     1
+           1098 LOAD_ATTR               59 (NULL|self + strip)
+           1118 CALL                     0
+
+224        1126 LOAD_CONST              11 (None)
+
+225        1128 LOAD_FAST               12 (page)
+
+221        1130 KW_NAMES                30 (('form_name', 'field_name', 'field_oid', 'page'))
+           1132 CALL                     4
+           1140 CALL                     1
+           1148 POP_TOP
+           1150 JUMP_BACKWARD          192 (to 768)
+
+213     >> 1152 END_FOR
+
+227        1154 LOAD_FAST                9 (result)
+           1156 LOAD_ATTR               66 (records)
+           1176 GET_ITER
+           1178 LOAD_FAST_AND_CLEAR     13 (r)
+           1180 SWAP                     2
+           1182 BUILD_SET                0
+           1184 SWAP                     2
+        >> 1186 FOR_ITER                30 (to 1250)
+           1190 STORE_FAST              13 (r)
+           1192 LOAD_FAST               13 (r)
+           1194 LOAD_ATTR               72 (page)
+           1214 POP_JUMP_IF_TRUE         1 (to 1218)
+           1216 JUMP_BACKWARD           16 (to 1186)
+        >> 1218 LOAD_FAST               13 (r)
+           1220 LOAD_ATTR               72 (page)
+           1240 LOAD_CONST              27 (1)
+           1242 BINARY_OP               10 (-)
+           1246 SET_ADD                  2
+           1248 JUMP_BACKWARD           32 (to 1186)
+        >> 1250 END_FOR
+           1252 SWAP                     2
+           1254 STORE_FAST              13 (r)
+           1256 LOAD_FAST                9 (result)
+           1258 STORE_ATTR              37 (covered_pages)
+
+228        1268 LOAD_GLOBAL             77 (NULL + len)
+           1278 LOAD_FAST                9 (result)
+           1280 LOAD_ATTR               74 (covered_pages)
+           1300 CALL                     1
+           1308 LOAD_FAST                9 (result)
+           1310 STORE_ATTR              39 (pages_with_fields)
+
+229        1320 LOAD_FAST                9 (result)
+           1322 LOAD_ATTR               81 (NULL|self + dedup)
+           1342 CALL                     0
+           1350 POP_TOP
+
+230        1352 LOAD_FAST               10 (malformed)
+           1354 LOAD_GLOBAL             83 (NULL + max)
+           1364 LOAD_CONST              31 (5)
+           1366 LOAD_GLOBAL             77 (NULL + len)
+           1376 LOAD_FAST                8 (raw)
+           1378 CALL                     1
+           1386 LOAD_CONST              32 (10)
+           1388 BINARY_OP                2 (//)
+           1392 CALL                     2
+           1400 COMPARE_OP              68 (>)
+           1404 POP_JUMP_IF_FALSE       26 (to 1458)
+
+231        1406 LOAD_GLOBAL             65 (NULL + ValueError)
+           1416 LOAD_FAST               10 (malformed)
+           1418 FORMAT_VALUE             0
+           1420 LOAD_CONST              33 (' of ')
+           1422 LOAD_GLOBAL             77 (NULL + len)
+           1432 LOAD_FAST                8 (raw)
+           1434 CALL                     1
+           1442 FORMAT_VALUE             0
+           1444 LOAD_CONST              34 (' returned records were malformed (not a dict, or empty field_name)')
+           1446 BUILD_STRING             4
+           1448 CALL                     1
+           1456 RAISE_VARARGS            1
+
+233     >> 1458 LOAD_FAST                9 (result)
+           1460 RETURN_VALUE
+        >> 1462 PUSH_EXC_INFO
+
+190        1464 LOAD_GLOBAL             10 (subprocess)
+           1474 LOAD_ATTR               30 (TimeoutExpired)
+           1494 CHECK_EXC_MATCH
+           1496 POP_JUMP_IF_FALSE       49 (to 1596)
+           1498 POP_TOP
+
+191        1500 LOAD_FAST                4 (proc)
+           1502 LOAD_ATTR               33 (NULL|self + kill)
+           1522 CALL                     0
+           1530 POP_TOP
+
+192        1532 LOAD_FAST                4 (proc)
+           1534 LOAD_ATTR               29 (NULL|self + communicate)
+           1554 CALL                     0
+           1562 POP_TOP
+
+193        1564 LOAD_GLOBAL             35 (NULL + TimeoutError)
+           1574 LOAD_CONST               9 ('generated extractor exceeded ')
+           1576 LOAD_FAST                2 (timeout_s)
+           1578 FORMAT_VALUE             0
+           1580 LOAD_CONST              10 ('s')
+           1582 BUILD_STRING             3
+           1584 CALL                     1
+           1592 LOAD_CONST              11 (None)
+           1594 RAISE_VARARGS            2
+
+190     >> 1596 RERAISE                  0
+        >> 1598 COPY                     3
+           1600 POP_EXCEPT
+           1602 RERAISE                  1
+        >> 1604 PUSH_EXC_INFO
+
+197        1606 LOAD_GLOBAL             38 (OSError)
+           1616 CHECK_EXC_MATCH
+           1618 POP_JUMP_IF_FALSE        4 (to 1628)
+           1620 POP_TOP
+
+198        1622 POP_EXCEPT
+           1624 EXTENDED_ARG             2
+           1626 JUMP_BACKWARD          575 (to 478)
+
+197     >> 1628 RERAISE                  0
+        >> 1630 COPY                     3
+           1632 POP_EXCEPT
+           1634 RERAISE                  1
+        >> 1636 PUSH_EXC_INFO
+
+195        1638 NOP
+
+196        1640 LOAD_GLOBAL             19 (NULL + os)
+           1650 LOAD_ATTR               36 (unlink)
+           1670 LOAD_FAST                3 (src_file)
+           1672 LOAD_ATTR               24 (name)
+           1692 CALL                     1
+           1700 POP_TOP
+           1702 RERAISE                  0
+        >> 1704 PUSH_EXC_INFO
+
+197        1706 LOAD_GLOBAL             38 (OSError)
+           1716 CHECK_EXC_MATCH
+           1718 POP_JUMP_IF_FALSE        3 (to 1726)
+           1720 POP_TOP
+
+198        1722 POP_EXCEPT
+           1724 RERAISE                  0
+
+197     >> 1726 RERAISE                  0
+        >> 1728 COPY                     3
+           1730 POP_EXCEPT
+           1732 RERAISE                  1
+        >> 1734 COPY                     3
+           1736 POP_EXCEPT
+           1738 RERAISE                  1
+        >> 1740 PUSH_EXC_INFO
+
+205        1742 LOAD_GLOBAL             46 (json)
+           1752 LOAD_ATTR               50 (JSONDecodeError)
+           1772 CHECK_EXC_MATCH
+           1774 POP_JUMP_IF_FALSE       18 (to 1812)
+           1776 POP_TOP
+
+206        1778 LOAD_GLOBAL             43 (NULL + RuntimeError)
+           1788 LOAD_CONST              17 ('extractor process produced no valid output: ')
+           1790 LOAD_FAST                5 (out)
+           1792 LOAD_CONST              11 (None)
+           1794 LOAD_CONST              18 (400)
+           1796 BINARY_SLICE
+           1798 FORMAT_VALUE             2 (repr)
+           1800 BUILD_STRING             2
+           1802 CALL                     1
+           1810 RAISE_VARARGS            1
+
+205     >> 1812 RERAISE                  0
+        >> 1814 COPY                     3
+           1816 POP_EXCEPT
+           1818 RERAISE                  1
+        >> 1820 PUSH_EXC_INFO
+
+219        1822 LOAD_GLOBAL             62 (TypeError)
+           1832 LOAD_GLOBAL             64 (ValueError)
+           1842 BUILD_TUPLE              2
+           1844 CHECK_EXC_MATCH
+           1846 POP_JUMP_IF_FALSE        6 (to 1860)
+           1848 POP_TOP
+
+220        1850 LOAD_CONST              12 (0)
+           1852 STORE_FAST              12 (page)
+           1854 POP_EXCEPT
+           1856 EXTENDED_ARG             1
+           1858 JUMP_BACKWARD          463 (to 934)
+
+219     >> 1860 RERAISE                  0
+        >> 1862 COPY                     3
+           1864 POP_EXCEPT
+           1866 RERAISE                  1
+        >> 1868 SWAP                     2
+           1870 POP_TOP
+
+227        1872 SWAP                     2
+           1874 STORE_FAST              13 (r)
+           1876 RERAISE                  0
+ExceptionTable:
+  64 to 366 -> 1636 [0]
+  370 to 410 -> 1462 [0]
+  416 to 476 -> 1604 [0]
+  602 to 674 -> 1740 [0]
+  874 to 932 -> 1820 [1]
+  1182 to 1214 -> 1868 [2]
+  1218 to 1250 -> 1868 [2]
+  1462 to 1596 -> 1598 [1] lasti
+  1598 to 1602 -> 1636 [0]
+  1604 to 1620 -> 1630 [1] lasti
+  1628 to 1628 -> 1630 [1] lasti
+  1636 to 1636 -> 1734 [1] lasti
+  1640 to 1700 -> 1704 [2]
+  1702 to 1702 -> 1734 [1] lasti
+  1704 to 1720 -> 1728 [3] lasti
+  1722 to 1724 -> 1734 [1] lasti
+  1726 to 1726 -> 1728 [3] lasti
+  1728 to 1732 -> 1734 [1] lasti
+  1740 to 1812 -> 1814 [1] lasti
+  1820 to 1852 -> 1862 [2] lasti
+  1860 to 1860 -> 1862 [2] lasti
+
+Disassembly of <code object build_codegen_prompt at 0x0000029883cf5000, file "/mnt/d/ubuntu/codes/ZS/otsuka/ECS/experiments/recipe_prototype/codegen.py", line 236>:
+236           0 RESUME                   0
+
+237           2 LOAD_GLOBAL              1 (NULL + load_rep_pages)
+             12 LOAD_FAST                1 (outdir)
+             14 CALL                     1
+             22 UNPACK_SEQUENCE          2
+             26 STORE_FAST               2 (pages_text)
+             28 STORE_FAST               3 (_)
+
+238          30 LOAD_GLOBAL              3 (NULL + fitz)
+             40 LOAD_ATTR                4 (open)
+             60 LOAD_FAST                0 (pdf_path)
+             62 CALL                     1
+             70 STORE_FAST               4 (doc)
+
+239          72 LOAD_FAST                4 (doc)
+             74 LOAD_ATTR                6 (page_count)
+             94 STORE_FAST               5 (n_pages)
+
+240          96 LOAD_FAST                4 (doc)
+             98 LOAD_ATTR                9 (NULL|self + close)
+            118 CALL                     0
+            126 POP_TOP
+
+241         128 LOAD_GLOBAL             10 (CODEGEN_PROMPT)
+            138 LOAD_ATTR               13 (NULL|self + format)
+            158 LOAD_FAST                5 (n_pages)
+            160 LOAD_FAST                2 (pages_text)
+            162 KW_NAMES                 1 (('n_pages', 'pages'))
+            164 CALL                     2
+            172 RETURN_VALUE
+
+Disassembly of <code object _load_cluster_meta at 0x0000029883cf5170, file "/mnt/d/ubuntu/codes/ZS/otsuka/ECS/experiments/recipe_prototype/codegen.py", line 247>:
+247           0 RESUME                   0
+
+248           2 LOAD_GLOBAL              1 (NULL + open)
+             12 LOAD_GLOBAL              2 (os)
+             22 LOAD_ATTR                4 (path)
+             42 LOAD_ATTR                7 (NULL|self + join)
+             62 LOAD_FAST                0 (outdir)
+             64 LOAD_CONST               1 ('clusters.json')
+             66 CALL                     2
+             74 LOAD_CONST               2 ('utf-8')
+             76 KW_NAMES                 3 (('encoding',))
+             78 CALL                     2
+             86 BEFORE_WITH
+             88 STORE_FAST               1 (f)
+
+249          90 LOAD_GLOBAL              9 (NULL + json)
+            100 LOAD_ATTR               10 (load)
+            120 LOAD_FAST                1 (f)
+            122 CALL                     1
+
+248         130 SWAP                     2
+            132 LOAD_CONST               0 (None)
+            134 LOAD_CONST               0 (None)
+            136 LOAD_CONST               0 (None)
+            138 CALL                     2
+            146 POP_TOP
+            148 RETURN_VALUE
+        >>  150 PUSH_EXC_INFO
+            152 WITH_EXCEPT_START
+            154 POP_JUMP_IF_TRUE         1 (to 158)
+            156 RERAISE                  2
+        >>  158 POP_TOP
+            160 POP_EXCEPT
+            162 POP_TOP
+            164 POP_TOP
+            166 RETURN_CONST             0 (None)
+        >>  168 COPY                     3
+            170 POP_EXCEPT
+            172 RERAISE                  1
+ExceptionTable:
+  88 to 128 -> 150 [1] lasti
+  150 to 158 -> 168 [3] lasti
+
+Disassembly of <code object cluster_stats at 0x0000029883c3c560, file "/mnt/d/ubuntu/codes/ZS/otsuka/ECS/experiments/recipe_prototype/codegen.py", line 252>:
+              0 MAKE_CELL               10 (rec_pages)
+
+252           2 RESUME                   0
+
+256           4 BUILD_LIST               0
+              6 STORE_FAST               2 (stats)
+
+257           8 LOAD_FAST                0 (result)
+             10 LOAD_ATTR                0 (covered_pages)
+             30 COPY                     1
+             32 POP_JUMP_IF_TRUE        52 (to 138)
+             34 POP_TOP
+             36 LOAD_FAST                0 (result)
+             38 LOAD_ATTR                2 (records)
+             58 GET_ITER
+             60 LOAD_FAST_AND_CLEAR      3 (r)
+             62 SWAP                     2
+             64 BUILD_SET                0
+             66 SWAP                     2
+        >>   68 FOR_ITER                30 (to 132)
+             72 STORE_FAST               3 (r)
+             74 LOAD_FAST                3 (r)
+             76 LOAD_ATTR                4 (page)
+             96 POP_JUMP_IF_TRUE         1 (to 100)
+             98 JUMP_BACKWARD           16 (to 68)
+        >>  100 LOAD_FAST                3 (r)
+            102 LOAD_ATTR                4 (page)
+            122 LOAD_CONST               1 (1)
+            124 BINARY_OP               10 (-)
+            128 SET_ADD                  2
+            130 JUMP_BACKWARD           32 (to 68)
+        >>  132 END_FOR
+            134 SWAP                     2
+            136 STORE_FAST               3 (r)
+        >>  138 STORE_FAST               4 (covered_pages)
+
+258         140 LOAD_GLOBAL              7 (NULL + collections)
+            150 LOAD_ATTR                8 (Counter)
+            170 LOAD_CONST               2 (<code object <genexpr> at 0x00000298839b72d0, file "/mnt/d/ubuntu/codes/ZS/otsuka/ECS/experiments/recipe_prototype/codegen.py", line 258>)
+            172 MAKE_FUNCTION            0
+            174 LOAD_FAST                0 (result)
+            176 LOAD_ATTR                2 (records)
+            196 GET_ITER
+            198 CALL                     0
+            206 CALL                     1
+            214 STORE_DEREF             10 (rec_pages)
+
+259         216 LOAD_GLOBAL             11 (NULL + enumerate)
+            226 LOAD_FAST                1 (meta)
+            228 LOAD_CONST               3 ('clusters')
+            230 BINARY_SUBSCR
+            234 CALL                     1
+            242 GET_ITER
+        >>  244 FOR_ITER               132 (to 512)
+            248 UNPACK_SEQUENCE          2
+            252 STORE_FAST               5 (ci)
+            254 STORE_FAST               6 (c)
+
+260         256 LOAD_FAST                6 (c)
+            258 LOAD_CONST               4 ('pages')
+            260 BINARY_SUBSCR
+            264 STORE_FAST               7 (pages)
+
+261         266 LOAD_FAST                7 (pages)
+            268 GET_ITER
+            270 LOAD_FAST_AND_CLEAR      8 (p)
+            272 SWAP                     2
+            274 BUILD_LIST               0
+            276 SWAP                     2
+        >>  278 FOR_ITER                 9 (to 300)
+            282 STORE_FAST               8 (p)
+            284 LOAD_FAST                8 (p)
+            286 LOAD_FAST                4 (covered_pages)
+            288 CONTAINS_OP              0
+            290 POP_JUMP_IF_TRUE         1 (to 294)
+            292 JUMP_BACKWARD            8 (to 278)
+        >>  294 LOAD_FAST                8 (p)
+            296 LIST_APPEND              2
+            298 JUMP_BACKWARD           11 (to 278)
+        >>  300 END_FOR
+            302 STORE_FAST               9 (with_rec)
+            304 STORE_FAST               8 (p)
+
+262         306 LOAD_FAST                2 (stats)
+            308 LOAD_ATTR               13 (NULL|self + append)
+
+263         328 LOAD_FAST                5 (ci)
+
+264         330 LOAD_GLOBAL             15 (NULL + len)
+            340 LOAD_FAST                7 (pages)
+            342 CALL                     1
+
+265         350 LOAD_GLOBAL             15 (NULL + len)
+            360 LOAD_FAST                9 (with_rec)
+            362 CALL                     1
+
+266         370 LOAD_GLOBAL             17 (NULL + round)
+            380 LOAD_CONST               5 (100)
+            382 LOAD_GLOBAL             15 (NULL + len)
+            392 LOAD_FAST                9 (with_rec)
+            394 CALL                     1
+            402 BINARY_OP                5 (*)
+            406 LOAD_GLOBAL             19 (NULL + max)
+            416 LOAD_CONST               1 (1)
+            418 LOAD_GLOBAL             15 (NULL + len)
+            428 LOAD_FAST                7 (pages)
+            430 CALL                     1
+            438 CALL                     2
+            446 BINARY_OP               11 (/)
+            450 CALL                     1
+
+267         458 LOAD_GLOBAL             21 (NULL + sum)
+            468 LOAD_CLOSURE            10 (rec_pages)
+            470 BUILD_TUPLE              1
+            472 LOAD_CONST               6 (<code object <genexpr> at 0x00000298839963d0, file "/mnt/d/ubuntu/codes/ZS/otsuka/ECS/experiments/recipe_prototype/codegen.py", line 267>)
+            474 MAKE_FUNCTION            8 (closure)
+            476 LOAD_FAST                7 (pages)
+            478 GET_ITER
+            480 CALL                     0
+            488 CALL                     1
+
+262         496 LOAD_CONST               7 (('cluster', 'n_pages', 'pages_with_records', 'coverage_pct', 'records'))
+            498 BUILD_CONST_KEY_MAP      5
+            500 CALL                     1
+            508 POP_TOP
+            510 JUMP_BACKWARD          134 (to 244)
+
+259     >>  512 END_FOR
+
+269         514 LOAD_FAST                2 (stats)
+            516 RETURN_VALUE
+        >>  518 SWAP                     2
+            520 POP_TOP
+
+257         522 SWAP                     2
+            524 STORE_FAST               3 (r)
+            526 RERAISE                  0
+        >>  528 SWAP                     2
+            530 POP_TOP
+
+261         532 SWAP                     2
+            534 STORE_FAST               8 (p)
+            536 RERAISE                  0
+ExceptionTable:
+  64 to 96 -> 518 [2]
+  100 to 132 -> 518 [2]
+  274 to 290 -> 528 [3]
+  294 to 300 -> 528 [3]
+
+Disassembly of <code object <genexpr> at 0x00000298839b72d0, file "/mnt/d/ubuntu/codes/ZS/otsuka/ECS/experiments/recipe_prototype/codegen.py", line 258>:
+258           0 RETURN_GENERATOR
+              2 POP_TOP
+              4 RESUME                   0
+              6 LOAD_FAST                0 (.0)
+        >>    8 FOR_ITER                32 (to 76)
+             12 STORE_FAST               1 (r)
+             14 LOAD_FAST                1 (r)
+             16 LOAD_ATTR                0 (page)
+             36 POP_JUMP_IF_TRUE         1 (to 40)
+             38 JUMP_BACKWARD           16 (to 8)
+        >>   40 LOAD_FAST                1 (r)
+             42 LOAD_ATTR                0 (page)
+             62 LOAD_CONST               0 (1)
+             64 BINARY_OP               10 (-)
+             68 YIELD_VALUE              1
+             70 RESUME                   1
+             72 POP_TOP
+             74 JUMP_BACKWARD           34 (to 8)
+        >>   76 END_FOR
+             78 RETURN_CONST             1 (None)
+        >>   80 CALL_INTRINSIC_1         3 (INTRINSIC_STOPITERATION_ERROR)
+             82 RERAISE                  1
+ExceptionTable:
+  4 to 36 -> 80 [0] lasti
+  40 to 78 -> 80 [0] lasti
+
+Disassembly of <code object <genexpr> at 0x00000298839963d0, file "/mnt/d/ubuntu/codes/ZS/otsuka/ECS/experiments/recipe_prototype/codegen.py", line 267>:
+              0 COPY_FREE_VARS           1
+
+267           2 RETURN_GENERATOR
+              4 POP_TOP
+              6 RESUME                   0
+              8 LOAD_FAST                0 (.0)
+        >>   10 FOR_ITER                 9 (to 32)
+             14 STORE_FAST               1 (p)
+             16 LOAD_DEREF               2 (rec_pages)
+             18 LOAD_FAST                1 (p)
+             20 BINARY_SUBSCR
+             24 YIELD_VALUE              1
+             26 RESUME                   1
+             28 POP_TOP
+             30 JUMP_BACKWARD           11 (to 10)
+        >>   32 END_FOR
+             34 RETURN_CONST             0 (None)
+        >>   36 CALL_INTRINSIC_1         3 (INTRINSIC_STOPITERATION_ERROR)
+             38 RERAISE                  1
+ExceptionTable:
+  6 to 34 -> 36 [0] lasti
+
+Disassembly of <code object weak_clusters at 0x0000029883982530, file "/mnt/d/ubuntu/codes/ZS/otsuka/ECS/experiments/recipe_prototype/codegen.py", line 272>:
+              0 MAKE_CELL                1 (min_pages)
+              2 MAKE_CELL                2 (coverage_lt)
+
+272           4 RESUME                   0
+
+273           6 LOAD_GLOBAL              1 (NULL + sorted)
+             16 LOAD_CLOSURE             2 (coverage_lt)
+             18 LOAD_CLOSURE             1 (min_pages)
+             20 BUILD_TUPLE              2
+             22 LOAD_CONST               1 (<code object <genexpr> at 0x00000298839c3000, file "/mnt/d/ubuntu/codes/ZS/otsuka/ECS/experiments/recipe_prototype/codegen.py", line 273>)
+             24 MAKE_FUNCTION            8 (closure)
+             26 LOAD_FAST                0 (stats)
+             28 GET_ITER
+             30 CALL                     0
+
+274          38 LOAD_CONST               2 (<code object <lambda> at 0x0000029883d0c850, file "/mnt/d/ubuntu/codes/ZS/otsuka/ECS/experiments/recipe_prototype/codegen.py", line 274>)
+             40 MAKE_FUNCTION            0
+
+273          42 KW_NAMES                 3 (('key',))
+             44 CALL                     2
+             52 RETURN_VALUE
+
+Disassembly of <code object <genexpr> at 0x00000298839c3000, file "/mnt/d/ubuntu/codes/ZS/otsuka/ECS/experiments/recipe_prototype/codegen.py", line 273>:
+              0 COPY_FREE_VARS           2
+
+273           2 RETURN_GENERATOR
+              4 POP_TOP
+              6 RESUME                   0
+              8 LOAD_FAST                0 (.0)
+        >>   10 FOR_ITER                24 (to 62)
+             14 STORE_FAST               1 (s)
+             16 LOAD_FAST                1 (s)
+             18 LOAD_CONST               0 ('n_pages')
+             20 BINARY_SUBSCR
+             24 LOAD_DEREF               3 (min_pages)
+             26 COMPARE_OP              92 (>=)
+             30 POP_JUMP_IF_TRUE         1 (to 34)
+             32 JUMP_BACKWARD           12 (to 10)
+        >>   34 LOAD_FAST                1 (s)
+             36 LOAD_CONST               1 ('coverage_pct')
+             38 BINARY_SUBSCR
+             42 LOAD_DEREF               2 (coverage_lt)
+             44 COMPARE_OP               2 (<)
+             48 POP_JUMP_IF_TRUE         1 (to 52)
+             50 JUMP_BACKWARD           21 (to 10)
+        >>   52 LOAD_FAST                1 (s)
+             54 YIELD_VALUE              1
+             56 RESUME                   1
+             58 POP_TOP
+             60 JUMP_BACKWARD           26 (to 10)
+        >>   62 END_FOR
+             64 RETURN_CONST             2 (None)
+        >>   66 CALL_INTRINSIC_1         3 (INTRINSIC_STOPITERATION_ERROR)
+             68 RERAISE                  1
+ExceptionTable:
+  6 to 30 -> 66 [0] lasti
+  34 to 48 -> 66 [0] lasti
+  52 to 64 -> 66 [0] lasti
+
+Disassembly of <code object <lambda> at 0x0000029883d0c850, file "/mnt/d/ubuntu/codes/ZS/otsuka/ECS/experiments/recipe_prototype/codegen.py", line 274>:
+274           0 RESUME                   0
+              2 LOAD_FAST                0 (s)
+              4 LOAD_CONST               1 ('n_pages')
+              6 BINARY_SUBSCR
+             10 UNARY_NEGATIVE
+             12 RETURN_VALUE
+
+Disassembly of <code object _dump_lines_text at 0x0000029883c46650, file "/mnt/d/ubuntu/codes/ZS/otsuka/ECS/experiments/recipe_prototype/codegen.py", line 277>:
+277           0 RESUME                   0
+
+278           2 BUILD_LIST               0
+              4 STORE_FAST               2 (buf)
+
+279           6 LOAD_FAST                0 (lines)
+              8 GET_ITER
+        >>   10 FOR_ITER               138 (to 290)
+             14 STORE_FAST               3 (L)
+
+280          16 LOAD_FAST                3 (L)
+             18 LOAD_ATTR                0 (non_black)
+             38 POP_JUMP_IF_FALSE       30 (to 100)
+             40 LOAD_CONST               1 ('#{:06x}')
+             42 LOAD_ATTR                3 (NULL|self + format)
+             62 LOAD_FAST                3 (L)
+             64 LOAD_ATTR                4 (colors)
+             84 LOAD_CONST               2 (-1)
+             86 BINARY_SUBSCR
+             90 CALL                     1
+             98 JUMP_FORWARD             1 (to 102)
+        >>  100 LOAD_CONST               3 ('black  ')
+        >>  102 STORE_FAST               4 (color)
+
+281         104 LOAD_FAST                2 (buf)
+            106 LOAD_ATTR                7 (NULL|self + append)
+            126 LOAD_CONST               4 ('x=')
+            128 LOAD_FAST                3 (L)
+            130 LOAD_ATTR                8 (x0)
+            150 LOAD_CONST               5 ('6.1f')
+            152 FORMAT_VALUE             4 (with format)
+            154 LOAD_CONST               6 (' y=')
+            156 LOAD_FAST                3 (L)
+            158 LOAD_ATTR               10 (y0)
+            178 LOAD_CONST               5 ('6.1f')
+            180 FORMAT_VALUE             4 (with format)
+            182 LOAD_CONST               7 (' sz=')
+            184 LOAD_FAST                3 (L)
+            186 LOAD_ATTR               12 (size)
+            206 LOAD_CONST               8 ('4.1f')
+            208 FORMAT_VALUE             4 (with format)
+            210 LOAD_CONST               9 (' ')
+            212 LOAD_FAST                4 (color)
+            214 FORMAT_VALUE             0
+            216 LOAD_CONST               9 (' ')
+            218 LOAD_FAST                3 (L)
+            220 LOAD_ATTR               14 (bold)
+            240 POP_JUMP_IF_FALSE        2 (to 246)
+            242 LOAD_CONST              10 ('B')
+            244 JUMP_FORWARD             1 (to 248)
+        >>  246 LOAD_CONST               9 (' ')
+        >>  248 FORMAT_VALUE             0
+            250 LOAD_CONST              11 (' | ')
+            252 LOAD_FAST                3 (L)
+            254 LOAD_ATTR               16 (text)
+            274 FORMAT_VALUE             0
+            276 BUILD_STRING            12
+            278 CALL                     1
+            286 POP_TOP
+            288 JUMP_BACKWARD          140 (to 10)
+
+279     >>  290 END_FOR
+
+282         292 LOAD_CONST              12 ('\n')
+            294 LOAD_ATTR               19 (NULL|self + join)
+            314 LOAD_FAST                2 (buf)
+            316 CALL                     1
+            324 STORE_FAST               5 (s)
+
+283         326 LOAD_FAST                5 (s)
+            328 LOAD_CONST               0 (None)
+            330 LOAD_FAST                1 (max_chars)
+            332 BINARY_SLICE
+            334 LOAD_GLOBAL             21 (NULL + len)
+            344 LOAD_FAST                5 (s)
+            346 CALL                     1
+            354 LOAD_FAST                1 (max_chars)
+            356 COMPARE_OP              68 (>)
+            360 POP_JUMP_IF_FALSE        4 (to 370)
+            362 LOAD_CONST              13 ('\n<...page truncated...>')
+            364 BINARY_OP                0 (+)
+            368 RETURN_VALUE
+        >>  370 LOAD_CONST              14 ('')
+            372 BINARY_OP                0 (+)
+            376 RETURN_VALUE
+
+Disassembly of <code object _spread at 0x0000029883cf52e0, file "/mnt/d/ubuntu/codes/ZS/otsuka/ECS/experiments/recipe_prototype/codegen.py", line 286>:
+286           0 RESUME                   0
+
+288           2 LOAD_GLOBAL              1 (NULL + len)
+             12 LOAD_FAST                0 (items)
+             14 CALL                     1
+             22 LOAD_FAST                1 (k)
+             24 COMPARE_OP              26 (<=)
+             28 POP_JUMP_IF_FALSE       11 (to 52)
+
+289          30 LOAD_GLOBAL              3 (NULL + list)
+             40 LOAD_FAST                0 (items)
+             42 CALL                     1
+             50 RETURN_VALUE
+
+290     >>   52 LOAD_GLOBAL              1 (NULL + len)
+             62 LOAD_FAST                0 (items)
+             64 CALL                     1
+             72 LOAD_FAST                1 (k)
+             74 BINARY_OP               11 (/)
+             78 STORE_FAST               2 (step)
+
+291          80 LOAD_GLOBAL              5 (NULL + range)
+             90 LOAD_FAST                1 (k)
+             92 CALL                     1
+            100 GET_ITER
+            102 LOAD_FAST_AND_CLEAR      3 (i)
+            104 SWAP                     2
+            106 BUILD_LIST               0
+            108 SWAP                     2
+        >>  110 FOR_ITER                19 (to 152)
+            114 STORE_FAST               3 (i)
+            116 LOAD_FAST                0 (items)
+            118 LOAD_GLOBAL              7 (NULL + int)
+            128 LOAD_FAST                3 (i)
+            130 LOAD_FAST                2 (step)
+            132 BINARY_OP                5 (*)
+            136 CALL                     1
+            144 BINARY_SUBSCR
+            148 LIST_APPEND              2
+            150 JUMP_BACKWARD           21 (to 110)
+        >>  152 END_FOR
+            154 SWAP                     2
+            156 STORE_FAST               3 (i)
+            158 RETURN_VALUE
+        >>  160 SWAP                     2
+            162 POP_TOP
+            164 SWAP                     2
+            166 STORE_FAST               3 (i)
+            168 RERAISE                  0
+ExceptionTable:
+  106 to 152 -> 160 [2]
+
+Disassembly of <code object build_cluster_feedback at 0x0000029883c4c310, file "/mnt/d/ubuntu/codes/ZS/otsuka/ECS/experiments/recipe_prototype/codegen.py", line 294>:
+294           0 RESUME                   0
+
+298           2 LOAD_FAST                1 (weak)
+              4 POP_JUMP_IF_TRUE         1 (to 8)
+
+299           6 RETURN_CONST             1 ('')
+
+300     >>    8 LOAD_FAST                2 (meta)
+             10 LOAD_CONST               2 ('representative_pages_1based')
+             12 BINARY_SUBSCR
+             16 GET_ITER
+             18 LOAD_FAST_AND_CLEAR      6 (p)
+             20 SWAP                     2
+             22 BUILD_SET                0
+             24 SWAP                     2
+        >>   26 FOR_ITER                 7 (to 44)
+             30 STORE_FAST               6 (p)
+             32 LOAD_FAST                6 (p)
+             34 LOAD_CONST               3 (1)
+             36 BINARY_OP               10 (-)
+             40 SET_ADD                  2
+             42 JUMP_BACKWARD            9 (to 26)
+        >>   44 END_FOR
+             46 STORE_FAST               7 (shown)
+             48 STORE_FAST               6 (p)
+
+301          50 LOAD_CONST               4 ('\n')
+             52 LOAD_ATTR                1 (NULL|self + join)
+             72 LOAD_CONST               5 (<code object <genexpr> at 0x0000029883a1d1b0, file "/mnt/d/ubuntu/codes/ZS/otsuka/ECS/experiments/recipe_prototype/codegen.py", line 301>)
+             74 MAKE_FUNCTION            0
+
+304          76 LOAD_FAST                3 (stats)
+
+301          78 GET_ITER
+             80 CALL                     0
+             88 CALL                     1
+             96 STORE_FAST               8 (table)
+
+306          98 LOAD_GLOBAL              3 (NULL + fitz)
+            108 LOAD_ATTR                4 (open)
+            128 LOAD_FAST                0 (pdf_path)
+            130 CALL                     1
+            138 STORE_FAST               9 (doc)
+
+307         140 BUILD_LIST               0
+            142 STORE_FAST              10 (sections)
+
+308         144 LOAD_FAST                1 (weak)
+            146 LOAD_CONST               6 (None)
+            148 LOAD_FAST                4 (max_clusters)
+            150 BINARY_SLICE
+            152 GET_ITER
+        >>  154 FOR_ITER               159 (to 476)
+            158 STORE_FAST              11 (s)
+
+309         160 LOAD_FAST                2 (meta)
+            162 LOAD_CONST               7 ('clusters')
+            164 BINARY_SUBSCR
+            168 LOAD_FAST               11 (s)
+            170 LOAD_CONST               8 ('cluster')
+            172 BINARY_SUBSCR
+            176 BINARY_SUBSCR
+            180 LOAD_CONST               9 ('pages')
+            182 BINARY_SUBSCR
+            186 GET_ITER
+            188 LOAD_FAST_AND_CLEAR      6 (p)
+            190 SWAP                     2
+            192 BUILD_LIST               0
+            194 SWAP                     2
+        >>  196 FOR_ITER                 9 (to 218)
+            200 STORE_FAST               6 (p)
+            202 LOAD_FAST                6 (p)
+            204 LOAD_FAST                7 (shown)
+            206 CONTAINS_OP              1
+            208 POP_JUMP_IF_TRUE         1 (to 212)
+            210 JUMP_BACKWARD            8 (to 196)
+        >>  212 LOAD_FAST                6 (p)
+            214 LIST_APPEND              2
+            216 JUMP_BACKWARD           11 (to 196)
+        >>  218 END_FOR
+            220 STORE_FAST              12 (candidates)
+            222 STORE_FAST               6 (p)
+
+310         224 LOAD_FAST               12 (candidates)
+            226 POP_JUMP_IF_TRUE         1 (to 230)
+
+311         228 JUMP_BACKWARD           38 (to 154)
+
+312     >>  230 LOAD_GLOBAL              7 (NULL + sorted)
+            240 LOAD_FAST               12 (candidates)
+            242 LOAD_GLOBAL              9 (NULL + len)
+            252 LOAD_FAST               12 (candidates)
+            254 CALL                     1
+            262 LOAD_CONST              10 (3)
+            264 BINARY_OP                2 (//)
+            268 BINARY_SUBSCR
+            272 LOAD_FAST               12 (candidates)
+            274 LOAD_CONST              11 (2)
+            276 LOAD_GLOBAL              9 (NULL + len)
+            286 LOAD_FAST               12 (candidates)
+            288 CALL                     1
+            296 BINARY_OP                5 (*)
+            300 LOAD_CONST              10 (3)
+            302 BINARY_OP                2 (//)
+            306 BINARY_SUBSCR
+            310 BUILD_SET                2
+            312 CALL                     1
+            320 STORE_FAST              13 (picks)
+
+313         322 LOAD_FAST               13 (picks)
+            324 LOAD_CONST               6 (None)
+            326 LOAD_FAST                5 (pages_per_cluster)
+            328 BINARY_SLICE
+            330 GET_ITER
+        >>  332 FOR_ITER                68 (to 472)
+            336 STORE_FAST               6 (p)
+
+314         338 LOAD_FAST               10 (sections)
+            340 LOAD_ATTR               11 (NULL|self + append)
+            360 LOAD_CONST              12 ('--- page ')
+            362 LOAD_FAST                6 (p)
+            364 LOAD_CONST               3 (1)
+            366 BINARY_OP                0 (+)
+            370 FORMAT_VALUE             0
+            372 LOAD_CONST              13 (' (cluster ')
+            374 LOAD_FAST               11 (s)
+            376 LOAD_CONST               8 ('cluster')
+            378 BINARY_SUBSCR
+            382 FORMAT_VALUE             0
+            384 LOAD_CONST              14 (', ')
+            386 LOAD_FAST               11 (s)
+            388 LOAD_CONST              15 ('n_pages')
+            390 BINARY_SUBSCR
+            394 FORMAT_VALUE             0
+            396 LOAD_CONST              16 (' pages like this, ')
+
+315         398 LOAD_FAST               11 (s)
+            400 LOAD_CONST              17 ('coverage_pct')
+            402 BINARY_SUBSCR
+            406 FORMAT_VALUE             0
+            408 LOAD_CONST              18 ('% covered) ---\n')
+
+314         410 BUILD_STRING             9
+
+316         412 LOAD_GLOBAL             13 (NULL + _dump_lines_text)
+            422 LOAD_GLOBAL             15 (NULL + build_page_lines)
+            432 LOAD_FAST                9 (doc)
+            434 LOAD_FAST                6 (p)
+            436 BINARY_SUBSCR
+            440 CALL                     1
+            448 CALL                     1
+
+314         456 BINARY_OP                0 (+)
+            460 CALL                     1
+            468 POP_TOP
+            470 JUMP_BACKWARD           70 (to 332)
+
+313     >>  472 END_FOR
+            474 JUMP_BACKWARD          161 (to 154)
+
+308     >>  476 END_FOR
+
+317         478 LOAD_FAST                9 (doc)
+            480 LOAD_ATTR               17 (NULL|self + close)
+            500 CALL                     0
+            508 POP_TOP
+
+318         510 LOAD_FAST               10 (sections)
+            512 POP_JUMP_IF_TRUE         1 (to 516)
+
+319         514 RETURN_CONST             1 ('')
+
+320     >>  516 LOAD_GLOBAL             18 (CLUSTER_FEEDBACK_TEMPLATE)
+            526 LOAD_ATTR               21 (NULL|self + format)
+            546 LOAD_FAST                8 (table)
+            548 LOAD_CONST              19 ('\n\n')
+            550 LOAD_ATTR                1 (NULL|self + join)
+            570 LOAD_FAST               10 (sections)
+            572 CALL                     1
+            580 KW_NAMES                20 (('table', 'failing_pages'))
+            582 CALL                     2
+            590 RETURN_VALUE
+        >>  592 SWAP                     2
+            594 POP_TOP
+
+300         596 SWAP                     2
+            598 STORE_FAST               6 (p)
+            600 RERAISE                  0
+        >>  602 SWAP                     2
+            604 POP_TOP
+
+309         606 SWAP                     2
+            608 STORE_FAST               6 (p)
+            610 RERAISE                  0
+ExceptionTable:
+  22 to 44 -> 592 [2]
+  192 to 208 -> 602 [3]
+  212 to 218 -> 602 [3]
+
+Disassembly of <code object <genexpr> at 0x0000029883a1d1b0, file "/mnt/d/ubuntu/codes/ZS/otsuka/ECS/experiments/recipe_prototype/codegen.py", line 301>:
+301           0 RETURN_GENERATOR
+              2 POP_TOP
+              4 RESUME                   0
+              6 LOAD_FAST                0 (.0)
+        >>    8 FOR_ITER                48 (to 108)
+
+304          12 STORE_FAST               1 (s)
+             14 LOAD_FAST                1 (s)
+             16 LOAD_CONST               0 ('n_pages')
+             18 BINARY_SUBSCR
+             22 LOAD_CONST               1 (2)
+             24 COMPARE_OP              92 (>=)
+             28 POP_JUMP_IF_FALSE       38 (to 106)
+
+302          30 LOAD_CONST               2 ('  cluster ')
+             32 LOAD_FAST                1 (s)
+             34 LOAD_CONST               3 ('cluster')
+             36 BINARY_SUBSCR
+             40 LOAD_CONST               4 ('>3')
+             42 FORMAT_VALUE             4 (with format)
+             44 LOAD_CONST               5 (': ')
+             46 LOAD_FAST                1 (s)
+             48 LOAD_CONST               0 ('n_pages')
+             50 BINARY_SUBSCR
+             54 LOAD_CONST               6 ('>4')
+             56 FORMAT_VALUE             4 (with format)
+             58 LOAD_CONST               7 (' pages, ')
+
+303          60 LOAD_FAST                1 (s)
+             62 LOAD_CONST               8 ('pages_with_records')
+             64 BINARY_SUBSCR
+             68 LOAD_CONST               6 ('>4')
+             70 FORMAT_VALUE             4 (with format)
+             72 LOAD_CONST               9 (' with records (')
+             74 LOAD_FAST                1 (s)
+             76 LOAD_CONST              10 ('coverage_pct')
+             78 BINARY_SUBSCR
+             82 FORMAT_VALUE             0
+             84 LOAD_CONST              11 ('%), ')
+             86 LOAD_FAST                1 (s)
+             88 LOAD_CONST              12 ('records')
+             90 BINARY_SUBSCR
+             94 FORMAT_VALUE             0
+             96 LOAD_CONST              13 (' records')
+
+302          98 BUILD_STRING            11
+            100 YIELD_VALUE              1
+            102 RESUME                   1
+            104 POP_TOP
+        >>  106 JUMP_BACKWARD           50 (to 8)
+
+301     >>  108 END_FOR
+            110 RETURN_CONST            14 (None)
+        >>  112 CALL_INTRINSIC_1         3 (INTRINSIC_STOPITERATION_ERROR)
+            114 RERAISE                  1
+ExceptionTable:
+  4 to 110 -> 112 [0] lasti
+
+Disassembly of <code object build_uncovered_feedback at 0x0000029883c7a7b0, file "/mnt/d/ubuntu/codes/ZS/otsuka/ECS/experiments/recipe_prototype/codegen.py", line 323>:
+323           0 RESUME                   0
+
+329           2 LOAD_FAST                2 (meta)
+              4 LOAD_CONST               1 ('pages')
+              6 BINARY_SUBSCR
+             10 STORE_FAST               5 (total)
+
+330          12 LOAD_FAST                1 (result)
+             14 LOAD_ATTR                0 (covered_pages)
+             34 COPY                     1
+             36 POP_JUMP_IF_TRUE        52 (to 142)
+             38 POP_TOP
+             40 LOAD_FAST                1 (result)
+             42 LOAD_ATTR                2 (records)
+             62 GET_ITER
+             64 LOAD_FAST_AND_CLEAR      6 (r)
+             66 SWAP                     2
+             68 BUILD_SET                0
+             70 SWAP                     2
+        >>   72 FOR_ITER                30 (to 136)
+             76 STORE_FAST               6 (r)
+             78 LOAD_FAST                6 (r)
+             80 LOAD_ATTR                4 (page)
+            100 POP_JUMP_IF_TRUE         1 (to 104)
+            102 JUMP_BACKWARD           16 (to 72)
+        >>  104 LOAD_FAST                6 (r)
+            106 LOAD_ATTR                4 (page)
+            126 LOAD_CONST               2 (1)
+            128 BINARY_OP               10 (-)
+            132 SET_ADD                  2
+            134 JUMP_BACKWARD           32 (to 72)
+        >>  136 END_FOR
+            138 SWAP                     2
+            140 STORE_FAST               6 (r)
+        >>  142 STORE_FAST               7 (covered)
+
+331         144 LOAD_GLOBAL              7 (NULL + range)
+            154 LOAD_FAST                5 (total)
+            156 CALL                     1
+            164 GET_ITER
+            166 LOAD_FAST_AND_CLEAR      8 (p)
+            168 SWAP                     2
+            170 BUILD_LIST               0
+            172 SWAP                     2
+        >>  174 FOR_ITER                 9 (to 196)
+            178 STORE_FAST               8 (p)
+            180 LOAD_FAST                8 (p)
+            182 LOAD_FAST                7 (covered)
+            184 CONTAINS_OP              1
+            186 POP_JUMP_IF_TRUE         1 (to 190)
+            188 JUMP_BACKWARD            8 (to 174)
+        >>  190 LOAD_FAST                8 (p)
+            192 LIST_APPEND              2
+            194 JUMP_BACKWARD           11 (to 174)
+        >>  196 END_FOR
+            198 STORE_FAST               9 (uncovered)
+            200 STORE_FAST               8 (p)
+
+332         202 LOAD_CONST               3 (100)
+            204 LOAD_GLOBAL              9 (NULL + len)
+            214 LOAD_FAST                9 (uncovered)
+            216 CALL                     1
+            224 BINARY_OP                5 (*)
+            228 LOAD_GLOBAL             11 (NULL + max)
+            238 LOAD_CONST               2 (1)
+            240 LOAD_FAST                5 (total)
+            242 CALL                     2
+            250 BINARY_OP               11 (/)
+            254 LOAD_FAST                3 (uncovered_pct_min)
+            256 COMPARE_OP               2 (<)
+            260 POP_JUMP_IF_FALSE        1 (to 264)
+
+333         262 RETURN_CONST             4 ('')
+
+334     >>  264 LOAD_FAST                2 (meta)
+            266 LOAD_CONST               5 ('representative_pages_1based')
+            268 BINARY_SUBSCR
+            272 GET_ITER
+            274 LOAD_FAST_AND_CLEAR      8 (p)
+            276 SWAP                     2
+            278 BUILD_SET                0
+            280 SWAP                     2
+        >>  282 FOR_ITER                 7 (to 300)
+            286 STORE_FAST               8 (p)
+            288 LOAD_FAST                8 (p)
+            290 LOAD_CONST               2 (1)
+            292 BINARY_OP               10 (-)
+            296 SET_ADD                  2
+            298 JUMP_BACKWARD            9 (to 282)
+        >>  300 END_FOR
+            302 STORE_FAST              10 (shown)
+            304 STORE_FAST               8 (p)
+
+335         306 LOAD_FAST                9 (uncovered)
+            308 GET_ITER
+            310 LOAD_FAST_AND_CLEAR      8 (p)
+            312 SWAP                     2
+            314 BUILD_LIST               0
+            316 SWAP                     2
+        >>  318 FOR_ITER                 9 (to 340)
+            322 STORE_FAST               8 (p)
+            324 LOAD_FAST                8 (p)
+            326 LOAD_FAST               10 (shown)
+            328 CONTAINS_OP              1
+            330 POP_JUMP_IF_TRUE         1 (to 334)
+            332 JUMP_BACKWARD            8 (to 318)
+        >>  334 LOAD_FAST                8 (p)
+            336 LIST_APPEND              2
+            338 JUMP_BACKWARD           11 (to 318)
+        >>  340 END_FOR
+            342 SWAP                     2
+            344 STORE_FAST               8 (p)
+            346 COPY                     1
+            348 POP_JUMP_IF_TRUE         2 (to 354)
+            350 POP_TOP
+            352 LOAD_FAST                9 (uncovered)
+        >>  354 STORE_FAST              11 (candidates)
+
+336         356 LOAD_GLOBAL             13 (NULL + fitz)
+            366 LOAD_ATTR               14 (open)
+            386 LOAD_FAST                0 (pdf_path)
+            388 CALL                     1
+            396 STORE_FAST              12 (doc)
+
+338         398 LOAD_GLOBAL             17 (NULL + _spread)
+            408 LOAD_FAST               11 (candidates)
+            410 LOAD_FAST                4 (max_pages)
+            412 CALL                     2
+
+337         420 GET_ITER
+            422 LOAD_FAST_AND_CLEAR      8 (p)
+            424 SWAP                     2
+            426 BUILD_LIST               0
+            428 SWAP                     2
+        >>  430 FOR_ITER                35 (to 504)
+
+338         434 STORE_FAST               8 (p)
+
+337         436 LOAD_CONST               6 ('--- page ')
+            438 LOAD_FAST                8 (p)
+            440 LOAD_CONST               2 (1)
+            442 BINARY_OP                0 (+)
+            446 FORMAT_VALUE             0
+            448 LOAD_CONST               7 (' (uncovered) ---\n')
+            450 BUILD_STRING             3
+            452 LOAD_GLOBAL             19 (NULL + _dump_lines_text)
+            462 LOAD_GLOBAL             21 (NULL + build_page_lines)
+            472 LOAD_FAST               12 (doc)
+            474 LOAD_FAST                8 (p)
+            476 BINARY_SUBSCR
+            480 CALL                     1
+            488 CALL                     1
+            496 BINARY_OP                0 (+)
+            500 LIST_APPEND              2
+            502 JUMP_BACKWARD           37 (to 430)
+        >>  504 END_FOR
+            506 STORE_FAST              13 (sections)
+            508 STORE_FAST               8 (p)
+
+339         510 LOAD_FAST               12 (doc)
+            512 LOAD_ATTR               23 (NULL|self + close)
+            532 CALL                     0
+            540 POP_TOP
+
+340         542 LOAD_CONST               8 ('  ')
+            544 LOAD_GLOBAL              9 (NULL + len)
+            554 LOAD_FAST                9 (uncovered)
+            556 CALL                     1
+            564 FORMAT_VALUE             0
+            566 LOAD_CONST               9 (' of ')
+            568 LOAD_FAST                5 (total)
+            570 FORMAT_VALUE             0
+            572 LOAD_CONST              10 (' pages (')
+            574 LOAD_GLOBAL             25 (NULL + round)
+            584 LOAD_CONST               3 (100)
+            586 LOAD_GLOBAL              9 (NULL + len)
+            596 LOAD_FAST                9 (uncovered)
+            598 CALL                     1
+            606 BINARY_OP                5 (*)
+            610 LOAD_GLOBAL             11 (NULL + max)
+            620 LOAD_CONST               2 (1)
+            622 LOAD_FAST                5 (total)
+            624 CALL                     2
+            632 BINARY_OP               11 (/)
+            636 CALL                     1
+            644 FORMAT_VALUE             0
+            646 LOAD_CONST              11 ('%) produced no records (page layouts too fragmented for a per-cluster table)')
+            648 BUILD_STRING             7
+            650 STORE_FAST              14 (table)
+
+342         652 LOAD_GLOBAL             26 (CLUSTER_FEEDBACK_TEMPLATE)
+            662 LOAD_ATTR               29 (NULL|self + format)
+            682 LOAD_FAST               14 (table)
+            684 LOAD_CONST              12 ('\n\n')
+            686 LOAD_ATTR               31 (NULL|self + join)
+            706 LOAD_FAST               13 (sections)
+            708 CALL                     1
+            716 KW_NAMES                13 (('table', 'failing_pages'))
+            718 CALL                     2
+            726 RETURN_VALUE
+        >>  728 SWAP                     2
+            730 POP_TOP
+
+330         732 SWAP                     2
+            734 STORE_FAST               6 (r)
+            736 RERAISE                  0
+        >>  738 SWAP                     2
+            740 POP_TOP
+
+331         742 SWAP                     2
+            744 STORE_FAST               8 (p)
+            746 RERAISE                  0
+        >>  748 SWAP                     2
+            750 POP_TOP
+
+334         752 SWAP                     2
+            754 STORE_FAST               8 (p)
+            756 RERAISE                  0
+        >>  758 SWAP                     2
+            760 POP_TOP
+
+335         762 SWAP                     2
+            764 STORE_FAST               8 (p)
+            766 RERAISE                  0
+        >>  768 SWAP                     2
+            770 POP_TOP
+
+337         772 SWAP                     2
+            774 STORE_FAST               8 (p)
+            776 RERAISE                  0
+ExceptionTable:
+  68 to 100 -> 728 [2]
+  104 to 136 -> 728 [2]
+  170 to 186 -> 738 [2]
+  190 to 196 -> 738 [2]
+  278 to 300 -> 748 [2]
+  314 to 330 -> 758 [2]
+  334 to 340 -> 758 [2]
+  426 to 504 -> 768 [2]
+
+Disassembly of <code object validate_generated at 0x0000029883c4c980, file "/mnt/d/ubuntu/codes/ZS/otsuka/ECS/experiments/recipe_prototype/codegen.py", line 345>:
+345           0 RESUME                   0
+
+352           2 LOAD_GLOBAL              1 (NULL + extract_source)
+             12 LOAD_FAST                1 (raw_reply)
+             14 CALL                     1
+             22 STORE_FAST               3 (source)
+
+353          24 LOAD_CONST               1 ('')
+             26 BUILD_LIST               0
+             28 BUILD_LIST               0
+             30 STORE_FAST               6 (weak)
+             32 STORE_FAST               5 (stats)
+             34 STORE_FAST               4 (cluster_feedback)
+
+354          36 NOP
+
+355          38 LOAD_GLOBAL              3 (NULL + run_extractor)
+             48 LOAD_FAST                3 (source)
+             50 LOAD_FAST                0 (pdf_path)
+             52 CALL                     2
+             60 STORE_FAST               7 (result)
+
+356          62 LOAD_GLOBAL              5 (NULL + score)
+             72 LOAD_FAST                7 (result)
+             74 LOAD_CONST               2 ('codegen')
+             76 CALL                     2
+             84 STORE_FAST               8 (metrics)
+
+357          86 LOAD_GLOBAL              7 (NULL + gate_problems)
+             96 LOAD_FAST                8 (metrics)
+             98 CALL                     1
+            106 STORE_FAST               9 (problems)
+
+358         108 LOAD_GLOBAL              9 (NULL + gate_warnings)
+            118 LOAD_FAST                8 (metrics)
+            120 CALL                     1
+            128 STORE_FAST              10 (warnings)
+
+359         130 LOAD_CONST               3 ('\n')
+            132 LOAD_ATTR               11 (NULL|self + join)
+            152 LOAD_CONST               4 (<code object <genexpr> at 0x00000298839e90d0, file "/mnt/d/ubuntu/codes/ZS/otsuka/ECS/experiments/recipe_prototype/codegen.py", line 359>)
+            154 MAKE_FUNCTION            0
+
+360         156 LOAD_FAST                7 (result)
+            158 LOAD_ATTR               12 (records)
+            178 LOAD_CONST               5 (None)
+            180 LOAD_CONST               6 (25)
+            182 BINARY_SLICE
+
+359         184 GET_ITER
+            186 CALL                     0
+            194 CALL                     1
+            202 COPY                     1
+            204 POP_JUMP_IF_TRUE         2 (to 210)
+            206 POP_TOP
+
+360         208 LOAD_CONST               7 ('(none)')
+
+359     >>  210 STORE_FAST              11 (sample)
+
+361         212 LOAD_FAST                2 (outdir)
+            214 POP_JUMP_IF_FALSE      116 (to 448)
+
+362         216 LOAD_GLOBAL             15 (NULL + _load_cluster_meta)
+            226 LOAD_FAST                2 (outdir)
+            228 CALL                     1
+            236 STORE_FAST              12 (meta)
+
+363         238 LOAD_GLOBAL             17 (NULL + cluster_stats)
+            248 LOAD_FAST                7 (result)
+            250 LOAD_FAST               12 (meta)
+            252 CALL                     2
+            260 STORE_FAST               5 (stats)
+
+364         262 LOAD_GLOBAL             19 (NULL + weak_clusters)
+            272 LOAD_FAST                5 (stats)
+            274 CALL                     1
+            282 STORE_FAST               6 (weak)
+
+365         284 LOAD_GLOBAL             21 (NULL + round)
+
+366         294 LOAD_CONST               8 (100)
+            296 LOAD_GLOBAL             23 (NULL + len)
+            306 LOAD_FAST                7 (result)
+            308 LOAD_ATTR               24 (covered_pages)
+            328 CALL                     1
+            336 BINARY_OP                5 (*)
+            340 LOAD_GLOBAL             27 (NULL + max)
+            350 LOAD_CONST               9 (1)
+            352 LOAD_FAST               12 (meta)
+            354 LOAD_CONST              10 ('pages')
+            356 BINARY_SUBSCR
+            360 CALL                     2
+            368 BINARY_OP               11 (/)
+
+365         372 CALL                     1
+            380 LOAD_FAST                8 (metrics)
+            382 LOAD_CONST              11 ('pages_covered_pct')
+            384 STORE_SUBSCR
+
+367         388 LOAD_FAST                6 (weak)
+            390 POP_JUMP_IF_FALSE       15 (to 422)
+
+368         392 LOAD_GLOBAL             29 (NULL + build_cluster_feedback)
+            402 LOAD_FAST                0 (pdf_path)
+            404 LOAD_FAST                6 (weak)
+            406 LOAD_FAST               12 (meta)
+            408 LOAD_FAST                5 (stats)
+            410 CALL                     4
+            418 STORE_FAST               4 (cluster_feedback)
+            420 JUMP_FORWARD            13 (to 448)
+
+370     >>  422 LOAD_GLOBAL             31 (NULL + build_uncovered_feedback)
+            432 LOAD_FAST                0 (pdf_path)
+            434 LOAD_FAST                7 (result)
+            436 LOAD_FAST               12 (meta)
+            438 CALL                     3
+            446 STORE_FAST               4 (cluster_feedback)
+
+377     >>  448 LOAD_FAST                3 (source)
+            450 LOAD_FAST                7 (result)
+            452 LOAD_FAST                8 (metrics)
+
+378         454 LOAD_FAST                9 (problems)
+            456 LOAD_FAST               10 (warnings)
+            458 LOAD_FAST               11 (sample)
+
+379         460 LOAD_FAST                5 (stats)
+            462 LOAD_FAST                6 (weak)
+
+380         464 LOAD_FAST                4 (cluster_feedback)
+
+377         466 LOAD_CONST              14 (('source', 'result', 'metrics', 'problems', 'warnings', 'sample', 'cluster_stats', 'weak_clusters', 'cluster_feedback'))
+            468 BUILD_CONST_KEY_MAP      9
+            470 RETURN_VALUE
+        >>  472 PUSH_EXC_INFO
+
+371         474 LOAD_GLOBAL             32 (Exception)
+            484 CHECK_EXC_MATCH
+            486 POP_JUMP_IF_FALSE       35 (to 558)
+            488 STORE_FAST              13 (e)
+
+372         490 LOAD_CONST               5 (None)
+            492 STORE_FAST               7 (result)
+
+373         494 LOAD_CONST              12 ('error')
+            496 LOAD_GLOBAL             35 (NULL + str)
+            506 LOAD_FAST               13 (e)
+            508 CALL                     1
+            516 BUILD_MAP                1
+            518 STORE_FAST               8 (metrics)
+
+374         520 LOAD_CONST              13 ('Program failed to run: ')
+            522 LOAD_FAST               13 (e)
+            524 FORMAT_VALUE             0
+            526 BUILD_STRING             2
+            528 BUILD_LIST               1
+            530 STORE_FAST               9 (problems)
+
+375         532 BUILD_LIST               0
+            534 STORE_FAST              10 (warnings)
+
+376         536 LOAD_CONST               7 ('(none)')
+            538 STORE_FAST              11 (sample)
+            540 POP_EXCEPT
+            542 LOAD_CONST               5 (None)
+            544 STORE_FAST              13 (e)
+            546 DELETE_FAST             13 (e)
+            548 JUMP_BACKWARD           51 (to 448)
+        >>  550 LOAD_CONST               5 (None)
+            552 STORE_FAST              13 (e)
+            554 DELETE_FAST             13 (e)
+            556 RERAISE                  1
+
+371     >>  558 RERAISE                  0
+        >>  560 COPY                     3
+            562 POP_EXCEPT
+            564 RERAISE                  1
+ExceptionTable:
+  38 to 446 -> 472 [0]
+  472 to 488 -> 560 [1] lasti
+  490 to 538 -> 550 [1] lasti
+  550 to 558 -> 560 [1] lasti
+
+Disassembly of <code object <genexpr> at 0x00000298839e90d0, file "/mnt/d/ubuntu/codes/ZS/otsuka/ECS/experiments/recipe_prototype/codegen.py", line 359>:
+359           0 RETURN_GENERATOR
+              2 POP_TOP
+              4 RESUME                   0
+              6 LOAD_FAST                0 (.0)
+        >>    8 FOR_ITER                45 (to 102)
+
+360          12 STORE_FAST               1 (r)
+
+359          14 LOAD_CONST               0 ('p')
+             16 LOAD_FAST                1 (r)
+             18 LOAD_ATTR                0 (page)
+             38 FORMAT_VALUE             0
+             40 LOAD_CONST               1 (': ')
+             42 LOAD_FAST                1 (r)
+             44 LOAD_ATTR                2 (form_name)
+             64 FORMAT_VALUE             0
+             66 LOAD_CONST               2 (' | ')
+             68 LOAD_FAST                1 (r)
+             70 LOAD_ATTR                4 (field_name)
+             90 FORMAT_VALUE             0
+             92 BUILD_STRING             6
+             94 YIELD_VALUE              1
+             96 RESUME                   1
+             98 POP_TOP
+            100 JUMP_BACKWARD           47 (to 8)
+        >>  102 END_FOR
+            104 RETURN_CONST             3 (None)
+        >>  106 CALL_INTRINSIC_1         3 (INTRINSIC_STOPITERATION_ERROR)
+            108 RERAISE                  1
+ExceptionTable:
+  4 to 104 -> 106 [0] lasti
+
+Disassembly of <code object version_score at 0x00000298839d0630, file "/mnt/d/ubuntu/codes/ZS/otsuka/ECS/experiments/recipe_prototype/codegen.py", line 390>:
+390           0 RESUME                   0
+
+400           2 LOAD_FAST                0 (verdict)
+              4 LOAD_ATTR                1 (NULL|self + get)
+             24 LOAD_CONST               1 ('metrics')
+             26 CALL                     1
+             34 COPY                     1
+             36 POP_JUMP_IF_TRUE         2 (to 42)
+             38 POP_TOP
+             40 BUILD_MAP                0
+        >>   42 STORE_FAST               2 (m)
+
+401          44 LOAD_GLOBAL              3 (NULL + len)
+             54 LOAD_FAST                0 (verdict)
+             56 LOAD_CONST               2 ('problems')
+             58 BINARY_SUBSCR
+             62 CALL                     1
+
+402          70 LOAD_FAST                1 (audit_issue_count)
+             72 POP_JUMP_IF_NOT_NONE     6 (to 86)
+             74 LOAD_GLOBAL              4 (AUDIT_NOT_RUN)
+             84 JUMP_FORWARD             1 (to 88)
+        >>   86 LOAD_FAST                1 (audit_issue_count)
+
+403     >>   88 LOAD_GLOBAL              3 (NULL + len)
+             98 LOAD_FAST                0 (verdict)
+            100 LOAD_ATTR                1 (NULL|self + get)
+            120 LOAD_CONST               3 ('warnings')
+            122 CALL                     1
+            130 COPY                     1
+            132 POP_JUMP_IF_TRUE         2 (to 138)
+            134 POP_TOP
+            136 BUILD_LIST               0
+        >>  138 CALL                     1
+
+404         146 LOAD_FAST                2 (m)
+            148 LOAD_ATTR                1 (NULL|self + get)
+            168 LOAD_CONST               4 ('pages_with_fields')
+            170 CALL                     1
+            178 COPY                     1
+            180 POP_JUMP_IF_TRUE         2 (to 186)
+            182 POP_TOP
+            184 LOAD_CONST               5 (0)
+        >>  186 UNARY_NEGATIVE
+
+401         188 BUILD_TUPLE              4
+            190 RETURN_VALUE
+
+Disassembly of <code object improves at 0x0000029883997d20, file "/mnt/d/ubuntu/codes/ZS/otsuka/ECS/experiments/recipe_prototype/codegen.py", line 407>:
+407           0 RESUME                   0
+
+416           2 LOAD_FAST                0 (best_score)
+              4 POP_JUMP_IF_NOT_NONE     1 (to 8)
+
+417           6 RETURN_CONST             1 (True)
+
+418     >>    8 LOAD_FAST                2 (best_cov)
+             10 POP_JUMP_IF_FALSE        9 (to 30)
+             12 LOAD_FAST                3 (cand_cov)
+             14 LOAD_FAST                4 (cov_floor)
+             16 LOAD_FAST                2 (best_cov)
+             18 BINARY_OP                5 (*)
+             22 COMPARE_OP               2 (<)
+             26 POP_JUMP_IF_FALSE        1 (to 30)
+
+419          28 RETURN_CONST             2 (False)
+
+420     >>   30 LOAD_FAST                1 (cand_score)
+             32 LOAD_FAST                0 (best_score)
+             34 COMPARE_OP               2 (<)
+             38 RETURN_VALUE
+
+Disassembly of <code object build_code_revision_prompt at 0x0000029883bfa900, file "/mnt/d/ubuntu/codes/ZS/otsuka/ECS/experiments/recipe_prototype/codegen.py", line 423>:
+423           0 RESUME                   0
+
+424           2 LOAD_FAST                0 (verdict)
+              4 LOAD_CONST               1 ('problems')
+              6 BINARY_SUBSCR
+             10 GET_ITER
+             12 LOAD_FAST_AND_CLEAR      1 (p)
+             14 SWAP                     2
+             16 BUILD_LIST               0
+             18 SWAP                     2
+        >>   20 FOR_ITER                 7 (to 38)
+             24 STORE_FAST               1 (p)
+             26 LOAD_CONST               2 ('- ')
+             28 LOAD_FAST                1 (p)
+             30 FORMAT_VALUE             0
+             32 BUILD_STRING             2
+             34 LIST_APPEND              2
+             36 JUMP_BACKWARD            9 (to 20)
+        >>   38 END_FOR
+             40 SWAP                     2
+             42 STORE_FAST               1 (p)
+
+425          44 LOAD_FAST                0 (verdict)
+             46 LOAD_ATTR                1 (NULL|self + get)
+             66 LOAD_CONST               3 ('warnings')
+             68 BUILD_LIST               0
+             70 CALL                     2
+             78 GET_ITER
+             80 LOAD_FAST_AND_CLEAR      2 (w)
+             82 SWAP                     2
+             84 BUILD_LIST               0
+             86 SWAP                     2
+        >>   88 FOR_ITER                 7 (to 106)
+             92 STORE_FAST               2 (w)
+             94 LOAD_CONST               4 ('- (quality warning) ')
+             96 LOAD_FAST                2 (w)
+             98 FORMAT_VALUE             0
+            100 BUILD_STRING             2
+            102 LIST_APPEND              2
+            104 JUMP_BACKWARD            9 (to 88)
+        >>  106 END_FOR
+            108 SWAP                     2
+            110 STORE_FAST               2 (w)
+
+424         112 BINARY_OP                0 (+)
+            116 STORE_FAST               3 (issues)
+
+426         118 LOAD_GLOBAL              2 (CODE_REVISION_TEMPLATE)
+            128 LOAD_ATTR                5 (NULL|self + format)
+
+427         148 LOAD_FAST                0 (verdict)
+            150 LOAD_CONST               5 ('source')
+            152 BINARY_SUBSCR
+            156 LOAD_CONST               0 (None)
+            158 LOAD_CONST               6 (6000)
+            160 BINARY_SLICE
+
+428         162 LOAD_GLOBAL              7 (NULL + json)
+            172 LOAD_ATTR                8 (dumps)
+            192 LOAD_FAST                0 (verdict)
+            194 LOAD_CONST               7 ('metrics')
+            196 BINARY_SUBSCR
+            200 LOAD_CONST               8 (1)
+            202 KW_NAMES                 9 (('indent',))
+            204 CALL                     2
+
+429         212 LOAD_FAST                0 (verdict)
+            214 LOAD_CONST              10 ('sample')
+            216 BINARY_SUBSCR
+
+430         220 LOAD_CONST              11 ('\n')
+            222 LOAD_ATTR               11 (NULL|self + join)
+            242 LOAD_FAST                3 (issues)
+            244 CALL                     1
+            252 COPY                     1
+            254 POP_JUMP_IF_TRUE         2 (to 260)
+            256 POP_TOP
+            258 LOAD_CONST              12 ('- (see coverage feedback below)')
+
+431     >>  260 LOAD_FAST                0 (verdict)
+            262 LOAD_ATTR                1 (NULL|self + get)
+            282 LOAD_CONST              13 ('cluster_feedback')
+            284 LOAD_CONST              14 ('')
+            286 CALL                     2
+
+426         294 KW_NAMES                15 (('code', 'metrics', 'sample', 'problems', 'cluster_feedback'))
+            296 CALL                     5
+            304 RETURN_VALUE
+        >>  306 SWAP                     2
+            308 POP_TOP
+
+424         310 SWAP                     2
+            312 STORE_FAST               1 (p)
+            314 RERAISE                  0
+        >>  316 SWAP                     2
+            318 POP_TOP
+
+425         320 SWAP                     2
+            322 STORE_FAST               2 (w)
+            324 RERAISE                  0
+ExceptionTable:
+  16 to 38 -> 306 [2]
+  84 to 106 -> 316 [3]
+
+Disassembly of <code object build_coverage_confirm_prompt at 0x00000298839c3110, file "/mnt/d/ubuntu/codes/ZS/otsuka/ECS/experiments/recipe_prototype/codegen.py", line 435>:
+435           0 RESUME                   0
+
+438           2 LOAD_GLOBAL              0 (COVERAGE_CONFIRM_TEMPLATE)
+             12 LOAD_ATTR                3 (NULL|self + format)
+             32 LOAD_FAST                0 (verdict)
+             34 LOAD_CONST               1 ('source')
+             36 BINARY_SUBSCR
+             40 LOAD_CONST               2 (None)
+             42 LOAD_CONST               3 (6000)
+             44 BINARY_SLICE
+
+439          46 LOAD_FAST                0 (verdict)
+             48 LOAD_CONST               4 ('cluster_feedback')
+             50 BINARY_SUBSCR
+
+438          54 KW_NAMES                 5 (('code', 'cluster_feedback'))
+             56 CALL                     2
+             64 RETURN_VALUE
+
+Disassembly of <code object is_confirm_no_fields at 0x00000298839c3330, file "/mnt/d/ubuntu/codes/ZS/otsuka/ECS/experiments/recipe_prototype/codegen.py", line 445>:
+445           0 RESUME                   0
+
+450           2 LOAD_CONST               1 ('def extract')
+              4 LOAD_FAST                0 (reply)
+              6 CONTAINS_OP              0
+              8 POP_JUMP_IF_FALSE        1 (to 12)
+
+451          10 RETURN_CONST             2 (False)
+
+452     >>   12 LOAD_GLOBAL              1 (NULL + any)
+             22 LOAD_CONST               3 (<code object <genexpr> at 0x00000298839c3220, file "/mnt/d/ubuntu/codes/ZS/otsuka/ECS/experiments/recipe_prototype/codegen.py", line 452>)
+             24 MAKE_FUNCTION            0
+             26 LOAD_FAST                0 (reply)
+             28 LOAD_ATTR                3 (NULL|self + splitlines)
+             48 CALL                     0
+             56 GET_ITER
+             58 CALL                     0
+             66 CALL                     1
+             74 RETURN_VALUE
+
+Disassembly of <code object <genexpr> at 0x00000298839c3220, file "/mnt/d/ubuntu/codes/ZS/otsuka/ECS/experiments/recipe_prototype/codegen.py", line 452>:
+452           0 RETURN_GENERATOR
+              2 POP_TOP
+              4 RESUME                   0
+              6 LOAD_FAST                0 (.0)
+        >>    8 FOR_ITER                27 (to 66)
+             12 STORE_FAST               1 (line)
+             14 LOAD_FAST                1 (line)
+             16 LOAD_ATTR                1 (NULL|self + strip)
+             36 CALL                     0
+             44 LOAD_GLOBAL              2 (CONFIRM_TOKEN)
+             54 COMPARE_OP              40 (==)
+             58 YIELD_VALUE              1
+             60 RESUME                   1
+             62 POP_TOP
+             64 JUMP_BACKWARD           29 (to 8)
+        >>   66 END_FOR
+             68 RETURN_CONST             0 (None)
+        >>   70 CALL_INTRINSIC_1         3 (INTRINSIC_STOPITERATION_ERROR)
+             72 RERAISE                  1
+ExceptionTable:
+  4 to 68 -> 70 [0] lasti
+
+Disassembly of <code object pick_audit_pages at 0x0000029883c8e470, file "/mnt/d/ubuntu/codes/ZS/otsuka/ECS/experiments/recipe_prototype/codegen.py", line 483>:
+483           0 RESUME                   0
+
+489           2 LOAD_GLOBAL              1 (NULL + _load_cluster_meta)
+             12 LOAD_FAST                0 (outdir)
+             14 CALL                     1
+             22 STORE_FAST               3 (meta)
+
+490          24 LOAD_GLOBAL              3 (NULL + sorted)
+             34 LOAD_FAST                1 (result)
+             36 LOAD_ATTR                4 (records)
+             56 GET_ITER
+             58 LOAD_FAST_AND_CLEAR      4 (r)
+             60 SWAP                     2
+             62 BUILD_SET                0
+             64 SWAP                     2
+        >>   66 FOR_ITER                27 (to 124)
+             70 STORE_FAST               4 (r)
+             72 LOAD_FAST                4 (r)
+             74 LOAD_ATTR                6 (page)
+             94 POP_JUMP_IF_TRUE         1 (to 98)
+             96 JUMP_BACKWARD           16 (to 66)
+        >>   98 LOAD_FAST                4 (r)
+            100 LOAD_ATTR                6 (page)
+            120 SET_ADD                  2
+            122 JUMP_BACKWARD           29 (to 66)
+        >>  124 END_FOR
+            126 SWAP                     2
+            128 STORE_FAST               4 (r)
+            130 CALL                     1
+            138 STORE_FAST               5 (covered)
+
+491         140 LOAD_GLOBAL              9 (NULL + set)
+            150 LOAD_FAST                3 (meta)
+            152 LOAD_CONST               1 ('representative_pages_1based')
+            154 BINARY_SUBSCR
+            158 CALL                     1
+            166 STORE_FAST               6 (reps)
+
+492         168 LOAD_FAST                5 (covered)
+            170 GET_ITER
+            172 LOAD_FAST_AND_CLEAR      7 (p)
+            174 SWAP                     2
+            176 BUILD_LIST               0
+            178 SWAP                     2
+        >>  180 FOR_ITER                 9 (to 202)
+            184 STORE_FAST               7 (p)
+            186 LOAD_FAST                7 (p)
+            188 LOAD_FAST                6 (reps)
+            190 CONTAINS_OP              0
+            192 POP_JUMP_IF_TRUE         1 (to 196)
+            194 JUMP_BACKWARD            8 (to 180)
+        >>  196 LOAD_FAST                7 (p)
+            198 LIST_APPEND              2
+            200 JUMP_BACKWARD           11 (to 180)
+        >>  202 END_FOR
+            204 STORE_FAST               8 (covered_reps)
+            206 STORE_FAST               7 (p)
+
+493         208 LOAD_FAST                5 (covered)
+            210 GET_ITER
+            212 LOAD_FAST_AND_CLEAR      7 (p)
+            214 SWAP                     2
+            216 BUILD_LIST               0
+            218 SWAP                     2
+        >>  220 FOR_ITER                 9 (to 242)
+            224 STORE_FAST               7 (p)
+            226 LOAD_FAST                7 (p)
+            228 LOAD_FAST                6 (reps)
+            230 CONTAINS_OP              1
+            232 POP_JUMP_IF_TRUE         1 (to 236)
+            234 JUMP_BACKWARD            8 (to 220)
+        >>  236 LOAD_FAST                7 (p)
+            238 LIST_APPEND              2
+            240 JUMP_BACKWARD           11 (to 220)
+        >>  242 END_FOR
+            244 STORE_FAST               9 (covered_other)
+            246 STORE_FAST               7 (p)
+
+494         248 LOAD_FAST                2 (max_pages)
+            250 LOAD_CONST               2 (2)
+            252 BINARY_OP                2 (//)
+            256 STORE_FAST              10 (half)
+
+495         258 LOAD_GLOBAL             11 (NULL + _spread)
+            268 LOAD_FAST                8 (covered_reps)
+            270 LOAD_FAST               10 (half)
+            272 CALL                     2
+            280 LOAD_GLOBAL             11 (NULL + _spread)
+            290 LOAD_FAST                9 (covered_other)
+            292 LOAD_FAST                2 (max_pages)
+            294 LOAD_FAST               10 (half)
+            296 BINARY_OP               10 (-)
+            300 CALL                     2
+            308 BINARY_OP                0 (+)
+            312 STORE_FAST              11 (picks)
+
+496         314 LOAD_GLOBAL             13 (NULL + len)
+            324 LOAD_FAST               11 (picks)
+            326 CALL                     1
+            334 LOAD_FAST                2 (max_pages)
+            336 COMPARE_OP               2 (<)
+            340 POP_JUMP_IF_FALSE       47 (to 436)
+
+497         342 LOAD_FAST                5 (covered)
+            344 GET_ITER
+            346 LOAD_FAST_AND_CLEAR      7 (p)
+            348 SWAP                     2
+            350 BUILD_LIST               0
+            352 SWAP                     2
+        >>  354 FOR_ITER                 9 (to 376)
+            358 STORE_FAST               7 (p)
+            360 LOAD_FAST                7 (p)
+            362 LOAD_FAST               11 (picks)
+            364 CONTAINS_OP              1
+            366 POP_JUMP_IF_TRUE         1 (to 370)
+            368 JUMP_BACKWARD            8 (to 354)
+        >>  370 LOAD_FAST                7 (p)
+            372 LIST_APPEND              2
+            374 JUMP_BACKWARD           11 (to 354)
+        >>  376 END_FOR
+            378 STORE_FAST              12 (rest)
+            380 STORE_FAST               7 (p)
+
+498         382 LOAD_FAST               11 (picks)
+            384 LOAD_GLOBAL             11 (NULL + _spread)
+            394 LOAD_FAST               12 (rest)
+            396 LOAD_FAST                2 (max_pages)
+            398 LOAD_GLOBAL             13 (NULL + len)
+            408 LOAD_FAST               11 (picks)
+            410 CALL                     1
+            418 BINARY_OP               10 (-)
+            422 CALL                     2
+            430 BINARY_OP               13 (+=)
+            434 STORE_FAST              11 (picks)
+
+499     >>  436 LOAD_GLOBAL              3 (NULL + sorted)
+            446 LOAD_GLOBAL              9 (NULL + set)
+            456 LOAD_FAST               11 (picks)
+            458 CALL                     1
+            466 CALL                     1
+            474 RETURN_VALUE
+        >>  476 SWAP                     2
+            478 POP_TOP
+
+490         480 SWAP                     2
+            482 STORE_FAST               4 (r)
+            484 RERAISE                  0
+        >>  486 SWAP                     2
+            488 POP_TOP
+
+492         490 SWAP                     2
+            492 STORE_FAST               7 (p)
+            494 RERAISE                  0
+        >>  496 SWAP                     2
+            498 POP_TOP
+
+493         500 SWAP                     2
+            502 STORE_FAST               7 (p)
+            504 RERAISE                  0
+        >>  506 SWAP                     2
+            508 POP_TOP
+
+497         510 SWAP                     2
+            512 STORE_FAST               7 (p)
+            514 RERAISE                  0
+ExceptionTable:
+  62 to 94 -> 476 [4]
+  98 to 124 -> 476 [4]
+  176 to 192 -> 486 [2]
+  196 to 202 -> 486 [2]
+  216 to 232 -> 496 [2]
+  236 to 242 -> 496 [2]
+  350 to 366 -> 506 [2]
+  370 to 376 -> 506 [2]
+
+Disassembly of <code object build_audit_prompt at 0x0000029883c96750, file "/mnt/d/ubuntu/codes/ZS/otsuka/ECS/experiments/recipe_prototype/codegen.py", line 502>:
+502           0 RESUME                   0
+
+508           2 LOAD_FAST                4 (pages)
+              4 POP_JUMP_IF_NONE         2 (to 10)
+              6 LOAD_FAST                4 (pages)
+              8 JUMP_FORWARD            12 (to 34)
+        >>   10 LOAD_GLOBAL              1 (NULL + pick_audit_pages)
+             20 LOAD_FAST                1 (outdir)
+             22 LOAD_FAST                2 (result)
+             24 LOAD_FAST                3 (max_pages)
+             26 CALL                     3
+        >>   34 STORE_FAST               5 (audit_pages)
+
+509          36 LOAD_GLOBAL              3 (NULL + collections)
+             46 LOAD_ATTR                4 (defaultdict)
+             66 LOAD_GLOBAL              6 (list)
+             76 CALL                     1
+             84 STORE_FAST               6 (by_page)
+
+510          86 LOAD_FAST                2 (result)
+             88 LOAD_ATTR                8 (records)
+            108 GET_ITER
+        >>  110 FOR_ITER                32 (to 178)
+            114 STORE_FAST               7 (r)
+
+511         116 LOAD_FAST                6 (by_page)
+            118 LOAD_FAST                7 (r)
+            120 LOAD_ATTR               10 (page)
+            140 BINARY_SUBSCR
+            144 LOAD_ATTR               13 (NULL|self + append)
+            164 LOAD_FAST                7 (r)
+            166 CALL                     1
+            174 POP_TOP
+            176 JUMP_BACKWARD           34 (to 110)
+
+510     >>  178 END_FOR
+
+512         180 LOAD_GLOBAL             15 (NULL + fitz)
+            190 LOAD_ATTR               16 (open)
+            210 LOAD_FAST                0 (pdf_path)
+            212 CALL                     1
+            220 STORE_FAST               8 (doc)
+
+513         222 BUILD_LIST               0
+            224 STORE_FAST               9 (sections)
+
+514         226 LOAD_FAST                5 (audit_pages)
+            228 GET_ITER
+        >>  230 FOR_ITER                99 (to 432)
+            234 STORE_FAST              10 (p)
+
+515         236 LOAD_CONST               1 ('\n')
+            238 LOAD_ATTR               19 (NULL|self + join)
+            258 LOAD_CONST               2 (<code object <genexpr> at 0x00000298839b7630, file "/mnt/d/ubuntu/codes/ZS/otsuka/ECS/experiments/recipe_prototype/codegen.py", line 515>)
+            260 MAKE_FUNCTION            0
+
+516         262 LOAD_FAST                6 (by_page)
+            264 LOAD_ATTR               21 (NULL|self + get)
+            284 LOAD_FAST               10 (p)
+            286 BUILD_LIST               0
+            288 CALL                     2
+
+515         296 GET_ITER
+            298 CALL                     0
+            306 CALL                     1
+            314 COPY                     1
+            316 POP_JUMP_IF_TRUE         2 (to 322)
+            318 POP_TOP
+
+516         320 LOAD_CONST               3 ('  (no records extracted from this page)')
+
+515     >>  322 STORE_FAST              11 (recs)
+
+517         324 LOAD_FAST                9 (sections)
+            326 LOAD_ATTR               13 (NULL|self + append)
+            346 LOAD_CONST               4 ('--- page ')
+            348 LOAD_FAST               10 (p)
+            350 FORMAT_VALUE             0
+            352 LOAD_CONST               5 (' ---\n')
+            354 LOAD_GLOBAL             23 (NULL + _dump_lines_text)
+            364 LOAD_GLOBAL             25 (NULL + build_page_lines)
+            374 LOAD_FAST                8 (doc)
+            376 LOAD_FAST               10 (p)
+            378 LOAD_CONST               6 (1)
+            380 BINARY_OP               10 (-)
+            384 BINARY_SUBSCR
+            388 CALL                     1
+            396 CALL                     1
+            404 FORMAT_VALUE             0
+            406 LOAD_CONST               7 ('\n\nRecords the program extracted from page ')
+
+518         408 LOAD_FAST               10 (p)
+            410 FORMAT_VALUE             0
+            412 LOAD_CONST               8 (':\n')
+            414 LOAD_FAST               11 (recs)
+            416 FORMAT_VALUE             0
+
+517         418 BUILD_STRING             8
+            420 CALL                     1
+            428 POP_TOP
+            430 JUMP_BACKWARD          101 (to 230)
+
+514     >>  432 END_FOR
+
+519         434 LOAD_FAST                8 (doc)
+            436 LOAD_ATTR               27 (NULL|self + close)
+            456 CALL                     0
+            464 POP_TOP
+
+520         466 LOAD_GLOBAL             28 (AUDIT_PROMPT_TEMPLATE)
+            476 LOAD_ATTR               31 (NULL|self + format)
+            496 LOAD_GLOBAL             33 (NULL + len)
+            506 LOAD_FAST                5 (audit_pages)
+            508 CALL                     1
+
+521         516 LOAD_CONST               9 ('\n\n')
+            518 LOAD_ATTR               19 (NULL|self + join)
+            538 LOAD_FAST                9 (sections)
+            540 CALL                     1
+
+520         548 KW_NAMES                10 (('k', 'pages_and_records'))
+            550 CALL                     2
+            558 STORE_FAST              12 (prompt)
+
+522         560 LOAD_FAST               12 (prompt)
+            562 LOAD_FAST                5 (audit_pages)
+            564 BUILD_TUPLE              2
+            566 RETURN_VALUE
+
+Disassembly of <code object <genexpr> at 0x00000298839b7630, file "/mnt/d/ubuntu/codes/ZS/otsuka/ECS/experiments/recipe_prototype/codegen.py", line 515>:
+515           0 RETURN_GENERATOR
+              2 POP_TOP
+              4 RESUME                   0
+              6 LOAD_FAST                0 (.0)
+        >>    8 FOR_ITER                32 (to 76)
+
+516          12 STORE_FAST               1 (r)
+
+515          14 LOAD_CONST               0 ('  extracted: ')
+             16 LOAD_FAST                1 (r)
+             18 LOAD_ATTR                0 (form_name)
+             38 FORMAT_VALUE             0
+             40 LOAD_CONST               1 (' | ')
+             42 LOAD_FAST                1 (r)
+             44 LOAD_ATTR                2 (field_name)
+             64 FORMAT_VALUE             0
+             66 BUILD_STRING             4
+             68 YIELD_VALUE              1
+             70 RESUME                   1
+             72 POP_TOP
+             74 JUMP_BACKWARD           34 (to 8)
+        >>   76 END_FOR
+             78 RETURN_CONST             2 (None)
+        >>   80 CALL_INTRINSIC_1         3 (INTRINSIC_STOPITERATION_ERROR)
+             82 RERAISE                  1
+ExceptionTable:
+  4 to 78 -> 80 [0] lasti
+
+Disassembly of <code object parse_audit_reply at 0x0000029883a147f0, file "/mnt/d/ubuntu/codes/ZS/otsuka/ECS/experiments/recipe_prototype/codegen.py", line 525>:
+525           0 RESUME                   0
+
+528           2 LOAD_GLOBAL              1 (NULL + json)
+             12 LOAD_ATTR                2 (JSONDecoder)
+             32 CALL                     0
+             40 STORE_FAST               1 (dec)
+
+529          42 LOAD_FAST                0 (raw)
+             44 LOAD_ATTR                5 (NULL|self + find)
+             64 LOAD_CONST               1 ('[')
+             66 CALL                     1
+             74 STORE_FAST               2 (idx)
+
+530          76 LOAD_FAST                2 (idx)
+             78 LOAD_CONST               2 (-1)
+             80 COMPARE_OP              55 (!=)
+             84 POP_JUMP_IF_FALSE       68 (to 222)
+
+531     >>   86 NOP
+
+532          88 LOAD_FAST                1 (dec)
+             90 LOAD_ATTR                7 (NULL|self + raw_decode)
+            110 LOAD_FAST                0 (raw)
+            112 LOAD_FAST                2 (idx)
+            114 CALL                     2
+            122 UNPACK_SEQUENCE          2
+            126 STORE_FAST               3 (out)
+            128 STORE_FAST               4 (_)
+
+533         130 LOAD_GLOBAL              9 (NULL + isinstance)
+            140 LOAD_FAST                3 (out)
+            142 LOAD_GLOBAL             10 (list)
+            152 CALL                     2
+            160 POP_JUMP_IF_FALSE        2 (to 166)
+
+534         162 LOAD_FAST                3 (out)
+            164 RETURN_VALUE
+
+533     >>  166 NOP
+
+537     >>  168 LOAD_FAST                0 (raw)
+            170 LOAD_ATTR                5 (NULL|self + find)
+            190 LOAD_CONST               1 ('[')
+            192 LOAD_FAST                2 (idx)
+            194 LOAD_CONST               3 (1)
+            196 BINARY_OP                0 (+)
+            200 CALL                     2
+            208 STORE_FAST               2 (idx)
+
+530         210 LOAD_FAST                2 (idx)
+            212 LOAD_CONST               2 (-1)
+            214 COMPARE_OP              55 (!=)
+            218 POP_JUMP_IF_FALSE        1 (to 222)
+            220 JUMP_BACKWARD           68 (to 86)
+
+538     >>  222 LOAD_GLOBAL             15 (NULL + ValueError)
+            232 LOAD_CONST               4 ('no JSON array in audit reply')
+            234 CALL                     1
+            242 RAISE_VARARGS            1
+        >>  244 PUSH_EXC_INFO
+
+535         246 LOAD_GLOBAL              0 (json)
+            256 LOAD_ATTR               12 (JSONDecodeError)
+            276 CHECK_EXC_MATCH
+            278 POP_JUMP_IF_FALSE        3 (to 286)
+            280 POP_TOP
+
+536         282 POP_EXCEPT
+            284 JUMP_BACKWARD           59 (to 168)
+
+535     >>  286 RERAISE                  0
+        >>  288 COPY                     3
+            290 POP_EXCEPT
+            292 RERAISE                  1
+ExceptionTable:
+  88 to 162 -> 244 [0]
+  244 to 280 -> 288 [1] lasti
+  286 to 286 -> 288 [1] lasti
+
+Disassembly of <code object audit_issues at 0x0000029883997b40, file "/mnt/d/ubuntu/codes/ZS/otsuka/ECS/experiments/recipe_prototype/codegen.py", line 541>:
+541           0 RESUME                   0
+
+542           2 LOAD_GLOBAL              1 (NULL + sum)
+             12 LOAD_CONST               1 (<code object <genexpr> at 0x000002988398d210, file "/mnt/d/ubuntu/codes/ZS/otsuka/ECS/experiments/recipe_prototype/codegen.py", line 542>)
+             14 MAKE_FUNCTION            0
+
+543          16 LOAD_FAST                0 (verdicts)
+
+542          18 GET_ITER
+             20 CALL                     0
+             28 CALL                     1
+             36 RETURN_VALUE
+
+Disassembly of <code object <genexpr> at 0x000002988398d210, file "/mnt/d/ubuntu/codes/ZS/otsuka/ECS/experiments/recipe_prototype/codegen.py", line 542>:
+542           0 RETURN_GENERATOR
+              2 POP_TOP
+              4 RESUME                   0
+              6 LOAD_FAST                0 (.0)
+        >>    8 FOR_ITER                96 (to 204)
+
+543          12 STORE_FAST               1 (v)
+
+542          14 LOAD_GLOBAL              1 (NULL + len)
+             24 LOAD_FAST                1 (v)
+             26 LOAD_ATTR                3 (NULL|self + get)
+             46 LOAD_CONST               0 ('missed')
+             48 CALL                     1
+             56 COPY                     1
+             58 POP_JUMP_IF_TRUE         2 (to 64)
+             60 POP_TOP
+             62 BUILD_LIST               0
+        >>   64 CALL                     1
+             72 LOAD_GLOBAL              1 (NULL + len)
+             82 LOAD_FAST                1 (v)
+             84 LOAD_ATTR                3 (NULL|self + get)
+            104 LOAD_CONST               1 ('false')
+            106 CALL                     1
+            114 COPY                     1
+            116 POP_JUMP_IF_TRUE         2 (to 122)
+            118 POP_TOP
+            120 BUILD_LIST               0
+        >>  122 CALL                     1
+            130 BINARY_OP                0 (+)
+            134 LOAD_GLOBAL              1 (NULL + len)
+            144 LOAD_FAST                1 (v)
+            146 LOAD_ATTR                3 (NULL|self + get)
+            166 LOAD_CONST               2 ('wrong_form')
+            168 CALL                     1
+            176 COPY                     1
+            178 POP_JUMP_IF_TRUE         2 (to 184)
+            180 POP_TOP
+            182 BUILD_LIST               0
+        >>  184 CALL                     1
+            192 BINARY_OP                0 (+)
+            196 YIELD_VALUE              1
+            198 RESUME                   1
+            200 POP_TOP
+            202 JUMP_BACKWARD           98 (to 8)
+        >>  204 END_FOR
+            206 RETURN_CONST             3 (None)
+        >>  208 CALL_INTRINSIC_1         3 (INTRINSIC_STOPITERATION_ERROR)
+            210 RERAISE                  1
+ExceptionTable:
+  4 to 206 -> 208 [0] lasti
+
+Disassembly of <code object audit_problem_lines at 0x0000029883a14bd0, file "/mnt/d/ubuntu/codes/ZS/otsuka/ECS/experiments/recipe_prototype/codegen.py", line 546>:
+546           0 RESUME                   0
+
+547           2 BUILD_LIST               0
+              4 STORE_FAST               1 (problems)
+
+548           6 LOAD_FAST                0 (verdicts)
+              8 GET_ITER
+        >>   10 FOR_ITER               141 (to 296)
+             14 STORE_FAST               2 (v)
+
+549          16 LOAD_FAST                2 (v)
+             18 LOAD_ATTR                1 (NULL|self + get)
+             38 LOAD_CONST               1 ('page')
+             40 CALL                     1
+             48 STORE_FAST               3 (p)
+
+550          50 LOAD_CONST               2 ((('missed', 'fields visible on the page but NOT extracted'), ('false', 'extracted records that are not data-entry fields'), ('wrong_form', 'records attributed to the wrong form')))
+             52 GET_ITER
+        >>   54 FOR_ITER               117 (to 292)
+             58 UNPACK_SEQUENCE          2
+             62 STORE_FAST               4 (kind)
+             64 STORE_FAST               5 (label)
+
+553          66 LOAD_FAST                2 (v)
+             68 LOAD_ATTR                1 (NULL|self + get)
+             88 LOAD_FAST                4 (kind)
+             90 CALL                     1
+             98 COPY                     1
+            100 POP_JUMP_IF_TRUE         2 (to 106)
+            102 POP_TOP
+            104 BUILD_LIST               0
+        >>  106 STORE_FAST               6 (items)
+
+554         108 LOAD_FAST                6 (items)
+            110 POP_JUMP_IF_TRUE         1 (to 114)
+            112 JUMP_BACKWARD           30 (to 54)
+
+555     >>  114 LOAD_CONST               3 ('; ')
+            116 LOAD_ATTR                3 (NULL|self + join)
+            136 LOAD_CONST               4 (<code object <genexpr> at 0x0000029883d01a30, file "/mnt/d/ubuntu/codes/ZS/otsuka/ECS/experiments/recipe_prototype/codegen.py", line 555>)
+            138 MAKE_FUNCTION            0
+            140 LOAD_FAST                6 (items)
+            142 LOAD_CONST               0 (None)
+            144 LOAD_CONST               5 (8)
+            146 BINARY_SLICE
+            148 GET_ITER
+            150 CALL                     0
+            158 CALL                     1
+            166 STORE_FAST               7 (shown)
+
+556         168 LOAD_FAST                1 (problems)
+            170 LOAD_ATTR                5 (NULL|self + append)
+            190 LOAD_CONST               6 ('Page ')
+            192 LOAD_FAST                3 (p)
+            194 FORMAT_VALUE             0
+            196 LOAD_CONST               7 (': ')
+            198 LOAD_FAST                5 (label)
+            200 FORMAT_VALUE             0
+            202 LOAD_CONST               7 (': ')
+            204 LOAD_FAST                7 (shown)
+            206 FORMAT_VALUE             0
+            208 BUILD_STRING             6
+
+557         210 LOAD_GLOBAL              7 (NULL + len)
+            220 LOAD_FAST                6 (items)
+            222 CALL                     1
+            230 LOAD_CONST               5 (8)
+            232 COMPARE_OP              68 (>)
+            236 POP_JUMP_IF_FALSE       18 (to 274)
+            238 LOAD_CONST               8 (' (+')
+            240 LOAD_GLOBAL              7 (NULL + len)
+            250 LOAD_FAST                6 (items)
+            252 CALL                     1
+            260 LOAD_CONST               5 (8)
+            262 BINARY_OP               10 (-)
+            266 FORMAT_VALUE             0
+            268 LOAD_CONST               9 (' more)')
+            270 BUILD_STRING             3
+            272 JUMP_FORWARD             1 (to 276)
+        >>  274 LOAD_CONST              10 ('')
+
+556     >>  276 BINARY_OP                0 (+)
+            280 CALL                     1
+            288 POP_TOP
+            290 JUMP_BACKWARD          119 (to 54)
+
+550     >>  292 END_FOR
+            294 JUMP_BACKWARD          143 (to 10)
+
+548     >>  296 END_FOR
+
+558         298 LOAD_FAST                1 (problems)
+            300 RETURN_VALUE
+
+Disassembly of <code object <genexpr> at 0x0000029883d01a30, file "/mnt/d/ubuntu/codes/ZS/otsuka/ECS/experiments/recipe_prototype/codegen.py", line 555>:
+555           0 RETURN_GENERATOR
+              2 POP_TOP
+              4 RESUME                   0
+              6 LOAD_FAST                0 (.0)
+        >>    8 FOR_ITER                15 (to 42)
+             12 STORE_FAST               1 (x)
+             14 LOAD_GLOBAL              1 (NULL + str)
+             24 LOAD_FAST                1 (x)
+             26 CALL                     1
+             34 YIELD_VALUE              1
+             36 RESUME                   1
+             38 POP_TOP
+             40 JUMP_BACKWARD           17 (to 8)
+        >>   42 END_FOR
+             44 RETURN_CONST             0 (None)
+        >>   46 CALL_INTRINSIC_1         3 (INTRINSIC_STOPITERATION_ERROR)
+             48 RERAISE                  1
+ExceptionTable:
+  4 to 44 -> 46 [0] lasti

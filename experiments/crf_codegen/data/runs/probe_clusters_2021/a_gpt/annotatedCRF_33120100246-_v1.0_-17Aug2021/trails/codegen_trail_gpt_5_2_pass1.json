@@ -1,0 +1,727 @@
+{
+ "stop_reason": "budget",
+ "versions": 5,
+ "best_version": 1,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "confirm",
+   "outcome": "confirmed_no_fields"
+  },
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 2079,
+    "pages_total": 509,
+    "pages_with_fields": 489,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 99,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 117,
+    "fields_per_form": 17.8,
+    "forms_per_100_pages": 23.0,
+    "form_same_page_evidence_records": 2066,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 96
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 12,
+   "audit_pages": [
+    1,
+    19,
+    50,
+    71,
+    136,
+    172,
+    303,
+    442
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 19,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 50,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 71,
+     "missed": [
+      "Have you wished you were dead or wished you could go to sleep and not wake up?",
+      "If Yes, describe"
+     ],
+     "false": [
+      "Subject endorses thoughts about a wish to be dead or not alive anymore, or wish to fall asleep and not wake up.",
+      "Row 3",
+      "General non-specific thoughts of wanting to end one's life/commit suicide (e.g. \"I've thought about killing myself\") without thoughts of way to kill oneself/associated"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 136,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 172,
+     "missed": [],
+     "false": [
+      "Row 3",
+      "Propranolol PK",
+      "Prazosin PK",
+      "Row 4",
+      "Row 5"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 303,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 442,
+     "missed": [
+      "Planned Timepoint"
+     ],
+     "false": [
+      "Triplicate Orthostatic BP and HR - 2h Postdose"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    12,
+    0,
+    -489
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 2141,
+    "pages_total": 509,
+    "pages_with_fields": 489,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 98,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 117,
+    "fields_per_form": 18.3,
+    "forms_per_100_pages": 23.0,
+    "form_same_page_evidence_records": 2128,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 96
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 25,
+   "audit_pages": [
+    1,
+    19,
+    36,
+    50,
+    54,
+    71,
+    136,
+    172,
+    303,
+    442
+   ],
+   "audit_partial": null,
+   "audit_promoted": [
+    36
+   ],
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 19,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 36,
+     "missed": [
+      "HEENT",
+      "Thorax",
+      "Abdomen"
+     ],
+     "false": [
+      "Clinically Significant",
+      "Region/Body System",
+      "Abnormal Findings",
+      "Result",
+      "Not Done"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 50,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 54,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 71,
+     "missed": [
+      "Have you wished you were dead or wished you could go to sleep and not wake up?",
+      "If Yes, describe"
+     ],
+     "false": [
+      "Subject endorses thoughts about a wish to be dead or not alive anymore, or wish to fall asleep and not wake up.",
+      "C-SSRS - Screening/Baseline - Page 1",
+      "General non-specific thoughts of wanting to end one's life/commit suicide (e.g. \"I've thought about killing myself\") without thoughts of way to kill oneself/associated"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 136,
+     "missed": [
+      "Most severe ideation",
+      "When you have the thoughts, how long do they last?"
+     ],
+     "false": [
+      "(2) Non-specific active suicidal thoughts (3) Active suicidal ideation with any method (not plan) w/out intent to act (4) Active suicidal ideation w/ some intent to act w/out specific plan (5) Active suicidal ideation w/ specific plan and intent",
+      "(1) Fleeting few seconds or minutes (2) Less than 1 hour/some of the time (3) 1-4 hours/a lot of time (4) 4-8 hours/most of day (5) More than 8 hours/persistent or continuous"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 172,
+     "missed": [
+      "Brexpiprazole/Sertraline",
+      "Sertraline PK"
+     ],
+     "false": [
+      "2h Postdose"
+     ],
+     "wrong_form": [
+      "2h Postdose",
+      "Propranolol PK",
+      "Prazosin PK"
+     ]
+    },
+    {
+     "page": 303,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 442,
+     "missed": [
+      "Planned Timepoint"
+     ],
+     "false": [
+      "Triplicate Orthostatic BP and HR - 2h Postdose"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    25,
+    0,
+    -489
+   ],
+   "became_best": false
+  },
+  {
+   "version": 3,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 1762,
+    "pages_total": 509,
+    "pages_with_fields": 488,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 97,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 105,
+    "fields_per_form": 16.8,
+    "forms_per_100_pages": 20.6,
+    "form_same_page_evidence_records": 1681,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 96
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 24,
+   "audit_pages": [
+    1,
+    19,
+    36,
+    50,
+    71,
+    136,
+    172,
+    303,
+    442,
+    511
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 19,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 36,
+     "missed": [
+      "HEENT",
+      "Thorax",
+      "Abdomen"
+     ],
+     "false": [
+      "Not Done"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 50,
+     "missed": [
+      "Chemistry clinically significant abnormal assay # 5"
+     ],
+     "false": [],
+     "wrong_form": [
+      "Chemistry abnormal assay # 5 Investigator comment",
+      "Are there any additional clinically significant abnormal chemistry results to be entered?"
+     ]
+    },
+    {
+     "page": 71,
+     "missed": [
+      "1. Wish to be dead",
+      "Have you wished you were dead or wished you could go to sleep and not wake up?",
+      "If Yes, describe",
+      "2. Non-specific active suicidal thoughts"
+     ],
+     "false": [
+      "General non-specific thoughts of wanting to end one's life/commit suicide (e.g. \"I've thought about killing myself\") without thoughts of way to kill oneself/associated"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 136,
+     "missed": [
+      "Most severe ideation",
+      "When you have the thoughts, how long do they last?"
+     ],
+     "false": [
+      "(2) Non-specific active suicidal thoughts (3) Active suicidal ideation with any method (not plan) w/out intent to act (4) Active suicidal ideation w/ some intent to act w/out specific plan (5) Active suicidal ideation w/ specific plan and intent",
+      "(1) Fleeting few seconds or minutes (2) Less than 1 hour/some of the time (3) 1-4 hours/a lot of time (4) 4-8 hours/most of day (5) More than 8 hours/persistent or continuous"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 172,
+     "missed": [
+      "Brexpiprazole/Sertraline PK",
+      "Sertraline PK"
+     ],
+     "false": [],
+     "wrong_form": [
+      "Propranolol PK",
+      "Prazosin PK"
+     ]
+    },
+    {
+     "page": 303,
+     "missed": [
+      "Urinalysis clinically significant abnormal assay # 4"
+     ],
+     "false": [],
+     "wrong_form": [
+      "Urinalysis abnormal assay # 4 Investigator comment"
+     ]
+    },
+    {
+     "page": 442,
+     "missed": [
+      "Planned Timepoint"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 511,
+     "missed": [
+      "Route of Administration"
+     ],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    24,
+    0,
+    -488
+   ],
+   "became_best": false
+  },
+  {
+   "version": 4,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 1277,
+    "pages_total": 509,
+    "pages_with_fields": 466,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 96,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 96,
+    "fields_per_form": 13.3,
+    "forms_per_100_pages": 18.9,
+    "form_same_page_evidence_records": 1190,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 92
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 28,
+   "audit_pages": [
+    1,
+    19,
+    36,
+    46,
+    50,
+    71,
+    136,
+    172,
+    303,
+    442
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 19,
+     "missed": [
+      "Visit Date"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 36,
+     "missed": [
+      "Planned Timepoint",
+      "Examination Date",
+      "Examination Time",
+      "Evaluator",
+      "HEENT",
+      "Thorax",
+      "Abdomen"
+     ],
+     "false": [
+      "Region/Body System Result"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 46,
+     "missed": [
+      "Chemistry clinically significant abnormal assay # 1:"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 50,
+     "missed": [
+      "Chemistry clinically significant abnormal assay # 5"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 71,
+     "missed": [
+      "Date of completion",
+      "Rater's initials",
+      "Have you wished you were dead or wished you could go to sleep and not wake up?",
+      "If Yes, describe"
+     ],
+     "false": [
+      "Subject endorses thoughts about a wish to be dead or not alive anymore, or wish to",
+      "General non-specific thoughts of wanting to end one's life/commit suicide (e.g. \"I've thought about killing myself\") without thoughts of way to kill oneself/associated"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 136,
+     "missed": [
+      "Most severe ideation",
+      "When you have the thoughts, how long do they last?"
+     ],
+     "false": [
+      "(2) Non-specific active suicidal thoughts (3) Active suicidal ideation with any method (not plan) w/out intent to act (4) Active suicidal ideation w/ some intent to act w/out specific plan (5) Active suicidal ideation w/ specific plan and intent",
+      "(1) Fleeting few seconds or minutes (2) Less than 1 hour/some of the time (3) 1-4 hours/a lot of time (4) 4-8 hours/most of day (5) More than 8 hours/persistent or continuous"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 172,
+     "missed": [
+      "Brexpiprazole/Sertraline PK",
+      "Sertraline PK",
+      "Propranolol PK",
+      "Prazosin PK"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 303,
+     "missed": [
+      "Urinalysis clinically significant abnormal assay # 4"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 442,
+     "missed": [
+      "Collection Date",
+      "Planned Timepoint"
+     ],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    28,
+    0,
+    -466
+   ],
+   "became_best": false
+  },
+  {
+   "version": 5,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 1796,
+    "pages_total": 509,
+    "pages_with_fields": 488,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 98,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 106,
+    "fields_per_form": 16.9,
+    "forms_per_100_pages": 20.8,
+    "form_same_page_evidence_records": 1714,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 96
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 31,
+   "audit_pages": [
+    1,
+    19,
+    36,
+    50,
+    71,
+    83,
+    136,
+    172,
+    303,
+    442
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 19,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 36,
+     "missed": [
+      "Result",
+      "Abnormal Findings",
+      "Clinically Significant"
+     ],
+     "false": [
+      "Planned Timepoint",
+      "Evaluator",
+      "Region/Body System Result",
+      "Result Abnormal Findings",
+      "Not Done"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 50,
+     "missed": [
+      "Chemistry clinically significant abnormal assay # 5"
+     ],
+     "false": [],
+     "wrong_form": [
+      "Chemistry abnormal assay # 5 Investigator comment",
+      "Are there any additional clinically significant abnormal chemistry results to be entered?"
+     ]
+    },
+    {
+     "page": 71,
+     "missed": [
+      "Have you wished you were dead or wished you could go to sleep and not wake up?",
+      "If Yes, describe"
+     ],
+     "false": [
+      "Subject endorses thoughts about a wish to be dead or not alive anymore, or wish to",
+      "General non-specific thoughts of wanting to end one's life/commit suicide (e.g. \"I've thought about killing myself\") without thoughts of way to kill oneself/associated"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 83,
+     "missed": [
+      "\\1.\\ Diagnosis of MDD, as determined by the Diagnostic and Statistical Manual of Mental Disorders, Fifth Edition (DSM-5) criteria, and are considered clinically stable per investigator\u2019s judgment while currently receiving sertraline for at least 90 days and maintained on stable sertraline doses of \u2265 100 mg/day for at least 30 days at the time of screening visit 1 and stable sertraline doses of \u2265 150 mg/day for at least 5 days at the time of screening visit 2.",
+      "\\4.\\ In good health as determined by: a) Medical history b) Physical examination c) Vital signs d) Electrocardiogram (ECG) e) Serum/urine chemistry, hematology, and serology tests",
+      "\\5.\\ Ability to provide written, informed consent prior to initiation of any trial-related procedures, and ability, in the opinion of the investigator, to comply with all the requirements of the trial."
+     ],
+     "false": [
+      "Edition (DSM-5) criteria, and are considered clinically stable per investigator\u2019s judgment while currently",
+      "b) Physical examination c) Vital signs",
+      "the opinion of the investigator, to comply with all the requirements of the trial."
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 136,
+     "missed": [
+      "Most severe ideation",
+      "When you have the thoughts, how long do they last?"
+     ],
+     "false": [
+      "(2) Non-specific active suicidal thoughts (3) Active suicidal ideation with any method (not plan) w/out intent to act (4) Active suicidal ideation w/ some intent to act w/out specific plan (5) Active suicidal ideation w/ specific plan and intent",
+      "(1) Fleeting few seconds or minutes (2) Less than 1 hour/some of the time (3) 1-4 hours/a lot of time (4) 4-8 hours/most of day (5) More than 8 hours/persistent or continuous"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 172,
+     "missed": [
+      "Brexpiprazole/Sertraline",
+      "Sertraline PK"
+     ],
+     "false": [],
+     "wrong_form": [
+      "Propranolol PK",
+      "Prazosin PK"
+     ]
+    },
+    {
+     "page": 303,
+     "missed": [
+      "Urinalysis clinically significant abnormal assay # 4"
+     ],
+     "false": [],
+     "wrong_form": [
+      "Urinalysis abnormal assay # 4 Investigator comment"
+     ]
+    },
+    {
+     "page": 442,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    31,
+    0,
+    -488
+   ],
+   "became_best": false
+  }
+ ]
+}

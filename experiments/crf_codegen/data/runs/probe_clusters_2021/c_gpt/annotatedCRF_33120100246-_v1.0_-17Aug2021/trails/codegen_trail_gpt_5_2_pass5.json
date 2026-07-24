@@ -1,0 +1,505 @@
+{
+ "stop_reason": "plateau",
+ "versions": 4,
+ "best_version": 4,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "confirm",
+   "outcome": "confirmed_no_fields"
+  },
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 55,
+    "pages_total": 27,
+    "pages_with_fields": 18,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 6,
+    "fields_per_form": 9.2,
+    "forms_per_100_pages": 22.2,
+    "form_same_page_evidence_records": 55,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 67
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 16,
+   "audit_pages": [
+    44,
+    62,
+    138,
+    142,
+    326,
+    368
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 44,
+     "missed": [
+      "Collected",
+      "Scan"
+     ],
+     "false": [
+      "Urinalysis Collected",
+      "Not",
+      "[TYPE: enumeration"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 62,
+     "missed": [],
+     "false": [
+      "Current",
+      "Never",
+      "[TYPE:"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 138,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 142,
+     "missed": [
+      "Actual Lethality/Medical Damage:",
+      "Potential Lethality: Only answer if Actual Lethality=0"
+     ],
+     "false": [
+      "sprains) \\2.\\ Moderate physical damage; medical attention needed (e.g. conscious but sleepy; somewhat responsive, second-degree burns; bleeding of major vessel \\3.\\",
+      "mouth and pulled the trigger but gun fails to fire so no medical damage; laying on train tracks with oncoming train but pulled away before run over)."
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 326,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 368,
+     "missed": [
+      "Actual Lethality/Medical Damage:",
+      "Potential Lethality: Only answer if Actual Lethality=0"
+     ],
+     "false": [
+      "sprains) \\2.\\ Moderate physical damage; medical attention needed (e.g. conscious but sleepy; somewhat responsive, second-degree burns; bleeding of major vessel \\3.\\",
+      "mouth and pulled the trigger but gun fails to fire so no medical damage; laying on train tracks with oncoming train but pulled away before run over)."
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    16,
+    0,
+    -18
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 31,
+    "pages_total": 27,
+    "pages_with_fields": 10,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 3,
+    "fields_per_form": 10.3,
+    "forms_per_100_pages": 11.1,
+    "form_same_page_evidence_records": 31,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 37
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 20,
+   "audit_pages": [
+    44,
+    62,
+    108,
+    138,
+    142,
+    168,
+    326,
+    368
+   ],
+   "audit_partial": null,
+   "audit_promoted": [
+    108
+   ],
+   "audit_verdicts": [
+    {
+     "page": 44,
+     "missed": [
+      "Collected",
+      "Scan"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 62,
+     "missed": [],
+     "false": [
+      "Current",
+      "Per Day",
+      "Cartridge",
+      "Never"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 108,
+     "missed": [
+      "Collected",
+      "Scan"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 138,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 142,
+     "missed": [
+      "Actual Lethality/Medical Damage:",
+      "Potential Lethality: Only answer if Actual Lethality=0"
+     ],
+     "false": [
+      "sprains) \\2.\\ Moderate physical damage; medical attention needed (e.g. conscious but sleepy; somewhat responsive, second-degree burns; bleeding of major vessel \\3.\\",
+      "mouth and pulled the trigger but gun fails to fire so no medical damage; laying on train tracks with oncoming train but pulled away before run over)."
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 168,
+     "missed": [
+      "Actual Lethality/Medical Damage:",
+      "Potential Lethality: Only answer if Actual Lethality=0"
+     ],
+     "false": [
+      "sprains) \\2.\\ Moderate physical damage; medical attention needed (e.g. conscious but sleepy; somewhat responsive, second-degree burns; bleeding of major vessel \\3.\\",
+      "mouth and pulled the trigger but gun fails to fire so no medical damage; laying on train tracks with oncoming train but pulled away before run over)."
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 326,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 368,
+     "missed": [
+      "Actual Lethality/Medical Damage:",
+      "Potential Lethality: Only answer if Actual Lethality=0"
+     ],
+     "false": [
+      "sprains) \\2.\\ Moderate physical damage; medical attention needed (e.g. conscious but sleepy; somewhat responsive, second-degree burns; bleeding of major vessel \\3.\\",
+      "mouth and pulled the trigger but gun fails to fire so no medical damage; laying on train tracks with oncoming train but pulled away before run over)."
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": [
+    44,
+    108,
+    235,
+    290,
+    404,
+    465,
+    530,
+    564
+   ],
+   "score": [
+    0,
+    20,
+    0,
+    -10
+   ],
+   "became_best": true
+  },
+  {
+   "version": 3,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 56,
+    "pages_total": 27,
+    "pages_with_fields": 18,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 4,
+    "fields_per_form": 14.0,
+    "forms_per_100_pages": 14.8,
+    "form_same_page_evidence_records": 56,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 67
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 36,
+   "audit_pages": [
+    44,
+    62,
+    108,
+    138,
+    142,
+    235,
+    326,
+    368
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 44,
+     "missed": [],
+     "false": [
+      "Urinalysis",
+      "Applicable"
+     ],
+     "wrong_form": [
+      "Urinalysis",
+      "Applicable",
+      "Collected",
+      "Scan"
+     ]
+    },
+    {
+     "page": 62,
+     "missed": [],
+     "false": [
+      "Never",
+      "Per Week",
+      "None",
+      "Current",
+      "Per Day",
+      "Cartridge"
+     ],
+     "wrong_form": [
+      "Never",
+      "Per Week",
+      "None",
+      "Current",
+      "Per Day",
+      "Cartridge"
+     ]
+    },
+    {
+     "page": 108,
+     "missed": [],
+     "false": [
+      "Urinalysis",
+      "Applicable"
+     ],
+     "wrong_form": [
+      "Urinalysis",
+      "Applicable",
+      "Collected",
+      "Scan"
+     ]
+    },
+    {
+     "page": 138,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 142,
+     "missed": [
+      "Actual Lethality/Medical Damage:",
+      "Potential Lethality: Only answer if Actual Lethality=0"
+     ],
+     "false": [
+      "mouth and pulled the trigger but gun fails to fire so no medical damage; laying on train tracks with oncoming train but pulled away before run over)."
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 235,
+     "missed": [],
+     "false": [
+      "Urinalysis",
+      "Applicable"
+     ],
+     "wrong_form": [
+      "Urinalysis",
+      "Applicable",
+      "Collected",
+      "Scan"
+     ]
+    },
+    {
+     "page": 326,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 368,
+     "missed": [
+      "Actual Lethality/Medical Damage:",
+      "Potential Lethality: Only answer if Actual Lethality=0"
+     ],
+     "false": [
+      "mouth and pulled the trigger but gun fails to fire so no medical damage; laying on train tracks with oncoming train but pulled away before run over)."
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    36,
+    0,
+    -18
+   ],
+   "became_best": false
+  },
+  {
+   "version": 4,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 36,
+    "pages_total": 27,
+    "pages_with_fields": 9,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 2,
+    "fields_per_form": 18.0,
+    "forms_per_100_pages": 7.4,
+    "form_same_page_evidence_records": 36,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 33
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 6,
+   "audit_pages": [
+    44,
+    62,
+    108,
+    138,
+    142,
+    164,
+    326,
+    368
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 44,
+     "missed": [
+      "Collected",
+      "Scan"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 62,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 108,
+     "missed": [
+      "Collected",
+      "Scan"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 138,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 142,
+     "missed": [],
+     "false": [
+      "tracks with oncoming train but pulled away before run over)."
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 164,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 326,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 368,
+     "missed": [],
+     "false": [
+      "tracks with oncoming train but pulled away before run over)."
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    6,
+    0,
+    -9
+   ],
+   "became_best": true
+  }
+ ]
+}

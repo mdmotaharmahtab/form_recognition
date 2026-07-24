@@ -1,0 +1,115 @@
+{
+  "doc_key": "384-201-00002_Annotated_Unique_CRF_04Nov2024",
+  "annotator_notes": "Rave Unique CRF format. 'Form: X' header on every page. On form pages, each field label is followed by its ordinal number; unnumbered interleaved lines are option values or unit notes. 'Annotations' pages (Field Name / Data Type / Values / Field OID table) list OID codes, not data-entry prompts -> zero true fields; code rows recorded in code_rows for lenient classification.",
+  "pages": [
+    {
+      "page": 16,
+      "form_name": "Demographics",
+      "form_source": "printed",
+      "fields": [
+        "Asian",
+        "Black or African American",
+        "Native Hawaiian or Other Pacific Islander",
+        "White",
+        "Not Reported",
+        "Unknown",
+        "Other Race",
+        "Specify Other Race",
+        "Was participant previously screened?",
+        "Previous Participant Number"
+      ],
+      "notes": "Race checkbox rows are individual fields (ordinals 10-16); confirmed by production truth RACE1-RACE8."
+    },
+    {
+      "page": 45,
+      "form_name": "Vital Signs Log - Standing",
+      "form_source": "printed",
+      "fields": [
+        "Were vital signs performed?",
+        "If No, please provide reason",
+        "Time Point",
+        "Date",
+        "Time participant placed in position",
+        "Position",
+        "Time",
+        "Systolic Blood Pressure (xxx)",
+        "Diastolic Blood Pressure (xxx)"
+      ]
+    },
+    {
+      "page": 49,
+      "form_name": "Physical Examination",
+      "form_source": "printed",
+      "fields": [
+        "Was the physical examination performed?",
+        "If No, provide reason not done",
+        "Exam Date",
+        "Exam Time",
+        "Date/Time of Physical Exam (auto-populated)",
+        "Body System Examined",
+        "Examination Result",
+        "Description of abnormal findings",
+        "Clinically Significant"
+      ]
+    },
+    {
+      "page": 66,
+      "form_name": "Sleep EEG",
+      "form_source": "printed",
+      "fields": [],
+      "code_rows": ["NVPERF", "NVREASND", "NVDEVID", "NVSTDAT", "NVSTTIM", "NVENDAT", "NVENTIM"],
+      "notes": "Annotations dictionary page."
+    },
+    {
+      "page": 166,
+      "form_name": "Barnes Akathisia Rating Scale (BARS)",
+      "form_source": "printed",
+      "fields": [],
+      "code_rows": ["BARS0102_RSORRES"],
+      "notes": "Annotations dictionary page, mid-table continuation."
+    },
+    {
+      "page": 208,
+      "form_name": "Positive and Negative Syndrome Scale (PANSS)",
+      "form_source": "printed",
+      "fields": [],
+      "code_rows": ["PANSS115_RSORRES", "PANSS116_RSORRES"],
+      "notes": "Annotations dictionary page."
+    },
+    {
+      "page": 259,
+      "form_name": "The Clinician Administered Dissociative States Scale (CADSS)",
+      "form_source": "printed",
+      "fields": [],
+      "code_rows": [],
+      "notes": "Annotations page fragment: only option-value continuation text, no field or code row starts on this page."
+    },
+    {
+      "page": 292,
+      "form_name": "20-Item Physician Withdrawal Checklist (PWC-20)",
+      "form_source": "printed",
+      "fields": [],
+      "code_rows": ["PWC0108_RSORRES", "PWC0109_RSORRES", "PWC0110_RSORRES", "PWC0111_RSORRES", "PWC0112_RSORRES"],
+      "notes": "Annotations dictionary page."
+    },
+    {
+      "page": 341,
+      "form_name": "Columbia-Suicide Severity Rating Scale (C-SSRS) Since Last Visit",
+      "form_source": "printed",
+      "fields": [
+        "Controllability",
+        "Deterrents",
+        "Reasons for Ideation"
+      ],
+      "notes": "Rating scale page: three numbered items (20-22), each followed by 0-5 option enumeration."
+    },
+    {
+      "page": 369,
+      "form_name": "Adverse Events Summary",
+      "form_source": "printed",
+      "fields": [],
+      "code_rows": ["AEYN"],
+      "notes": "Annotations dictionary page."
+    }
+  ]
+}

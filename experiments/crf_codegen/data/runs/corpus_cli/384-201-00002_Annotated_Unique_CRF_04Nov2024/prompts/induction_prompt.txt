@@ -1,0 +1,533 @@
+You are configuring a deterministic PDF extraction engine for a clinical Case Report Form (CRF) document. You will see a small sample of REPRESENTATIVE PAGES (one or two per page-layout cluster) from a document that is 404 pages long. The whole document is repetitive: what you see is representative of everything.
+
+Each page is given as structured text lines with geometry:
+    x=<left> y=<top> sz=<font-size> <color> <B if bold> | <text>
+
+# Your task
+
+Produce a JSON "recipe" that tells the engine how to extract, for EVERY field on EVERY page of the document:
+  - form_name   : the name of the CRF form/section the field belongs to
+  - field_name  : the human-readable field label/question
+  - field_oid   : the machine identifier (OID / SAS name / export name / variable
+                  code) if the document prints one; null if the document is not
+                  annotated with machine codes
+
+# Engines you can parameterise (pick exactly one)
+
+1. "adjacent_annotation" - machine codes are printed on their own annotation lines
+   (often bracketed, often colored) directly next to/under the field label, in the
+   same column. Params: column_x_max, oid_regex (capture group 1 = code),
+   alt_regex/alt_is_primary (a second code on nearby lines), oid_color_non_black,
+   annotation_group_dy, label_max_dy, label_noise (regexes for lines that are
+   never labels).
+2. "anchored_blocks" - each field starts at a repeated anchor row (e.g. a bold
+   'Prefix: Activity #1' line with a number in a far-right column); everything
+   until the next anchor belongs to that field. Params: activity_regex (group 1 =
+   form, group 2 = field), activity_x [min,max], line_number_x_min, oid_regex.
+3. "numbered_join" - two page types per form: content pages print each label with
+   a small integer, definition pages map the same integers to codes in a column
+   under a header. Params: definition_page_all (regexes that all appear on
+   definition pages), oid_header (text of the column header the codes sit under),
+   row_number_x_max, data_number_regex, data_number_x_min, data_label_x_max,
+   label_noise. form_name.strategy must be "regex" for this engine.
+4. "column_table" - definition tables with an explicit header row; label and code
+   are cells of configurable columns. Params: definition_page_regex, row_key_regex,
+   name_header, oid_header, type_header.
+5. "line_pattern" - fallback: a code regex over lines, label = nearest previous
+   line matching label_regex within label_window_lines. Params: code_regex,
+   code_search (true = search inside line), label_regex, label_window_lines,
+   label_noise.
+
+# form_name strategies
+
+- {"strategy":"regex","regex":"^Form:\\s*(.+)$"} - a header line matches a regex (group 1 = name)
+- {"strategy":"colored_font","min_size":14,"carry_forward":true,"noise":[...]} - the form title is the big colored heading; carry_forward repeats the last seen title on continuation pages
+- {"strategy":"font","min_size":14,"carry_forward":true,"noise":[...]} - same but title is not colored
+- for engine anchored_blocks the form name comes from activity_regex group 1 automatically
+
+# Output format (JSON only, no prose)
+
+{
+  "format_id": "<short slug you invent>",
+  "reasoning": "<2-4 sentences: what layout you saw and why you chose the engine>",
+  "detect": {"all": ["<2-3 regexes that identify this layout>"]},
+  "skip_page_if": ["<optional regexes: pages to skip entirely (title/TOC/approval)>"],
+  "form_name": {...},
+  "fields": {"engine": "<one of the 5>", ...params...}
+}
+
+# Rules
+
+- Regexes are Python re syntax inside JSON strings (escape backslashes).
+- Codes are machine identifiers like AESTDAT / QVAL_GENDOTH - short, uppercase,
+  underscores/digits allowed. Human text, dates and option values are NOT codes.
+- Prefer the most specific engine that fits; use line_pattern only if nothing fits.
+- If the document prints NO machine codes at all, still extract form_name +
+  field_name (choose the engine that best yields labels; oid_regex may then match
+  nothing) and say so in "reasoning".
+- Numbers like x/y/size in the dumps are points; use them to set column bounds.
+
+# Representative pages
+
+--- page 1 of 404 (layout cluster covers ~1 pages) ---
+x= 239.6 y=  90.0 sz=10.0 black     | Subject Case Report Forms
+x= 242.0 y= 108.0 sz=10.0 black     | 01.025 GMK - Unique CRF
+x=  95.3 y= 126.0 sz=10.0 black     | Signature Prompt: By entering my password, I attest that the data entries in this case
+x=  96.2 y= 138.0 sz=10.0 black     | book are complete, accurate, and compatible with source documents. All entries were
+x=  90.1 y= 150.0 sz=10.0 black     | made either by me or a person under my supervision who had signed the Site Signature
+x=  90.9 y= 162.0 sz=10.0 black     | Log. Pursuant to Section 11.100 of Title 21 of the Code of Federal Regulations, this is to
+x=  94.7 y= 174.0 sz=10.0 black     | certify that I intend that this electronic signature is to be the legally binding equivalent
+x= 121.2 y= 186.0 sz=10.0 black     | of my handwritten signature. To this I do attest by supplying my password.
+
+--- page 2 of 404 (layout cluster covers ~1 pages) ---
+x=  90.0 y=  90.0 sz=10.0 black   B | 01.025 GMK: Unique CRF
+x=  90.0 y= 104.0 sz=10.0 black   B | Form: Visit Date
+x=  90.0 y= 118.0 sz=10.0 black   B | Generated On: 04 Nov 2024 15:26:21 (GMT)
+x=  90.0 y= 155.0 sz=10.0 black     | Was visit performed?
+x= 489.0 y= 155.0 sz=10.0 black     | Yes
+x= 527.0 y= 157.0 sz=10.0 black     | 1
+x= 492.7 y= 171.0 sz=10.0 black     | No
+x=  95.0 y= 210.0 sz=10.0 black     | If No, please provide reason
+x= 527.0 y= 212.0 sz=10.0 black     | 2
+x=  90.0 y= 245.0 sz=10.0 black     | Visit Date
+x= 527.0 y= 247.0 sz=10.0 black     | 3
+x=  90.0 y= 280.0 sz=10.0 black     | Folder OID (auto-populated)
+x= 527.0 y= 282.0 sz=10.0 black     | 4
+x=  90.0 y= 692.0 sz=10.0 black     | 01.025 GMK (432)
+x= 481.1 y= 693.2 sz=10.0 black     | 1 of 403
+
+--- page 116 of 404 (layout cluster covers ~167 pages) ---
+x=  90.0 y=  90.0 sz=10.0 black   B | 01.025 GMK: Unique CRF
+x=  90.0 y= 104.0 sz=10.0 black   B | Form: Central Laboratory
+x=  90.0 y= 118.0 sz=10.0 black   B | Generated On: 04 Nov 2024 15:26:21 (GMT)
+x= 110.0 y= 155.0 sz=10.0 black     | Field Name Data Type
+x= 230.0 y= 155.0 sz=10.0 black     | Units
+x= 290.0 y= 155.0 sz=10.0 black     | Values
+x= 350.0 y= 155.0 sz=10.0 black     | Pre-Filled
+x= 410.0 y= 155.0 sz=10.0 black     | Include
+x= 350.0 y= 167.0 sz=10.0 black     | Values
+x= 410.0 y= 167.0 sz=10.0 black     | Field OID
+x= 110.0 y= 202.0 sz=10.0 black     | LBCAT
+x= 170.0 y= 202.0 sz=10.0 black     | $25
+x= 290.0 y= 202.0 sz=10.0 black     | CHEMISTRY
+x= 350.0 y= 202.0 sz=10.0 black     | 1: Serum
+x= 410.0 y= 202.0 sz=10.0 black     | LBCAT
+x=  95.5 y= 205.0 sz=10.0 black     | 1
+x= 290.0 y= 214.0 sz=10.0 black     | = Serum
+x= 350.0 y= 214.0 sz=10.0 black     | Chemistry
+x= 290.0 y= 226.0 sz=10.0 black     | Chemistry
+x= 350.0 y= 226.0 sz=10.0 black     | 2:
+x= 290.0 y= 238.0 sz=10.0 black     | HEMATOLO
+x= 350.0 y= 238.0 sz=10.0 black     | Hematology
+x= 290.0 y= 250.0 sz=10.0 black     | GY =
+x= 350.0 y= 250.0 sz=10.0 black     | 3:
+x= 290.0 y= 262.0 sz=10.0 black     | Hematology
+x= 350.0 y= 262.0 sz=10.0 black     | Urinalysis
+x= 290.0 y= 274.0 sz=10.0 black     | URINALYSI
+x= 350.0 y= 274.0 sz=10.0 black     | 4:
+x= 290.0 y= 286.0 sz=10.0 black     | S =
+x= 350.0 y= 286.0 sz=10.0 black     | Coagulation
+x= 290.0 y= 298.0 sz=10.0 black     | Urinalysis
+x= 290.0 y= 310.0 sz=10.0 black     | COAGULATI
+x= 290.0 y= 322.0 sz=10.0 black     | ON =
+x= 290.0 y= 334.0 sz=10.0 black     | Coagulation
+x= 290.0 y= 346.0 sz=10.0 black     | LIPID
+x= 290.0 y= 358.0 sz=10.0 black     | PANEL =
+x= 290.0 y= 370.0 sz=10.0 black     | Lipid Panel
+x= 290.0 y= 382.0 sz=10.0 black     | THYROID
+x= 290.0 y= 394.0 sz=10.0 black     | PANEL =
+x= 290.0 y= 406.0 sz=10.0 black     | Thyroid
+x= 290.0 y= 418.0 sz=10.0 black     | Panel
+x= 290.0 y= 430.0 sz=10.0 black     | SERUM
+x= 290.0 y= 442.0 sz=10.0 black     | PROLACTIN
+x= 290.0 y= 454.0 sz=10.0 black     | = Serum
+x= 290.0 y= 466.0 sz=10.0 black     | Prolactin
+x= 290.0 y= 478.0 sz=10.0 black     | HBA1C =
+x= 290.0 y= 490.0 sz=10.0 black     | Hemoglobin
+x= 290.0 y= 502.0 sz=10.0 black     | A1c
+x= 290.0 y= 514.0 sz=10.0 black     | FSH = FSH
+x= 110.0 y= 549.0 sz=10.0 black     | LBPERF
+x= 170.0 y= 549.0 sz=10.0 black     | $1
+x= 290.0 y= 549.0 sz=10.0 black     | Y = Yes
+x= 410.0 y= 549.0 sz=10.0 black     | LBPERF
+x=  95.5 y= 552.0 sz=10.0 black     | 2
+x= 290.0 y= 561.0 sz=10.0 black     | N = No
+x= 110.0 y= 596.0 sz=10.0 black     | LBREASND $200
+x= 410.0 y= 596.0 sz=10.0 black     | LBREASND
+x=  95.5 y= 599.0 sz=10.0 black     | 3
+x= 110.0 y= 631.0 sz=10.0 black     | LBDAT
+x= 170.0 y= 631.0 sz=10.0 black     | dd MMM
+x= 410.0 y= 631.0 sz=10.0 black     | LBDAT
+x=  95.5 y= 634.0 sz=10.0 black     | 4
+x= 170.0 y= 643.0 sz=10.0 black     | yyyy
+x=  90.0 y= 692.0 sz=10.0 black     | 01.025 GMK (432)
+x= 468.7 y= 693.2 sz=10.0 black     | 115 of 403
+
+--- page 133 of 404 (layout cluster covers ~31 pages) ---
+x=  90.0 y=  90.0 sz=10.0 black   B | 01.025 GMK: Unique CRF
+x=  90.0 y= 104.0 sz=10.0 black   B | Form: PK Plasma Samples: 24 Hours
+x=  90.0 y= 118.0 sz=10.0 black   B | Generated On: 04 Nov 2024 15:26:21 (GMT)
+x=  90.0 y= 155.0 sz=10.0 black     | Time Point
+x= 527.0 y= 157.0 sz=10.0 black     | 1
+x=  90.0 y= 190.0 sz=10.0 black     | Was Sample Collected?
+x= 489.0 y= 190.0 sz=10.0 black     | Yes
+x= 527.0 y= 192.0 sz=10.0 black     | 2
+x= 492.7 y= 206.0 sz=10.0 black     | No
+x=  90.0 y= 245.0 sz=10.0 black     | If No, provide reason not done
+x= 527.0 y= 247.0 sz=10.0 black     | 3
+x=  90.0 y= 280.0 sz=10.0 black     | Collection Date
+x= 527.0 y= 282.0 sz=10.0 black     | 4
+x=  90.0 y= 315.0 sz=10.0 black     | Collection Time
+x= 423.7 y= 315.0 sz=10.0 black     | Fixed Unit: (24 HR)
+x= 527.0 y= 317.0 sz=10.0 black     | 5
+x=  90.0 y= 368.0 sz=10.0 black     | Accession Number
+x= 527.0 y= 370.0 sz=10.0 black     | 6
+x=  90.0 y= 403.0 sz=10.0 black     | Specimen Type
+x= 474.0 y= 403.0 sz=10.0 black     | Serum
+x= 527.0 y= 405.0 sz=10.0 black     | 7
+x=  90.0 y= 442.0 sz=10.0 black     | Collection Date/Time (auto-populated)
+x= 527.0 y= 444.0 sz=10.0 black     | 8
+x=  90.0 y= 692.0 sz=10.0 black     | 01.025 GMK (432)
+x= 468.7 y= 693.2 sz=10.0 black     | 132 of 403
+
+--- page 144 of 404 (layout cluster covers ~33 pages) ---
+x=  90.0 y=  90.0 sz=10.0 black   B | 01.025 GMK: Unique CRF
+x=  90.0 y= 104.0 sz=10.0 black   B | Form: Fluid Biomarkers
+x=  90.0 y= 118.0 sz=10.0 black   B | Generated On: 04 Nov 2024 15:26:21 (GMT)
+x= 110.0 y= 155.0 sz=10.0 black     | Field Name Data Type
+x= 230.0 y= 155.0 sz=10.0 black     | Units
+x= 290.0 y= 155.0 sz=10.0 black     | Values
+x= 350.0 y= 155.0 sz=10.0 black     | Pre-Filled
+x= 410.0 y= 155.0 sz=10.0 black     | Include
+x= 350.0 y= 167.0 sz=10.0 black     | Values
+x= 410.0 y= 167.0 sz=10.0 black     | Field OID
+x= 110.0 y= 202.0 sz=10.0 black     | MIPERF
+x= 170.0 y= 202.0 sz=10.0 black     | $1
+x= 290.0 y= 202.0 sz=10.0 black     | Y = Yes
+x= 410.0 y= 202.0 sz=10.0 black     | MIPERF
+x=  95.5 y= 205.0 sz=10.0 black     | 1
+x= 290.0 y= 214.0 sz=10.0 black     | N = No
+x= 110.0 y= 249.0 sz=10.0 black     | MIREASND $200
+x= 410.0 y= 249.0 sz=10.0 black     | MIREASND
+x=  95.5 y= 252.0 sz=10.0 black     | 2
+x= 110.0 y= 284.0 sz=10.0 black     | MIDAT
+x= 170.0 y= 284.0 sz=10.0 black     | dd MMM
+x= 410.0 y= 284.0 sz=10.0 black     | MIDAT
+x=  95.5 y= 287.0 sz=10.0 black     | 3
+x= 170.0 y= 296.0 sz=10.0 black     | yyyy
+x= 110.0 y= 331.0 sz=10.0 black     | MITIM
+x= 170.0 y= 331.0 sz=10.0 black     | HH:nn
+x= 410.0 y= 331.0 sz=10.0 black     | MITIM
+x=  95.5 y= 334.0 sz=10.0 black     | 4
+x= 110.0 y= 366.0 sz=10.0 black     | MIREFID
+x= 170.0 y= 366.0 sz=10.0 black     | $20
+x= 410.0 y= 366.0 sz=10.0 black     | MIREFID
+x=  95.5 y= 369.0 sz=10.0 black     | 5
+x= 110.0 y= 401.0 sz=10.0 black     | MIDTTM
+x= 170.0 y= 401.0 sz=10.0 black     | dd MMM
+x= 410.0 y= 401.0 sz=10.0 black     | MIDTTM
+x=  95.5 y= 404.0 sz=10.0 black     | 6
+x= 170.0 y= 413.0 sz=10.0 black     | yyyy HH:nn
+x=  90.0 y= 692.0 sz=10.0 black     | 01.025 GMK (432)
+x= 468.7 y= 693.2 sz=10.0 black     | 143 of 403
+
+--- page 175 of 404 (layout cluster covers ~45 pages) ---
+x=  90.0 y=  90.0 sz=10.0 black   B | 01.025 GMK: Unique CRF
+x=  90.0 y= 104.0 sz=10.0 black   B | Form: Abnormal Involuntary Movement Scale (AIMS)
+x=  90.0 y= 118.0 sz=10.0 black   B | Generated On: 04 Nov 2024 15:26:21 (GMT)
+x= 458.3 y= 155.0 sz=10.0 black     | 4=Severe
+x=  90.0 y= 194.0 sz=10.0 black     | Global Judgments
+x= 425.4 y= 194.0 sz=10.0 black     | 0=None, normal
+x= 524.5 y= 196.0 sz=10.0 black     | 14
+x=  90.0 y= 206.0 sz=10.0 black     | 8. Severity of abnormal movements
+x= 454.3 y= 210.0 sz=10.0 black     | 1=Minimal
+x= 472.3 y= 226.0 sz=10.0 black     | 2=Mild
+x= 446.2 y= 242.0 sz=10.0 black     | 3=Moderate
+x= 458.3 y= 258.0 sz=10.0 black     | 4=Severe
+x=  90.0 y= 297.0 sz=10.0 black     | 9. Incapacitation due to abnormal movements
+x= 425.4 y= 297.0 sz=10.0 black     | 0=None, normal
+x= 524.5 y= 299.0 sz=10.0 black     | 15
+x= 454.3 y= 313.0 sz=10.0 black     | 1=Minimal
+x= 472.3 y= 329.0 sz=10.0 black     | 2=Mild
+x= 446.2 y= 345.0 sz=10.0 black     | 3=Moderate
+x= 458.3 y= 361.0 sz=10.0 black     | 4=Severe
+x=  90.0 y= 400.0 sz=10.0 black     | 10. Patient's awareness of abnormal movements
+x= 423.3 y= 400.0 sz=10.0 black     | 0=No awareness
+x= 524.5 y= 402.0 sz=10.0 black     | 16
+x= 401.4 y= 416.0 sz=10.0 black     | 1=Aware, no distress
+x= 392.7 y= 432.0 sz=10.0 black     | 2=Aware, mild distress
+x= 407.2 y= 448.0 sz=10.0 black     | 3=Aware, moderate
+x= 468.8 y= 460.0 sz=10.0 black     | distress
+x= 381.4 y= 472.0 sz=10.0 black     | 4=Aware, severe distress
+x=  90.0 y= 511.0 sz=10.0 black     | Dental Status
+x= 478.4 y= 511.0 sz=10.0 black     | 0=No
+x= 524.5 y= 513.0 sz=10.0 black     | 17
+x=  90.0 y= 523.0 sz=10.0 black     | 11. Current problems with teeth and/or dentures?
+x= 474.7 y= 527.0 sz=10.0 black     | 1=Yes
+x=  90.0 y= 566.0 sz=10.0 black     | 12. Does patient usually wear dentures?
+x= 478.4 y= 566.0 sz=10.0 black     | 0=No
+x= 524.5 y= 568.0 sz=10.0 black     | 18
+x= 474.7 y= 582.0 sz=10.0 black     | 1=Yes
+x=  90.0 y= 621.0 sz=10.0 black     | Total Score
+x= 524.5 y= 623.0 sz=10.0 black     | 19
+x=  90.0 y= 692.0 sz=10.0 black     | 01.025 GMK (432)
+x= 468.7 y= 693.2 sz=10.0 black     | 174 of 403
+
+--- page 211 of 404 (layout cluster covers ~167 pages) ---
+x=  90.0 y=  90.0 sz=10.0 black   B | 01.025 GMK: Unique CRF
+x=  90.0 y= 104.0 sz=10.0 black   B | Form: Positive and Negative Syndrome Scale (PANSS)
+x=  90.0 y= 118.0 sz=10.0 black   B | Generated On: 04 Nov 2024 15:26:21 (GMT)
+x= 110.0 y= 155.0 sz=10.0 black     | Field Name Data Type
+x= 230.0 y= 155.0 sz=10.0 black     | Units
+x= 290.0 y= 155.0 sz=10.0 black     | Values
+x= 350.0 y= 155.0 sz=10.0 black     | Pre-Filled
+x= 410.0 y= 155.0 sz=10.0 black     | Include
+x= 350.0 y= 167.0 sz=10.0 black     | Values
+x= 410.0 y= 167.0 sz=10.0 black     | Field OID
+x=  93.0 y= 202.0 sz=10.0 black     | 28 PANSS122_
+x= 170.0 y= 202.0 sz=10.0 black     | 1
+x= 290.0 y= 202.0 sz=10.0 black     | 1 =
+x= 410.0 y= 202.0 sz=10.0 black     | PANSS122_
+x= 110.0 y= 214.0 sz=10.0 black     | RSORRES
+x= 290.0 y= 214.0 sz=10.0 black     | 1=Absent
+x= 410.0 y= 214.0 sz=10.0 black     | RSORRES
+x= 290.0 y= 226.0 sz=10.0 black     | 2 =
+x= 290.0 y= 238.0 sz=10.0 black     | 2=Minimal
+x= 290.0 y= 250.0 sz=10.0 black     | 3 = 3=Mild
+x= 290.0 y= 262.0 sz=10.0 black     | 4 =
+x= 290.0 y= 274.0 sz=10.0 black     | 4=Moderate
+x= 290.0 y= 286.0 sz=10.0 black     | 5 =
+x= 290.0 y= 298.0 sz=10.0 black     | 5=Moderate
+x= 290.0 y= 310.0 sz=10.0 black     | /Severe
+x= 290.0 y= 322.0 sz=10.0 black     | 6 =
+x= 290.0 y= 334.0 sz=10.0 black     | 6=Severe
+x= 290.0 y= 346.0 sz=10.0 black     | 7 =
+x= 290.0 y= 358.0 sz=10.0 black     | 7=Extreme
+x=  93.0 y= 393.0 sz=10.0 black     | 29 PANSS123_
+x= 170.0 y= 393.0 sz=10.0 black     | 1
+x= 290.0 y= 393.0 sz=10.0 black     | 1 =
+x= 410.0 y= 393.0 sz=10.0 black     | PANSS123_
+x= 110.0 y= 405.0 sz=10.0 black     | RSORRES
+x= 290.0 y= 405.0 sz=10.0 black     | 1=Absent
+x= 410.0 y= 405.0 sz=10.0 black     | RSORRES
+x= 290.0 y= 417.0 sz=10.0 black     | 2 =
+x= 290.0 y= 429.0 sz=10.0 black     | 2=Minimal
+x= 290.0 y= 441.0 sz=10.0 black     | 3 = 3=Mild
+x= 290.0 y= 453.0 sz=10.0 black     | 4 =
+x= 290.0 y= 465.0 sz=10.0 black     | 4=Moderate
+x= 290.0 y= 477.0 sz=10.0 black     | 5 =
+x= 290.0 y= 489.0 sz=10.0 black     | 5=Moderate
+x= 290.0 y= 501.0 sz=10.0 black     | /Severe
+x= 290.0 y= 513.0 sz=10.0 black     | 6 =
+x= 290.0 y= 525.0 sz=10.0 black     | 6=Severe
+x= 290.0 y= 537.0 sz=10.0 black     | 7 =
+x= 290.0 y= 549.0 sz=10.0 black     | 7=Extreme
+x=  93.0 y= 584.0 sz=10.0 black     | 30 PANSS124_
+x= 170.0 y= 584.0 sz=10.0 black     | 1
+x= 290.0 y= 584.0 sz=10.0 black     | 1 =
+x= 410.0 y= 584.0 sz=10.0 black     | PANSS124_
+x= 110.0 y= 596.0 sz=10.0 black     | RSORRES
+x= 290.0 y= 596.0 sz=10.0 black     | 1=Absent
+x= 410.0 y= 596.0 sz=10.0 black     | RSORRES
+x= 290.0 y= 608.0 sz=10.0 black     | 2 =
+x= 290.0 y= 620.0 sz=10.0 black     | 2=Minimal
+x= 290.0 y= 632.0 sz=10.0 black     | 3 = 3=Mild
+x= 290.0 y= 644.0 sz=10.0 black     | 4 =
+x= 290.0 y= 656.0 sz=10.0 black     | 4=Moderate
+x=  90.0 y= 692.0 sz=10.0 black     | 01.025 GMK (432)
+x= 468.7 y= 693.2 sz=10.0 black     | 210 of 403
+
+--- page 231 of 404 (layout cluster covers ~26 pages) ---
+x=  90.0 y=  90.0 sz=10.0 black   B | 01.025 GMK: Unique CRF
+x=  90.0 y= 104.0 sz=10.0 black   B | Form: The Clinician Administered Dissociative States Scale (CADSS)
+x=  90.0 y= 118.0 sz=10.0 black   B | Generated On: 04 Nov 2024 15:26:21 (GMT)
+x=  90.0 y= 155.0 sz=10.0 black     | 17. Do things seem very real, as if there is a special
+x= 443.9 y= 155.0 sz=10.0 black     | 0=Not at all.
+x= 524.5 y= 157.0 sz=10.0 black     | 22
+x=  90.0 y= 167.0 sz=10.0 black     | sense of clarity?
+x= 377.9 y= 171.0 sz=10.0 black     | 1=Mild, things seem to be
+x= 384.4 y= 183.0 sz=10.0 black     | a little bit more real than
+x= 468.4 y= 195.0 sz=10.0 black     | normal.
+x= 380.1 y= 207.0 sz=10.0 black     | 2=Moderate, things seem
+x= 405.3 y= 219.0 sz=10.0 black     | to be more real than
+x= 468.4 y= 231.0 sz=10.0 black     | normal.
+x= 379.1 y= 243.0 sz=10.0 black     | 3=Severe, things seem to
+x= 398.5 y= 255.0 sz=10.0 black     | be very real or have a
+x= 393.1 y= 267.0 sz=10.0 black     | special sense of clarity.
+x= 371.8 y= 279.0 sz=10.0 black     | 4=Extreme, things seem to
+x= 373.4 y= 291.0 sz=10.0 black     | have an incredible sense of
+x= 416.0 y= 303.0 sz=10.0 black     | realness or clarity.
+x=  90.0 y= 338.0 sz=10.0 black     | 18. Does it seem as if you are looking at the world
+x= 443.9 y= 338.0 sz=10.0 black     | 0=Not at all.
+x= 524.5 y= 340.0 sz=10.0 black     | 23
+x=  90.0 y= 350.0 sz=10.0 black     | through a fog, so that people and objects appear far
+x= 406.2 y= 354.0 sz=10.0 black     | 1=Mild, things seem
+x=  90.0 y= 362.0 sz=10.0 black     | away or unclear?
+x= 403.8 y= 366.0 sz=10.0 black     | somewhat foggy and
+x= 384.7 y= 378.0 sz=10.0 black     | unclear, or I do have the
+x= 382.0 y= 390.0 sz=10.0 black     | feeling that things are far
+x= 389.1 y= 402.0 sz=10.0 black     | away, but there is not a
+x= 400.0 y= 414.0 sz=10.0 black     | major effect on how I
+x= 372.2 y= 426.0 sz=10.0 black     | perceive things around me.
+x= 380.1 y= 438.0 sz=10.0 black     | 2=Moderate, things seem
+x= 376.9 y= 450.0 sz=10.0 black     | very foggy and unclear, or
+x= 383.2 y= 462.0 sz=10.0 black     | things seem like they are
+x= 373.7 y= 474.0 sz=10.0 black     | far away, but I can identify
+x= 372.6 y= 486.0 sz=10.0 black     | the interviewer and objects
+x= 415.1 y= 498.0 sz=10.0 black     | in the room easily.
+x= 373.7 y= 510.0 sz=10.0 black     | 3=Severe, I can barely see
+x= 376.4 y= 522.0 sz=10.0 black     | things around me, such as
+x= 391.7 y= 534.0 sz=10.0 black     | the interviewer and the
+x= 407.4 y= 546.0 sz=10.0 black     | objects in the room.
+x= 373.7 y= 558.0 sz=10.0 black     | 4=Extreme, I cannot make
+x= 384.4 y= 570.0 sz=10.0 black     | anything out around me.
+x=  90.0 y= 605.0 sz=10.0 black     | 19. Do colors seem much brighter than you would have
+x= 443.9 y= 605.0 sz=10.0 black     | 0=Not at all.
+x= 524.5 y= 607.0 sz=10.0 black     | 24
+x=  90.0 y= 617.0 sz=10.0 black     | expected?
+x=  90.0 y= 692.0 sz=10.0 black     | 01.025 GMK (432)
+x= 468.7 y= 693.2 sz=10.0 black     | 230 of 403
+
+--- page 252 of 404 (layout cluster covers ~10 pages) ---
+x=  90.0 y=  90.0 sz=10.0 black   B | 01.025 GMK: Unique CRF
+x=  90.0 y= 104.0 sz=10.0 black   B | Form: The Clinician Administered Dissociative States Scale (CADSS)
+x=  90.0 y= 118.0 sz=10.0 black   B | Generated On: 04 Nov 2024 15:26:21 (GMT)
+x= 110.0 y= 155.0 sz=10.0 black     | Field Name Data Type
+x= 230.0 y= 155.0 sz=10.0 black     | Units
+x= 290.0 y= 155.0 sz=10.0 black     | Values
+x= 350.0 y= 155.0 sz=10.0 black     | Pre-Filled
+x= 410.0 y= 155.0 sz=10.0 black     | Include
+x= 350.0 y= 167.0 sz=10.0 black     | Values
+x= 410.0 y= 167.0 sz=10.0 black     | Field OID
+x= 290.0 y= 202.0 sz=10.0 black     | 4 =
+x= 290.0 y= 214.0 sz=10.0 black     | 4=Extreme,
+x= 290.0 y= 226.0 sz=10.0 black     | as if I’m
+x= 290.0 y= 238.0 sz=10.0 black     | looking
+x= 290.0 y= 250.0 sz=10.0 black     | through a
+x= 290.0 y= 262.0 sz=10.0 black     | pair of
+x= 290.0 y= 274.0 sz=10.0 black     | binoculars
+x= 290.0 y= 286.0 sz=10.0 black     | backwards,
+x= 290.0 y= 298.0 sz=10.0 black     | where
+x= 290.0 y= 310.0 sz=10.0 black     | everything
+x= 290.0 y= 322.0 sz=10.0 black     | around the
+x= 290.0 y= 334.0 sz=10.0 black     | periphery is
+x= 290.0 y= 346.0 sz=10.0 black     | blacked out,
+x= 290.0 y= 358.0 sz=10.0 black     | and I can
+x= 290.0 y= 370.0 sz=10.0 black     | see a little
+x= 290.0 y= 382.0 sz=10.0 black     | point of
+x= 290.0 y= 394.0 sz=10.0 black     | light at the
+x= 290.0 y= 406.0 sz=10.0 black     | end of a
+x= 290.0 y= 418.0 sz=10.0 black     | tunnel, with
+x= 290.0 y= 430.0 sz=10.0 black     | little tiny
+x= 290.0 y= 442.0 sz=10.0 black     | people and
+x= 290.0 y= 454.0 sz=10.0 black     | objects, or I
+x= 290.0 y= 466.0 sz=10.0 black     | am seeing
+x= 290.0 y= 478.0 sz=10.0 black     | things as if
+x= 290.0 y= 490.0 sz=10.0 black     | through a
+x= 290.0 y= 502.0 sz=10.0 black     | wide lens
+x= 290.0 y= 514.0 sz=10.0 black     | and things
+x= 290.0 y= 526.0 sz=10.0 black     | are
+x= 290.0 y= 538.0 sz=10.0 black     | incredibly
+x= 290.0 y= 550.0 sz=10.0 black     | expanded.
+x=  90.0 y= 692.0 sz=10.0 black     | 01.025 GMK (432)
+x= 468.7 y= 693.2 sz=10.0 black     | 251 of 403
+
+--- page 271 of 404 (layout cluster covers ~11 pages) ---
+x=  90.0 y=  90.0 sz=10.0 black   B | 01.025 GMK: Unique CRF
+x=  90.0 y= 104.0 sz=10.0 black   B | Form: Calgary Depression Scale for Schizophrenia (CDSS)
+x=  90.0 y= 118.0 sz=10.0 black   B | Generated On: 04 Nov 2024 15:26:21 (GMT)
+x= 424.7 y= 155.0 sz=10.0 black     | 1=Mild - Subject
+x= 372.3 y= 167.0 sz=10.0 black     | sometimes feels over guilty
+x= 416.8 y= 179.0 sz=10.0 black     | about some minor
+x= 388.7 y= 191.0 sz=10.0 black     | peccadillo, but less than
+x= 442.0 y= 203.0 sz=10.0 black     | 50% of time.
+x= 398.5 y= 215.0 sz=10.0 black     | 2=Moderate - Subject
+x= 374.6 y= 227.0 sz=10.0 black     | usually (over 50% of time)
+x= 398.3 y= 239.0 sz=10.0 black     | feels guilty about past
+x= 380.5 y= 251.0 sz=10.0 black     | actions the significance of
+x= 386.6 y= 263.0 sz=10.0 black     | which s/he exaggerates.
+x= 373.4 y= 275.0 sz=10.0 black     | 3=Severe - Subject usually
+x= 384.8 y= 287.0 sz=10.0 black     | feels s/he is to blame for
+x= 383.7 y= 299.0 sz=10.0 black     | everything that has gone
+x= 396.0 y= 311.0 sz=10.0 black     | wrong, even when not
+x= 443.2 y= 323.0 sz=10.0 black     | his/her fault.
+x=  90.0 y= 358.0 sz=10.0 black     | VI. MORNING DEPRESSION
+x= 374.4 y= 358.0 sz=10.0 black     | 0=Absent - No depression.
+x= 524.5 y= 360.0 sz=10.0 black     | 11
+x= 407.3 y= 374.0 sz=10.0 black     | 1=Mild - Depression
+x= 397.6 y= 386.0 sz=10.0 black     | present but no diurnal
+x= 460.2 y= 398.0 sz=10.0 black     | variation.
+x= 381.2 y= 410.0 sz=10.0 black     | 2=Moderate - Depression
+x= 380.8 y= 422.0 sz=10.0 black     | spontaneously mentioned
+x= 410.7 y= 434.0 sz=10.0 black     | to be worse in a.m.
+x= 393.3 y= 446.0 sz=10.0 black     | 3=Severe - Depression
+x= 387.1 y= 458.0 sz=10.0 black     | markedly worse in a.m.,
+x= 381.9 y= 470.0 sz=10.0 black     | with impaired functioning
+x= 391.5 y= 482.0 sz=10.0 black     | which improves in p.m.
+x=  90.0 y= 517.0 sz=10.0 black     | VII. EARLY AWAKENING
+x= 406.4 y= 517.0 sz=10.0 black     | 0=Absent - No early
+x= 524.5 y= 519.0 sz=10.0 black     | 12
+x= 456.1 y= 529.0 sz=10.0 black     | wakening.
+x= 401.5 y= 541.0 sz=10.0 black     | 1=Mild - Occasionally
+x= 372.3 y= 553.0 sz=10.0 black     | wakes (up to twice weekly)
+x= 397.3 y= 565.0 sz=10.0 black     | 1 hour or more before
+x= 391.4 y= 577.0 sz=10.0 black     | normal time to wake or
+x= 449.6 y= 589.0 sz=10.0 black     | alarm time.
+x= 374.5 y= 601.0 sz=10.0 black     | 2=Moderate - Often wakes
+x= 409.3 y= 613.0 sz=10.0 black     | early (up to 5 times
+x= 390.4 y= 625.0 sz=10.0 black     | weekly) 1 hour or more
+x= 399.3 y= 637.0 sz=10.0 black     | before normal time to
+x= 432.4 y= 649.0 sz=10.0 black     | wake or alarm.
+x=  90.0 y= 692.0 sz=10.0 black     | 01.025 GMK (432)
+x= 468.7 y= 693.2 sz=10.0 black     | 270 of 403
+
+--- page 276 of 404 (layout cluster covers ~23 pages) ---
+x=  90.0 y=  90.0 sz=10.0 black   B | 01.025 GMK: Unique CRF
+x=  90.0 y= 104.0 sz=10.0 black   B | Form: Calgary Depression Scale for Schizophrenia (CDSS)
+x=  90.0 y= 118.0 sz=10.0 black   B | Generated On: 04 Nov 2024 15:26:21 (GMT)
+x= 110.0 y= 155.0 sz=10.0 black     | Field Name Data Type
+x= 230.0 y= 155.0 sz=10.0 black     | Units
+x= 290.0 y= 155.0 sz=10.0 black     | Values
+x= 350.0 y= 155.0 sz=10.0 black     | Pre-Filled
+x= 410.0 y= 155.0 sz=10.0 black     | Include
+x= 350.0 y= 167.0 sz=10.0 black     | Values
+x= 410.0 y= 167.0 sz=10.0 black     | Field OID
+x= 290.0 y= 202.0 sz=10.0 black     | 2 =
+x= 290.0 y= 214.0 sz=10.0 black     | 2=Moderate
+x= 290.0 y= 226.0 sz=10.0 black     | - Persistent,
+x= 290.0 y= 238.0 sz=10.0 black     | moderate
+x= 290.0 y= 250.0 sz=10.0 black     | sense of
+x= 290.0 y= 262.0 sz=10.0 black     | hopelessnes
+x= 290.0 y= 274.0 sz=10.0 black     | s since the
+x= 290.0 y= 286.0 sz=10.0 black     | last visit.
+x= 290.0 y= 298.0 sz=10.0 black     | Can be
+x= 290.0 y= 310.0 sz=10.0 black     | persuaded
+x= 290.0 y= 322.0 sz=10.0 black     | to
+x= 290.0 y= 334.0 sz=10.0 black     | acknowledg
+x= 290.0 y= 346.0 sz=10.0 black     | e possibility
+x= 290.0 y= 358.0 sz=10.0 black     | of things
+x= 290.0 y= 370.0 sz=10.0 black     | getting
+x= 290.0 y= 382.0 sz=10.0 black     | better.
+x= 290.0 y= 394.0 sz=10.0 black     | 3 =
+x= 290.0 y= 406.0 sz=10.0 black     | 3=Severe -
+x= 290.0 y= 418.0 sz=10.0 black     | Persisting
+x= 290.0 y= 430.0 sz=10.0 black     | and
+x= 290.0 y= 442.0 sz=10.0 black     | distressing
+x= 290.0 y= 454.0 sz=10.0 black     | sense of
+x= 290.0 y= 466.0 sz=10.0 black     | hopelessnes
+x= 290.0 y= 478.0 sz=10.0 black     | s.
+x=  90.0 y= 692.0 sz=10.0 black     | 01.025 GMK (432)
+x= 468.7 y= 693.2 sz=10.0 black     | 275 of 403
+
+--- page 337 of 404 (layout cluster covers ~13 pages) ---
+x=  90.0 y=  90.0 sz=10.0 black   B | 01.025 GMK: Unique CRF
+x=  90.0 y= 104.0 sz=10.0 black   B | Form: C-SSRS Since Last Visit Summary
+x=  90.0 y= 118.0 sz=10.0 black   B | Generated On: 04 Nov 2024 15:26:21 (GMT)
+x=  90.0 y= 155.0 sz=10.0 black     | Was the Columbia-Suicide Severity Rating Scale
+x= 489.0 y= 155.0 sz=10.0 black     | Yes
+x= 527.0 y= 157.0 sz=10.0 black     | 1
+x=  90.0 y= 167.0 sz=10.0 black     | (C-SSRS) Since Last Visit completed?
+x= 492.7 y= 171.0 sz=10.0 black     | No
+x=  90.0 y= 692.0 sz=10.0 black     | 01.025 GMK (432)
+x= 468.7 y= 693.2 sz=10.0 black     | 336 of 403
+

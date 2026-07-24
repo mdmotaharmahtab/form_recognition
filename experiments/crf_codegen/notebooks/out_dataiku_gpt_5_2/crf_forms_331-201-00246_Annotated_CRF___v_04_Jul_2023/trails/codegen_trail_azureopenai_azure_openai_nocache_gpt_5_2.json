@@ -1,0 +1,280 @@
+{
+ "stop_reason": "plateau",
+ "versions": 4,
+ "best_version": 3,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "error": "generated extractor crashed:\nTraceback (most recent call last):\n  File \"/data/dataiku/dss_data/jupyter-run/dku-workdirs/ECSGENERATION/CRF_codegen_induction95780c5a-dssuser_MdMotaha8f825895/crf_codegen_work/modules/sandbox_runner.py\", line 121, in main\n    raw = fn(pages)\n  File \"<generated_extractor>\", line 247, in extract\nIndexError: list index out of range\n"
+   },
+   "problems": [
+    "Program failed to run: generated extractor crashed:\nTraceback (most recent call last):\n  File \"/data/dataiku/dss_data/jupyter-run/dku-workdirs/ECSGENERATION/CRF_codegen_induction95780c5a-dssuser_MdMotaha8f825895/crf_codegen_work/modules/sandbox_runner.py\", line 121, in main\n    raw = fn(pages)\n  File \"<generated_extractor>\", line 247, in extract\nIndexError: list index out of range\n"
+   ],
+   "warnings": [],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_partial": null,
+   "audit_verdicts": null,
+   "score": [
+    1,
+    "not_audited",
+    0,
+    0
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "confirm",
+   "outcome": "confirmed_no_fields"
+  },
+  {
+   "version": 2,
+   "kind": "revise_gates",
+   "metrics": {
+    "engine": "codegen",
+    "records": 2659,
+    "pages_total": 1083,
+    "pages_with_fields": 865,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 98,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 116,
+    "fields_per_form": 22.9,
+    "forms_per_100_pages": 10.7,
+    "pages_covered_pct": 80
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 3,
+   "audit_pages": [
+    1,
+    31,
+    159,
+    374,
+    449,
+    562
+   ],
+   "audit_partial": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 31,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 159,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 374,
+     "missed": [
+      "Planned Timepoint"
+     ],
+     "false": [
+      "8h postdose"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 449,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 562,
+     "missed": [],
+     "false": [
+      "Uric acid"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "score": [
+    0,
+    3,
+    0,
+    -865
+   ],
+   "became_best": true
+  },
+  {
+   "version": 3,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 2526,
+    "pages_total": 1083,
+    "pages_with_fields": 857,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 98,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 116,
+    "fields_per_form": 21.8,
+    "forms_per_100_pages": 10.7,
+    "pages_covered_pct": 79
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 1,
+   "audit_pages": [
+    1,
+    31,
+    159,
+    374,
+    449,
+    562
+   ],
+   "audit_partial": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 31,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 159,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 374,
+     "missed": [
+      "Planned Timepoint"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 449,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 562,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "score": [
+    0,
+    1,
+    0,
+    -857
+   ],
+   "became_best": true
+  },
+  {
+   "version": 4,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 2794,
+    "pages_total": 1083,
+    "pages_with_fields": 849,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 98,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 116,
+    "fields_per_form": 24.1,
+    "forms_per_100_pages": 10.7,
+    "pages_covered_pct": 78
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 2,
+   "audit_pages": [
+    1,
+    31,
+    159,
+    374,
+    449,
+    562
+   ],
+   "audit_partial": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 31,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 159,
+     "missed": [],
+     "false": [
+      "continue using cannabis in the same amount and frequency throughout the trial, and the investigator determines that no cannabis use disorder is"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 374,
+     "missed": [
+      "Planned Timepoint"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 449,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 562,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "score": [
+    0,
+    2,
+    0,
+    -849
+   ],
+   "became_best": false
+  }
+ ]
+}

@@ -1,0 +1,390 @@
+{
+ "stop_reason": "plateau",
+ "versions": 4,
+ "best_version": 2,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "confirm",
+   "metrics": {
+    "engine": "codegen",
+    "records": 232,
+    "pages_total": 109,
+    "pages_with_fields": 71,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 99,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 21,
+    "fields_per_form": 11.0,
+    "forms_per_100_pages": 19.3,
+    "form_same_page_evidence_records": 206,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 65
+   },
+   "problems": [],
+   "outcome": "extended_program"
+  },
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 209,
+    "pages_total": 109,
+    "pages_with_fields": 48,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 99,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 18,
+    "fields_per_form": 11.6,
+    "forms_per_100_pages": 16.5,
+    "form_same_page_evidence_records": 206,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 44
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    0,
+    "not_audited",
+    0,
+    -48
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "confirm_extension",
+   "metrics": {
+    "engine": "codegen",
+    "records": 232,
+    "pages_total": 109,
+    "pages_with_fields": 71,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 99,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 21,
+    "fields_per_form": 11.0,
+    "forms_per_100_pages": 19.3,
+    "form_same_page_evidence_records": 206,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 65
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 14,
+   "audit_pages": [
+    2,
+    12,
+    17,
+    168,
+    329,
+    479
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 2,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 12,
+     "missed": [],
+     "false": [
+      "Version 0.3",
+      "Date 15-Jul-2021",
+      "Changed By Andreea Hardut / Alexan dru Giucal",
+      "Details updates according to feedback sheet"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 17,
+     "missed": [],
+     "false": [
+      "Visit Num ber",
+      "Visit Label",
+      "Page Num ber 495",
+      "Page Label",
+      "Dynamic? YES",
+      "Description of Dynamic page enrols if Protocol V"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 168,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 329,
+     "missed": [
+      "Are there things - anyone or anything - that stopped you from wanting to die or acting on thoughts of committing suicide?"
+     ],
+     "false": [
+      "Since Last Visit",
+      "(1) Easily able to control thoughts (2) Can control thoughts with little difficulty"
+     ],
+     "wrong_form": [
+      "Intensity of Ideation Could/can you stop thinking about killing yourself or wanting to die if you want to?"
+     ]
+    },
+    {
+     "page": 479,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    14,
+    0,
+    -71
+   ],
+   "became_best": true
+  },
+  {
+   "version": 3,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 69,
+    "pages_total": 109,
+    "pages_with_fields": 39,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 8,
+    "fields_per_form": 8.6,
+    "forms_per_100_pages": 7.3,
+    "form_same_page_evidence_records": 45,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 36
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 7,
+   "audit_pages": [
+    2,
+    12,
+    17,
+    109,
+    168,
+    329,
+    479,
+    924
+   ],
+   "audit_partial": null,
+   "audit_promoted": [
+    924
+   ],
+   "audit_verdicts": [
+    {
+     "page": 2,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 12,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 17,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 109,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 168,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 329,
+     "missed": [
+      "Are there things - anyone or anything - that stopped you from wanting to die or acting on thoughts of committing suicide?"
+     ],
+     "false": [
+      "suicide"
+     ],
+     "wrong_form": [
+      "Could/can you stop thinking about killing yourself or wanting to die if you want to?"
+     ]
+    },
+    {
+     "page": 479,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 924,
+     "missed": [
+      "Were you able to contact the Subject?",
+      "Date of Contact/Attempt",
+      "Type of Contact",
+      "Method of Contact"
+     ],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    7,
+    0,
+    -39
+   ],
+   "became_best": false
+  },
+  {
+   "version": 4,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 71,
+    "pages_total": 109,
+    "pages_with_fields": 41,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 7,
+    "fields_per_form": 10.1,
+    "forms_per_100_pages": 6.4,
+    "form_same_page_evidence_records": 38,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 38
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 11,
+   "audit_pages": [
+    2,
+    12,
+    17,
+    168,
+    250,
+    329,
+    479,
+    924
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 2,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 12,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 17,
+     "missed": [],
+     "false": [
+      "Visit Label",
+      "Page Num ber",
+      "Page Label",
+      "Dynamic?",
+      "Description of Dynamic"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 168,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 250,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 329,
+     "missed": [
+      "Could/can you stop thinking about killing yourself or wanting to die if you want to?"
+     ],
+     "false": [],
+     "wrong_form": [
+      "Deterrents"
+     ]
+    },
+    {
+     "page": 479,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 924,
+     "missed": [
+      "Were you able to contact the Subject?",
+      "Date of Contact/Attempt",
+      "Type of Contact",
+      "Method of Contact"
+     ],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    11,
+    0,
+    -41
+   ],
+   "became_best": false
+  }
+ ]
+}

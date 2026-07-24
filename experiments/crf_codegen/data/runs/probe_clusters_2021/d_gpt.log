@@ -1,0 +1,72 @@
+==== d_your_design / gpt-5.2 ====
+OUT_DIR=D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\data\outputs\probe_clusters_2021\d_gpt
+---- stage 0 ----
+=== CONFIG: d_your_design ===
+OUT_DIR          : D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\data\outputs\probe_clusters_2021\d_gpt
+doc              : annotatedCRF_33120100246-_v1.0_-17Aug2021
+pages            : 596
+n_clusters       : 35
+budgeted reps    : 10  -> pages [1, 2, 58, 68, 82, 88, 90, 334, 516, 522]
+all reps (w/tail): 68
+reps/cluster dist: {0: 1, 1: 13, 2: 14, 3: 1, 4: 6}  (clusters with >=2 reps: 21)
+PLAN passes      : 5
+  clusters/pass  : [18, 3, 4, 6, 4]
+  reps/pass      : [10, 12, 13, 14, 12]
+env knobs        : REPS_PER_CLUSTER=4 SPEC_REPS=4 MAX_REPS=4 REP_BUDGET=12 MAX_PASSES=12 MIN_TAIL_REPS=1 MIN_TAIL_CONTENT=1
+---- induction ----
+=== annotatedCRF_33120100246-_v1.0_-17Aug2021
+    multi-pass: 5 passes (generalist + tail specialists; [18, 3, 4, 6, 4] clusters each)
+    -- pass 1/5: 18 clusters, 369 pages, reps [1, 2, 58, 68, 82, 88, 90, 334, 516, 522]
+    v1 [generate]: calling gpt-5.2 ...
+    coverage confirmation (uncovered: [(5, 4), (4, 6)]) ...
+    model confirmed uncovered clusters are field-free
+    audit: 12 issue(s) on pages [1, 19, 58, 82, 217, 334, 386]
+    v2 [revise_audit]: calling gpt-5.2 ...
+    audit: 27 issue(s) on pages [1, 19, 36, 54, 58, 82, 217, 334, 386]
+    audit core grew by [36] (now 8 pages)
+    no improvement over v1 (stall 1/2); one more try
+    v3 [revise_audit]: calling gpt-5.2 ...
+    audit: 16 issue(s) on pages [1, 19, 36, 55, 58, 82, 217, 334, 386]
+    v4 [revise_audit]: calling gpt-5.2 ...
+    audit: 17 issue(s) on pages [1, 19, 28, 36, 58, 82, 217, 334, 386]
+    no improvement over v3 (stall 1/2); one more try
+    v5 [revise_audit]: calling gpt-5.2 ...
+    audit: 24 issue(s) on pages [1, 2, 19, 36, 58, 82, 217, 334, 386]
+    -- pass 2/5: 3 clusters, 104 pages, reps [1, 2, 46, 50, 51, 52, 53, 65, 84, 85, 139, 141]
+    v1 [generate]: calling gpt-5.2 ...
+    audit: 16 issue(s) on pages [46, 47, 52, 84, 241, 427]
+    v2 [revise_audit]: calling gpt-5.2 ...
+    audit: 10 issue(s) on pages [46, 47, 48, 51, 52, 84, 241, 427]
+    audit core grew by [48] (now 7 pages)
+    v3 [revise_audit]: calling gpt-5.2 ...
+    audit: 20 issue(s) on pages [46, 47, 48, 49, 52, 84, 241, 427]
+    no improvement over v2 (stall 1/2); one more try
+    v4 [revise_audit]: calling gpt-5.2 ...
+    audit: 9 issue(s) on pages [46, 47, 48, 52, 83, 84, 241, 427]
+    v5 [revise_audit]: calling gpt-5.2 ...
+    audit: 9 issue(s) on pages [46, 47, 48, 52, 53, 84, 241, 427]
+    no improvement over v4 (stall 1/2); one more try
+    -- pass 3/5: 4 clusters, 57 pages, reps [1, 2, 37, 42, 66, 67, 69, 71, 79, 134, 136, 137, 547]
+    v1 [generate]: calling gpt-5.2 ...
+    coverage confirmation (uncovered: [(1, 18), (3, 10)]) ...
+    extended program adopted as v2: {"engine": "codegen", "records": 322, "pages_total": 57, "pages_with_fields": 52, "definition_pages_seen": 0, "forms_nonempty_pct": 100, "labels_look_human_pct": 100, "oids_present_pct": 0, "oids_look_like_codes_pct": 0, "distinct_forms": 14, "fields_per_form": 23.0, "forms_per_100_pages": 24.6, "form_same_page_evidence_records": 322, "form_same_page_persistence_pct": 100, "furniture_candidates": [], "pages_covered_pct": 91}
+    audit: 14 issue(s) on pages [37, 69, 78, 79, 288, 460]
+    v3 [revise_audit]: calling gpt-5.2 ...
+    audit: 23 issue(s) on pages [37, 66, 69, 78, 79, 129, 288, 460]
+    audit core grew by [66] (now 7 pages)
+    no improvement over v2 (stall 1/2); one more try
+    v4 [revise_audit]: calling gpt-5.2 ...
+    audit: 12 issue(s) on pages [37, 66, 69, 71, 78, 79, 288, 460]
+    v5 [revise_audit]: calling gpt-5.2 ...
+    audit: 41 issue(s) on pages [37, 66, 69, 78, 79, 136, 288, 460]
+    warnings: ['The program filters by 22 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers.']
+    no improvement over v4 (stall 1/2); one more try
+    -- pass 4/5: 6 clusters, 52 pages, reps [1, 2, 9, 10, 11, 16, 44, 62, 70, 72, 133, 135, 138, 142]
+    v1 [generate]: calling gpt-5.2 ...
+    coverage confirmation (uncovered: [(0, 10), (3, 9), (5, 5)]) ...
+    model confirmed uncovered clusters are field-free
+    audit: 20 issue(s) on pages [9, 44, 108, 159, 359, 361]
+    v2 [revise_audit]: calling gpt-5.2 ...
+    audit: 19 issue(s) on pages [9, 44, 62, 108, 138, 159, 359, 361]
+    audit core grew by [62] (now 7 pages)
+    v3 [revise_audit]: calling gpt-5.2 ...

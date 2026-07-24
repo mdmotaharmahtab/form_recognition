@@ -1,0 +1,19 @@
+{
+  "format_id": "qsc_esource",
+  "description": "Schedule/activity eSource: rows of 'FormPrefix: Activity #n' with Line # column; OIDs (when present) appear as [OID] SAS:[Name=...] under Answer(s). Many activities carry no OID.",
+  "authored_from": "out/QSC302573_Final_AnnotatedCRFs_16Oct2024-326-201-00007_1_/rep_p*.txt (pages 1,2,105,160,265,273,295,296,303,335,373,581)",
+  "detect": {
+    "all": ["Schedule Category & Name", "Line #"]
+  },
+  "form_name": {
+    "strategy": "activity_prefix"
+  },
+  "fields": {
+    "engine": "anchored_blocks",
+    "activity_regex": "^(.*?):\\s*(.+?)\\s*#\\d+$",
+    "activity_x": [150, 200],
+    "line_number_x_min": 440,
+    "oid_regex": "\\[([A-Z][A-Z0-9_]*)\\]\\s*SAS:\\[Name="
+  }
+}
+

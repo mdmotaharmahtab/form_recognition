@@ -1,0 +1,362 @@
+{
+ "stop_reason": "budget",
+ "versions": 5,
+ "best_version": 2,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "confirm",
+   "outcome": "confirmed_no_fields"
+  },
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 456,
+    "pages_total": 246,
+    "pages_with_fields": 107,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 98,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 89,
+    "fields_per_form": 5.1,
+    "forms_per_100_pages": 36.2,
+    "form_same_page_evidence_records": 441,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 43
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 23,
+   "audit_pages": [
+    1,
+    2,
+    21,
+    80,
+    130,
+    200
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": [
+      "Sponsor Name",
+      "Protocol Number",
+      "Protocol Title",
+      "aCRF Version",
+      "Prepared by",
+      "Date"
+     ]
+    },
+    {
+     "page": 2,
+     "missed": [
+      "Lora Adriano, Study Manager or designee",
+      "Becky Sease, Lead Data Manager or designee",
+      "Lorri Cefalone, Senior Data Manager"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 21,
+     "missed": [
+      "Start date and time",
+      "End date and time",
+      "Adverse event term"
+     ],
+     "false": [],
+     "wrong_form": [
+      "Were any adverse events experienced?",
+      "Ongoing?",
+      "Is this a treatment emergent adverse event?",
+      "Is this an Immediately Reportable Event (IRE)?"
+     ]
+    },
+    {
+     "page": 80,
+     "missed": [
+      "ECG Acquisition Time",
+      "ECG Interpretation"
+     ],
+     "false": [],
+     "wrong_form": [
+      "RATE",
+      "RR",
+      "EGTXT",
+      "Clinical Significance Assessed by Investigator"
+     ]
+    },
+    {
+     "page": 130,
+     "missed": [
+      "Collection start date and time"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 200,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    23,
+    0,
+    -107
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 457,
+    "pages_total": 246,
+    "pages_with_fields": 106,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 97,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 36,
+    "fields_per_form": 12.7,
+    "forms_per_100_pages": 14.6,
+    "form_same_page_evidence_records": 443,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 43
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 21,
+   "audit_pages": [
+    1,
+    2,
+    5,
+    21,
+    25,
+    80,
+    130,
+    200
+   ],
+   "audit_partial": null,
+   "audit_promoted": [
+    25
+   ],
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [
+      "Sponsor Name",
+      "Protocol Number",
+      "Protocol Title",
+      "aCRF Version",
+      "Prepared by",
+      "Date"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 5,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 21,
+     "missed": [
+      "Start date and time",
+      "End date and time",
+      "Adverse event term"
+     ],
+     "false": [],
+     "wrong_form": [
+      "Were any adverse events experienced?",
+      "Ongoing?",
+      "Is this a treatment emergent adverse event?",
+      "Is this an Immediately Reportable Event (IRE)?"
+     ]
+    },
+    {
+     "page": 25,
+     "missed": [
+      "Dose unit",
+      "Dose form"
+     ],
+     "false": [],
+     "wrong_form": [
+      "Frequency",
+      "Administration start date and time",
+      "Administration ongoing?"
+     ]
+    },
+    {
+     "page": 80,
+     "missed": [
+      "ECG Acquisition Time",
+      "ECG Interpretation"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 130,
+     "missed": [
+      "Collection start date and time"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 200,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    21,
+    0,
+    -106
+   ],
+   "became_best": true
+  },
+  {
+   "version": 3,
+   "kind": "revise_audit",
+   "metrics": {
+    "error": "generated extractor crashed:\nTraceback (most recent call last):\n  File \"D:\\ubuntu\\codes\\ZS\\otsuka\\ECS\\experiments\\recipe_prototype\\scripts\\sandbox_runner.py\", line 116, in main\n    exec(compile(source, \"<generated_extractor>\", \"exec\"), g)  # noqa: S102\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<generated_extractor>\", line 1\n    ```python\n    ^\nSyntaxError: invalid syntax\n"
+   },
+   "problems": [
+    "Program failed to run: generated extractor crashed:\nTraceback (most recent call last):\n  File \"D:\\ubuntu\\codes\\ZS\\otsuka\\ECS\\experiments\\recipe_prototype\\scripts\\sandbox_runner.py\", line 116, in main\n    exec(compile(source, \"<generated_extractor>\", \"exec\"), g)  # noqa: S102\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<generated_extractor>\", line 1\n    ```python\n    ^\nSyntaxError: invalid syntax\n"
+   ],
+   "warnings": [],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    1,
+    "not_audited",
+    0,
+    0
+   ],
+   "became_best": false
+  },
+  {
+   "version": 4,
+   "kind": "revise_gates",
+   "metrics": {
+    "engine": "codegen",
+    "records": 0,
+    "pages_total": 246,
+    "pages_with_fields": 0,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 0,
+    "labels_look_human_pct": 0,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 0,
+    "fields_per_form": 0.0,
+    "forms_per_100_pages": 0.0,
+    "form_same_page_evidence_records": 0,
+    "form_same_page_persistence_pct": null,
+    "furniture_candidates": [],
+    "pages_covered_pct": 0
+   },
+   "problems": [
+    "The program extracted ZERO records from the document."
+   ],
+   "warnings": [
+    "form_name empty for 100% of records - if the document does print form/section names, fix the form_name strategy (consider carrying the last seen title forward).",
+    "Only 0% of field_name values look like human labels (they look like codes/dates/junk) - fix label selection."
+   ],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    1,
+    "not_audited",
+    2,
+    0
+   ],
+   "became_best": false
+  },
+  {
+   "version": 5,
+   "kind": "revise_gates",
+   "metrics": {
+    "engine": "codegen",
+    "records": 0,
+    "pages_total": 246,
+    "pages_with_fields": 0,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 0,
+    "labels_look_human_pct": 0,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 0,
+    "fields_per_form": 0.0,
+    "forms_per_100_pages": 0.0,
+    "form_same_page_evidence_records": 0,
+    "form_same_page_persistence_pct": null,
+    "furniture_candidates": [],
+    "pages_covered_pct": 0
+   },
+   "problems": [
+    "The program extracted ZERO records from the document."
+   ],
+   "warnings": [
+    "form_name empty for 100% of records - if the document does print form/section names, fix the form_name strategy (consider carrying the last seen title forward).",
+    "Only 0% of field_name values look like human labels (they look like codes/dates/junk) - fix label selection."
+   ],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    1,
+    "not_audited",
+    2,
+    0
+   ],
+   "became_best": false
+  }
+ ]
+}

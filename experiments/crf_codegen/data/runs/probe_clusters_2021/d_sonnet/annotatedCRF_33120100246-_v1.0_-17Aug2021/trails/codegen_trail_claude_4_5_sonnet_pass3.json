@@ -1,0 +1,202 @@
+{
+ "stop_reason": "audit_error",
+ "versions": 2,
+ "best_version": 1,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "confirm",
+   "metrics": {
+    "engine": "codegen",
+    "records": 223,
+    "pages_total": 57,
+    "pages_with_fields": 41,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 12,
+    "fields_per_form": 18.6,
+    "forms_per_100_pages": 21.1,
+    "form_same_page_evidence_records": 223,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 72
+   },
+   "problems": [
+    "Extreme content-fitted blocklist. The program filters by 39 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "outcome": "extension_rejected"
+  },
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 223,
+    "pages_total": 57,
+    "pages_with_fields": 41,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 12,
+    "fields_per_form": 18.6,
+    "forms_per_100_pages": 21.1,
+    "form_same_page_evidence_records": 223,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 72
+   },
+   "problems": [],
+   "warnings": [
+    "The program filters by 23 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": 28,
+   "audit_pages": [
+    37,
+    42,
+    78,
+    134,
+    311,
+    360
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 37,
+     "missed": [
+      "Skin and Mucosae",
+      "Neurological",
+      "Extremities"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 42,
+     "missed": [
+      "Sample",
+      "Date of Collection",
+      "Time of Collection",
+      "Scan",
+      "Barcode Number"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 78,
+     "missed": [
+      "Actual attempt:",
+      "Or did you do it purely for other reasons/without ANY intention of killing yourself (like to relieve stress, feel better, get sympathy, or get something else to happen? (Self-Injurious Behavior without suicidal intent)"
+     ],
+     "false": [
+      "Have you made a suicide attempt?",
+      "Have you done anything to harm yourself?",
+      "Have you done anything dangerous where you could have died?",
+      "What did you do?",
+      "Did you ______ as a way to end your life?",
+      "Did you want to die (even a little) when you ____?",
+      "Were trying to end your life when you ____?",
+      "Or did you think it was possible you could have died from ____?"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 134,
+     "missed": [
+      "Rater's initials",
+      "1. Wish to be dead"
+     ],
+     "false": [
+      "Subject endorses thoughts about a wish to be dead or not alive anymore, or wish to fall asleep and not wake up.",
+      "Have you wished you were dead or wished you could go to sleep and not wake",
+      "General non-specific thoughts of wanting to end one's life/commit suicide (e.g. \"I've thought about killing myself\") without thoughts of way to kill oneself/associated"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 311,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 360,
+     "missed": [
+      "Rater's initials",
+      "1. Wish to be dead"
+     ],
+     "false": [
+      "Subject endorses thoughts about a wish to be dead or not alive anymore, or wish to fall asleep and not wake up.",
+      "Have you wished you were dead or wished you could go to sleep and not wake",
+      "General non-specific thoughts of wanting to end one's life/commit suicide (e.g. \"I've thought about killing myself\") without thoughts of way to kill oneself/associated"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    28,
+    1,
+    -41
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "audit",
+   "transport_error": "'str' object has no attribute 'get'"
+  },
+  {
+   "version": 2,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 239,
+    "pages_total": 57,
+    "pages_with_fields": 41,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 12,
+    "fields_per_form": 19.9,
+    "forms_per_100_pages": 21.1,
+    "form_same_page_evidence_records": 239,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 72
+   },
+   "problems": [],
+   "warnings": [
+    "The program filters by 25 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    0,
+    "not_audited",
+    1,
+    -41
+   ],
+   "became_best": false
+  }
+ ]
+}

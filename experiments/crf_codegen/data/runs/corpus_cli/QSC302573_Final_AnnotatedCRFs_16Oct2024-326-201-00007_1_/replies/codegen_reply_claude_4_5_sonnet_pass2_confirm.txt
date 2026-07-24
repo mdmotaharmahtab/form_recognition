@@ -1,0 +1,9 @@
+Looking at the sample pages, I can see they contain **only answer options** for a rating scale (numbered 1-7 and X), along with their machine codes `[QSORRES] SAS:...`. Critically, there is **no Activity field** shown on these pages - the "Activity" column header appears but no actual activity/question text is present at x~167.7.
+
+According to the task specification:
+- Extract **field labels only**
+- **Never** extract answer options or machine codes
+
+These pages show the answer key/legend for a rating scale that appears elsewhere in the document. The actual data-entry field (the Activity question that uses this scale) would be on a different page. These pages are analogous to instructions or definitions pages - they define what the rating scale means but contain no fields themselves.
+
+CONFIRM_NO_FIELDS

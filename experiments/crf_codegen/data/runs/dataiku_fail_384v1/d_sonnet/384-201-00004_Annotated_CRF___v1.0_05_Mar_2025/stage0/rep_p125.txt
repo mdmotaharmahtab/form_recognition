@@ -1,0 +1,148 @@
+x=  36.0 y=  11.5 sz= 9.0 black     | 384-201-00004
+x=  42.0 y=  34.8 sz=12.0 #ffffff   | Urine Collection - Admission
+x= 498.9 y=  36.6 sz= 9.6 #ffffff   | Origin: CRF
+x=  48.0 y=  55.2 sz= 7.8 #ffffff B | Aliases:
+x=  77.9 y=  55.3 sz= 7.8 #ffffff   | Odm OID = F.1224
+x=  43.5 y=  72.8 sz=10.5 #31708f   | Urine Collection Admission
+x= 210.1 y=  73.4 sz= 8.4 #31708f   | Origin: CRF; Repeating: No; Conditionally Visible; Domain:
+x= 433.2 y=  73.4 sz= 8.4 #31708f B | LB2
+x= 449.1 y=  73.4 sz= 8.4 #31708f   | ; SAS Dataset Name:
+x= 533.5 y=  73.4 sz= 8.4 #31708f B | LB2
+x=  49.5 y=  88.0 sz= 6.8 #808080 B | Aliases:
+x=  75.7 y=  88.0 sz= 6.8 #808080   | Odm OID = IG.1600
+x= 453.5 y= 110.8 sz= 5.6 black   B | LBDTC
+x= 453.5 y= 117.4 sz= 5.6 black     | Format: dd-MMM-yyyy HH:mm:ss
+x= 453.5 y= 123.9 sz= 5.6 black     | Data Type: datetime
+x= 453.5 y= 130.4 sz= 5.6 black     | Origin: CRF
+x= 453.5 y= 136.9 sz= 5.6 black     | SDS Var Name: URINE
+x= 453.5 y= 143.5 sz= 5.6 black     | Aliases:
+x= 456.5 y= 150.0 sz= 5.6 black     | CC Mapping = Urinalysis
+x= 456.5 y= 156.5 sz= 5.6 black     | CC Mapping = Drug Screen
+x= 456.5 y= 163.0 sz= 5.6 black     | CC Mapping = Alcohol Screen
+x=  46.5 y= 166.1 sz= 7.5 black     | Urine collection date and time
+x= 456.5 y= 169.6 sz= 5.6 black     | CC Mapping = Cotinine Screen
+x= 456.5 y= 176.1 sz= 5.6 black     | CC Mapping = Urine Screen MPH
+x= 249.2 y= 182.1 sz= 7.5 black     | [_|_] - [_|_|_] - [_|_|_|_] [_|_] : [_|_] : [_|_]
+x= 456.5 y= 182.6 sz= 5.6 black     | CC Mapping = Drug/Alcohol Screen
+x=  46.5 y= 183.5 sz= 7.5 black     | [LBDTC_URINEAD]
+x= 456.5 y= 189.1 sz= 5.6 black     | CC Mapping = Pregnancy Test -
+x=  46.5 y= 192.2 sz= 7.5 black     | [SAS Field Name: LBDTC]
+x= 253.0 y= 194.7 sz= 6.4 #808080   | dd-MMM-yyyy HH:mm:ss
+x= 456.5 y= 195.7 sz= 5.6 black     | Urine
+x= 456.5 y= 202.2 sz= 5.6 black     | CC Mapping = Tricyclic
+x=  53.2 y= 203.3 sz= 6.4 #808080   | Verify urine cup temperature strip after collection and keep sample
+x= 456.5 y= 208.7 sz= 5.6 black     | Antidepressants
+x=  53.2 y= 210.7 sz= 6.4 #808080   | at room temperature.
+x= 456.5 y= 215.2 sz= 5.6 black     | Odm OID = I.6022
+x= 453.5 y= 221.8 sz= 5.6 black     | Description: Date/Time of Specimen
+x= 453.5 y= 228.3 sz= 5.6 black     | Collection
+x= 453.5 y= 234.8 sz= 5.6 black     | Sample Path: UA / UDS with hCG and
+x= 453.5 y= 241.3 sz= 5.6 black     | COT
+x= 453.5 y= 247.9 sz= 5.6 #0000ff   | Lab Panel: UA w/ hCG Panel
+x= 453.5 y= 254.4 sz= 5.6 black     | Requires Barcode Verification
+x= 453.5 y= 260.9 sz= 5.6 black     | Mandatory?: Yes
+x= 453.5 y= 267.4 sz= 5.6 black     | Disallow Future Date: Yes
+x=  43.5 y= 287.8 sz=10.5 #31708f   | Urine Cotinine Results and
+x= 433.2 y= 288.3 sz= 8.4 #31708f B | LB2
+x= 533.5 y= 288.3 sz= 8.4 #31708f B | LB2
+x= 210.1 y= 288.4 sz= 8.4 #31708f   | Origin: CRF; Repeating: No; Conditionally Visible; Domain:
+x= 449.1 y= 288.4 sz= 8.4 #31708f   | ; SAS Dataset Name:
+x=  43.5 y= 299.9 sz=10.5 #31708f   | Review
+x= 453.5 y= 328.2 sz= 5.6 black   B | LBTEST
+x= 453.5 y= 334.8 sz= 5.6 black     | Format: $
+x=  46.5 y= 336.6 sz= 7.5 black     | Cotinine Result
+x= 249.2 y= 339.7 sz= 7.5 black     | O Negative
+x= 453.5 y= 341.3 sz= 5.6 black     | Data Type: string
+x= 453.5 y= 347.9 sz= 5.6 black     | Origin: CRF
+x= 249.2 y= 348.4 sz= 7.5 black     | O Positive
+x=  46.5 y= 354.0 sz= 7.5 black     | [LBTEST_COTININE_RESULT]
+x= 453.5 y= 354.4 sz= 5.6 black     | SDS Var Name: COTININE
+x= 453.5 y= 360.9 sz= 5.6 black     | Description: Cotinine Result
+x= 253.0 y= 361.1 sz= 6.4 #808080   | Code List: UDS Results
+x=  46.5 y= 362.7 sz= 7.5 black     | [SAS Field Name: LBTEST]
+x= 453.5 y= 367.4 sz= 5.6 black     | Mandatory?: Yes
+x= 453.5 y= 374.0 sz= 5.6 black     | Disallow Future Date: Yes
+x= 453.5 y= 396.2 sz= 5.6 black   B | LBCLSIG
+x= 453.5 y= 402.8 sz= 5.6 black     | Format: $
+x= 453.5 y= 409.3 sz= 5.6 black     | Data Type: string
+x= 453.5 y= 415.9 sz= 5.6 black     | Origin: CRF
+x= 453.5 y= 422.4 sz= 5.6 black     | Requires Role: Investigator
+x= 453.5 y= 428.9 sz= 5.6 black     | Conditionally Visible
+x=  46.5 y= 434.0 sz= 7.5 black     | Cotinine Clinical Significance
+x= 453.5 y= 435.4 sz= 5.6 black     | Conditional Item:
+x= 249.2 y= 437.1 sz= 7.5 black     | O NCS
+x= 453.5 y= 442.0 sz= 5.6 black     | LBTEST_COTININE_RESULT
+x= 249.2 y= 445.8 sz= 7.5 black     | O CS
+x= 453.5 y= 448.5 sz= 5.6 black     | Visible If Value: POSITIVE = Positive
+x=  46.5 y= 451.4 sz= 7.5 black     | [LBCLSIG]
+x= 453.5 y= 455.0 sz= 5.6 black     | SDS Var Name: COTSIG
+x= 253.0 y= 458.5 sz= 6.4 #808080   | Code List: NCS/CS
+x=  46.5 y= 460.1 sz= 7.5 black     | [SAS Field Name: LBCLSIG]
+x= 453.5 y= 461.5 sz= 5.6 black     | Description: Clinical Significance -
+x= 453.5 y= 468.1 sz= 5.6 black     | Cotinine
+x= 453.5 y= 474.6 sz= 5.6 black     | Edit Checks:
+x= 456.5 y= 481.2 sz= 5.6 black   B | Name: LBCLSIG:
+x= 503.4 y= 481.2 sz= 5.6 black   B | Value =
+x= 517.8 y= 481.3 sz= 5.6 black     | NCS
+x= 456.5 y= 487.8 sz= 5.6 black     | Description: Value should = NCS
+x= 453.5 y= 494.3 sz= 5.6 black     | Mandatory?: Yes
+x= 453.5 y= 500.9 sz= 5.6 black     | Disallow Future Date: Yes
+x=  43.5 y= 521.2 sz=10.5 #31708f   | Urine Drug Screen Results and
+x= 210.1 y= 521.8 sz= 8.4 #31708f   | Origin: CRF; Repeating: No; Conditionally Visible; Domain:
+x= 433.2 y= 521.8 sz= 8.4 #31708f B | LB2
+x= 449.1 y= 521.8 sz= 8.4 #31708f   | ; SAS Dataset Name:
+x= 533.5 y= 521.8 sz= 8.4 #31708f B | LB2
+x=  43.5 y= 533.4 sz=10.5 #31708f   | Review
+x= 332.7 y= 561.7 sz= 5.6 black   B | LBTEST
+x= 332.7 y= 568.3 sz= 5.6 black     | Format: $
+x= 332.7 y= 574.8 sz= 5.6 black     | Data Type: string
+x= 332.7 y= 581.3 sz= 5.6 black     | Origin: CRF
+x= 292.5 y= 582.3 sz= 7.5 black     | O Negative
+x=  46.5 y= 586.6 sz= 7.5 black     | Amphetamines / Methamphetamines
+x= 332.7 y= 587.8 sz= 5.6 black     | SDS Var Name: AMPMET
+x= 292.5 y= 591.0 sz= 7.5 black     | O Positive
+x= 332.7 y= 594.4 sz= 5.6 black     | Description: Amphetamines/Methamphetamines
+x= 332.7 y= 600.9 sz= 5.6 black     | Edit Checks:
+x= 296.2 y= 603.7 sz= 6.4 #808080   | Code List:
+x=  46.5 y= 604.0 sz= 7.5 black     | [LBTEST_AMPHETAMINES_AND_METHAMPHETAMINES_RESULTS]
+x= 335.7 y= 607.5 sz= 5.6 black   B | Name:
+x= 296.2 y= 611.1 sz= 6.4 #0000ff   | UDS
+x=  46.5 y= 612.7 sz= 7.5 black     | [SAS Field Name: LBTEST]
+x= 335.7 y= 614.2 sz= 5.6 black   B | TEMPLATE_LBTEST_AMPHETAMINES_AND_METHAMPHETAMINES_RESULTS:
+x= 296.2 y= 618.5 sz= 6.4 #0000ff   | Results
+x= 335.7 y= 621.0 sz= 5.6 black   B | Value =
+x= 350.1 y= 621.0 sz= 5.6 black     | NEGATIVE
+x= 335.7 y= 627.5 sz= 5.6 black     | Description: Value should = Negative
+x= 332.7 y= 634.1 sz= 5.6 black     | Mandatory?: Yes
+x= 332.7 y= 640.6 sz= 5.6 black     | Disallow Future Date: Yes
+x= 332.7 y= 662.8 sz= 5.6 black   B | LBCLSIG
+x= 332.7 y= 669.4 sz= 5.6 black     | Format: $
+x= 332.7 y= 676.0 sz= 5.6 black     | Data Type: string
+x= 332.7 y= 682.5 sz= 5.6 black     | Origin: CRF
+x= 332.7 y= 689.0 sz= 5.6 black     | Requires Role: Investigator
+x= 332.7 y= 695.5 sz= 5.6 black     | Conditionally Visible
+x= 292.5 y= 696.8 sz= 7.5 black     | O NCS
+x=  46.5 y= 697.4 sz= 7.5 black     | Clinical Significance
+x= 332.7 y= 702.1 sz= 5.6 black     | Conditional Item:
+x= 292.5 y= 705.5 sz= 7.5 black     | O CS
+x= 332.7 y= 708.6 sz= 5.6 black     | LBTEST_AMPHETAMINES_AND_METHAMPHETAMINES_RESULTS
+x=  46.5 y= 714.8 sz= 7.5 black     | [LBCLSIG_AMPSIG]
+x= 332.7 y= 715.1 sz= 5.6 black     | Visible If Value: POSITIVE = Positive
+x= 296.2 y= 718.2 sz= 6.4 #808080   | Code List:
+x= 332.7 y= 721.6 sz= 5.6 black     | SDS Var Name: AMPSIG
+x=  46.5 y= 723.5 sz= 7.5 black     | [SAS Field Name: LBCLSIG]
+x= 296.2 y= 725.6 sz= 6.4 #0000ff   | NCS/CS
+x= 332.7 y= 728.2 sz= 5.6 black     | Description: Amphetamines clinical significance
+x= 332.7 y= 734.7 sz= 5.6 black     | Edit Checks:
+x= 335.7 y= 741.3 sz= 5.6 black   B | Name: TEMPLATE_LBCLSIG_AMPSIG:
+x= 441.4 y= 741.3 sz= 5.6 black   B | Value =
+x= 455.8 y= 741.4 sz= 5.6 black     | NCS
+x= 335.7 y= 747.9 sz= 5.6 black     | Description: Value should = NCS
+x= 332.7 y= 754.4 sz= 5.6 black     | Mandatory?: Yes
+x= 332.7 y= 761.0 sz= 5.6 black     | Disallow Future Date: Yes
+x= 332.7 y= 783.2 sz= 5.6 black   B | LBTEST
+x= 332.7 y= 789.8 sz= 5.6 black     | Format: $
+x= 332.7 y= 796.3 sz= 5.6 black     | Data Type: string
+x=  36.0 y= 817.4 sz= 9.0 black     | Annotated CRF
+x= 276.3 y= 817.4 sz= 9.0 black     | 122 of 238
+x= 445.8 y= 817.4 sz= 9.0 black     | https://drvince.clinspark.com

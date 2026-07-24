@@ -1,0 +1,221 @@
+{
+ "stop_reason": "budget",
+ "versions": 5,
+ "best_version": 2,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 114,
+    "pages_total": 21,
+    "pages_with_fields": 7,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 69,
+    "fields_per_form": 1.7,
+    "forms_per_100_pages": 328.6,
+    "form_same_page_evidence_records": 114,
+    "form_same_page_persistence_pct": 17,
+    "furniture_candidates": [],
+    "pages_covered_pct": 33
+   },
+   "problems": [
+    "Degenerate form grouping: 69 distinct form_names for 114 records. A form/section title groups MANY fields by definition, so these form_name values are per-field text (each field's own label, a machine code, or a per-field technical annotation), not the printed title. Extract the title that heads the form/section - shared by the fields it groups and carried across the form's continuation pages - never text attached to a single field."
+   ],
+   "warnings": [
+    "Only 17% of the 114 records on multi-field pages reuse a form_name used by another field on that page. A form/section title normally persists across the fields it groups; per-field labels or annotations do not. Detect the shared printed heading structurally and carry it across continuation pages. If this document genuinely prints many one-field forms, keep the extraction unchanged.",
+    "The program filters by 18 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    1,
+    "not_audited",
+    2,
+    -7
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "revise_gates",
+   "metrics": {
+    "engine": "codegen",
+    "records": 139,
+    "pages_total": 21,
+    "pages_with_fields": 10,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 70,
+    "fields_per_form": 2.0,
+    "forms_per_100_pages": 333.3,
+    "form_same_page_evidence_records": 139,
+    "form_same_page_persistence_pct": 32,
+    "furniture_candidates": [],
+    "pages_covered_pct": 48
+   },
+   "problems": [
+    "Degenerate form grouping: 70 distinct form_names for 139 records. A form/section title groups MANY fields by definition, so these form_name values are per-field text (each field's own label, a machine code, or a per-field technical annotation), not the printed title. Extract the title that heads the form/section - shared by the fields it groups and carried across the form's continuation pages - never text attached to a single field."
+   ],
+   "warnings": [
+    "Only 32% of the 139 records on multi-field pages reuse a form_name used by another field on that page. A form/section title normally persists across the fields it groups; per-field labels or annotations do not. Detect the shared printed heading structurally and carry it across continuation pages. If this document genuinely prints many one-field forms, keep the extraction unchanged.",
+    "The program filters by 24 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    1,
+    "not_audited",
+    2,
+    -10
+   ],
+   "became_best": true
+  },
+  {
+   "version": 3,
+   "kind": "revise_gates",
+   "metrics": {
+    "engine": "codegen",
+    "records": 113,
+    "pages_total": 21,
+    "pages_with_fields": 7,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 97,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 69,
+    "fields_per_form": 1.6,
+    "forms_per_100_pages": 328.6,
+    "form_same_page_evidence_records": 113,
+    "form_same_page_persistence_pct": 16,
+    "furniture_candidates": [],
+    "pages_covered_pct": 33
+   },
+   "problems": [
+    "Degenerate form grouping: 69 distinct form_names for 113 records. A form/section title groups MANY fields by definition, so these form_name values are per-field text (each field's own label, a machine code, or a per-field technical annotation), not the printed title. Extract the title that heads the form/section - shared by the fields it groups and carried across the form's continuation pages - never text attached to a single field."
+   ],
+   "warnings": [
+    "Only 16% of the 113 records on multi-field pages reuse a form_name used by another field on that page. A form/section title normally persists across the fields it groups; per-field labels or annotations do not. Detect the shared printed heading structurally and carry it across continuation pages. If this document genuinely prints many one-field forms, keep the extraction unchanged.",
+    "The program filters by 12 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    1,
+    "not_audited",
+    2,
+    -7
+   ],
+   "became_best": false
+  },
+  {
+   "version": 4,
+   "kind": "revise_gates",
+   "metrics": {
+    "engine": "codegen",
+    "records": 117,
+    "pages_total": 21,
+    "pages_with_fields": 7,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 97,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 69,
+    "fields_per_form": 1.7,
+    "forms_per_100_pages": 328.6,
+    "form_same_page_evidence_records": 117,
+    "form_same_page_persistence_pct": 19,
+    "furniture_candidates": [],
+    "pages_covered_pct": 33
+   },
+   "problems": [
+    "Degenerate form grouping: 69 distinct form_names for 117 records. A form/section title groups MANY fields by definition, so these form_name values are per-field text (each field's own label, a machine code, or a per-field technical annotation), not the printed title. Extract the title that heads the form/section - shared by the fields it groups and carried across the form's continuation pages - never text attached to a single field."
+   ],
+   "warnings": [
+    "Only 19% of the 117 records on multi-field pages reuse a form_name used by another field on that page. A form/section title normally persists across the fields it groups; per-field labels or annotations do not. Detect the shared printed heading structurally and carry it across continuation pages. If this document genuinely prints many one-field forms, keep the extraction unchanged."
+   ],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    1,
+    "not_audited",
+    1,
+    -7
+   ],
+   "became_best": false
+  },
+  {
+   "version": 5,
+   "kind": "revise_gates",
+   "metrics": {
+    "engine": "codegen",
+    "records": 113,
+    "pages_total": 21,
+    "pages_with_fields": 7,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 97,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 69,
+    "fields_per_form": 1.6,
+    "forms_per_100_pages": 328.6,
+    "form_same_page_evidence_records": 113,
+    "form_same_page_persistence_pct": 16,
+    "furniture_candidates": [],
+    "pages_covered_pct": 33
+   },
+   "problems": [
+    "Degenerate form grouping: 69 distinct form_names for 113 records. A form/section title groups MANY fields by definition, so these form_name values are per-field text (each field's own label, a machine code, or a per-field technical annotation), not the printed title. Extract the title that heads the form/section - shared by the fields it groups and carried across the form's continuation pages - never text attached to a single field."
+   ],
+   "warnings": [
+    "Only 16% of the 113 records on multi-field pages reuse a form_name used by another field on that page. A form/section title normally persists across the fields it groups; per-field labels or annotations do not. Detect the shared printed heading structurally and carry it across continuation pages. If this document genuinely prints many one-field forms, keep the extraction unchanged."
+   ],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    1,
+    "not_audited",
+    1,
+    -7
+   ],
+   "became_best": false
+  }
+ ]
+}

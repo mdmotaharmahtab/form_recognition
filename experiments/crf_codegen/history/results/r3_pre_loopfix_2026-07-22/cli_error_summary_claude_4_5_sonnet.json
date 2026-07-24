@@ -1,0 +1,35 @@
+{
+ "generated_at": "2026-07-22T21:49:23Z",
+ "documents": 11,
+ "events": 236,
+ "by_severity": {
+  "quality": 236
+ },
+ "by_stage": {
+  "audit": 223,
+  "loop": 10,
+  "confirm": 1,
+  "gates": 2
+ },
+ "by_code": {
+  "audit_false_positive": 116,
+  "stopped_with_open_issues": 10,
+  "audit_missed": 97,
+  "confirm_extension_rejected": 1,
+  "warn_form_names_empty": 2,
+  "audit_wrong_form": 10
+ },
+ "by_doc": {
+  "326-201-00007_Annotated_CRF___v1.0_30_Sep_2024": 42,
+  "326-201-00007_Annotated_CRF___v1.0_30_Sep_2024_1_": 36,
+  "331-201-00246_Annotated_CRF___v_04_Jul_2023": 4,
+  "331-201-00246_Annotated_CRF___v_26_Jul_2023": 28,
+  "384-201-00002_Annotated_Unique_CRF_04Nov2024": 14,
+  "384-201-00004_Annotated_CRF___v1.0_05_Mar_2025": 27,
+  "384-201-00004_Annotated_CRF___v2.0_20_May_2025": 18,
+  "384-201-00004_aCRF_16JAN2025": 5,
+  "MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025": 17,
+  "QSC302573_Final_AnnotatedCRFs_16Oct2024-326-201-00007_1_": 25,
+  "annotatedCRF_33120100246-_v1.0_-17Aug2021": 20
+ }
+}

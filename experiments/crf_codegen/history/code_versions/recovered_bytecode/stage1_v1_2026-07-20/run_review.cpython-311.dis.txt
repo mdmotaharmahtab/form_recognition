@@ -1,0 +1,303 @@
+  0           0 RESUME                   0
+
+  1           2 LOAD_CONST               0 ('End-to-end generalization review of the pipeline by a fresh reviewer model.\n\nConcatenates the pipeline source into one prompt and asks a reviewer (via the\nCursor CLI, default Opus medium thinking) to audit it for hardcoding, hidden\nformat/corpus priors, and generalization risks. The reviewer sees code only -\nno repo access (empty sandbox cwd).\n\n  python run_review.py [--model claude-opus-4-8-thinking-medium]\nWrites out/pipeline_review_<model>.md\n')
+              4 STORE_NAME               0 (__doc__)
+
+ 11           6 LOAD_CONST               1 (0)
+              8 LOAD_CONST               2 (None)
+             10 IMPORT_NAME              1 (argparse)
+             12 STORE_NAME               1 (argparse)
+
+ 12          14 LOAD_CONST               1 (0)
+             16 LOAD_CONST               2 (None)
+             18 IMPORT_NAME              2 (os)
+             20 STORE_NAME               2 (os)
+
+ 13          22 LOAD_CONST               1 (0)
+             24 LOAD_CONST               2 (None)
+             26 IMPORT_NAME              3 (re)
+             28 STORE_NAME               3 (re)
+
+ 15          30 LOAD_CONST               1 (0)
+             32 LOAD_CONST               3 (('OUT_DIR',))
+             34 IMPORT_NAME              4 (common)
+             36 IMPORT_FROM              5 (OUT_DIR)
+             38 STORE_NAME               5 (OUT_DIR)
+             40 POP_TOP
+
+ 16          42 LOAD_CONST               1 (0)
+             44 LOAD_CONST               4 (('call_cli', 'find_agent', 'slug'))
+             46 IMPORT_NAME              6 (run_cli_induction)
+             48 IMPORT_FROM              7 (call_cli)
+             50 STORE_NAME               7 (call_cli)
+             52 IMPORT_FROM              8 (find_agent)
+             54 STORE_NAME               8 (find_agent)
+             56 IMPORT_FROM              9 (slug)
+             58 STORE_NAME               9 (slug)
+             60 POP_TOP
+
+ 18          62 LOAD_NAME                2 (os)
+             64 LOAD_ATTR               10 (path)
+             74 LOAD_METHOD             11 (dirname)
+             96 LOAD_NAME                2 (os)
+             98 LOAD_ATTR               10 (path)
+            108 LOAD_METHOD             12 (abspath)
+            130 LOAD_NAME               13 (__file__)
+            132 PRECALL                  1
+            136 CALL                     1
+            146 PRECALL                  1
+            150 CALL                     1
+            160 STORE_NAME              14 (HERE)
+
+ 21         162 BUILD_LIST               0
+            164 LOAD_CONST               5 ((('common.py', 'PRODUCTION-INTENT: page model, layout fingerprint, clustering, rep selection'), ('stage0_cluster.py', 'PRODUCTION-INTENT: stage-0 driver (local variant; Dataiku notebook will mirror it)'), ('codegen.py', 'PRODUCTION-INTENT: codegen prompt, executor parent side, cluster feedback, coverage confirm, grounded audit'), ('sandbox_runner.py', 'PRODUCTION-INTENT: child process that executes generated code in a restricted namespace'), ('induction.py', 'MIXED: score/gate_problems are PRODUCTION-INTENT; the recipe/engine-catalog prompt path is LEGACY comparison only'), ('replay.py', 'LEGACY comparison path (engine catalog) - review only for anything the production path imports from it (FieldRec, ReplayResult)'), ('subagent_bridge.py', 'LOCAL HARNESS: file-based bridge for manual/blind testing'), ('run_cli_induction.py', 'LOCAL HARNESS mirroring the production loop: transport + revision/confirm/audit orchestration'), ('eval_form_field.py', 'EVALUATION ONLY: ground-truth comparison + name->OID mapping experiment'), ('evaluate.py', 'EVALUATION ONLY: legacy OID-scope evaluation')))
+            166 LIST_EXTEND              1
+            168 STORE_NAME              15 (FILES)
+
+ 34         170 LOAD_CONST               6 ('You are reviewing a document-extraction pipeline for clinical CRF PDFs. Its core claim: GENERALITY. It must work on any CRF-like PDF form book with NO prior knowledge beyond "this is a CRF" - unlimited vendors, layouts, languages. Up to ~1000 pages per document; the only LLM calls allowed are: one program-synthesis call on ~12 representative pages, a bounded revision loop, one coverage-confirmation round, one grounded audit round. Everything else is deterministic Python. Scope: extract (form_name, field_name) per data-entry field; machine codes/OIDs are resolved downstream and are OUT of extraction scope.\n\nArchitecture (intended production flow, to run in a Dataiku notebook via LLM Mesh):\n stage 0: cluster pages by structural fingerprint, pick representatives (no LLM)\n stage 1: LLM writes extract(pages) Python from representative page dumps only\n gates:   mechanical, contract-level checks on the FULL-document run of that program\n loop:    failures -> revision prompt (metrics + per-cluster coverage + unseen sample\n          pages from weak clusters); pass-but-uncovered-clusters -> one confirm round;\n          pass -> grounded audit (sampled pages side-by-side with extracted records,\n          model lists missed/false/wrong_form; one fix round, regression-guarded)\n output:  (form_name, field_name, page) records\n\nREVIEW CHARTER - report in these sections, every item actionable with file/symbol refs:\n\n1. HARDCODING & CORPUS PRIORS (the main concern): every constant, regex, threshold,\n   prompt sentence, or heuristic that encodes knowledge of specific CRF vendors,\n   the author\'s 11 sample documents, English/Latin text, or the local machine\n   (paths, OS). For each: severity (blocker / should-fix / acceptable-with-comment),\n   why it threatens generality, and a concrete fix. Judge PROMPT TEXT too.\n2. BUGS: wrong logic, order-of-operations, off-by-one, exception swallowing,\n   state leaks across documents/attempts.\n3. LOGICAL FLOW: loop bounds, acceptance/regression rules, dead paths, cases where\n   a bad program can be accepted or a good one rejected.\n4. EDGE CASES vs the generality claim: scanned/no-text-layer PDFs, multi-column,\n   RTL/CJK text, huge/tiny documents, PDFs where the fingerprint degenerates\n   (all pages one cluster / every page unique), programs that return generators,\n   unicode, empty pages, encrypted PDFs.\n5. SANDBOX & SAFETY: escapes from the restricted exec namespace, resource abuse\n   (memory/CPU), thread-timeout leaks, and whether restrictions could also block\n   LEGITIMATE extraction programs.\n6. CONSISTENCY: places where harness behavior diverges from the documented\n   production intent (e.g. bridge vs run_cli_induction vs prompts).\n\nDo NOT propose new features. Do NOT restyle code. Focus on the generality claim\nand correctness. Be specific and terse; no praise.\n')
+            172 STORE_NAME              16 (CHARTER)
+
+ 72         174 LOAD_CONST               7 ('return')
+            176 LOAD_NAME               17 (str)
+            178 BUILD_TUPLE              2
+            180 LOAD_CONST               8 (<code object build_prompt at 0x00000290C11FA890, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\run_review.py", line 72>)
+            182 MAKE_FUNCTION            4 (annotations)
+            184 STORE_NAME              18 (build_prompt)
+
+ 81         186 LOAD_CONST              11 (('return', None))
+            188 LOAD_CONST               9 (<code object main at 0x00000290C1B090F0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\run_review.py", line 81>)
+            190 MAKE_FUNCTION            4 (annotations)
+            192 STORE_NAME              19 (main)
+
+ 95         194 LOAD_NAME               20 (__name__)
+            196 LOAD_CONST              10 ('__main__')
+            198 COMPARE_OP               2 (==)
+            204 POP_JUMP_FORWARD_IF_FALSE    12 (to 230)
+
+ 96         206 PUSH_NULL
+            208 LOAD_NAME               19 (main)
+            210 PRECALL                  0
+            214 CALL                     0
+            224 POP_TOP
+            226 LOAD_CONST               2 (None)
+            228 RETURN_VALUE
+
+ 95     >>  230 LOAD_CONST               2 (None)
+            232 RETURN_VALUE
+
+Disassembly of <code object build_prompt at 0x00000290C11FA890, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\run_review.py", line 72>:
+ 72           0 RESUME                   0
+
+ 73           2 LOAD_GLOBAL              0 (CHARTER)
+             14 LOAD_CONST               1 ('\n\n# PIPELINE SOURCE\n')
+             16 BUILD_LIST               2
+             18 STORE_FAST               0 (parts)
+
+ 74          20 LOAD_GLOBAL              2 (FILES)
+             32 GET_ITER
+        >>   34 FOR_ITER               131 (to 298)
+             36 UNPACK_SEQUENCE          2
+             40 STORE_FAST               1 (name)
+             42 STORE_FAST               2 (role)
+
+ 75          44 LOAD_GLOBAL              5 (NULL + open)
+             56 LOAD_GLOBAL              6 (os)
+             68 LOAD_ATTR                4 (path)
+             78 LOAD_METHOD              5 (join)
+            100 LOAD_GLOBAL             12 (HERE)
+            112 LOAD_FAST                1 (name)
+            114 PRECALL                  2
+            118 CALL                     2
+            128 LOAD_CONST               2 ('utf-8')
+            130 KW_NAMES                 3
+            132 PRECALL                  2
+            136 CALL                     2
+            146 BEFORE_WITH
+            148 STORE_FAST               3 (f)
+
+ 76         150 LOAD_FAST                3 (f)
+            152 LOAD_METHOD              7 (read)
+            174 PRECALL                  0
+            178 CALL                     0
+            188 STORE_FAST               4 (src)
+
+ 75         190 LOAD_CONST               0 (None)
+            192 LOAD_CONST               0 (None)
+            194 LOAD_CONST               0 (None)
+            196 PRECALL                  2
+            200 CALL                     2
+            210 POP_TOP
+            212 JUMP_FORWARD            11 (to 236)
+        >>  214 PUSH_EXC_INFO
+            216 WITH_EXCEPT_START
+            218 POP_JUMP_FORWARD_IF_TRUE     4 (to 228)
+            220 RERAISE                  2
+        >>  222 COPY                     3
+            224 POP_EXCEPT
+            226 RERAISE                  1
+        >>  228 POP_TOP
+            230 POP_EXCEPT
+            232 POP_TOP
+            234 POP_TOP
+
+ 77     >>  236 LOAD_FAST                0 (parts)
+            238 LOAD_METHOD              8 (append)
+            260 LOAD_CONST               4 ('\n---------- ')
+            262 LOAD_FAST                1 (name)
+            264 FORMAT_VALUE             0
+            266 LOAD_CONST               5 ('  [')
+            268 LOAD_FAST                2 (role)
+            270 FORMAT_VALUE             0
+            272 LOAD_CONST               6 ('] ----------\n')
+            274 LOAD_FAST                4 (src)
+            276 FORMAT_VALUE             0
+            278 BUILD_STRING             6
+            280 PRECALL                  1
+            284 CALL                     1
+            294 POP_TOP
+            296 JUMP_BACKWARD          132 (to 34)
+
+ 78     >>  298 LOAD_CONST               7 ('\n')
+            300 LOAD_METHOD              5 (join)
+            322 LOAD_FAST                0 (parts)
+            324 PRECALL                  1
+            328 CALL                     1
+            338 RETURN_VALUE
+ExceptionTable:
+  148 to 188 -> 214 [2] lasti
+  214 to 220 -> 222 [4] lasti
+  228 to 228 -> 222 [4] lasti
+
+Disassembly of <code object main at 0x00000290C1B090F0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\run_review.py", line 81>:
+ 81           0 RESUME                   0
+
+ 82           2 LOAD_GLOBAL              1 (NULL + argparse)
+             14 LOAD_ATTR                1 (ArgumentParser)
+             24 PRECALL                  0
+             28 CALL                     0
+             38 STORE_FAST               0 (ap)
+
+ 83          40 LOAD_FAST                0 (ap)
+             42 LOAD_METHOD              2 (add_argument)
+             64 LOAD_CONST               1 ('--model')
+             66 LOAD_CONST               2 ('claude-opus-4-8-thinking-medium')
+             68 KW_NAMES                 3
+             70 PRECALL                  2
+             74 CALL                     2
+             84 POP_TOP
+
+ 84          86 LOAD_FAST                0 (ap)
+             88 LOAD_METHOD              3 (parse_args)
+            110 PRECALL                  0
+            114 CALL                     0
+            124 STORE_FAST               1 (args)
+
+ 85         126 LOAD_GLOBAL              9 (NULL + build_prompt)
+            138 PRECALL                  0
+            142 CALL                     0
+            152 STORE_FAST               2 (prompt)
+
+ 86         154 LOAD_GLOBAL             11 (NULL + print)
+            166 LOAD_CONST               4 ('review prompt: ')
+            168 LOAD_GLOBAL             13 (NULL + len)
+            180 LOAD_FAST                2 (prompt)
+            182 PRECALL                  1
+            186 CALL                     1
+            196 FORMAT_VALUE             0
+            198 LOAD_CONST               5 (' chars; calling ')
+            200 LOAD_FAST                1 (args)
+            202 LOAD_ATTR                7 (model)
+            212 FORMAT_VALUE             0
+            214 LOAD_CONST               6 (' ...')
+            216 BUILD_STRING             5
+            218 PRECALL                  1
+            222 CALL                     1
+            232 POP_TOP
+
+ 87         234 LOAD_GLOBAL             17 (NULL + call_cli)
+            246 LOAD_GLOBAL             19 (NULL + find_agent)
+            258 PRECALL                  0
+            262 CALL                     0
+            272 LOAD_FAST                1 (args)
+            274 LOAD_ATTR                7 (model)
+            284 LOAD_FAST                2 (prompt)
+            286 LOAD_CONST               7 (1800)
+            288 KW_NAMES                 8
+            290 PRECALL                  4
+            294 CALL                     4
+            304 STORE_FAST               3 (reply)
+
+ 88         306 LOAD_GLOBAL             20 (os)
+            318 LOAD_ATTR               11 (path)
+            328 LOAD_METHOD             12 (join)
+            350 LOAD_GLOBAL             26 (OUT_DIR)
+            362 LOAD_CONST               9 ('pipeline_review_')
+            364 LOAD_GLOBAL             29 (NULL + slug)
+            376 LOAD_FAST                1 (args)
+            378 LOAD_ATTR                7 (model)
+            388 PRECALL                  1
+            392 CALL                     1
+            402 FORMAT_VALUE             0
+            404 LOAD_CONST              10 ('.md')
+            406 BUILD_STRING             3
+            408 PRECALL                  2
+            412 CALL                     2
+            422 STORE_FAST               4 (out_path)
+
+ 89         424 LOAD_GLOBAL             31 (NULL + open)
+            436 LOAD_FAST                4 (out_path)
+            438 LOAD_CONST              11 ('w')
+            440 LOAD_CONST              12 ('utf-8')
+            442 KW_NAMES                13
+            444 PRECALL                  3
+            448 CALL                     3
+            458 BEFORE_WITH
+            460 STORE_FAST               5 (f)
+
+ 90         462 LOAD_FAST                5 (f)
+            464 LOAD_METHOD             16 (write)
+            486 LOAD_FAST                3 (reply)
+            488 PRECALL                  1
+            492 CALL                     1
+            502 POP_TOP
+
+ 89         504 LOAD_CONST               0 (None)
+            506 LOAD_CONST               0 (None)
+            508 LOAD_CONST               0 (None)
+            510 PRECALL                  2
+            514 CALL                     2
+            524 POP_TOP
+            526 JUMP_FORWARD            11 (to 550)
+        >>  528 PUSH_EXC_INFO
+            530 WITH_EXCEPT_START
+            532 POP_JUMP_FORWARD_IF_TRUE     4 (to 542)
+            534 RERAISE                  2
+        >>  536 COPY                     3
+            538 POP_EXCEPT
+            540 RERAISE                  1
+        >>  542 POP_TOP
+            544 POP_EXCEPT
+            546 POP_TOP
+            548 POP_TOP
+
+ 91     >>  550 LOAD_GLOBAL             11 (NULL + print)
+            562 LOAD_CONST              14 ('review -> ')
+            564 LOAD_FAST                4 (out_path)
+            566 FORMAT_VALUE             0
+            568 LOAD_CONST              15 ('\n')
+            570 BUILD_STRING             3
+            572 PRECALL                  1
+            576 CALL                     1
+            586 POP_TOP
+
+ 92         588 LOAD_GLOBAL             11 (NULL + print)
+            600 LOAD_FAST                3 (reply)
+            602 PRECALL                  1
+            606 CALL                     1
+            616 POP_TOP
+            618 LOAD_CONST               0 (None)
+            620 RETURN_VALUE
+ExceptionTable:
+  460 to 502 -> 528 [1] lasti
+  528 to 534 -> 536 [3] lasti
+  542 to 542 -> 536 [3] lasti

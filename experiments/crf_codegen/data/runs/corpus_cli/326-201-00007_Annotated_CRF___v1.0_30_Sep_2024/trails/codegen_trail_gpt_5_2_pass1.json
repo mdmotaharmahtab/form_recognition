@@ -1,0 +1,435 @@
+{
+ "stop_reason": "plateau",
+ "versions": 4,
+ "best_version": 2,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 334,
+    "pages_total": 109,
+    "pages_with_fields": 109,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 85,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 333,
+    "fields_per_form": 1.0,
+    "forms_per_100_pages": 305.5,
+    "furniture_candidates": [],
+    "pages_covered_pct": 100
+   },
+   "problems": [],
+   "warnings": [
+    "333 distinct form_names for 334 records - check whether form detection is picking up field labels or body text as form names; if so, make the form_name pattern stricter (font size / color / position) or carry the last seen title forward. If the document genuinely has this many forms, keep it as is."
+   ],
+   "audit_issues": 12,
+   "audit_pages": [
+    1,
+    2,
+    4,
+    38,
+    47,
+    76
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [
+      "Staff Initials",
+      "Comment"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [
+      "Staff Initials",
+      "Comment"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 4,
+     "missed": [
+      "Staff Initials",
+      "Comment"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 38,
+     "missed": [
+      "Staff Initials",
+      "Comment"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 47,
+     "missed": [
+      "Staff Initials",
+      "Comment"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 76,
+     "missed": [
+      "Staff Initials",
+      "Comment"
+     ],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "score": [
+    0,
+    12,
+    1,
+    -109
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 993,
+    "pages_total": 109,
+    "pages_with_fields": 109,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 95,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 330,
+    "fields_per_form": 3.0,
+    "forms_per_100_pages": 302.8,
+    "furniture_candidates": [
+     "Comment",
+     "Staff Initials"
+    ],
+    "pages_covered_pct": 100
+   },
+   "problems": [],
+   "warnings": [
+    "These field_name values were extracted on >=70% of ALL pages: 'Comment'; 'Staff Initials'. Text recurring on nearly every page is usually page template furniture (watermark/footer/stamp), not a field - verify against the page dumps and stop extracting it unless it is genuinely a per-page data-entry field."
+   ],
+   "audit_issues": 1,
+   "audit_pages": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    38,
+    47,
+    76
+   ],
+   "audit_partial": null,
+   "audit_promoted": [
+    5
+   ],
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 3,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 4,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 5,
+     "missed": [],
+     "false": [
+      "Please ensure that a Protocol Deviation is completed"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 38,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 47,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 76,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "score": [
+    0,
+    1,
+    1,
+    -109
+   ],
+   "became_best": true
+  },
+  {
+   "version": 3,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 327,
+    "pages_total": 109,
+    "pages_with_fields": 109,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 85,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 326,
+    "fields_per_form": 1.0,
+    "forms_per_100_pages": 299.1,
+    "furniture_candidates": [],
+    "pages_covered_pct": 100
+   },
+   "problems": [],
+   "warnings": [
+    "326 distinct form_names for 327 records - check whether form detection is picking up field labels or body text as form names; if so, make the form_name pattern stricter (font size / color / position) or carry the last seen title forward. If the document genuinely has this many forms, keep it as is."
+   ],
+   "audit_issues": 6,
+   "audit_pages": [
+    1,
+    2,
+    4,
+    5,
+    6,
+    38,
+    47,
+    76
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [
+      "Study ICF Version Number"
+     ],
+     "false": [
+      "Study ICF Version Number (Version must be checked against ICF present in the RSF \u2013 escalate any discrepancies)"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 4,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 5,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 6,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 38,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 47,
+     "missed": [
+      "1. Wish to be dead (Months)",
+      "2. Non-specific Active Suicidal Thoughts (Lifetime)"
+     ],
+     "false": [
+      "1. Wish to be dead (Months) Subject endorses thoughts about a wish to be dead or not alive anymore, or a wish to fall asleep and not wake up. (Have you wished you were dead or wished you could go to sleep and not wake up?)",
+      "2. Non-specific Active Suicidal Thoughts (Lifetime) General non-specific thoughts of wanting to end one's life / commit suicide (e.g. \"I've thought about killing myself\") without thoughts of ways to kill oneself / associated methods, intent, or plan during the assessment period. (Have you actually had any thoughts of killing yourself?)"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 76,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "score": [
+    0,
+    6,
+    1,
+    -109
+   ],
+   "became_best": false
+  },
+  {
+   "version": 4,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 327,
+    "pages_total": 109,
+    "pages_with_fields": 109,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 89,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 326,
+    "fields_per_form": 1.0,
+    "forms_per_100_pages": 299.1,
+    "furniture_candidates": [],
+    "pages_covered_pct": 100
+   },
+   "problems": [],
+   "warnings": [
+    "326 distinct form_names for 327 records - check whether form detection is picking up field labels or body text as form names; if so, make the form_name pattern stricter (font size / color / position) or carry the last seen title forward. If the document genuinely has this many forms, keep it as is."
+   ],
+   "audit_issues": 17,
+   "audit_pages": [
+    1,
+    2,
+    4,
+    5,
+    7,
+    38,
+    47,
+    76
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [
+      "Staff Initials:",
+      "Comment:"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [
+      "Staff Initials:",
+      "Comment:",
+      "Date _  _  -  _  _  _  -  _  _  _  _ (dd-MMM-yyyy)"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 4,
+     "missed": [
+      "Staff Initials:",
+      "Comment:"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 5,
+     "missed": [
+      "Staff Initials:",
+      "Comment:"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 7,
+     "missed": [
+      "Staff Initials:",
+      "Comment:"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 38,
+     "missed": [
+      "Staff Initials:",
+      "Comment:"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 47,
+     "missed": [
+      "Staff Initials:",
+      "Comment:"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 76,
+     "missed": [
+      "Staff Initials:",
+      "Comment:"
+     ],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "score": [
+    0,
+    17,
+    1,
+    -109
+   ],
+   "became_best": false
+  }
+ ]
+}

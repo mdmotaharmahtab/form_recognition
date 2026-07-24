@@ -1,0 +1,494 @@
+{
+ "stop_reason": "budget",
+ "versions": 5,
+ "best_version": 5,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "confirm",
+   "metrics": {
+    "engine": "codegen",
+    "records": 0,
+    "pages_total": 27,
+    "pages_with_fields": 0,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 0,
+    "labels_look_human_pct": 0,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 0,
+    "fields_per_form": 0.0,
+    "forms_per_100_pages": 0.0,
+    "form_same_page_evidence_records": 0,
+    "form_same_page_persistence_pct": null,
+    "furniture_candidates": [],
+    "pages_covered_pct": 0
+   },
+   "problems": [],
+   "outcome": "extended_program"
+  },
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 0,
+    "pages_total": 27,
+    "pages_with_fields": 0,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 0,
+    "labels_look_human_pct": 0,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 0,
+    "fields_per_form": 0.0,
+    "forms_per_100_pages": 0.0,
+    "form_same_page_evidence_records": 0,
+    "form_same_page_persistence_pct": null,
+    "furniture_candidates": [],
+    "pages_covered_pct": 0
+   },
+   "problems": [],
+   "warnings": [
+    "This pass's layout scope produced ZERO records - correct only if these layouts genuinely carry few or no data-entry fields; the page audit will verify that claim.",
+    "form_name empty for 100% of records - if the document does print form/section names, fix the form_name strategy (consider carrying the last seen title forward).",
+    "Only 0% of field_name values look like human labels (they look like codes/dates/junk) - fix label selection.",
+    "The program filters by 14 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    0,
+    "not_audited",
+    4,
+    0
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "confirm_extension",
+   "metrics": {
+    "engine": "codegen",
+    "records": 0,
+    "pages_total": 27,
+    "pages_with_fields": 0,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 0,
+    "labels_look_human_pct": 0,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 0,
+    "fields_per_form": 0.0,
+    "forms_per_100_pages": 0.0,
+    "form_same_page_evidence_records": 0,
+    "form_same_page_persistence_pct": null,
+    "furniture_candidates": [],
+    "pages_covered_pct": 0
+   },
+   "problems": [],
+   "warnings": [
+    "This pass's layout scope produced ZERO records - correct only if these layouts genuinely carry few or no data-entry fields; the page audit will verify that claim.",
+    "form_name empty for 100% of records - if the document does print form/section names, fix the form_name strategy (consider carrying the last seen title forward).",
+    "Only 0% of field_name values look like human labels (they look like codes/dates/junk) - fix label selection.",
+    "The program filters by 14 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": 6,
+   "audit_pages": [
+    44,
+    142,
+    235,
+    326,
+    425,
+    492
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 44,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 142,
+     "missed": [
+      "Date of Attempt",
+      "Actual Lethality/Medical Damage:",
+      "Potential Lethality: Only answer if Actual Lethality=0"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 235,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 326,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 425,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 492,
+     "missed": [
+      "Date of Attempt",
+      "Actual Lethality/Medical Damage:",
+      "Potential Lethality: Only answer if Actual Lethality=0"
+     ],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    6,
+    4,
+    0
+   ],
+   "became_best": true
+  },
+  {
+   "version": 3,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 56,
+    "pages_total": 27,
+    "pages_with_fields": 10,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 84,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 3,
+    "fields_per_form": 18.7,
+    "forms_per_100_pages": 11.1,
+    "form_same_page_evidence_records": 56,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 37
+   },
+   "problems": [],
+   "warnings": [
+    "The program filters by 16 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": 8,
+   "audit_pages": [
+    44,
+    108,
+    138,
+    142,
+    235,
+    326,
+    425,
+    492
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 44,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 108,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 138,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 142,
+     "missed": [],
+     "false": [
+      "Minor physical damage (e.g. lethargic speech, first-degree burns, mild bleeding,",
+      "sprains) \\2.\\ Moderate physical damage; medical attention needed (e.g. conscious but sleepy; somewhat responsive, second-degree burns; bleeding of major vessel \\3.\\",
+      "Potential Lethality: Only answer if Actual Lethality=0 Likely lethality of actual attempt if no medical damage (the following examples, while having no actual medical damage, has potential for very serious lethality; put gun in",
+      "mouth and pulled the trigger but gun fails to fire so no medical damage; laying on train tracks with oncoming train but pulled away before run over)."
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 235,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 326,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 425,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 492,
+     "missed": [],
+     "false": [
+      "Minor physical damage (e.g. lethargic speech, first-degree burns, mild bleeding,",
+      "sprains) \\2.\\ Moderate physical damage; medical attention needed (e.g. conscious but sleepy; somewhat responsive, second-degree burns; bleeding of major vessel \\3.\\",
+      "Potential Lethality: Only answer if Actual Lethality=0 Likely lethality of actual attempt if no medical damage (the following examples, while having no actual medical damage, has potential for very serious lethality; put gun in",
+      "mouth and pulled the trigger but gun fails to fire so no medical damage; laying on train tracks with oncoming train but pulled away before run over)."
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    8,
+    1,
+    -10
+   ],
+   "became_best": false
+  },
+  {
+   "version": 4,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 49,
+    "pages_total": 27,
+    "pages_with_fields": 10,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 3,
+    "fields_per_form": 16.3,
+    "forms_per_100_pages": 11.1,
+    "form_same_page_evidence_records": 49,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 37
+   },
+   "problems": [],
+   "warnings": [
+    "The program filters by 18 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": 9,
+   "audit_pages": [
+    44,
+    142,
+    164,
+    168,
+    235,
+    326,
+    425,
+    492
+   ],
+   "audit_partial": null,
+   "audit_promoted": [
+    168
+   ],
+   "audit_verdicts": [
+    {
+     "page": 44,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 142,
+     "missed": [],
+     "false": [
+      "Actual Attempts",
+      "Most Lethal Attempt",
+      "Potential Lethality: Only answer if Actual Lethality=0 Likely lethality of actual attempt if no medical damage (the following examples, while"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 164,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 168,
+     "missed": [],
+     "false": [
+      "Actual Attempts",
+      "Most Lethal Attempt",
+      "Potential Lethality: Only answer if Actual Lethality=0 Likely lethality of actual attempt if no medical damage (the following examples, while"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 235,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 326,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 425,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 492,
+     "missed": [],
+     "false": [
+      "Actual Attempts",
+      "Most Lethal Attempt",
+      "Potential Lethality: Only answer if Actual Lethality=0 Likely lethality of actual attempt if no medical damage (the following examples, while"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    9,
+    1,
+    -10
+   ],
+   "became_best": true
+  },
+  {
+   "version": 5,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 40,
+    "pages_total": 27,
+    "pages_with_fields": 10,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 3,
+    "fields_per_form": 13.3,
+    "forms_per_100_pages": 11.1,
+    "form_same_page_evidence_records": 40,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 37
+   },
+   "problems": [],
+   "warnings": [
+    "The program filters by 25 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": 4,
+   "audit_pages": [
+    44,
+    142,
+    168,
+    203,
+    235,
+    326,
+    425,
+    492
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 44,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 142,
+     "missed": [
+      "Potential Lethality: Only answer if Actual Lethality=0"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 168,
+     "missed": [
+      "Potential Lethality: Only answer if Actual Lethality=0"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 203,
+     "missed": [
+      "Potential Lethality: Only answer if Actual Lethality=0"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 235,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 326,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 425,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 492,
+     "missed": [
+      "Potential Lethality: Only answer if Actual Lethality=0"
+     ],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    4,
+    1,
+    -10
+   ],
+   "became_best": true
+  }
+ ]
+}

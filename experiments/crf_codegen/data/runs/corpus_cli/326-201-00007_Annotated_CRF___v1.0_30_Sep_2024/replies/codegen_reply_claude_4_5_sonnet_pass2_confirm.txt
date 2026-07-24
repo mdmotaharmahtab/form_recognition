@@ -1,0 +1,19 @@
+Looking at the sample pages, I can see they both contain answer options (lines starting with "O ") but are missing the actual question text that should appear before "Answer(s):". 
+
+Page 56 shows "Answer(s):" at y=150.4 but no question field above it - the previous line is just "Staff Initials:" at y=134.4.
+
+Page 108 similarly shows "Answer(s):" at y=133.4 with no question field before it.
+
+These appear to be continuation pages where the question was on a previous page. However, I need to check if there's a pattern where questions might appear in a different format or location that I'm missing.
+
+Let me analyze the structure more carefully:
+- Both pages have the standard header with "Schedule Category & Name:"
+- Both have "Timepoint", "Activity", "Line #" column headers
+- Both jump straight to "Answer(s):" or have only "Staff Initials:" before "Answer(s):"
+- No bold question text at x~167.7 is present
+
+These pages appear to be continuation pages showing only answer options for questions that appeared on previous pages. Since the task is to extract **data-entry field labels**, and these pages contain no field labels (only answer options), they are genuinely field-free for our purposes.
+
+The zero coverage on these pages is **correct** - they contain answer options only, not field labels.
+
+CONFIRM_NO_FIELDS

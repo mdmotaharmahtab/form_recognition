@@ -1,0 +1,265 @@
+Your extraction program passed the aggregate quality gates, but entire layout clusters of the document produced ZERO records. Below are sample pages from those clusters (you have not seen these pages before).
+
+For each sampled cluster decide: does this layout carry data-entry fields your program is missing, or is it genuinely field-free (title/TOC/instructions/definitions-only pages)?
+
+
+# Per-layout coverage
+
+Pages of this document are grouped into layout clusters (structural fingerprint).
+Coverage of your program per cluster (clusters your program extracted nothing or
+little from are the ones to investigate):
+
+  cluster   0:  405 pages,  106 with records (26%), 306 records
+  cluster   1:   98 pages,   31 with records (32%), 83 records
+  cluster   2:   26 pages,    8 with records (31%), 31 records
+  cluster   3:   25 pages,   17 with records (68%), 51 records
+  cluster   4:   11 pages,    4 with records (36%), 19 records
+  cluster   5:    8 pages,    5 with records (62%), 6 records
+  cluster   6:    5 pages,    0 with records (0%), 0 records
+  cluster   7:    4 pages,    1 with records (25%), 2 records
+  cluster   8:    4 pages,    2 with records (50%), 8 records
+  cluster   9:    3 pages,    2 with records (67%), 10 records
+  cluster  10:    3 pages,    1 with records (33%), 1 records
+  cluster  11:    3 pages,    0 with records (0%), 0 records
+  cluster  12:    3 pages,    0 with records (0%), 0 records
+  cluster  13:    3 pages,    3 with records (100%), 3 records
+  cluster  14:    2 pages,    2 with records (100%), 8 records
+  cluster  15:    2 pages,    1 with records (50%), 1 records
+
+# Sample pages from poorly-covered clusters (you have NOT seen these before)
+
+If these pages contain data-entry fields, add handling for their layout. If they
+genuinely carry no fields (title/instructions/legend pages), ignore them - zero
+coverage there is correct.
+
+--- page 209 (cluster 0, 405 pages like this, 26% covered) ---
+x= 235.9 y=  39.1 sz=20.0 #4682b4 B | Annotated CRF
+x=  29.9 y=  71.2 sz=11.0 black   B | Study, Site:
+x= 238.7 y=  71.2 sz=11.0 black   B | Group, Visit:
+x= 445.2 y=  71.2 sz=11.0 black   B | Slot:
+x=  29.9 y=  93.9 sz=11.0 black   B | Schedule Category & Name:
+x= 167.7 y=  93.9 sz=11.0 black     | S_QSC302573, 05b - Period 2 Final v1.0
+x=  29.9 y= 116.4 sz=10.0 #4682b4 B | Timepoint
+x= 167.7 y= 116.4 sz=10.0 #4682b4 B | Activity
+x= 488.4 y= 116.4 sz=10.0 #4682b4 B | Line #
+x=  29.9 y= 133.4 sz=10.0 black     | Day 4 (0), -00:00.00
+x= 167.7 y= 133.4 sz=10.0 black   B | Exposure: Predose Procedure Check #1
+x= 488.4 y= 133.4 sz=10.0 black     | 45.0
+x=  29.9 y= 150.4 sz=10.0 black     | _ _ - _ _ _ - _ _ _ _
+x= 116.7 y= 150.4 sz=10.0 black     | _ _ : _ _
+x= 167.7 y= 150.4 sz=10.0 black   B | Have all required pre dose procedures been completed?
+x=  29.9 y= 162.6 sz=10.0 black     | dd - MMM - yyyy
+x= 116.7 y= 162.6 sz=10.0 black     | HH:mm
+x=  30.9 y= 177.7 sz=10.0 #4682b4 B | Staff Initials:
+x= 167.7 y= 193.7 sz=10.0 #4682b4 B | Answer(s):
+x= 238.7 y= 193.7 sz=10.0 black     | O Yes
+x= 238.7 y= 210.8 sz=10.0 black     | O No (Comment Required)
+x=  29.9 y= 227.8 sz=10.0 #4682b4 B | Comment:
+x=  29.9 y= 250.5 sz=10.0 black     | Day 4 (0), -00:00.00
+x= 167.7 y= 250.5 sz=10.0 black   B | Exposure: Dose Eligibility Check #1
+x= 488.4 y= 250.5 sz=10.0 black     | 46.0
+x=  29.9 y= 267.5 sz=10.0 black     | _ _ - _ _ _ - _ _ _ _
+x= 116.7 y= 267.5 sz=10.0 black     | _ _ : _ _
+x= 167.7 y= 267.5 sz=10.0 black   B | Is the participant eligible to dose?
+x=  29.9 y= 279.6 sz=10.0 black     | dd - MMM - yyyy
+x= 116.7 y= 279.6 sz=10.0 black     | HH:mm
+x=  30.9 y= 294.8 sz=10.0 #4682b4 B | Staff Initials:
+x= 167.7 y= 310.8 sz=10.0 #4682b4 B | Answer(s):
+x= 238.7 y= 310.8 sz=10.0 black     | O Yes
+x= 238.7 y= 327.8 sz=10.0 black     | O No (Comment Required)
+x=  29.9 y= 344.8 sz=10.0 #4682b4 B | Comment:
+x=  29.9 y= 367.5 sz=10.0 black     | Day 4 (0), -00:00.00
+x= 167.7 y= 367.5 sz=10.0 black   B | Exposure: Subject/regimen #1
+x= 488.4 y= 367.5 sz=10.0 black     | 47.0
+x=  29.9 y= 384.5 sz=10.0 black     | _ _ - _ _ _ - _ _ _ _
+x= 116.7 y= 384.5 sz=10.0 black     | _ _ : _ _
+x= 167.7 y= 384.5 sz=10.0 black   B | Enter the product details
+x=  29.9 y= 396.7 sz=10.0 black     | dd - MMM - yyyy
+x= 116.7 y= 396.7 sz=10.0 black     | HH:mm
+x=  30.9 y= 411.8 sz=10.0 #4682b4 B | Staff Initials:
+x= 167.7 y= 427.9 sz=10.0 #4682b4 B | Answer(s):
+x= 238.7 y= 427.9 sz=10.0 black     | Randomisation Number  _  _  _  _  _   (00000)
+x= 238.7 y= 444.9 sz=10.0 black     | [RANDNO] SAS:[Name=RANDNO, Length=20, DataType=Char]
+x= 238.7 y= 461.9 sz=10.0 black     | Treatment ______________________________ (25 char. max.)
+x= 238.7 y= 478.9 sz=10.0 black     | [EXTRT] SAS:[Name=EXTRT, Length=50, DataType=Char]
+x= 238.7 y= 495.9 sz=10.0 black     | Dose Level  _  _  mg (#0)
+x= 238.7 y= 512.9 sz=10.0 black     | [EXDOSE] SAS:[Name=EXDOSE, Length=50, DataType=Char]
+x= 238.7 y= 529.9 sz=10.0 black     | Number of tablets/capsules to be administered  _  _   (#0)
+x= 238.7 y= 546.9 sz=10.0 black     | [EXTABLET] SAS:[Name=EXTABLET, Length=50, DataType=Char]
+x= 238.7 y= 563.9 sz=10.0 bl
+<...page truncated...>
+
+--- page 395 (cluster 0, 405 pages like this, 26% covered) ---
+x= 235.9 y=  39.1 sz=20.0 #4682b4 B | Annotated CRF
+x=  29.9 y=  71.2 sz=11.0 black   B | Study, Site:
+x= 238.7 y=  71.2 sz=11.0 black   B | Group, Visit:
+x= 445.2 y=  71.2 sz=11.0 black   B | Slot:
+x=  29.9 y=  93.9 sz=11.0 black   B | Schedule Category & Name:
+x= 167.7 y=  93.9 sz=11.0 black     | S_QSC302573, 05d - Period 3 Part 3 Final v1.0
+x=  29.9 y= 116.4 sz=10.0 #4682b4 B | Timepoint
+x= 167.7 y= 116.4 sz=10.0 #4682b4 B | Activity
+x= 488.4 y= 116.4 sz=10.0 #4682b4 B | Line #
+x=  29.9 y= 133.4 sz=10.0 black     | Day 7 (0), +10:00.00 (-5mins)
+x= 167.7 y= 133.4 sz=10.0 black   B | Vital Signs Difference: Vital Signs Calculation BP and HR #3
+x= 488.4 y= 133.4 sz=10.0 black     | 121.0 (hidden)
+x=  29.9 y= 150.4 sz=10.0 black     | _ _ - _ _ _ - _ _ _ _
+x= 116.7 y= 150.4 sz=10.0 black     | _ _ : _ _
+x= 167.7 y= 150.4 sz=10.0 black   B | Vital Signs Difference for SYSTOLIC Drop
+x=  29.9 y= 162.6 sz=10.0 black     | dd - MMM - yyyy
+x= 116.7 y= 162.6 sz=10.0 black     | HH:mm
+x=  30.9 y= 177.7 sz=10.0 #4682b4 B | Staff Initials:
+x= 167.7 y= 193.7 sz=10.0 #4682b4 B | Answer(s):
+x= 238.7 y= 193.7 sz=10.0 black     | Systolic Drop  _  _  _  _  mmHg (####)
+x= 238.7 y= 210.7 sz=10.0 black     | [VSORRES] SAS:[Name=VSORRES, Length=50, DataType=Char]
+x=  29.9 y= 227.8 sz=10.0 #4682b4 B | Comment:
+x=  29.9 y= 250.5 sz=10.0 black     | Day 7 (0), +10:00.00 (-5mins)
+x= 167.7 y= 250.5 sz=10.0 black   B | Vital Signs Difference: Vital Signs Calculation BP and HR 2 #3
+x= 488.4 y= 250.5 sz=10.0 black     | 122.0 (hidden)
+x=  29.9 y= 267.5 sz=10.0 black     | _ _ - _ _ _ - _ _ _ _
+x= 116.7 y= 267.5 sz=10.0 black     | _ _ : _ _
+x= 167.7 y= 267.5 sz=10.0 black   B | Vital Signs Difference for DIASTOLIC Drop
+x=  29.9 y= 279.6 sz=10.0 black     | dd - MMM - yyyy
+x= 116.7 y= 279.6 sz=10.0 black     | HH:mm
+x=  30.9 y= 294.8 sz=10.0 #4682b4 B | Staff Initials:
+x= 167.7 y= 310.8 sz=10.0 #4682b4 B | Answer(s):
+x= 238.7 y= 310.8 sz=10.0 black     | Diastolic Drop  _  _  _  _  mmHg (####)
+x= 238.7 y= 327.8 sz=10.0 black     | [VSORRES] SAS:[Name=VSORRES, Length=50, DataType=Char]
+x=  29.9 y= 344.8 sz=10.0 #4682b4 B | Comment:
+x=  29.9 y= 367.5 sz=10.0 black     | Day 7 (0), +10:00.00 (-5mins)
+x= 167.7 y= 367.5 sz=10.0 black   B | Vital Signs Standing: Clinical Significance #3
+x= 488.4 y= 367.5 sz=10.0 black     | 123.0
+x=  29.9 y= 384.5 sz=10.0 black     | _ _ - _ _ _ - _ _ _ _
+x= 116.7 y= 384.5 sz=10.0 black     | _ _ : _ _
+x= 167.7 y= 384.5 sz=10.0 black   B | Clinical Assessment of Standing Vital Signs (Medic or Nurse to assess vital signs)
+x=  29.9 y= 396.6 sz=10.0 black     | dd - MMM - yyyy
+x= 116.7 y= 396.6 sz=10.0 black     | HH:mm
+x=  30.9 y= 411.8 sz=10.0 #4682b4 B | Staff Initials:
+x= 167.7 y= 427.9 sz=10.0 #4682b4 B | Answer(s):
+x= 238.7 y= 427.9 sz=10.0 black     | O Normal
+x= 238.7 y= 444.9 sz=10.0 black     | [VSCLSIG] SAS:[Name=VSCLSIG, Length=50, DataType=Char]
+x= 238.7 y= 461.9 sz=10.0 black     | O Abnormal, Not Clinically Significant (Comment Required)
+x= 238.7 y= 478.9 sz=10.0 black     | [VSCLSIG] SAS:[Name=VSCLSIG, Length=50, DataType=Char]
+x= 238.7 y= 495.8 sz=10.0 black     | O Abnormal, Clinically Significant (Comment Required) (Activates 
+<...page truncated...>
+
+--- page 224 (cluster 6, 5 pages like this, 0% covered) ---
+x= 235.9 y=  39.1 sz=20.0 #4682b4 B | Annotated CRF
+x=  29.9 y=  71.2 sz=11.0 black   B | Study, Site:
+x= 238.7 y=  71.2 sz=11.0 black   B | Group, Visit:
+x= 445.2 y=  71.2 sz=11.0 black   B | Slot:
+x=  29.9 y=  93.9 sz=11.0 black   B | Schedule Category & Name:
+x= 167.7 y=  93.9 sz=11.0 black     | S_QSC302573, 05b - Period 2 Final v1.0
+x=  29.9 y= 116.4 sz=10.0 #4682b4 B | Timepoint
+x= 167.7 y= 116.4 sz=10.0 #4682b4 B | Activity
+x= 488.4 y= 116.4 sz=10.0 #4682b4 B | Line #
+x=  29.9 y= 133.4 sz=10.0 black     | Day 4 (0), +05:00.00
+x= 167.7 y= 133.4 sz=10.0 black   B | PK Samples: PK Plasma #6
+x= 488.4 y= 133.4 sz=10.0 black     | 93.0
+x=  29.9 y= 150.4 sz=10.0 black     | _ _ - _ _ _ - _ _ _ _
+x= 116.7 y= 150.4 sz=10.0 black     | _ _ : _ _
+x= 167.7 y= 150.4 sz=10.0 black   B | PK Sample for Bioanalysis - Gently invert tube 8-10 times immediately after collection and
+x=  29.9 y= 162.6 sz=10.0 black     | dd - MMM - yyyy
+x= 116.7 y= 162.6 sz=10.0 black     | HH:mm
+x= 167.7 y= 162.6 sz=10.0 black   B | protect the sample from light (4 mL K2EDTA)
+x= 167.7 y= 176.7 sz=10.0 #4682b4 B | Barcode:
+x= 238.7 y= 176.7 sz=10.0 black     | SMP _  _  _  _  _  _  _  _  _
+x=  30.9 y= 177.7 sz=10.0 #4682b4 B | Staff Initials:
+x=  29.9 y= 193.7 sz=10.0 #4682b4 B | Comment:
+x=  29.9 y= 216.4 sz=10.0 black     | Day 4 (0), +05:00.00
+x= 167.7 y= 216.4 sz=10.0 black   B | AE/CM Surveys: AE/CM Check #6
+x= 488.4 y= 216.4 sz=10.0 black     | 94.0
+x=  29.9 y= 233.4 sz=10.0 black     | _ _ - _ _ _ - _ _ _ _
+x= 116.7 y= 233.4 sz=10.0 black     | _ _ : _ _
+x= 167.7 y= 233.4 sz=10.0 black   B | Confirm an AE and Conmed check has been performed (Record any AE and Conmeds if
+x=  29.9 y= 245.6 sz=10.0 black     | dd - MMM - yyyy
+x= 116.7 y= 245.6 sz=10.0 black     | HH:mm
+x= 167.7 y= 245.6 sz=10.0 black   B | applicable)
+x=  30.9 y= 260.8 sz=10.0 #4682b4 B | Staff Initials:
+x= 167.7 y= 276.7 sz=10.0 #4682b4 B | Answer(s):
+x= 238.7 y= 276.7 sz=10.0 black     | O Yes
+x=  29.9 y= 293.8 sz=10.0 #4682b4 B | Comment:
+x=  29.9 y= 316.5 sz=10.0 black     | Day 4 (0), +06:00.00
+x= 167.7 y= 316.5 sz=10.0 black   B | PK Samples: PK Plasma #7
+x= 488.4 y= 316.5 sz=10.0 black     | 95.0
+x=  29.9 y= 333.5 sz=10.0 black     | _ _ - _ _ _ - _ _ _ _
+x= 116.7 y= 333.5 sz=10.0 black     | _ _ : _ _
+x= 167.7 y= 333.5 sz=10.0 black   B | PK Sample for Bioanalysis - Gently invert tube 8-10 times immediately after collection and
+x=  29.9 y= 345.7 sz=10.0 black     | dd - MMM - yyyy
+x= 116.7 y= 345.7 sz=10.0 black     | HH:mm
+x= 167.7 y= 345.7 sz=10.0 black   B | protect the sample from light (4 mL K2EDTA)
+x= 167.7 y= 359.8 sz=10.0 #4682b4 B | Barcode:
+x= 238.7 y= 359.8 sz=10.0 black     | SMP _  _  _  _  _  _  _  _  _
+x=  30.9 y= 360.8 sz=10.0 #4682b4 B | Staff Initials:
+x=  29.9 y= 376.8 sz=10.0 #4682b4 B | Comment:
+x=  29.9 y= 399.5 sz=10.0 black     | Day 4 (0), +06:00.00
+x= 167.7 y= 399.5 sz=10.0 black   B | AE/CM Surveys: AE/CM Check #7
+x= 488.4 y= 399.5 sz=10.0 black     | 96.0
+x=  29.9 y= 416.5 sz=10.0 black     | _ _ - _ _ _ - _ _ _ _
+x= 116.7 y= 416.5 sz=10.0 black     | _ _ : _ _
+x= 167.7 y= 416.5 sz=10.0 black   B | Confirm an AE and Conmed check has been performed (Record any AE and C
+<...page truncated...>
+
+--- page 388 (cluster 6, 5 pages like this, 0% covered) ---
+x= 235.9 y=  39.1 sz=20.0 #4682b4 B | Annotated CRF
+x=  29.9 y=  71.2 sz=11.0 black   B | Study, Site:
+x= 238.7 y=  71.2 sz=11.0 black   B | Group, Visit:
+x= 445.2 y=  71.2 sz=11.0 black   B | Slot:
+x=  29.9 y=  93.9 sz=11.0 black   B | Schedule Category & Name:
+x= 167.7 y=  93.9 sz=11.0 black     | S_QSC302573, 05d - Period 3 Part 3 Final v1.0
+x=  29.9 y= 116.4 sz=10.0 #4682b4 B | Timepoint
+x= 167.7 y= 116.4 sz=10.0 #4682b4 B | Activity
+x= 488.4 y= 116.4 sz=10.0 #4682b4 B | Line #
+x=  29.9 y= 133.4 sz=10.0 black     | Day 7 (0), +05:00.00
+x= 167.7 y= 133.4 sz=10.0 black   B | PK Samples: PK Plasma #6
+x= 488.4 y= 133.4 sz=10.0 black     | 93.0
+x=  29.9 y= 150.4 sz=10.0 black     | _ _ - _ _ _ - _ _ _ _
+x= 116.7 y= 150.4 sz=10.0 black     | _ _ : _ _
+x= 167.7 y= 150.4 sz=10.0 black   B | PK Sample for Bioanalysis - Gently invert tube 8-10 times immediately after collection and
+x=  29.9 y= 162.6 sz=10.0 black     | dd - MMM - yyyy
+x= 116.7 y= 162.6 sz=10.0 black     | HH:mm
+x= 167.7 y= 162.6 sz=10.0 black   B | protect the sample from light (4 mL K2EDTA)
+x= 167.7 y= 176.7 sz=10.0 #4682b4 B | Barcode:
+x= 238.7 y= 176.7 sz=10.0 black     | SMP _  _  _  _  _  _  _  _  _
+x=  30.9 y= 177.7 sz=10.0 #4682b4 B | Staff Initials:
+x=  29.9 y= 193.7 sz=10.0 #4682b4 B | Comment:
+x=  29.9 y= 216.4 sz=10.0 black     | Day 7 (0), +05:00.00
+x= 167.7 y= 216.4 sz=10.0 black   B | AE/CM Surveys: AE/CM Check #6
+x= 488.4 y= 216.4 sz=10.0 black     | 94.0
+x=  29.9 y= 233.4 sz=10.0 black     | _ _ - _ _ _ - _ _ _ _
+x= 116.7 y= 233.4 sz=10.0 black     | _ _ : _ _
+x= 167.7 y= 233.4 sz=10.0 black   B | Confirm an AE and Conmed check has been performed (Record any AE and Conmeds if
+x=  29.9 y= 245.6 sz=10.0 black     | dd - MMM - yyyy
+x= 116.7 y= 245.6 sz=10.0 black     | HH:mm
+x= 167.7 y= 245.6 sz=10.0 black   B | applicable)
+x=  30.9 y= 260.8 sz=10.0 #4682b4 B | Staff Initials:
+x= 167.7 y= 276.7 sz=10.0 #4682b4 B | Answer(s):
+x= 238.7 y= 276.7 sz=10.0 black     | O Yes
+x=  29.9 y= 293.8 sz=10.0 #4682b4 B | Comment:
+x=  29.9 y= 316.5 sz=10.0 black     | Day 7 (0), +06:00.00
+x= 167.7 y= 316.5 sz=10.0 black   B | PK Samples: PK Plasma #7
+x= 488.4 y= 316.5 sz=10.0 black     | 95.0
+x=  29.9 y= 333.5 sz=10.0 black     | _ _ - _ _ _ - _ _ _ _
+x= 116.7 y= 333.5 sz=10.0 black     | _ _ : _ _
+x= 167.7 y= 333.5 sz=10.0 black   B | PK Sample for Bioanalysis - Gently invert tube 8-10 times immediately after collection and
+x=  29.9 y= 345.7 sz=10.0 black     | dd - MMM - yyyy
+x= 116.7 y= 345.7 sz=10.0 black     | HH:mm
+x= 167.7 y= 345.7 sz=10.0 black   B | protect the sample from light (4 mL K2EDTA)
+x= 167.7 y= 359.8 sz=10.0 #4682b4 B | Barcode:
+x= 238.7 y= 359.8 sz=10.0 black     | SMP _  _  _  _  _  _  _  _  _
+x=  30.9 y= 360.8 sz=10.0 #4682b4 B | Staff Initials:
+x=  29.9 y= 376.8 sz=10.0 #4682b4 B | Comment:
+x=  29.9 y= 399.5 sz=10.0 black     | Day 7 (0), +06:00.00
+x= 167.7 y= 399.5 sz=10.0 black   B | AE/CM Surveys: AE/CM Check #7
+x= 488.4 y= 399.5 sz=10.0 black     | 96.0
+x=  29.9 y= 416.5 sz=10.0 black     | _ _ - _ _ _ - _ _ _ _
+x= 116.7 y= 416.5 sz=10.0 black     | _ _ : _ _
+x= 167.7 y= 416.5 sz=10.0 black   B | Confirm an AE and Conmed check has been performed (Record any A
+<...page truncated...>
+
+
+Reply with EXACTLY one of:
+- the single line: CONFIRM_NO_FIELDS
+  (meaning: all shown layouts are genuinely field-free; the program is complete), or
+- the FULL updated Python program (same reply format: source only, define
+  extract(pages)) that keeps existing behavior for covered layouts and ADDS
+  handling for the missed ones.

@@ -1,0 +1,69 @@
+x= 353.7 y=  40.0 sz= 7.8 #ff0000   | [TYPE: enumeration
+x= 456.4 y=  40.0 sz= 7.8 #ff0000   | [TYPE: enumeration
+x= 353.7 y=  51.1 sz= 7.8 #ff0000   | (values: Yes, No)]
+x= 456.4 y=  51.1 sz= 7.8 #ff0000   | (values: Yes, No)]
+x=  45.8 y=  70.7 sz= 7.8 black   B | Row 7
+x=  45.8 y=  90.4 sz= 7.8 black   B | Interrupted attempt:
+x= 362.2 y=  95.7 sz= 9.2 #454545   | Yes
+x= 394.3 y=  95.7 sz= 9.2 #454545   | No
+x= 464.9 y=  95.7 sz= 9.2 #454545   | Yes
+x= 497.0 y=  95.7 sz= 9.2 #454545   | No
+x=  45.8 y= 109.3 sz= 7.8 black     | When the person is interrupted (by an outside circumstance) from starting the
+x= 353.7 y= 115.8 sz= 7.8 #ff0000   | [CSS0415A]
+x= 456.4 y= 115.8 sz= 7.8 #ff0000   | [CSS0415B]
+x=  45.8 y= 120.4 sz= 7.8 black     | potentially self-injurious act (if not for that, actual attempt would have occurred).
+x= 353.7 y= 130.2 sz= 7.8 #ff0000   | [TYPE: enumeration
+x= 456.4 y= 130.2 sz= 7.8 #ff0000   | [TYPE: enumeration
+x=  72.0 y= 139.4 sz= 7.8 black     | Overdose: Person has pills in hand but is stopped from ingesting. Once they
+x= 353.7 y= 141.3 sz= 7.8 #ff0000   | (values: Yes, No)]
+x= 456.4 y= 141.3 sz= 7.8 #ff0000   | (values: Yes, No)]
+x=  72.0 y= 150.5 sz= 7.8 black     | ingest any pills, this becomes an attempt rather than an interrupted attempt.
+x=  72.0 y= 161.6 sz= 7.8 black     | Shooting: Person has gun pointed toward self, gun is taken away by someone
+x=  72.0 y= 172.7 sz= 7.8 black     | else, or is somehow prevent from pulling trigger. Once they pull the trigger,
+x=  72.0 y= 183.8 sz= 7.8 black     | even if the gun fails to fire, it is an attempt.
+x=  72.0 y= 195.0 sz= 7.8 black     | Jumping: Person is poised to jump, is grabbed and taken down from ledge.
+x=  72.0 y= 206.1 sz= 7.8 black     | Hanging: Person has noose around neck but has not yet started to hang - is
+x=  72.0 y= 217.2 sz= 7.8 black     | stopped from doing so
+x=  45.8 y= 236.1 sz= 7.8 black   B | Has there been a time when you started to do something to end your life but
+x=  45.8 y= 247.2 sz= 7.8 black   B | someone or something stopped you before you actually did anything?
+x=  45.8 y= 266.9 sz= 7.8 black   B | Row 8
+x=  45.8 y= 286.5 sz= 7.8 black     | If Yes, Total number of interrupted attempts
+x= 353.7 y= 313.3 sz= 7.8 #ff0000   | [CSS0416A]
+x= 456.4 y= 313.3 sz= 7.8 #ff0000   | [CSS0416B]
+x= 353.7 y= 327.7 sz= 7.8 #ff0000   | [TYPE: integer]
+x= 456.4 y= 327.7 sz= 7.8 #ff0000   | [TYPE: integer]
+x=  45.8 y= 347.3 sz= 7.8 black   B | Row 9
+x=  45.8 y= 366.9 sz= 7.8 black     | If Yes, describe
+x=  45.8 y= 386.5 sz= 7.8 black   B | Row 10
+x=  45.8 y= 432.9 sz= 7.8 #ff0000   | [CSS0416C]
+x=  45.8 y= 447.3 sz= 7.8 #ff0000   | [TYPE: text]
+x=  45.8 y= 466.9 sz= 7.8 black   B | Row 11
+x=  45.8 y= 486.5 sz= 7.8 black   B | Aborted attempt:
+x= 362.2 y= 491.9 sz= 9.2 #454545   | Yes
+x= 394.3 y= 491.9 sz= 9.2 #454545   | No
+x= 464.9 y= 491.9 sz= 9.2 #454545   | Yes
+x= 497.0 y= 491.9 sz= 9.2 #454545   | No
+x=  45.8 y= 505.5 sz= 7.8 black     | When person begins to take steps toward making a suicide attempt, but stops
+x= 353.7 y= 512.0 sz= 7.8 #ff0000   | [CSS0417A]
+x= 456.4 y= 512.0 sz= 7.8 #ff0000   | [CSS0417B]
+x=  45.8 y= 516.6 sz= 7.8 black     | themselves before they actually have engaged in any self destructive behaviour.
+x= 353.7 y= 526.4 sz= 7.8 #ff0000   | [TYPE: enumeration
+x= 456.4 y= 526.4 sz= 7.8 #ff0000   | [TYPE: enumeration
+x=  45.8 y= 527.7 sz= 7.8 black     | Examples are similar to interrupted attempts, except that the individual stops
+x= 353.7 y= 537.5 sz= 7.8 #ff0000   | (values: Yes, No)]
+x= 456.4 y= 537.5 sz= 7.8 #ff0000   | (values: Yes, No)]
+x=  45.8 y= 538.8 sz= 7.8 black     | him/herself, instead of being stopped by something else.
+x=  45.8 y= 557.8 sz= 7.8 black   B | Has there been a time when you started to do something to try to end your life
+x=  45.8 y= 568.9 sz= 7.8 black   B | but you stopped yourself before you actually did anything?
+x=  45.8 y= 588.5 sz= 7.8 black   B | Row 12
+x=  45.8 y= 608.1 sz= 7.8 black     | If Yes, Total number of aborted attempts
+x= 353.7 y= 634.9 sz= 7.8 #ff0000   | [CSS0418A]
+x= 456.4 y= 634.9 sz= 7.8 #ff0000   | [CSS0418B]
+x= 353.7 y= 649.3 sz= 7.8 #ff0000   | [TYPE: integer]
+x= 456.4 y= 649.3 sz= 7.8 #ff0000   | [TYPE: integer]
+x=  45.8 y= 668.9 sz= 7.8 black   B | Row 13
+x=  45.8 y= 688.5 sz= 7.8 black     | If Yes, describe
+x=  45.8 y= 708.1 sz= 7.8 black   B | Row 14
+x=  45.8 y= 754.6 sz= 7.8 #ff0000   | [CSS0418C]
+x=  45.8 y= 768.9 sz= 7.8 #ff0000   | [TYPE: text]
+x=  45.8 y= 788.6 sz= 7.8 black   B | Row 15

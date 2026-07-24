@@ -1,0 +1,18 @@
+Looking at the sample pages, these are clearly **schedule/table-of-contents pages** that list page numbers and page labels in a tabular format. They do NOT contain data-entry fields themselves - they are navigation/index pages that map page numbers to form names.
+
+My current program correctly identifies these as schedule tables and skips field extraction from them (see the `is_schedule` check). The zero coverage on cluster 0 is **correct behavior** - these pages should produce zero records because they contain no data-entry fields, only metadata about where forms are located.
+
+However, I notice my program IS supposed to be extracting the page-to-form mapping from these pages to help identify form names on actual form pages. Let me verify the schedule parsing logic is working correctly by examining the structure more carefully.
+
+The pages show:
+- Bold headers: "Visit Number", "Visit Label", "Page Number", "Page Label", "Dynamic?", "Description of Dynamic"
+- Data rows with: visit number, visit label (black), page number (black), page label (blue #0000ee)
+
+My current code should handle this, but let me trace through:
+1. It looks for "Page Label" in bold text ✓
+2. It looks for numeric page numbers in black ✓
+3. It tries to find blue text labels offset horizontally ✓
+
+The structure seems correct. These pages should produce zero field records, which is expected.
+
+CONFIRM_NO_FIELDS

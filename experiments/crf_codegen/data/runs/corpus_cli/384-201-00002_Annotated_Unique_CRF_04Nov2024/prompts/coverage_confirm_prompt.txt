@@ -1,0 +1,290 @@
+You previously wrote the extraction program below for a clinical CRF PDF (task: extract form_name + field_name for every data-entry field; field labels only, never machine codes, answer options, or page furniture). It passed the aggregate quality gates, but entire layout clusters of the document produced ZERO records. Below are sample pages from those clusters (you have not seen these pages before).
+
+Your current program:
+# Observed layout: every content page has a bold header ("Form: <name>") and a footer
+# near y~692. Two page kinds: (a) question pages - field labels in a left column
+# (x0<=120), answer options at x~370-510, and a small integer marker at the right edge
+# (x~520-535) aligned ~2pt below the label's first line; (b) technical spec tables
+# ("Field Name / Data Type / ... / Field OID") holding machine codes only - skipped.
+# Strategy: track form from headers; anchor each right-edge marker to its left-column
+# line, then absorb following left lines (~12pt wraps) to rebuild multi-line labels.
+
+import re
+
+_HEADER_Y = 140.0     # header band ends above this
+_FOOTER_Y = 685.0     # footer band starts below this
+_LEFT_X_MAX = 120.0   # field labels live left of this
+_MARK_X_MIN = 515.0   # right-edge field markers
+_MARK_X_MAX = 545.0
+_WRAP_GAP = 15.0      # max y-gap between wrapped label lines (~12pt leading)
+_ANCHOR_TOL = 6.0     # marker sits ~2pt below label top
+
+_MARK_RE = re.compile(r'^\d{1,3}$')
+_FORM_RE = re.compile(r'^Form:\s*(.+)$')
+_TABLE_HDR_RE = re.compile(r'^Field\s+Name\b')
+
+
+def _clean(s):
+    return re.sub(r'\s+', ' ', s).strip()
+
+
+def _is_table_page(lines):
+    # Spec-table pages repeat a column header row ("Field Name Data Type" ... "Field OID").
+    for ln in lines:
+        t = ln.text.strip()
+        if t == 'Field OID' or _TABLE_HDR_RE.match(t):
+            return True
+    return False
+
+
+def extract(pages):
+    out = []
+    cur_form = ""
+    for idx, lines in pages:
+        # 1) Update current form from the bold page header.
+        for ln in lines:
+            if ln.y0 < _HEADER_Y:
+                m = _FORM_RE.match(ln.text.strip())
+                if m:
+                    cur_form = _clean(m.group(1))
+                    break
+
+        # 2) Skip machine-code specification tables entirely.
+        if _is_table_page(lines):
+            continue
+
+        content = [ln for ln in lines if _HEADER_Y <= ln.y0 < _FOOTER_Y]
+        if not content:
+            continue
+
+        # 3) Field markers: small bare integers hugging the right page edge.
+        markers = [ln for ln in content
+                   if _MARK_X_MIN <= ln.x0 <= _MARK_X_MAX
+                   and _MARK_RE.match(ln.text.strip())]
+        if not markers:
+            continue
+
+        # 4) Left-column label lines, top to bottom.
+        left = [ln for ln in content if ln.x0 <= _LEFT_X_MAX]
+        left.sort(key=lambda l: (l.y0, l.x0))
+        if not left:
+            continue
+
+        # 5) Anchor each marker to the nearest left line (label top ~2pt above marker).
+        marker_anchor = {}  # index into left -> True
+        for mk in sorted(markers, key=lambda l: l.y0):
+            best_i, best_d = -1, None
+            for i, ln in enumerate(left):
+                if i in marker_anchor:
+                    continue
+                d = abs((ln.y0 + 2.0) - mk.y0)
+                if best_d is None or d < best_d:
+                    best_d, best_i = d, i
+            if best_i >= 0 and best_d is not None and best_d <= _ANCHOR_TOL:
+                marker_anchor[best_i] = True
+
+        # 6) Grow each anchored line downward through unanchored wrap lines.
+        for i in sorted(marker_anchor):
+            parts = [left[i].text]
+            prev = left[i]
+            j = i + 1
+            while j < len(left) and j not in marker_anchor:
+                if left[j].y0 - prev.y0 > _WRAP_GAP:
+                    break
+                parts.append(left[j].text)
+                prev = left[j]
+                j += 1
+            name = _clean(' '.join(parts))
+            # Keep only human-readable labels (must contain letters, not bare numbers).
+            if len(name) < 2 or not re.search(r'[A-Za-z]', name):
+                continue
+            out.append({"form_name": cur_form,
+                        "field_name": name,
+                        "page": idx + 1})
+    return out
+
+For each sampled cluster decide: does this layout carry data-entry fields your program is missing, or is it genuinely field-free (title/TOC/instructions/definitions-only pages)?
+
+
+# Per-layout coverage
+
+Pages of this document are grouped into layout clusters (structural fingerprint).
+Coverage of your program per cluster (clusters your program extracted nothing or
+little from are the ones to investigate):
+
+  cluster   0:  167 pages,    0 with records (0%), 0 records
+  cluster   1:   45 pages,   45 with records (100%), 272 records
+  cluster   2:   33 pages,    0 with records (0%), 0 records
+  cluster   3:   31 pages,   31 with records (100%), 225 records
+  cluster   4:   26 pages,   26 with records (100%), 121 records
+  cluster   5:   23 pages,    0 with records (0%), 0 records
+  cluster   6:   13 pages,   13 with records (100%), 15 records
+  cluster   7:   11 pages,   11 with records (100%), 17 records
+  cluster   8:   10 pages,    0 with records (0%), 0 records
+  cluster   9:    8 pages,    8 with records (100%), 26 records
+  cluster  10:    7 pages,    7 with records (100%), 53 records
+  cluster  11:    7 pages,    0 with records (0%), 0 records
+  cluster  12:    5 pages,    5 with records (100%), 44 records
+  cluster  13:    4 pages,    0 with records (0%), 0 records
+  cluster  14:    3 pages,    0 with records (0%), 0 records
+  cluster  15:    2 pages,    2 with records (100%), 18 records
+  cluster  16:    2 pages,    0 with records (0%), 0 records
+  cluster  17:    2 pages,    0 with records (0%), 0 records
+
+# Sample pages from poorly-covered clusters (you have NOT seen these before)
+
+If these pages contain data-entry fields, add handling for their layout. If they
+genuinely carry no fields (title/instructions/legend pages), ignore them - zero
+coverage there is correct.
+
+--- page 160 (cluster 0, 167 pages like this, 0% covered) ---
+x=  90.0 y=  90.0 sz=10.0 black   B | 01.025 GMK: Unique CRF
+x=  90.0 y= 104.0 sz=10.0 black   B | Form: MINI For Psychotic Disorders 7.0.2
+x=  90.0 y= 118.0 sz=10.0 black   B | Generated On: 04 Nov 2024 15:26:21 (GMT)
+x= 110.0 y= 155.0 sz=10.0 black     | Field Name Data Type
+x= 230.0 y= 155.0 sz=10.0 black     | Units
+x= 290.0 y= 155.0 sz=10.0 black     | Values
+x= 350.0 y= 155.0 sz=10.0 black     | Pre-Filled
+x= 410.0 y= 155.0 sz=10.0 black     | Include
+x= 350.0 y= 167.0 sz=10.0 black     | Values
+x= 410.0 y= 167.0 sz=10.0 black     | Field OID
+x= 350.0 y= 202.0 sz=10.0 black     | 38: Current
+x= 350.0 y= 214.0 sz=10.0 black     | 39: Lifetime
+x= 350.0 y= 226.0 sz=10.0 black     | 40: Current
+x= 350.0 y= 238.0 sz=10.0 black     | 41: Lifetime
+x= 350.0 y= 250.0 sz=10.0 black     | 42: Current
+x= 350.0 y= 262.0 sz=10.0 black     | 43: Lifetime
+x= 350.0 y= 274.0 sz=10.0 black     | 44: Current
+x= 350.0 y= 286.0 sz=10.0 black     | 45: Lifetime
+x= 350.0 y= 298.0 sz=10.0 black     | 46: Current
+x= 350.0 y= 310.0 sz=10.0 black     | 47: Lifetime
+x= 350.0 y= 322.0 sz=10.0 black     | 48: Current
+x= 350.0 y= 334.0 sz=10.0 black     | 49: Lifetime
+x= 350.0 y= 346.0 sz=10.0 black     | 50: Current
+x= 350.0 y= 358.0 sz=10.0 black     | 51: Past
+x= 350.0 y= 370.0 sz=10.0 black     | 52: Current
+x= 350.0 y= 382.0 sz=10.0 black     | 53: Past
+x= 350.0 y= 394.0 sz=10.0 black     | 54: Current
+x= 350.0 y= 406.0 sz=10.0 black     | (Past 3
+x= 350.0 y= 418.0 sz=10.0 black     | Months)
+x= 350.0 y= 430.0 sz=10.0 black     | 55: Current
+x= 350.0 y= 442.0 sz=10.0 black     | (Past 3
+x= 350.0 y= 454.0 sz=10.0 black     | Months)
+x= 350.0 y= 466.0 sz=10.0 black     | 56: Current
+x= 350.0 y= 478.0 sz=10.0 black     | (Past 3
+x= 350.0 y= 490.0 sz=10.0 black     | Months)
+x= 350.0 y= 502.0 sz=10.0 black     | 57: Current
+x= 350.0 y= 514.0 sz=10.0 black     | (Past 6
+x= 350.0 y= 526.0 sz=10.0 black     | Months)
+x= 350.0 y= 538.0 sz=10.0 black     | 58: Current
+x= 350.0 y= 550.0 sz=10.0 black     | 59: Lifetime
+x= 110.0 y= 585.0 sz=10.0 black     | MINI01A_Q
+x= 170.0 y= 585.0 sz=10.0 black     | 1
+x= 410.0 y= 585.0 sz=10.0 black     | MINI01A_Q
+x=  95.5 y= 588.0 sz=10.0 black     | 8
+x= 110.0 y= 597.0 sz=10.0 black     | SORRES
+x= 410.0 y= 597.0 sz=10.0 black     | SORRES
+x= 110.0 y= 632.0 sz=10.0 black     | MINI02A_Q
+x= 170.0 y= 632.0 sz=10.0 black     | $8
+x= 290.0 y= 632.0 sz=10.0 black     | LOW = Low
+x= 410.0 y= 632.0 sz=10.0 black     | MINI02A_Q
+x=  95.5 y= 635.0 sz=10.0 black     | 9
+x= 110.0 y= 644.0 sz=10.0 black     | SORRES
+x= 290.0 y= 644.0 sz=10.0 black     | MODERATE
+x= 410.0 y= 644.0 sz=10.0 black     | SORRES
+x= 290.0 y= 656.0 sz=10.0 black     | = Moderate
+x=  90.0 y= 692.0 sz=10.0 black     | 01.025 GMK (432)
+x= 468.7 y= 693.2 sz=10.0 black     | 159 of 403
+
+--- page 268 (cluster 0, 167 pages like this, 0% covered) ---
+x=  90.0 y=  90.0 sz=10.0 black   B | 01.025 GMK: Unique CRF
+x=  90.0 y= 104.0 sz=10.0 black   B | Form: The Clinician Administered Dissociative States Scale (CADSS)
+x=  90.0 y= 118.0 sz=10.0 black   B | Generated On: 04 Nov 2024 15:26:21 (GMT)
+x= 110.0 y= 155.0 sz=10.0 black     | Field Name Data Type
+x= 230.0 y= 155.0 sz=10.0 black     | Units
+x= 290.0 y= 155.0 sz=10.0 black     | Values
+x= 350.0 y= 155.0 sz=10.0 black     | Pre-Filled
+x= 410.0 y= 155.0 sz=10.0 black     | Include
+x= 350.0 y= 167.0 sz=10.0 black     | Values
+x= 410.0 y= 167.0 sz=10.0 black     | Field OID
+x= 290.0 y= 202.0 sz=10.0 black     | 3 =
+x= 290.0 y= 214.0 sz=10.0 black     | 3=Severe, I
+x= 290.0 y= 226.0 sz=10.0 black     | have two or
+x= 290.0 y= 238.0 sz=10.0 black     | more
+x= 290.0 y= 250.0 sz=10.0 black     | personalitie
+x= 290.0 y= 262.0 sz=10.0 black     | s, although
+x= 290.0 y= 274.0 sz=10.0 black     | they are not
+x= 290.0 y= 286.0 sz=10.0 black     | fully
+x= 290.0 y= 298.0 sz=10.0 black     | developed
+x= 290.0 y= 310.0 sz=10.0 black     | as distinct
+x= 290.0 y= 322.0 sz=10.0 black     | entities.
+x= 290.0 y= 334.0 sz=10.0 black     | 4 =
+x= 290.0 y= 346.0 sz=10.0 black     | 4=Extreme,
+x= 290.0 y= 358.0 sz=10.0 black     | I have two
+x= 290.0 y= 370.0 sz=10.0 black     | or more
+x= 290.0 y= 382.0 sz=10.0 black     | personalitie
+x= 290.0 y= 394.0 sz=10.0 black     | s which are
+x= 290.0 y= 406.0 sz=10.0 black     | distinct and
+x= 290.0 y= 418.0 sz=10.0 black     | have their
+x= 290.0 y= 430.0 sz=10.0 black     | own names
+x= 290.0 y= 442.0 sz=10.0 black     | and other
+x= 290.0 y= 454.0 sz=10.0 black     | unique
+x= 290.0 y= 466.0 sz=10.0 black     | characteristi
+x= 290.0 y= 478.0 sz=10.0 black     | cs.
+x=  93.0 y= 513.0 sz=10.0 black     | 29 CADSS_TO
+x= 170.0 y= 513.0 sz=10.0 black     | 2
+x= 410.0 y= 513.0 sz=10.0 black     | CADSS_TO
+x= 110.0 y= 525.0 sz=10.0 black     | TAL
+x= 410.0 y= 525.0 sz=10.0 black     | TAL
+x=  90.0 y= 692.0 sz=10.0 black     | 01.025 GMK (432)
+x= 468.7 y= 693.2 sz=10.0 black     | 267 of 403
+
+--- page 102 (cluster 2, 33 pages like this, 0% covered) ---
+x=  90.0 y=  90.0 sz=10.0 black   B | 01.025 GMK: Unique CRF
+x=  90.0 y= 104.0 sz=10.0 black   B | Form: Telemetry Summary
+x=  90.0 y= 118.0 sz=10.0 black   B | Generated On: 04 Nov 2024 15:26:21 (GMT)
+x= 110.0 y= 155.0 sz=10.0 black     | Field Name Data Type
+x= 230.0 y= 155.0 sz=10.0 black     | Units
+x= 290.0 y= 155.0 sz=10.0 black     | Values
+x= 350.0 y= 155.0 sz=10.0 black     | Pre-Filled
+x= 410.0 y= 155.0 sz=10.0 black     | Include
+x= 350.0 y= 167.0 sz=10.0 black     | Values
+x= 410.0 y= 167.0 sz=10.0 black     | Field OID
+x= 110.0 y= 202.0 sz=10.0 black     | TEYN
+x= 170.0 y= 202.0 sz=10.0 black     | $1
+x= 290.0 y= 202.0 sz=10.0 black     | Y = Yes
+x= 410.0 y= 202.0 sz=10.0 black     | TEYN
+x=  95.5 y= 205.0 sz=10.0 black     | 1
+x= 290.0 y= 214.0 sz=10.0 black     | N = No
+x=  90.0 y= 692.0 sz=10.0 black     | 01.025 GMK (432)
+x= 468.7 y= 693.2 sz=10.0 black     | 101 of 403
+
+--- page 297 (cluster 2, 33 pages like this, 0% covered) ---
+x=  90.0 y=  90.0 sz=10.0 black   B | 01.025 GMK: Unique CRF
+x=  90.0 y= 104.0 sz=10.0 black   B | Form: C-SSRS Baseline/Screening Versions Summary
+x=  90.0 y= 118.0 sz=10.0 black   B | Generated On: 04 Nov 2024 15:26:21 (GMT)
+x= 110.0 y= 155.0 sz=10.0 black     | Field Name Data Type
+x= 230.0 y= 155.0 sz=10.0 black     | Units
+x= 290.0 y= 155.0 sz=10.0 black     | Values
+x= 350.0 y= 155.0 sz=10.0 black     | Pre-Filled
+x= 410.0 y= 155.0 sz=10.0 black     | Include
+x= 350.0 y= 167.0 sz=10.0 black     | Values
+x= 410.0 y= 167.0 sz=10.0 black     | Field OID
+x= 110.0 y= 202.0 sz=10.0 black     | QS_CSSRSY
+x= 170.0 y= 202.0 sz=10.0 black     | $1
+x= 290.0 y= 202.0 sz=10.0 black     | Y = Yes
+x= 410.0 y= 202.0 sz=10.0 black     | QS_CSSRSY
+x=  95.5 y= 205.0 sz=10.0 black     | 1
+x= 110.0 y= 214.0 sz=10.0 black     | N
+x= 290.0 y= 214.0 sz=10.0 black     | N = No
+x= 410.0 y= 214.0 sz=10.0 black     | N
+x=  90.0 y= 692.0 sz=10.0 black     | 01.025 GMK (432)
+x= 468.7 y= 693.2 sz=10.0 black     | 296 of 403
+
+
+Reply with EXACTLY one of:
+- the single line: CONFIRM_NO_FIELDS
+  (meaning: all shown layouts are genuinely field-free; the program is complete), or
+- the FULL updated Python program (same reply format: source only, define
+  extract(pages)) that keeps existing behavior for covered layouts and ADDS
+  handling for the missed ones.

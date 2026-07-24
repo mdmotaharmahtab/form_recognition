@@ -1,0 +1,52 @@
+x=  47.8 y=  66.1 sz=14.4 #004c99   | C-SSRS since last visit - Page 3
+x=  45.2 y= 108.1 sz= 9.2 black     | Suicidal Behaviour
+x= 404.1 y= 108.1 sz= 9.2 black     | Since Last Visit
+x=  45.8 y= 128.9 sz= 7.8 black   B | Row 1
+x=  45.8 y= 148.5 sz= 7.8 black   B | Actual attempt:
+x= 413.2 y= 153.9 sz= 9.2 #454545   | Yes
+x= 445.3 y= 153.9 sz= 9.2 #454545   | No
+x=  45.8 y= 167.5 sz= 7.8 black     | A potentially self-injurious act committed with at least some wish to die, as a result of act. Behaviour
+x= 404.7 y= 174.0 sz= 7.8 #ff0000   | [CSS0212]
+x=  45.8 y= 178.6 sz= 7.8 black   B | was in part thought of as method to kill oneself. Intent does not have to be 100%. If there is any
+x= 404.7 y= 188.4 sz= 7.8 #ff0000   | [TYPE: enumeration (values: Yes, No)]
+x=  45.8 y= 189.7 sz= 7.8 black     | intent/desire to die associated with the act, then it can be considered an actual suicide attempt.
+x=  45.8 y= 200.8 sz= 7.8 black   B | There does not have to be any injury or harm, just the potential for injury or harm. If a person
+x=  45.8 y= 211.9 sz= 7.8 black     | pulls the trigger while gun is in mouth but gun is broken so no injury results, this is considered an
+x=  45.8 y= 223.1 sz= 7.8 black     | attempt.
+x=  45.8 y= 242.0 sz= 7.8 black     | Inferring Intent: even if an individual denies intent/wish to die, it may be inferred clinically from the
+x=  45.8 y= 253.1 sz= 7.8 black     | behaviour or circumstances. For example, a highly lethal act that is clearly not an accident so no
+x=  45.8 y= 264.2 sz= 7.8 black     | other intent but suicide can be inferred (e.g. gunshot to the head, jumping from window of a high
+x=  45.8 y= 275.4 sz= 7.8 black     | floor/story). Also, if someone denies intent to die, but they thought that what they did could be lethal,
+x=  45.8 y= 286.5 sz= 7.8 black     | intent may be inferred.
+x=  45.8 y= 305.4 sz= 7.8 black   B | Have you made a suicide attempt?
+x=  45.8 y= 324.4 sz= 7.8 black   B | Have you done anything to harm yourself?
+x=  45.8 y= 343.4 sz= 7.8 black   B | Have you done anything dangerous where you could have died?
+x=  45.8 y= 362.3 sz= 7.8 black   B | What did you do?
+x=  45.8 y= 381.3 sz= 7.8 black   B | Did you ______ as a way to end your life?
+x=  45.8 y= 400.2 sz= 7.8 black   B | Did you want to die (even a little) when you ____?
+x=  45.8 y= 419.2 sz= 7.8 black   B | Were trying to end your life when you ____?
+x=  45.8 y= 438.1 sz= 7.8 black   B | Or did you think it was possible you could have died from ____?
+x=  45.8 y= 457.1 sz= 7.8 black   B | Or did you do it purely for other reasons/without ANY intention of killing yourself (like to
+x=  45.8 y= 468.2 sz= 7.8 black   B | relieve stress, feel better, get sympathy, or get something else to happen? (Self-Injurious
+x=  45.8 y= 479.3 sz= 7.8 black     | Behavior without suicidal intent)
+x=  45.8 y= 498.9 sz= 7.8 black   B | Row 2
+x=  45.8 y= 518.6 sz= 7.8 black     | If Yes, Total number of attempts
+x= 404.7 y= 545.4 sz= 7.8 #ff0000   | [CSS0213]
+x= 404.7 y= 559.7 sz= 7.8 #ff0000   | [TYPE: integer (allow zero)]
+x=  45.8 y= 579.4 sz= 7.8 black   B | Row 3
+x=  45.8 y= 599.0 sz= 7.8 black     | If Yes, describe
+x= 404.7 y= 625.8 sz= 7.8 #ff0000   | [CSS0213A]
+x= 404.7 y= 640.2 sz= 7.8 #ff0000   | [TYPE: text]
+x=  45.8 y= 659.8 sz= 7.8 black   B | Row 4
+x=  45.8 y= 679.4 sz= 7.8 black   B | Has subject engaged in Non-Suicidal self-injurious behavior?
+x= 413.2 y= 684.7 sz= 9.2 #454545   | Yes
+x= 445.3 y= 684.7 sz= 9.2 #454545   | No
+x= 404.7 y= 704.9 sz= 7.8 #ff0000   | [CSS0214]
+x= 404.7 y= 719.3 sz= 7.8 #ff0000   | [TYPE: enumeration (values: Yes, No)]
+x=  45.8 y= 738.9 sz= 7.8 black   B | Row 5
+x=  45.8 y= 758.5 sz= 7.8 black   B | Interrupted attempt:
+x= 413.2 y= 763.8 sz= 9.2 #454545   | Yes
+x= 445.3 y= 763.8 sz= 9.2 #454545   | No
+x=  45.8 y= 777.4 sz= 7.8 black     | When the person is interrupted (by an outside circumstance) from starting the potentially self-
+x= 404.7 y= 784.0 sz= 7.8 #ff0000   | [CSS0215]
+x=  45.8 y= 788.6 sz= 7.8 black     | injurious act (if not for that, actual attempt would have occurred).

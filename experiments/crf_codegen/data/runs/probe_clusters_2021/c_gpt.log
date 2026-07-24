@@ -1,0 +1,302 @@
+==== c_narrow_split / gpt-5.2 ====
+OUT_DIR=D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\data\outputs\probe_clusters_2021\c_gpt
+---- stage 0 ----
+=== CONFIG: c_narrow_split ===
+OUT_DIR          : D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\data\outputs\probe_clusters_2021\c_gpt
+doc              : annotatedCRF_33120100246-_v1.0_-17Aug2021
+pages            : 596
+theta*           : 0.5
+n_clusters       : 35
+budgeted reps    : 10  -> pages [1, 2, 58, 68, 82, 88, 90, 334, 516, 522]
+all reps (w/tail): 38
+reps/cluster dist: {0: 1, 1: 32, 2: 1, 4: 1}  (clusters with >=2 reps: 2)
+PLAN passes      : 7
+  clusters/pass  : [18, 3, 3, 3, 3, 3, 2]
+  reps/pass      : [10, 5, 5, 5, 5, 5, 4]
+env knobs        : REPS_PER_CLUSTER=4 MAX_REPS=4 REP_BUDGET=3 MAX_PASSES=12 MIN_TAIL_REPS=1 MIN_TAIL_CONTENT=1
+---- induction ----
+=== annotatedCRF_33120100246-_v1.0_-17Aug2021
+    multi-pass: 7 passes (generalist + tail specialists; [18, 3, 3, 3, 3, 3, 2] clusters each)
+    -- pass 1/7: 18 clusters, 369 pages, reps [1, 2, 58, 68, 82, 88, 90, 334, 516, 522]
+    v1 [generate]: calling gpt-5.2 ...
+    coverage confirmation (uncovered: [(5, 4), (4, 6)]) ...
+    extended program adopted as v2: {"engine": "codegen", "records": 1584, "pages_total": 369, "pages_with_fields": 348, "definition_pages_seen": 0, "forms_nonempty_pct": 100, "labels_look_human_pct": 100, "oids_present_pct": 0, "oids_look_like_codes_pct": 0, "distinct_forms": 88, "fields_per_form": 18.0, "forms_per_100_pages": 23.8, "form_same_page_evidence_records": 1573, "form_same_page_persistence_pct": 100, "furniture_candidates": [], "pages_covered_pct": 94}
+    audit: 14 issue(s) on pages [1, 19, 58, 82, 217, 334, 386]
+    warnings: ['The program filters by 12 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers.']
+    v3 [revise_audit]: calling gpt-5.2 ...
+    audit: 19 issue(s) on pages [1, 19, 28, 58, 82, 217, 334, 386, 511]
+    audit core grew by [511] (now 8 pages)
+    warnings: ['The program filters by 24 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers.']
+    no improvement over v2 (stall 1/2); one more try
+    v4 [revise_audit]: calling gpt-5.2 ...
+    audit: 12 issue(s) on pages [1, 19, 58, 82, 217, 233, 334, 386, 511]
+    warnings: ['The program filters by 24 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers.']
+    v5 [revise_audit]: calling gpt-5.2 ...
+    audit: 23 issue(s) on pages [1, 2, 19, 58, 82, 217, 334, 386, 511]
+    warnings: ['The program filters by 12 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers.']
+    no improvement over v4 (stall 1/2); one more try
+    -- pass 2/7: 3 clusters, 104 pages, reps [1, 2, 50, 53, 84]
+    v1 [generate]: calling gpt-5.2 ...
+    audit: 4 issue(s) on pages [46, 50, 53, 84, 202, 413]
+    v2 [revise_audit]: calling gpt-5.2 ...
+    audit: 21 issue(s) on pages [46, 47, 50, 51, 53, 84, 202, 413]
+    audit core grew by [47] (now 7 pages)
+    no improvement over v1 (stall 1/2); one more try
+    v3 [revise_audit]: calling gpt-5.2 ...
+    audit: 8 issue(s) on pages [46, 47, 48, 50, 53, 84, 202, 413]
+    v4 [revise_audit]: calling gpt-5.2 ...
+    audit: 9 issue(s) on pages [46, 47, 50, 53, 83, 84, 202, 413]
+    no improvement over v3 (stall 1/2); one more try
+    v5 [revise_audit]: calling gpt-5.2 ...
+    audit: 25 issue(s) on pages [46, 47, 50, 52, 53, 84, 202, 413]
+    -- pass 3/7: 3 clusters, 47 pages, reps [1, 2, 42, 71, 136]
+    v1 [generate]: calling gpt-5.2 ...
+    audit: 42 issue(s) on pages [37, 42, 71, 136, 198, 423]
+    v2 [revise_audit]: calling gpt-5.2 ...
+    audit: 41 issue(s) on pages [37, 42, 66, 71, 106, 136, 198, 423]
+    audit core grew by [66] (now 7 pages)
+    v3 [revise_audit]: calling gpt-5.2 ...
+    audit: 35 issue(s) on pages [37, 42, 66, 71, 78, 136, 198, 423]
+    v4 [revise_audit]: calling gpt-5.2 ...
+    problems: ['Extreme content-fitted blocklist. The program filters by 54 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers.']
+    no improvement over v3 (stall 1/2); one more try
+    v5 [revise_gates]: calling gpt-5.2 ...
+    problems: ['Extreme content-fitted blocklist. The program filters by 48 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers.']
+    -- pass 4/7: 3 clusters, 30 pages, reps [1, 2, 67, 70, 72]
+    v1 [generate]: calling gpt-5.2 ...
+    coverage confirmation (uncovered: [(0, 10), (1, 10)]) ...
+    extended program adopted as v2: {"engine": "codegen", "records": 60, "pages_total": 30, "pages_with_fields": 10, "definition_pages_seen": 0, "forms_nonempty_pct": 100, "labels_look_human_pct": 100, "oids_present_pct": 0, "oids_look_like_codes_pct": 0, "distinct_forms": 3, "fields_per_form": 20.0, "forms_per_100_pages": 10.0, "form_same_page_evidence_records": 60, "form_same_page_persistence_pct": 100, "furniture_candidates": [], "pages_covered_pct": 33}
+    audit error: agent CLI exited 1: NonRetriableError: Agent Looping Detected The model got stuck in a repeating response pattern, so this turn was stopped. Please try again with a different model or start a new conversation. If the problem persists, please contact support.
+
+    -- pass 5/7: 3 clusters, 27 pages, reps [1, 2, 62, 138, 142]
+    v1 [generate]: calling gpt-5.2 ...
+    coverage confirmation (uncovered: [(1, 9)]) ...
+    model confirmed uncovered clusters are field-free
+    audit: 16 issue(s) on pages [44, 62, 138, 142, 326, 368]
+    v2 [revise_audit]: calling gpt-5.2 ...
+    audit: 20 issue(s) on pages [44, 62, 108, 138, 142, 168, 326, 368]
+    audit core grew by [108] (now 7 pages)
+    coverage drop forgiven: 8 page(s) verified junk-only released
+    v3 [revise_audit]: calling gpt-5.2 ...
+    audit: 36 issue(s) on pages [44, 62, 108, 138, 142, 235, 326, 368]
+    no improvement over v2 (stall 1/2); one more try
+    v4 [revise_audit]: calling gpt-5.2 ...
+    audit: 6 issue(s) on pages [44, 62, 108, 138, 142, 164, 326, 368]
+    -- pass 6/7: 3 clusters, 13 pages, reps [1, 2, 10, 15, 559]
+    v1 [generate]: calling gpt-5.2 ...
+    problems: ['Program failed to run: generated extractor crashed:\nTraceback (most recent call last):\n  File "D:\\ubuntu\\codes\\ZS\\otsuka\\ECS\\experiments\\recipe_prototype\\scripts\\sandbox_runner.py", line 128, in main\n    raw = fn(pages)\n          ^^^^^^^^^\n  File "<generated_extractor>", line 233, in extract\n  File "<generated_extractor>", line 206, in _label_for_code\nTypeError: unhashable type: \'Line\'\n']
+    v2 [revise_gates]: calling gpt-5.2 ...
+    coverage confirmation (uncovered: [(0, 5), (2, 3)]) ...
+    model confirmed uncovered clusters are field-free
+    audit: 8 issue(s) on pages [9, 11, 13, 15, 498, 559]
+    v3 [revise_audit]: calling gpt-5.2 ...
+    audit: 7 issue(s) on pages [9, 10, 11, 13, 15, 498, 518, 559]
+    v4 [revise_audit]: calling gpt-5.2 ...
+    audit: 16 issue(s) on pages [9, 11, 12, 13, 15, 498, 523, 559]
+    audit core grew by [523] (now 7 pages)
+    v5 [revise_audit]: calling gpt-5.2 ...
+    audit: 21 issue(s) on pages [9, 11, 13, 14, 15, 498, 523, 559]
+    no improvement over v4 (stall 1/2); one more try
+    -- pass 7/7: 2 clusters, 6 pages, reps [1, 2, 73, 502]
+    v1 [generate]: calling gpt-5.2 ...
+    coverage confirmation (uncovered: [(0, 3)]) ...
+    extended program adopted as v2: {"engine": "codegen", "records": 16, "pages_total": 6, "pages_with_fields": 6, "definition_pages_seen": 0, "forms_nonempty_pct": 100, "labels_look_human_pct": 100, "oids_present_pct": 0, "oids_look_like_codes_pct": 0, "distinct_forms": 6, "fields_per_form": 2.7, "forms_per_100_pages": 100.0, "form_same_page_evidence_records": 15, "form_same_page_persistence_pct": 100, "furniture_candidates": [], "pages_covered_pct": 100}
+    audit: 5 issue(s) on pages [73, 499, 502, 519, 520, 550]
+    v3 [revise_audit]: calling gpt-5.2 ...
+    audit: 5 issue(s) on pages [73, 499, 502, 519, 520, 550]
+    no improvement over v2 (stall 1/2); one more try
+    v4 [revise_audit]: calling gpt-5.2 ...
+    audit: 9 issue(s) on pages [73, 499, 502, 519, 520, 550]
+    -> {'doc': 'annotatedCRF_33120100246-_v1.0_-17Aug2021', 'status': 'ok_unaudited', 'multipass': 7, 'version_budget': 5, 'versions': 30, 'stop_reason': 'p1:budget;p2:plateau;p3:budget;p4:audit_error;p5:plateau;p6:budget;p7:plateau', 'fields': 2234, 'forms': 111, 'pages_with_fields': 529, 'audit_issues': None, 'passes': [{'doc': 'annotatedCRF_33120100246-_v1.0_-17Aug2021', 'versions': 5, 'stop_reason': 'budget', 'status': 'ok_audit_issues', 'best_version': 4, 'fields': 1622, 'forms': 88, 'pages_with_fields': 348, 'audit_issues': 12, 'warnings': ['The program filters by 24 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers.'], 'elapsed_s': 1459.936, 'stage0_s': 5.63, 'llm_s': 1448.382, 'llm_calls': 9, 'pass': 1, 'clusters': [0, 1, 2, 3, 16, 19, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34]}, {'doc': 'annotatedCRF_33120100246-_v1.0_-17Aug2021', 'versions': 5, 'stop_reason': 'plateau', 'status': 'ok_audit_issues', 'best_version': 1, 'fields': 287, 'forms': 8, 'pages_with_fields': 104, 'audit_issues': 4, 'warnings': [], 'elapsed_s': 1123.884, 'stage0_s': 5.63, 'llm_s': 1108.403, 'llm_calls': 10, 'pass': 2, 'clusters': [4, 5, 6]}, {'doc': 'annotatedCRF_33120100246-_v1.0_-17Aug2021', 'versions': 5, 'stop_reason': 'budget', 'status': 'ok_audit_issues', 'best_version': 3, 'fields': 199, 'forms': 14, 'pages_with_fields': 47, 'audit_issues': 35, 'warnings': [], 'elapsed_s': 1369.849, 'stage0_s': 5.63, 'llm_s': 1318.558, 'llm_calls': 8, 'pass': 3, 'clusters': [7, 8, 9]}, {'doc': 'annotatedCRF_33120100246-_v1.0_-17Aug2021', 'versions': 2, 'stop_reason': 'audit_error', 'status': 'ok_unaudited', 'best_version': 1, 'fields': 60, 'forms': 3, 'pages_with_fields': 10, 'audit_issues': None, 'warnings': [], 'elapsed_s': 396.589, 'stage0_s': 5.63, 'llm_s': 391.203, 'llm_calls': 3, 'pass': 4, 'clusters': [10, 11, 12]}, {'doc': 'annotatedCRF_33120100246-_v1.0_-17Aug2021', 'versions': 4, 'stop_reason': 'plateau', 'status': 'ok_audit_issues', 'best_version': 4, 'fields': 36, 'forms': 2, 'pages_with_fields': 9, 'audit_issues': 6, 'warnings': [], 'elapsed_s': 1222.934, 'stage0_s': 5.63, 'llm_s': 1208.385, 'llm_calls': 9, 'pass': 5, 'clusters': [13, 14, 15]}, {'doc': 'annotatedCRF_33120100246-_v1.0_-17Aug2021', 'versions': 5, 'stop_reason': 'budget', 'status': 'ok_audit_issues', 'best_version': 4, 'fields': 14, 'forms': 5, 'pages_with_fields': 5, 'audit_issues': 16, 'warnings': [], 'elapsed_s': 1073.37, 'stage0_s': 5.63, 'llm_s': 1048.604, 'llm_calls': 10, 'pass': 6, 'clusters': [17, 18, 20]}, {'doc': 'annotatedCRF_33120100246-_v1.0_-17Aug2021', 'versions': 4, 'stop_reason': 'plateau', 'status': 'ok_audit_issues', 'best_version': 2, 'fields': 16, 'forms': 6, 'pages_with_fields': 6, 'audit_issues': 5, 'warnings': [], 'elapsed_s': 763.089, 'stage0_s': 5.63, 'llm_s': 752.01, 'llm_calls': 7, 'pass': 7, 'clusters': [21, 22]}], 'elapsed_s': 7410.509, 'stage0_s': 5.63, 'llm_s': 7275.545, 'llm_calls': 56}
+[
+ {
+  "doc": "annotatedCRF_33120100246-_v1.0_-17Aug2021",
+  "status": "ok_unaudited",
+  "multipass": 7,
+  "version_budget": 5,
+  "versions": 30,
+  "stop_reason": "p1:budget;p2:plateau;p3:budget;p4:audit_error;p5:plateau;p6:budget;p7:plateau",
+  "fields": 2234,
+  "forms": 111,
+  "pages_with_fields": 529,
+  "audit_issues": null,
+  "passes": [
+   {
+    "doc": "annotatedCRF_33120100246-_v1.0_-17Aug2021",
+    "versions": 5,
+    "stop_reason": "budget",
+    "status": "ok_audit_issues",
+    "best_version": 4,
+    "fields": 1622,
+    "forms": 88,
+    "pages_with_fields": 348,
+    "audit_issues": 12,
+    "warnings": [
+     "The program filters by 24 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+    ],
+    "elapsed_s": 1459.936,
+    "stage0_s": 5.63,
+    "llm_s": 1448.382,
+    "llm_calls": 9,
+    "pass": 1,
+    "clusters": [
+     0,
+     1,
+     2,
+     3,
+     16,
+     19,
+     23,
+     24,
+     25,
+     26,
+     27,
+     28,
+     29,
+     30,
+     31,
+     32,
+     33,
+     34
+    ]
+   },
+   {
+    "doc": "annotatedCRF_33120100246-_v1.0_-17Aug2021",
+    "versions": 5,
+    "stop_reason": "plateau",
+    "status": "ok_audit_issues",
+    "best_version": 1,
+    "fields": 287,
+    "forms": 8,
+    "pages_with_fields": 104,
+    "audit_issues": 4,
+    "warnings": [],
+    "elapsed_s": 1123.884,
+    "stage0_s": 5.63,
+    "llm_s": 1108.403,
+    "llm_calls": 10,
+    "pass": 2,
+    "clusters": [
+     4,
+     5,
+     6
+    ]
+   },
+   {
+    "doc": "annotatedCRF_33120100246-_v1.0_-17Aug2021",
+    "versions": 5,
+    "stop_reason": "budget",
+    "status": "ok_audit_issues",
+    "best_version": 3,
+    "fields": 199,
+    "forms": 14,
+    "pages_with_fields": 47,
+    "audit_issues": 35,
+    "warnings": [],
+    "elapsed_s": 1369.849,
+    "stage0_s": 5.63,
+    "llm_s": 1318.558,
+    "llm_calls": 8,
+    "pass": 3,
+    "clusters": [
+     7,
+     8,
+     9
+    ]
+   },
+   {
+    "doc": "annotatedCRF_33120100246-_v1.0_-17Aug2021",
+    "versions": 2,
+    "stop_reason": "audit_error",
+    "status": "ok_unaudited",
+    "best_version": 1,
+    "fields": 60,
+    "forms": 3,
+    "pages_with_fields": 10,
+    "audit_issues": null,
+    "warnings": [],
+    "elapsed_s": 396.589,
+    "stage0_s": 5.63,
+    "llm_s": 391.203,
+    "llm_calls": 3,
+    "pass": 4,
+    "clusters": [
+     10,
+     11,
+     12
+    ]
+   },
+   {
+    "doc": "annotatedCRF_33120100246-_v1.0_-17Aug2021",
+    "versions": 4,
+    "stop_reason": "plateau",
+    "status": "ok_audit_issues",
+    "best_version": 4,
+    "fields": 36,
+    "forms": 2,
+    "pages_with_fields": 9,
+    "audit_issues": 6,
+    "warnings": [],
+    "elapsed_s": 1222.934,
+    "stage0_s": 5.63,
+    "llm_s": 1208.385,
+    "llm_calls": 9,
+    "pass": 5,
+    "clusters": [
+     13,
+     14,
+     15
+    ]
+   },
+   {
+    "doc": "annotatedCRF_33120100246-_v1.0_-17Aug2021",
+    "versions": 5,
+    "stop_reason": "budget",
+    "status": "ok_audit_issues",
+    "best_version": 4,
+    "fields": 14,
+    "forms": 5,
+    "pages_with_fields": 5,
+    "audit_issues": 16,
+    "warnings": [],
+    "elapsed_s": 1073.37,
+    "stage0_s": 5.63,
+    "llm_s": 1048.604,
+    "llm_calls": 10,
+    "pass": 6,
+    "clusters": [
+     17,
+     18,
+     20
+    ]
+   },
+   {
+    "doc": "annotatedCRF_33120100246-_v1.0_-17Aug2021",
+    "versions": 4,
+    "stop_reason": "plateau",
+    "status": "ok_audit_issues",
+    "best_version": 2,
+    "fields": 16,
+    "forms": 6,
+    "pages_with_fields": 6,
+    "audit_issues": 5,
+    "warnings": [],
+    "elapsed_s": 763.089,
+    "stage0_s": 5.63,
+    "llm_s": 752.01,
+    "llm_calls": 7,
+    "pass": 7,
+    "clusters": [
+     21,
+     22
+    ]
+   }
+  ],
+  "elapsed_s": 7410.509,
+  "stage0_s": 5.63,
+  "llm_s": 7275.545,
+  "llm_calls": 56
+ }
+]
+error report: 411 event(s) {'gates': 7, 'audit': 404} -> D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\data\outputs\probe_clusters_2021\c_gpt\cli_error_events_gpt_5_2.csv
+==== DONE c_narrow_split / gpt-5.2 ====

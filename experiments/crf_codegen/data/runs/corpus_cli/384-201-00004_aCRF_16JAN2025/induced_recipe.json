@@ -1,0 +1,57 @@
+{
+ "format_id": "clinspark_acrf_bracket_sas",
+ "reasoning": "Every page is a ClinSpark 'Annotated CRF' (footer with clinspark.com URL). Form pages have a white 12pt banner with the form name, teal 10.5pt item-group headings, field labels in a left column at x~46, and black bracketed annotation lines printed directly under each label: first the item code (e.g. [CMTRT], [CM_MH_RELATION], [RR]) then [SAS Field Name: XXX], while verbose metadata sits in a separate right column at x~452. This is a clean adjacent_annotation layout with the bracketed item code as primary OID and the SAS field name as alternate. The title page, the Study Events matrix and the trailing Coded/Decode code-list pages contain no field annotations and are skipped.",
+ "detect": {
+  "all": [
+   "^Annotated CRF$",
+   "clinspark\\.com",
+   "^\\[SAS Field Name:"
+  ]
+ },
+ "skip_page_if": [
+  "^CDISC Legend$",
+  "^Study Events$",
+  "^Decode$"
+ ],
+ "form_name": {
+  "strategy": "colored_font",
+  "min_size": 11,
+  "carry_forward": true,
+  "noise": [
+   "^CDISC Legend$",
+   "^Study Events$",
+   "^Origin: CRF$",
+   "^Coded$",
+   "^Decode$"
+  ]
+ },
+ "fields": {
+  "engine": "adjacent_annotation",
+  "column_x_max": 200,
+  "oid_regex": "^\\[([A-Z][A-Z0-9_]*)\\]$",
+  "alt_regex": "^\\[SAS Field Name:\\s*([A-Z][A-Z0-9_]*)\\]$",
+  "alt_is_primary": false,
+  "oid_color_non_black": false,
+  "annotation_group_dy": 12,
+  "label_max_dy": 45,
+  "label_noise": [
+   "^\\[",
+   "^O\\s",
+   "^dd-MMM",
+   "^Code List:",
+   "^Aliases:",
+   "^Odm OID",
+   "^Origin:",
+   "^Comment:",
+   "^Role Restriction:",
+   "^Data Collector:",
+   "^Description:",
+   "^Annotated CRF$",
+   "^\\d+ of \\d+$",
+   "^https?://",
+   "^384-201-00004$",
+   "^Coded$",
+   "^Decode$"
+  ]
+ }
+}

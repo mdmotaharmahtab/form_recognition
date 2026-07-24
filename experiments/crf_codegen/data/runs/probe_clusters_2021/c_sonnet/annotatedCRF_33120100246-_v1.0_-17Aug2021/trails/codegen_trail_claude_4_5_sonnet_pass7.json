@@ -1,0 +1,452 @@
+{
+ "stop_reason": "budget",
+ "versions": 5,
+ "best_version": 4,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "confirm",
+   "metrics": {
+    "engine": "codegen",
+    "records": 20,
+    "pages_total": 6,
+    "pages_with_fields": 5,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 0,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 0,
+    "fields_per_form": 20.0,
+    "forms_per_100_pages": 0.0,
+    "form_same_page_evidence_records": 0,
+    "form_same_page_persistence_pct": null,
+    "furniture_candidates": [],
+    "pages_covered_pct": 83
+   },
+   "problems": [],
+   "outcome": "extended_program"
+  },
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 10,
+    "pages_total": 6,
+    "pages_with_fields": 1,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 0,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 0,
+    "fields_per_form": 10.0,
+    "forms_per_100_pages": 0.0,
+    "form_same_page_evidence_records": 0,
+    "form_same_page_persistence_pct": null,
+    "furniture_candidates": [],
+    "pages_covered_pct": 17
+   },
+   "problems": [],
+   "warnings": [
+    "form_name empty for 100% of records - if the document does print form/section names, fix the form_name strategy (consider carrying the last seen title forward).",
+    "The program filters by 13 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    0,
+    "not_audited",
+    2,
+    -1
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "confirm_extension",
+   "metrics": {
+    "engine": "codegen",
+    "records": 20,
+    "pages_total": 6,
+    "pages_with_fields": 5,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 0,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 0,
+    "fields_per_form": 20.0,
+    "forms_per_100_pages": 0.0,
+    "form_same_page_evidence_records": 0,
+    "form_same_page_persistence_pct": null,
+    "furniture_candidates": [],
+    "pages_covered_pct": 83
+   },
+   "problems": [],
+   "warnings": [
+    "form_name empty for 100% of records - if the document does print form/section names, fix the form_name strategy (consider carrying the last seen title forward).",
+    "The program filters by 13 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": 5,
+   "audit_pages": [
+    73,
+    499,
+    502,
+    519,
+    520,
+    550
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 73,
+     "missed": [
+      "If Yes, describe"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 499,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 502,
+     "missed": [],
+     "false": [
+      "Were you able to contact the Date of Contact/Attempt Type of Contact Method of Contact Subject?",
+      "Final Contact First Failed Attempt Second Failed Attempt Third Failed Attempt"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 519,
+     "missed": [],
+     "false": [
+      "Date of Admission in clinic Time of Admission in clinic"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 520,
+     "missed": [],
+     "false": [
+      "Date of Discharge Time of Discharge"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 550,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    5,
+    2,
+    -5
+   ],
+   "became_best": true
+  },
+  {
+   "version": 3,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 18,
+    "pages_total": 6,
+    "pages_with_fields": 5,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 5,
+    "fields_per_form": 3.6,
+    "forms_per_100_pages": 83.3,
+    "form_same_page_evidence_records": 16,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 83
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 11,
+   "audit_pages": [
+    73,
+    499,
+    502,
+    519,
+    520,
+    550
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 73,
+     "missed": [
+      "If Yes, describe"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 499,
+     "missed": [
+      "Diastolic Blood Pressure (mmHg)"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 502,
+     "missed": [
+      "Has subject taken any ConMeds?"
+     ],
+     "false": [
+      "(Repeatable row added with Add Row button) Were you able to contact the",
+      "Subject?",
+      "Final Contact First Failed Attempt Second Failed Attempt Third Failed Attempt"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 519,
+     "missed": [
+      "Time of Admission in clinic"
+     ],
+     "false": [
+      "(Repeatable row added with Add Row button) Date of Admission in clinic"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 520,
+     "missed": [
+      "Time of Discharge"
+     ],
+     "false": [
+      "(Repeatable row added with Add Row button) Date of Discharge"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 550,
+     "missed": [
+      "Diastolic Blood Pressure (mmHg)"
+     ],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    11,
+    0,
+    -5
+   ],
+   "became_best": false
+  },
+  {
+   "version": 4,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 14,
+    "pages_total": 6,
+    "pages_with_fields": 5,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 5,
+    "fields_per_form": 2.8,
+    "forms_per_100_pages": 83.3,
+    "form_same_page_evidence_records": 12,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 83
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 5,
+   "audit_pages": [
+    73,
+    499,
+    502,
+    519,
+    520,
+    550
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 73,
+     "missed": [
+      "If Yes, describe"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 499,
+     "missed": [
+      "Diastolic Blood Pressure (mmHg)"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 502,
+     "missed": [
+      "Has subject taken any ConMeds?"
+     ],
+     "false": [
+      "Final Contact First Failed Attempt Second Failed Attempt Third Failed Attempt"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 519,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 520,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 550,
+     "missed": [
+      "Diastolic Blood Pressure (mmHg)"
+     ],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    5,
+    0,
+    -5
+   ],
+   "became_best": true
+  },
+  {
+   "version": 5,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 13,
+    "pages_total": 6,
+    "pages_with_fields": 5,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 5,
+    "fields_per_form": 2.6,
+    "forms_per_100_pages": 83.3,
+    "form_same_page_evidence_records": 11,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 83
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 6,
+   "audit_pages": [
+    73,
+    499,
+    502,
+    519,
+    520,
+    550
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 73,
+     "missed": [
+      "If Yes, describe"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 499,
+     "missed": [
+      "Diastolic Blood Pressure (mmHg)"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 502,
+     "missed": [
+      "Specify Contact if Other",
+      "Has subject taken any ConMeds?"
+     ],
+     "false": [
+      "Subject?"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 519,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 520,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 550,
+     "missed": [
+      "Diastolic Blood Pressure (mmHg)"
+     ],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    6,
+    0,
+    -5
+   ],
+   "became_best": false
+  }
+ ]
+}

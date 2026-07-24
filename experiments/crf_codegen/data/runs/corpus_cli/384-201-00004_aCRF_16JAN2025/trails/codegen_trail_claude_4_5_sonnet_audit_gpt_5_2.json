@@ -1,0 +1,452 @@
+{
+ "stop_reason": "budget",
+ "versions": 5,
+ "best_version": 4,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "confirm",
+   "metrics": {
+    "engine": "codegen",
+    "records": 378,
+    "pages_total": 206,
+    "pages_with_fields": 108,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 95,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 50,
+    "fields_per_form": 7.6,
+    "forms_per_100_pages": 24.3,
+    "form_same_page_evidence_records": 350,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 52
+   },
+   "problems": [],
+   "outcome": "extended_program"
+  },
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 341,
+    "pages_total": 206,
+    "pages_with_fields": 106,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 96,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 50,
+    "fields_per_form": 6.8,
+    "forms_per_100_pages": 24.3,
+    "form_same_page_evidence_records": 310,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 51
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    0,
+    "not_audited",
+    0,
+    -106
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "confirm_extension",
+   "metrics": {
+    "engine": "codegen",
+    "records": 378,
+    "pages_total": 206,
+    "pages_with_fields": 108,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 95,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 50,
+    "fields_per_form": 7.6,
+    "forms_per_100_pages": 24.3,
+    "form_same_page_evidence_records": 350,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 52
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 2,
+   "audit_pages": [
+    1,
+    3,
+    31,
+    74,
+    141,
+    174
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 3,
+     "missed": [
+      "Adverse event term"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 31,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 74,
+     "missed": [
+      "Body system"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 141,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 174,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    2,
+    0,
+    -108
+   ],
+   "became_best": true
+  },
+  {
+   "version": 3,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 605,
+    "pages_total": 206,
+    "pages_with_fields": 123,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 98,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 51,
+    "fields_per_form": 11.9,
+    "forms_per_100_pages": 24.8,
+    "form_same_page_evidence_records": 583,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 60
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 1,
+   "audit_pages": [
+    1,
+    3,
+    8,
+    31,
+    74,
+    91,
+    141,
+    174
+   ],
+   "audit_partial": null,
+   "audit_promoted": [
+    91
+   ],
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 3,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 8,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 31,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 74,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 91,
+     "missed": [
+      "Comments"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 141,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 174,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    1,
+    0,
+    -123
+   ],
+   "became_best": true
+  },
+  {
+   "version": 4,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 679,
+    "pages_total": 206,
+    "pages_with_fields": 125,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 98,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 51,
+    "fields_per_form": 13.3,
+    "forms_per_100_pages": 24.8,
+    "form_same_page_evidence_records": 657,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 61
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 1,
+   "audit_pages": [
+    1,
+    3,
+    31,
+    74,
+    91,
+    131,
+    141,
+    174
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 3,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 31,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 74,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 91,
+     "missed": [
+      "Comments"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 131,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 141,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 174,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    1,
+    0,
+    -125
+   ],
+   "became_best": true
+  },
+  {
+   "version": 5,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 679,
+    "pages_total": 206,
+    "pages_with_fields": 125,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 98,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 51,
+    "fields_per_form": 13.3,
+    "forms_per_100_pages": 24.8,
+    "form_same_page_evidence_records": 657,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 61
+   },
+   "problems": [],
+   "warnings": [
+    "The program filters by 21 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": 1,
+   "audit_pages": [
+    1,
+    2,
+    3,
+    31,
+    74,
+    91,
+    141,
+    174
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 3,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 31,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 74,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 91,
+     "missed": [
+      "Comments"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 141,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 174,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    1,
+    1,
+    -125
+   ],
+   "became_best": false
+  }
+ ]
+}

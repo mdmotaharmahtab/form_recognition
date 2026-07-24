@@ -1,0 +1,16 @@
+Looking at these sample pages, they show a different layout variant from what your program currently handles. 
+
+Your program extracts field names that are **bold, at x~167.7** (the activity questions themselves). However, these pages show a layout where:
+
+1. There's **no actual activity field** at x~167.7 - instead there's just a blue bold "Answer(s):" label
+2. All the content at x~238.7 are **answer options** (starting with "O 1 -", "O 2 -", etc.) which you correctly should NOT extract
+3. There's no bold question/activity text at x~167.7 that would be the field label
+
+This appears to be a **legend/reference page** showing the answer scale definitions for a questionnaire (Stanford Sleepiness Scale based on the responses), rather than an actual data entry form. The page has:
+- The blue "Annotated CRF" header (matching your layout)
+- Schedule name
+- But NO actual data-entry fields - just answer option definitions
+
+These are genuinely field-free pages - they're showing what the scale options mean, not asking for data entry.
+
+CONFIRM_NO_FIELDS

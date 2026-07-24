@@ -1,0 +1,58 @@
+{
+ "stage0_s": 5.63,
+ "llm_s": 391.203,
+ "llm_calls": 3,
+ "llm_prompt_chars": 89665,
+ "llm_reply_chars": 18922,
+ "llm_by_kind": {
+  "generate": {
+   "calls": 1,
+   "s": 199.17,
+   "prompt_chars": 40602,
+   "reply_chars": 8159
+  },
+  "confirm": {
+   "calls": 1,
+   "s": 81.525,
+   "prompt_chars": 18348,
+   "reply_chars": 10763
+  },
+  "audit": {
+   "calls": 1,
+   "s": 110.508,
+   "prompt_chars": 30715,
+   "reply_chars": 0
+  }
+ },
+ "sandbox_validate_s": 3.334,
+ "sandbox_validate_calls": 2,
+ "export_s": 1.981,
+ "total_s": 396.589,
+ "calls": [
+  {
+   "seq": 1,
+   "kind": "generate",
+   "version": 1,
+   "s": 199.17,
+   "prompt_chars": 40602,
+   "reply_chars": 8159
+  },
+  {
+   "seq": 2,
+   "kind": "confirm",
+   "version": 1,
+   "s": 81.525,
+   "prompt_chars": 18348,
+   "reply_chars": 10763
+  },
+  {
+   "seq": 3,
+   "kind": "audit",
+   "version": 2,
+   "s": 110.508,
+   "prompt_chars": 30715,
+   "reply_chars": 0,
+   "error": "agent CLI exited 1: NonRetriableError: Agent Looping Detected The model got stuck in a repeating response pattern, so this turn was stopped. Please try again with a different model or start a new conversation. If the problem persists, please contact support.\n"
+  }
+ ]
+}

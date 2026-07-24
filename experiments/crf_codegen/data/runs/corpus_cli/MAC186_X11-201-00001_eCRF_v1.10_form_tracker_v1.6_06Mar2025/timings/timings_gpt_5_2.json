@@ -1,0 +1,112 @@
+{
+ "stage0_s": 15.815,
+ "llm_s": 2176.858,
+ "llm_calls": 9,
+ "llm_prompt_chars": 527626,
+ "llm_reply_chars": 179603,
+ "llm_by_kind": {
+  "generate": {
+   "calls": 1,
+   "s": 336.695,
+   "prompt_chars": 60996,
+   "reply_chars": 21694
+  },
+  "confirm": {
+   "calls": 1,
+   "s": 141.522,
+   "prompt_chars": 36098,
+   "reply_chars": 26086
+  },
+  "audit": {
+   "calls": 4,
+   "s": 747.717,
+   "prompt_chars": 277715,
+   "reply_chars": 9859
+  },
+  "revise_audit": {
+   "calls": 3,
+   "s": 950.924,
+   "prompt_chars": 152817,
+   "reply_chars": 121964
+  }
+ },
+ "sandbox_validate_s": 70.754,
+ "sandbox_validate_calls": 5,
+ "export_s": 11.108,
+ "total_s": 2260.941,
+ "calls": [
+  {
+   "seq": 1,
+   "kind": "generate",
+   "version": 1,
+   "s": 336.695,
+   "prompt_chars": 60996,
+   "reply_chars": 21694
+  },
+  {
+   "seq": 2,
+   "kind": "confirm",
+   "version": 1,
+   "s": 141.522,
+   "prompt_chars": 36098,
+   "reply_chars": 26086
+  },
+  {
+   "seq": 3,
+   "kind": "audit",
+   "version": 1,
+   "s": 71.385,
+   "prompt_chars": 54272,
+   "reply_chars": 3056
+  },
+  {
+   "seq": 4,
+   "kind": "revise_audit",
+   "version": 2,
+   "s": 279.571,
+   "prompt_chars": 39802,
+   "reply_chars": 36837
+  },
+  {
+   "seq": 5,
+   "kind": "audit",
+   "version": 2,
+   "s": 162.214,
+   "prompt_chars": 73515,
+   "reply_chars": 3170
+  },
+  {
+   "seq": 6,
+   "kind": "revise_audit",
+   "version": 3,
+   "s": 197.959,
+   "prompt_chars": 59357,
+   "reply_chars": 39912
+  },
+  {
+   "seq": 7,
+   "kind": "audit",
+   "version": 3,
+   "s": 146.63,
+   "prompt_chars": 72769,
+   "reply_chars": 3633
+  },
+  {
+   "seq": 8,
+   "kind": "revise_audit",
+   "version": 4,
+   "s": 473.394,
+   "prompt_chars": 53658,
+   "reply_chars": 45215
+  },
+  {
+   "seq": 9,
+   "kind": "audit",
+   "version": 4,
+   "s": 367.488,
+   "prompt_chars": 77159,
+   "reply_chars": 0,
+   "error": "agent CLI exited 1: NonRetriableError: Agent Looping Detected The model got stuck in a repeating response pattern, so this turn was stopped. Please try again with a different model or start a new conversation. If the problem persists, please contact support.\n"
+  }
+ ]
+}

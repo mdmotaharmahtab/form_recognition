@@ -1,0 +1,14 @@
+x=  47.8 y=  50.5 sz= 7.8 black     | Reason
+x= 441.8 y=  88.5 sz= 9.2 black     | As per protocol
+x= 441.8 y= 110.7 sz= 9.2 black     | Adverse Event
+x= 441.8 y= 133.0 sz= 9.2 black     | Dosing error
+x= 441.8 y= 155.2 sz= 9.2 black     | Dispensing error
+x= 441.8 y= 177.4 sz= 9.2 black     | Technical problems
+x= 441.8 y= 199.7 sz= 9.2 black     | Subject/guardian decision
+x= 441.8 y= 221.9 sz= 9.2 black     | Physician decision
+x=  47.8 y= 248.6 sz= 7.8 #ff0000   | [EXADJ1]
+x=  47.8 y= 261.0 sz= 7.8 #ff0000   | [TYPE: enumeration (values: As per protocol, Adverse Event, Dosing error, Dispensing error, Technical problems, Subject/guardian decision,
+x=  47.8 y= 270.1 sz= 7.8 #ff0000   | Physician decision)]
+x=  47.8 y= 296.9 sz= 7.8 black     | Dosing Comments (optional)
+x=  47.8 y= 319.8 sz= 7.8 #ff0000   | [EXCOM1]
+x=  47.8 y= 332.2 sz= 7.8 #ff0000   | [TYPE: text]

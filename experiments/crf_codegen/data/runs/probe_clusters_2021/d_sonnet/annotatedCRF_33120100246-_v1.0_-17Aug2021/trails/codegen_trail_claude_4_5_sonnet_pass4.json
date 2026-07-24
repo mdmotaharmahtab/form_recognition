@@ -1,0 +1,535 @@
+{
+ "stop_reason": "plateau",
+ "versions": 4,
+ "best_version": 2,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "confirm",
+   "metrics": {
+    "engine": "codegen",
+    "records": 282,
+    "pages_total": 52,
+    "pages_with_fields": 41,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 75,
+    "labels_look_human_pct": 83,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 7,
+    "fields_per_form": 40.3,
+    "forms_per_100_pages": 13.5,
+    "form_same_page_evidence_records": 211,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 79
+   },
+   "problems": [],
+   "outcome": "extended_program"
+  },
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 189,
+    "pages_total": 52,
+    "pages_with_fields": 23,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 89,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 6,
+    "fields_per_form": 31.5,
+    "forms_per_100_pages": 11.5,
+    "form_same_page_evidence_records": 181,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 44
+   },
+   "problems": [],
+   "warnings": [
+    "The program filters by 10 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    0,
+    "not_audited",
+    1,
+    -23
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "confirm_extension",
+   "metrics": {
+    "engine": "codegen",
+    "records": 282,
+    "pages_total": 52,
+    "pages_with_fields": 41,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 75,
+    "labels_look_human_pct": 83,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 7,
+    "fields_per_form": 40.3,
+    "forms_per_100_pages": 13.5,
+    "form_same_page_evidence_records": 211,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 79
+   },
+   "problems": [],
+   "warnings": [
+    "The program filters by 15 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": 49,
+   "audit_pages": [
+    9,
+    13,
+    70,
+    108,
+    259,
+    422
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 9,
+     "missed": [],
+     "false": [
+      "Respiratory Rate",
+      "Central",
+      "Page 1",
+      "Page 2"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 13,
+     "missed": [
+      "C-SSRS since last visit - Page 3",
+      "C-SSRS since last visit - Page 4",
+      "IMP Administration - Sertraline and Propranolol",
+      "PK Blood Draw - Sertraline",
+      "PK Blood Draw - Propranolol",
+      "Triplicate Orthostatic BP and HR - 1h Postdose",
+      "Triplicate Orthostatic BP and HR - 1.5h Postdose",
+      "Triplicate Orthostatic BP and HR - 2h Postdose",
+      "Triplicate Orthostatic BP and HR - 2.5h Postdose",
+      "Triplicate Orthostatic BP and HR - 3h Postdose",
+      "Triplicate Orthostatic BP and HR - 4h Postdose",
+      "Triplicate Orthostatic BP and HR - 6h Postdose",
+      "Triplicate Orthostatic BP and HR - 8h Postdose",
+      "Visit Date",
+      "AE and CM prompt",
+      "Triplicate Orthostatic BP and HR - Predose",
+      "Physical Exam",
+      "Clinical Laboratory Assessments",
+      "Laboratory results review",
+      "Pregnancy test",
+      "Alcohol Screen - Urine or Breath",
+      "Urine Drug Screen",
+      "Cotinine Screen",
+      "IMP Administration - Sertraline and Brexpiprazole",
+      "PK Blood Draw - Brexpiprazole/Sertraline",
+      "Body Temperature and"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 70,
+     "missed": [],
+     "false": [
+      "COLUMBIA-SUICIDE SEVERITY",
+      "Baseline/Screening Version",
+      "Posner, K.; Brent, D.; Lucas, C.; Gould, M.; Stanley, B.; Brown, G.; Fisher, P.; Zelazny, J.; Burke, A.; Oquendo, M.; Mann, J.",
+      "Definitions of behavioral suicidal events in this scale are based on those used in **The Columbia Suicide History Form**, developed by John Mann, MD and Maria Oquendo, MD, Conte Center for the Neuroscience of Mental Disorders (CCNMD), New York State Psychiatric Institute, 1051 Riverside Drive, New York, NY, 10032. (Oquendo M. A., Halberstam B. & Mann J. J., Risk factors for suicidal behavior: utility and limitations of research instruments. In M.B. First [Ed.] Standardized Evaluation in Clinical Practice, pp. 103 -130, 2003.) For reprints of the C-SSRS contact Kelly Posner, Ph.D., New York State Psychiatric Institute, 1051 Riverside Drive, New York, New York, 10032; inquiries and training requirements contact posnerk@nyspi.columbia.edu"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 108,
+     "missed": [],
+     "false": [
+      "Urinalysis",
+      "LBRSN1",
+      "Not",
+      "Applicable"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 259,
+     "missed": [
+      "Date of Attempt"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 422,
+     "missed": [
+      "If Yes, describe",
+      "If Yes, describe",
+      "If Yes, describe"
+     ],
+     "false": [],
+     "wrong_form": [
+      "3. Active suicidal ideation with any methods (not plan) without intent to act Subject endorses thoughts of suicide and has thought of at least one method during the assessment period. This is different than a specific plan with a time, place or",
+      "Have you been thinking about how you might do this?",
+      "4. Active suicidal ideation with some intent to act, without specific plan Active suicidal thoughts of killing oneself and subject reports having some intent to act on such thoughts, as opposed to \"I have thoughts but I definitely will not do anything",
+      "Have you had these thoughts and had some intention of acting on them?",
+      "5. Active suicidal ideation with specific plan and intent Thoughts of killing oneself with detail of plan fully or partially worked out and subject has some intent to carry it out.",
+      "Have you started to work out or worked out the details of how to kill yourself?",
+      "Do you intend to carry out this plan?"
+     ]
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    49,
+    1,
+    -41
+   ],
+   "became_best": true
+  },
+  {
+   "version": 3,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 152,
+    "pages_total": 52,
+    "pages_with_fields": 22,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 80,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 2,
+    "fields_per_form": 76.0,
+    "forms_per_100_pages": 3.8,
+    "form_same_page_evidence_records": 113,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 42
+   },
+   "problems": [],
+   "warnings": [
+    "The program filters by 28 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": 30,
+   "audit_pages": [
+    9,
+    13,
+    70,
+    108,
+    138,
+    142,
+    259,
+    422
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 9,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 13,
+     "missed": [
+      "C-SSRS since last visit - Page 3",
+      "C-SSRS since last visit - Page 4",
+      "IMP Administration - Sertraline and Propranolol",
+      "PK Blood Draw - Sertraline",
+      "PK Blood Draw - Propranolol",
+      "Triplicate Orthostatic BP and HR - 1h Postdose",
+      "Triplicate Orthostatic BP and HR - 1.5h Postdose",
+      "Triplicate Orthostatic BP and HR - 2h Postdose",
+      "Triplicate Orthostatic BP and HR - 2.5h Postdose",
+      "Triplicate Orthostatic BP and HR - 3h Postdose",
+      "Triplicate Orthostatic BP and HR - 4h Postdose",
+      "Triplicate Orthostatic BP and HR - 6h Postdose",
+      "Triplicate Orthostatic BP and HR - 8h Postdose",
+      "Visit Date",
+      "AE and CM prompt",
+      "Triplicate Orthostatic BP and HR - Predose",
+      "Physical Exam",
+      "Clinical Laboratory Assessments",
+      "Laboratory results review",
+      "Pregnancy test",
+      "Alcohol Screen - Urine or Breath",
+      "Urine Drug Screen",
+      "Cotinine Screen",
+      "IMP Administration - Sertraline and Brexpiprazole",
+      "PK Blood Draw - Brexpiprazole/Sertraline",
+      "Body Temperature and"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 70,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 108,
+     "missed": [],
+     "false": [
+      "Urinalysis"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 138,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 142,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 259,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 422,
+     "missed": [],
+     "false": [
+      "Have you been thinking about how you might do this?",
+      "Have you had these thoughts and had some intention of acting on them?",
+      "Do you intend to carry out this plan?"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    30,
+    1,
+    -22
+   ],
+   "became_best": false
+  },
+  {
+   "version": 4,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 176,
+    "pages_total": 52,
+    "pages_with_fields": 22,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 4,
+    "fields_per_form": 44.0,
+    "forms_per_100_pages": 7.7,
+    "form_same_page_evidence_records": 176,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 42
+   },
+   "problems": [],
+   "warnings": [
+    "The program filters by 11 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": 83,
+   "audit_pages": [
+    9,
+    10,
+    13,
+    70,
+    108,
+    168,
+    259,
+    422
+   ],
+   "audit_partial": null,
+   "audit_promoted": [
+    10
+   ],
+   "audit_verdicts": [
+    {
+     "page": 9,
+     "missed": [],
+     "false": [
+      "Respiratory Rate",
+      "Central",
+      "Page 1",
+      "Page 2"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 10,
+     "missed": [
+      "C-SSRS - Screening/Baseline - Page 3",
+      "C-SSRS - Screening/Baseline - Page 4",
+      "AE and CM prompt",
+      "Inclusion criteria",
+      "Visit Date",
+      "Drug administration- Titration Period",
+      "End of Screening",
+      "Visit Date",
+      "Triplicate Orthostatic BP and HR - Central",
+      "PK Blood Draw - Sertraline",
+      "Aicure Device - Distribution",
+      "Drug administration- Titration Period",
+      "IMP Administration - Sertraline",
+      "AE and CM prompt",
+      "End of Screening",
+      "Visit Date",
+      "Triplicate Orthostatic BP and HR - Central",
+      "Physical Exam",
+      "Clinical Laboratory Assessments",
+      "Laboratory results review",
+      "Pregnancy test",
+      "Alcohol Screen - Urine or Breath",
+      "Urine Drug Screen",
+      "Cotinine Screen",
+      "PK Blood Draw - Sertraline",
+      "PGx Blood Sample"
+     ],
+     "false": [
+      "period",
+      "Central"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 13,
+     "missed": [
+      "C-SSRS since last visit - Page 3",
+      "C-SSRS since last visit - Page 4",
+      "IMP Administration - Sertraline and Propranolol",
+      "PK Blood Draw - Sertraline",
+      "PK Blood Draw - Propranolol",
+      "Triplicate Orthostatic BP and HR - 1h Postdose",
+      "Triplicate Orthostatic BP and HR - 1.5h Postdose",
+      "Triplicate Orthostatic BP and HR - 2h Postdose",
+      "Triplicate Orthostatic BP and HR - 2.5h Postdose",
+      "Triplicate Orthostatic BP and HR - 3h Postdose",
+      "Triplicate Orthostatic BP and HR - 4h Postdose",
+      "Triplicate Orthostatic BP and HR - 6h Postdose",
+      "Triplicate Orthostatic BP and HR - 8h Postdose",
+      "Visit Date",
+      "AE and CM prompt",
+      "Triplicate Orthostatic BP and HR - Predose",
+      "Physical Exam",
+      "Clinical Laboratory Assessments",
+      "Laboratory results review",
+      "Pregnancy test",
+      "Alcohol Screen - Urine or Breath",
+      "Urine Drug Screen",
+      "Cotinine Screen",
+      "IMP Administration - Sertraline and Brexpiprazole",
+      "PK Blood Draw - Brexpiprazole/Sertraline",
+      "Visit Date",
+      "AE and CM prompt",
+      "Body Temperature and Respiratory Rate"
+     ],
+     "false": [
+      "1h Postdose",
+      "1.5h Postdose",
+      "2h Postdose",
+      "2.5h Postdose",
+      "3h Postdose",
+      "4h Postdose",
+      "6h Postdose",
+      "8h Postdose",
+      "Predose",
+      "and Brexpiprazole",
+      "Brexpiprazole/Sertraline",
+      "Body Temperature and"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 70,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 108,
+     "missed": [],
+     "false": [
+      "Urinalysis",
+      "Applicable"
+     ],
+     "wrong_form": [
+      "Urinalysis"
+     ]
+    },
+    {
+     "page": 168,
+     "missed": [
+      "Date of Attempt"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 259,
+     "missed": [
+      "Date of Attempt"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 422,
+     "missed": [
+      "3. Active suicidal ideation with any methods (not plan) without intent to act",
+      "If Yes, describe",
+      "4. Active suicidal ideation with some intent to act, without specific plan",
+      "If Yes, describe",
+      "5. Active suicidal ideation with specific plan and intent",
+      "If Yes, describe"
+     ],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    83,
+    1,
+    -22
+   ],
+   "became_best": false
+  }
+ ]
+}

@@ -1,0 +1,21 @@
+{
+ "generated_at": "2026-07-24T01:13:09Z",
+ "documents": 1,
+ "events": 80,
+ "by_severity": {
+  "quality": 80
+ },
+ "by_stage": {
+  "audit": 79,
+  "loop": 1
+ },
+ "by_code": {
+  "audit_missed": 32,
+  "audit_false_positive": 11,
+  "audit_wrong_form": 36,
+  "stopped_with_open_issues": 1
+ },
+ "by_doc": {
+  "annotatedCRF_33120100246-_v1.0_-17Aug2021": 80
+ }
+}

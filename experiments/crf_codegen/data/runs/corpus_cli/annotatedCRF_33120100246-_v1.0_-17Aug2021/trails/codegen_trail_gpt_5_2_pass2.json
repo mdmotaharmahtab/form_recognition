@@ -1,0 +1,551 @@
+{
+ "stop_reason": "plateau",
+ "versions": 5,
+ "best_version": 3,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "confirm",
+   "metrics": {
+    "engine": "codegen",
+    "records": 191,
+    "pages_total": 87,
+    "pages_with_fields": 53,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 25,
+    "fields_per_form": 7.6,
+    "forms_per_100_pages": 28.7,
+    "form_same_page_evidence_records": 181,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 61
+   },
+   "problems": [],
+   "outcome": "extended_program"
+  },
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 132,
+    "pages_total": 87,
+    "pages_with_fields": 41,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 19,
+    "fields_per_form": 6.9,
+    "forms_per_100_pages": 21.8,
+    "form_same_page_evidence_records": 118,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 47
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    0,
+    "not_audited",
+    0,
+    -41
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "confirm_extension",
+   "metrics": {
+    "engine": "codegen",
+    "records": 191,
+    "pages_total": 87,
+    "pages_with_fields": 53,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 25,
+    "fields_per_form": 7.6,
+    "forms_per_100_pages": 28.7,
+    "form_same_page_evidence_records": 181,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 61
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 20,
+   "audit_pages": [
+    9,
+    37,
+    42,
+    73,
+    250,
+    404
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 9,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 37,
+     "missed": [
+      "Skin and Mucosae",
+      "Neurological",
+      "Extremities"
+     ],
+     "false": [
+      "Skin and Mucosae Yes",
+      "Neurological Yes",
+      "Extremities Yes"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 42,
+     "missed": [
+      "Was Blood sample Collected for Glycated Hemoglobin?",
+      "Reason not done",
+      "Date of Collection",
+      "Time of Collection",
+      "Scan",
+      "Barcode Number"
+     ],
+     "false": [
+      "Reason not done Glycated Hemoglobin",
+      "Glycated Hemoglobin"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 73,
+     "missed": [
+      "If Yes, describe"
+     ],
+     "false": [
+      "Row 15"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 250,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 404,
+     "missed": [
+      "Urinalysis",
+      "Collected",
+      "Scan"
+     ],
+     "false": [
+      "Applicable"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    20,
+    0,
+    -53
+   ],
+   "became_best": true
+  },
+  {
+   "version": 3,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 191,
+    "pages_total": 87,
+    "pages_with_fields": 53,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 25,
+    "fields_per_form": 7.6,
+    "forms_per_100_pages": 28.7,
+    "form_same_page_evidence_records": 181,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 61
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 25,
+   "audit_pages": [
+    9,
+    37,
+    42,
+    44,
+    72,
+    73,
+    250,
+    404
+   ],
+   "audit_partial": null,
+   "audit_promoted": [
+    44
+   ],
+   "audit_verdicts": [
+    {
+     "page": 9,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 37,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 42,
+     "missed": [
+      "Was Blood sample Collected for Glycated Hemoglobin?",
+      "Reason not done",
+      "Time of Collection",
+      "Scan",
+      "Barcode Number"
+     ],
+     "false": [
+      "Reason not done Glycated Hemoglobin",
+      "Glycated Hemoglobin"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 44,
+     "missed": [
+      "Urinalysis"
+     ],
+     "false": [
+      "Applicable"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 72,
+     "missed": [
+      "Have you actually had any thoughts of killing yourself?",
+      "If Yes, describe",
+      "If Yes, describe",
+      "If Yes, describe",
+      "Have you been thinking about how you might do this?",
+      "4. Active suicidal ideation with some intent to act, without specific plan",
+      "Have you had these thoughts and had some intention of acting on them?",
+      "5. Active suicidal ideation with specific plan and intent",
+      "Do you intend to carry out this plan?"
+     ],
+     "false": [
+      "Row 7 3. Active suicidal ideation with any methods (not plan) without intent to act If Yes, describe",
+      "Yes",
+      "Row 10 4. Active suicidal ideation with some intent to act, without specific plan If Yes, describe",
+      "about them\"",
+      "Row 13 5. Active suicidal ideation with specific plan and intent If Yes, describe"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 73,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 250,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 404,
+     "missed": [
+      "Urinalysis"
+     ],
+     "false": [
+      "Applicable"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    25,
+    0,
+    -53
+   ],
+   "became_best": true
+  },
+  {
+   "version": 4,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 125,
+    "pages_total": 87,
+    "pages_with_fields": 42,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 78,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 20,
+    "fields_per_form": 6.2,
+    "forms_per_100_pages": 23.0,
+    "form_same_page_evidence_records": 115,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 48
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 16,
+   "audit_pages": [
+    9,
+    37,
+    42,
+    44,
+    62,
+    73,
+    250,
+    404
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 9,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 37,
+     "missed": [
+      "Skin and Mucosae",
+      "Neurological",
+      "Extremities"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 42,
+     "missed": [
+      "Reason not done",
+      "Scan"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 44,
+     "missed": [
+      "Urinalysis",
+      "Scan"
+     ],
+     "false": [
+      "Applicable)] Collected Not Collected Not Applicable"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 62,
+     "missed": [
+      "Vape"
+     ],
+     "false": [
+      "zero",
+      "Current Never"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 73,
+     "missed": [
+      "If Yes, describe"
+     ],
+     "false": [
+      "If Yes, describe Row 15"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 250,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 404,
+     "missed": [
+      "Urinalysis",
+      "Scan"
+     ],
+     "false": [
+      "Applicable)] Collected Not Collected Not Applicable"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    16,
+    0,
+    -42
+   ],
+   "became_best": false
+  },
+  {
+   "version": 5,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 258,
+    "pages_total": 87,
+    "pages_with_fields": 55,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 89,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 25,
+    "fields_per_form": 10.3,
+    "forms_per_100_pages": 28.7,
+    "form_same_page_evidence_records": 257,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 63
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 18,
+   "audit_pages": [
+    9,
+    37,
+    42,
+    44,
+    73,
+    138,
+    250,
+    404
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 9,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 37,
+     "missed": [
+      "Skin and Mucosae"
+     ],
+     "false": [
+      "(values: Normal, Abnormal, Not Done"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 42,
+     "missed": [
+      "Was Blood sample Collected for Glycated Hemoglobin?",
+      "Time of Collection",
+      "Scan",
+      "Barcode Number"
+     ],
+     "false": [
+      "Sample",
+      "R] enumerati on (values:",
+      "Sample Glycated Hemoglobin",
+      "enumerati on (values:"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 44,
+     "missed": [],
+     "false": [
+      "Applicable)] Collected Not Collected Not Applicable",
+      "Not Collected",
+      "enumerati on (values: Scan",
+      "R] enumerati on (values: Scan"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 73,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 138,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 250,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 404,
+     "missed": [],
+     "false": [
+      "Applicable)] Collected Not Collected Not Applicable",
+      "Not Collected",
+      "enumerati on (values: Scan",
+      "R] enumerati on (values: Scan"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    18,
+    0,
+    -55
+   ],
+   "became_best": false
+  }
+ ]
+}

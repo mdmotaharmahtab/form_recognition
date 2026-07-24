@@ -1,0 +1,572 @@
+{
+ "stop_reason": "budget",
+ "versions": 5,
+ "best_version": 2,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 287,
+    "pages_total": 104,
+    "pages_with_fields": 104,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 90,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 8,
+    "fields_per_form": 35.9,
+    "forms_per_100_pages": 7.7,
+    "form_same_page_evidence_records": 252,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 100
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 16,
+   "audit_pages": [
+    46,
+    47,
+    52,
+    84,
+    241,
+    427
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 46,
+     "missed": [
+      "Chemistry clinically significant abnormal assay # 1:"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 47,
+     "missed": [
+      "Chemistry clinically significant abnormal assay # 2"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 52,
+     "missed": [
+      "Hematology clinically significant abnormal assay # 3",
+      "Hematology clinically significant abnormal assay # 4"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 84,
+     "missed": [
+      "\\2.\\ Heterosexually active males or females of childbearing potential (FOCBP), or their partners, who do not agree to practice 2 different approved methods of birth control or remain fully abstinent (periodic abstinence or withdrawal are not acceptable methods of contraception) during the trial and for 30 days after the last dose of IMP. If employing birth control, 2 of the following methods must be used: vasectomy, bilateral tubal ligation, nonhormonal intrauterine device, condom with spermicide, sponge with spermicide, or occlusive cap (vaginal diaphragm or cervical/vault cap) with spermicide.",
+      "\\4.\\ Clinically significant abnormality in past medical history, or at the screening physical examination, that in the investigator\u2019s or sponsor\u2019s opinion may place the subject at risk or interfere with outcome variables including absorption, distribution, metabolism, and excretion of the IMP. This includes, but is not limited to, history of or concurrent cardiac, hepatic, renal, neurologic, endocrine, gastrointestinal, respiratory, hematologic, and immunologic disease.",
+      "\\5.\\ Subjects with abnormal clinical laboratory assessment results, vital signs results, or ECG findings, unless, based on the investigator\u2019s judgment, the findings are not medically significant and would not impact the safety of the subject or the interpretation of the trial results. The medical monitor should be contacted to discuss individual cases, as needed. In addition, subjects with any of the following clinical laboratory assessments or ECG results at screening must be excluded from the trial: - Platelets <= 75000/mm3 - Hemoglobin <= 9 g/dL - Neutrophils, absolute <= 1000/mm3 - Aspartate aminotransferase (AST) > 2 \u00d7 upper limit or normal (ULN) - Alanine aminotransferase (ALT) > 2 \u00d7 ULN - Creatinine phosphokinase > 3 \u00d7 ULN, unless discussed with and approved by the medical monitor - Creatinine >= 2 mg/dL - QT interval corrected for heart rate using Friedericia formula (QTcF)>= 450 msec in men and >= 470 msec in women, unless due to ventricular pacing Tests with exclusionary results should be repeated once to ensure reproducibility of the abnormality before excluding a subject based on the criteria noted above.",
+      "\\6.\\ Subjects with diagnosed hypertension (including treated or untreated hypertension), or orthostatic hypotension which is defined as a decrease of = 20 mmHg decrease in SBP and a >= 25 bpm increase in HR from s"
+     ],
+     "false": [
+      "\\2.\\ Heterosexually active males or females of childbearing potential (FOCBP), or their partners, who do not agree to practice 2 different approved methods of birth control or remain fully abstinent (periodic abstinence or withdrawal are not acceptable methods of contraception) during the trial and for 30 days after the last",
+      "\\4.\\ Clinically significant abnormality in past medical history, or at the screening physical examination, that in the investigator\u2019s or sponsor\u2019s opinion may place the subject at risk or interfere with outcome variables including absorption, distribution, metabolism, and excretion of the IMP. This includes, but is not limited to,",
+      "\\5.\\ Subjects with abnormal clinical laboratory assessment results, vital signs results, or ECG findings, unless, based on the investigator\u2019s judgment, the findings are not medically significant and would not impact the safety of the subject or the interpretation of the trial results. The medical monitor should be contacted to",
+      "\\6.\\ Subjects with diagnosed hypertension (including treated or untreated hypertension), or orthostatic hypotension which is defined as a decrease of"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 241,
+     "missed": [
+      "Chemistry clinically significant abnormal assay # 5"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 427,
+     "missed": [
+      "Has there been a time when you started to do something to end your life but someone or something stopped you before you actually did anything?",
+      "If Yes, describe",
+      "If Yes, describe"
+     ],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    16,
+    0,
+    -104
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 319,
+    "pages_total": 104,
+    "pages_with_fields": 104,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 91,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 8,
+    "fields_per_form": 39.9,
+    "forms_per_100_pages": 7.7,
+    "form_same_page_evidence_records": 284,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 100
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 10,
+   "audit_pages": [
+    46,
+    47,
+    48,
+    51,
+    52,
+    84,
+    241,
+    427
+   ],
+   "audit_partial": null,
+   "audit_promoted": [
+    48
+   ],
+   "audit_verdicts": [
+    {
+     "page": 46,
+     "missed": [
+      "Chemistry clinically significant abnormal assay # 1:"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 47,
+     "missed": [
+      "Chemistry clinically significant abnormal assay # 2"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 48,
+     "missed": [
+      "Chemistry clinically significant abnormal assay # 3"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 51,
+     "missed": [
+      "Hematology clinically significant abnormal assay # 1"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 52,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 84,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 241,
+     "missed": [
+      "Chemistry clinically significant abnormal assay # 5"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 427,
+     "missed": [
+      "Has there been a time when you started to do something to end your life but someone or something stopped you before you actually did anything?",
+      "Has there been a time when you started to do something to try to end your life but you stopped yourself before you actually did anything?",
+      "Have you taken any step towards making a suicide attempt or preparing to kill yourself (such as collecting pills, getting a gun, giving valuables away or writing a suicide note?)",
+      "If Yes, describe",
+      "If Yes, describe"
+     ],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    10,
+    0,
+    -104
+   ],
+   "became_best": true
+  },
+  {
+   "version": 3,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 319,
+    "pages_total": 104,
+    "pages_with_fields": 104,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 91,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 8,
+    "fields_per_form": 39.9,
+    "forms_per_100_pages": 7.7,
+    "form_same_page_evidence_records": 284,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 100
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 20,
+   "audit_pages": [
+    46,
+    47,
+    48,
+    49,
+    52,
+    84,
+    241,
+    427
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 46,
+     "missed": [
+      "Chemistry clinically significant abnormal assay # 1:"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 47,
+     "missed": [
+      "Chemistry clinically significant abnormal assay # 2"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 48,
+     "missed": [
+      "Chemistry clinically significant abnormal assay # 3"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 49,
+     "missed": [
+      "Chemistry clinically significant abnormal assay # 4"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 52,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 84,
+     "missed": [
+      "\\2.\\ Heterosexually active males or females of childbearing potential (FOCBP), or their partners, who do not agree to practice 2 different approved methods of birth control or remain fully abstinent (periodic abstinence or withdrawal are not acceptable methods of contraception) during the trial and for 30 days after the last dose of IMP. If employing birth control, 2 of the following methods must be used: vasectomy, bilateral tubal ligation, nonhormonal intrauterine device, condom with spermicide, sponge with spermicide, or occlusive cap (vaginal diaphragm or cervical/vault cap) with spermicide.",
+      "\\4.\\ Clinically significant abnormality in past medical history, or at the screening physical examination, that in the investigator\u2019s or sponsor\u2019s opinion may place the subject at risk or interfere with outcome variables including absorption, distribution, metabolism, and excretion of the IMP. This includes, but is not limited to, history of or concurrent cardiac, hepatic, renal, neurologic, endocrine, gastrointestinal, respiratory, hematologic, and immunologic disease.",
+      "\\5.\\ Subjects with abnormal clinical laboratory assessment results, vital signs results, or ECG findings, unless, based on the investigator\u2019s judgment, the findings are not medically significant and would not impact the safety of the subject or the interpretation of the trial results. The medical monitor should be contacted to discuss individual cases, as needed. In addition, subjects with any of the following clinical laboratory assessments or ECG results at screening must be excluded from the trial: - Platelets <= 75000/mm3 - Hemoglobin <= 9 g/dL - Neutrophils, absolute <= 1000/mm3 - Aspartate aminotransferase (AST) > 2 \u00d7 upper limit or normal (ULN) - Alanine aminotransferase (ALT) > 2 \u00d7 ULN - Creatinine phosphokinase > 3 \u00d7 ULN, unless discussed with and approved by the medical monitor - Creatinine >= 2 mg/dL - QT interval corrected for heart rate using Friedericia formula (QTcF)>= 450 msec in men and >= 470 msec in women, unless due to ventricular pacing Tests with exclusionary results should be repeated once to ensure reproducibility of the abnormality before excluding a subject based on the criteria noted above.",
+      "\\6.\\ Subjects with diagnosed hypertension (including treated or untreated hypertension), or orthostatic hypotension which is defined as a decrease of = 20 mmHg decrease in SBP and a >= 25 bpm increase in HR from s"
+     ],
+     "false": [
+      "\\2.\\ Heterosexually active males or females of childbearing potential (FOCBP), or their partners, who do not agree to practice 2 different approved methods of birth control or remain fully abstinent (periodic abstinence or withdrawal are not acceptable methods of contraception) during the trial and for 30 days after the last",
+      "\\4.\\ Clinically significant abnormality in past medical history, or at the screening physical examination, that in the investigator\u2019s or sponsor\u2019s opinion may place the subject at risk or interfere with outcome variables including absorption, distribution, metabolism, and excretion of the IMP. This includes, but is not limited to,",
+      "\\5.\\ Subjects with abnormal clinical laboratory assessment results, vital signs results, or ECG findings, unless, based on the investigator\u2019s judgment, the findings are not medically significant and would not impact the safety of the subject or the interpretation of the trial results. The medical monitor should be contacted to",
+      "\\6.\\ Subjects with diagnosed hypertension (including treated or untreated hypertension), or orthostatic hypotension which is defined as a decrease of"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 241,
+     "missed": [
+      "Chemistry clinically significant abnormal assay # 5"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 427,
+     "missed": [
+      "Has there been a time when you started to do something to end your life but someone or something stopped you before you actually did anything?",
+      "Has there been a time when you started to do something to try to end your life but you stopped yourself before you actually did anything?",
+      "Have you taken any step towards making a suicide attempt or preparing to kill yourself (such as collecting pills, getting a gun, giving valuables away or writing a suicide note?)",
+      "If Yes, describe",
+      "If Yes, describe"
+     ],
+     "false": [
+      "Aborted attempt: When person begins to take steps toward making a suicide attempt, but stops themselves before",
+      "Preparatory acts or behavior: Acts or preparation towards imminently making a suicide attempt. This can include anything beyond"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    20,
+    0,
+    -104
+   ],
+   "became_best": false
+  },
+  {
+   "version": 4,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 283,
+    "pages_total": 104,
+    "pages_with_fields": 104,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 89,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 8,
+    "fields_per_form": 35.4,
+    "forms_per_100_pages": 7.7,
+    "form_same_page_evidence_records": 248,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 100
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 9,
+   "audit_pages": [
+    46,
+    47,
+    48,
+    52,
+    83,
+    84,
+    241,
+    427
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 46,
+     "missed": [
+      "Chemistry clinically significant abnormal assay # 1:"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 47,
+     "missed": [
+      "Chemistry clinically significant abnormal assay # 2"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 48,
+     "missed": [
+      "Chemistry clinically significant abnormal assay # 3"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 52,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 83,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 84,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 241,
+     "missed": [
+      "Chemistry clinically significant abnormal assay # 5"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 427,
+     "missed": [
+      "Has there been a time when you started to do something to end your life but someone or something stopped you before you actually did anything?",
+      "Has there been a time when you started to do something to try to end your life but you stopped yourself before you actually did anything?",
+      "If Yes, describe",
+      "Have you taken any step towards making a suicide attempt or preparing to kill yourself (such as collecting pills, getting a gun, giving valuables away or writing a suicide note?)",
+      "If Yes, describe"
+     ],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    9,
+    0,
+    -104
+   ],
+   "became_best": false
+  },
+  {
+   "version": 5,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 274,
+    "pages_total": 104,
+    "pages_with_fields": 104,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 89,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 8,
+    "fields_per_form": 34.2,
+    "forms_per_100_pages": 7.7,
+    "form_same_page_evidence_records": 230,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 100
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 9,
+   "audit_pages": [
+    46,
+    47,
+    48,
+    52,
+    53,
+    84,
+    241,
+    427
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 46,
+     "missed": [
+      "Chemistry clinically significant abnormal assay # 1:"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 47,
+     "missed": [
+      "Chemistry clinically significant abnormal assay # 2"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 48,
+     "missed": [
+      "Chemistry clinically significant abnormal assay # 3"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 52,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 53,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 84,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 241,
+     "missed": [
+      "Chemistry clinically significant abnormal assay # 5"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 427,
+     "missed": [
+      "Has there been a time when you started to do something to end your life but someone or something stopped you before you actually did anything?",
+      "Has there been a time when you started to do something to try to end your life but you stopped yourself before you actually did anything?",
+      "If Yes, describe",
+      "Have you taken any step towards making a suicide attempt or preparing to kill yourself (such as collecting pills, getting a gun, giving valuables away or writing a suicide note?)",
+      "If Yes, describe"
+     ],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    9,
+    0,
+    -104
+   ],
+   "became_best": false
+  }
+ ]
+}

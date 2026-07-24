@@ -1,0 +1,358 @@
+{
+ "stop_reason": "plateau",
+ "versions": 4,
+ "best_version": 3,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "confirm",
+   "metrics": {
+    "engine": "codegen",
+    "records": 4022,
+    "pages_total": 596,
+    "pages_with_fields": 544,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 94,
+    "fields_per_form": 42.8,
+    "forms_per_100_pages": 15.8,
+    "pages_covered_pct": 91
+   },
+   "problems": [],
+   "outcome": "extended_program"
+  },
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 3423,
+    "pages_total": 596,
+    "pages_with_fields": 524,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 93,
+    "fields_per_form": 36.8,
+    "forms_per_100_pages": 15.6,
+    "pages_covered_pct": 88
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_verdicts": null,
+   "score": [
+    0,
+    "not_audited",
+    0,
+    -524
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "confirm_extension",
+   "metrics": {
+    "engine": "codegen",
+    "records": 4022,
+    "pages_total": 596,
+    "pages_with_fields": 544,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 94,
+    "fields_per_form": 42.8,
+    "forms_per_100_pages": 15.8,
+    "pages_covered_pct": 91
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 23,
+   "audit_pages": [
+    1,
+    19,
+    159,
+    170,
+    289,
+    308
+   ],
+   "audit_partial": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 19,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 159,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 170,
+     "missed": [
+      "Reason"
+     ],
+     "false": [
+      "Physician decision)",
+      "Dosing Comments (optional)"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 289,
+     "missed": [
+      "Sample",
+      "Status",
+      "Reason not done",
+      "Date of Collection",
+      "Time of Collection",
+      "Scan",
+      "Barcode Number"
+     ],
+     "false": [
+      "Yes",
+      "No",
+      "NA",
+      "Hematology",
+      "(hour, minutes)]",
+      "on",
+      "Applicable",
+      "(values:",
+      "Chemistry"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 308,
+     "missed": [
+      "Test",
+      "Result",
+      "Barbiturates"
+     ],
+     "false": [
+      "Amphetamines"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "score": [
+    0,
+    23,
+    0,
+    -544
+   ],
+   "became_best": true
+  },
+  {
+   "version": 3,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 3946,
+    "pages_total": 596,
+    "pages_with_fields": 534,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 94,
+    "fields_per_form": 42.0,
+    "forms_per_100_pages": 15.8,
+    "pages_covered_pct": 90
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 9,
+   "audit_pages": [
+    1,
+    19,
+    159,
+    170,
+    289,
+    308
+   ],
+   "audit_partial": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 19,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 159,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 170,
+     "missed": [
+      "Reason",
+      "Dosing Comments (optional)"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 289,
+     "missed": [
+      "Reason not done",
+      "Time of Collection",
+      "Scan",
+      "Barcode Number"
+     ],
+     "false": [
+      "Yes",
+      "No",
+      "NA"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 308,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "score": [
+    0,
+    9,
+    0,
+    -534
+   ],
+   "became_best": true
+  },
+  {
+   "version": 4,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 4714,
+    "pages_total": 596,
+    "pages_with_fields": 544,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 94,
+    "fields_per_form": 50.1,
+    "forms_per_100_pages": 15.8,
+    "pages_covered_pct": 91
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 19,
+   "audit_pages": [
+    1,
+    19,
+    159,
+    170,
+    289,
+    308
+   ],
+   "audit_partial": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 19,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 159,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 170,
+     "missed": [
+      "Reason"
+     ],
+     "false": [
+      "Physician decision)"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 289,
+     "missed": [
+      "Reason not done",
+      "Time of Collection",
+      "Barcode Number"
+     ],
+     "false": [
+      "Yes",
+      "No",
+      "NA",
+      "Sample",
+      "Status",
+      "Date of Collection",
+      "Scan",
+      "Collected",
+      "Applicable"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 308,
+     "missed": [],
+     "false": [
+      "Yes",
+      "No",
+      "Positive",
+      "Negative",
+      "Not Done"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "score": [
+    0,
+    19,
+    0,
+    -544
+   ],
+   "became_best": false
+  }
+ ]
+}

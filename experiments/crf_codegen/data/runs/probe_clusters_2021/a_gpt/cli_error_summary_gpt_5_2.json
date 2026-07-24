@@ -1,0 +1,24 @@
+{
+ "generated_at": "2026-07-24T01:45:09Z",
+ "documents": 1,
+ "events": 240,
+ "by_severity": {
+  "quality": 239,
+  "blocking": 1
+ },
+ "by_stage": {
+  "audit": 238,
+  "gates": 1,
+  "loop": 1
+ },
+ "by_code": {
+  "audit_missed": 105,
+  "audit_false_positive": 109,
+  "audit_wrong_form": 24,
+  "gate_crash": 1,
+  "stopped_with_open_issues": 1
+ },
+ "by_doc": {
+  "annotatedCRF_33120100246-_v1.0_-17Aug2021": 240
+ }
+}

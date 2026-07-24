@@ -1,0 +1,1216 @@
+{
+ "multipass": 2,
+ "stop_reason": "p1:budget;p2:plateau",
+ "versions": 9,
+ "best_version": null,
+ "passes": [
+  {
+   "pass": 1,
+   "clusters": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    14,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25
+   ],
+   "status": "ok_audit_issues",
+   "stop_reason": "budget",
+   "versions": 6,
+   "best_version": 2,
+   "fields": 2413
+  },
+  {
+   "pass": 2,
+   "clusters": [
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    15,
+    16,
+    17,
+    18,
+    19
+   ],
+   "status": "ok_audit_issues",
+   "stop_reason": "plateau",
+   "versions": 3,
+   "best_version": 1,
+   "fields": 173
+  }
+ ],
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "confirm",
+   "metrics": {
+    "engine": "codegen",
+    "records": 2342,
+    "pages_total": 974,
+    "pages_with_fields": 842,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 97,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 116,
+    "fields_per_form": 20.2,
+    "forms_per_100_pages": 11.9,
+    "form_same_page_evidence_records": 2157,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 86
+   },
+   "problems": [
+    "Extreme content-fitted blocklist. The program filters by 90 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "outcome": "extension_rejected",
+   "pass": 1
+  },
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 2257,
+    "pages_total": 974,
+    "pages_with_fields": 784,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 97,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 116,
+    "fields_per_form": 19.5,
+    "forms_per_100_pages": 11.9,
+    "form_same_page_evidence_records": 2120,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 80
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 7,
+   "audit_pages": [
+    1,
+    31,
+    44,
+    79,
+    161,
+    266,
+    275,
+    470,
+    508,
+    663,
+    861
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 31,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 44,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 79,
+     "missed": [
+      "Hematology clinically significant abnormal assay # 2"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 161,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 266,
+     "missed": [],
+     "false": [],
+     "wrong_form": [
+      "Aborted attempt: - Since Last Visit",
+      "If Yes, Total number of aborted attempts - Since Last Visit",
+      "If Yes, describe - Since Last Visit"
+     ]
+    },
+    {
+     "page": 275,
+     "missed": [
+      "Dosing Comments (optional)"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 470,
+     "missed": [
+      "Hematology clinically significant abnormal assay # 2"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 508,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 663,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 861,
+     "missed": [
+      "Chemistry clinically significant abnormal assay # 2"
+     ],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    7,
+    0,
+    -784
+   ],
+   "became_best": true,
+   "pass": 1
+  },
+  {
+   "version": 2,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 2413,
+    "pages_total": 974,
+    "pages_with_fields": 854,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 97,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 118,
+    "fields_per_form": 20.4,
+    "forms_per_100_pages": 12.1,
+    "form_same_page_evidence_records": 2233,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 88
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 15,
+   "audit_pages": [
+    1,
+    31,
+    44,
+    58,
+    79,
+    103,
+    127,
+    161,
+    266,
+    275,
+    470,
+    508,
+    663,
+    861
+   ],
+   "audit_partial": null,
+   "audit_promoted": [
+    58,
+    103
+   ],
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 31,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 44,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 58,
+     "missed": [
+      "HEENT",
+      "Thorax",
+      "Abdomen",
+      "Skin and Mucosae"
+     ],
+     "false": [
+      "Region/Body System"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 79,
+     "missed": [
+      "Hematology clinically significant abnormal assay # 2"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 103,
+     "missed": [
+      "Amphetamines",
+      "Barbiturates",
+      "Benzodiazepines",
+      "Cannabinoids",
+      "Cocaine"
+     ],
+     "false": [
+      "Test"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 127,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 161,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 266,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 275,
+     "missed": [
+      "Dosing Comments (optional)"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 470,
+     "missed": [
+      "Hematology clinically significant abnormal assay # 2"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 508,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 663,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 861,
+     "missed": [
+      "Chemistry clinically significant abnormal assay # 2"
+     ],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    15,
+    0,
+    -854
+   ],
+   "became_best": true,
+   "pass": 1
+  },
+  {
+   "version": 3,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 2384,
+    "pages_total": 974,
+    "pages_with_fields": 853,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 84,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 117,
+    "fields_per_form": 20.4,
+    "forms_per_100_pages": 12.0,
+    "form_same_page_evidence_records": 2244,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 88
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 52,
+   "audit_pages": [
+    1,
+    31,
+    44,
+    58,
+    59,
+    79,
+    103,
+    161,
+    266,
+    275,
+    470,
+    508,
+    663,
+    861
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 31,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 44,
+     "missed": [
+      "Vasectomy"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 58,
+     "missed": [
+      "HEENT - Result",
+      "HEENT - Abnormal Findings",
+      "HEENT - Clinically Significant",
+      "Thorax - Result",
+      "Thorax - Abnormal Findings",
+      "Thorax - Clinically Significant",
+      "Abdomen - Result",
+      "Abdomen - Abnormal Findings",
+      "Abdomen - Clinically Significant",
+      "Skin and Mucosae - Result",
+      "Skin and Mucosae - Abnormal Findings",
+      "Skin and Mucosae - Clinically Significant"
+     ],
+     "false": [
+      "Region/Body System HEENT"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 59,
+     "missed": [
+      "Neurological - Result",
+      "Neurological - Abnormal Findings",
+      "Neurological - Clinically Significant",
+      "Extremities - Result",
+      "Extremities - Abnormal Findings",
+      "Extremities - Clinically Significant",
+      "Urogenital - Result",
+      "Urogenital - Abnormal Findings",
+      "Urogenital - Clinically Significant"
+     ],
+     "false": [
+      "Region/Body System"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 79,
+     "missed": [
+      "Hematology clinically significant abnormal assay # 1",
+      "Hematology abnormal assay # 1 Investigator comment",
+      "Hematology clinically significant abnormal assay # 2"
+     ],
+     "false": [
+      "[TYPE: enumeration (values: Hematocrit, Hemoglobin, Mean corpuscular hemoglobin concentration, Mean corpuscular volume, Platelet count, Red blood cell count, White blood cell count (absolute and differential), Glycated Hemoglobin)]",
+      "[TYPE: enumeration (values: Hematocrit, Hemoglobin, Mean corpuscular hemoglobin concentration, Mean corpuscular volume, Platelet count, Red blood cell count, White blood cell count (absolute and differential), Glycated Hemoglobin)] Hematology abnormal assay # 1 Investigator comment"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 103,
+     "missed": [
+      "Test Barbiturates",
+      "Test Benzodiazepines",
+      "Test Cannabinoids",
+      "Test Cocaine"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 161,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 266,
+     "missed": [
+      "Has there been a time when you started to do something to try to end your life but you stopped yourself before you actually did anything?"
+     ],
+     "false": [
+      "Aborted attempt: When person begins to take steps toward making a suicide attempt, but stops themselves before they actually have engaged in any self destructive behaviour. Examples are similar to interrupted attempts, except that the individual stops him/herself, instead of being stopped - Since Last Visit"
+     ],
+     "wrong_form": [
+      "Aborted attempt: When person begins to take steps toward making a suicide attempt, but stops themselves before they actually have engaged in any self destructive behaviour. Examples are similar to interrupted attempts, except that the individual stops him/herself, instead of being stopped - Since Last Visit",
+      "If Yes, Total number of aborted attempts - Since Last Visit",
+      "If Yes, describe - Since Last Visit"
+     ]
+    },
+    {
+     "page": 275,
+     "missed": [
+      "Reason",
+      "Was water restricted for 2 hours following dosing?",
+      "Dosing Comments (optional)"
+     ],
+     "false": [
+      "[TYPE: enumeration (values: As per protocol, Adverse Event, Dosing error, Dispensing error, Technical problems, Subject/guardian decision, Physician decision)]",
+      "[TYPE: enumeration (values: As per protocol, Adverse Event, Dosing error, Dispensing error, Technical problems, Subject/guardian decision, Physician decision)] Was water restricted for 2 hours following dosing?"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 470,
+     "missed": [
+      "Hematology clinically significant abnormal assay # 1",
+      "Hematology abnormal assay # 1 Investigator comment",
+      "Hematology clinically significant abnormal assay # 2"
+     ],
+     "false": [
+      "[TYPE: enumeration (values: Hematocrit, Hemoglobin, Mean corpuscular hemoglobin concentration, Mean corpuscular volume, Platelet count, Red blood cell count, White blood cell count (absolute and differential), Glycated Hemoglobin)]",
+      "[TYPE: enumeration (values: Hematocrit, Hemoglobin, Mean corpuscular hemoglobin concentration, Mean corpuscular volume, Platelet count, Red blood cell count, White blood cell count (absolute and differential), Glycated Hemoglobin)] Hematology abnormal assay # 1 Investigator comment"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 508,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 663,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 861,
+     "missed": [
+      "Chemistry abnormal assay # 1 Investigator comment",
+      "Chemistry clinically significant abnormal assay # 2"
+     ],
+     "false": [
+      "[TYPE: enumeration (values: Albumin, Alkaline phosphatase, ALT, AST, Calcium, Carbon dioxide, Chloride, Cholesterol (total, low density lipoprotein;and; high density lipoprotein), Creatine phosphokinase, Creatinine, Gamma glutamyl transferase, Glucose, Lactate",
+      "dehydrogenase, Magnesium, Phosphorus, Potassium, Prolactin, Total bilirubin, Total protein, Triglycerides, Sodium, Urea nitrogen, Uric acid)] Chemistry abnormal assay # 1 Investigator comment"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    52,
+    0,
+    -853
+   ],
+   "became_best": false,
+   "pass": 1
+  },
+  {
+   "version": 4,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 2416,
+    "pages_total": 974,
+    "pages_with_fields": 853,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 91,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 118,
+    "fields_per_form": 20.5,
+    "forms_per_100_pages": 12.1,
+    "form_same_page_evidence_records": 2274,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 88
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 32,
+   "audit_pages": [
+    1,
+    31,
+    44,
+    58,
+    79,
+    103,
+    104,
+    161,
+    266,
+    275,
+    470,
+    508,
+    663,
+    861
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 31,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 44,
+     "missed": [
+      "Vasectomy"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 58,
+     "missed": [
+      "HEENT",
+      "Thorax",
+      "Abdomen",
+      "Skin and Mucosae"
+     ],
+     "false": [
+      "Normal",
+      "Normal Abnormal",
+      "Region/Body System HEENT"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 79,
+     "missed": [
+      "Hematology clinically significant abnormal assay # 1",
+      "Hematology clinically significant abnormal assay # 2"
+     ],
+     "false": [
+      "[TYPE: enumeration (values: Hematocrit, Hemoglobin, Mean corpuscular hemoglobin concentration, Mean corpuscular volume, Platelet count, Red blood cell count, White blood cell count (absolute and differential), Glycated Hemoglobin)]"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 103,
+     "missed": [
+      "Amphetamines",
+      "Barbiturates",
+      "Benzodiazepines",
+      "Cannabinoids",
+      "Cocaine"
+     ],
+     "false": [
+      "Test Amphetamines"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 104,
+     "missed": [
+      "Methadone",
+      "Opiates",
+      "Phencyclidine",
+      "Propoxyphene"
+     ],
+     "false": [
+      "Test"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 161,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 266,
+     "missed": [
+      "Has there been a time when you started to do something to try to end your life but you stopped yourself before you actually did anything?"
+     ],
+     "false": [],
+     "wrong_form": [
+      "Aborted attempt - Since Last Visit",
+      "If Yes, Total number of aborted attempts - Since Last Visit",
+      "If Yes, describe - Since Last Visit"
+     ]
+    },
+    {
+     "page": 275,
+     "missed": [
+      "Dosing Comments (optional)"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 470,
+     "missed": [
+      "Hematology clinically significant abnormal assay # 1",
+      "Hematology clinically significant abnormal assay # 2"
+     ],
+     "false": [
+      "[TYPE: enumeration (values: Hematocrit, Hemoglobin, Mean corpuscular hemoglobin concentration, Mean corpuscular volume, Platelet count, Red blood cell count, White blood cell count (absolute and differential), Glycated Hemoglobin)]"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 508,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 663,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 861,
+     "missed": [
+      "Chemistry clinically significant abnormal assay # 2"
+     ],
+     "false": [
+      "[TYPE: enumeration (values: Albumin, Alkaline phosphatase, ALT, AST, Calcium, Carbon dioxide, Chloride, Cholesterol (total, low density lipoprotein;and; high density lipoprotein), Creatine phosphokinase, Creatinine, Gamma glutamyl transferase, Glucose, Lactate"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    32,
+    0,
+    -853
+   ],
+   "became_best": false,
+   "pass": 1
+  },
+  {
+   "version": 5,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 2464,
+    "pages_total": 974,
+    "pages_with_fields": 853,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 95,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 112,
+    "fields_per_form": 22.0,
+    "forms_per_100_pages": 11.5,
+    "form_same_page_evidence_records": 2348,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 88
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 16,
+   "audit_pages": [
+    1,
+    31,
+    32,
+    44,
+    58,
+    79,
+    103,
+    161,
+    266,
+    275,
+    470,
+    508,
+    663,
+    861
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 31,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 32,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 44,
+     "missed": [
+      "Vasectomy"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 58,
+     "missed": [
+      "HEENT",
+      "Skin and Mucosae"
+     ],
+     "false": [
+      "Normal Abnormal",
+      "Region/Body System HEENT"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 79,
+     "missed": [
+      "Hematology clinically significant abnormal assay # 2"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 103,
+     "missed": [
+      "Amphetamines",
+      "Cocaine"
+     ],
+     "false": [
+      "Test Amphetamines"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 161,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 266,
+     "missed": [],
+     "false": [],
+     "wrong_form": [
+      "Aborted attempt - Since Last Visit",
+      "If Yes, Total number of aborted attempts - Since Last Visit",
+      "If Yes, describe - Since Last Visit"
+     ]
+    },
+    {
+     "page": 275,
+     "missed": [
+      "Dosing Comments (optional)"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 470,
+     "missed": [
+      "Hematology clinically significant abnormal assay # 2"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 508,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 663,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 861,
+     "missed": [
+      "Chemistry clinically significant abnormal assay # 2"
+     ],
+     "false": [
+      "density lipoprotein;and; high density lipoprotein), Creatine phosphokinase, Creatinine, Gamma glutamyl transferase, Glucose, Lactate"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    16,
+    0,
+    -853
+   ],
+   "became_best": false,
+   "pass": 1
+  },
+  {
+   "version": 6,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 0,
+    "pages_total": 974,
+    "pages_with_fields": 0,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 0,
+    "labels_look_human_pct": 0,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 0,
+    "fields_per_form": 0.0,
+    "forms_per_100_pages": 0.0,
+    "form_same_page_evidence_records": 0,
+    "form_same_page_persistence_pct": null,
+    "furniture_candidates": [],
+    "pages_covered_pct": 0
+   },
+   "problems": [
+    "The program extracted ZERO records from the document."
+   ],
+   "warnings": [
+    "form_name empty for 100% of records - if the document does print form/section names, fix the form_name strategy (consider carrying the last seen title forward).",
+    "Only 0% of field_name values look like human labels (they look like codes/dates/junk) - fix label selection."
+   ],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    1,
+    "not_audited",
+    2,
+    0
+   ],
+   "became_best": false,
+   "pass": 1
+  },
+  {
+   "version": 1,
+   "kind": "confirm",
+   "outcome": "confirmed_no_fields",
+   "pass": 2
+  },
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 173,
+    "pages_total": 109,
+    "pages_with_fields": 59,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 24,
+    "fields_per_form": 7.2,
+    "forms_per_100_pages": 22.0,
+    "form_same_page_evidence_records": 170,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 54
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 10,
+   "audit_pages": [
+    2,
+    12,
+    21,
+    42,
+    479,
+    490
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 2,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 12,
+     "missed": [],
+     "false": [
+      "Version",
+      "Date 15-Jul-2021",
+      "Changed By Andreea Hardut / Alexan dru Giucal",
+      "Details updates according to feedback sheet"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 21,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 42,
+     "missed": [
+      "Abstinence (must remain abstinent from the time of screening until at least 90 days after the last dose of study drug)",
+      "Vasectomy",
+      "Tubal ligation"
+     ],
+     "false": [
+      "Of Childbearing Potential"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 479,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 490,
+     "missed": [],
+     "false": [
+      "Intensity of Ideation",
+      "Since Last Visit"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    10,
+    0,
+    -59
+   ],
+   "became_best": true,
+   "pass": 2
+  },
+  {
+   "version": 2,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 83,
+    "pages_total": 109,
+    "pages_with_fields": 17,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 77,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 5,
+    "fields_per_form": 16.6,
+    "forms_per_100_pages": 4.6,
+    "form_same_page_evidence_records": 83,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 16
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 5,
+   "audit_pages": [
+    2,
+    12,
+    21,
+    42,
+    122,
+    261,
+    479,
+    490
+   ],
+   "audit_partial": null,
+   "audit_promoted": [
+    122
+   ],
+   "audit_verdicts": [
+    {
+     "page": 2,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 12,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 21,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 42,
+     "missed": [
+      "Abstinence (must remain abstinent from the time of screening until at least 90 days after the last dose of study drug)"
+     ],
+     "false": [
+      "Of Childbearing Potential",
+      "Vasectomy",
+      "Tubal ligation"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 122,
+     "missed": [
+      "Are there things - anyone or anything - that stopped you from wanting to die or acting on thoughts of committing suicide?"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 261,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 479,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 490,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    5,
+    0,
+    -17
+   ],
+   "became_best": false,
+   "pass": 2
+  },
+  {
+   "version": 3,
+   "kind": "revise_audit",
+   "metrics": {
+    "error": "generated extractor crashed:\nTraceback (most recent call last):\n  File \"D:\\ubuntu\\codes\\ZS\\otsuka\\ECS\\experiments\\recipe_prototype\\scripts\\sandbox_runner.py\", line 128, in main\n    raw = fn(pages)\n          ^^^^^^^^^\n  File \"<generated_extractor>\", line 68, in extract\n  File \"<generated_extractor>\", line 492, in _extract_question_fields\nTypeError: unhashable type: 'Line'\n"
+   },
+   "problems": [
+    "Program failed to run: generated extractor crashed:\nTraceback (most recent call last):\n  File \"D:\\ubuntu\\codes\\ZS\\otsuka\\ECS\\experiments\\recipe_prototype\\scripts\\sandbox_runner.py\", line 128, in main\n    raw = fn(pages)\n          ^^^^^^^^^\n  File \"<generated_extractor>\", line 68, in extract\n  File \"<generated_extractor>\", line 492, in _extract_question_fields\nTypeError: unhashable type: 'Line'\n"
+   ],
+   "warnings": [],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    1,
+    "not_audited",
+    0,
+    0
+   ],
+   "became_best": false,
+   "pass": 2
+  }
+ ]
+}

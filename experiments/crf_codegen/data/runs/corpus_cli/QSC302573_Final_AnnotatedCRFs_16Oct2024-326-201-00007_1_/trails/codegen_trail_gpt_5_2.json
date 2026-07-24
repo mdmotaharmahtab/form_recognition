@@ -1,0 +1,478 @@
+{
+ "stop_reason": "plateau",
+ "versions": 3,
+ "best_version": 1,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 2954,
+    "pages_total": 609,
+    "pages_with_fields": 598,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 94,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 16,
+    "fields_per_form": 184.6,
+    "forms_per_100_pages": 2.6,
+    "form_same_page_evidence_records": 2954,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [
+     "Comment",
+     "Staff Initials"
+    ],
+    "pages_covered_pct": 98
+   },
+   "problems": [],
+   "warnings": [
+    "These field_name values were extracted on >=70% of ALL pages: 'Comment'; 'Staff Initials'. Text recurring on nearly every page is usually page template furniture (watermark/footer/stamp), not a field - verify against the page dumps and stop extracting it unless it is genuinely a per-page data-entry field."
+   ],
+   "audit_issues": 9,
+   "audit_pages": [
+    1,
+    2,
+    3,
+    6,
+    58,
+    94,
+    156,
+    306,
+    455
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [
+      "Date Study ICF was signed by participant"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 3,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 6,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 58,
+     "missed": [
+      "Staff Initials:",
+      "Comment:"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 94,
+     "missed": [
+      "Confirm TDL form completed:",
+      "Physical Examination Category"
+     ],
+     "false": [
+      "Yes (Specify) (50 char. max.) (Activates Line"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 156,
+     "missed": [
+      "Barcode:"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 306,
+     "missed": [
+      "ECG Findings, including rhythm assessment"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 455,
+     "missed": [],
+     "false": [
+      "Yes (Specify) (50 char. max.) (Activates Line"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    9,
+    1,
+    -598
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 1767,
+    "pages_total": 609,
+    "pages_with_fields": 602,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 89,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 16,
+    "fields_per_form": 110.4,
+    "forms_per_100_pages": 2.6,
+    "form_same_page_evidence_records": 1717,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 99
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 31,
+   "audit_pages": [
+    1,
+    2,
+    3,
+    6,
+    58,
+    94,
+    106,
+    156,
+    213,
+    306,
+    455,
+    577
+   ],
+   "audit_partial": null,
+   "audit_promoted": [
+    106,
+    213
+   ],
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [
+      "Staff Initials:",
+      "Comment:"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [
+      "Staff Initials:",
+      "Comment:"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 3,
+     "missed": [
+      "Staff Initials:",
+      "Comment:"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 6,
+     "missed": [
+      "Staff Initials:",
+      "Comment:"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 58,
+     "missed": [
+      "Comment:"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 94,
+     "missed": [
+      "Confirm TDL form completed:",
+      "Staff Initials:",
+      "Comment:",
+      "Physical Examination Category"
+     ],
+     "false": [
+      "- Correct form used - Correct participant label applied - Correct slot number written - Correct sex and fasting status - Correct timepoint checked - Correct sample date and time written - Correct visit - Initials signed to confirm sample collected and form correct"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 106,
+     "missed": [
+      "Comment:"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 156,
+     "missed": [
+      "Staff Initials:",
+      "Comment:",
+      "Barcode:"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 213,
+     "missed": [
+      "Comment:"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 306,
+     "missed": [
+      "Staff Initials:",
+      "Comment:",
+      "QTcF",
+      "Systolic",
+      "Diastolic",
+      "Heart Rate",
+      "Respiratory Rate",
+      "Oral Temperature - Degrees Celsius"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 455,
+     "missed": [
+      "Staff Initials:",
+      "Comment:"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 577,
+     "missed": [
+      "Staff Initials:",
+      "Comment:"
+     ],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    31,
+    0,
+    -602
+   ],
+   "became_best": false
+  },
+  {
+   "version": 3,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 2275,
+    "pages_total": 609,
+    "pages_with_fields": 602,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 92,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 16,
+    "fields_per_form": 142.2,
+    "forms_per_100_pages": 2.6,
+    "form_same_page_evidence_records": 2243,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 99
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 30,
+   "audit_pages": [
+    1,
+    2,
+    3,
+    6,
+    58,
+    94,
+    106,
+    156,
+    213,
+    285,
+    306,
+    455
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [
+      "Staff Initials:",
+      "Comment:"
+     ],
+     "false": [
+      "HH:mm"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [
+      "Staff Initials:",
+      "Comment:"
+     ],
+     "false": [
+      "HH:mm"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 3,
+     "missed": [
+      "Staff Initials:",
+      "Comment:"
+     ],
+     "false": [
+      "HH:mm",
+      "research?"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 6,
+     "missed": [
+      "Staff Initials:",
+      "Comment:"
+     ],
+     "false": [
+      "HH:mm"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 58,
+     "missed": [
+      "Comment:"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 94,
+     "missed": [
+      "Staff Initials:",
+      "Comment:",
+      "Physical Examination Category"
+     ],
+     "false": [
+      "HH:mm"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 106,
+     "missed": [
+      "Comment:"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 156,
+     "missed": [
+      "Staff Initials:",
+      "Comment:",
+      "Barcode:"
+     ],
+     "false": [
+      "HH:mm"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 213,
+     "missed": [
+      "Comment:"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 285,
+     "missed": [
+      "Comment:"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 306,
+     "missed": [
+      "Staff Initials:",
+      "Comment:"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 455,
+     "missed": [
+      "Staff Initials:",
+      "Comment:"
+     ],
+     "false": [
+      "HH:mm"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    30,
+    0,
+    -602
+   ],
+   "became_best": false
+  }
+ ]
+}

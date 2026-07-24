@@ -1,0 +1,24 @@
+Looking at the sample pages from cluster 0, I can see these are **data dictionary pages** that my program is already correctly skipping. 
+
+The key indicators are:
+1. Header line "Field Name Data Type" at y=155
+2. Column headers: "Units", "Values", "Pre-Filled", "Include", "Field OID"
+3. Content shows metadata about fields (like "29: SUBSTANCE USE DISORDER", "2=Moderate - Persistent, moderate sense of hopelessness...")
+
+These are NOT data-entry fields - they are technical documentation pages showing the structure and validation rules for the CRF forms. The actual data-entry forms appear in clusters 1, 2, and 3 (which my program successfully extracts).
+
+My program already has logic to detect and skip these pages:
+```python
+is_data_dict = any(
+    "Field Name Data Type" in line.text or 
+    ("Field Name" in line.text and "Data Type" in line.text and line.y0 < 200)
+    for line in lines
+)
+
+if is_data_dict:
+    continue
+```
+
+This is working correctly - these pages should produce zero records.
+
+CONFIRM_NO_FIELDS

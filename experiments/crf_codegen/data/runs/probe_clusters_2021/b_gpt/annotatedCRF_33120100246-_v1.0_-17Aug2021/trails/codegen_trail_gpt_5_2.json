@@ -1,0 +1,558 @@
+{
+ "stop_reason": "plateau",
+ "versions": 4,
+ "best_version": 2,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "confirm",
+   "outcome": "confirmed_no_fields"
+  },
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 2025,
+    "pages_total": 596,
+    "pages_with_fields": 542,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 91,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 108,
+    "fields_per_form": 18.8,
+    "forms_per_100_pages": 18.1,
+    "form_same_page_evidence_records": 1947,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 91
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 12,
+   "audit_pages": [
+    1,
+    19,
+    27,
+    68,
+    141,
+    176,
+    312,
+    451
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 19,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 27,
+     "missed": [
+      "If sexually active does the subject commit to utilizing 2 different approved methods of birth control during the trial and for 30 days after the last dose of IMP?- mark the selected methods below",
+      "Has any applicable reproductive status and/or medications been transcribed to the Medical History Page and/or Con Med Page?"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 68,
+     "missed": [
+      "Cotinine"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 141,
+     "missed": [
+      "Suicide:"
+     ],
+     "false": [
+      "Yes No [CSS0221]"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 176,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 312,
+     "missed": [],
+     "false": [
+      "Treatment [EXTRT1]",
+      "Dose Unit [EXDOSU1]",
+      "Dose Form [EXDOSFRM1]"
+     ],
+     "wrong_form": [
+      "Was Sertraline administered? [EXYN1]",
+      "If no, reason [EXRSN1]",
+      "Date of Administration [EXSTDAT1]",
+      "Time of Administration [EXSTTIM1]"
+     ]
+    },
+    {
+     "page": 451,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    12,
+    0,
+    -542
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 1735,
+    "pages_total": 596,
+    "pages_with_fields": 541,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 89,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 105,
+    "fields_per_form": 16.5,
+    "forms_per_100_pages": 17.6,
+    "form_same_page_evidence_records": 1632,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 91
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 17,
+   "audit_pages": [
+    1,
+    19,
+    27,
+    36,
+    68,
+    141,
+    176,
+    312,
+    451,
+    511
+   ],
+   "audit_partial": null,
+   "audit_promoted": [
+    36
+   ],
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 19,
+     "missed": [
+      "Visit Date"
+     ],
+     "false": [
+      "Visit Date Visit Date"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 27,
+     "missed": [
+      "Sexually Active?"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 36,
+     "missed": [
+      "Planned Timepoint",
+      "Examination Date",
+      "Evaluator",
+      "HEENT"
+     ],
+     "false": [
+      "Region/Body System HEENT"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 68,
+     "missed": [
+      "Cotinine"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 141,
+     "missed": [
+      "Suicidal behavior was present during the assessment period?"
+     ],
+     "false": [
+      "Suicidal behavior: Suicidal behavior was present during the assessment period?"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 176,
+     "missed": [],
+     "false": [],
+     "wrong_form": [
+      "Time Placed in Position",
+      "Time of Vitals Measurement #3"
+     ]
+    },
+    {
+     "page": 312,
+     "missed": [
+      "Date of Administration"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 451,
+     "missed": [],
+     "false": [],
+     "wrong_form": [
+      "Time Placed in Position",
+      "Time of Vitals Measurement #3"
+     ]
+    },
+    {
+     "page": 511,
+     "missed": [
+      "Route of Administration"
+     ],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    17,
+    0,
+    -541
+   ],
+   "became_best": true
+  },
+  {
+   "version": 3,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 1746,
+    "pages_total": 596,
+    "pages_with_fields": 541,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 92,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 154,
+    "fields_per_form": 11.3,
+    "forms_per_100_pages": 25.8,
+    "form_same_page_evidence_records": 1646,
+    "form_same_page_persistence_pct": 95,
+    "furniture_candidates": [],
+    "pages_covered_pct": 91
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 20,
+   "audit_pages": [
+    1,
+    19,
+    27,
+    36,
+    54,
+    68,
+    141,
+    176,
+    312,
+    451
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 19,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 27,
+     "missed": [
+      "Sexually Active?"
+     ],
+     "false": [],
+     "wrong_form": [
+      "If sexually active does the subject commit to utilizing 2 different approved methods of birth control during the trial and for 30 days after the last dose of IMP?- mark the selected methods below",
+      "Vasectomy",
+      "Tubal ligation",
+      "Nonhormonal intrauterine device",
+      "Condom with spermicide",
+      "Sponge with spermicide",
+      "Occlusive cap (vaginal diaphragm or cervical/vault cap) with spermicide",
+      "Has any applicable reproductive status and/or medications been transcribed to the Medical History Page and/or Con Med Page?",
+      "If no, reason not transcribed to medical history"
+     ]
+    },
+    {
+     "page": 36,
+     "missed": [
+      "Examination Date",
+      "HEENT"
+     ],
+     "false": [
+      "Region/Body System HEENT"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 54,
+     "missed": [
+      "Urinalysis clinically significant abnormal assay # 1",
+      "Urinalysis abnormal assay # 1 Investigator comment"
+     ],
+     "false": [
+      "Urobilinogen, Microscopic analysis if indicated)] Urinalysis abnormal assay # 1 Investigator comment"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 68,
+     "missed": [
+      "Cotinine"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 141,
+     "missed": [],
+     "false": [],
+     "wrong_form": [
+      "Suicidal behavior was present during the assessment period?",
+      "Suicide:"
+     ]
+    },
+    {
+     "page": 176,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 312,
+     "missed": [
+      "Date of Administration"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 451,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    20,
+    0,
+    -541
+   ],
+   "became_best": false
+  },
+  {
+   "version": 4,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 1873,
+    "pages_total": 596,
+    "pages_with_fields": 532,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 95,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 85,
+    "fields_per_form": 22.0,
+    "forms_per_100_pages": 14.3,
+    "form_same_page_evidence_records": 1854,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 89
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 30,
+   "audit_pages": [
+    1,
+    19,
+    27,
+    36,
+    46,
+    68,
+    141,
+    176,
+    312,
+    451
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 19,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 27,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 36,
+     "missed": [
+      "Planned Timepoint",
+      "Examination Date",
+      "Evaluator"
+     ],
+     "false": [
+      "Clinically Significant Yes No"
+     ],
+     "wrong_form": [
+      "Was the physical examination performed?",
+      "Examination Time",
+      "HEENT",
+      "Thorax",
+      "Abdomen"
+     ]
+    },
+    {
+     "page": 46,
+     "missed": [
+      "Chemistry clinically significant abnormal assay # 1:"
+     ],
+     "false": [
+      "lipoprotein;and; high density lipoprotein), Creatine phosphokinase, Creatinine, Gamma glutamyl transferase, Glucose, Lactate dehydrogenase,"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 68,
+     "missed": [
+      "Cotinine"
+     ],
+     "false": [],
+     "wrong_form": [
+      "Was Cotinine Screen Performed?",
+      "If not done reason",
+      "Sample Type",
+      "Manufacturer",
+      "Item #",
+      "Lot",
+      "Expiration Date",
+      "Date of Sample",
+      "Time of Sample"
+     ]
+    },
+    {
+     "page": 141,
+     "missed": [
+      "Suicidal behavior was present during the assessment period?",
+      "Suicide:"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 176,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 312,
+     "missed": [
+      "Treatment",
+      "Dose Unit",
+      "Dose Form",
+      "Date of Administration"
+     ],
+     "false": [],
+     "wrong_form": [
+      "Was Sertraline administered?",
+      "If no, reason",
+      "Time of Administration"
+     ]
+    },
+    {
+     "page": 451,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    30,
+    0,
+    -532
+   ],
+   "became_best": false
+  }
+ ]
+}

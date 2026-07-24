@@ -1,0 +1,324 @@
+{
+ "stop_reason": "converged",
+ "versions": 5,
+ "best_version": 5,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 5,
+    "pages_total": 3,
+    "pages_with_fields": 3,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 3,
+    "fields_per_form": 1.7,
+    "forms_per_100_pages": 100.0,
+    "furniture_candidates": [],
+    "pages_covered_pct": 100
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 6,
+   "audit_pages": [
+    56,
+    81,
+    108
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 56,
+     "missed": [
+      "Comment:"
+     ],
+     "false": [
+      "Group, Visit",
+      "Staff Initials"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 81,
+     "missed": [
+      "Comment:"
+     ],
+     "false": [
+      "Staff Initials"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 108,
+     "missed": [],
+     "false": [
+      "Group, Visit"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "score": [
+    0,
+    6,
+    0,
+    -3
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "confirm",
+   "metrics": {
+    "engine": "codegen",
+    "records": 3,
+    "pages_total": 3,
+    "pages_with_fields": 3,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 3,
+    "fields_per_form": 1.0,
+    "forms_per_100_pages": 100.0,
+    "furniture_candidates": [],
+    "pages_covered_pct": 100
+   },
+   "problems": [],
+   "outcome": "extended_program"
+  },
+  {
+   "version": 2,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 1,
+    "pages_total": 3,
+    "pages_with_fields": 1,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 1,
+    "fields_per_form": 1.0,
+    "forms_per_100_pages": 33.3,
+    "furniture_candidates": [],
+    "pages_covered_pct": 33
+   },
+   "problems": [],
+   "warnings": [
+    "Only 1 records from this 3-page document - plausible for a document this small, but make sure no fields were missed."
+   ],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_verdicts": null,
+   "score": [
+    0,
+    "not_audited",
+    1,
+    -1
+   ],
+   "became_best": false
+  },
+  {
+   "version": 3,
+   "kind": "confirm_extension",
+   "metrics": {
+    "engine": "codegen",
+    "records": 3,
+    "pages_total": 3,
+    "pages_with_fields": 3,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 3,
+    "fields_per_form": 1.0,
+    "forms_per_100_pages": 100.0,
+    "furniture_candidates": [],
+    "pages_covered_pct": 100
+   },
+   "problems": [],
+   "warnings": [
+    "Only 3 records from this 3-page document - plausible for a document this small, but make sure no fields were missed."
+   ],
+   "audit_issues": 4,
+   "audit_pages": [
+    56,
+    81,
+    108
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 56,
+     "missed": [
+      "Comment:"
+     ],
+     "false": [
+      "C-SSRS Baseline: 12. Reasons for Ideation (lifetime) #1"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 81,
+     "missed": [
+      "Comment:"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 108,
+     "missed": [],
+     "false": [
+      "Date of Deviation"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "score": [
+    0,
+    4,
+    1,
+    -3
+   ],
+   "became_best": true
+  },
+  {
+   "version": 4,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 5,
+    "pages_total": 3,
+    "pages_with_fields": 3,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 3,
+    "fields_per_form": 1.7,
+    "forms_per_100_pages": 100.0,
+    "furniture_candidates": [],
+    "pages_covered_pct": 100
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 2,
+   "audit_pages": [
+    56,
+    81,
+    108
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 56,
+     "missed": [],
+     "false": [
+      "QSC302573, 03 - Screening Draft v0.1"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 81,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 108,
+     "missed": [],
+     "false": [
+      "QSC302573, Protocol Deviations Draft"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "score": [
+    0,
+    2,
+    0,
+    -3
+   ],
+   "became_best": true
+  },
+  {
+   "version": 5,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 3,
+    "pages_total": 3,
+    "pages_with_fields": 2,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 2,
+    "fields_per_form": 1.5,
+    "forms_per_100_pages": 66.7,
+    "furniture_candidates": [],
+    "pages_covered_pct": 67
+   },
+   "problems": [],
+   "warnings": [
+    "Only 3 records from this 3-page document - plausible for a document this small, but make sure no fields were missed."
+   ],
+   "audit_issues": 0,
+   "audit_pages": [
+    56,
+    81,
+    108
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 56,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 81,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 108,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "score": [
+    0,
+    0,
+    1,
+    -2
+   ],
+   "became_best": true
+  }
+ ]
+}

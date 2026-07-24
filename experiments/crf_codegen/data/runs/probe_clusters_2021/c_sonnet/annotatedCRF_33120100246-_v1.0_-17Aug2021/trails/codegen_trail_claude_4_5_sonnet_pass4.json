@@ -1,0 +1,502 @@
+{
+ "stop_reason": "budget",
+ "versions": 5,
+ "best_version": 3,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "confirm",
+   "metrics": {
+    "engine": "codegen",
+    "records": 137,
+    "pages_total": 30,
+    "pages_with_fields": 15,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 6,
+    "fields_per_form": 22.8,
+    "forms_per_100_pages": 20.0,
+    "form_same_page_evidence_records": 137,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 50
+   },
+   "problems": [],
+   "outcome": "extended_program"
+  },
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 102,
+    "pages_total": 30,
+    "pages_with_fields": 10,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 3,
+    "fields_per_form": 34.0,
+    "forms_per_100_pages": 10.0,
+    "form_same_page_evidence_records": 102,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 33
+   },
+   "problems": [],
+   "warnings": [
+    "The program filters by 10 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    0,
+    "not_audited",
+    1,
+    -10
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "confirm_extension",
+   "metrics": {
+    "engine": "codegen",
+    "records": 137,
+    "pages_total": 30,
+    "pages_with_fields": 15,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 6,
+    "fields_per_form": 22.8,
+    "forms_per_100_pages": 20.0,
+    "form_same_page_evidence_records": 137,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 50
+   },
+   "problems": [],
+   "warnings": [
+    "The program filters by 10 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": 10,
+   "audit_pages": [
+    67,
+    69,
+    127,
+    194,
+    323,
+    420
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 67,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 69,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 127,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 194,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 323,
+     "missed": [],
+     "false": [
+      "the assessment period. This is different than a specific plan with a time, place or",
+      "made a specific plan as to when, where or how I would actually do it. . . and I would never go through with it\"",
+      "Have you been thinking about how you might do this?",
+      "on such thoughts, as opposed to \"I have thoughts but I definitely will not do anything",
+      "about them\"",
+      "Have you had these thoughts and had some intention of acting on them?",
+      "5. Active suicidal ideation with specific plan and intent Thoughts of killing oneself with detail of plan fully or partially worked out and subject",
+      "has some intent to carry it out.",
+      "Have you started to work out or worked out the details of how to kill yourself?",
+      "Do you intend to carry out this plan?"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 420,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    10,
+    1,
+    -15
+   ],
+   "became_best": true
+  },
+  {
+   "version": 3,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 86,
+    "pages_total": 30,
+    "pages_with_fields": 15,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 6,
+    "fields_per_form": 14.3,
+    "forms_per_100_pages": 20.0,
+    "form_same_page_evidence_records": 86,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 50
+   },
+   "problems": [],
+   "warnings": [
+    "The program filters by 10 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": 2,
+   "audit_pages": [
+    67,
+    69,
+    70,
+    127,
+    129,
+    194,
+    323,
+    420
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 67,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 69,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 70,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 127,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 129,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 194,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 323,
+     "missed": [
+      "If Yes, describe",
+      "If Yes, describe"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 420,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    2,
+    1,
+    -15
+   ],
+   "became_best": true
+  },
+  {
+   "version": 4,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 116,
+    "pages_total": 30,
+    "pages_with_fields": 25,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 9,
+    "fields_per_form": 12.9,
+    "forms_per_100_pages": 30.0,
+    "form_same_page_evidence_records": 116,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 83
+   },
+   "problems": [],
+   "warnings": [
+    "The program filters by 19 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": 13,
+   "audit_pages": [
+    67,
+    69,
+    72,
+    127,
+    133,
+    194,
+    323,
+    420
+   ],
+   "audit_partial": null,
+   "audit_promoted": [
+    72
+   ],
+   "audit_verdicts": [
+    {
+     "page": 67,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 69,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 72,
+     "missed": [
+      "If Yes, describe",
+      "If Yes, describe"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 127,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 133,
+     "missed": [],
+     "false": [
+      "Since Last Visit",
+      "Disclaimer:",
+      "\u00a9 2008 The Research Foundation for Mental Hygiene, Inc."
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 194,
+     "missed": [],
+     "false": [
+      "Since Last Visit",
+      "Disclaimer:",
+      "\u00a9 2008 The Research Foundation for Mental Hygiene, Inc."
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 323,
+     "missed": [
+      "If Yes, describe",
+      "If Yes, describe"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 420,
+     "missed": [],
+     "false": [
+      "Since Last Visit",
+      "Disclaimer:",
+      "\u00a9 2008 The Research Foundation for Mental Hygiene, Inc."
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    13,
+    1,
+    -25
+   ],
+   "became_best": false
+  },
+  {
+   "version": 5,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 96,
+    "pages_total": 30,
+    "pages_with_fields": 25,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 9,
+    "fields_per_form": 10.7,
+    "forms_per_100_pages": 30.0,
+    "form_same_page_evidence_records": 86,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 83
+   },
+   "problems": [],
+   "warnings": [
+    "The program filters by 22 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": 12,
+   "audit_pages": [
+    67,
+    69,
+    72,
+    127,
+    135,
+    194,
+    323,
+    420
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 67,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 69,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 72,
+     "missed": [
+      "If Yes, describe",
+      "If Yes, describe",
+      "If Yes, describe"
+     ],
+     "false": [
+      "If Yes, describe"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 127,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 135,
+     "missed": [
+      "If Yes, describe",
+      "If Yes, describe"
+     ],
+     "false": [
+      "If Yes, describe"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 194,
+     "missed": [],
+     "false": [
+      "Since Last Visit"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 323,
+     "missed": [
+      "If Yes, describe",
+      "If Yes, describe"
+     ],
+     "false": [
+      "If Yes, describe"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 420,
+     "missed": [],
+     "false": [
+      "Since Last Visit"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    12,
+    1,
+    -25
+   ],
+   "became_best": false
+  }
+ ]
+}

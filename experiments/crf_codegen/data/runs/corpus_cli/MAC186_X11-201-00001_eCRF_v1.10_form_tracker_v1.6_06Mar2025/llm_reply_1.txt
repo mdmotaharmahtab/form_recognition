@@ -1,0 +1,17 @@
+{
+  "format_id": "mac186_numbered_vardetails",
+  "reasoning": "The document alternates between CRF content pages, where every field label carries a small bracketed integer (standalone like '[2]' to the right of the bold label, or embedded as in 'Yes  [1]' and 'Body System Examined  [5]'), and 'Variable details' definition pages that repeat the same [n] keys at x~41 with the field name at x~81 and the machine export code (PUPILPERF, LBDAT, CGIIORRES) in the column under the 'Export Name' header at x~235. This two-page-type numbered structure is exactly the numbered_join engine. The form name is the bold section-header line printed directly below the constant document-ID header on content pages, captured by a regex that excludes the known non-title lines; single 'Visit:' divider pages carry no fields and are skipped.",
+  "detect": {"all": ["MAC186_X11_201_00001_eCRF", "^Variable details$", "^Export Name$"]},
+  "skip_page_if": ["^Visit:$"],
+  "form_name": {"strategy": "regex", "regex": "^(?!MAC186_)(?!Variable details$)(?!Name$)(?!Export Name$)(?!Type$)(?!Max length$)(?!Categories$)(?!Visit:)([A-Za-z].+)$", "carry_forward": true},
+  "fields": {
+    "engine": "numbered_join",
+    "definition_page_all": ["^Variable details$", "^Export Name$", "^Max length$"],
+    "oid_header": "Export Name",
+    "row_number_x_max": 70,
+    "data_number_regex": "\\[(\\d+)\\]",
+    "data_number_x_min": 40,
+    "data_label_x_max": 550,
+    "label_noise": ["^MAC186_", "^Yes\\b", "^No\\b", "^Version date", "^\\d+$", "^\\[\\d+\\]$", "^Visit:"]
+  }
+}

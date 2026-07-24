@@ -1,0 +1,462 @@
+{
+ "stop_reason": "budget",
+ "versions": 5,
+ "best_version": 2,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 526,
+    "pages_total": 87,
+    "pages_with_fields": 63,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 25,
+    "fields_per_form": 21.0,
+    "forms_per_100_pages": 28.7,
+    "form_same_page_evidence_records": 525,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 72
+   },
+   "problems": [
+    "Extreme content-fitted blocklist. The program filters by 35 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "warnings": [],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    1,
+    "not_audited",
+    0,
+    -63
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "revise_gates",
+   "metrics": {
+    "engine": "codegen",
+    "records": 703,
+    "pages_total": 87,
+    "pages_with_fields": 82,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 99,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 31,
+    "fields_per_form": 22.7,
+    "forms_per_100_pages": 35.6,
+    "form_same_page_evidence_records": 702,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 94
+   },
+   "problems": [
+    "Extreme content-fitted blocklist. The program filters by 51 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "warnings": [],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    1,
+    "not_audited",
+    0,
+    -82
+   ],
+   "became_best": true
+  },
+  {
+   "version": 3,
+   "kind": "confirm",
+   "metrics": {
+    "engine": "codegen",
+    "records": 601,
+    "pages_total": 87,
+    "pages_with_fields": 72,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 28,
+    "fields_per_form": 21.5,
+    "forms_per_100_pages": 32.2,
+    "form_same_page_evidence_records": 600,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 83
+   },
+   "problems": [],
+   "outcome": "extended_program"
+  },
+  {
+   "version": 3,
+   "kind": "revise_gates",
+   "metrics": {
+    "engine": "codegen",
+    "records": 601,
+    "pages_total": 87,
+    "pages_with_fields": 72,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 28,
+    "fields_per_form": 21.5,
+    "forms_per_100_pages": 32.2,
+    "form_same_page_evidence_records": 600,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 83
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    0,
+    "not_audited",
+    0,
+    -72
+   ],
+   "became_best": false
+  },
+  {
+   "version": 4,
+   "kind": "confirm_extension",
+   "metrics": {
+    "engine": "codegen",
+    "records": 601,
+    "pages_total": 87,
+    "pages_with_fields": 72,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 28,
+    "fields_per_form": 21.5,
+    "forms_per_100_pages": 32.2,
+    "form_same_page_evidence_records": 600,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 83
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 40,
+   "audit_pages": [
+    9,
+    10,
+    69,
+    72,
+    255,
+    485
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 9,
+     "missed": [],
+     "false": [
+      "Schedule of Assessments",
+      "Schedule",
+      "Number",
+      "Screen Visit 1 Day -42 to -21",
+      "page enrols if SEX = Female on Demography",
+      "page enrols if SEX = Male",
+      "Medical/Psychiatric History Body Temperature and",
+      "page and if RPPOSMEN=",
+      "Status - Female page page enrols if SEX =",
+      "Female on Demography"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 10,
+     "missed": [],
+     "false": [
+      "Schedule_TITR",
+      "Visit Label",
+      "Description of Dynamic",
+      "Number",
+      "Titration Day -20",
+      "Schedule_Screening2",
+      "Screen Visit 2 Day -15",
+      "if Is the Subject required to be Titrated ? =Yes on",
+      "Sertraline Titration page",
+      "Steady-state Assurance Period Day -1",
+      "page enrols if SEX = Female on Demography"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 69,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 72,
+     "missed": [
+      "Have you actually had any thoughts of killing yourself?"
+     ],
+     "false": [
+      "(values: Yes, No)]",
+      "Subject endorses thoughts of suicide and has thought of at least one method during the assessment period. This is different than a specific plan with time, place or",
+      "method details worked out (e.g. thought of method to kill self but not a specific plan).",
+      "Includes person who would say: \"I thought about taking an overdose but I never made a specific plan as to when, where or how I would actually do it. . . and I would never",
+      "go through with it\"",
+      "Active suicidal thoughts of killing oneself and subject reports having some intent to act on such thoughts, as opposed to \"I have thoughts but I definitely will not do anything",
+      "Thoughts of killing oneself with detail of plan fully or partially worked out and subject has some intent to carry it out."
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 255,
+     "missed": [],
+     "false": [
+      "Equally to get attention/ revenge or a reaction from others and to end/stop the pain, (4) Mostly to end or",
+      "stop the pain (you could not go on living with the pain or how you were feeling), (5) Completely to end or stop the",
+      "pain (you could not go on living with the pain or how you were feeling), (0) Does not apply)]"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 485,
+     "missed": [
+      "Active suicidal ideation with any methods (not plan) without intent to act"
+     ],
+     "false": [
+      "Subject endorses thoughts of suicide and has thought of at least one method during the assessment period. This is different than a specific plan with a time, place or",
+      "method details worked out (e.g. thought of method to kill self but not a specific plan).",
+      "Includes a person who would say: \"I thought about taking an overdose but i never made a specific plan as to when, where or how I would actually do it. . . and I would",
+      "never go through with it\"",
+      "Active suicidal thoughts of killing oneself and subject reports having some intent to act on such thoughts, as opposed to \"I have thoughts but I definitely will not do anything",
+      "Thoughts of killing oneself with detail of plan fully or partially worked out and subject has some intent to carry it out.",
+      "Do you intend to carry out this plan? Row 10"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    40,
+    0,
+    -72
+   ],
+   "became_best": false
+  },
+  {
+   "version": 5,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 475,
+    "pages_total": 87,
+    "pages_with_fields": 72,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 28,
+    "fields_per_form": 17.0,
+    "forms_per_100_pages": 32.2,
+    "form_same_page_evidence_records": 474,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 83
+   },
+   "problems": [],
+   "warnings": [
+    "The program filters by 12 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": 75,
+   "audit_pages": [
+    9,
+    10,
+    69,
+    72,
+    138,
+    142,
+    255,
+    485
+   ],
+   "audit_partial": null,
+   "audit_promoted": [
+    138
+   ],
+   "audit_verdicts": [
+    {
+     "page": 9,
+     "missed": [],
+     "false": [
+      "Schedule of Assessments",
+      "Female on Demography",
+      "Medical/Psychiatric History Body Temperature and",
+      "Clinical Laboratory Assessments Laboratory results review",
+      "Female on Demography page and if RPPOSMEN=",
+      "Status - Female page",
+      "C-SSRS - Screening/Baseline C-SSRS - Screening/Baseline -"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 10,
+     "missed": [
+      "C-SSRS - Screening/Baseline - Page 3",
+      "C-SSRS - Screening/Baseline - Page 4",
+      "AE and CM prompt",
+      "Inclusion criteria",
+      "Exclusion criteria",
+      "End of Screening",
+      "Visit Date",
+      "Drug dispensation- Titration period",
+      "Triplicate Orthostatic BP and HR - Central",
+      "PK Blood Draw - Sertraline",
+      "Aicure Device - Distribution",
+      "Drug administration- Titration Period",
+      "IMP Administration - Sertraline",
+      "Physical Exam",
+      "Clinical Laboratory Assessments",
+      "Laboratory results review",
+      "Pregnancy test",
+      "Alcohol Screen - Urine or Breath",
+      "Urine Drug Screen",
+      "Cotinine Screen",
+      "PGx Blood Sample"
+     ],
+     "false": [
+      "C-SSRS - Screening/Baseline -",
+      "Sertraline Titration",
+      "Schedule_TITR",
+      "Visit Label",
+      "Description of Dynamic",
+      "Number",
+      "Titration Day -20",
+      "Drug dispensation- Titration",
+      "Schedule_Screening2",
+      "Screen Visit 2 Day -15",
+      "Triplicate Orthostatic BP and HR -",
+      "PK Blood Draw - Sertraline Aicure Device - Distribution",
+      "Drug administration- Titration",
+      "if Is the Subject required to be Titrated ? =Yes on Sertraline Titration page",
+      "IMP Administration - Sertraline",
+      "Steady-state Assurance Period Day -1",
+      "Clinical Laboratory Assessments Laboratory results review",
+      "page enrols if SEX = Female on Demography",
+      "Alcohol Screen - Urine or Breath",
+      "PK Blood Draw - Sertraline"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 69,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 72,
+     "missed": [
+      "Have you actually had any thoughts of killing yourself?"
+     ],
+     "false": [
+      "Active suicidal ideation with any methods (not plan) without intent to act Subject endorses thoughts of suicide and has thought of at least one method during",
+      "Includes person who would say: \"I thought about taking an overdose but I never made go through with it\"",
+      "Active suicidal ideation with some intent to act, without specific plan",
+      "Active suicidal thoughts of killing oneself and subject reports having some intent to act",
+      "Active suicidal ideation with specific plan and intent",
+      "Thoughts of killing oneself with detail of plan fully or partially worked out and subject has some intent to carry it out."
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 138,
+     "missed": [],
+     "false": [
+      "Equally to get attention/ revenge or a reaction from",
+      "were feeling), (0) Does not apply)]"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 142,
+     "missed": [],
+     "false": [
+      "C-SSRS since last visit - Page 4",
+      "Actual Attempts",
+      "Actual Lethality/Medical Damage: \\0.\\ No physical damage or very minor physical damage (e.g. surface scratches) \\1.\\",
+      "Minor physical damage (e.g. lethargic speech, first-degree burns, mild bleeding,",
+      "Moderately severe physical damage; medical hospitalization and likely intensive care",
+      "Potential Lethality: Only answer if Actual Lethality=0 Likely lethality of actual attempt if no medical damage (the following examples, while",
+      "\\0.\\ Behavior not likely to result in injury \\1.\\ Behavior like to result in injury but not"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 255,
+     "missed": [],
+     "false": [
+      "Equally to get attention/ revenge or a reaction from",
+      "were feeling), (0) Does not apply)]"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 485,
+     "missed": [
+      "Active suicidal ideation with any methods (not plan) without intent to act",
+      "Active suicidal ideation with some intent to act, without specific plan",
+      "Active suicidal ideation with specific plan and intent"
+     ],
+     "false": [
+      "Subject endorses thoughts of suicide and has thought of at least one method during",
+      "Includes a person who would say: \"I thought about taking an overdose but i never never go through with it\"",
+      "Active suicidal ideation with some intent to act, without specific plan Active suicidal thoughts of killing oneself and subject reports having some intent to act",
+      "Active suicidal ideation with specific plan and intent Thoughts of killing oneself with detail of plan fully or partially worked out and subject",
+      "has some intent to carry it out.",
+      "Do you intend to carry out this plan? Row 10"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    75,
+    1,
+    -72
+   ],
+   "became_best": false
+  }
+ ]
+}

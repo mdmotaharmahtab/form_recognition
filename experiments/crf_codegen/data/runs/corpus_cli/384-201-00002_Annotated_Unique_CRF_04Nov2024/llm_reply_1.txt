@@ -1,0 +1,17 @@
+{
+  "format_id": "unique_crf_numbered_join",
+  "reasoning": "Every form is printed as two page types: content pages show the human question text starting at x=90 with a small integer in a far-right column (x=524.5-527), while separate definition pages (with the repeated header row 'Field Name Data Type / Units / Values / Pre-Filled Values / Include Field OID') repeat the same integers at x=93-95.5 and print machine codes such as LBCAT, MIPERF and PANSS122_RSORRES in the Field OID column at x=410. Joining labels to codes via these shared integers is exactly the numbered_join engine. The form name is available on every page from the bold 'Form: ...' header line, so form_name uses the regex strategy.",
+  "detect": {"all": ["^01\\.025 GMK: Unique CRF$", "^Form:\\s*.+$", "^Generated On:"]},
+  "skip_page_if": ["^Subject Case Report Forms$", "Signature Prompt:"],
+  "form_name": {"strategy": "regex", "regex": "^Form:\\s*(.+)$"},
+  "fields": {
+    "engine": "numbered_join",
+    "definition_page_all": ["^Field Name Data Type$", "^Field OID$", "^Pre-Filled$"],
+    "oid_header": "Field OID",
+    "row_number_x_max": 105,
+    "data_number_regex": "^(\\d{1,3})$",
+    "data_number_x_min": 515,
+    "data_label_x_max": 200,
+    "label_noise": ["^01\\.025 GMK", "^Form:", "^Generated On:", "^\\d+ of \\d+$", "^Fixed Unit:", "^(Yes|No)$"]
+  }
+}

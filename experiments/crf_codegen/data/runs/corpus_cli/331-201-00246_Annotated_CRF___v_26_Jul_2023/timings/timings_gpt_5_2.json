@@ -1,0 +1,167 @@
+{
+ "stage0_s": 9.323,
+ "llm_s": 2715.526,
+ "llm_calls": 16,
+ "llm_prompt_chars": 574491,
+ "llm_reply_chars": 242798,
+ "llm_by_kind": {
+  "generate": {
+   "calls": 2,
+   "s": 416.792,
+   "prompt_chars": 95997,
+   "reply_chars": 28459
+  },
+  "confirm": {
+   "calls": 2,
+   "s": 251.225,
+   "prompt_chars": 41752,
+   "reply_chars": 33471
+  },
+  "audit": {
+   "calls": 7,
+   "s": 751.947,
+   "prompt_chars": 249746,
+   "reply_chars": 9889
+  },
+  "revise_audit": {
+   "calls": 5,
+   "s": 1295.562,
+   "prompt_chars": 186996,
+   "reply_chars": 170979
+  }
+ },
+ "sandbox_validate_s": 39.196,
+ "sandbox_validate_calls": 9,
+ "export_s": null,
+ "total_s": 2762.212,
+ "calls": [
+  {
+   "seq": 1,
+   "kind": "generate",
+   "version": 1,
+   "s": 267.415,
+   "prompt_chars": 48913,
+   "reply_chars": 14261
+  },
+  {
+   "seq": 2,
+   "kind": "confirm",
+   "version": 1,
+   "s": 146.741,
+   "prompt_chars": 21121,
+   "reply_chars": 18028
+  },
+  {
+   "seq": 3,
+   "kind": "audit",
+   "version": 2,
+   "s": 97.195,
+   "prompt_chars": 34977,
+   "reply_chars": 1716
+  },
+  {
+   "seq": 4,
+   "kind": "revise_audit",
+   "version": 3,
+   "s": 219.244,
+   "prompt_chars": 27465,
+   "reply_chars": 26565
+  },
+  {
+   "seq": 5,
+   "kind": "audit",
+   "version": 3,
+   "s": 284.69,
+   "prompt_chars": 43717,
+   "reply_chars": 1840
+  },
+  {
+   "seq": 6,
+   "kind": "revise_audit",
+   "version": 4,
+   "s": 316.076,
+   "prompt_chars": 35912,
+   "reply_chars": 36991
+  },
+  {
+   "seq": 7,
+   "kind": "audit",
+   "version": 4,
+   "s": 149.563,
+   "prompt_chars": 43767,
+   "reply_chars": 1807
+  },
+  {
+   "seq": 8,
+   "kind": "revise_audit",
+   "version": 5,
+   "s": 337.609,
+   "prompt_chars": 47935,
+   "reply_chars": 48180
+  },
+  {
+   "seq": 9,
+   "kind": "audit",
+   "version": 5,
+   "s": 106.874,
+   "prompt_chars": 44173,
+   "reply_chars": 1865
+  },
+  {
+   "seq": 1,
+   "kind": "generate",
+   "version": 1,
+   "s": 149.377,
+   "prompt_chars": 47084,
+   "reply_chars": 14198
+  },
+  {
+   "seq": 2,
+   "kind": "confirm",
+   "version": 1,
+   "s": 104.484,
+   "prompt_chars": 20631,
+   "reply_chars": 15443
+  },
+  {
+   "seq": 3,
+   "kind": "audit",
+   "version": 2,
+   "s": 41.91,
+   "prompt_chars": 26242,
+   "reply_chars": 968
+  },
+  {
+   "seq": 4,
+   "kind": "revise_audit",
+   "version": 3,
+   "s": 215.917,
+   "prompt_chars": 31547,
+   "reply_chars": 25954
+  },
+  {
+   "seq": 5,
+   "kind": "audit",
+   "version": 3,
+   "s": 28.63,
+   "prompt_chars": 28372,
+   "reply_chars": 913
+  },
+  {
+   "seq": 6,
+   "kind": "revise_audit",
+   "version": 4,
+   "s": 206.716,
+   "prompt_chars": 44137,
+   "reply_chars": 33289
+  },
+  {
+   "seq": 7,
+   "kind": "audit",
+   "version": 4,
+   "s": 43.085,
+   "prompt_chars": 28498,
+   "reply_chars": 780
+  }
+ ]
+}

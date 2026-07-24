@@ -1,0 +1,129 @@
+{
+  "doc_key": "331-201-00246_Annotated_CRF___v_04_Jul_2023",
+  "annotator_notes": "Viedoc-style annotated eCRF, 1083 pages. A form's first page prints the form title as a heading; continuation pages omit it (form_source=carryover). Machine markers '[OID]' and '[TYPE: ...]' are listed FIRST (often grouped), then the human-readable prompt labels and option values follow positionally. Field = the human-readable prompt; option values, '[TYPE:...]', '[OID]', '[Read-only field]', '[VISIBILITY:...]', 'Row N' markers, and the 'Page N of 1083' footer are NOT fields. Some pages are blank (footer only). Form accuracy is scored only on form_source=printed pages (title verifiable on the page); carryover form_name is best-effort context.",
+  "pages": [
+    {
+      "page": 165,
+      "form_name": "Washout and Sertraline Titration",
+      "form_source": "printed",
+      "fields": [
+        "Is the Subject required to be Titrated ?",
+        "Is Washout ADT required?"
+      ],
+      "acceptable_extras": [],
+      "notes": "OIDs SERTIT2/SERWADT2 precede their labels."
+    },
+    {
+      "page": 166,
+      "form_name": null,
+      "form_source": "none",
+      "fields": [],
+      "acceptable_extras": [],
+      "notes": "Blank page - only the 'Page 166 of 1083' footer. Zero fields (false-positive probe)."
+    },
+    {
+      "page": 242,
+      "form_name": "Cotinine Screen",
+      "form_source": "carryover",
+      "fields": [
+        "Date of Sample",
+        "Time of Sample"
+      ],
+      "acceptable_extras": [],
+      "notes": "Continuation page (LBDAT3/LBTIM3); no title printed."
+    },
+    {
+      "page": 288,
+      "form_name": "Exclusion criteria",
+      "form_source": "carryover",
+      "fields": [
+        "10. Subjects with a primary DSM-5 diagnosis of:",
+        "11. Subjects who have a significant risk of committing suicide based on history, routine psychiatric status examination, investigator's judgment, or who have an answer of yes on suicidal ideation questions 4 or 5",
+        "12. History of serious mental disorders that, in the opinion of the investigator, renders the subject a poor fit for the trial.",
+        "13. History of diabetes mellitus (type 1 or type 2)"
+      ],
+      "acceptable_extras": [],
+      "notes": "Each numbered exclusion criterion is one field (all share [IEORRES] Met/Not Met). Long criterion text; leading number + phrase is the identifying label."
+    },
+    {
+      "page": 356,
+      "form_name": "Triplicate Orthostatic BP and HR - 1.5h Postdose",
+      "form_source": "printed",
+      "fields": [
+        "Were Vital Signs Collected?",
+        "If not collected, reason:",
+        "Collection Date",
+        "Planned Timepoint"
+      ],
+      "acceptable_extras": [],
+      "notes": "Title printed. VSPERF/VSREAS/VSDAT/VSTPT map positionally to the four prompts."
+    },
+    {
+      "page": 486,
+      "form_name": "C-SSRS - Since Last Visit",
+      "form_source": "carryover",
+      "fields": [
+        "Most severe ideation",
+        "Description of Ideation"
+      ],
+      "acceptable_extras": [
+        "Intensity of Ideation"
+      ],
+      "notes": "C-SSRS Intensity-of-Ideation continuation page. The (1)-(5) items at top are the option values of 'Most severe ideation'."
+    },
+    {
+      "page": 516,
+      "form_name": "PK Blood Draw - Propranolol",
+      "form_source": "carryover",
+      "fields": [
+        "Sample Timepoint",
+        "Sample Status",
+        "Time of Collection",
+        "Barcode Number",
+        "Backup Barcode Number"
+      ],
+      "acceptable_extras": [
+        "Sample"
+      ],
+      "notes": "PK sample-tracking grid; column headers are the fields. [LBCAT8] sample-type and [SCANNER] are read-only/site-only."
+    },
+    {
+      "page": 663,
+      "form_name": "Visit Date",
+      "form_source": "printed",
+      "fields": [
+        "Visit Date",
+        "Skip to next visit",
+        "Skip to Early Termination visit"
+      ],
+      "acceptable_extras": [],
+      "notes": "Title printed. VISDAT/VISSKIP/VISEOT."
+    },
+    {
+      "page": 910,
+      "form_name": "IMP Administration - Sertraline,Brexpiprazole and Propranolol",
+      "form_source": "carryover",
+      "fields": [
+        "Dose Unit",
+        "Dose Form",
+        "Date of Administration",
+        "Time of Administration",
+        "Reason"
+      ],
+      "acceptable_extras": [],
+      "notes": "Continuation dosing page (EX*4 OIDs); drug name/dose above are read-only. 'Reason' (EXADJ4) is the dose-adjustment reason."
+    },
+    {
+      "page": 918,
+      "form_name": "End of Study",
+      "form_source": "carryover",
+      "fields": [
+        "Specify if: Adverse Event, Physician Decision, Protocol Deviation, Other"
+      ],
+      "acceptable_extras": [
+        "Reason for end of study"
+      ],
+      "notes": "The DSDECOD3 discontinuation-reason enumeration options fill most of the page; its label is on the prior page. DSTERM3 free-text 'Specify if:...' is the one new labelled field here."
+    }
+  ]
+}

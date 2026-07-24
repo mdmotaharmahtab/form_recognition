@@ -1,0 +1,14 @@
+{
+  "format_id": "anju_annotated_crf_activity_blocks",
+  "reasoning": "Every page is the same Anju/ClinBase-style 'Annotated CRF' schedule listing with Timepoint/Activity/Line # columns. Each field block starts at a bold anchor line in the Activity column (x ~168) of the form 'Form Prefix: Field Name #N', paired with a line number like '95.0' or '13.0 (hidden)' in the far-right column (x ~488), and everything until the next anchor belongs to that field. Machine codes are printed on answer lines as '[CODE] SAS:[Name=CODE, Length=..., DataType=...]', so I chose the anchored_blocks engine with form name from the activity prefix and field name from the text after the colon.",
+  "detect": {"all": ["^Annotated CRF$", "^Schedule Category & Name:", "^Line #$"]},
+  "skip_page_if": [],
+  "form_name": {"strategy": "regex", "regex": "^S_[A-Z0-9]+,\\s*(.+)$"},
+  "fields": {
+    "engine": "anchored_blocks",
+    "activity_regex": "^([^:]+?):\\s+(.+?)\\s+#\\d+$",
+    "activity_x": [150, 200],
+    "line_number_x_min": 450,
+    "oid_regex": "\\[([A-Z][A-Z0-9_]+)\\]\\s*SAS:\\[Name="
+  }
+}

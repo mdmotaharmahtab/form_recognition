@@ -1,0 +1,301 @@
+{
+ "stop_reason": "plateau",
+ "versions": 3,
+ "best_version": 1,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "confirm",
+   "outcome": "confirmed_no_fields"
+  },
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 603,
+    "pages_total": 246,
+    "pages_with_fields": 141,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 97,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 61,
+    "fields_per_form": 9.9,
+    "forms_per_100_pages": 24.8,
+    "form_same_page_evidence_records": 583,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 57
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 1,
+   "audit_pages": [
+    1,
+    3,
+    4,
+    92,
+    177,
+    212
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 3,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 4,
+     "missed": [],
+     "false": [
+      "Scheduled Activities Study Events Forms Item Groups Items Measurement Units Code Lists"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 92,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 177,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 212,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    1,
+    0,
+    -141
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 654,
+    "pages_total": 246,
+    "pages_with_fields": 151,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 96,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 69,
+    "fields_per_form": 9.5,
+    "forms_per_100_pages": 28.0,
+    "form_same_page_evidence_records": 628,
+    "form_same_page_persistence_pct": 98,
+    "furniture_candidates": [],
+    "pages_covered_pct": 61
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 2,
+   "audit_pages": [
+    1,
+    3,
+    4,
+    25,
+    92,
+    177,
+    212,
+    242
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 3,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 4,
+     "missed": [],
+     "false": [
+      "Scheduled Activities Study Events Forms Item Groups Items Measurement Units Code Lists"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 25,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 92,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 177,
+     "missed": [],
+     "false": [
+      "CSSRS Deterrents"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 212,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 242,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    2,
+    0,
+    -151
+   ],
+   "became_best": false
+  },
+  {
+   "version": 3,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 1054,
+    "pages_total": 246,
+    "pages_with_fields": 141,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 98,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 61,
+    "fields_per_form": 17.3,
+    "forms_per_100_pages": 24.8,
+    "form_same_page_evidence_records": 1041,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 57
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 4,
+   "audit_pages": [
+    1,
+    3,
+    4,
+    92,
+    177,
+    212,
+    243,
+    244
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 3,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 4,
+     "missed": [],
+     "false": [
+      "Scheduled Activities Study Events Forms Item Groups Items Measurement Units Code Lists"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 92,
+     "missed": [],
+     "false": [
+      "O General Appearance",
+      "O Normal O Abnormal",
+      "O CS O NCS"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 177,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 212,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 243,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 244,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    4,
+    0,
+    -141
+   ],
+   "became_best": false
+  }
+ ]
+}

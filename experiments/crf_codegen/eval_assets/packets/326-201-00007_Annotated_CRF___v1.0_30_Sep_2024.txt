@@ -1,0 +1,986 @@
+DOCUMENT: 326-201-00007 Annotated CRF__ v1.0 30 Sep 2024.pdf
+doc_key: 326-201-00007_Annotated_CRF___v1.0_30_Sep_2024
+pages: 112 | text_layer_pct: 100
+sampled pages (1-based): [9, 11, 21, 23, 24, 95, 96, 99, 102, 107]
+
+======================================================================
+=== PAGE 9 (cluster 0) ===
+--- look-back: first line of preceding pages ---
+  p1: Annotated CRF
+  p2: Annotated CRF
+  p3: Annotated CRF
+  p4: Annotated CRF
+  p5: Annotated CRF
+  p6: Annotated CRF
+  p7: Annotated CRF
+  p8: Annotated CRF
+--- page text ---
+Annotated CRF
+Study, Site:
+Group, Visit:
+Slot:
+Schedule Category & Name:
+QSC302573, 03 - Screening Draft v0.1
+Timepoint
+Activity
+Line #
+_ _ - _ _ _ - _ _ _ _
+dd - MMM - yyyy
+_ _ : _ _
+HH:mm
+Select all contraception options that apply: 
+For sexually active males and their female partners of childbearing potential, there must be a 
+documented agreement that the participant and their partner will take measures (ie, 2 different 
+approved methods of birth control or remain abstinent from sexual activity).
+External condoms must be used in addition to hormonal contraception.
+External condom and internal condom should not be used together.
+Staff Initials:
+Answer(s):
+[ ] Condom
+[CNMALE] SAS:[Name=CNMALE, Length=50, DataType=Char]
+[ ] Partner's use of implantable progestogen-only hormone contraception 
+associated with inhibition of ovulation (Activates Line  18)
+[ ] Partner's use of intrauterine device (Activates Line  18)
+[CNMALE] SAS:[Name=CNMALE, Length=50, DataType=Char]
+[ ] Partner's use of intrauterine hormone-releasing system (Activates Line  18)
+[ ] Partner's bilateral tubal occlusion (Activates Line  18)
+[CNMALE] SAS:[Name=CNMALE, Length=50, DataType=Char]
+[ ] Partner's use of combined (oestrogen and progestogen-containing) hormonal 
+contraception associated with inhibition of ovulation; oral, intravaginal, 
+transdermal, injectable) (Activates Line  18)
+[CNMALE] SAS:[Name=CNMALE, Length=50, DataType=Char]
+[ ] Partner's use of progestogen-only hormonal contraception associated with 
+inhibition of ovulation; oral, injectable (Activates Line  18)
+[CNMALE] SAS:[Name=CNMALE, Length=50, DataType=Char]
+[ ] Partner's use of progestogen-only oral hormonal contraception where 
+inhibition of ovulation isn’t the primary mode of action (Activates Line  18)
+[ ] Partners use of female cap or diaphragm or sponge with spermicide
+[ ] Participants use of condom plus partners use of a cap, diaphragm or sponge 
+with spermicide
+[ ] Partner of non-childbearing potential (Activates Line  18)
+[CNMALE] SAS:[Name=CNMALE, Length=50, DataType=Char]
+[ ] Vasectomised (Activates Line  16)
+[CNMALE] SAS:[Name=CNMALE, Length=50, DataType=Char]
+[ ] True abstinence (Activates Line  17)
+[CNMALE] SAS:[Name=CNMALE, Length=50, DataType=Char]
+Comment:
+Date Created: 30-Sep-2024 08:27 (UTC)
+Page 9 of 112
+
+
+======================================================================
+=== PAGE 11 (cluster 0) ===
+--- look-back: first line of preceding pages ---
+  p1: Annotated CRF
+  p2: Annotated CRF
+  p3: Annotated CRF
+  p4: Annotated CRF
+  p5: Annotated CRF
+  p6: Annotated CRF
+  p7: Annotated CRF
+  p8: Annotated CRF
+  p9: Annotated CRF
+  p10: Annotated CRF
+--- page text ---
+Annotated CRF
+Study, Site:
+Group, Visit:
+Slot:
+Schedule Category & Name:
+QSC302573, 03 - Screening Draft v0.1
+Timepoint
+Activity
+Line #
+Day 0 (0), -00:00.00
+On Study Tobacco: Participant Smoke #1
+20.0
+_ _ - _ _ _ - _ _ _ _
+dd - MMM - yyyy
+_ _ : _ _
+HH:mm
+Does the participant smoke, use e-cigarettes or any nicotine replacement products? (If yes, 
+exclude participant)
+Staff Initials:
+Answer(s):
+O No
+[SUNCF] SAS:[Name=SUNCF, Length=50, DataType=Char]
+O Yes (Comment Required) (Activates Line  22)
+[SUNCF] SAS:[Name=SUNCF, Length=50, DataType=Char]
+O Previously (Activates Line  21)
+[SUNCF] SAS:[Name=SUNCF, Length=50, DataType=Char]
+Comment:
+Day 0 (0), -00:00.00
+On Study Tobacco: Date of stopping (smoking) #1
+21.0 (hidden)
+_ _ - _ _ _ - _ _ _ _
+dd - MMM - yyyy
+_ _ : _ _
+HH:mm
+If previously, date of stopping (Exclude if within the last 2 months)
+Staff Initials:
+Answer(s):
+_  _  -  _  _  _  -  _  _  _  _ (dd-MMM-yyyy)
+[SUENDAT] SAS:[Name=SUENDAT, Length=50, DataType=Char]
+Comment:
+Day 0 (0), -00:00.00
+On Study Tobacco: Prompt for Medic #1
+22.0 (hidden)
+_ _ - _ _ _ - _ _ _ _
+dd - MMM - yyyy
+_ _ : _ _
+HH:mm
+Exclude participant if answer yes to smoking (Medic to exclude participant)
+Staff Initials:
+Answer(s):
+O Yes
+Comment:
+Day 0 (0), -00:00.00
+AE/CM Surveys: MH Survey #1
+23.0
+_ _ - _ _ _ - _ _ _ _
+dd - MMM - yyyy
+_ _ : _ _
+HH:mm
+Does the participant have any clinically relevant medical/surgical history? (If 'Yes' complete 
+Medical History quicklist)
+Staff Initials:
+Answer(s):
+O No
+O Yes
+Comment:
+Day 0 (0), -00:00.00
+AE/CM Surveys: CM Survey #1
+24.0
+Date Created: 30-Sep-2024 08:27 (UTC)
+Page 11 of 112
+
+
+======================================================================
+=== PAGE 21 (cluster 0) ===
+--- look-back: first line of preceding pages ---
+  p1: Annotated CRF
+  p2: Annotated CRF
+  p3: Annotated CRF
+  p4: Annotated CRF
+  p5: Annotated CRF
+  p6: Annotated CRF
+  p7: Annotated CRF
+  p8: Annotated CRF
+  p9: Annotated CRF
+  p10: Annotated CRF
+  p11: Annotated CRF
+  p12: Annotated CRF
+  p13: Annotated CRF
+  p14: Annotated CRF
+  p15: Annotated CRF
+  p16: Annotated CRF
+  p17: Annotated CRF
+  p18: Annotated CRF
+  p19: Annotated CRF
+  p20: Annotated CRF
+--- page text ---
+Annotated CRF
+Study, Site:
+Group, Visit:
+Slot:
+Schedule Category & Name:
+QSC302573, 03 - Screening Draft v0.1
+Timepoint
+Activity
+Line #
+_ _ - _ _ _ - _ _ _ _
+dd - MMM - yyyy
+_ _ : _ _
+HH:mm
+Drugs of abuse - Methamphetamine/Ecstasy (MET)
+Staff Initials:
+Answer(s):
+O Negative
+[LBORRES] SAS:[Name=LBORRES, Length=50, DataType=Char]
+O Positive (Comment Required) (Activates Line  53)
+[LBORRES] SAS:[Name=LBORRES, Length=50, DataType=Char]
+Comment:
+Day 0 (0), -00:00.00
+Urine Drug Screen: Phencyclidine #1
+51.0
+_ _ - _ _ _ - _ _ _ _
+dd - MMM - yyyy
+_ _ : _ _
+HH:mm
+Drugs of abuse - Phencyclidine (PCP)
+Staff Initials:
+Answer(s):
+O Negative
+[LBORRES] SAS:[Name=LBORRES, Length=50, DataType=Char]
+O Positive (Comment Required) (Activates Line  53)
+[LBORRES] SAS:[Name=LBORRES, Length=50, DataType=Char]
+Comment:
+Day 0 (0), -00:00.00
+Urine Drug Screen: Marijuana/Cannabis #1
+52.0
+_ _ - _ _ _ - _ _ _ _
+dd - MMM - yyyy
+_ _ : _ _
+HH:mm
+Drugs of abuse - Marijuana/Cannabis (THC)
+Staff Initials:
+Answer(s):
+O Negative
+[LBORRES] SAS:[Name=LBORRES, Length=50, DataType=Char]
+O Positive (Comment Required) (Activates Line  53)
+[LBORRES] SAS:[Name=LBORRES, Length=50, DataType=Char]
+Comment:
+Day 0 (0), -00:00.00
+Urine Drug Screen: Medic Prompt #1
+53.0 (hidden)
+_ _ - _ _ _ - _ _ _ _
+dd - MMM - yyyy
+_ _ : _ _
+HH:mm
+Positive Drugs of Abuse result (Medic to exclude participant)
+Staff Initials:
+Answer(s):
+O Yes
+Comment:
+Day 0 (0), -00:00.00
+Breath Tests: Alcohol #1
+54.0
+_ _ - _ _ _ - _ _ _ _
+dd - MMM - yyyy
+_ _ : _ _
+HH:mm
+Alcohol breath test (Positive result > 0.02)
+Staff Initials:
+Date Created: 30-Sep-2024 08:27 (UTC)
+Page 21 of 112
+
+
+======================================================================
+=== PAGE 23 (cluster 0) ===
+--- look-back: first line of preceding pages ---
+  p1: Annotated CRF
+  p2: Annotated CRF
+  p3: Annotated CRF
+  p4: Annotated CRF
+  p5: Annotated CRF
+  p6: Annotated CRF
+  p7: Annotated CRF
+  p8: Annotated CRF
+  p9: Annotated CRF
+  p10: Annotated CRF
+  p11: Annotated CRF
+  p12: Annotated CRF
+  p13: Annotated CRF
+  p14: Annotated CRF
+  p15: Annotated CRF
+  p16: Annotated CRF
+  p17: Annotated CRF
+  p18: Annotated CRF
+  p19: Annotated CRF
+  p20: Annotated CRF
+  p21: Annotated CRF
+  p22: Annotated CRF
+--- page text ---
+Annotated CRF
+Study, Site:
+Group, Visit:
+Slot:
+Schedule Category & Name:
+QSC302573, 03 - Screening Draft v0.1
+Timepoint
+Activity
+Line #
+_ _ - _ _ _ - _ _ _ _
+dd - MMM - yyyy
+_ _ : _ _
+HH:mm
+12 Lead Standard ECG
+Exclude if - QT interval corrected for heart rate using Fridericia’s formula (QTcF) >450 msec for 
+male participants or >470 msec for female participants, QRS interval >120 msec, or PR interval 
+>200 msec.  (Supine for a minimum 3 minutes)
+Staff Initials:
+Answer(s):
+Ventricular Rate  _  _  _  beats/min (##0)
+[EGORRES] SAS:[Name=EGORRES, Length=50, DataType=Char]
+PR interval  _  _  _  ms (##0)
+[EGORRES] SAS:[Name=EGORRES, Length=50, DataType=Char]
+QRS Duration  _  _  _  ms (##0)
+[EGORRES] SAS:[Name=EGORRES, Length=50, DataType=Char]
+QT interval  _  _  _  ms (##0)
+[EGORRES] SAS:[Name=EGORRES, Length=50, DataType=Char]
+QRS Axis  _  _  _  _  deg (###0)
+[EGORRES] SAS:[Name=EGORRES, Length=50, DataType=Char]
+RR interval  _  _  _  _  ms (###0)
+[EGORRES] SAS:[Name=EGORRES, Length=50, DataType=Char]
+QTcF  _  _  _  ms (##0)
+[EGORRES] SAS:[Name=EGORRES, Length=50, DataType=Char]
+Comment:
+Day 0 (0), -00:00.00
+ECG: ECG Rhythm Assess/Interpretation #1
+60.0
+_ _ - _ _ _ - _ _ _ _
+dd - MMM - yyyy
+_ _ : _ _
+HH:mm
+ECG Rhythm assessment and interpretation
+Staff Initials:
+Answer(s):
+O Normal, Sinus Rhythm
+[EGORRES] SAS:[Name=EGORRES, Length=50, DataType=Char]
+O Abnormal, Sinus Rhythm (Activates Line  61, 62)
+[EGORRES] SAS:[Name=EGORRES, Length=50, DataType=Char]
+O Abnormal, Non-Sinus Rhythm (Activates Line  61, 63)
+[EGORRES] SAS:[Name=EGORRES, Length=50, DataType=Char]
+O Unevaluable (Comment Required)
+[EGORRES] SAS:[Name=EGORRES, Length=50, DataType=Char]
+Comment:
+Day 0 (0), -00:00.00
+ECG: ECG Significance #1
+61.0 (hidden)
+_ _ - _ _ _ - _ _ _ _
+dd - MMM - yyyy
+_ _ : _ _
+HH:mm
+Was the ECG clinically significant? (Medic to assess)
+Date Created: 30-Sep-2024 08:27 (UTC)
+Page 23 of 112
+
+
+======================================================================
+=== PAGE 24 (cluster 0) ===
+--- look-back: first line of preceding pages ---
+  p1: Annotated CRF
+  p2: Annotated CRF
+  p3: Annotated CRF
+  p4: Annotated CRF
+  p5: Annotated CRF
+  p6: Annotated CRF
+  p7: Annotated CRF
+  p8: Annotated CRF
+  p9: Annotated CRF
+  p10: Annotated CRF
+  p11: Annotated CRF
+  p12: Annotated CRF
+  p13: Annotated CRF
+  p14: Annotated CRF
+  p15: Annotated CRF
+  p16: Annotated CRF
+  p17: Annotated CRF
+  p18: Annotated CRF
+  p19: Annotated CRF
+  p20: Annotated CRF
+  p21: Annotated CRF
+  p22: Annotated CRF
+  p23: Annotated CRF
+--- page text ---
+Annotated CRF
+Study, Site:
+Group, Visit:
+Slot:
+Schedule Category & Name:
+QSC302573, 03 - Screening Draft v0.1
+Timepoint
+Activity
+Line #
+Staff Initials:
+Answer(s):
+O No
+[EGCLSIG] SAS:[Name=EGCLSIG, Length=50, DataType=Char]
+O Yes
+[EGCLSIG] SAS:[Name=EGCLSIG, Length=50, DataType=Char]
+Comment:
+Day 0 (0), -00:00.00
+ECG: ECG Findings #1
+62.0 (hidden)
+_ _ - _ _ _ - _ _ _ _
+dd - MMM - yyyy
+_ _ : _ _
+HH:mm
+ECG Findings
+Staff Initials:
+Answer(s):
+______________________________ (500 char. max.)
+[EGABNFND] SAS:[Name=EGABNFND, Length=500, DataType=Char]
+Comment:
+Day 0 (0), -00:00.00
+ECG: ECG Findings inc Rhythm #1
+63.0 (hidden)
+_ _ - _ _ _ - _ _ _ _
+dd - MMM - yyyy
+_ _ : _ _
+HH:mm
+ECG Findings, including rhythm assessment 
+Staff Initials:
+Answer(s):
+______________________________ (500 char. max.)
+[EGABNFND] SAS:[Name=EGABNFND, Length=500, DataType=Char]
+Comment:
+Date Created: 30-Sep-2024 08:27 (UTC)
+Page 24 of 112
+
+
+======================================================================
+=== PAGE 95 (cluster 0) ===
+--- look-back: first line of preceding pages ---
+  p55: Annotated CRF
+  p56: Annotated CRF
+  p57: Annotated CRF
+  p58: Annotated CRF
+  p59: Annotated CRF
+  p60: Annotated CRF
+  p61: Annotated CRF
+  p62: Annotated CRF
+  p63: Annotated CRF
+  p64: Annotated CRF
+  p65: Annotated CRF
+  p66: Annotated CRF
+  p67: Annotated CRF
+  p68: Annotated CRF
+  p69: Annotated CRF
+  p70: Annotated CRF
+  p71: Annotated CRF
+  p72: Annotated CRF
+  p73: Annotated CRF
+  p74: Annotated CRF
+  p75: Annotated CRF
+  p76: Annotated CRF
+  p77: Annotated CRF
+  p78: Annotated CRF
+  p79: Annotated CRF
+  p80: Annotated CRF
+  p81: Annotated CRF
+  p82: Annotated CRF
+  p83: Annotated CRF
+  p84: Annotated CRF
+  p85: Annotated CRF
+  p86: Annotated CRF
+  p87: Annotated CRF
+  p88: Annotated CRF
+  p89: Annotated CRF
+  p90: Annotated CRF
+  p91: Annotated CRF
+  p92: Annotated CRF
+  p93: Annotated CRF
+  p94: Annotated CRF
+--- page text ---
+Annotated CRF
+Study, Site:
+Group, Visit:
+Slot:
+Schedule Category & Name:
+QSC302573, Prior and Concomitant Medications Draft
+Timepoint
+Activity
+Line #
+_ _ - _ _ _ - _ _ _ _
+dd - MMM - yyyy
+_ _ : _ _
+HH:mm
+Confirm administration is complete, and all details entered are correct (Administration Record 
+5)
+(**OPERATOR TO COMPLETE** - SWITCH USER)
+Staff Initials:
+Answer(s):
+O Yes
+O No (Comment Required)
+Comment:
+Day 0 (0), -00:00.00
+Concomitant Medication: CM Administration Record 6 #1
+51.0
+_ _ - _ _ _ - _ _ _ _
+dd - MMM - yyyy
+_ _ : _ _
+HH:mm
+Administration Record 6
+Staff Initials:
+Answer(s):
+[ ] Confirm Volunteer ID (volunteer number, initials, date of birth)
+Confirm AE number(s) medication required for 
+______________________________ (20 char. max.)
+[ ] Confirm AE(s) open
+[ ] Frequency since last dose checked
+Total Dosage within 24 hours ______________________________ (20 char. 
+max.)
+Batch Number ______________________________ (25 char. max.)
+[ ] Tick if Expiry Date available (leave blank if Date is N/A) (Activates Line  52)
+Comment:
+Day 0 (0), -00:00.00
+Concomitant Medication: CM Expiry Date 6 #1
+52.0 (hidden)
+_ _ - _ _ _ - _ _ _ _
+dd - MMM - yyyy
+_ _ : _ _
+HH:mm
+Expiry Date (Administration Record 6)
+Staff Initials:
+Answer(s):
+Expiry Date _  _  -  _  _  _  -  _  _  _  _ (dd-MMM-yyyy)
+Comment:
+Day 0 (0), -00:00.00
+Concomitant Medication: CM Route 6 #1
+53.0
+_ _ - _ _ _ - _ _ _ _
+dd - MMM - yyyy
+_ _ : _ _
+HH:mm
+Route Administered (Administration Record 6)
+Staff Initials:
+Answer(s):
+O INTRAVENOUS
+[CMROUTE] SAS:[Name=CMROUTE, Length=50, DataType=Char]
+O INTRAMUSCULAR
+[CMROUTE] SAS:[Name=CMROUTE, Length=50, DataType=Char]
+O INTRAUTERINE
+[CMROUTE] SAS:[Name=CMROUTE, Length=50, DataType=Char]
+Date Created: 30-Sep-2024 08:27 (UTC)
+Page 95 of 112
+
+
+======================================================================
+=== PAGE 96 (cluster 0) ===
+--- look-back: first line of preceding pages ---
+  p56: Annotated CRF
+  p57: Annotated CRF
+  p58: Annotated CRF
+  p59: Annotated CRF
+  p60: Annotated CRF
+  p61: Annotated CRF
+  p62: Annotated CRF
+  p63: Annotated CRF
+  p64: Annotated CRF
+  p65: Annotated CRF
+  p66: Annotated CRF
+  p67: Annotated CRF
+  p68: Annotated CRF
+  p69: Annotated CRF
+  p70: Annotated CRF
+  p71: Annotated CRF
+  p72: Annotated CRF
+  p73: Annotated CRF
+  p74: Annotated CRF
+  p75: Annotated CRF
+  p76: Annotated CRF
+  p77: Annotated CRF
+  p78: Annotated CRF
+  p79: Annotated CRF
+  p80: Annotated CRF
+  p81: Annotated CRF
+  p82: Annotated CRF
+  p83: Annotated CRF
+  p84: Annotated CRF
+  p85: Annotated CRF
+  p86: Annotated CRF
+  p87: Annotated CRF
+  p88: Annotated CRF
+  p89: Annotated CRF
+  p90: Annotated CRF
+  p91: Annotated CRF
+  p92: Annotated CRF
+  p93: Annotated CRF
+  p94: Annotated CRF
+  p95: Annotated CRF
+--- page text ---
+Annotated CRF
+Study, Site:
+Group, Visit:
+Slot:
+Schedule Category & Name:
+QSC302573, Prior and Concomitant Medications Draft
+Timepoint
+Activity
+Line #
+Answer(s):
+O SUBLINGUAL
+[CMROUTE] SAS:[Name=CMROUTE, Length=50, DataType=Char]
+O TOPICAL
+[CMROUTE] SAS:[Name=CMROUTE, Length=50, DataType=Char]
+O ORAL
+[CMROUTE] SAS:[Name=CMROUTE, Length=50, DataType=Char]
+O RECTAL
+[CMROUTE] SAS:[Name=CMROUTE, Length=50, DataType=Char]
+O RESPIRATORY (INHALATION)
+[CMROUTE] SAS:[Name=CMROUTE, Length=50, DataType=Char]
+O SUBCUTANEOUS
+[CMROUTE] SAS:[Name=CMROUTE, Length=50, DataType=Char]
+O SUB DERMAL
+[CMROUTE] SAS:[Name=CMROUTE, Length=50, DataType=Char]
+O OCULAR
+[CMROUTE] SAS:[Name=CMROUTE, Length=50, DataType=Char]
+O AURICULAR (OTIC)
+[CMROUTE] SAS:[Name=CMROUTE, Length=50, DataType=Char]
+O OTHER (Activates Line  54)
+[CMROUTE] SAS:[Name=CMROUTE, Length=50, DataType=Char]
+O N/A
+[CMROUTE] SAS:[Name=CMROUTE, Length=50, DataType=Char]
+Comment:
+Day 0 (0), -00:00.00
+Concomitant Medication: CM Other Route 6 #1
+54.0 (hidden)
+_ _ - _ _ _ - _ _ _ _
+dd - MMM - yyyy
+_ _ : _ _
+HH:mm
+Other Route (Administration Record 6)
+Staff Initials:
+Answer(s):
+______________________________ (100 char. max.)
+[CMROUTE_OTH] SAS:[Name=CMROUTE_OTH, Length=100, DataType=Char]
+Comment:
+Date Created: 30-Sep-2024 08:27 (UTC)
+Page 96 of 112
+
+
+======================================================================
+=== PAGE 99 (cluster 0) ===
+--- look-back: first line of preceding pages ---
+  p59: Annotated CRF
+  p60: Annotated CRF
+  p61: Annotated CRF
+  p62: Annotated CRF
+  p63: Annotated CRF
+  p64: Annotated CRF
+  p65: Annotated CRF
+  p66: Annotated CRF
+  p67: Annotated CRF
+  p68: Annotated CRF
+  p69: Annotated CRF
+  p70: Annotated CRF
+  p71: Annotated CRF
+  p72: Annotated CRF
+  p73: Annotated CRF
+  p74: Annotated CRF
+  p75: Annotated CRF
+  p76: Annotated CRF
+  p77: Annotated CRF
+  p78: Annotated CRF
+  p79: Annotated CRF
+  p80: Annotated CRF
+  p81: Annotated CRF
+  p82: Annotated CRF
+  p83: Annotated CRF
+  p84: Annotated CRF
+  p85: Annotated CRF
+  p86: Annotated CRF
+  p87: Annotated CRF
+  p88: Annotated CRF
+  p89: Annotated CRF
+  p90: Annotated CRF
+  p91: Annotated CRF
+  p92: Annotated CRF
+  p93: Annotated CRF
+  p94: Annotated CRF
+  p95: Annotated CRF
+  p96: Annotated CRF
+  p97: Annotated CRF
+  p98: Annotated CRF
+--- page text ---
+Annotated CRF
+Study, Site:
+Group, Visit:
+Slot:
+Schedule Category & Name:
+QSC302573, Prior and Concomitant Medications Draft
+Timepoint
+Activity
+Line #
+Answer(s):
+O N/A
+[CMROUTE] SAS:[Name=CMROUTE, Length=50, DataType=Char]
+Comment:
+Day 0 (0), -00:00.00
+Concomitant Medication: CM Other Route 7 #1
+61.0 (hidden)
+_ _ - _ _ _ - _ _ _ _
+dd - MMM - yyyy
+_ _ : _ _
+HH:mm
+Other Route (Administration Record 7)
+Staff Initials:
+Answer(s):
+______________________________ (100 char. max.)
+[CMROUTE_OTH] SAS:[Name=CMROUTE_OTH, Length=100, DataType=Char]
+Comment:
+Day 0 (0), -00:00.00
+Concomitant Medication: CM Last Dose Date Time 7 #1
+62.0
+_ _ - _ _ _ - _ _ _ _
+dd - MMM - yyyy
+_ _ : _ _
+HH:mm
+When was the last date/time the Con Med was given? (Administration Record 7)
+Staff Initials:
+Answer(s):
+Date _  _  -  _  _  _  -  _  _  _  _ (dd-MMM-yyyy)
+Time _  _  :  _  _ (HH:mm)
+Comment:
+Day 0 (0), -00:00.00
+Concomitant Medication: CM Dose 7 #1
+63.0
+_ _ - _ _ _ - _ _ _ _
+dd - MMM - yyyy
+_ _ : _ _
+HH:mm
+Dose at this administration (Administration Record 7)
+Staff Initials:
+Answer(s):
+______________________________ (100 char. max.)
+Comment:
+Day 0 (0), -00:00.00
+Concomitant Medication: CM Witness Check 7 #1
+64.0
+_ _ - _ _ _ - _ _ _ _
+dd - MMM - yyyy
+_ _ : _ _
+HH:mm
+Confirm administration is complete, and all details entered are correct (Administration Record 
+7)
+(**OPERATOR TO COMPLETE** - SWITCH USER)
+Staff Initials:
+Answer(s):
+O Yes
+O No (Comment Required)
+Comment:
+Day 0 (0), -00:00.00
+Concomitant Medication: CM Administration Record 8 #1
+65.0
+_ _ - _ _ _ - _ _ _ _
+dd - MMM - yyyy
+_ _ : _ _
+HH:mm
+Administration Record 8
+Staff Initials:
+Answer(s):
+[ ] Confirm Volunteer ID (volunteer number, initials, date of birth)
+Date Created: 30-Sep-2024 08:27 (UTC)
+Page 99 of 112
+
+
+======================================================================
+=== PAGE 102 (cluster 0) ===
+--- look-back: first line of preceding pages ---
+  p62: Annotated CRF
+  p63: Annotated CRF
+  p64: Annotated CRF
+  p65: Annotated CRF
+  p66: Annotated CRF
+  p67: Annotated CRF
+  p68: Annotated CRF
+  p69: Annotated CRF
+  p70: Annotated CRF
+  p71: Annotated CRF
+  p72: Annotated CRF
+  p73: Annotated CRF
+  p74: Annotated CRF
+  p75: Annotated CRF
+  p76: Annotated CRF
+  p77: Annotated CRF
+  p78: Annotated CRF
+  p79: Annotated CRF
+  p80: Annotated CRF
+  p81: Annotated CRF
+  p82: Annotated CRF
+  p83: Annotated CRF
+  p84: Annotated CRF
+  p85: Annotated CRF
+  p86: Annotated CRF
+  p87: Annotated CRF
+  p88: Annotated CRF
+  p89: Annotated CRF
+  p90: Annotated CRF
+  p91: Annotated CRF
+  p92: Annotated CRF
+  p93: Annotated CRF
+  p94: Annotated CRF
+  p95: Annotated CRF
+  p96: Annotated CRF
+  p97: Annotated CRF
+  p98: Annotated CRF
+  p99: Annotated CRF
+  p100: Annotated CRF
+  p101: Annotated CRF
+--- page text ---
+Annotated CRF
+Study, Site:
+Group, Visit:
+Slot:
+Schedule Category & Name:
+QSC302573, Prior and Concomitant Medications Draft
+Timepoint
+Activity
+Line #
+_ _ - _ _ _ - _ _ _ _
+dd - MMM - yyyy
+_ _ : _ _
+HH:mm
+Confirm administration is complete, and all details entered are correct (Administration Record 
+8)
+(**OPERATOR TO COMPLETE** - SWITCH USER)
+Staff Initials:
+Answer(s):
+O Yes
+O No (Comment Required)
+Comment:
+Day 0 (0), -00:00.00
+Concomitant Medication: CM Administration Record 9 #1
+72.0
+_ _ - _ _ _ - _ _ _ _
+dd - MMM - yyyy
+_ _ : _ _
+HH:mm
+Administration Record 9
+Staff Initials:
+Answer(s):
+[ ] Confirm Volunteer ID (volunteer number, initials, date of birth)
+Confirm AE number(s) medication required for 
+______________________________ (20 char. max.)
+[ ] Confirm AE(s) open
+[ ] Frequency since last dose checked
+Total Dosage within 24 hours ______________________________ (20 char. 
+max.)
+Batch Number ______________________________ (25 char. max.)
+[ ] Tick if Expiry Date available (leave blank if Date is N/A) (Activates Line  73)
+Comment:
+Day 0 (0), -00:00.00
+Concomitant Medication: CM Expiry Date 9 #1
+73.0 (hidden)
+_ _ - _ _ _ - _ _ _ _
+dd - MMM - yyyy
+_ _ : _ _
+HH:mm
+Expiry Date (Administration Record 9)
+Staff Initials:
+Answer(s):
+Expiry Date _  _  -  _  _  _  -  _  _  _  _ (dd-MMM-yyyy)
+Comment:
+Day 0 (0), -00:00.00
+Concomitant Medication: CM Route 9 #1
+74.0
+_ _ - _ _ _ - _ _ _ _
+dd - MMM - yyyy
+_ _ : _ _
+HH:mm
+Route Administered (Administration Record 9)
+Staff Initials:
+Answer(s):
+O INTRAVENOUS
+[CMROUTE] SAS:[Name=CMROUTE, Length=50, DataType=Char]
+O INTRAMUSCULAR
+[CMROUTE] SAS:[Name=CMROUTE, Length=50, DataType=Char]
+O INTRAUTERINE
+[CMROUTE] SAS:[Name=CMROUTE, Length=50, DataType=Char]
+Date Created: 30-Sep-2024 08:27 (UTC)
+Page 102 of 112
+
+
+======================================================================
+=== PAGE 107 (cluster 0) ===
+--- look-back: first line of preceding pages ---
+  p67: Annotated CRF
+  p68: Annotated CRF
+  p69: Annotated CRF
+  p70: Annotated CRF
+  p71: Annotated CRF
+  p72: Annotated CRF
+  p73: Annotated CRF
+  p74: Annotated CRF
+  p75: Annotated CRF
+  p76: Annotated CRF
+  p77: Annotated CRF
+  p78: Annotated CRF
+  p79: Annotated CRF
+  p80: Annotated CRF
+  p81: Annotated CRF
+  p82: Annotated CRF
+  p83: Annotated CRF
+  p84: Annotated CRF
+  p85: Annotated CRF
+  p86: Annotated CRF
+  p87: Annotated CRF
+  p88: Annotated CRF
+  p89: Annotated CRF
+  p90: Annotated CRF
+  p91: Annotated CRF
+  p92: Annotated CRF
+  p93: Annotated CRF
+  p94: Annotated CRF
+  p95: Annotated CRF
+  p96: Annotated CRF
+  p97: Annotated CRF
+  p98: Annotated CRF
+  p99: Annotated CRF
+  p100: Annotated CRF
+  p101: Annotated CRF
+  p102: Annotated CRF
+  p103: Annotated CRF
+  p104: Annotated CRF
+  p105: Annotated CRF
+  p106: Annotated CRF
+--- page text ---
+Annotated CRF
+Study, Site:
+Group, Visit:
+Slot:
+Schedule Category & Name:
+QSC302573, Protocol Deviations Draft
+Timepoint
+Activity
+Line #
+_ _ - _ _ _ - _ _ _ _
+dd - MMM - yyyy
+_ _ : _ _
+HH:mm
+Date of Deviation
+Staff Initials:
+Answer(s):
+Date _  _  -  _  _  _  -  _  _  _  _ (dd-MMM-yyyy)
+[DVSTDAT] SAS:[Name=DVSTDAT, Length=50, DataType=Char]
+Comment:
+Day 0 (0), -00:00.00
+Protocol Deviations: Study Part #1
+2.0
+_ _ - _ _ _ - _ _ _ _
+dd - MMM - yyyy
+_ _ : _ _
+HH:mm
+Study Part
+Staff Initials:
+Answer(s):
+O Part 1
+[DVPART] SAS:[Name=DVPART, Length=50, DataType=Char]
+O Part 2
+[DVPART] SAS:[Name=DVPART, Length=50, DataType=Char]
+O Part 3
+[DVPART] SAS:[Name=DVPART, Length=50, DataType=Char]
+Comment:
+Day 0 (0), -00:00.00
+Protocol Deviations: Timepoint (Period) #1
+3.0
+_ _ - _ _ _ - _ _ _ _
+dd - MMM - yyyy
+_ _ : _ _
+HH:mm
+Timepoint (Period)
+Staff Initials:
+Answer(s):
+O Not Applicable
+[DVPERIOD] SAS:[Name=DVPERIOD, Length=50, DataType=Char]
+O Period 1
+[DVPERIOD] SAS:[Name=DVPERIOD, Length=50, DataType=Char]
+O Period 2
+[DVPERIOD] SAS:[Name=DVPERIOD, Length=50, DataType=Char]
+O Period 3
+[DVPERIOD] SAS:[Name=DVPERIOD, Length=50, DataType=Char]
+O Period 4
+[DVPERIOD] SAS:[Name=DVPERIOD, Length=50, DataType=Char]
+Comment:
+Day 0 (0), -00:00.00
+Protocol Deviations: Timepoint (Visit) #1
+4.0
+_ _ - _ _ _ - _ _ _ _
+dd - MMM - yyyy
+_ _ : _ _
+HH:mm
+Timepoint (Visit)
+Staff Initials:
+Date Created: 30-Sep-2024 08:27 (UTC)
+Page 107 of 112

@@ -1,0 +1,16 @@
+Looking at the sample pages from cluster 0:
+
+**Page 46** shows metadata fields like:
+- "Description: ECG Test or Examination"
+- "Short Name"
+- "Mandatory?: Yes"
+- "Disallow Future Date: Yes"
+
+**Page 103** shows:
+- "Disallow Future Date: Yes"
+
+These are **metadata/validation rule descriptions**, not data-entry field labels. They describe properties of fields (whether mandatory, date validation rules, etc.) but are not themselves fields where clinical data would be entered.
+
+This matches the pattern observed in the original page 8 sample, which also showed "Description, Mandatory, etc." metadata. These pages document the CRF structure/rules, not actual data collection points.
+
+CONFIRM_NO_FIELDS

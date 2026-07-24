@@ -1,0 +1,103 @@
+x=  33.3 y=  36.3 sz=11.4 black     | MAC186_X11_201_00001_eCRF_v1_10_form_tracker_v1_6_06Mar2025
+x=  41.1 y=  50.1 sz= 7.2 black   B | Variable details
+x=  80.7 y=  66.9 sz= 7.2 black   B | Name
+x= 235.3 y=  66.9 sz= 7.2 black   B | Export Name
+x= 390.0 y=  66.9 sz= 7.2 black   B | Type
+x= 506.2 y=  66.9 sz= 7.2 black   B | Max length
+x= 584.2 y=  66.9 sz= 7.2 black   B | Categories
+x=  41.1 y=  76.5 sz= 7.2 black     | [1]
+x=  80.7 y=  76.5 sz= 7.2 black     | Vital Signs Performed
+x= 235.3 y=  76.5 sz= 7.2 black     | VSPERF
+x= 390.0 y=  76.5 sz= 7.2 black     | Categorical yes/no (dichotomous)
+x= 506.2 y=  76.5 sz= 7.2 black     | 3
+x=  41.1 y=  86.1 sz= 7.2 black     | [2]
+x=  80.7 y=  86.1 sz= 7.2 black     | Reason Not Performed
+x= 235.3 y=  86.1 sz= 7.2 black     | VSREASND
+x= 390.0 y=  86.1 sz= 7.2 black     | Text or Any Value
+x= 506.2 y=  86.1 sz= 7.2 black     | 4000
+x=  41.1 y=  95.7 sz= 7.2 black     | [3]
+x=  80.7 y=  95.7 sz= 7.2 black     | Repetition Number
+x= 235.3 y=  95.7 sz= 7.2 black     | VSREPNUM
+x= 390.0 y=  95.7 sz= 7.2 black     | Categorical numeric range (ordinal)
+x= 506.2 y=  95.7 sz= 7.2 black     | 1
+x= 584.2 y=  95.7 sz= 7.2 black     | 1
+x= 584.2 y= 102.9 sz= 7.2 black     | 2
+x=  41.1 y= 112.5 sz= 7.2 black     | [4]
+x=  80.7 y= 112.5 sz= 7.2 black     | Details
+x= 235.3 y= 112.5 sz= 7.2 black     | VSCAT
+x= 390.0 y= 112.5 sz= 7.2 black     | Categorical select one (nominal)
+x= 506.2 y= 112.5 sz= 7.2 black     | 19
+x= 584.2 y= 112.5 sz= 7.2 black     | Vital Signs Details
+x=  41.1 y= 122.1 sz= 7.2 black     | [5]
+x=  80.7 y= 122.1 sz= 7.2 black     | Location
+x= 235.3 y= 122.1 sz= 7.2 black     | VSLOC
+x= 390.0 y= 122.1 sz= 7.2 black     | Categorical select one (nominal)
+x= 506.2 y= 122.1 sz= 7.2 black     | 8
+x= 584.2 y= 122.1 sz= 7.2 black     | Oral
+x= 584.2 y= 129.3 sz= 7.2 black     | Axilla
+x= 584.2 y= 136.4 sz= 7.2 black     | Ear
+x= 584.2 y= 143.6 sz= 7.2 black     | Forehead
+x= 584.2 y= 150.8 sz= 7.2 black     | Cavity
+x= 584.2 y= 158.0 sz= 7.2 black     | Rectum
+x=  41.1 y= 167.6 sz= 7.2 black     | [6]
+x=  80.7 y= 167.6 sz= 7.2 black     | Position
+x= 235.3 y= 167.6 sz= 7.2 black     | VSPOS
+x= 390.0 y= 167.6 sz= 7.2 black     | Categorical select one (nominal)
+x= 506.2 y= 167.6 sz= 7.2 black     | 11
+x= 584.2 y= 167.6 sz= 7.2 black     | Standing
+x= 584.2 y= 174.8 sz= 7.2 black     | Semi-Supine
+x= 584.2 y= 182.0 sz= 7.2 black     | Other
+x=  41.1 y= 191.6 sz= 7.2 black     | [7]
+x=  80.7 y= 191.6 sz= 7.2 black     | Other, Please Specify
+x= 235.3 y= 191.6 sz= 7.2 black     | VSPOSOTH
+x= 390.0 y= 191.6 sz= 7.2 black     | Text or Any Value
+x= 506.2 y= 191.6 sz= 7.2 black     | 4000
+x=  41.1 y= 201.2 sz= 7.2 black     | [8]
+x=  80.7 y= 201.2 sz= 7.2 black     | Vital Signs Date
+x= 235.3 y= 201.2 sz= 7.2 black     | VSDAT
+x= 390.0 y= 201.2 sz= 7.2 black     | Date
+x= 506.2 y= 201.2 sz= 7.2 black     | 11
+x=  41.1 y= 210.8 sz= 7.2 black     | [9]
+x=  80.7 y= 210.8 sz= 7.2 black     | Position Time
+x= 235.3 y= 210.8 sz= 7.2 black     | VSPOSTIM
+x= 390.0 y= 210.8 sz= 7.2 black     | Time
+x= 506.2 y= 210.8 sz= 7.2 black     | 5
+x=  41.1 y= 220.4 sz= 7.2 black     | [10]
+x=  80.7 y= 220.4 sz= 7.2 black     | Vital Signs Time
+x= 235.3 y= 220.4 sz= 7.2 black     | VSTIM
+x= 390.0 y= 220.4 sz= 7.2 black     | Time
+x= 506.2 y= 220.4 sz= 7.2 black     | 5
+x=  41.1 y= 230.0 sz= 7.2 black     | [11]
+x=  80.7 y= 230.0 sz= 7.2 black     | Not Done
+x= 235.3 y= 230.0 sz= 7.2 black     | VSND
+x= 390.0 y= 230.0 sz= 7.2 black     | Categorical yes/no (dichotomous)
+x= 506.2 y= 230.0 sz= 7.2 black     | 3
+x=  41.1 y= 239.5 sz= 7.2 black     | [12]
+x=  80.7 y= 239.5 sz= 7.2 black     | Test
+x= 235.3 y= 239.5 sz= 7.2 black     | VSTEST
+x= 390.0 y= 239.5 sz= 7.2 black     | Categorical select one (nominal)
+x= 506.2 y= 239.5 sz= 7.2 black     | 31
+x= 584.2 y= 239.5 sz= 7.2 black     | Temperature (°C)
+x= 584.2 y= 246.7 sz= 7.2 black     | Respiratory Rate (breaths/min)
+x= 584.2 y= 253.9 sz= 7.2 black     | Systolic Blood Pressure (mmHg)
+x= 584.2 y= 261.1 sz= 7.2 black     | Diastolic Blood Pressure (mmHg)
+x= 584.2 y= 268.3 sz= 7.2 black     | Pulse Rate (beats/min)
+x= 584.2 y= 275.5 sz= 7.2 black     | SPO2
+x=  41.1 y= 285.1 sz= 7.2 black     | [13]
+x=  80.7 y= 285.1 sz= 7.2 black     | Result
+x= 235.3 y= 285.1 sz= 7.2 black     | VSORRES
+x= 390.0 y= 285.1 sz= 7.2 black     | Number (continuous)
+x= 506.2 y= 285.1 sz= 7.2 black     | 15
+x=  41.1 y= 294.7 sz= 7.2 black     | [14]
+x=  80.7 y= 294.7 sz= 7.2 black     | Interpretation
+x= 235.3 y= 294.7 sz= 7.2 black     | VSORRES2
+x= 390.0 y= 294.7 sz= 7.2 black     | Categorical select one (nominal)
+x= 506.2 y= 294.7 sz= 7.2 black     | 12
+x= 584.2 y= 294.7 sz= 7.2 black     | Normal
+x= 584.2 y= 301.9 sz= 7.2 black     | Abnormal NCS
+x= 584.2 y= 309.1 sz= 7.2 black     | Abnormal CS
+x=  41.1 y= 318.7 sz= 7.2 black     | [15]
+x=  80.7 y= 318.7 sz= 7.2 black     | Reason Not Done
+x= 235.3 y= 318.7 sz= 7.2 black     | VSREASND2
+x= 390.0 y= 318.7 sz= 7.2 black     | Text or Any Value
+x= 506.2 y= 318.7 sz= 7.2 black     | 4000

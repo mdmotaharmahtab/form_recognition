@@ -1,0 +1,188 @@
+You are writing a deterministic extraction program for one specific clinical Case Report Form (CRF) PDF document. Below you will find a small sample of REPRESENTATIVE PAGES (one or two per page-layout cluster) from a document that is 246 pages long. The document is highly repetitive: the sampled pages cover its layouts, but the unsampled pages contain different content in the same layouts.
+
+NOTE: This document mixes more page-layout families than one program should
+handle, so the layouts are SPLIT ACROSS SEVERAL independent extraction
+programs. Your program is responsible ONLY for the layout families sampled
+below; other programs handle the rest. Your program still receives every page
+of the document: extract from every page whose layout matches the families
+shown here, and simply produce nothing for pages of other layouts (records you
+emit for foreign layouts are discarded by the harness, but wasting logic on
+them is pointless).
+
+Each sampled page is shown as structured text lines with geometry:
+    x=<left> y=<top> sz=<font-size> <color-hex or 'black'> <B if bold> | <text>
+
+# Your task
+
+Write a Python function that will run UNCHANGED over all 246 pages and extract every data-entry field of the CRF:
+  - form_name : the CRF form/section the field belongs to
+  - field_name: the human-readable field label/question
+
+That is the complete output. Some CRFs also print machine codes or technical
+annotations near fields - do NOT return those (they are resolved downstream by a
+separate system). You may still USE such markings as structural landmarks if that
+helps you locate fields reliably.
+
+# Runtime contract
+
+def extract(pages):
+    # pages: list of (page_index_0based, lines) tuples for the ENTIRE document, in
+    #        page order. lines is a list of Line objects sorted by y, then x.
+    #        NOTE: y-then-x order is NOT reading order on multi-column pages; if the
+    #        layout has side-by-side columns, use x coordinates to separate them.
+    #        For right-to-left scripts the within-row order is right-to-left, and
+    #        vertical text yields an arbitrary line order - reconstruct reading
+    #        order from the coordinates when the script needs it.
+    # Line attributes:
+    #   .text  (str, stripped visible text of one visual line)
+    #   .x0 .y0 .x1 .y1  (floats; PDF points; origin = top-left of the page)
+    #   .size  (float; font size in points; the largest span on the line)
+    #   .bold  (bool)
+    #   .non_black  (bool; True if any text on the line is printed in color)
+    # returns: list of dicts, one per extracted field occurrence:
+    #   {"form_name": str, "field_name": str, "page": int_1based}
+
+# Hard constraints
+
+- Pure computation only. These modules are already available: re, math, collections,
+  itertools, functools, string, unicodedata, bisect, statistics, json, typing,
+  dataclasses, enum, datetime. You may not import anything else, access
+  files/network, or print.
+- Deterministic, fast, simple: loops, regexes, coordinate arithmetic. It must
+  process all 246 pages in seconds.
+- Generalize from STRUCTURE, not content. The unsampled pages contain questions,
+  values and section names you have never seen. Never key your logic on specific
+  question wording from the samples; key it on geometry (x positions, font sizes,
+  color, boldness), on repeated marker/header patterns, and on the SHAPE of text
+  (regexes over character classes). The document may be in any language.
+- You may keep state across pages (the function receives the whole document) -
+  e.g. a form name announced once may govern many following pages.
+
+# Quality bar (your program's output is machine-checked before acceptance)
+
+- It must extract from every page that carries fields, not just the sampled ones.
+- form_name should be non-empty for the large majority of records. Use form/section
+  titles exactly as printed - do not invent, abbreviate, or reformat them. If the
+  document genuinely prints no form/section names, use the best available section
+  context; leave it empty only as a last resort.
+- field_name values must be human-readable label text - not machine codes, bare
+  numbers, dates, or page furniture (headers/footers/page numbers/watermarks/
+  legends).
+- A label/question may WRAP across several visual lines: join its continuation
+  lines into ONE field_name. Sentence fragments are not separate fields.
+- Answer OPTIONS are not fields: choice values (e.g. Yes / No / Unknown / list
+  items - examples here are English, apply the concept in the document's language)
+  belong to a field, they are not field_name records themselves. The same applies
+  to rating-scale anchor rows that merely explain what each numeric value means.
+- No duplicate records for the same (form_name, field_name) pair beyond what the
+  document itself repeats.
+
+# Reply format
+
+Reply with ONLY Python source code (no prose outside code comments). Start with a
+comment block (3-6 lines) stating what layout you observed in the samples and the
+extraction strategy you chose. Then define extract(pages) plus any helpers.
+
+# Representative pages of this document
+
+--- page 1 of 246 (layout cluster covers ~1 pages) ---
+x= 270.8 y=  38.2 sz=11.0 black     | DM-010-F02-04
+x= 293.1 y=  51.6 sz=11.0 black     | Sponsor Name: Otsuka Pharmaceutical Development &
+x= 438.2 y=  65.0 sz=11.0 black     | Commercialization, Inc
+x= 389.6 y=  78.5 sz=11.0 black     | Protocol Number: 384-201-00004
+x= 213.1 y= 147.8 sz=22.0 black   B | aCRF Approval Form
+x= 207.9 y= 220.3 sz=12.0 black     | Otsuka Pharmaceutical Development & Commercialization, Inc
+x=  77.7 y= 221.1 sz=16.0 black   B | Sponsor Name
+x= 207.9 y= 260.0 sz=12.0 black     | 384-201-00004
+x=  77.7 y= 260.8 sz=16.0 black   B | Protocol Number
+x= 207.9 y= 300.0 sz=12.0 black     | A Phase 1, Open-label, Single-sequence Pharmacokinetic Trial to
+x=  77.7 y= 300.9 sz=16.0 black   B | Protocol Title
+x= 207.9 y= 314.7 sz=12.0 black     | Assess the Effect of a Single Oral Dose of SEP-380135 on the
+x= 207.9 y= 329.3 sz=12.0 black     | Potential for Cytochrome P450 2D6 Mediated Drug-drug
+x= 207.9 y= 344.1 sz=12.0 black     | Interactions in Healthy Adults
+x= 207.9 y= 372.5 sz=12.0 black     | V2.0
+x=  77.7 y= 373.4 sz=16.0 black   B | aCRF Version
+x= 207.9 y= 410.5 sz=12.0 black     | Becky Sease
+x=  77.7 y= 411.3 sz=16.0 black   B | Prepared by
+x= 207.9 y= 444.7 sz=12.0 black     | 20MAR2025
+x=  77.7 y= 445.5 sz=16.0 black   B | Date
+x= 275.0 y= 446.3 sz=12.0 black     | 20MAY2025*
+x=  50.4 y= 652.3 sz=11.0 black     | *Correction of date which was inadvertently recorded as MAR instead of MAY.
+x=  50.4 y= 665.5 sz=11.0 black     | BAS29APR2025
+x= 465.7 y= 721.2 sz=12.0 #8496b0   | P a g e 1 | 3
+
+--- page 2 of 246 (layout cluster covers ~1 pages) ---
+x= 270.8 y=  38.2 sz=11.0 black     | DM-010-F02-04
+x= 293.1 y=  51.6 sz=11.0 black     | Sponsor Name: Otsuka Pharmaceutical Development &
+x= 438.2 y=  65.0 sz=11.0 black     | Commercialization, Inc
+x= 389.6 y=  78.5 sz=11.0 black     | Protocol Number: 384-201-00004
+x=  72.0 y= 172.9 sz=14.0 black   B | By signing below, I agree and approve the aCRF collects at minimum the study
+x=  72.0 y= 191.1 sz=14.0 black   B | specific protocol required data and may include source data.
+x=  77.4 y= 305.1 sz=12.0 black     | ____________________________________________________________________________
+x=  77.4 y= 319.7 sz=12.0 #ff0000   | Lora Adriano, Study Manager or designee
+x=  77.4 y= 334.4 sz=12.0 black     | Dr. Vince Clinical Research
+x=  77.4 y= 437.0 sz=12.0 black     | ____________________________________________________________________________
+x=  77.4 y= 451.6 sz=12.0 black     | Becky Sease, Lead Data Manager or designee
+x=  77.4 y= 466.3 sz=12.0 black     | Dr. Vince Clinical Research
+x=  77.4 y= 554.1 sz=12.0 black     | ____________________________________________________________________________
+x=  77.4 y= 568.8 sz=12.0 black     | Lorri Cefalone, Senior Data Manager
+x=  77.4 y= 583.4 sz=12.0 black     | Otsuka
+x= 465.7 y= 721.2 sz=12.0 #8496b0   | P a g e 2 | 3
+
+--- page 3 of 246 (layout cluster covers ~5 pages) ---
+x= 270.8 y=  38.2 sz=11.0 black     | DM-010-F02-04
+x= 293.1 y=  51.6 sz=11.0 black     | Sponsor Name: Otsuka Pharmaceutical Development &
+x= 438.2 y=  65.0 sz=11.0 black     | Commercialization, Inc
+x= 389.6 y=  78.5 sz=11.0 black     | Protocol Number: 384-201-00004
+x= 261.3 y= 170.6 sz=14.0 black   B | Version History
+x=  77.7 y= 190.1 sz=16.0 black   B | Version Date
+x= 198.9 y= 193.1 sz=12.0 black   B | Details
+x=  77.7 y= 212.3 sz=16.0 black     | V1.0
+x= 126.9 y= 215.3 sz=12.0 black     | 05MAR2025 Document final
+x= 198.9 y= 238.0 sz=11.0 black     | PEORRES
+x=  77.7 y= 238.2 sz=12.0 black     | V2.0
+x= 126.9 y= 238.2 sz=12.0 black     | 20MAY2025
+x= 216.9 y= 249.2 sz=12.0 black     |  Update SAS Field Name to PEORRES1 for only the item tied
+x= 234.9 y= 267.0 sz=12.0 black     | to Urogenital body system.
+x= 198.9 y= 296.1 sz=11.0 black     | LBDTC_URINEAD
+x= 216.9 y= 307.7 sz=11.0 black     | 
+x= 234.9 y= 309.8 sz=12.0 black     | Update to remove SDS Var Name of URINE.
+x= 198.9 y= 324.2 sz=11.0 black     | LBDTC_URINESC
+x= 216.9 y= 335.4 sz=12.0 black     |  Update to remove SDS Var Name of URINE.
+x= 465.7 y= 721.2 sz=12.0 #8496b0   | P a g e 3 | 3
+
+--- page 246 of 246 (layout cluster covers ~3 pages) ---
+x=  72.0 y=  72.2 sz=12.0 black     | i. decline to sign a document from within your signing session, and on the subsequent page,
+x=  72.0 y=  86.0 sz=12.0 black     | select the check-box indicating you wish to withdraw your consent, or you may;
+x=  72.0 y= 113.9 sz=12.0 black     | ii. send us an email to zbader@drvince.com and in the body of such request you must state your
+x=  72.0 y= 127.7 sz=12.0 black     | email, full name, mailing address, and telephone number. We do not need any other information
+x=  72.0 y= 141.5 sz=12.0 black     | from you to withdraw consent..  The consequences of your withdrawing consent for online
+x=  72.0 y= 155.3 sz=12.0 black     | documents will be that transactions may take a longer time to process..
+x=  72.0 y= 197.0 sz=12.0 black   B | Required hardware and software
+x=  72.0 y= 224.6 sz=12.0 black     | The minimum system requirements for using the DocuSign system may change over time. The
+x=  72.0 y= 238.4 sz=12.0 #0000ff   | current system requirements are found here: https://support.docusign.com/guides/signer-guide-
+x=  72.0 y= 252.3 sz=12.0 #0000ff   | signing-system-requirements.
+x=  72.0 y= 294.2 sz=12.0 black   B | Acknowledging your access and consent to receive and sign documents electronically
+x=  72.0 y= 321.6 sz=12.0 black     | To confirm to us that you can access this information electronically, which will be similar to
+x=  72.0 y= 335.4 sz=12.0 black     | other electronic notices and disclosures that we will provide to you, please confirm that you have
+x=  72.0 y= 349.2 sz=12.0 black     | read this ERSD, and (i) that you are able to print on paper or electronically save this ERSD for
+x=  72.0 y= 363.0 sz=12.0 black     | your future reference and access; or (ii) that you are able to email this ERSD to an email address
+x=  72.0 y= 376.8 sz=12.0 black     | where you will be able to print on paper or save it for your future reference and access. Further,
+x=  72.0 y= 390.6 sz=12.0 black     | if you consent to receiving notices and disclosures exclusively in electronic format as described
+x=  72.0 y= 404.4 sz=12.0 black     | herein, then select the check-box next to ‘I agree to use electronic records and signatures’ before
+x=  72.0 y= 418.3 sz=12.0 black     | clicking ‘CONTINUE’ within the DocuSign system.
+x=  72.0 y= 446.1 sz=12.0 black     | By selecting the check-box next to ‘I agree to use electronic records and signatures’, you confirm
+x=  72.0 y= 459.9 sz=12.0 black     | that:
+x= 108.0 y= 487.6 sz=12.0 black     | You can access and read this Electronic Record and Signature Disclosure; and
+x=  90.0 y= 488.3 sz=10.0 black     | 
+x= 108.0 y= 501.4 sz=12.0 black     | You can print on paper this Electronic Record and Signature Disclosure, or save or send
+x=  90.0 y= 502.1 sz=10.0 black     | 
+x= 108.0 y= 515.2 sz=12.0 black     | this Electronic Record and Disclosure to a location where you can print it, for future
+x= 108.0 y= 529.0 sz=12.0 black     | reference and access; and
+x= 108.0 y= 542.8 sz=12.0 black     | Until or unless you notify Dr Vince Clinical Research as described above, you consent to
+x=  90.0 y= 543.5 sz=10.0 black     | 
+x= 108.0 y= 556.6 sz=12.0 black     | receive exclusively through electronic means all notices, disclosures, authorizations,
+x= 108.0 y= 570.4 sz=12.0 black     | acknowledgements, and other documents that are required to be provided or made
+x= 108.0 y= 584.2 sz=12.0 black     | available to you by Dr Vince Clinical Research during the course of your relationship
+x= 108.0 y= 598.0 sz=12.0 black     | with Dr Vince Clinical Research.
+

@@ -1,0 +1,494 @@
+{
+ "stage0_s": 5.63,
+ "llm_s": 7275.545,
+ "llm_calls": 56,
+ "llm_prompt_chars": 1809186,
+ "llm_reply_chars": 620606,
+ "llm_by_kind": {
+  "generate": {
+   "calls": 7,
+   "s": 1200.285,
+   "prompt_chars": 275554,
+   "reply_chars": 77023
+  },
+  "confirm": {
+   "calls": 5,
+   "s": 259.866,
+   "prompt_chars": 92699,
+   "reply_chars": 31819
+  },
+  "audit": {
+   "calls": 24,
+   "s": 1839.682,
+   "prompt_chars": 885326,
+   "reply_chars": 41813
+  },
+  "revise_audit": {
+   "calls": 18,
+   "s": 3734.293,
+   "prompt_chars": 504482,
+   "reply_chars": 425252
+  },
+  "revise_gates": {
+   "calls": 2,
+   "s": 241.419,
+   "prompt_chars": 51125,
+   "reply_chars": 44699
+  }
+ },
+ "sandbox_validate_s": 107.868,
+ "sandbox_validate_calls": 30,
+ "export_s": null,
+ "total_s": 7410.509,
+ "calls": [
+  {
+   "seq": 1,
+   "kind": "generate",
+   "version": 1,
+   "s": 156.258,
+   "prompt_chars": 45140,
+   "reply_chars": 9633
+  },
+  {
+   "seq": 2,
+   "kind": "confirm",
+   "version": 1,
+   "s": 91.685,
+   "prompt_chars": 17720,
+   "reply_chars": 12104
+  },
+  {
+   "seq": 3,
+   "kind": "audit",
+   "version": 2,
+   "s": 156.556,
+   "prompt_chars": 29101,
+   "reply_chars": 907
+  },
+  {
+   "seq": 4,
+   "kind": "revise_audit",
+   "version": 3,
+   "s": 214.284,
+   "prompt_chars": 23857,
+   "reply_chars": 20730
+  },
+  {
+   "seq": 5,
+   "kind": "audit",
+   "version": 3,
+   "s": 79.661,
+   "prompt_chars": 33532,
+   "reply_chars": 1210
+  },
+  {
+   "seq": 6,
+   "kind": "revise_audit",
+   "version": 4,
+   "s": 267.005,
+   "prompt_chars": 35149,
+   "reply_chars": 24093
+  },
+  {
+   "seq": 7,
+   "kind": "audit",
+   "version": 4,
+   "s": 111.624,
+   "prompt_chars": 34360,
+   "reply_chars": 1022
+  },
+  {
+   "seq": 8,
+   "kind": "revise_audit",
+   "version": 5,
+   "s": 253.467,
+   "prompt_chars": 35866,
+   "reply_chars": 32497
+  },
+  {
+   "seq": 9,
+   "kind": "audit",
+   "version": 5,
+   "s": 117.842,
+   "prompt_chars": 36788,
+   "reply_chars": 1271
+  },
+  {
+   "seq": 1,
+   "kind": "generate",
+   "version": 1,
+   "s": 178.823,
+   "prompt_chars": 40498,
+   "reply_chars": 10086
+  },
+  {
+   "seq": 2,
+   "kind": "audit",
+   "version": 1,
+   "s": 38.85,
+   "prompt_chars": 34467,
+   "reply_chars": 706
+  },
+  {
+   "seq": 3,
+   "kind": "revise_audit",
+   "version": 2,
+   "s": 88.601,
+   "prompt_chars": 17432,
+   "reply_chars": 10392
+  },
+  {
+   "seq": 4,
+   "kind": "audit",
+   "version": 2,
+   "s": 59.241,
+   "prompt_chars": 43578,
+   "reply_chars": 3152
+  },
+  {
+   "seq": 5,
+   "kind": "revise_audit",
+   "version": 3,
+   "s": 151.886,
+   "prompt_chars": 22367,
+   "reply_chars": 15460
+  },
+  {
+   "seq": 6,
+   "kind": "audit",
+   "version": 3,
+   "s": 53.841,
+   "prompt_chars": 41683,
+   "reply_chars": 1168
+  },
+  {
+   "seq": 7,
+   "kind": "revise_audit",
+   "version": 4,
+   "s": 162.625,
+   "prompt_chars": 22622,
+   "reply_chars": 20532
+  },
+  {
+   "seq": 8,
+   "kind": "audit",
+   "version": 4,
+   "s": 65.223,
+   "prompt_chars": 44361,
+   "reply_chars": 3330
+  },
+  {
+   "seq": 9,
+   "kind": "revise_audit",
+   "version": 5,
+   "s": 224.907,
+   "prompt_chars": 30225,
+   "reply_chars": 27636
+  },
+  {
+   "seq": 10,
+   "kind": "audit",
+   "version": 5,
+   "s": 84.406,
+   "prompt_chars": 42598,
+   "reply_chars": 6739
+  },
+  {
+   "seq": 1,
+   "kind": "generate",
+   "version": 1,
+   "s": 172.855,
+   "prompt_chars": 39002,
+   "reply_chars": 16473
+  },
+  {
+   "seq": 2,
+   "kind": "audit",
+   "version": 1,
+   "s": 105.546,
+   "prompt_chars": 37869,
+   "reply_chars": 4560
+  },
+  {
+   "seq": 3,
+   "kind": "revise_audit",
+   "version": 2,
+   "s": 239.372,
+   "prompt_chars": 24992,
+   "reply_chars": 25305
+  },
+  {
+   "seq": 4,
+   "kind": "audit",
+   "version": 2,
+   "s": 110.183,
+   "prompt_chars": 45857,
+   "reply_chars": 4851
+  },
+  {
+   "seq": 5,
+   "kind": "revise_audit",
+   "version": 3,
+   "s": 265.287,
+   "prompt_chars": 33959,
+   "reply_chars": 29402
+  },
+  {
+   "seq": 6,
+   "kind": "audit",
+   "version": 3,
+   "s": 80.864,
+   "prompt_chars": 46749,
+   "reply_chars": 1520
+  },
+  {
+   "seq": 7,
+   "kind": "revise_audit",
+   "version": 4,
+   "s": 190.43,
+   "prompt_chars": 35148,
+   "reply_chars": 36122
+  },
+  {
+   "seq": 8,
+   "kind": "revise_gates",
+   "version": 5,
+   "s": 154.021,
+   "prompt_chars": 40401,
+   "reply_chars": 34433
+  },
+  {
+   "seq": 1,
+   "kind": "generate",
+   "version": 1,
+   "s": 199.17,
+   "prompt_chars": 40602,
+   "reply_chars": 8159
+  },
+  {
+   "seq": 2,
+   "kind": "confirm",
+   "version": 1,
+   "s": 81.525,
+   "prompt_chars": 18348,
+   "reply_chars": 10763
+  },
+  {
+   "seq": 3,
+   "kind": "audit",
+   "version": 2,
+   "s": 110.508,
+   "prompt_chars": 30715,
+   "reply_chars": 0,
+   "error": "agent CLI exited 1: NonRetriableError: Agent Looping Detected The model got stuck in a repeating response pattern, so this turn was stopped. Please try again with a different model or start a new conversation. If the problem persists, please contact support.\n"
+  },
+  {
+   "seq": 1,
+   "kind": "generate",
+   "version": 1,
+   "s": 153.332,
+   "prompt_chars": 37891,
+   "reply_chars": 14183
+  },
+  {
+   "seq": 2,
+   "kind": "confirm",
+   "version": 1,
+   "s": 25.36,
+   "prompt_chars": 17569,
+   "reply_chars": 18
+  },
+  {
+   "seq": 3,
+   "kind": "audit",
+   "version": 1,
+   "s": 98.443,
+   "prompt_chars": 30664,
+   "reply_chars": 1457
+  },
+  {
+   "seq": 4,
+   "kind": "revise_audit",
+   "version": 2,
+   "s": 258.792,
+   "prompt_chars": 22456,
+   "reply_chars": 18802
+  },
+  {
+   "seq": 5,
+   "kind": "audit",
+   "version": 2,
+   "s": 97.835,
+   "prompt_chars": 40555,
+   "reply_chars": 1982
+  },
+  {
+   "seq": 6,
+   "kind": "revise_audit",
+   "version": 3,
+   "s": 214.88,
+   "prompt_chars": 32180,
+   "reply_chars": 28058
+  },
+  {
+   "seq": 7,
+   "kind": "audit",
+   "version": 3,
+   "s": 78.724,
+   "prompt_chars": 37050,
+   "reply_chars": 1486
+  },
+  {
+   "seq": 8,
+   "kind": "revise_audit",
+   "version": 4,
+   "s": 204.89,
+   "prompt_chars": 35336,
+   "reply_chars": 28832
+  },
+  {
+   "seq": 9,
+   "kind": "audit",
+   "version": 4,
+   "s": 76.129,
+   "prompt_chars": 37216,
+   "reply_chars": 659
+  },
+  {
+   "seq": 1,
+   "kind": "generate",
+   "version": 1,
+   "s": 155.425,
+   "prompt_chars": 39722,
+   "reply_chars": 8135
+  },
+  {
+   "seq": 2,
+   "kind": "revise_gates",
+   "version": 2,
+   "s": 87.398,
+   "prompt_chars": 10724,
+   "reply_chars": 10266
+  },
+  {
+   "seq": 3,
+   "kind": "confirm",
+   "version": 2,
+   "s": 13.634,
+   "prompt_chars": 25600,
+   "reply_chars": 18
+  },
+  {
+   "seq": 4,
+   "kind": "audit",
+   "version": 2,
+   "s": 47.297,
+   "prompt_chars": 38816,
+   "reply_chars": 662
+  },
+  {
+   "seq": 5,
+   "kind": "revise_audit",
+   "version": 3,
+   "s": 164.801,
+   "prompt_chars": 29111,
+   "reply_chars": 14711
+  },
+  {
+   "seq": 6,
+   "kind": "audit",
+   "version": 3,
+   "s": 59.695,
+   "prompt_chars": 47759,
+   "reply_chars": 681
+  },
+  {
+   "seq": 7,
+   "kind": "revise_audit",
+   "version": 4,
+   "s": 132.877,
+   "prompt_chars": 33151,
+   "reply_chars": 17439
+  },
+  {
+   "seq": 8,
+   "kind": "audit",
+   "version": 4,
+   "s": 58.059,
+   "prompt_chars": 49884,
+   "reply_chars": 1215
+  },
+  {
+   "seq": 9,
+   "kind": "revise_audit",
+   "version": 5,
+   "s": 288.478,
+   "prompt_chars": 36190,
+   "reply_chars": 27501
+  },
+  {
+   "seq": 10,
+   "kind": "audit",
+   "version": 5,
+   "s": 40.94,
+   "prompt_chars": 49602,
+   "reply_chars": 1590
+  },
+  {
+   "seq": 1,
+   "kind": "generate",
+   "version": 1,
+   "s": 184.422,
+   "prompt_chars": 32699,
+   "reply_chars": 10354
+  },
+  {
+   "seq": 2,
+   "kind": "confirm",
+   "version": 1,
+   "s": 47.662,
+   "prompt_chars": 13462,
+   "reply_chars": 8916
+  },
+  {
+   "seq": 3,
+   "kind": "audit",
+   "version": 2,
+   "s": 35.182,
+   "prompt_chars": 17374,
+   "reply_chars": 473
+  },
+  {
+   "seq": 4,
+   "kind": "revise_audit",
+   "version": 3,
+   "s": 145.518,
+   "prompt_chars": 12808,
+   "reply_chars": 17755
+  },
+  {
+   "seq": 5,
+   "kind": "audit",
+   "version": 3,
+   "s": 45.233,
+   "prompt_chars": 17374,
+   "reply_chars": 593
+  },
+  {
+   "seq": 6,
+   "kind": "revise_audit",
+   "version": 4,
+   "s": 266.193,
+   "prompt_chars": 21633,
+   "reply_chars": 29985
+  },
+  {
+   "seq": 7,
+   "kind": "audit",
+   "version": 4,
+   "s": 27.8,
+   "prompt_chars": 17374,
+   "reply_chars": 579
+  }
+ ]
+}

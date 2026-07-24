@@ -1,0 +1,554 @@
+{
+ "stop_reason": "budget",
+ "versions": 5,
+ "best_version": 4,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "confirm",
+   "metrics": {
+    "engine": "codegen",
+    "records": 322,
+    "pages_total": 57,
+    "pages_with_fields": 52,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 14,
+    "fields_per_form": 23.0,
+    "forms_per_100_pages": 24.6,
+    "form_same_page_evidence_records": 322,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 91
+   },
+   "problems": [],
+   "outcome": "extended_program"
+  },
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 277,
+    "pages_total": 57,
+    "pages_with_fields": 43,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 14,
+    "fields_per_form": 19.8,
+    "forms_per_100_pages": 24.6,
+    "form_same_page_evidence_records": 277,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 75
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    0,
+    "not_audited",
+    0,
+    -43
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "confirm_extension",
+   "metrics": {
+    "engine": "codegen",
+    "records": 322,
+    "pages_total": 57,
+    "pages_with_fields": 52,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 14,
+    "fields_per_form": 23.0,
+    "forms_per_100_pages": 24.6,
+    "form_same_page_evidence_records": 322,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 91
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 14,
+   "audit_pages": [
+    37,
+    69,
+    78,
+    79,
+    288,
+    460
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 37,
+     "missed": [],
+     "false": [
+      "Normal",
+      "Done)]",
+      "Abnormal, Not Done)]"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 69,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 78,
+     "missed": [],
+     "false": [
+      "act. Behaviour was in part thought of as method to kill oneself. Intent does not have to Lifetime",
+      "act. Behaviour was in part thought of as method to kill oneself. Intent does not have to Past 6 Month"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 79,
+     "missed": [
+      "If Yes, describe"
+     ],
+     "false": [
+      "potentially self-injurious act (if not for that, actual attempt would have occurred).",
+      "themselves before they actually have engaged in any self destructive behaviour."
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 288,
+     "missed": [],
+     "false": [
+      "Normal",
+      "Done)]",
+      "Abnormal, Not Done)]"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 460,
+     "missed": [],
+     "false": [
+      "Normal",
+      "Done)]",
+      "Abnormal, Not Done)]"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    14,
+    0,
+    -52
+   ],
+   "became_best": true
+  },
+  {
+   "version": 3,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 617,
+    "pages_total": 57,
+    "pages_with_fields": 52,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 14,
+    "fields_per_form": 44.1,
+    "forms_per_100_pages": 24.6,
+    "form_same_page_evidence_records": 617,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 91
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 23,
+   "audit_pages": [
+    37,
+    66,
+    69,
+    78,
+    79,
+    129,
+    288,
+    460
+   ],
+   "audit_partial": null,
+   "audit_promoted": [
+    66
+   ],
+   "audit_verdicts": [
+    {
+     "page": 37,
+     "missed": [],
+     "false": [
+      "Normal",
+      "Abnormal",
+      "Not Done"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 66,
+     "missed": [],
+     "false": [
+      "Result",
+      "Test"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 69,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 78,
+     "missed": [],
+     "false": [
+      "A potentially self-injurious act committed with at least some wish to die, as a result of Lifetime",
+      "A potentially self-injurious act committed with at least some wish to die, as a result of Past 6 Month",
+      "Or did you do it purely for other reasons/without ANY intention of killing yourself (like to relieve stress, feel better, get sympathy, or get something else to happen? (Self-Injurious Behavior without suicidal intent) Row 3",
+      "to happen? (Self-Injurious Behavior without suicidal intent) Row 3"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 79,
+     "missed": [],
+     "false": [
+      "potentially self-injurious act (if not for that, actual attempt would have occurred).",
+      "themselves before they actually have engaged in any self destructive behaviour.",
+      "When the person is interrupted (by an outside circumstance) from starting the",
+      "Has there been a time when you started to do something to end your life but someone or something stopped you before you actually did anything? Row 8",
+      "someone or something stopped you before you actually did anything? Row 8",
+      "When person begins to take steps toward making a suicide attempt, but stops",
+      "Has there been a time when you started to do something to try to end your life but you stopped yourself before you actually did anything? Row 12",
+      "but you stopped yourself before you actually did anything? Row 12"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 129,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 288,
+     "missed": [],
+     "false": [
+      "Normal",
+      "Abnormal",
+      "Not Done"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 460,
+     "missed": [],
+     "false": [
+      "Normal",
+      "Abnormal",
+      "Not Done"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    23,
+    0,
+    -52
+   ],
+   "became_best": false
+  },
+  {
+   "version": 4,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 539,
+    "pages_total": 57,
+    "pages_with_fields": 52,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 14,
+    "fields_per_form": 38.5,
+    "forms_per_100_pages": 24.6,
+    "form_same_page_evidence_records": 539,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 91
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 12,
+   "audit_pages": [
+    37,
+    66,
+    69,
+    71,
+    78,
+    79,
+    288,
+    460
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 37,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 66,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 69,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 71,
+     "missed": [],
+     "false": [
+      "methods,intent or plan during the assessment period.",
+      "fall asleep and not wake up.",
+      "thought about killing myself\") without thoughts of way to kill oneself/associated"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 78,
+     "missed": [],
+     "false": [
+      "A potentially self-injurious act committed with at least some wish to die, as a result of Lifetime",
+      "A potentially self-injurious act committed with at least some wish to die, as a result of Past 6 Month",
+      "considered an actual suicide attempt. There does not have to be any injury or"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 79,
+     "missed": [],
+     "false": [
+      "potentially self-injurious act (if not for that, actual attempt would have occurred).",
+      "themselves before they actually have engaged in any self destructive behaviour.",
+      "Overdose: Person has pills in hand but is stopped from ingesting. Once they",
+      "him/herself, instead of being stopped by something else.",
+      "When the person is interrupted (by an outside circumstance) from starting the",
+      "When person begins to take steps toward making a suicide attempt, but stops"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 288,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 460,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    12,
+    0,
+    -52
+   ],
+   "became_best": true
+  },
+  {
+   "version": 5,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 550,
+    "pages_total": 57,
+    "pages_with_fields": 52,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 14,
+    "fields_per_form": 39.3,
+    "forms_per_100_pages": 24.6,
+    "form_same_page_evidence_records": 550,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 91
+   },
+   "problems": [],
+   "warnings": [
+    "The program filters by 22 hardcoded literal text strings (membership blocklists / long regex alternations of specific wordings). These fit only the pages they were copied from: unsampled pages carry the same junk classes with other wording, and real fields elsewhere can share the blocklisted words. Replace them with the structural discriminator (position, style, column membership); keep literal matching only for repeated template markers."
+   ],
+   "audit_issues": 41,
+   "audit_pages": [
+    37,
+    66,
+    69,
+    78,
+    79,
+    136,
+    288,
+    460
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 37,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 66,
+     "missed": [],
+     "false": [
+      "Result",
+      "Test"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 69,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 78,
+     "missed": [
+      "If Yes, Total number of attempts Lifetime",
+      "If Yes, Total number of attempts Past 6 Month",
+      "Has subject engaged in Non-Suicidal self-injurious behavior? Lifetime",
+      "Has subject engaged in Non-Suicidal self-injurious behavior? Past 6 Month"
+     ],
+     "false": [
+      "If Yes, Total number of attempts",
+      "Has subject engaged in Non-Suicidal self-injurious behavior?",
+      "Actual attempt:",
+      "Row 2 Actual attempt:",
+      "Row 6 Has subject engaged in Non-Suicidal self-injurious behavior?"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 79,
+     "missed": [
+      "Interrupted attempt: Lifetime",
+      "Interrupted attempt: Past 6 Month",
+      "If Yes, Total number of interrupted attempts Lifetime",
+      "If Yes, Total number of interrupted attempts Past 6 Month",
+      "Aborted attempt: Lifetime",
+      "Aborted attempt: Past 6 Month",
+      "If Yes, Total number of aborted attempts Lifetime",
+      "If Yes, Total number of aborted attempts Past 6 Month",
+      "If Yes, describe"
+     ],
+     "false": [
+      "Interrupted attempt:",
+      "If Yes, Total number of interrupted attempts",
+      "Aborted attempt:",
+      "If Yes, Total number of aborted attempts",
+      "Overdose: Person has pills in hand but is stopped from ingesting. Once they",
+      "Row 7 Interrupted attempt:",
+      "Row 11 Aborted attempt:"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 136,
+     "missed": [
+      "Most severe ideation"
+     ],
+     "false": [
+      "intent",
+      "Non-specific active suicidal thoughts, (3) Active suicidal",
+      "How many times have you had these thoughts?",
+      "(5) More than 8 hours/persistent or continuous",
+      "(2) Non-specific active suicidal thoughts",
+      "(3) Active suicidal ideation with any method",
+      "(not plan) w/out intent to act",
+      "act w/out specific plan",
+      "Row 2 Description of Ideation",
+      "Row 3 Frequency How many times have you had these thoughts?",
+      "(1) Fleeting few seconds or minutes",
+      "(3) 1-4 hours/a lot of time",
+      "(4) 4-8 hours/most of day"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 288,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 460,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    41,
+    1,
+    -52
+   ],
+   "became_best": false
+  }
+ ]
+}

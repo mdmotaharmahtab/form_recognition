@@ -1,0 +1,192 @@
+{
+  "doc_key": "MAC186_X11-201-00001_eCRF_v1.10_form_tracker_v1.6_06Mar2025",
+  "annotator_notes": "eCRF 'form tracker', 913 pages. Two interleaved page types: (a) LAYOUT pages print the form title twice at the block and show field prompts with [n] slot markers; (b) 'Variable details' DICTIONARY pages list fields in a Name column with Export Name (OID), Type, Max length, and Categories (option values). Truth field = the Name-column entries on dictionary pages, and the prompt labels on layout pages. Category/option values, slot markers [n], Yes/No, and the running footer 'MAC186_...' are not fields. FORM SCORING RULE: dictionary pages carry no printed title, so form_name is set null there (form_source=carryover) and those pages are excluded from form-accuracy; only printed-title layout pages score form. CAVEAT: because each form has both a layout and a dictionary page listing the same fields, a field can legitimately be extracted on either page; per-page recall therefore slightly understates true recall for this document.",
+  "pages": [
+    {
+      "page": 63,
+      "form_name": null,
+      "form_source": "carryover",
+      "fields": [
+        "Sample Performed",
+        "Reason Not Performed",
+        "Sample Date",
+        "Sample Time",
+        "Parameter",
+        "Not Done",
+        "Reason Not Done",
+        "Interpretation"
+      ],
+      "code_rows": ["LBPERF", "LBREASND", "LBDAT", "LBTIM", "LBTEST", "LBND", "LBREASND2", "LBORRES"],
+      "notes": "Dictionary page for a hematology lab sample (categories Basophils/Erythrocyte/Hemoglobin...). Title not on page."
+    },
+    {
+      "page": 74,
+      "form_name": "Screening EEG",
+      "form_source": "printed",
+      "fields": [
+        "Screening EEG Performed",
+        "Reason Not Performed",
+        "EEG Start Date",
+        "EEG Start Time",
+        "Interpretation"
+      ],
+      "notes": "Layout page; title 'Screening EEG' printed twice."
+    },
+    {
+      "page": 89,
+      "form_name": "Montgomery and Asberg Depression RS (MADRS)",
+      "form_source": "printed",
+      "fields": [
+        "MADRS Performed",
+        "Reason Not Performed",
+        "MADRS Date",
+        "MADRS Time",
+        "Rater Initials",
+        "Total MADRS Scale Score",
+        "1. Reported Sadness",
+        "2. Apparent Sadness",
+        "3. Inner Tension",
+        "4. Reduced Sleep",
+        "5. Reduced appetite",
+        "6. Concentration Difficulties",
+        "7. Lassitude",
+        "8. Inability To Feel",
+        "9. Pessimistic Thoughts",
+        "10. Suicidal Thoughts"
+      ],
+      "acceptable_extras": ["Test", "Result"],
+      "notes": "Rating scale: 10 numbered item rows are fields; 'Test'/'Result' are grid column headers."
+    },
+    {
+      "page": 104,
+      "form_name": null,
+      "form_source": "carryover",
+      "fields": [
+        "Sample Performed",
+        "Reason Not Performed",
+        "Sample Date",
+        "Sample Time",
+        "DOA TEST",
+        "Result",
+        "Comments (If Positive)"
+      ],
+      "code_rows": ["ABUPERF", "ABUREASND", "ABUDAT", "ABUTIM", "ABUTEST", "ABUORRES", "ABUCOM"],
+      "notes": "Dictionary page for a drugs-of-abuse urine screen. Title not on page."
+    },
+    {
+      "page": 208,
+      "form_name": "Spielberger State-Trait Anxiety Inventory",
+      "form_source": "printed",
+      "fields": [
+        "STAI Performed",
+        "Reason Not Performed",
+        "STAI Date",
+        "STAI Time",
+        "1. I feel calm",
+        "2. I am tense",
+        "3. I feel at ease",
+        "4. I am presently worrying over possible misfortunes",
+        "5. I feel frightened",
+        "6. I feel nervous",
+        "7. I am jittery",
+        "8. I am relaxed",
+        "9. I am worried",
+        "10. I feel steady",
+        "11. I feel nervous and restless",
+        "12. I feel satisfied with myself",
+        "13. I wish I could be as happy as others seem to be",
+        "14. I feel like a failure"
+      ],
+      "notes": "Layout page; items 1-14 visible on this page, remaining slot markers [15]-[18] belong to items continuing on the next page."
+    },
+    {
+      "page": 286,
+      "form_name": null,
+      "form_source": "carryover",
+      "fields": [
+        "Physical Examination Performed",
+        "Reason Not Performed",
+        "Examination Date",
+        "Examination Time",
+        "Body System Examined",
+        "Other, Please Specify",
+        "Not Done",
+        "Reason Not Done",
+        "Interpretation",
+        "Abnormal Findings"
+      ],
+      "code_rows": ["PEPERF", "PEREASND", "PEDAT", "PETIM", "PETEST", "PETESTOTH", "PEND", "PEREASND2", "PEORRES", "PEDESC"],
+      "notes": "Dictionary page for Physical Examination; first field names the form but there is no printed title header."
+    },
+    {
+      "page": 300,
+      "form_name": "Pupillometry - Single Time Point",
+      "form_source": "printed",
+      "fields": [
+        "Pupillometry Assessment Performed",
+        "Reason Not Performed",
+        "Eye",
+        "Repeat",
+        "Not Done",
+        "Reason Not Done",
+        "Pupillometry Date",
+        "Position Rest Time",
+        "Pupillometry Start Time",
+        "Readings downloaded onto a spreadsheet via Bluetooth from the pupilometer device.",
+        "Reviewed, signed and dated by a physician",
+        "Reason not review, signed and dated",
+        "PLR diameter init",
+        "PLR MAX constriction velocity",
+        "PLR dilation velocity",
+        "PLR T75",
+        "Pupil Area (Calculated)",
+        "ACA (Calculated)",
+        "Dilation Velocity at T75 (Calculated)"
+      ],
+      "notes": "Layout page; title printed twice. Grid column headers with [n] markers are the fields; numbered rows (1 Left / 2 Left...) are data-entry rows."
+    },
+    {
+      "page": 317,
+      "form_name": null,
+      "form_source": "carryover",
+      "fields": [
+        "Preparatory Acts or Behaviour",
+        "Suicidal Behaviour",
+        "Suicide",
+        "Most Lethal Attempt Date",
+        "Actual Lethality/Medical Damage",
+        "Potential Lethality"
+      ],
+      "notes": "Continuation page of the C-SSRS suicidality form; no printed title on this page. 'Answer for Actual Attempts Only' and 'Enter Code' are instructions."
+    },
+    {
+      "page": 358,
+      "form_name": "Plasma samples (PD) - Single Time Point",
+      "form_source": "printed",
+      "fields": [
+        "Sample Performed",
+        "Reason Not Done",
+        "Sample Date",
+        "Sample Time",
+        "Primary Sample Accession Number",
+        "Back Up Sample Accession Number"
+      ],
+      "notes": "Layout page; title printed twice."
+    },
+    {
+      "page": 359,
+      "form_name": null,
+      "form_source": "carryover",
+      "fields": [
+        "Sample Performed",
+        "Reason Not Done",
+        "Sample Date",
+        "Sample Time",
+        "Primary Sample Accession Number",
+        "Back Up Sample Accession Number"
+      ],
+      "code_rows": ["PDPERF", "PDREASND", "PDDAT", "PDTIM", "PDACCNO", "PDACCNO2"],
+      "notes": "Dictionary page paired with the p358 layout page (Plasma samples PD). Title not on page."
+    }
+  ]
+}

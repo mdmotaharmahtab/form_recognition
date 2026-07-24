@@ -1,0 +1,71 @@
+x= 235.9 y=  39.1 sz=20.0 #4682b4 B | Annotated CRF
+x=  29.9 y=  71.2 sz=11.0 black   B | Study, Site:
+x= 238.7 y=  71.2 sz=11.0 black   B | Group, Visit:
+x= 445.2 y=  71.2 sz=11.0 black   B | Slot:
+x=  29.9 y=  93.9 sz=11.0 black   B | Schedule Category & Name:
+x= 167.7 y=  93.9 sz=11.0 black     | S_QSC302573, 04 - Admission/Predose Final v1.0
+x=  29.9 y= 116.4 sz=10.0 #4682b4 B | Timepoint
+x= 167.7 y= 116.4 sz=10.0 #4682b4 B | Activity
+x= 488.4 y= 116.4 sz=10.0 #4682b4 B | Line #
+x=  29.9 y= 133.4 sz=10.0 black     | _ _ - _ _ _ - _ _ _ _
+x= 116.7 y= 133.4 sz=10.0 black     | _ _ : _ _
+x= 167.7 y= 133.4 sz=10.0 black   B | Confirm TDL form completed:
+x=  29.9 y= 145.6 sz=10.0 black     | dd - MMM - yyyy
+x= 116.7 y= 145.6 sz=10.0 black     | HH:mm
+x= 167.7 y= 157.7 sz=10.0 black   B | - Correct form used
+x= 167.7 y= 169.9 sz=10.0 black   B | - Correct participant label applied
+x= 167.7 y= 182.1 sz=10.0 black   B | - Correct slot number written
+x= 167.7 y= 194.2 sz=10.0 black   B | - Correct sex and fasting status
+x= 167.7 y= 206.4 sz=10.0 black   B | - Correct timepoint checked
+x= 167.7 y= 218.6 sz=10.0 black   B | - Correct sample date and time written
+x= 167.7 y= 230.7 sz=10.0 black   B | - Correct visit
+x= 167.7 y= 242.9 sz=10.0 black   B | - Initials signed to confirm sample collected and form correct
+x=  30.9 y= 258.1 sz=10.0 #4682b4 B | Staff Initials:
+x= 167.7 y= 274.1 sz=10.0 #4682b4 B | Answer(s):
+x= 238.7 y= 274.1 sz=10.0 black     | O Yes
+x= 238.7 y= 291.1 sz=10.0 black     | O No (Comment Required)
+x=  29.9 y= 308.1 sz=10.0 #4682b4 B | Comment:
+x=  29.9 y= 330.7 sz=10.0 black     | Day 0 (0), -00:00.00
+x= 167.7 y= 330.7 sz=10.0 black   B | Targeted Physical Examination Findings: Require Targeted PE? #1
+x= 488.4 y= 330.7 sz=10.0 black     | 73.0
+x=  29.9 y= 347.8 sz=10.0 black     | _ _ - _ _ _ - _ _ _ _
+x= 116.7 y= 347.8 sz=10.0 black     | _ _ : _ _
+x= 167.7 y= 347.8 sz=10.0 black   B | Targeted Physical Examination:  Does the participant require a targeted physical examination?
+x=  29.9 y= 360.0 sz=10.0 black     | dd - MMM - yyyy
+x= 116.7 y= 360.0 sz=10.0 black     | HH:mm
+x= 167.7 y= 360.0 sz=10.0 black   B | (If yes, please specify the reason)
+x=  30.9 y= 375.1 sz=10.0 #4682b4 B | Staff Initials:
+x= 167.7 y= 391.2 sz=10.0 #4682b4 B | Answer(s):
+x= 238.7 y= 391.2 sz=10.0 black     | Yes (Specify) ______________________________ (50 char. max.) (Activates Line
+x= 238.7 y= 403.3 sz=10.0 black     | 74)
+x= 238.7 y= 417.4 sz=10.0 black     | [PEPERF] SAS:[Name=PEPERF, Length=50, DataType=Char]
+x= 238.7 y= 434.5 sz=10.0 black     | O No
+x= 238.7 y= 451.5 sz=10.0 black     | [PEPERF] SAS:[Name=PEPERF, Length=50, DataType=Char]
+x=  29.9 y= 468.5 sz=10.0 #4682b4 B | Comment:
+x=  29.9 y= 491.2 sz=10.0 black     | Day 0 (0), -00:00.00
+x= 167.7 y= 491.2 sz=10.0 black   B | Targeted Physical Examination Findings: Any clinically significant abnormal
+x= 488.4 y= 491.2 sz=10.0 black     | 74.0 (hidden)
+x= 167.7 y= 503.3 sz=10.0 black   B | findings? #1
+x=  29.9 y= 517.5 sz=10.0 black     | _ _ - _ _ _ - _ _ _ _
+x= 116.7 y= 517.5 sz=10.0 black     | _ _ : _ _
+x= 167.7 y= 517.5 sz=10.0 black   B | If yes, were there any clinically significant abnormal findings?
+x=  29.9 y= 529.7 sz=10.0 black     | dd - MMM - yyyy
+x= 116.7 y= 529.7 sz=10.0 black     | HH:mm
+x=  30.9 y= 544.9 sz=10.0 #4682b4 B | Staff Initials:
+x= 167.7 y= 560.9 sz=10.0 #4682b4 B | Answer(s):
+x= 238.7 y= 560.9 sz=10.0 black     | O Yes (Activates Line  75)
+x= 238.7 y= 577.9 sz=10.0 black     | [PECLSIG] SAS:[Name=PECLSIG, Length=50, DataType=Char]
+x= 238.7 y= 594.8 sz=10.0 black     | O No
+x= 238.7 y= 611.9 sz=10.0 black     | [PECLSIG] SAS:[Name=PECLSIG, Length=50, DataType=Char]
+x=  29.9 y= 628.9 sz=10.0 #4682b4 B | Comment:
+x=  29.9 y= 651.6 sz=10.0 black     | Day 0 (0), -00:00.00
+x= 167.7 y= 651.6 sz=10.0 black   B | Targeted Physical Examination Findings: Physical Examination Category #1
+x= 488.4 y= 651.6 sz=10.0 black     | 75.0 (hidden)
+x=  29.9 y= 668.6 sz=10.0 black     | _ _ - _ _ _ - _ _ _ _
+x= 116.7 y= 668.6 sz=10.0 black     | _ _ : _ _
+x= 167.7 y= 668.6 sz=10.0 black   B | Physical Examination Category
+x=  29.9 y= 680.7 sz=10.0 black     | dd - MMM - yyyy
+x= 116.7 y= 680.7 sz=10.0 black     | HH:mm
+x=  30.9 y= 695.9 sz=10.0 #4682b4 B | Staff Initials:
+x=  29.9 y= 749.6 sz=10.0 black     | Date Created: 16-Oct-2024 16:44 (UTC)
+x= 506.4 y= 749.6 sz=10.0 black     | Page 94 of 609

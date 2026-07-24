@@ -1,0 +1,518 @@
+{
+ "stop_reason": "budget",
+ "versions": 5,
+ "best_version": 5,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "confirm",
+   "metrics": {
+    "engine": "codegen",
+    "records": 329,
+    "pages_total": 87,
+    "pages_with_fields": 66,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 88,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 29,
+    "fields_per_form": 11.3,
+    "forms_per_100_pages": 33.3,
+    "form_same_page_evidence_records": 322,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 76
+   },
+   "problems": [],
+   "outcome": "extended_program"
+  },
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 329,
+    "pages_total": 87,
+    "pages_with_fields": 66,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 88,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 29,
+    "fields_per_form": 11.3,
+    "forms_per_100_pages": 33.3,
+    "form_same_page_evidence_records": 322,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 76
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    0,
+    "not_audited",
+    0,
+    -66
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "confirm_extension",
+   "metrics": {
+    "engine": "codegen",
+    "records": 329,
+    "pages_total": 87,
+    "pages_with_fields": 66,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 88,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 29,
+    "fields_per_form": 11.3,
+    "forms_per_100_pages": 33.3,
+    "form_same_page_evidence_records": 322,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 76
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 40,
+   "audit_pages": [
+    9,
+    10,
+    42,
+    72,
+    290,
+    492
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 9,
+     "missed": [],
+     "false": [
+      "Schedule Visit",
+      "Visit Visit Label",
+      "Visit Label Page",
+      "Description of Dynamic Number",
+      "Number Number"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 10,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 42,
+     "missed": [
+      "Was Blood sample Collected for Glycated Hemoglobin?",
+      "Date of Collection",
+      "Time of Collection",
+      "Scan",
+      "Barcode Number"
+     ],
+     "false": [
+      "Barcode Number Glycated Hemoglobin",
+      "[TYPE: partialdate] [TYPE: partialtime (hour,"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 72,
+     "missed": [
+      "Have you been thinking about how you might do this?",
+      "Have you had these thoughts and had some intention of acting on them?",
+      "Have you started to work out or worked out the details of how to kill yourself?",
+      "Do you intend to carry out this plan?",
+      "3. Active suicidal ideation with any methods (not plan) without intent to act",
+      "4. Active suicidal ideation with some intent to act, without specific plan",
+      "5. Active suicidal ideation with specific plan and intent",
+      "If Yes, describe"
+     ],
+     "false": [
+      "Row 7 3. Active suicidal ideation with any methods (not plan) without intent to act Subject endorses thoughts of suicide and has thought of at least one method during the assessment period. This is different than a specific plan with time, place or",
+      "Yes method details worked out (e.g. thought of method to kill self but not a specific plan). Includes person who would say: \"I thought about taking an overdose but I never made",
+      "Row 10 4. Active suicidal ideation with some intent to act, without specific plan Active suicidal thoughts of killing oneself and subject reports having some intent to act on such thoughts, as opposed to \"I have thoughts but I definitely will not do anything",
+      "Yes about them\"",
+      "Row 13 5. Active suicidal ideation with specific plan and intent Thoughts of killing oneself with detail of plan fully or partially worked out and subject has some intent to carry it out.",
+      "5. Active suicidal ideation with specific plan and intent Thoughts of killing oneself with detail of plan fully or partially worked out and subject has some intent to carry it out.",
+      "(values: Yes, No)] Have you been thinking about how you might do this?",
+      "No Have you had these thoughts and had some intention of acting on them?",
+      "Yes Have you started to work out or worked out the details of how to kill yourself?",
+      "No Do you intend to carry out this plan?"
+     ],
+     "wrong_form": [
+      "Have you actually had any thoughts of killing yourself?"
+     ]
+    },
+    {
+     "page": 290,
+     "missed": [
+      "Urinalysis"
+     ],
+     "false": [
+      "[LBREQ1] Not",
+      "Scan)] [TYPE:"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 492,
+     "missed": [
+      "Actual Lethality/Medical Damage:",
+      "Potential Lethality: Only answer if Actual Lethality=0"
+     ],
+     "false": [
+      "0 sprains) \\2.\\ Moderate physical damage; medical attention needed (e.g. conscious but sleepy; somewhat responsive, second-degree burns; bleeding of major vessel \\3.\\",
+      "0 mouth and pulled the trigger but gun fails to fire so no medical damage; laying on train tracks with oncoming train but pulled away before run over).",
+      "Row 2 Actual Lethality/Medical Damage: \\0.\\ No physical damage or very minor physical damage (e.g. surface scratches) \\1.\\ Minor physical damage (e.g. lethargic speech, first-degree burns, mild bleeding,",
+      "Row 3 Potential Lethality: Only answer if Actual Lethality=0 Likely lethality of actual attempt if no medical damage (the following examples, while having no actual medical damage, has potential for very serious lethality; put gun in"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    40,
+    0,
+    -66
+   ],
+   "became_best": true
+  },
+  {
+   "version": 3,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 307,
+    "pages_total": 87,
+    "pages_with_fields": 61,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 22,
+    "fields_per_form": 14.0,
+    "forms_per_100_pages": 25.3,
+    "form_same_page_evidence_records": 306,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 70
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 50,
+   "audit_pages": [
+    9,
+    10,
+    42,
+    44,
+    72,
+    135,
+    290,
+    492
+   ],
+   "audit_partial": null,
+   "audit_promoted": [
+    44
+   ],
+   "audit_verdicts": [
+    {
+     "page": 9,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 10,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 42,
+     "missed": [
+      "Reason not done",
+      "Date of Collection",
+      "Time of Collection",
+      "Scan",
+      "Barcode Number"
+     ],
+     "false": [
+      "Sample",
+      "Glycated Hemoglobin Scan [SCANNE",
+      "Sample Date of Collection",
+      "[TYPE: partialtime (hour,",
+      "[TYPE:",
+      "Scan)] [VISIBILIT Y: site only]"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 44,
+     "missed": [
+      "Scan"
+     ],
+     "false": [
+      "Not",
+      "R] Collected",
+      "[TYPE:",
+      "Scan)] [TYPE:"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 72,
+     "missed": [
+      "Have you been thinking about how you might do this?",
+      "Have you had these thoughts and had some intention of acting on them?",
+      "Have you started to work out or worked out the details of how to kill yourself?",
+      "Do you intend to carry out this plan?"
+     ],
+     "false": [
+      "[TYPE: [TYPE:",
+      "Yes about them\"",
+      "Have you started to work out or worked out the details of how to kill yourself? [TYPE:",
+      "(values: Yes, No)] Have you been thinking about how you might do this?",
+      "No Have you had these thoughts and had some intention of acting on them?",
+      "Yes Have you started to work out or worked out the details of how to kill yourself?",
+      "No Do you intend to carry out this plan?",
+      "3. Active suicidal ideation with any methods (not plan) without intent to act",
+      "4. Active suicidal ideation with some intent to act, without specific plan",
+      "5. Active suicidal ideation with specific plan and intent"
+     ],
+     "wrong_form": [
+      "Have you actually had any thoughts of killing yourself?",
+      "If Yes, describe"
+     ]
+    },
+    {
+     "page": 135,
+     "missed": [
+      "Have you had these thoughts and had some intention of acting on them?",
+      "Have you started to work out or worked out the details of how to kill yourself?",
+      "Do you intend to carry out this plan?"
+     ],
+     "false": [
+      "Yes about them\"",
+      "No Have you had these thoughts and had some intention of acting on them?",
+      "Yes Have you started to work out or worked out the details of how to kill yourself?",
+      "3. Active suicidal ideation with any methods (not plan) without intent to act",
+      "4. Active suicidal ideation with some intent to act, without specific plan",
+      "5. Active suicidal ideation with specific plan and intent",
+      "No Do you intend to carry out this plan?"
+     ],
+     "wrong_form": [
+      "Have you been thinking about how you might do this?",
+      "If Yes, describe"
+     ]
+    },
+    {
+     "page": 290,
+     "missed": [
+      "Scan"
+     ],
+     "false": [
+      "Not",
+      "R] Collected",
+      "[TYPE:",
+      "Scan)] [TYPE:"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 492,
+     "missed": [
+      "Date of Attempt"
+     ],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    50,
+    0,
+    -61
+   ],
+   "became_best": true
+  },
+  {
+   "version": 4,
+   "kind": "revise_audit",
+   "metrics": {
+    "error": "generated extractor crashed:\nTraceback (most recent call last):\n  File \"D:\\ubuntu\\codes\\ZS\\otsuka\\ECS\\experiments\\recipe_prototype\\scripts\\sandbox_runner.py\", line 128, in main\n    raw = fn(pages)\n          ^^^^^^^^^\n  File \"<generated_extractor>\", line 851, in extract\n  File \"<generated_extractor>\", line 814, in _find_label_near_marker\n  File \"<generated_extractor>\", line 770, in candidate_score\nNameError: name '_looks_like_optionish' is not defined\n"
+   },
+   "problems": [
+    "Program failed to run: generated extractor crashed:\nTraceback (most recent call last):\n  File \"D:\\ubuntu\\codes\\ZS\\otsuka\\ECS\\experiments\\recipe_prototype\\scripts\\sandbox_runner.py\", line 128, in main\n    raw = fn(pages)\n          ^^^^^^^^^\n  File \"<generated_extractor>\", line 851, in extract\n  File \"<generated_extractor>\", line 814, in _find_label_near_marker\n  File \"<generated_extractor>\", line 770, in candidate_score\nNameError: name '_looks_like_optionish' is not defined\n"
+   ],
+   "warnings": [],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    1,
+    "not_audited",
+    0,
+    0
+   ],
+   "became_best": false
+  },
+  {
+   "version": 5,
+   "kind": "revise_gates",
+   "metrics": {
+    "engine": "codegen",
+    "records": 310,
+    "pages_total": 87,
+    "pages_with_fields": 65,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 21,
+    "fields_per_form": 14.8,
+    "forms_per_100_pages": 24.1,
+    "form_same_page_evidence_records": 307,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 75
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 28,
+   "audit_pages": [
+    9,
+    10,
+    42,
+    44,
+    72,
+    138,
+    290,
+    492
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 9,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 10,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 42,
+     "missed": [
+      "Was Blood sample Collected for Glycated Hemoglobin?",
+      "Time of Collection",
+      "Scan",
+      "Barcode Number"
+     ],
+     "false": [
+      "Glycated Hemoglobin",
+      "minutes)]",
+      "R]"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 44,
+     "missed": [
+      "Scan"
+     ],
+     "false": [
+      "Urinalysis",
+      "Not",
+      "Collected",
+      "R]",
+      "Applicable"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 72,
+     "missed": [
+      "3. Active suicidal ideation with any methods (not plan) without intent to act",
+      "4. Active suicidal ideation with some intent to act, without specific plan",
+      "5. Active suicidal ideation with specific plan and intent"
+     ],
+     "false": [],
+     "wrong_form": [
+      "Have you had these thoughts and had some intention of acting on them?",
+      "Have you started to work out or worked out the details of how to kill yourself?",
+      "Have you actually had any thoughts of killing yourself?",
+      "If Yes, describe",
+      "Have you been thinking about how you might do this?",
+      "Do you intend to carry out this plan?"
+     ]
+    },
+    {
+     "page": 138,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 290,
+     "missed": [
+      "Scan"
+     ],
+     "false": [
+      "Urinalysis",
+      "Not",
+      "Collected",
+      "R]",
+      "Applicable"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 492,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    28,
+    0,
+    -65
+   ],
+   "became_best": true
+  }
+ ]
+}

@@ -1,0 +1,243 @@
+{
+ "stop_reason": "plateau",
+ "versions": 3,
+ "best_version": 2,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "confirm",
+   "metrics": {
+    "engine": "codegen",
+    "records": 735,
+    "pages_total": 206,
+    "pages_with_fields": 126,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 60,
+    "fields_per_form": 12.2,
+    "forms_per_100_pages": 29.1,
+    "pages_covered_pct": 61
+   },
+   "problems": [],
+   "outcome": "extended_program"
+  },
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 735,
+    "pages_total": 206,
+    "pages_with_fields": 126,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 60,
+    "fields_per_form": 12.2,
+    "forms_per_100_pages": 29.1,
+    "pages_covered_pct": 61
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_verdicts": null,
+   "score": [
+    0,
+    "not_audited",
+    0,
+    -126
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "confirm_extension",
+   "metrics": {
+    "engine": "codegen",
+    "records": 735,
+    "pages_total": 206,
+    "pages_with_fields": 126,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 60,
+    "fields_per_form": 12.2,
+    "forms_per_100_pages": 29.1,
+    "pages_covered_pct": 61
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 10,
+   "audit_pages": [
+    1,
+    3,
+    37,
+    70,
+    71,
+    167
+   ],
+   "audit_partial": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 3,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 37,
+     "missed": [
+      "Why was the study terminated by sponsor?"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 70,
+     "missed": [
+      "Body system",
+      "Examination result",
+      "Clinical significance",
+      "Abnormal findings"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 71,
+     "missed": [
+      "Abnormal findings",
+      "Body system",
+      "Examination result",
+      "Clinical significance",
+      "Abnormal findings"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 167,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "score": [
+    0,
+    10,
+    0,
+    -126
+   ],
+   "became_best": true
+  },
+  {
+   "version": 3,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 735,
+    "pages_total": 206,
+    "pages_with_fields": 126,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 60,
+    "fields_per_form": 12.2,
+    "forms_per_100_pages": 29.1,
+    "pages_covered_pct": 61
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 10,
+   "audit_pages": [
+    1,
+    3,
+    37,
+    70,
+    71,
+    167
+   ],
+   "audit_partial": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 3,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 37,
+     "missed": [
+      "Why was the study terminated by sponsor?"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 70,
+     "missed": [
+      "Body system",
+      "Examination result",
+      "Clinical significance",
+      "Abnormal findings"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 71,
+     "missed": [
+      "Abnormal findings",
+      "Body system",
+      "Examination result",
+      "Clinical significance",
+      "Abnormal findings"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 167,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "score": [
+    0,
+    10,
+    0,
+    -126
+   ],
+   "became_best": false
+  }
+ ]
+}

@@ -1,0 +1,626 @@
+You are configuring a deterministic PDF extraction engine for a clinical Case Report Form (CRF) document. You will see a small sample of REPRESENTATIVE PAGES (one or two per page-layout cluster) from a document that is 112 pages long. The whole document is repetitive: what you see is representative of everything.
+
+Each page is given as structured text lines with geometry:
+    x=<left> y=<top> sz=<font-size> <color> <B if bold> | <text>
+
+# Your task
+
+Produce a JSON "recipe" that tells the engine how to extract, for EVERY field on EVERY page of the document:
+  - form_name   : the name of the CRF form/section the field belongs to
+  - field_name  : the human-readable field label/question
+  - field_oid   : the machine identifier (OID / SAS name / export name / variable
+                  code) if the document prints one; null if the document is not
+                  annotated with machine codes
+
+# Engines you can parameterise (pick exactly one)
+
+1. "adjacent_annotation" - machine codes are printed on their own annotation lines
+   (often bracketed, often colored) directly next to/under the field label, in the
+   same column. Params: column_x_max, oid_regex (capture group 1 = code),
+   alt_regex/alt_is_primary (a second code on nearby lines), oid_color_non_black,
+   annotation_group_dy, label_max_dy, label_noise (regexes for lines that are
+   never labels).
+2. "anchored_blocks" - each field starts at a repeated anchor row (e.g. a bold
+   'Prefix: Activity #1' line with a number in a far-right column); everything
+   until the next anchor belongs to that field. Params: activity_regex (group 1 =
+   form, group 2 = field), activity_x [min,max], line_number_x_min, oid_regex.
+3. "numbered_join" - two page types per form: content pages print each label with
+   a small integer, definition pages map the same integers to codes in a column
+   under a header. Params: definition_page_all (regexes that all appear on
+   definition pages), oid_header (text of the column header the codes sit under),
+   row_number_x_max, data_number_regex, data_number_x_min, data_label_x_max,
+   label_noise. form_name.strategy must be "regex" for this engine.
+4. "column_table" - definition tables with an explicit header row; label and code
+   are cells of configurable columns. Params: definition_page_regex, row_key_regex,
+   name_header, oid_header, type_header.
+5. "line_pattern" - fallback: a code regex over lines, label = nearest previous
+   line matching label_regex within label_window_lines. Params: code_regex,
+   code_search (true = search inside line), label_regex, label_window_lines,
+   label_noise.
+
+# form_name strategies
+
+- {"strategy":"regex","regex":"^Form:\\s*(.+)$"} - a header line matches a regex (group 1 = name)
+- {"strategy":"colored_font","min_size":14,"carry_forward":true,"noise":[...]} - the form title is the big colored heading; carry_forward repeats the last seen title on continuation pages
+- {"strategy":"font","min_size":14,"carry_forward":true,"noise":[...]} - same but title is not colored
+- for engine anchored_blocks the form name comes from activity_regex group 1 automatically
+
+# Output format (JSON only, no prose)
+
+{
+  "format_id": "<short slug you invent>",
+  "reasoning": "<2-4 sentences: what layout you saw and why you chose the engine>",
+  "detect": {"all": ["<2-3 regexes that identify this layout>"]},
+  "skip_page_if": ["<optional regexes: pages to skip entirely (title/TOC/approval)>"],
+  "form_name": {...},
+  "fields": {"engine": "<one of the 5>", ...params...}
+}
+
+# Rules
+
+- Regexes are Python re syntax inside JSON strings (escape backslashes).
+- Codes are machine identifiers like AESTDAT / QVAL_GENDOTH - short, uppercase,
+  underscores/digits allowed. Human text, dates and option values are NOT codes.
+- Prefer the most specific engine that fits; use line_pattern only if nothing fits.
+- If the document prints NO machine codes at all, still extract form_name +
+  field_name (choose the engine that best yields labels; oid_regex may then match
+  nothing) and say so in "reasoning".
+- Numbers like x/y/size in the dumps are points; use them to set column bounds.
+
+# Representative pages
+
+--- page 1 of 112 (layout cluster covers ~1 pages) ---
+x= 235.9 y=  39.1 sz=20.0 #4682b4 B | Annotated CRF
+x=  29.9 y=  76.4 sz=11.0 black   B | Study, Site:
+x= 238.7 y=  76.4 sz=11.0 black   B | Group, Visit:
+x= 445.2 y=  76.4 sz=11.0 black   B | Slot:
+x=  29.9 y=  99.1 sz=11.0 black   B | Schedule Category & Name:
+x= 167.7 y=  99.1 sz=11.0 black     | QSC302573, 02 - Group Info/Study ICF Draft
+x=  29.9 y= 121.6 sz=10.0 #4682b4 B | Timepoint
+x= 167.7 y= 121.6 sz=10.0 #4682b4 B | Activity
+x= 488.4 y= 121.6 sz=10.0 #4682b4 B | Line #
+x=  29.9 y= 138.7 sz=10.0 black     | Day 0 (0), -00:00.00
+x= 167.7 y= 138.7 sz=10.0 black   B | Informed Consent: Photo ID #1
+x= 488.4 y= 138.7 sz=10.0 black     | 1.0
+x=  29.9 y= 155.6 sz=10.0 black     | _ _ - _ _ _ - _ _ _ _
+x= 116.7 y= 155.6 sz=10.0 black     | _ _ : _ _
+x= 167.7 y= 155.6 sz=10.0 black   B | Does the participant have a valid photo ID?
+x=  29.9 y= 167.8 sz=10.0 black     | dd - MMM - yyyy
+x= 116.7 y= 167.8 sz=10.0 black     | HH:mm
+x=  30.9 y= 182.9 sz=10.0 #4682b4 B | Staff Initials:
+x= 167.7 y= 199.0 sz=10.0 #4682b4 B | Answer(s):
+x= 238.7 y= 199.0 sz=10.0 black     | O Yes
+x= 238.7 y= 216.0 sz=10.0 black     | O No (Comment Required)
+x=  29.9 y= 233.0 sz=10.0 #4682b4 B | Comment:
+x=  29.9 y= 255.7 sz=10.0 black     | Day 0 (0), -00:00.00
+x= 167.7 y= 255.7 sz=10.0 black   B | Group Information: Group Info Session #1
+x= 488.4 y= 255.7 sz=10.0 black     | 2.0
+x=  29.9 y= 272.6 sz=10.0 black     | _ _ - _ _ _ - _ _ _ _
+x= 116.7 y= 272.6 sz=10.0 black     | _ _ : _ _
+x= 167.7 y= 272.6 sz=10.0 black   B | Did participant complete group information or remote information session?
+x=  29.9 y= 284.8 sz=10.0 black     | dd - MMM - yyyy
+x= 116.7 y= 284.8 sz=10.0 black     | HH:mm
+x=  30.9 y= 300.0 sz=10.0 #4682b4 B | Staff Initials:
+x= 167.7 y= 316.0 sz=10.0 #4682b4 B | Answer(s):
+x= 238.7 y= 316.0 sz=10.0 black     | O Volunteer Completed Group Information Session (Activates Line  3, 4, 5)
+x= 238.7 y= 333.1 sz=10.0 black     | O Volunteer Completed Remote Information Session (Activates Line  4, 5)
+x=  29.9 y= 350.0 sz=10.0 #4682b4 B | Comment:
+x=  29.9 y= 372.7 sz=10.0 black     | Day 0 (0), -00:00.00
+x= 167.7 y= 372.7 sz=10.0 black   B | Group Information: Group info held by #1
+x= 488.4 y= 372.7 sz=10.0 black     | 3.0 (hidden)
+x=  29.9 y= 389.7 sz=10.0 black     | _ _ - _ _ _ - _ _ _ _
+x= 116.7 y= 389.7 sz=10.0 black     | _ _ : _ _
+x= 167.7 y= 389.7 sz=10.0 black   B | Record who held Group Information Session (full name)
+x=  29.9 y= 401.9 sz=10.0 black     | dd - MMM - yyyy
+x= 116.7 y= 401.9 sz=10.0 black     | HH:mm
+x=  30.9 y= 417.1 sz=10.0 #4682b4 B | Staff Initials:
+x= 167.7 y= 433.1 sz=10.0 #4682b4 B | Answer(s):
+x= 238.7 y= 433.1 sz=10.0 black     | ______________________________ (100 char. max.)
+x=  29.9 y= 450.1 sz=10.0 #4682b4 B | Comment:
+x=  29.9 y= 472.7 sz=10.0 black     | Day 0 (0), -00:00.00
+x= 167.7 y= 472.7 sz=10.0 black   B | Informed Consent: Study ICF Database Check #1
+x= 488.4 y= 472.7 sz=10.0 black     | 4.0 (hidden)
+x=  29.9 y= 489.7 sz=10.0 black     | _ _ - _ _ _ - _ _ _ _
+x= 116.7 y= 489.7 sz=10.0 black     | _ _ : _ _
+x= 167.7 y= 489.7 sz=10.0 black   B | Does the Anju study number match the study number in the participants' paper PIS/ICF?
+x=  29.9 y= 501.9 sz=10.0 black     | dd - MMM - yyyy
+x= 116.7 y= 501.9 sz=10.0 black     | HH:mm
+x=  30.9 y= 517.1 sz=10.0 #4682b4 B | Staff Initials:
+x= 167.7 y= 533.1 sz=10.0 #4682b4 B | Answer(s):
+x= 238.7 y= 533.1 sz=10.0 black     | O Yes
+x= 238.7 y= 550.1 sz=10.0 black     | O No (Comment Required)
+x=  29.9 y= 567.1 sz=10.0 #4682b4 B | Comment:
+x=  29.9 y= 589.8 sz=10.0 blac
+<...page truncated...>
+
+--- page 2 of 112 (layout cluster covers ~1 pages) ---
+x= 235.9 y=  39.1 sz=20.0 #4682b4 B | Annotated CRF
+x=  29.9 y=  71.2 sz=11.0 black   B | Study, Site:
+x= 238.7 y=  71.2 sz=11.0 black   B | Group, Visit:
+x= 445.2 y=  71.2 sz=11.0 black   B | Slot:
+x=  29.9 y=  93.9 sz=11.0 black   B | Schedule Category & Name:
+x= 167.7 y=  93.9 sz=11.0 black     | QSC302573, 02 - Group Info/Study ICF Draft
+x=  29.9 y= 116.4 sz=10.0 #4682b4 B | Timepoint
+x= 167.7 y= 116.4 sz=10.0 #4682b4 B | Activity
+x= 488.4 y= 116.4 sz=10.0 #4682b4 B | Line #
+x=  29.9 y= 133.4 sz=10.0 black     | _ _ - _ _ _ - _ _ _ _
+x= 116.7 y= 133.4 sz=10.0 black     | _ _ : _ _
+x= 167.7 y= 133.4 sz=10.0 black   B | Date Study ICF was signed by participant
+x=  29.9 y= 145.6 sz=10.0 black     | dd - MMM - yyyy
+x= 116.7 y= 145.6 sz=10.0 black     | HH:mm
+x=  30.9 y= 160.8 sz=10.0 #4682b4 B | Staff Initials:
+x= 167.7 y= 176.7 sz=10.0 #4682b4 B | Answer(s):
+x= 238.7 y= 176.7 sz=10.0 black     | Date _  _  -  _  _  _  -  _  _  _  _ (dd-MMM-yyyy)
+x= 238.7 y= 193.7 sz=10.0 black     | [DSSTDAT] SAS:[Name=DSSTDAT, Length=50, DataType=Char]
+x=  29.9 y= 210.7 sz=10.0 #4682b4 B | Comment:
+x=  29.9 y= 233.4 sz=10.0 black     | Day 0 (0), -00:00.00
+x= 167.7 y= 233.4 sz=10.0 black   B | Informed Consent: Study ICF Time #1
+x= 488.4 y= 233.4 sz=10.0 black     | 5.2 (hidden)
+x=  29.9 y= 250.5 sz=10.0 black     | _ _ - _ _ _ - _ _ _ _
+x= 116.7 y= 250.5 sz=10.0 black     | _ _ : _ _
+x= 167.7 y= 250.5 sz=10.0 black   B | Time Study ICF was signed by participant
+x=  29.9 y= 262.6 sz=10.0 black     | dd - MMM - yyyy
+x= 116.7 y= 262.6 sz=10.0 black     | HH:mm
+x=  30.9 y= 277.8 sz=10.0 #4682b4 B | Staff Initials:
+x= 167.7 y= 293.8 sz=10.0 #4682b4 B | Answer(s):
+x= 238.7 y= 293.8 sz=10.0 black     | Time _  _  :  _  _ (HH:mm)
+x= 238.7 y= 310.8 sz=10.0 black     | [DSSTTIM] SAS:[Name=DSSTTIM, Length=50, DataType=Char]
+x=  29.9 y= 327.8 sz=10.0 #4682b4 B | Comment:
+x=  29.9 y= 350.5 sz=10.0 black     | Day 0 (0), -00:00.00
+x= 167.7 y= 350.5 sz=10.0 black   B | Informed Consent: Study ICF Part #1
+x= 488.4 y= 350.5 sz=10.0 black     | 5.3 (hidden)
+x=  29.9 y= 367.5 sz=10.0 black     | _ _ - _ _ _ - _ _ _ _
+x= 116.7 y= 367.5 sz=10.0 black     | _ _ : _ _
+x= 167.7 y= 367.5 sz=10.0 black   B | Study ICF Part Number
+x=  29.9 y= 379.6 sz=10.0 black     | dd - MMM - yyyy
+x= 116.7 y= 379.6 sz=10.0 black     | HH:mm
+x=  30.9 y= 394.8 sz=10.0 #4682b4 B | Staff Initials:
+x= 167.7 y= 410.8 sz=10.0 #4682b4 B | Answer(s):
+x= 238.7 y= 410.8 sz=10.0 black     | O Parts 1 and 2
+x= 238.7 y= 427.9 sz=10.0 black     | [DSICFP] SAS:[Name=DSICFP, Length=25, DataType=Char]
+x= 238.7 y= 444.9 sz=10.0 black     | O Part 3
+x= 238.7 y= 461.9 sz=10.0 black     | [DSICFP] SAS:[Name=DSICFP, Length=25, DataType=Char]
+x=  29.9 y= 478.9 sz=10.0 #4682b4 B | Comment:
+x=  29.9 y= 501.5 sz=10.0 black     | Day 0 (0), -00:00.00
+x= 167.7 y= 501.5 sz=10.0 black   B | Informed Consent: Study ICF Version #1
+x= 488.4 y= 501.5 sz=10.0 black     | 5.4 (hidden)
+x=  29.9 y= 518.5 sz=10.0 black     | _ _ - _ _ _ - _ _ _ _
+x= 116.7 y= 518.5 sz=10.0 black     | _ _ : _ _
+x= 167.7 y= 518.5 sz=10.0 black   B | Study ICF Version Number
+x=  29.9 y= 530.7 sz=10.0 black     | dd - MMM - yyyy
+x= 116.7 y= 530.7 sz=10.0 black     | HH:mm
+x= 167.7 y= 530.7 sz=10.0 black   B | (Version must be checked against ICF present in the RSF – escalate any discrepancies)
+x=  30.9 y= 545.9 sz=10.0 #4682b4 B | Staff Initials:
+x= 167.7 y= 561.9 sz=10.0 #4682b4 B | Answer(s):
+x= 238.7 y= 561.9 sz=10.0 black     | Version  _  _  .  _   (#0.0)
+x= 238.7 y= 578.9 sz=10.0 black     | [DSICFVNO] SAS:[Name=DSICFVNO, Length=25, DataType=
+<...page truncated...>
+
+--- page 25 of 112 (layout cluster covers ~64 pages) ---
+x= 235.9 y=  39.1 sz=20.0 #4682b4 B | Annotated CRF
+x=  29.9 y=  71.2 sz=11.0 black   B | Study, Site:
+x= 238.7 y=  71.2 sz=11.0 black   B | Group, Visit:
+x= 445.2 y=  71.2 sz=11.0 black   B | Slot:
+x=  29.9 y=  93.9 sz=11.0 black   B | Schedule Category & Name:
+x= 167.7 y=  93.9 sz=11.0 black     | QSC302573, 03 - Screening Draft v0.1
+x=  29.9 y= 116.4 sz=10.0 #4682b4 B | Timepoint
+x= 167.7 y= 116.4 sz=10.0 #4682b4 B | Activity
+x= 488.4 y= 116.4 sz=10.0 #4682b4 B | Line #
+x=  29.9 y= 133.4 sz=10.0 black     | Day 0 (0), -00:00.00
+x= 167.7 y= 133.4 sz=10.0 black   B | Vital Signs: Vital Signs Supine Full Set #1
+x= 488.4 y= 133.4 sz=10.0 black     | 64.0
+x=  29.9 y= 150.4 sz=10.0 black     | _ _ - _ _ _ - _ _ _ _
+x= 116.7 y= 150.4 sz=10.0 black     | _ _ : _ _
+x= 167.7 y= 150.4 sz=10.0 black   B | Vital Signs
+x=  29.9 y= 162.6 sz=10.0 black     | dd - MMM - yyyy
+x= 116.7 y= 162.6 sz=10.0 black     | HH:mm
+x= 167.7 y= 174.7 sz=10.0 black   B | Exclude if - Systolic blood pressure [SBP] >140 mmHg or diastolic blood pressure [DBP] >90
+x= 167.7 y= 186.9 sz=10.0 black   B | mmHg in the supine position. Supine heart rate, after resting for at least 3 minutes, outside the
+x= 167.7 y= 199.1 sz=10.0 black   B | range of 50 to 100 beats per minute.  (Supine for at least 3 minutes)
+x=  30.9 y= 214.3 sz=10.0 #4682b4 B | Staff Initials:
+x= 167.7 y= 230.2 sz=10.0 #4682b4 B | Answer(s):
+x= 238.7 y= 230.2 sz=10.0 black     | Systolic  _  _  _  mmHg (##0)
+x= 238.7 y= 247.2 sz=10.0 black     | [VSORRES] SAS:[Name=VSORRES, Length=50, DataType=Char]
+x= 238.7 y= 264.3 sz=10.0 black     | Diastolic  _  _  _  mmHg (##0)
+x= 238.7 y= 281.3 sz=10.0 black     | [VSORRES] SAS:[Name=VSORRES, Length=50, DataType=Char]
+x= 238.7 y= 298.3 sz=10.0 black     | Heart Rate  _  _  _  beats/min (##0)
+x= 238.7 y= 315.3 sz=10.0 black     | [VSORRES] SAS:[Name=VSORRES, Length=50, DataType=Char]
+x= 238.7 y= 332.3 sz=10.0 black     | Respiratory Rate  _  _  _  breaths/mi (##0)
+x= 238.7 y= 349.3 sz=10.0 black     | [VSORRES] SAS:[Name=VSORRES, Length=50, DataType=Char]
+x= 238.7 y= 366.3 sz=10.0 black     | Oral Temperature - Degrees Celsius  _  _  .  _  C (##.0)
+x= 238.7 y= 383.3 sz=10.0 black     | [VSORRES] SAS:[Name=VSORRES, Length=50, DataType=Char]
+x=  29.9 y= 400.3 sz=10.0 #4682b4 B | Comment:
+x=  29.9 y= 423.0 sz=10.0 black     | Day 0 (0), -00:00.00
+x= 167.7 y= 423.0 sz=10.0 black   B | Vital Signs: Clinical Significance #1
+x= 488.4 y= 423.0 sz=10.0 black     | 65.0
+x=  29.9 y= 440.0 sz=10.0 black     | _ _ - _ _ _ - _ _ _ _
+x= 116.7 y= 440.0 sz=10.0 black     | _ _ : _ _
+x= 167.7 y= 440.0 sz=10.0 black   B | Clinical Assessment of Vital Signs (Medic or Nurse to assess vital signs)
+x=  29.9 y= 452.2 sz=10.0 black     | dd - MMM - yyyy
+x= 116.7 y= 452.2 sz=10.0 black     | HH:mm
+x=  30.9 y= 467.3 sz=10.0 #4682b4 B | Staff Initials:
+x= 167.7 y= 483.4 sz=10.0 #4682b4 B | Answer(s):
+x= 238.7 y= 483.4 sz=10.0 black     | O Normal
+x= 238.7 y= 500.4 sz=10.0 black     | [VSCLSIG] SAS:[Name=VSCLSIG, Length=50, DataType=Char]
+x= 238.7 y= 517.4 sz=10.0 black     | O Abnormal, Not Clinically Significant
+x= 238.7 y= 534.4 sz=10.0 black     | [VSCLSIG] SAS:[Name=VSCLSIG, Length=50, DataType=Char]
+x= 238.7 y= 551.4 sz=10.0 black     | O Abnormal, Clinically Significant (Activates Line  66)
+x= 238.7 y= 568.4 sz=10.0 black     | [VSCLSIG] SAS:[Name=VSCLSIG, Length=50, DataType=Char]
+x=  29.9 y= 585.4 sz=10.0 #4682b4 B | Comment:
+x=  29.9 y= 608.1 sz=10.0 black     | Day 0 (0), -00:00.00
+x= 167.7 y= 608.1 sz=10.0 black   B | Vital Signs: Vital Signs Findings #1
+x= 488.4 y= 608.1 sz=10.0 bl
+<...page truncated...>
+
+--- page 44 of 112 (layout cluster covers ~64 pages) ---
+x= 235.9 y=  39.1 sz=20.0 #4682b4 B | Annotated CRF
+x=  29.9 y=  71.2 sz=11.0 black   B | Study, Site:
+x= 238.7 y=  71.2 sz=11.0 black   B | Group, Visit:
+x= 445.2 y=  71.2 sz=11.0 black   B | Slot:
+x=  29.9 y=  93.9 sz=11.0 black   B | Schedule Category & Name:
+x= 167.7 y=  93.9 sz=11.0 black     | QSC302573, 03 - Screening Draft v0.1
+x=  29.9 y= 116.4 sz=10.0 #4682b4 B | Timepoint
+x= 167.7 y= 116.4 sz=10.0 #4682b4 B | Activity
+x= 488.4 y= 116.4 sz=10.0 #4682b4 B | Line #
+x=  30.9 y= 134.4 sz=10.0 #4682b4 B | Staff Initials:
+x= 167.7 y= 150.4 sz=10.0 #4682b4 B | Answer(s):
+x= 238.7 y= 150.4 sz=10.0 black     | O Normal
+x= 238.7 y= 167.4 sz=10.0 black     | [PEORRES] SAS:[Name=PEORRES, Length=500, DataType=Char]
+x= 238.7 y= 184.4 sz=10.0 black     | O Abnormal, Not Clinically Significant
+x= 238.7 y= 201.4 sz=10.0 black     | [PEORRES] SAS:[Name=PEORRES, Length=500, DataType=Char]
+x= 238.7 y= 218.4 sz=10.0 black     | O Abnormal, Clinically Significant (Activates Line  127)
+x= 238.7 y= 235.4 sz=10.0 black     | [PEORRES] SAS:[Name=PEORRES, Length=500, DataType=Char]
+x= 238.7 y= 252.5 sz=10.0 black     | O Not Done
+x= 238.7 y= 269.5 sz=10.0 black     | [PEORRES] SAS:[Name=PEORRES, Length=500, DataType=Char]
+x=  29.9 y= 286.5 sz=10.0 #4682b4 B | Comment:
+x=  29.9 y= 309.1 sz=10.0 black     | Day 0 (0), -00:00.00
+x= 167.7 y= 309.1 sz=10.0 black   B | Neurological Examination: Reflexes #1
+x= 488.4 y= 309.1 sz=10.0 black     | 123.0
+x=  29.9 y= 326.1 sz=10.0 black     | _ _ - _ _ _ - _ _ _ _
+x= 116.7 y= 326.1 sz=10.0 black     | _ _ : _ _
+x= 167.7 y= 326.1 sz=10.0 black   B | Reflexes
+x=  29.9 y= 338.3 sz=10.0 black     | dd - MMM - yyyy
+x= 116.7 y= 338.3 sz=10.0 black     | HH:mm
+x=  30.9 y= 353.5 sz=10.0 #4682b4 B | Staff Initials:
+x= 167.7 y= 369.5 sz=10.0 #4682b4 B | Answer(s):
+x= 238.7 y= 369.5 sz=10.0 black     | O Normal
+x= 238.7 y= 386.5 sz=10.0 black     | [PEORRES] SAS:[Name=PEORRES, Length=500, DataType=Char]
+x= 238.7 y= 403.5 sz=10.0 black     | O Abnormal, Not Clinically Significant
+x= 238.7 y= 420.5 sz=10.0 black     | [PEORRES] SAS:[Name=PEORRES, Length=500, DataType=Char]
+x= 238.7 y= 437.5 sz=10.0 black     | O Abnormal, Clinically Significant (Activates Line  127)
+x= 238.7 y= 454.5 sz=10.0 black     | [PEORRES] SAS:[Name=PEORRES, Length=500, DataType=Char]
+x= 238.7 y= 471.6 sz=10.0 black     | O Not Done
+x= 238.7 y= 488.6 sz=10.0 black     | [PEORRES] SAS:[Name=PEORRES, Length=500, DataType=Char]
+x=  29.9 y= 505.6 sz=10.0 #4682b4 B | Comment:
+x=  29.9 y= 749.6 sz=10.0 black     | Date Created: 30-Sep-2024 08:27 (UTC)
+x= 506.4 y= 749.6 sz=10.0 black     | Page 44 of 112
+
+--- page 51 of 112 (layout cluster covers ~2 pages) ---
+x= 235.9 y=  39.1 sz=20.0 #4682b4 B | Annotated CRF
+x=  29.9 y=  71.2 sz=11.0 black   B | Study, Site:
+x= 238.7 y=  71.2 sz=11.0 black   B | Group, Visit:
+x= 445.2 y=  71.2 sz=11.0 black   B | Slot:
+x=  29.9 y=  93.9 sz=11.0 black   B | Schedule Category & Name:
+x= 167.7 y=  93.9 sz=11.0 black     | QSC302573, 03 - Screening Draft v0.1
+x=  29.9 y= 116.4 sz=10.0 #4682b4 B | Timepoint
+x= 167.7 y= 116.4 sz=10.0 #4682b4 B | Activity
+x= 488.4 y= 116.4 sz=10.0 #4682b4 B | Line #
+x=  30.9 y= 134.4 sz=10.0 #4682b4 B | Staff Initials:
+x= 167.7 y= 150.4 sz=10.0 #4682b4 B | Answer(s):
+x= 238.7 y= 150.4 sz=10.0 black     | Open Field ______________________________ (500 char. max.)
+x= 238.7 y= 167.4 sz=10.0 black     | [QSORRES] SAS:[Name=QSORRES, Length=500, DataType=Char]
+x=  29.9 y= 184.4 sz=10.0 #4682b4 B | Comment:
+x=  29.9 y= 207.1 sz=10.0 black     | Day 0 (0), -00:00.00
+x= 167.7 y= 207.1 sz=10.0 black   B | C-SSRS Baseline: 7. Most Severe Ideation (month) #1
+x= 488.4 y= 207.1 sz=10.0 black     | 141.0 (hidden)
+x=  29.9 y= 224.1 sz=10.0 black     | _ _ - _ _ _ - _ _ _ _
+x= 116.7 y= 224.1 sz=10.0 black     | _ _ : _ _
+x= 167.7 y= 224.1 sz=10.0 black   B | Most Severe Ideation (Months)
+x=  29.9 y= 236.3 sz=10.0 black     | dd - MMM - yyyy
+x= 116.7 y= 236.3 sz=10.0 black     | HH:mm
+x= 167.7 y= 248.5 sz=10.0 black   B | The following feature should be rated with respect to the most severe type of ideation (i.e. 1-5
+x= 167.7 y= 260.6 sz=10.0 black   B | from above, with 1 being the least severe and 5 being the most severe). Ask about time he/she
+x= 167.7 y= 272.8 sz=10.0 black   B | was feeling the most suicidal.
+x=  30.9 y= 288.0 sz=10.0 #4682b4 B | Staff Initials:
+x= 167.7 y= 304.0 sz=10.0 #4682b4 B | Answer(s):
+x= 238.7 y= 304.0 sz=10.0 black     | _   (0)
+x= 238.7 y= 321.0 sz=10.0 black     | [QSORRES] SAS:[Name=QSORRES, Length=500, DataType=Char]
+x=  29.9 y= 337.9 sz=10.0 #4682b4 B | Comment:
+x=  29.9 y= 360.6 sz=10.0 black     | Day 0 (0), -00:00.00
+x= 167.7 y= 360.6 sz=10.0 black   B | C-SSRS Baseline: 7. Description of Ideation (month) #1
+x= 488.4 y= 360.6 sz=10.0 black     | 142.0 (hidden)
+x=  29.9 y= 377.6 sz=10.0 black     | _ _ - _ _ _ - _ _ _ _
+x= 116.7 y= 377.6 sz=10.0 black     | _ _ : _ _
+x= 167.7 y= 377.6 sz=10.0 black   B | Description of Ideation (Months)
+x=  29.9 y= 389.8 sz=10.0 black     | dd - MMM - yyyy
+x= 116.7 y= 389.8 sz=10.0 black     | HH:mm
+x=  30.9 y= 405.0 sz=10.0 #4682b4 B | Staff Initials:
+x= 167.7 y= 421.0 sz=10.0 #4682b4 B | Answer(s):
+x= 238.7 y= 421.0 sz=10.0 black     | Open Field ______________________________ (500 char. max.)
+x= 238.7 y= 438.0 sz=10.0 black     | [QSORRES] SAS:[Name=QSORRES, Length=500, DataType=Char]
+x=  29.9 y= 455.0 sz=10.0 #4682b4 B | Comment:
+x=  29.9 y= 749.6 sz=10.0 black     | Date Created: 30-Sep-2024 08:27 (UTC)
+x= 506.4 y= 749.6 sz=10.0 black     | Page 51 of 112
+
+--- page 58 of 112 (layout cluster covers ~23 pages) ---
+x= 235.9 y=  39.1 sz=20.0 #4682b4 B | Annotated CRF
+x=  29.9 y=  71.2 sz=11.0 black   B | Study, Site:
+x= 238.7 y=  71.2 sz=11.0 black   B | Group, Visit:
+x= 445.2 y=  71.2 sz=11.0 black   B | Slot:
+x=  29.9 y=  93.9 sz=11.0 black   B | Schedule Category & Name:
+x= 167.7 y=  93.9 sz=11.0 black     | QSC302573, 03 - Screening Draft v0.1
+x=  29.9 y= 116.4 sz=10.0 #4682b4 B | Timepoint
+x= 167.7 y= 116.4 sz=10.0 #4682b4 B | Activity
+x= 488.4 y= 116.4 sz=10.0 #4682b4 B | Line #
+x=  29.9 y= 133.4 sz=10.0 black     | _ _ - _ _ _ - _ _ _ _
+x= 116.7 y= 133.4 sz=10.0 black     | _ _ : _ _
+x= 167.7 y= 133.4 sz=10.0 black   B | Actual Attempt (Lifetime)
+x=  29.9 y= 145.6 sz=10.0 black     | dd - MMM - yyyy
+x= 116.7 y= 145.6 sz=10.0 black     | HH:mm
+x= 167.7 y= 157.7 sz=10.0 black   B | A potentially self-injurious act committed with at least some wish to die, as a result of act.
+x= 167.7 y= 169.9 sz=10.0 black   B | Behaviour was in part thought of as method to kill oneself. Intent does not have to be 100%. If
+x= 167.7 y= 182.1 sz=10.0 black   B | there is any intent/desire to die associated with the act, then it can be considered an actual
+x= 167.7 y= 194.2 sz=10.0 black   B | suicide attempt. There does not have to be any injury or harm, just the potential for injury or
+x= 167.7 y= 206.4 sz=10.0 black   B | harm. If person pulls trigger while gun is in mouth but gun is broken so no injury results, this is
+x= 167.7 y= 218.6 sz=10.0 black   B | considered an attempt.
+x= 167.7 y= 230.7 sz=10.0 black   B | Inferring Intent: Even if an individual denies intent/wish to die, it may be inferred clinically from
+x= 167.7 y= 242.9 sz=10.0 black   B | the behaviour or circumstances. For example, a highly lethal act that is clearly not an accident
+x= 167.7 y= 255.1 sz=10.0 black   B | so no other intent but suicide can be inferred (e.g. gunshot to head, jumping from window of a
+x= 167.7 y= 267.2 sz=10.0 black   B | high floor/storey). Also, if someone denies intent to die, but they thought that what they did
+x= 167.7 y= 279.4 sz=10.0 black   B | could be lethal, intent
+x= 167.7 y= 291.6 sz=10.0 black   B | maybe inferred.
+x= 167.7 y= 303.7 sz=10.0 black   B | (Have you made a suicide attempt?
+x= 167.7 y= 315.9 sz=10.0 black   B | Have you done anything to harm yourself?
+x= 167.7 y= 328.1 sz=10.0 black   B | Have you done anything dangerous where you could have died?  (What did you do?  Did you
+x= 167.7 y= 340.3 sz=10.0 black   B | ___ as a way to end your life?  Did you want to die (even a little) when you___?  Were you
+x= 167.7 y= 352.4 sz=10.0 black   B | trying to end your life when you___?  Or did you think it was possible you could have died
+x= 167.7 y= 364.6 sz=10.0 black   B | from___?)
+x= 167.7 y= 376.8 sz=10.0 black   B | Or did you do it purely for other reasons / without ANY intention of killing yourself (like to
+x= 167.7 y= 388.9 sz=10.0 black   B | relieve stress, feel better, get sympathy, or get something else to happen)? (Self-Injurious
+x= 167.7 y= 401.1 sz=10.0 black   B | Behaviour without suicidal intent))
+x=  30.9 y= 416.3 sz=10.0 #4682b4 B | Staff Initials:
+x= 167.7 y= 432.3 sz=10.0 #4682b4 B | Answer(s):
+x= 238.7 y= 432.3 sz=10.0 black     | Yes (Specify) ______________________________ (500 char. max.) (Activates
+x= 238.7 y= 444.4 sz=10.0 black     | Line  171, 172, 173, 174, 175, 176, 177, 178, 179)
+x= 238.7 y= 458.6 sz=10.0 black     | [QSORRES] SAS:[Name=QSORRES, Length=500, DataType=Char]
+x= 238.7 y= 475.6 sz=10.0 black     | O No
+x= 238.7 y= 492.6 sz=10.0 black     | [QSORRES] SAS:[Name=QSORRES, Length=500, DataType=Char]
+x=  29.
+<...page truncated...>
+
+--- page 69 of 112 (layout cluster covers ~2 pages) ---
+x= 235.9 y=  39.1 sz=20.0 #4682b4 B | Annotated CRF
+x=  29.9 y=  71.2 sz=11.0 black   B | Study, Site:
+x= 238.7 y=  71.2 sz=11.0 black   B | Group, Visit:
+x= 445.2 y=  71.2 sz=11.0 black   B | Slot:
+x=  29.9 y=  93.9 sz=11.0 black   B | Schedule Category & Name:
+x= 167.7 y=  93.9 sz=11.0 black     | QSC302573, 03 - Screening Draft v0.1
+x=  29.9 y= 116.4 sz=10.0 #4682b4 B | Timepoint
+x= 167.7 y= 116.4 sz=10.0 #4682b4 B | Activity
+x= 488.4 y= 116.4 sz=10.0 #4682b4 B | Line #
+x=  29.9 y= 133.4 sz=10.0 black     | Day 0 (0), -00:00.00
+x= 167.7 y= 133.4 sz=10.0 black   B | Identifiers: GP Report Date #1
+x= 488.4 y= 133.4 sz=10.0 black     | 180.0
+x=  29.9 y= 150.4 sz=10.0 black     | _ _ - _ _ _ - _ _ _ _
+x= 116.7 y= 150.4 sz=10.0 black     | _ _ : _ _
+x= 167.7 y= 150.4 sz=10.0 black   B | Date of GP report
+x=  29.9 y= 162.6 sz=10.0 black     | dd - MMM - yyyy
+x= 116.7 y= 162.6 sz=10.0 black     | HH:mm
+x=  30.9 y= 177.7 sz=10.0 #4682b4 B | Staff Initials:
+x= 167.7 y= 193.7 sz=10.0 #4682b4 B | Answer(s):
+x= 238.7 y= 193.7 sz=10.0 black     | Date _  _  -  _  _  _  -  _  _  _  _ (dd-MMM-yyyy)
+x=  29.9 y= 210.7 sz=10.0 #4682b4 B | Comment:
+x=  29.9 y= 233.4 sz=10.0 black     | Day 0 (0), -00:00.00
+x= 167.7 y= 233.4 sz=10.0 black   B | Identifiers: Previous Study Participation #1
+x= 488.4 y= 233.4 sz=10.0 black     | 181.0
+x=  29.9 y= 250.5 sz=10.0 black     | _ _ - _ _ _ - _ _ _ _
+x= 116.7 y= 250.5 sz=10.0 black     | _ _ : _ _
+x= 167.7 y= 250.5 sz=10.0 black   B | Has the participant taken part in a study at Quotient before?
+x=  29.9 y= 262.6 sz=10.0 black     | dd - MMM - yyyy
+x= 116.7 y= 262.6 sz=10.0 black     | HH:mm
+x=  30.9 y= 277.8 sz=10.0 #4682b4 B | Staff Initials:
+x= 167.7 y= 293.8 sz=10.0 #4682b4 B | Answer(s):
+x= 238.7 y= 293.8 sz=10.0 black     | O Yes (Activates Line  182)
+x= 238.7 y= 310.8 sz=10.0 black     | O No (Activates Line  183)
+x=  29.9 y= 327.8 sz=10.0 #4682b4 B | Comment:
+x=  29.9 y= 350.5 sz=10.0 black     | Day 0 (0), -00:00.00
+x= 167.7 y= 350.5 sz=10.0 black   B | Identifiers: GP Report Within 24 Months #1
+x= 488.4 y= 350.5 sz=10.0 black     | 182.0 (hidden)
+x=  29.9 y= 367.5 sz=10.0 black     | _ _ - _ _ _ - _ _ _ _
+x= 116.7 y= 367.5 sz=10.0 black     | _ _ : _ _
+x= 167.7 y= 367.5 sz=10.0 black   B | Confirm GP report is dated within 24 months
+x=  29.9 y= 379.6 sz=10.0 black     | dd - MMM - yyyy
+x= 116.7 y= 379.6 sz=10.0 black     | HH:mm
+x=  30.9 y= 394.8 sz=10.0 #4682b4 B | Staff Initials:
+x= 167.7 y= 410.8 sz=10.0 #4682b4 B | Answer(s):
+x= 238.7 y= 410.8 sz=10.0 black     | O Yes
+x= 238.7 y= 427.9 sz=10.0 black     | O No (Comment Required)
+x=  29.9 y= 444.9 sz=10.0 #4682b4 B | Comment:
+x=  29.9 y= 467.5 sz=10.0 black     | Day 0 (0), -00:00.00
+x= 167.7 y= 467.5 sz=10.0 black   B | Identifiers: GP Report Within 12 Months #1
+x= 488.4 y= 467.5 sz=10.0 black     | 183.0 (hidden)
+x=  29.9 y= 484.5 sz=10.0 black     | _ _ - _ _ _ - _ _ _ _
+x= 116.7 y= 484.5 sz=10.0 black     | _ _ : _ _
+x= 167.7 y= 484.5 sz=10.0 black   B | Confirm GP report is dated within 12 months
+x=  29.9 y= 496.7 sz=10.0 black     | dd - MMM - yyyy
+x= 116.7 y= 496.7 sz=10.0 black     | HH:mm
+x=  30.9 y= 511.9 sz=10.0 #4682b4 B | Staff Initials:
+x= 167.7 y= 527.9 sz=10.0 #4682b4 B | Answer(s):
+x= 238.7 y= 527.9 sz=10.0 black     | O Yes
+x= 238.7 y= 544.9 sz=10.0 black     | O No (Comment Required)
+x=  29.9 y= 561.9 sz=10.0 #4682b4 B | Comment:
+x=  29.9 y= 584.5 sz=10.0 black     | Day 0 (0), -00:00.00
+x= 167.7 y= 584.5 sz=10.0 black   B | Identifiers: TOPS check #1
+x= 488.4 y= 584.5 sz=10.0 black     | 184.0
+x=  29.9 y= 601.6 sz=10.0 black   
+<...page truncated...>
+
+--- page 78 of 112 (layout cluster covers ~8 pages) ---
+x= 235.9 y=  39.1 sz=20.0 #4682b4 B | Annotated CRF
+x=  29.9 y=  71.2 sz=11.0 black   B | Study, Site:
+x= 238.7 y=  71.2 sz=11.0 black   B | Group, Visit:
+x= 445.2 y=  71.2 sz=11.0 black   B | Slot:
+x=  29.9 y=  93.9 sz=11.0 black   B | Schedule Category & Name:
+x= 167.7 y=  93.9 sz=11.0 black     | QSC302573, Medical History Draft
+x=  29.9 y= 116.4 sz=10.0 #4682b4 B | Timepoint
+x= 167.7 y= 116.4 sz=10.0 #4682b4 B | Activity
+x= 488.4 y= 116.4 sz=10.0 #4682b4 B | Line #
+x=  30.9 y= 134.4 sz=10.0 #4682b4 B | Staff Initials:
+x= 167.7 y= 150.4 sz=10.0 #4682b4 B | Answer(s):
+x= 238.7 y= 150.4 sz=10.0 black     | Date _  _  -  _  _  _  -  _  _  _  _ (dd-MMM-yyyy)
+x= 238.7 y= 167.4 sz=10.0 black     | [MHENDAT] SAS:[Name=MHENDAT, Length=50, DataType=Char]
+x=  29.9 y= 184.4 sz=10.0 #4682b4 B | Comment:
+x=  29.9 y= 207.1 sz=10.0 black     | Day 0 (0), -00:00.00
+x= 167.7 y= 207.1 sz=10.0 black   B | Medical History: Details #1
+x= 488.4 y= 207.1 sz=10.0 black     | 6.0
+x=  29.9 y= 224.1 sz=10.0 black     | _ _ - _ _ _ - _ _ _ _
+x= 116.7 y= 224.1 sz=10.0 black     | _ _ : _ _
+x= 167.7 y= 224.1 sz=10.0 black   B | What are the Medical History event or condition details?
+x=  29.9 y= 236.3 sz=10.0 black     | dd - MMM - yyyy
+x= 116.7 y= 236.3 sz=10.0 black     | HH:mm
+x=  30.9 y= 251.5 sz=10.0 #4682b4 B | Staff Initials:
+x= 167.7 y= 267.5 sz=10.0 #4682b4 B | Answer(s):
+x= 238.7 y= 267.5 sz=10.0 black     | ______________________________ (200 char. max.)
+x= 238.7 y= 284.5 sz=10.0 black     | [MHTERM1] SAS:[Name=MHTERM1, Length=200, DataType=Char]
+x=  29.9 y= 301.4 sz=10.0 #4682b4 B | Comment:
+x=  29.9 y= 324.1 sz=10.0 black     | Day 0 (0), -00:00.00
+x= 167.7 y= 324.1 sz=10.0 black   B | Medical History: Body System Other #1
+x= 488.4 y= 324.1 sz=10.0 black     | 7.0 (hidden)
+x=  29.9 y= 341.1 sz=10.0 black     | _ _ - _ _ _ - _ _ _ _
+x= 116.7 y= 341.1 sz=10.0 black     | _ _ : _ _
+x= 167.7 y= 341.1 sz=10.0 black   B | Other Body System, Specify
+x=  29.9 y= 353.3 sz=10.0 black     | dd - MMM - yyyy
+x= 116.7 y= 353.3 sz=10.0 black     | HH:mm
+x=  30.9 y= 368.5 sz=10.0 #4682b4 B | Staff Initials:
+x= 167.7 y= 384.5 sz=10.0 #4682b4 B | Answer(s):
+x= 238.7 y= 384.5 sz=10.0 black     | ______________________________ (100 char. max.)
+x= 238.7 y= 401.5 sz=10.0 black     | [MHCAT_OTH] SAS:[Name=MHCAT_OTH, Length=200, DataType=Char]
+x=  29.9 y= 418.5 sz=10.0 #4682b4 B | Comment:
+x=  29.9 y= 441.4 sz=11.0 black   B | Study, Site:
+x= 238.7 y= 441.4 sz=11.0 black   B | Group, Visit:
+x= 445.2 y= 441.4 sz=11.0 black   B | Slot:
+x=  29.9 y= 464.1 sz=11.0 black   B | Schedule Category & Name:
+x= 167.7 y= 464.1 sz=11.0 black     | QSC302573, Prior and Concomitant Medications Draft
+x=  29.9 y= 486.6 sz=10.0 #4682b4 B | Timepoint
+x= 167.7 y= 486.6 sz=10.0 #4682b4 B | Activity
+x= 488.4 y= 486.6 sz=10.0 #4682b4 B | Line #
+x=  29.9 y= 503.5 sz=10.0 black     | Day 0 (0), -00:00.00
+x= 167.7 y= 503.5 sz=10.0 black   B | Concomitant Medication: CM Term #1
+x= 488.4 y= 503.5 sz=10.0 black     | 1.0
+x=  29.9 y= 520.5 sz=10.0 black     | _ _ - _ _ _ - _ _ _ _
+x= 116.7 y= 520.5 sz=10.0 black     | _ _ : _ _
+x= 167.7 y= 520.5 sz=10.0 black   B | What was the term for the medication taken? (Medication)
+x=  29.9 y= 532.7 sz=10.0 black     | dd - MMM - yyyy
+x= 116.7 y= 532.7 sz=10.0 black     | HH:mm
+x=  30.9 y= 547.9 sz=10.0 #4682b4 B | Staff Initials:
+x= 167.7 y= 563.9 sz=10.0 #4682b4 B | Answer(s):
+x= 238.7 y= 563.9 sz=10.0 black     | ______________________________ (200 char. max.)
+x= 238.7 y= 580.9 sz=10.0 black     | [CMTRT] SAS:[Name=CMTRT, Length=200, DataType=Char]
+x=  29.9 y=
+<...page truncated...>
+
+--- page 89 of 112 (layout cluster covers ~5 pages) ---
+x= 235.9 y=  39.1 sz=20.0 #4682b4 B | Annotated CRF
+x=  29.9 y=  71.2 sz=11.0 black   B | Study, Site:
+x= 238.7 y=  71.2 sz=11.0 black   B | Group, Visit:
+x= 445.2 y=  71.2 sz=11.0 black   B | Slot:
+x=  29.9 y=  93.9 sz=11.0 black   B | Schedule Category & Name:
+x= 167.7 y=  93.9 sz=11.0 black     | QSC302573, Prior and Concomitant Medications Draft
+x=  29.9 y= 116.4 sz=10.0 #4682b4 B | Timepoint
+x= 167.7 y= 116.4 sz=10.0 #4682b4 B | Activity
+x= 488.4 y= 116.4 sz=10.0 #4682b4 B | Line #
+x= 167.7 y= 133.4 sz=10.0 #4682b4 B | Answer(s):
+x= 238.7 y= 133.4 sz=10.0 black     | O SUBLINGUAL
+x= 238.7 y= 150.4 sz=10.0 black     | [CMROUTE] SAS:[Name=CMROUTE, Length=50, DataType=Char]
+x= 238.7 y= 167.4 sz=10.0 black     | O TOPICAL
+x= 238.7 y= 184.4 sz=10.0 black     | [CMROUTE] SAS:[Name=CMROUTE, Length=50, DataType=Char]
+x= 238.7 y= 201.4 sz=10.0 black     | O ORAL
+x= 238.7 y= 218.4 sz=10.0 black     | [CMROUTE] SAS:[Name=CMROUTE, Length=50, DataType=Char]
+x= 238.7 y= 235.4 sz=10.0 black     | O RECTAL
+x= 238.7 y= 252.5 sz=10.0 black     | [CMROUTE] SAS:[Name=CMROUTE, Length=50, DataType=Char]
+x= 238.7 y= 269.5 sz=10.0 black     | O RESPIRATORY (INHALATION)
+x= 238.7 y= 286.5 sz=10.0 black     | [CMROUTE] SAS:[Name=CMROUTE, Length=50, DataType=Char]
+x= 238.7 y= 303.5 sz=10.0 black     | O SUBCUTANEOUS
+x= 238.7 y= 320.5 sz=10.0 black     | [CMROUTE] SAS:[Name=CMROUTE, Length=50, DataType=Char]
+x= 238.7 y= 337.5 sz=10.0 black     | O SUB DERMAL
+x= 238.7 y= 354.5 sz=10.0 black     | [CMROUTE] SAS:[Name=CMROUTE, Length=50, DataType=Char]
+x= 238.7 y= 371.5 sz=10.0 black     | O OCULAR
+x= 238.7 y= 388.5 sz=10.0 black     | [CMROUTE] SAS:[Name=CMROUTE, Length=50, DataType=Char]
+x= 238.7 y= 405.6 sz=10.0 black     | O AURICULAR (OTIC)
+x= 238.7 y= 422.5 sz=10.0 black     | [CMROUTE] SAS:[Name=CMROUTE, Length=50, DataType=Char]
+x= 238.7 y= 439.5 sz=10.0 black     | O OTHER (Activates Line  33)
+x= 238.7 y= 456.5 sz=10.0 black     | [CMROUTE] SAS:[Name=CMROUTE, Length=50, DataType=Char]
+x= 238.7 y= 473.5 sz=10.0 black     | O N/A
+x= 238.7 y= 490.6 sz=10.0 black     | [CMROUTE] SAS:[Name=CMROUTE, Length=50, DataType=Char]
+x=  29.9 y= 507.6 sz=10.0 #4682b4 B | Comment:
+x=  29.9 y= 530.3 sz=10.0 black     | Day 0 (0), -00:00.00
+x= 167.7 y= 530.3 sz=10.0 black   B | Concomitant Medication: CM Other Route 3 #1
+x= 488.4 y= 530.3 sz=10.0 black     | 33.0 (hidden)
+x=  29.9 y= 547.3 sz=10.0 black     | _ _ - _ _ _ - _ _ _ _
+x= 116.7 y= 547.3 sz=10.0 black     | _ _ : _ _
+x= 167.7 y= 547.3 sz=10.0 black   B | Other Route (Administration Record 3)
+x=  29.9 y= 559.4 sz=10.0 black     | dd - MMM - yyyy
+x= 116.7 y= 559.4 sz=10.0 black     | HH:mm
+x=  30.9 y= 574.6 sz=10.0 #4682b4 B | Staff Initials:
+x= 167.7 y= 590.6 sz=10.0 #4682b4 B | Answer(s):
+x= 238.7 y= 590.6 sz=10.0 black     | ______________________________ (100 char. max.)
+x= 238.7 y= 607.6 sz=10.0 black     | [CMROUTE_OTH] SAS:[Name=CMROUTE_OTH, Length=100, DataType=Char]
+x=  29.9 y= 624.7 sz=10.0 #4682b4 B | Comment:
+x=  29.9 y= 749.6 sz=10.0 black     | Date Created: 30-Sep-2024 08:27 (UTC)
+x= 506.4 y= 749.6 sz=10.0 black     | Page 89 of 112
+
+--- page 109 of 112 (layout cluster covers ~3 pages) ---
+x= 235.9 y=  39.1 sz=20.0 #4682b4 B | Annotated CRF
+x=  29.9 y=  71.2 sz=11.0 black   B | Study, Site:
+x= 238.7 y=  71.2 sz=11.0 black   B | Group, Visit:
+x= 445.2 y=  71.2 sz=11.0 black   B | Slot:
+x=  29.9 y=  93.9 sz=11.0 black   B | Schedule Category & Name:
+x= 167.7 y=  93.9 sz=11.0 black     | QSC302573, Protocol Deviations Draft
+x=  29.9 y= 116.4 sz=10.0 #4682b4 B | Timepoint
+x= 167.7 y= 116.4 sz=10.0 #4682b4 B | Activity
+x= 488.4 y= 116.4 sz=10.0 #4682b4 B | Line #
+x= 167.7 y= 133.4 sz=10.0 #4682b4 B | Answer(s):
+x= 238.7 y= 133.4 sz=10.0 black     | O Early Termination
+x= 238.7 y= 150.4 sz=10.0 black     | [DVVISIT] SAS:[Name=DVVISIT, Length=50, DataType=Char]
+x= 238.7 y= 167.4 sz=10.0 black     | O Completion
+x= 238.7 y= 184.4 sz=10.0 black     | [DVVISIT] SAS:[Name=DVVISIT, Length=50, DataType=Char]
+x= 238.7 y= 201.4 sz=10.0 black     | O Con Med
+x= 238.7 y= 218.4 sz=10.0 black     | [DVVISIT] SAS:[Name=DVVISIT, Length=50, DataType=Char]
+x= 238.7 y= 235.4 sz=10.0 black     | O AE
+x= 238.7 y= 252.5 sz=10.0 black     | [DVVISIT] SAS:[Name=DVVISIT, Length=50, DataType=Char]
+x= 238.7 y= 269.5 sz=10.0 black     | O Unscheduled
+x= 238.7 y= 286.5 sz=10.0 black     | [DVVISIT] SAS:[Name=DVVISIT, Length=50, DataType=Char]
+x=  29.9 y= 303.5 sz=10.0 #4682b4 B | Comment:
+x=  29.9 y= 326.1 sz=10.0 black     | Day 0 (0), -00:00.00
+x= 167.7 y= 326.1 sz=10.0 black   B | Protocol Deviations: Timepoint (Hour) #1
+x= 488.4 y= 326.1 sz=10.0 black     | 5.0
+x=  29.9 y= 343.1 sz=10.0 black     | _ _ - _ _ _ - _ _ _ _
+x= 116.7 y= 343.1 sz=10.0 black     | _ _ : _ _
+x= 167.7 y= 343.1 sz=10.0 black   B | Timepoint (Hour)
+x=  29.9 y= 355.3 sz=10.0 black     | dd - MMM - yyyy
+x= 116.7 y= 355.3 sz=10.0 black     | HH:mm
+x=  30.9 y= 370.5 sz=10.0 #4682b4 B | Staff Initials:
+x= 167.7 y= 386.5 sz=10.0 #4682b4 B | Answer(s):
+x= 238.7 y= 386.5 sz=10.0 black     | O Not Applicable
+x= 238.7 y= 403.5 sz=10.0 black     | [DVHOUR] SAS:[Name=DVHOUR, Length=50, DataType=Char]
+x= 238.7 y= 420.5 sz=10.0 black     | O Pre-dose
+x= 238.7 y= 437.5 sz=10.0 black     | [DVHOUR] SAS:[Name=DVHOUR, Length=50, DataType=Char]
+x= 238.7 y= 454.5 sz=10.0 black     | O 30 mins
+x= 238.7 y= 471.6 sz=10.0 black     | [DVHOUR] SAS:[Name=DVHOUR, Length=50, DataType=Char]
+x= 238.7 y= 488.6 sz=10.0 black     | O 1 hour
+x= 238.7 y= 505.6 sz=10.0 black     | [DVHOUR] SAS:[Name=DVHOUR, Length=50, DataType=Char]
+x= 238.7 y= 522.6 sz=10.0 black     | O 2 hours
+x= 238.7 y= 539.5 sz=10.0 black     | [DVHOUR] SAS:[Name=DVHOUR, Length=50, DataType=Char]
+x= 238.7 y= 556.6 sz=10.0 black     | O 4 hours
+x= 238.7 y= 573.6 sz=10.0 black     | [DVHOUR] SAS:[Name=DVHOUR, Length=50, DataType=Char]
+x= 238.7 y= 590.6 sz=10.0 black     | O 5 hours
+x= 238.7 y= 607.6 sz=10.0 black     | [DVHOUR] SAS:[Name=DVHOUR, Length=50, DataType=Char]
+x= 238.7 y= 624.7 sz=10.0 black     | O 6 hours
+x= 238.7 y= 641.6 sz=10.0 black     | [DVHOUR] SAS:[Name=DVHOUR, Length=50, DataType=Char]
+x= 238.7 y= 658.6 sz=10.0 black     | O 7 hours
+x= 238.7 y= 675.6 sz=10.0 black     | [DVHOUR] SAS:[Name=DVHOUR, Length=50, DataType=Char]
+x= 238.7 y= 692.6 sz=10.0 black     | O 8 hours
+x= 238.7 y= 709.7 sz=10.0 black     | [DVHOUR] SAS:[Name=DVHOUR, Length=50, DataType=Char]
+x=  29.9 y= 749.6 sz=10.0 black     | Date Created: 30-Sep-2024 08:27 (UTC)
+x= 501.3 y= 749.6 sz=10.0 black     | Page 109 of 112
+

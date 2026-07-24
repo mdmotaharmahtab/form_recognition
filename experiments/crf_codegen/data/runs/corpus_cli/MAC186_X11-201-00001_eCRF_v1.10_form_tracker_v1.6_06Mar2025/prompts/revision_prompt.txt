@@ -1,0 +1,93 @@
+Your previous recipe was executed on the SAME representative pages. It did not pass the quality gates.
+
+Previous recipe:
+{
+ "format_id": "mac186_numbered_vardetails_v2",
+ "reasoning": "Same two-page-type layout: content pages tag each field with a bracketed key ([1], [2]) that is either a standalone fragment beside the bold label or embedded in the label/option line ('Yes  [1]', 'Body System Examined  [5]'), while 'Variable details' pages map the same keys to the Name and Export Name columns. The previous join failed because definition pages print no form title, so their rows were attributed to wrong forms and the (form, key) join almost never matched, and keys embedded in label lines were missed entirely; fixed with definition_form_from_carry:true and number_embedded_in_label:true. oid_regex is tightened to capture only the leading all-caps token, so concatenated row text like 'VISDATDate11' yields VISDAT and human text like 'Date' or 'Categorical...' yields no code.",
+ "detect": {
+  "all": [
+   "MAC186_X11_201_00001_eCRF",
+   "^Variable details$",
+   "^Export Name$"
+  ]
+ },
+ "skip_page_if": [
+  "^Visit:$"
+ ],
+ "form_name": {
+  "strategy": "regex",
+  "regex": "^(?!MAC186_)(?!Variable details$)(?!Name$)(?!Export Name$)(?!Type$)(?!Max length$)(?!Categories$)(?!Visit:)([A-Za-z].+)$",
+  "carry_forward": true
+ },
+ "fields": {
+  "engine": "numbered_join",
+  "definition_page_all": [
+   "^Variable details$",
+   "^Export Name$",
+   "^Max length$"
+  ],
+  "definition_form_from_carry": true,
+  "oid_header": "Export Name",
+  "oid_regex": "^([A-Z][A-Z0-9_]*?)(?:[A-Z][a-z].*)?$",
+  "row_number_x_max": 70,
+  "data_number_regex": "\\[(\\d+)\\]",
+  "data_number_x_min": 40,
+  "data_label_x_max": 550,
+  "number_embedded_in_label": true,
+  "label_noise": [
+   "^MAC186_",
+   "^Yes\\b",
+   "^No\\b",
+   "^Version date",
+   "^\\d+$",
+   "^\\[\\d+\\]$",
+   "^Visit:"
+  ]
+ }
+}
+
+Execution metrics:
+{
+ "engine": "numbered_join",
+ "records": 574,
+ "pages_total": 913,
+ "pages_with_fields": 464,
+ "definition_pages_seen": 387,
+ "forms_nonempty_pct": 100,
+ "labels_look_human_pct": 100,
+ "oids_present_pct": 65,
+ "oids_look_like_codes_pct": 60,
+ "distinct_forms": 83
+}
+
+Sample of extracted records (form_name | field_name | field_oid):
+Informed Consent | Informed Consent Obtained | DSYN3
+Informed Consent | Informed Consent Date | DSSTDATDate11
+Informed Consent | Informed Consent Time | DSSTTIMTime5
+Informed Consent | Informed Consent Version | DSICVER21
+Informed Consent | Subject Previously Screened | DSRESCR3
+Informed Consent | Previous Subject Number | DSRENUM4000
+Visit Date | Visit Date | VISDATDate11
+Demographics | American Indian or Alaska Native | RACE41
+Inclusion / Exclusion Criteria | All Eligibility Criteria Met | IEYN3
+Inclusion / Exclusion Criteria | Date Eligibility Criteria Confirmed | IEDATDate11
+Inclusion / Exclusion Criteria | Inclusion / Exclusion Criteria   Inclusion / Exclusion Criteria ID | IECAT9
+Medical History | Relevant Medical History | MHYN3
+Medical History | Condition / Surgical Procedure   Category | MHTERM4000
+Medical History | Start Date | MHSTDATDate11
+Medical History | Ongoing   Stop Date | MHONGO3
+C-SSRS (Screening) - Part 1 | C-SSRS Performed | None
+C-SSRS (Screening) - Part 1 | Reason Not Performed | None
+C-SSRS (Screening) - Part 1 | C-SSRS Date | None
+C-SSRS (Screening) - Part 1 | C-SSRS Time | None
+C-SSRS (Screening) - Part 1 | Rater Initials | None
+C-SSRS (Screening) - Part 1 | 3. Active Suicidal Ideation with Any | None
+C-SSRS (Screening) - Part 1 | 4. Active Suicidal Ideation with Some | None
+C-SSRS (Screening) - Part 1 | 5. Active Suicidal Ideation with | None
+Lifetime - Most Severe Ideation | Lifetime - Most Severe Ideation | None
+Lifetime - Most Severe Ideation | Past 60 Months - Most Severe Ideation | None
+
+Problems to fix (in priority order):
+- Extracted field_oid values often don't look like machine codes (60% ok) - tighten oid_regex.
+
+Emit a corrected recipe now. Same output format: JSON only, no prose. You may switch engine entirely.

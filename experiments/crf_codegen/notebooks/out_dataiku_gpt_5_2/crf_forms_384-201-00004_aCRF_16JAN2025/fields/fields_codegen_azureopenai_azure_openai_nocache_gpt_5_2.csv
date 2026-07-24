@@ -1,0 +1,398 @@
+form_name,field_name,page
+AE / CM,Were any adverse events experienced?,3
+AE / CM,Start date and time,3
+AE / CM,Ongoing?,3
+AE / CM,End date and time,3
+AE / CM,Adverse event term,3
+AE / CM,Severity,4
+AE / CM,Relationship to investigational product,4
+AE / CM,Action taken with investigational product,4
+AE / CM,Was a concomitant medication given?,4
+AE / CM,event?,4
+AE / CM,Other action taken,4
+AE / CM,Outcome,4
+AE / CM,Was the adverse event an SAE?,5
+AE / CM,congenital anomaly or birth defect?,5
+AE / CM,significant disability or incapacity?,5
+AE / CM,Did the serious adverse event result in death?,5
+AE / CM,Death date,5
+AE / CM,Is the serious adverse event life threatening?,6
+AE / CM,covered by other serious criteria?,6
+AE / CM,Concomitant medication or therapy,6
+AE / CM,Route of administration,6
+AE / CM,Total dose,6
+AE / CM,Dose form,7
+AE / CM,Frequency,7
+AE / CM,Administration start date and time,7
+AE / CM,Administration ongoing?,7
+AE / CM,Administration end date and time,7
+Blood Collection - PGx (Predose),PGx collection date and time,9
+Blood Collection - PK SEP,PK SEP collection date and time,10
+Blood Collection - PK SEP/PD Creatine,PK SEP collection date and time,11
+Blood Collection - PK SEP/PD Creatinine/Safety Day 1,PK SEP collection date and time,12
+Blood Collection - PK SEP/PK Quinidine,PK SEP collection date and time,13
+Blood Collection - PK SEP/PK Quinidine/Safety Day 7,PK SEP collection date and time,14
+C-SSRS - Baseline/Screening,Date and Time of Collection,15
+C-SSRS - Baseline/Screening,sleep and not wake up? (Lifetime).,15
+C-SSRS - Baseline/Screening,sleep and not wake up? (Past 6 Months).,15
+C-SSRS - Baseline/Screening,"If yes, describe:",15
+C-SSRS - Baseline/Screening,(Lifetime).,15
+3. Active Suicidal Ideation with Any Methods (Not Plan),"If yes, describe:",16
+3. Active Suicidal Ideation with Any Methods (Not Plan),(Lifetime).,16
+3. Active Suicidal Ideation with Any Methods (Not Plan),(Past 6 Months).,16
+3. Active Suicidal Ideation with Any Methods (Not Plan),acting on them? (Lifetime).,16
+5. Active Suicidal Ideation with Specific Plan and Intent,acting on them? (Past 6 Months).,17
+5. Active Suicidal Ideation with Specific Plan and Intent,"If yes, describe:",17
+5. Active Suicidal Ideation with Specific Plan and Intent,(Lifetime).,17
+5. Active Suicidal Ideation with Specific Plan and Intent,(Past 6 Months).,17
+5. Active Suicidal Ideation with Specific Plan and Intent,Most severe ideation. (Lifetime).,17
+5. Active Suicidal Ideation with Specific Plan and Intent,Description of most severe ideation. (Lifetime).,17
+5. Active Suicidal Ideation with Specific Plan and Intent,Most severe ideation. (Past 6 Months).,18
+5. Active Suicidal Ideation with Specific Plan and Intent,Description of most severe ideation. (Past 6 Months).,18
+5. Active Suicidal Ideation with Specific Plan and Intent,Frequency (Lifetime),18
+5. Active Suicidal Ideation with Specific Plan and Intent,Frequency (Past 6 Months),18
+5. Active Suicidal Ideation with Specific Plan and Intent,Duration (Lifetime),18
+5. Active Suicidal Ideation with Specific Plan and Intent,Duration (Past 6 Months),18
+5. Active Suicidal Ideation with Specific Plan and Intent,Controllability (Lifetime),18
+5. Active Suicidal Ideation with Specific Plan and Intent,Controllability (Past 6 Months),18
+5. Active Suicidal Ideation with Specific Plan and Intent,Deterrents (Lifetime),18
+5. Active Suicidal Ideation with Specific Plan and Intent,Reasons for Ideation (Lifetime),19
+5. Active Suicidal Ideation with Specific Plan and Intent,Reasons for Ideation (Past 6 Months),19
+5. Active Suicidal Ideation with Specific Plan and Intent,without suicidal intent),19
+5. Active Suicidal Ideation with Specific Plan and Intent,Total number of actual attempts.,19
+5. Active Suicidal Ideation with Specific Plan and Intent,behavior.,20
+5. Active Suicidal Ideation with Specific Plan and Intent,anything?,20
+5. Active Suicidal Ideation with Specific Plan and Intent,Total number of interrupted attempts.,20
+5. Active Suicidal Ideation with Specific Plan and Intent,yourself before you actually did anything?,20
+5. Active Suicidal Ideation with Specific Plan and Intent,Total number of aborted attempts.,20
+5. Active Suicidal Ideation with Specific Plan and Intent,valuables away or writing a suicide note)?,21
+5. Active Suicidal Ideation with Specific Plan and Intent,Suicidal Behavior:,21
+5. Active Suicidal Ideation with Specific Plan and Intent,Most Recent Attempt Date:,21
+5. Active Suicidal Ideation with Specific Plan and Intent,Actual Lethality/Medical Damage:,21
+5. Active Suicidal Ideation with Specific Plan and Intent,Potential Lethality: Only Answer if Actual Lethality=0,21
+5. Active Suicidal Ideation with Specific Plan and Intent,Most Lethal Attempt Date:,22
+5. Active Suicidal Ideation with Specific Plan and Intent,Initial/First attempt date,22
+5. Active Suicidal Ideation with Specific Plan and Intent,Actual lethality/medical damage.,22
+5. Active Suicidal Ideation with Specific Plan and Intent,Potential Lethality: Only answer if actual lethality = 0,22
+C-SSRS - Since Last Visit,Date and Time of Collection,23
+C-SSRS - Since Last Visit,sleep and not wake up since last visit?,23
+C-SSRS - Since Last Visit,"If yes, describe:",23
+C-SSRS - Since Last Visit,last visit?,23
+"4. Active Suicidal Ideation with Some Intent to Act,","If yes, describe:",24
+"4. Active Suicidal Ideation with Some Intent to Act,",acting on them since last visit?,24
+"4. Active Suicidal Ideation with Some Intent to Act,",carry out this plan?,24
+"4. Active Suicidal Ideation with Some Intent to Act,",Most Severe Ideation,24
+"4. Active Suicidal Ideation with Some Intent to Act,",Description of Ideation,24
+"4. Active Suicidal Ideation with Some Intent to Act,",Frequency,25
+"4. Active Suicidal Ideation with Some Intent to Act,",Duration,25
+"4. Active Suicidal Ideation with Some Intent to Act,",Controllability,25
+"4. Active Suicidal Ideation with Some Intent to Act,",Deterrents,25
+"4. Active Suicidal Ideation with Some Intent to Act,",Reason for Ideation,25
+"4. Active Suicidal Ideation with Some Intent to Act,",without suicidal intent),25
+"4. Active Suicidal Ideation with Some Intent to Act,",Total number of actual attempts.,25
+"4. Active Suicidal Ideation with Some Intent to Act,",behavior?,26
+"4. Active Suicidal Ideation with Some Intent to Act,",something stopped you before you actually did anything?,26
+"4. Active Suicidal Ideation with Some Intent to Act,",Total number of interrupted attempts.,26
+"4. Active Suicidal Ideation with Some Intent to Act,",yourself before you actually did anything?,26
+"4. Active Suicidal Ideation with Some Intent to Act,",Total number of aborted attempts.,27
+"4. Active Suicidal Ideation with Some Intent to Act,",If yes. describe:,27
+"4. Active Suicidal Ideation with Some Intent to Act,",valuables away or writing a suicide note)?,27
+"4. Active Suicidal Ideation with Some Intent to Act,",Suicidal Behavior:,27
+"4. Active Suicidal Ideation with Some Intent to Act,",Suicide:,27
+"4. Active Suicidal Ideation with Some Intent to Act,",Most Lethal Attempt Date:,27
+"4. Active Suicidal Ideation with Some Intent to Act,",Potential Lethality: Only Answer if Actual Lethality=0,28
+CM related to MH,given for,29
+CM related to MH,Concomitant medication or therapy,29
+CM related to MH,Route of administration,29
+CM related to MH,Total dose,29
+CM related to MH,Dose form,29
+CM related to MH,Dose unit,30
+CM related to MH,Frequency,30
+CM related to MH,Administration start date and time,30
+CM related to MH,Administration ongoing?,30
+CM related to MH,Administration end date and time,30
+Concomitant Medications - Screening,Were any concomitant medications taken?,31
+Concomitant Medications - Screening,Concomitant medication or therapy,31
+Concomitant Medications - Screening,Route of administration,31
+Concomitant Medications - Screening,Total dose,31
+Concomitant Medications - Screening,Dose form,31
+Concomitant Medications - Screening,Dose unit,31
+Concomitant Medications - Screening,Frequency,32
+Concomitant Medications - Screening,Administration start date and time,32
+Concomitant Medications - Screening,Administration ongoing?,32
+Concomitant Medications - Screening,Administration end date and time,32
+Concomitant Medications - Screening,Medical History Relation,32
+Demographics,Date of demographic collection,33
+Disposition,Date of volunteer completion or discontinuation,35
+Disposition,Completion/Reason for Non-Completion,35
+Disposition,Date of Death,35
+Disposition,Adverse Event term,35
+Disposition,What randomization criteria did the volunteer not meet?,35
+Disposition,What made the volunteer a lost to follow-up?,35
+Disposition,Why was the volunteer not needed?,36
+Disposition,"Other, Specify:",36
+Disposition,How was the volunteer non-compliant with the study drug?,36
+Disposition,schedule?,36
+Disposition,Reason for physician decision,36
+Disposition,What withdrawal criteria was met?,36
+Disposition,Why was the volunteer discontinued at sponsor request?,36
+Disposition,Why was the study terminated by sponsor?,37
+Disposition,Reason volunteer withdrew consent,37
+Disposition,Why was the subject screen failed?,37
+ECG (RScribe),QTcF,38
+ECG (RScribe),QTcB,38
+ECG (RScribe),ECG Acquisition Date and Time,39
+ECG (RScribe),ECG Interpretation,39
+ECG (RScribe),Clinical Significance Assessed by Investigator,39
+ECG (RScribe) Admission,QTcF,41
+ECG (RScribe) Admission,QTcB,41
+ECG (RScribe) Admission,ECG Acquisition Date and Time,42
+ECG (RScribe) Admission,ECG Interpretation,42
+ECG (RScribe) Admission,Clinical Significance Assessed by Investigator,42
+ECG (RScribe) Screening,QTcF,44
+ECG (RScribe) Screening,QTcB,44
+ECG (RScribe) Screening,ECG Acquisition Date and Time,45
+ECG (RScribe) Screening,ECG Interpretation,45
+ECG (RScribe) Screening,Clinical Significance Assessed by Investigator,45
+ECG (RScribe) Unscheduled,QTcF,47
+ECG (RScribe) Unscheduled,QTcB,47
+ECG (RScribe) Unscheduled,ECG Acquisition Date and Time,48
+ECG (RScribe) Unscheduled,ECG Interpretation,48
+ECG (RScribe) Unscheduled,Clinical Significance Assessed by Investigator,48
+ECG Triplicate (RScribe),QTcF,50
+ECG Triplicate (RScribe),QTcB,50
+ECG Triplicate (RScribe),ECG Acquisition Time,51
+ECG Triplicate (RScribe),ECG Interpretation,51
+ECG Triplicate (RScribe),Clinical Significance Assessed by Investigator,51
+Electrocardiogram 2,QTcF,52
+Electrocardiogram 2,QTcB,52
+Electrocardiogram 2,ECG Acquisition Time,53
+Electrocardiogram 2,ECG Interpretation,53
+Electrocardiogram 2,Clinical Significance Assessed by Investigator,53
+Electrocardiogram 3,QTcF,54
+Electrocardiogram 3,QTcB,54
+Electrocardiogram 3,ECG Acquisition Time,55
+Electrocardiogram 3,ECG Interpretation,55
+Electrocardiogram 3,Clinical Significance Assessed by Investigator,55
+Electrocardiogram 3,What is the Average QTcF?,56
+ECG Triplicate (RScribe) - Baseline,QTcF,57
+ECG Triplicate (RScribe) - Baseline,QTcB,57
+ECG Triplicate (RScribe) - Baseline,ECG Acquisition Time,58
+ECG Triplicate (RScribe) - Baseline,ECG Interpretation,58
+ECG Triplicate (RScribe) - Baseline,Clinical Significance Assessed by Investigator,58
+Genomic ICF,Genomic ICF Version,64
+Genomic ICF,Date and Time of Genomic Informed Consent,64
+Height / Weight / BMI,Date and time of collection,65
+Height / Weight / BMI,Height,65
+Height / Weight / BMI,Weight,65
+Medical History,Does the volunteer have any medical history to report?,66
+Medical History,Reported term for the medical history,66
+Medical History,Start date of medical history event,66
+Medical History,End date of medical history event,66
+Medical History,Is condition ongoing?,66
+Medical History,Clinical significance,66
+Physical Examination - Full,Date and time performed,67
+Physical Examination - Full,Body system,67
+Physical Examination - Full,Examination result,67
+Physical Examination - Full,Clinical significance,67
+Physical Examination - Full,Abnormal findings,67
+Gastrointestinal,Body system,70
+Gastrointestinal,Examination result,70
+Gastrointestinal,Clinical significance,70
+Gastrointestinal,Abnormal findings,70
+Musculoskeletal/Extremities,Abnormal findings,71
+Musculoskeletal/Extremities,Body system,71
+Musculoskeletal/Extremities,Examination result,71
+Musculoskeletal/Extremities,Clinical significance,71
+Urogenital,Clinical significance,72
+Urogenital,Abnormal findings,72
+Urogenital,Body system,72
+Urogenital,Examination result,72
+Urogenital,Other specify,72
+Physical Examination - Screening,Date and time performed,74
+Physical Examination - Screening,Body system,74
+Physical Examination - Screening,Examination result,74
+Physical Examination - Screening,Clinical significance,74
+Physical Examination - Screening,Abnormal findings,74
+Physical Examination - Targeted,Date and time performed,81
+Physical Examination - Targeted,Body system,81
+Physical Examination - Targeted,Examination result,81
+Physical Examination - Targeted,Clinical significance,81
+Physical Examination - Targeted,Abnormal findings,81
+Other,Body system,84
+Other,Other specify,84
+Other,Examination result,84
+Other,Clinical significance,84
+Other,Abnormal findings,84
+Principal Investigator Approval,for this volunteer.,85
+Protocol Deviations,Deviation Date,86
+Protocol Deviations,Deviation visit,86
+Protocol Deviations,Deviation timepoint,86
+Protocol Deviations,Deviation category,86
+Protocol Deviations,Deviation Category Other Specify,86
+Protocol Deviations,Deviation codes,87
+Protocol Deviations,Deviation Code Other Specify,87
+Protocol Deviations,Deviation Description,87
+Protocol Deviations,Deviation severity,87
+Protocol Deviations,Other specify,87
+Randomization,Date and time of randomization,88
+Randomization,Randomization number,88
+Re-Screen,Is this volunteer re-screening?,89
+Re-Screen,Original Screening Number,89
+Study Drug Administration - Quinidine,Date and time of administration,90
+Study Drug Administration - Quinidine,Quantity administered,90
+Study Drug Administration - Quinidine,Comments,91
+Study Drug Administration - SEP-380135,Route of administration,92
+Study Drug Administration - SEP-380135,Date and time of administration,92
+Study Drug Administration - SEP-380135,Drug name given,92
+Study Drug Administration - SEP-380135,Total dose,92
+Study Drug Administration - SEP-380135,Unit,92
+Study Drug Administration - SEP-380135,Formulation of study drug,92
+Study Drug Administration - SEP-380135,Quantity administered,92
+Study Drug Administration - SEP-380135,Was the dose administered per protocol?,92
+Study Drug Administration - SEP-380135,Comments,93
+Subject Eligibility,age (inclusive) at time of consent.,94
+Subject Eligibility,2. Body mass index from 18.0 to 32.0 kg/m2 (inclusive).,94
+Subject Eligibility,"hematology, and serology tests (from screening visit).",94
+Subject Eligibility,follow-up telephone call.,94
+Subject Eligibility,requirements of the trial.,94
+Subject Eligibility,1. Are breast-feeding.,94
+Subject Eligibility,2. Have a positive pregnancy test prior to receiving IMP.,94
+Subject Eligibility,Section 10.3.,94
+Subject Eligibility,last dose of IMP.,94
+Subject Eligibility,to screening.,95
+Subject Eligibility,no liver sequelae.,95
+Subject Eligibility,suspected hypersensitivity to any component of IMP.,95
+Subject Eligibility,the trial site.,95
+Subject Eligibility,tendencies.,95
+Subject Eligibility,blood samples.,95
+Subject Eligibility,the first dose of IMP.,95
+Subject Eligibility,"half-lives, if known,(whichever is longer) prior to screening.",95
+Subject Eligibility,14. Have had previous exposure to SEP-380135.,95
+Subject Eligibility,15. Are currently participating in another clinical trial.,95
+Subject Eligibility,"occupational exposure to pesticides, organicsolvents, etc).",96
+Subject Eligibility,in to the trial site.,96
+Subject Eligibility,the discretion of theinvestigator.,96
+Subject Eligibility,third (confirmatory) measurement may also be required.,96
+Subject Eligibility,21. History of unexplained syncope.,96
+Subject Eligibility,medical monitor and the sponsor’s physician.,96
+Subject Eligibility,coffee) within 72 hours prior to dosing.,96
+Subject Eligibility,cruciferous vegetables) within 72 hours priorto dosing.,96
+Subject Eligibility,St. John’s Wort within 72 hours prior todosing.,96
+Subject Eligibility,SSRS Since Last Visit version.,97
+Subject Eligibility,27. Attempted suicide within 12 months prior to screening.,97
+Subject Eligibility,to the investigator’s judgment.,97
+Subject Eligibility,gastric motility.,97
+Subject Eligibility,history of endocrine tumor is excluded.,97
+Subject Eligibility,dosing day.,97
+Subject Eligibility,and the sponsor’s physician.,97
+Subject Eligibility,admission.,97
+Subject Eligibility,determine eligibility).,97
+Subject Eligibility Result,35. Any type of anemia with hemoglobin 11 g/dL.,98
+Subject Eligibility Result,clinical site staff member.,98
+Subject Eligibility Result,in the trial.,98
+Subject Eligibility Result,Subject eligibility result,98
+Subject Informed Consent,ICF Version,99
+Subject Informed Consent,Date and Time of Informed Consent,99
+Urine Collection - Admission,Urine collection date and time,100
+Urine Collection - Admission,Cotinine Result,100
+Urine Collection - Admission,Cotinine Clinical Significance,100
+Urine Collection - Admission,Amphetamines / Methamphetamines,100
+Urine Collection - Admission,Clinical Significance,100
+Urine Collection - Admission,Barbiturates,100
+Urine Collection - Admission,Benzodiazepines,101
+Urine Collection - Admission,Cocaine,101
+Urine Collection - Admission,Ethanol,101
+Urine Collection - Admission,Methadone,102
+Urine Collection - Admission,Opiates,102
+Urine Collection - Admission,Phencyclidine,102
+Urine Collection - PK - Interval Start (0-2),Collection start date and time,104
+Urine Collection - PK - Interval Start (12-24),Collection start date and time,105
+Urine Collection - PK - Interval Start (2-4),Collection start date and time,106
+Urine Collection - PK - Interval Start (4-8),Collection start date and time,107
+Urine Collection - PK - Interval Start (8-12),Collection start date and time,108
+Urine Collection - PK - Interval Stop (0-2),Date and time of last collection.,109
+Urine Collection - PK - Interval Stop (12-24),Date and time of last collection.,110
+Urine Collection - PK - Interval Stop (2-4),Date and time of last collection.,111
+Urine Collection - PK - Interval Stop (4-8),Date and time of last collection.,112
+Urine Collection - PK - Interval Stop (8-12),Date and time of last collection.,113
+Urine Collection - PK - Spot Collection,Collection start date and time,114
+Urine Collection - Screening,Urine collection date and time,115
+Urine Collection - Screening,Cotinine Result,115
+Urine Collection - Screening,Cotinine Clinical Significance,115
+Urine Collection - Screening,Amphetamines / Methamphetamines,115
+Urine Collection - Screening,Clinical Significance,115
+Urine Collection - Screening,Barbiturates,115
+Urine Collection - Screening,Benzodiazepines,116
+Urine Collection - Screening,Cocaine,116
+Urine Collection - Screening,Ethanol,116
+Urine Collection - Screening,Opiates,117
+Urine Collection - Screening,Phencyclidine,117
+Vital Signs - Orthostatic (3 min Standing),Date and time of collection,118
+Vital Signs - Orthostatic (3 min Standing),Systolic Blood Pressure,118
+Vital Signs - Orthostatic (3 min Standing),Is systolic blood pressure out of range?,118
+Vital Signs - Orthostatic (3 min Standing),Clinical significance,118
+Vital Signs - Orthostatic (3 min Standing),Diastolic Blood Pressure,118
+Vital Signs - Orthostatic (3 min Standing),Is diastolic blood pressure out of range?,118
+Vital Signs - Orthostatic (3 min Standing),Heart Rate,119
+Vital Signs - Orthostatic (3 min Standing),Is heart rate out of range?,119
+Vital Signs - Orthostatic (3 min Standing),Oxygen Saturation,119
+Vital Signs - Orthostatic (3 min Standing),Is oxygen saturation out of range?,119
+Vital Signs - Orthostatic (3 min Standing),Respiratory Rate,120
+Vital Signs - Orthostatic (3 min Standing),Is respiratory rate out of range?,120
+Vital Signs - Orthostatic Screening/Admission (3 min Standing),Date and time of collection,123
+Vital Signs - Orthostatic Screening/Admission (3 min Standing),Systolic Blood Pressure,123
+Vital Signs - Orthostatic Screening/Admission (3 min Standing),Is systolic blood pressure out of range?,123
+Vital Signs - Orthostatic Screening/Admission (3 min Standing),Clinical significance,123
+Vital Signs - Orthostatic Screening/Admission (3 min Standing),Diastolic Blood Pressure,123
+Vital Signs - Orthostatic Screening/Admission (3 min Standing),Is diastolic blood pressure out of range?,123
+Vital Signs - Orthostatic Screening/Admission (3 min Standing),Heart Rate,124
+Vital Signs - Orthostatic Screening/Admission (3 min Standing),Is heart rate out of range?,124
+Vital Signs - Orthostatic Screening/Admission (3 min Standing),Temperature,124
+Vital Signs - Orthostatic Screening/Admission (3 min Standing),Is temperature out of range?,124
+Vital Signs - Orthostatic Screening/Admission (3 min Standing),Oxygen Saturation,125
+Vital Signs - Orthostatic Screening/Admission (3 min Standing),Is oxygen saturation out of range?,125
+Vital Signs - Orthostatic Screening/Admission (3 min Standing),Respiratory Rate,125
+Vital Signs - Orthostatic Screening/Admission (3 min Standing),Is respiratory rate out of range?,125
+Vital signs (3 min standing),Clinical significance,126
+Vital signs (3 min standing),Date and time of collection,126
+Vital signs (3 min standing),Systolic Blood Pressure,126
+Vital signs (3 min standing),Is systolic blood pressure out of range?,126
+Vital signs (3 min standing),Diastolic Blood Pressure,126
+Vital signs (3 min standing),Is diastolic blood pressure out of range?,126
+Vital signs (3 min standing),Heart Rate,127
+Vital signs (3 min standing),Is heart rate out of range?,127
+Vital Signs - Unscheduled,Date and time of collection,128
+Vital Signs - Unscheduled,Systolic Blood Pressure,128
+Vital Signs - Unscheduled,Is systolic blood pressure out of range?,128
+Vital Signs - Unscheduled,Clinical significance,128
+Vital Signs - Unscheduled,Diastolic Blood Pressure,128
+Vital Signs - Unscheduled,Is diastolic blood pressure out of range?,128
+Vital Signs - Unscheduled,Heart Rate,129
+Vital Signs - Unscheduled,Is heart rate out of range?,129
+Vital Signs - Unscheduled,Temperature,129
+Vital Signs - Unscheduled,Is temperature out of range?,129
+Vital Signs - Unscheduled,Oxygen Saturation,130
+Vital Signs - Unscheduled,Is oxygen saturation out of range?,130
+Vital Signs - Unscheduled,Respiratory Rate,130
+Vital Signs - Unscheduled,Is respiratory rate out of range?,130
+Vital Signs - Unscheduled - Orthostatic (3 min Standing),Date and time of collection,132
+Vital Signs - Unscheduled - Orthostatic (3 min Standing),Systolic Blood Pressure,132
+Vital Signs - Unscheduled - Orthostatic (3 min Standing),Is systolic blood pressure out of range?,132
+Vital Signs - Unscheduled - Orthostatic (3 min Standing),Clinical significance,132
+Vital Signs - Unscheduled - Orthostatic (3 min Standing),Diastolic Blood Pressure,132
+Vital Signs - Unscheduled - Orthostatic (3 min Standing),Is diastolic blood pressure out of range?,132
+Vital Signs - Unscheduled - Orthostatic (3 min Standing),Heart Rate,133
+Vital Signs - Unscheduled - Orthostatic (3 min Standing),Is heart rate out of range?,133
+Vital Signs - Unscheduled - Orthostatic (3 min Standing),Respiratory Rate,133
+Vital Signs - Unscheduled - Orthostatic (3 min Standing),Is respiratory rate out of range?,133
+Vital signs (3 min standing) - Unscheduled,Date and time of collection,134
+Vital signs (3 min standing) - Unscheduled,Systolic Blood Pressure,134
+Vital signs (3 min standing) - Unscheduled,Is systolic blood pressure out of range?,134
+Vital signs (3 min standing) - Unscheduled,Clinical significance,134
+Vital signs (3 min standing) - Unscheduled,Diastolic Blood Pressure,134
+Vital signs (3 min standing) - Unscheduled,Is diastolic blood pressure out of range?,134
+Vital signs (3 min standing) - Unscheduled,Heart Rate,135
+Vital signs (3 min standing) - Unscheduled,Is heart rate out of range?,135
+Weight / BMI,Date and time of collection,136
+Weight / BMI,Weight,136

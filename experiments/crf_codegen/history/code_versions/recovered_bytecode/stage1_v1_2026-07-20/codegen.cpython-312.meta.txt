@@ -1,0 +1,424 @@
+# module: /mnt/d/ubuntu/codes/ZS/otsuka/ECS/experiments/recipe_prototype/codegen.py
+# top-level names: ['__doc__', '__future__', 'annotations', 'collections', 'json', 'os', 're', 'subprocess', 'sys', 'tempfile', 'fitz', 'common', 'build_page_lines', 'induction', 'gate_problems', 'gate_warnings', 'load_rep_pages', 'score', 'replay', 'FieldRec', 'ReplayResult', 'path', 'dirname', 'abspath', '__file__', 'HERE', 'CODEGEN_PROMPT', 'CODE_REVISION_TEMPLATE', 'CLUSTER_FEEDBACK_TEMPLATE', 'COVERAGE_CONFIRM_TEMPLATE', 'compile', 'S', '_FENCE', 'extract_source', 'run_extractor', 'build_codegen_prompt', '_load_cluster_meta', 'cluster_stats', 'weak_clusters', '_dump_lines_text', '_spread', 'build_cluster_feedback', 'build_uncovered_feedback', 'validate_generated', 'float', 'AUDIT_NOT_RUN', 'version_score', 'improves', 'build_code_revision_prompt', 'build_coverage_confirm_prompt', 'CONFIRM_TOKEN', 'is_confirm_no_fields', 'AUDIT_PROMPT_TEMPLATE', 'pick_audit_pages', 'build_audit_prompt', 'parse_audit_reply', 'audit_issues', 'audit_problem_lines']
+
+=== module()  [line 1] ===
+  [STR]
+    | Format-agnostic induction via CODE GENERATION - no strategy catalog, no few-shots.
+    | 
+    | Scope: form_name + field_name only. Printed machine codes are NOT extracted;
+    | OID resolution happens downstream by name mapping against the rule library.
+    | 
+    | The LLM sees ONLY:
+    |   - the task (extract form_name / field_name for every field)
+    |   - the input data schema (Line objects with geometry/font attributes)
+    |   - the output contract (function signature + record dict shape)
+    |   - generic quality constraints (the same ones the gates check)
+    |   - the stage-0 representative pages of THIS document
+    | 
+    | It must write the extraction program itself. Nothing in the prompt encodes layout
+    | knowledge from any particular CRF vendor or sample. Generated code runs in a
+    | separate killable process (sandbox_runner.py) and is only accepted if it passes
+    | full-document contract gates; gate warnings and per-cluster coverage go back to
+    | the LLM for a bounded revision loop.
+  [STR]
+    | You are writing a deterministic extraction program for one specific clinical Case Report Form (CRF) PDF document. Below you will find a small sample of REPRESENTATIVE PAGES (one or two per page-layout cluster) from a document that is {n_pages} pages long. The document is highly repetitive: the sampled pages cover its layouts, but the unsampled pages contain different content in the same layouts.
+    | 
+    | Each sampled page is shown as structured text lines with geometry:
+    |     x=<left> y=<top> sz=<font-size> <color-hex or 'black'> <B if bold> | <text>
+    | 
+    | # Your task
+    | 
+    | Write a Python function that will run UNCHANGED over all {n_pages} pages and extract every data-entry field of the CRF:
+    |   - form_name : the CRF form/section the field belongs to
+    |   - field_name: the human-readable field label/question
+    | 
+    | That is the complete output. Some CRFs also print machine codes or technical
+    | annotations near fields - do NOT return those (they are resolved downstream by a
+    | separate system). You may still USE such markings as structural landmarks if that
+    | helps you locate fields reliably.
+    | 
+    | # Runtime contract
+    | 
+    | def extract(pages):
+    |     # pages: list of (page_index_0based, lines) tuples for the ENTIRE document, in
+    |     #        page order. lines is a list of Line objects sorted by y, then x.
+    |     #        NOTE: y-then-x order is NOT reading order on multi-column pages; if the
+    |     #        layout has side-by-side columns, use x coordinates to separate them.
+    |     # Line attributes:
+    |     #   .text  (str, stripped visible text of one visual line)
+    |     #   .x0 .y0 .x1 .y1  (floats; PDF points; origin = top-left of the page)
+    |     #   .size  (float; font size in points; the largest span on the line)
+    |     #   .bold  (bool)
+    |     #   .non_black  (bool; True if any text on the line is printed in color)
+    |     # returns: list of dicts, one per extracted field occurrence:
+    |     #   {{"form_name": str, "field_name": str, "page": int_1based}}
+    | 
+    | # Hard constraints
+    | 
+    | - Pure computation only. These modules are already available: re, math, collections,
+    |   itertools, functools, string, unicodedata, bisect, statistics. You may not import
+    |   anything else, access files/network, or print.
+    | - Deterministic, fast, simple: loops, regexes, coordinate arithmetic. It must
+    |   process all {n_pages} pages in seconds.
+    | - Generalize from STRUCTURE, not content. The unsampled pages contain questions,
+    |   values and section names you have never seen. Never key your logic on specific
+    |   question wording from the samples; key it on geometry (x positions, font sizes,
+    |   color, boldness), on repeated marker/header patterns, and on the SHAPE of text
+    |   (regexes over character classes). The document may be in any language.
+    | - You may keep state across pages (the function receives the whole document) -
+    |   e.g. a form name announced once may govern many following pages.
+    | 
+    | # Quality bar (your program's output is machine-checked before acceptance)
+    | 
+    | - It must extract from every page that carries fields, not just the sampled ones.
+    | - form_name should be non-empty for the large majority of records. If the document
+    |   genuinely prints no form/section names, use the best available section context;
+    |   leave it empty only as a last resort.
+    | - field_name values must be human-readable label text - not machine codes, bare
+    |   numbers, dates, or page furniture (headers/footers/page numbers/legends).
+    | - Answer OPTIONS are not fields: choice values (e.g. Yes / No / Unknown / list
+    |   items - examples here are English, apply the concept in the document's language)
+    |   belong to a field, they are not field_name records themselves.
+    | - No duplicate records for the same (form_name, field_name) pair beyond what the
+    |   document itself repeats.
+    | 
+    | # Reply format
+    | 
+    | Reply with ONLY Python source code (no prose outside code comments). Start with a
+    | comment block (3-6 lines) stating what layout you observed in the samples and the
+    | extraction strategy you chose. Then define extract(pages) plus any helpers.
+    | 
+    | # Representative pages of this document
+    | 
+    | {pages}
+  [STR]
+    | Your extraction program was executed over the FULL document. It did not pass the quality gates.
+    | 
+    | Your previous program:
+    | {code}
+    | 
+    | Execution metrics:
+    | {metrics}
+    | 
+    | Sample of extracted records (pN: form_name | field_name):
+    | {sample}
+    | 
+    | Problems to fix (in priority order):
+    | {problems}
+    | {cluster_feedback}
+    | Rewrite the program now. Same reply format: Python source only, define extract(pages).
+    | Where your program already works, EXTEND it rather than rewriting it - do not lose
+    | coverage on pages that were extracting correctly. Different page layouts may need
+    | different handling inside the same extract() function.
+  [STR]
+    | 
+    | # Per-layout coverage
+    | 
+    | Pages of this document are grouped into layout clusters (structural fingerprint).
+    | Coverage of your program per cluster (clusters your program extracted nothing or
+    | little from are the ones to investigate):
+    | 
+    | {table}
+    | 
+    | # Sample pages from poorly-covered parts of the document (you have NOT seen these before)
+    | 
+    | If these pages contain data-entry fields, add handling for their layout. If they
+    | genuinely carry no fields (title/instructions/legend pages), ignore them - zero
+    | coverage there is correct.
+    | 
+    | {failing_pages}
+  [STR]
+    | You previously wrote the extraction program below for a clinical CRF PDF (task: extract form_name + field_name for every data-entry field; field labels only, never machine codes, answer options, or page furniture). It passed the aggregate quality gates, but substantial parts of the document produced ZERO records. Below are sample pages from those parts (you have not seen these pages before).
+    | 
+    | Your current program:
+    | {code}
+    | 
+    | For each sampled page decide: does this layout carry data-entry fields your program is missing, or is it genuinely field-free (title/TOC/instructions/definitions-only pages)?
+    | 
+    | {cluster_feedback}
+    | 
+    | Reply with EXACTLY one of:
+    | - the single line: CONFIRM_NO_FIELDS
+    |   (meaning: all shown layouts are genuinely field-free; the program is complete), or
+    | - the FULL updated Python program (same reply format: source only, define
+    |   extract(pages)) that keeps existing behavior for covered layouts and ADDS
+    |   handling for the missed ones.
+  [STR] '```(?:python)?\\s*\\n(.*?)```'
+  [STR] 'inf'
+  [STR] 'CONFIRM_NO_FIELDS'
+  [STR]
+    | You are auditing the output of a deterministic extraction program that was run over a clinical CRF PDF. The program's task contract: for every data-entry field on every page, extract form_name (the CRF form/section the field belongs to) and field_name (the human-readable field label/question). Field labels only - machine codes, answer options (Yes/No/choice-list values), filled values, instructions, and page furniture (headers/footers/page numbers/legends) are NOT fields.
+    | 
+    | Below are {k} sampled pages of the document (structured text lines with geometry:
+    | x=<left> y=<top> sz=<font-size> <color> <B if bold> | <text>), each followed by the
+    | records the program extracted FROM THAT PAGE.
+    | 
+    | Audit each page strictly against what is printed on it:
+    | - missed      : data-entry fields visible on the page that were not extracted
+    | - false       : extracted records that are not actually data-entry fields
+    | - wrong_form  : extracted records whose form_name does not match the form/section
+    |                 this page belongs to
+    | 
+    | # Reply format (JSON only, no prose)
+    | 
+    | [
+    |  {{"page": <n>, "missed": ["<field label>", ...], "false": ["<field_name>", ...], "wrong_form": ["<field_name>", ...]}}
+    | ]
+    | 
+    | One object per audited page; empty lists mean that page's extraction is correct.
+    | 
+    | {pages_and_records}
+
+=== extract_source(raw)  [line 167] ===
+  [STR]
+    | Accept both bare source and fenced code blocks.
+
+=== run_extractor(source, pdf_path, timeout_s)  [line 173] ===
+  [STR]
+    | Run generated code over the whole document in a SEPARATE process.
+    | 
+    |     The child (sandbox_runner.py) restricts the namespace; the process boundary is
+    |     what makes a runaway program killable and keeps every run's module state fresh
+    |     (an in-process thread can be neither killed nor isolated - in a long-lived
+    |     notebook kernel that leaks CPU and cross-document state).
+  [STR] 'w'
+  [STR] '.py'
+  [STR] 'utf-8'
+  [STR] 'sandbox_runner.py'
+  [STR] 'generated extractor exceeded '
+  [STR] 's'
+  [STR] 'extractor process died (exit '
+  [STR] '): '
+  [STR] 'replace'
+  [STR]
+    | extractor process produced no valid output: 
+  [STR] 'error'
+  [STR]
+    | generated extractor crashed:
+  [STR] 'records'
+  [STR] 'codegen'
+  [STR] 'n_pages'
+  [STR] 'field_name'
+  [STR] 'page'
+  [STR] 'form_name'
+  [STR] ' of '
+  [STR]
+    |  returned records were malformed (not a dict, or empty field_name)
+
+=== build_codegen_prompt(pdf_path, outdir)  [line 236] ===
+
+=== _load_cluster_meta(outdir)  [line 247] ===
+  [STR] 'clusters.json'
+  [STR] 'utf-8'
+
+=== cluster_stats(result, meta)  [line 252] ===
+  [STR]
+    | Coverage of the extraction per layout cluster (0-based pages in meta).
+    |     Uses PRE-dedup page coverage: dedup keeps only the first occurrence of a
+    |     repeated field, which would make repetition-heavy clusters look uncovered.
+  [STR] 'clusters'
+  [STR] 'pages'
+
+=== <genexpr>(.0)  [line 258] ===
+
+=== <genexpr>(.0)  [line 267] ===
+
+=== weak_clusters(stats, min_pages, coverage_lt)  [line 272] ===
+
+=== <genexpr>(.0)  [line 273] ===
+  [STR] 'n_pages'
+  [STR] 'coverage_pct'
+
+=== <lambda>(s)  [line 274] ===
+  [STR] 'n_pages'
+
+=== _dump_lines_text(lines, max_chars)  [line 277] ===
+  [STR] '#{:06x}'
+  [STR] 'black  '
+  [STR] 'x='
+  [STR] '6.1f'
+  [STR] ' y='
+  [STR] ' sz='
+  [STR] '4.1f'
+  [STR] 'B'
+  [STR] ' | '
+  [STR]
+    | 
+    | <...page truncated...>
+
+=== _spread(items, k)  [line 286] ===
+  [STR]
+    | Deterministically pick up to k items spread across the list.
+
+=== build_cluster_feedback(pdf_path, weak, meta, stats, max_clusters, pages_per_cluster)  [line 294] ===
+  [STR]
+    | Coverage table + dumps of previously-unshown pages from the weakest clusters.
+  [STR] 'representative_pages_1based'
+  [STR] 'clusters'
+  [STR] 'cluster'
+  [STR] 'pages'
+  [STR] '--- page '
+  [STR] ' (cluster '
+  [STR] ', '
+  [STR] 'n_pages'
+  [STR] ' pages like this, '
+  [STR] 'coverage_pct'
+  [STR]
+    | % covered) ---
+
+=== <genexpr>(.0)  [line 301] ===
+  [STR] 'n_pages'
+  [STR] '  cluster '
+  [STR] 'cluster'
+  [STR] '>3'
+  [STR] ': '
+  [STR] '>4'
+  [STR] ' pages, '
+  [STR] 'pages_with_records'
+  [STR] ' with records ('
+  [STR] 'coverage_pct'
+  [STR] '%), '
+  [STR] 'records'
+  [STR] ' records'
+
+=== build_uncovered_feedback(pdf_path, result, meta, uncovered_pct_min, max_pages)  [line 323] ===
+  [STR]
+    | Fallback coverage signal for DEGENERATE clusterings (e.g. every page its own
+    |     cluster): weak_clusters() only sees clusters of >=4 pages, so a document whose
+    |     fingerprint fragments would never surface coverage holes. This samples uncovered
+    |     pages directly, doc-wide, whenever a large share of pages produced nothing.
+  [STR] 'pages'
+  [STR] 'representative_pages_1based'
+  [STR] '--- page '
+  [STR]
+    |  (uncovered) ---
+  [STR] ' of '
+  [STR] ' pages ('
+  [STR]
+    | %) produced no records (page layouts too fragmented for a per-cluster table)
+
+=== validate_generated(pdf_path, raw_reply, outdir)  [line 345] ===
+  [STR]
+    | Run + gate a generated program. Returns:
+    |       problems  - contract blockers (crash / effectively-no-output): must be fixed
+    |       warnings  - quality signals (form pct, label shape, form explosion): feed the
+    |                   revision loop but never permanently reject a document by themselves
+    |       cluster_feedback - coverage holes localized to clusters (or raw pages when the
+    |                   clustering is degenerate), for revision/confirmation prompts
+  [STR] 'codegen'
+  [STR] '(none)'
+  [STR] 'pages'
+  [STR] 'pages_covered_pct'
+  [STR] 'error'
+  [STR] 'Program failed to run: '
+
+=== <genexpr>(.0)  [line 359] ===
+  [STR] 'p'
+  [STR] ': '
+  [STR] ' | '
+
+=== version_score(verdict, audit_issue_count)  [line 390] ===
+  [STR]
+    | Lexicographic quality of one parser version; LOWER is better.
+    | 
+    |     Order of importance:
+    |       1. contract blockers (crash / effectively-no-output)  - dominate everything
+    |       2. page-grounded audit issues                          - the real quality signal
+    |       3. soft gate warnings (corpus-free shape priors)
+    |       4. page coverage (negated)                             - tie-break only
+    |     Audit counts are only comparable when produced on the SAME audit pages;
+    |     the loop controller guarantees that by fixing the page sample once.
+  [STR] 'metrics'
+  [STR] 'problems'
+  [STR] 'warnings'
+  [STR] 'pages_with_fields'
+
+=== improves(best_score, cand_score, best_cov, cand_cov, cov_floor)  [line 407] ===
+  [STR]
+    | Strict improvement over the best version so far.
+    | 
+    |     A candidate that loses more than 10% of covered pages is never an
+    |     improvement, whatever its other numbers: audit issues are counted on a
+    |     handful of pages, page coverage is doc-wide, and a 'fix' that silently
+    |     drops whole layouts must not win on a lower issue count.
+
+=== build_code_revision_prompt(verdict)  [line 423] ===
+  [STR] 'problems'
+  [STR] '- '
+  [STR] 'warnings'
+  [STR] '- (quality warning) '
+  [STR] 'source'
+  [STR] 'metrics'
+  [STR] 'sample'
+  [STR] '- (see coverage feedback below)'
+  [STR] 'cluster_feedback'
+
+=== build_coverage_confirm_prompt(verdict)  [line 435] ===
+  [STR]
+    | For programs that PASS gates but leave whole clusters uncovered.
+    |     Self-contained (includes the program) because transports are stateless.
+  [STR] 'source'
+  [STR] 'cluster_feedback'
+
+=== is_confirm_no_fields(reply)  [line 445] ===
+  [STR]
+    | True only when the token IS the answer - alone on its own line and with no
+    |     program in the reply. A substring test would misread prose that merely
+    |     mentions the token ("I cannot CONFIRM_NO_FIELDS, here is the extension...")
+    |     and silently discard the extension.
+  [STR] 'def extract'
+
+=== <genexpr>(.0)  [line 452] ===
+
+=== pick_audit_pages(outdir, result, max_pages)  [line 483] ===
+  [STR]
+    | Half representative pages, half covered NON-representative pages (1-based).
+    | 
+    |     The non-rep half is the part that tests GENERALIZATION: representative pages
+    |     were visible at induction time, so auditing only those would validate what the
+    |     model already saw. Deterministic (spread picks, no RNG).
+  [STR] 'representative_pages_1based'
+
+=== build_audit_prompt(pdf_path, outdir, result, max_pages, pages)  [line 502] ===
+  [STR]
+    | Pair each sampled page dump with the records the program extracted from it.
+    |     Pass `pages` to re-audit a fixed sample (issue counts are only comparable
+    |     across programs when they are counted on the SAME pages).
+  [STR] '  (no records extracted from this page)'
+  [STR] '--- page '
+  [STR]
+    |  ---
+  [STR]
+    | 
+    | 
+    | Records the program extracted from page 
+  [STR]
+    | :
+
+=== <genexpr>(.0)  [line 515] ===
+  [STR] '  extracted: '
+  [STR] ' | '
+
+=== parse_audit_reply(raw)  [line 525] ===
+  [STR]
+    | First complete JSON array in the reply (balanced parse, not greedy regex -
+    |     prose containing brackets before/after the payload must not corrupt it).
+  [STR] '['
+  [STR] 'no JSON array in audit reply'
+
+=== audit_issues(verdicts)  [line 541] ===
+
+=== <genexpr>(.0)  [line 542] ===
+  [STR] 'missed'
+  [STR] 'false'
+  [STR] 'wrong_form'
+
+=== audit_problem_lines(verdicts)  [line 546] ===
+  [STR] 'page'
+  [STR] '; '
+  [STR] 'Page '
+  [STR] ': '
+  [STR] ' (+'
+  [STR] ' more)'
+
+=== <genexpr>(.0)  [line 555] ===

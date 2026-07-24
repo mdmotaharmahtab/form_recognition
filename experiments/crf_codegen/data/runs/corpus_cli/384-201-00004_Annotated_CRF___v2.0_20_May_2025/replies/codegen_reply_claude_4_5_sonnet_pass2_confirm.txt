@@ -1,0 +1,8 @@
+Looking at the sampled pages:
+
+- **Page 242-243 (cluster 0)**: "Certificate Of Completion" from DocuSign - signature workflow metadata, not CRF data-entry fields
+- **Page 244-245 (cluster 1)**: "Electronic Record and Signature Disclosure" - legal boilerplate text, not CRF data-entry fields
+
+These are DocuSign signature certificate and legal disclosure pages appended to the PDF. They contain zero data-entry fields for the clinical study. The current program correctly ignores them.
+
+CONFIRM_NO_FIELDS

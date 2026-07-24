@@ -1,0 +1,364 @@
+You are configuring a deterministic PDF extraction engine for a clinical Case Report Form (CRF) document. You will see a small sample of REPRESENTATIVE PAGES (one or two per page-layout cluster) from a document that is 1083 pages long. The whole document is repetitive: what you see is representative of everything.
+
+Each page is given as structured text lines with geometry:
+    x=<left> y=<top> sz=<font-size> <color> <B if bold> | <text>
+
+# Your task
+
+Produce a JSON "recipe" that tells the engine how to extract, for EVERY field on EVERY page of the document:
+  - form_name   : the name of the CRF form/section the field belongs to
+  - field_name  : the human-readable field label/question
+  - field_oid   : the machine identifier (OID / SAS name / export name / variable
+                  code) if the document prints one; null if the document is not
+                  annotated with machine codes
+
+# Engines you can parameterise (pick exactly one)
+
+1. "adjacent_annotation" - machine codes are printed on their own annotation lines
+   (often bracketed, often colored) directly next to/under the field label, in the
+   same column. Params: column_x_max, oid_regex (capture group 1 = code),
+   alt_regex/alt_is_primary (a second code on nearby lines), oid_color_non_black,
+   annotation_group_dy, label_max_dy, label_noise (regexes for lines that are
+   never labels).
+2. "anchored_blocks" - each field starts at a repeated anchor row (e.g. a bold
+   'Prefix: Activity #1' line with a number in a far-right column); everything
+   until the next anchor belongs to that field. Params: activity_regex (group 1 =
+   form, group 2 = field), activity_x [min,max], line_number_x_min, oid_regex.
+3. "numbered_join" - two page types per form: content pages print each label with
+   a small integer, definition pages map the same integers to codes in a column
+   under a header. Params: definition_page_all (regexes that all appear on
+   definition pages), oid_header (text of the column header the codes sit under),
+   row_number_x_max, data_number_regex, data_number_x_min, data_label_x_max,
+   label_noise. form_name.strategy must be "regex" for this engine.
+4. "column_table" - definition tables with an explicit header row; label and code
+   are cells of configurable columns. Params: definition_page_regex, row_key_regex,
+   name_header, oid_header, type_header.
+5. "line_pattern" - fallback: a code regex over lines, label = nearest previous
+   line matching label_regex within label_window_lines. Params: code_regex,
+   code_search (true = search inside line), label_regex, label_window_lines,
+   label_noise.
+
+# form_name strategies
+
+- {"strategy":"regex","regex":"^Form:\\s*(.+)$"} - a header line matches a regex (group 1 = name)
+- {"strategy":"colored_font","min_size":14,"carry_forward":true,"noise":[...]} - the form title is the big colored heading; carry_forward repeats the last seen title on continuation pages
+- {"strategy":"font","min_size":14,"carry_forward":true,"noise":[...]} - same but title is not colored
+- for engine anchored_blocks the form name comes from activity_regex group 1 automatically
+
+# Output format (JSON only, no prose)
+
+{
+  "format_id": "<short slug you invent>",
+  "reasoning": "<2-4 sentences: what layout you saw and why you chose the engine>",
+  "detect": {"all": ["<2-3 regexes that identify this layout>"]},
+  "skip_page_if": ["<optional regexes: pages to skip entirely (title/TOC/approval)>"],
+  "form_name": {...},
+  "fields": {"engine": "<one of the 5>", ...params...}
+}
+
+# Rules
+
+- Regexes are Python re syntax inside JSON strings (escape backslashes).
+- Codes are machine identifiers like AESTDAT / QVAL_GENDOTH - short, uppercase,
+  underscores/digits allowed. Human text, dates and option values are NOT codes.
+- Prefer the most specific engine that fits; use line_pattern only if nothing fits.
+- If the document prints NO machine codes at all, still extract form_name +
+  field_name (choose the engine that best yields labels; oid_regex may then match
+  nothing) and say so in "reasoning".
+- Numbers like x/y/size in the dumps are points; use them to set column bounds.
+
+# Representative pages
+
+--- page 1 of 1083 (layout cluster covers ~1 pages) ---
+x= 510.9 y= 117.2 sz= 9.0 black   B | Pack Version
+x= 554.4 y= 131.3 sz= 9.0 black   B | 7.0
+x= 507.4 y= 152.9 sz= 9.0 black   B | Paul Mostioru
+x= 518.9 y= 167.0 sz= 9.0 black   B | 04July2023
+x= 224.5 y= 204.8 sz=24.0 black   B | Annotated CRF
+x= 119.2 y= 284.8 sz=14.0 #1d60a4   | CHANGE HISTORY
+x= 101.2 y= 286.3 sz=15.0 #1d60a4 B | 1
+x= 119.2 y= 314.9 sz=14.0 #1d60a4   | SCHEDULE OF ASSESSMENT
+x= 101.2 y= 316.4 sz=15.0 #1d60a4 B | 2
+x= 119.2 y= 345.0 sz=14.0 #1d60a4   | PAGES
+x= 101.2 y= 346.5 sz=15.0 #1d60a4 B | 3
+x= 159.2 y= 375.1 sz=15.0 #2477cc   | 3.1. Visit Date
+x= 159.2 y= 392.3 sz=15.0 #2477cc   | 3.2. Informed Consent
+x= 159.2 y= 409.6 sz=15.0 #2477cc   | 3.3. FBR Consent
+x= 159.2 y= 426.8 sz=15.0 #2477cc   | 3.4. Demography
+x= 159.2 y= 444.1 sz=15.0 #2477cc   | 3.5. Reproductive Status - Female
+x= 159.2 y= 461.3 sz=15.0 #2477cc   | 3.6. Reproductive Status - Male
+x= 159.2 y= 478.6 sz=15.0 #2477cc   | 3.7. Medical/Psychiatric History
+x= 159.2 y= 495.8 sz=15.0 #2477cc   | 3.8. Body Temperature and Respiratory Rate
+x= 159.2 y= 513.1 sz=15.0 #2477cc   | 3.9. Triplicate Orthostatic BP and HR - Central
+x= 159.2 y= 530.3 sz=15.0 #2477cc   | 3.10. Height and Weight
+x= 159.2 y= 547.6 sz=15.0 #2477cc   | 3.11. Physical Exam
+x= 159.2 y= 564.8 sz=15.0 #2477cc   | 3.12. Triplicate ECG Assessments
+x= 159.2 y= 582.1 sz=15.0 #2477cc   | 3.13. Serology
+x= 159.2 y= 599.3 sz=15.0 #2477cc   | 3.14. Glycated Hemoglobin
+x= 159.2 y= 616.6 sz=15.0 #2477cc   | 3.15. Clinical Laboratory Assessments
+x= 159.2 y= 633.8 sz=15.0 #2477cc   | 3.16. Laboratory results review
+x= 159.2 y= 651.1 sz=15.0 #2477cc   | 3.17. FSH Blood Sample
+x= 159.2 y= 668.3 sz=15.0 #2477cc   | 3.18. Pregnancy test
+x= 159.2 y= 685.6 sz=15.0 #2477cc   | 3.19. Tobacco Use
+x= 159.2 y= 702.8 sz=15.0 #2477cc   | 3.20. Alcohol Use
+x= 271.1 y= 798.3 sz=12.0 black     | Page 1 of 1083
+
+--- page 2 of 1083 (layout cluster covers ~1 pages) ---
+x= 159.2 y= 147.3 sz=15.0 #2477cc   | 3.21. Alcohol Screen - Urine or Breath
+x= 159.2 y= 164.5 sz=15.0 #2477cc   | 3.22. Urine Drug Screen
+x= 159.2 y= 181.8 sz=15.0 #2477cc   | 3.23. Cotinine Screen
+x= 159.2 y= 199.0 sz=15.0 #2477cc   | 3.24. C-SSRS - Screening/Baseline
+x= 159.2 y= 216.3 sz=15.0 #2477cc   | 3.25. C-SSRS - Screening/Baseline - Page 1
+x= 159.2 y= 233.5 sz=15.0 #2477cc   | 3.26. C-SSRS - Screening/Baseline - Page 2
+x= 159.2 y= 250.8 sz=15.0 #2477cc   | 3.27. C-SSRS - Screening/Baseline - Page 3
+x= 159.2 y= 268.0 sz=15.0 #2477cc   | 3.28. C-SSRS - Screening/Baseline - Page 4
+x= 159.2 y= 285.3 sz=15.0 #2477cc   | 3.29. AE and CM prompt
+x= 159.2 y= 302.5 sz=15.0 #2477cc   | 3.30. Inclusion criteria
+x= 159.2 y= 319.8 sz=15.0 #2477cc   | 3.31. Exclusion criteria
+x= 159.2 y= 337.0 sz=15.0 #2477cc   | 3.32. Inclusion criteria
+x= 159.2 y= 354.3 sz=15.0 #2477cc   | 3.33. Exclusion criteria
+x= 159.2 y= 371.5 sz=15.0 #2477cc   | 3.34. Sertraline Titration
+x= 159.2 y= 388.8 sz=15.0 #2477cc   | 3.35. Washout and Sertraline Titration
+x= 159.2 y= 406.0 sz=15.0 #2477cc   | 3.36. End of Screening
+x= 159.2 y= 423.3 sz=15.0 #2477cc   | 3.37. Visit Date
+x= 159.2 y= 440.5 sz=15.0 #2477cc   | 3.38. Drug dispensation- Titration period
+x= 159.2 y= 457.8 sz=15.0 #2477cc   | 3.39. Visit Date
+x= 159.2 y= 475.0 sz=15.0 #2477cc   | 3.40. Drug dispensation- Titration period
+x= 159.2 y= 492.3 sz=15.0 #2477cc   | 3.41. Visit Date
+x= 159.2 y= 509.5 sz=15.0 #2477cc   | 3.42. Triplicate Orthostatic BP and HR - Central
+x= 159.2 y= 526.8 sz=15.0 #2477cc   | 3.43. PK Blood Draw - Sertraline
+x= 159.2 y= 544.0 sz=15.0 #2477cc   | 3.44. Aicure Device - Distribution
+x= 159.2 y= 561.3 sz=15.0 #2477cc   | 3.45. Water Restriction Start Prompt
+x= 159.2 y= 578.5 sz=15.0 #2477cc   | 3.46. Drug administration- Titration Period
+x= 159.2 y= 595.8 sz=15.0 #2477cc   | 3.47. ADT Washout
+x= 159.2 y= 613.0 sz=15.0 #2477cc   | 3.48. IMP Administration - Sertraline
+x= 159.2 y= 630.3 sz=15.0 #2477cc   | 3.49. Water Restriction End Prompt
+x= 159.2 y= 647.5 sz=15.0 #2477cc   | 3.50. AE and CM prompt
+x= 159.2 y= 664.8 sz=15.0 #2477cc   | 3.51. End of Screening
+x= 159.2 y= 682.0 sz=15.0 #2477cc   | 3.52. Visit Date
+x= 159.2 y= 699.2 sz=15.0 #2477cc   | 3.53. Triplicate Orthostatic BP and HR - Central
+x= 271.1 y= 798.3 sz=12.0 black     | Page 2 of 1083
+
+--- page 244 of 1083 (layout cluster covers ~128 pages) ---
+x=  64.2 y= 153.6 sz=16.5 #004c99   | PK Blood Draw - Sertraline
+x= 502.8 y= 210.0 sz=10.5 #999999   | Yes
+x= 536.8 y= 210.0 sz=10.5 #999999   | No
+x=  64.2 y= 211.8 sz= 9.0 black     | Was PK Collection Performed?
+x=  64.2 y= 236.3 sz= 9.0 #ff0000   | [LBYN8]
+x=  64.2 y= 250.4 sz= 9.0 #ff0000   | [TYPE: enumeration (values: Yes, No)]
+x=  64.2 y= 281.3 sz= 9.0 black     | If not performed, Reason:
+x=  64.2 y= 307.2 sz= 9.0 #ff0000   | [LBREASND8]
+x=  64.2 y= 321.3 sz= 9.0 #ff0000   | [TYPE: text]
+x=  64.2 y= 352.2 sz= 9.0 black     | Date of Collection
+x=  64.2 y= 378.2 sz= 9.0 #ff0000   | [LBDAT8]
+x=  64.2 y= 392.3 sz= 9.0 #ff0000   | [TYPE: date]
+x= 264.4 y= 798.3 sz=12.0 black     | Page 244 of 1083
+
+--- page 308 of 1083 (layout cluster covers ~120 pages) ---
+x= 442.4 y= 136.7 sz=10.5 black     | EXCL17
+x= 442.4 y= 162.2 sz=10.5 black     | EXCL18
+x= 442.4 y= 187.7 sz=10.5 black     | EXCL19
+x= 442.4 y= 213.2 sz=10.5 black     | EXCL20
+x= 442.4 y= 238.7 sz=10.5 black     | EXCL21
+x= 442.4 y= 264.2 sz=10.5 black     | EXCL22
+x= 442.4 y= 289.7 sz=10.5 black     | EXCL23
+x= 442.4 y= 315.2 sz=10.5 black     | EXCL24
+x= 442.4 y= 340.7 sz=10.5 black     | EXCL25
+x= 442.4 y= 366.2 sz=10.5 black     | EXCL26
+x= 442.4 y= 391.7 sz=10.5 black     | EXCL27
+x= 442.4 y= 417.2 sz=10.5 black     | EXCL28
+x= 442.4 y= 442.7 sz=10.5 black     | EXCL29
+x=  64.2 y= 473.5 sz= 9.0 #ff0000   | [DSRSN4]
+x=  64.2 y= 487.6 sz= 9.0 #ff0000   | [TYPE: enumeration (values: INCL1, INCL2, INCL3, INCL4, INCL5, INCL6, EXCL1, EXCL2, EXCL3, EXCL4, EXCL5, EXCL6,
+x=  64.2 y= 497.9 sz= 9.0 #ff0000   | EXCL7, EXCL8, EXCL9, EXCL10, EXCL11, EXCL12, EXCL13, EXCL14, EXCL15, EXCL16, EXCL17, EXCL18, EXCL19,
+x=  64.2 y= 508.3 sz= 9.0 #ff0000   | EXCL20, EXCL21, EXCL22, EXCL23, EXCL24, EXCL25, EXCL26, EXCL27, EXCL28, EXCL29)]
+x=  64.2 y= 539.2 sz= 9.0 black     | Specify if: Adverse Event, Physician Decision, Protocol Deviation, Other
+x=  64.2 y= 565.1 sz= 9.0 #ff0000   | [DSTERM4]
+x=  64.2 y= 579.2 sz= 9.0 #ff0000   | [TYPE: text]
+x= 264.4 y= 798.3 sz=12.0 black     | Page 308 of 1083
+
+--- page 318 of 1083 (layout cluster covers ~113 pages) ---
+x=  64.2 y= 153.6 sz=16.5 #004c99   | Triplicate ECG Assessments - Predose
+x= 502.8 y= 210.0 sz=10.5 #999999   | Yes
+x= 536.8 y= 210.0 sz=10.5 #999999   | No
+x=  64.2 y= 211.8 sz= 9.0 black     | Were ECG measurements performed?
+x=  64.2 y= 236.3 sz= 9.0 #ff0000   | [EGPERF]
+x=  64.2 y= 250.4 sz= 9.0 #ff0000   | [TYPE: enumeration (values: Yes, No)]
+x=  64.2 y= 281.3 sz= 9.0 black     | If no, Reason not done
+x=  64.2 y= 307.2 sz= 9.0 #ff0000   | [EGREASND]
+x=  64.2 y= 321.3 sz= 9.0 #ff0000   | [TYPE: text]
+x=  64.2 y= 352.2 sz= 9.0 black     | Date of ECG
+x=  64.2 y= 378.2 sz= 9.0 #ff0000   | [EGDAT]
+x=  64.2 y= 392.3 sz= 9.0 #ff0000   | [TYPE: date]
+x= 478.7 y= 421.4 sz=10.5 #999999   | Predose
+x=  64.2 y= 423.2 sz= 9.0 black     | Timepoint
+x= 442.4 y= 461.9 sz=10.5 black     | N/A
+x= 442.4 y= 487.4 sz=10.5 black     | Predose
+x= 442.4 y= 512.9 sz=10.5 black     | 4h Postdose
+x= 442.4 y= 538.4 sz=10.5 black     | Discharge
+x=  64.2 y= 569.1 sz= 9.0 #ff0000   | [EGTPT]
+x=  64.2 y= 583.2 sz= 9.0 #ff0000   | [TYPE: enumeration (values: N/A, Predose, 4h Postdose, Discharge)]
+x=  64.2 y= 597.3 sz= 9.0 #ff0000   | [Read-only field]
+x=  64.2 y= 628.2 sz= 9.0 black     | Time subject became supine:
+x=  64.2 y= 654.2 sz= 9.0 #ff0000   | [EGTIMSU]
+x=  64.2 y= 668.3 sz= 9.0 #ff0000   | [TYPE: partialtime (hour, minutes)]
+x=  64.2 y= 699.2 sz= 9.0 black     | Time of ECG assessment # 1:
+x=  64.2 y= 725.1 sz= 9.0 #ff0000   | [EGTIM1]
+x=  64.2 y= 739.2 sz= 9.0 #ff0000   | [TYPE: partialtime (hour, minutes)]
+x= 264.4 y= 798.3 sz=12.0 black     | Page 318 of 1083
+
+--- page 364 of 1083 (layout cluster covers ~126 pages) ---
+x=  64.2 y= 134.1 sz= 9.0 black     | Time of Vitals Measurement #1
+x=  64.2 y= 160.0 sz= 9.0 #ff0000   | [VSSTVTIM1]
+x=  64.2 y= 174.1 sz= 9.0 #ff0000   | [TYPE: partialtime (hour, minutes)]
+x=  64.2 y= 205.0 sz= 9.0 black     | Time of Vitals Measurement #2
+x=  64.2 y= 230.9 sz= 9.0 #ff0000   | [VSSTVTIM2]
+x=  64.2 y= 245.0 sz= 9.0 #ff0000   | [TYPE: partialtime (hour, minutes)]
+x=  64.2 y= 276.0 sz= 9.0 black     | Time of Vitals Measurement #3
+x=  64.2 y= 301.9 sz= 9.0 #ff0000   | [VSSTVTIM]
+x=  64.2 y= 316.0 sz= 9.0 #ff0000   | [TYPE: partialtime (hour, minutes)]
+x= 264.4 y= 798.3 sz=12.0 black     | Page 364 of 1083
+
+--- page 402 of 1083 (layout cluster covers ~80 pages) ---
+x=  61.2 y= 124.0 sz=10.5 black     | Suicidal Behaviour
+x= 571.1 y= 124.0 sz=10.5 black     | Since Last Visit
+x=  61.6 y= 148.5 sz= 9.0 black   B | Row 8
+x= 581.3 y= 176.6 sz=10.5 #999999   | Yes
+x= 615.3 y= 176.6 sz=10.5 #999999   | No
+x=  61.6 y= 181.2 sz= 9.0 black   B | Aborted attempt:
+x= 571.5 y= 200.4 sz= 9.0 #ff0000   | [CSS0217]
+x=  61.6 y= 204.1 sz= 9.0 black     | When person begins to take steps toward making a suicide attempt, but stops themselves before they actually have engaged in any self
+x=  61.6 y= 217.0 sz= 9.0 black     | destructive behaviour. Examples are similar to interrupted attempts, except that the individual stops him/herself, instead of being stopped
+x= 571.5 y= 217.0 sz= 9.0 #ff0000   | [TYPE: enumeration (values: Yes, No)]
+x=  61.6 y= 229.8 sz= 9.0 black     | by something else.
+x=  61.6 y= 252.8 sz= 9.0 black   B | Has there been a time when you started to do something to try to end your life but you stopped yourself before you actually did
+x=  61.6 y= 265.6 sz= 9.0 black   B | anything?
+x=  61.6 y= 298.3 sz= 9.0 black   B | Row 9
+x=  61.6 y= 331.0 sz= 9.0 black     | If Yes, Total number of aborted attempts
+x= 571.5 y= 351.7 sz= 9.0 #ff0000   | [CSS0218]
+x= 571.5 y= 368.3 sz= 9.0 #ff0000   | [TYPE: integer (allow zero)]
+x=  61.6 y= 390.9 sz= 9.0 black   B | Row 10
+x=  61.6 y= 423.6 sz= 9.0 black     | If Yes, describe
+x= 571.5 y= 444.2 sz= 9.0 #ff0000   | [CSS0218A]
+x= 571.5 y= 460.8 sz= 9.0 #ff0000   | [TYPE: text]
+x=  61.6 y= 483.5 sz= 9.0 black   B | Row 11
+x= 373.6 y= 565.9 sz=12.0 black     | Page 402 of 1083
+
+--- page 520 of 1083 (layout cluster covers ~113 pages) ---
+x=  64.2 y= 153.6 sz=16.5 #004c99   | Triplicate Orthostatic BP and HR - 1.5h Postdose
+x= 502.8 y= 210.0 sz=10.5 #999999   | Yes
+x= 536.8 y= 210.0 sz=10.5 #999999   | No
+x=  64.2 y= 211.8 sz= 9.0 black     | Were Vital Signs Collected?
+x=  64.2 y= 236.3 sz= 9.0 #ff0000   | [VSPERF]
+x=  64.2 y= 250.4 sz= 9.0 #ff0000   | [TYPE: enumeration (values: Yes, No)]
+x=  64.2 y= 281.3 sz= 9.0 black     | If not collected, reason:
+x=  64.2 y= 307.2 sz= 9.0 #ff0000   | [VSREAS]
+x=  64.2 y= 321.3 sz= 9.0 #ff0000   | [TYPE: text]
+x=  64.2 y= 352.2 sz= 9.0 black     | Collection Date
+x=  64.2 y= 378.2 sz= 9.0 #ff0000   | [VSDAT]
+x=  64.2 y= 392.3 sz= 9.0 #ff0000   | [TYPE: date]
+x= 466.1 y= 421.4 sz=10.5 #999999   | 1.5h Postdose
+x=  64.2 y= 423.2 sz= 9.0 black     | Planned Timepoint
+x= 442.4 y= 461.9 sz=10.5 black     | N/A
+x= 442.4 y= 487.4 sz=10.5 black     | Predose
+x= 442.4 y= 512.9 sz=10.5 black     | 1h postdose
+x= 442.4 y= 538.4 sz=10.5 black     | 1.5h postdose
+x= 442.4 y= 563.9 sz=10.5 black     | 2h postdose
+x= 442.4 y= 589.4 sz=10.5 black     | 2.5h postdose
+x= 442.4 y= 614.9 sz=10.5 black     | 3h postdose
+x= 442.4 y= 640.4 sz=10.5 black     | 4h postdose
+x= 442.4 y= 665.9 sz=10.5 black     | 6h postdose
+x= 442.4 y= 691.4 sz=10.5 black     | 8h postdose
+x=  64.2 y= 722.1 sz= 9.0 #ff0000   | [VSTPT]
+x=  64.2 y= 736.2 sz= 9.0 #ff0000   | [TYPE: enumeration (values: N/A, Predose, 1h postdose, 1.5h postdose, 2h postdose, 2.5h postdose, 3h postdose, 4h postdose, 6h
+x= 264.4 y= 798.3 sz=12.0 black     | Page 520 of 1083
+
+--- page 574 of 1083 (layout cluster covers ~128 pages) ---
+x=  64.2 y= 153.6 sz=16.5 #004c99   | Alcohol Screen - Urine or Breath
+x=  64.2 y= 221.9 sz= 9.0 black   B | Procedure Specification(s):
+x=  64.2 y= 244.6 sz= 9.0 black     | If results are positive, repeat one time. If result remains positive, notify investigator.
+x= 502.8 y= 288.7 sz=10.5 #999999   | Yes
+x= 536.8 y= 288.7 sz=10.5 #999999   | No
+x=  64.2 y= 290.5 sz= 9.0 black     | Was Test Performed?
+x=  64.2 y= 315.0 sz= 9.0 #ff0000   | [LBPERF2]
+x=  64.2 y= 329.1 sz= 9.0 #ff0000   | [TYPE: enumeration (values: Yes, No)]
+x=  64.2 y= 360.0 sz= 9.0 black     | Sample Type
+x= 442.4 y= 398.6 sz=10.5 black     | Urine
+x= 442.4 y= 424.1 sz=10.5 black     | Breath
+x=  64.2 y= 454.9 sz= 9.0 #ff0000   | [LBCAT2]
+x=  64.2 y= 469.0 sz= 9.0 #ff0000   | [TYPE: enumeration (values: Urine, Breath)]
+x=  64.2 y= 499.9 sz= 9.0 black     | If no, Reason Not Done
+x=  64.2 y= 525.8 sz= 9.0 #ff0000   | [LBREAS2]
+x=  64.2 y= 539.9 sz= 9.0 #ff0000   | [TYPE: text]
+x=  64.2 y= 570.9 sz= 9.0 black     | Date of Test
+x=  64.2 y= 596.8 sz= 9.0 #ff0000   | [LBDAT2]
+x=  64.2 y= 610.9 sz= 9.0 #ff0000   | [TYPE: date]
+x=  64.2 y= 641.8 sz= 9.0 black     | Time of Test
+x=  64.2 y= 667.7 sz= 9.0 #ff0000   | [LBTIM2]
+x=  64.2 y= 681.8 sz= 9.0 #ff0000   | [TYPE: partialtime (hour, minutes)]
+x= 459.2 y= 710.9 sz=10.5 #999999   | Negative
+x= 515.8 y= 710.9 sz=10.5 #999999   | Positive
+x=  64.2 y= 712.8 sz= 9.0 black     | Result
+x=  64.2 y= 737.2 sz= 9.0 #ff0000   | [LBORRES2]
+x= 264.4 y= 798.3 sz=12.0 black     | Page 574 of 1083
+
+--- page 582 of 1083 (layout cluster covers ~126 pages) ---
+x=  64.2 y= 134.1 sz= 9.0 black     | Date of Sample
+x=  64.2 y= 160.0 sz= 9.0 #ff0000   | [LBDAT3]
+x=  64.2 y= 174.1 sz= 9.0 #ff0000   | [TYPE: date]
+x=  64.2 y= 205.0 sz= 9.0 black     | Time of Sample
+x=  64.2 y= 230.9 sz= 9.0 #ff0000   | [LBTIM3]
+x=  64.2 y= 245.0 sz= 9.0 #ff0000   | [TYPE: partialtime (hour, minutes)]
+x= 264.4 y= 798.3 sz=12.0 black     | Page 582 of 1083
+
+--- page 610 of 1083 (layout cluster covers ~120 pages) ---
+x=  61.2 y= 124.0 sz=10.5 black     | Intensity of Ideation
+x= 498.3 y= 124.0 sz=10.5 black     | Since Last Visit
+x=  61.6 y= 148.5 sz= 9.0 black   B | Row 1
+x=  61.6 y= 181.2 sz= 9.0 black     | The following features should be rated with respect to the most severe type of ideation (i.e. 1-5 from above, with 1
+x=  61.6 y= 194.0 sz= 9.0 black     | being the least severe and 5 being the most severe). Ask about time he/she was feeling the most suicidal.
+x= 543.2 y= 211.8 sz=10.5 black     | (1) Wish to be dead
+x=  61.6 y= 217.0 sz= 9.0 black   B | Most severe ideation
+x= 543.2 y= 226.8 sz=10.5 black     | (2) Non-specific active suicidal thoughts
+x= 543.2 y= 241.8 sz=10.5 black     | (3) Active suicidal ideation with any method (not plan)
+x= 543.2 y= 256.8 sz=10.5 black     | w/out intent to act
+x= 543.2 y= 271.8 sz=10.5 black     | (4) Active suicidal ideation w/ some intent to act w/out
+x= 543.2 y= 286.8 sz=10.5 black     | specific plan
+x= 543.2 y= 301.8 sz=10.5 black     | (5) Active suicidal ideation w/ specific plan and intent
+x= 498.7 y= 321.1 sz= 9.0 #ff0000   | [CSS0206]
+x= 498.7 y= 337.7 sz= 9.0 #ff0000   | [TYPE: enumeration (values: (1) Wish to be dead, (2) Non-specific active
+x= 498.7 y= 350.6 sz= 9.0 #ff0000   | suicidal thoughts, (3) Active suicidal ideation with any method (not plan) w/
+x= 498.7 y= 363.4 sz= 9.0 #ff0000   | out intent to act, (4) Active suicidal ideation w/ some intent to act w/out
+x= 498.7 y= 376.3 sz= 9.0 #ff0000   | specific plan, (5) Active suicidal ideation w/ specific plan and intent)]
+x=  61.6 y= 398.9 sz= 9.0 black   B | Row 2
+x=  61.6 y= 431.6 sz= 9.0 black   B | Description of Ideation
+x= 498.7 y= 452.2 sz= 9.0 #ff0000   | [CSS0206A]
+x= 498.7 y= 468.9 sz= 9.0 #ff0000   | [TYPE: text]
+x=  61.6 y= 491.5 sz= 9.0 black   B | Row 3
+x= 373.6 y= 565.9 sz=12.0 black     | Page 610 of 1083
+
+--- page 688 of 1083 (layout cluster covers ~80 pages) ---
+x=  61.2 y= 124.0 sz=10.5 black     | Suicidal Behaviour
+x= 571.1 y= 124.0 sz=10.5 black     | Since Last Visit
+x=  61.6 y= 148.5 sz= 9.0 black   B | Row 8
+x= 581.3 y= 176.6 sz=10.5 #999999   | Yes
+x= 615.3 y= 176.6 sz=10.5 #999999   | No
+x=  61.6 y= 181.2 sz= 9.0 black   B | Aborted attempt:
+x= 571.5 y= 200.4 sz= 9.0 #ff0000   | [CSS0217]
+x=  61.6 y= 204.1 sz= 9.0 black     | When person begins to take steps toward making a suicide attempt, but stops themselves before they actually have engaged in any self
+x=  61.6 y= 217.0 sz= 9.0 black     | destructive behaviour. Examples are similar to interrupted attempts, except that the individual stops him/herself, instead of being stopped
+x= 571.5 y= 217.0 sz= 9.0 #ff0000   | [TYPE: enumeration (values: Yes, No)]
+x=  61.6 y= 229.8 sz= 9.0 black     | by something else.
+x=  61.6 y= 252.8 sz= 9.0 black   B | Has there been a time when you started to do something to try to end your life but you stopped yourself before you actually did
+x=  61.6 y= 265.6 sz= 9.0 black   B | anything?
+x=  61.6 y= 298.3 sz= 9.0 black   B | Row 9
+x=  61.6 y= 331.0 sz= 9.0 black     | If Yes, Total number of aborted attempts
+x= 571.5 y= 351.7 sz= 9.0 #ff0000   | [CSS0218]
+x= 571.5 y= 368.3 sz= 9.0 #ff0000   | [TYPE: integer (allow zero)]
+x=  61.6 y= 390.9 sz= 9.0 black   B | Row 10
+x=  61.6 y= 423.6 sz= 9.0 black     | If Yes, describe
+x= 571.5 y= 444.2 sz= 9.0 #ff0000   | [CSS0218A]
+x= 571.5 y= 460.8 sz= 9.0 #ff0000   | [TYPE: text]
+x=  61.6 y= 483.5 sz= 9.0 black   B | Row 11
+x= 373.6 y= 565.9 sz=12.0 black     | Page 688 of 1083
+

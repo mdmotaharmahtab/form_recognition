@@ -1,0 +1,81 @@
+doc,stage,version,severity,code,detail
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_missed,p27: If sexually active does the subject commit to utilizing 2 different approved methods of birth control during the trial and for 30 days after the last dose of IMP?- mark the selected methods below
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_missed,p27: Has any applicable reproductive status and/or medications been transcribed to the Medical History Page and/or Con Med Page?
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_missed,p68: Cotinine
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_missed,p141: Suicide:
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_false_positive,p141: Yes No [CSS0221]
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_false_positive,p312: Treatment [EXTRT1]
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_false_positive,p312: Dose Unit [EXDOSU1]
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_false_positive,p312: Dose Form [EXDOSFRM1]
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_wrong_form,p312: Was Sertraline administered? [EXYN1]
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_wrong_form,"p312: If no, reason [EXRSN1]"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_wrong_form,p312: Date of Administration [EXSTDAT1]
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,1,quality,audit_wrong_form,p312: Time of Administration [EXSTTIM1]
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p19: Visit Date
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p19: Visit Date Visit Date
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p27: Sexually Active?
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p36: Planned Timepoint
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p36: Examination Date
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p36: Evaluator
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p36: HEENT
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p36: Region/Body System HEENT
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p68: Cotinine
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p141: Suicidal behavior was present during the assessment period?
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_false_positive,p141: Suicidal behavior: Suicidal behavior was present during the assessment period?
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_wrong_form,p176: Time Placed in Position
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_wrong_form,p176: Time of Vitals Measurement #3
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p312: Date of Administration
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_wrong_form,p451: Time Placed in Position
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_wrong_form,p451: Time of Vitals Measurement #3
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,2,quality,audit_missed,p511: Route of Administration
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p27: Sexually Active?
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_wrong_form,p27: If sexually active does the subject commit to utilizing 2 different approved methods of birth control during the trial and for 30 days after the last dose of IMP?- mark the selected methods below
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_wrong_form,p27: Vasectomy
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_wrong_form,p27: Tubal ligation
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_wrong_form,p27: Nonhormonal intrauterine device
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_wrong_form,p27: Condom with spermicide
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_wrong_form,p27: Sponge with spermicide
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_wrong_form,p27: Occlusive cap (vaginal diaphragm or cervical/vault cap) with spermicide
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_wrong_form,p27: Has any applicable reproductive status and/or medications been transcribed to the Medical History Page and/or Con Med Page?
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_wrong_form,"p27: If no, reason not transcribed to medical history"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p36: Examination Date
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p36: HEENT
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_false_positive,p36: Region/Body System HEENT
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p54: Urinalysis clinically significant abnormal assay # 1
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p54: Urinalysis abnormal assay # 1 Investigator comment
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_false_positive,"p54: Urobilinogen, Microscopic analysis if indicated)] Urinalysis abnormal assay # 1 Investigator comment"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p68: Cotinine
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_wrong_form,p141: Suicidal behavior was present during the assessment period?
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_wrong_form,p141: Suicide:
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,3,quality,audit_missed,p312: Date of Administration
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p36: Planned Timepoint
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p36: Examination Date
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p36: Evaluator
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_false_positive,p36: Clinically Significant Yes No
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_wrong_form,p36: Was the physical examination performed?
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_wrong_form,p36: Examination Time
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_wrong_form,p36: HEENT
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_wrong_form,p36: Thorax
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_wrong_form,p36: Abdomen
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p46: Chemistry clinically significant abnormal assay # 1:
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_false_positive,"p46: lipoprotein;and; high density lipoprotein), Creatine phosphokinase, Creatinine, Gamma glutamyl transferase, Glucose, Lactate dehydrogenase,"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p68: Cotinine
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_wrong_form,p68: Was Cotinine Screen Performed?
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_wrong_form,p68: If not done reason
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_wrong_form,p68: Sample Type
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_wrong_form,p68: Manufacturer
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_wrong_form,p68: Item #
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_wrong_form,p68: Lot
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_wrong_form,p68: Expiration Date
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_wrong_form,p68: Date of Sample
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_wrong_form,p68: Time of Sample
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p141: Suicidal behavior was present during the assessment period?
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p141: Suicide:
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p312: Treatment
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p312: Dose Unit
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p312: Dose Form
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_missed,p312: Date of Administration
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_wrong_form,p312: Was Sertraline administered?
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_wrong_form,"p312: If no, reason"
+annotatedCRF_33120100246-_v1.0_-17Aug2021,audit,4,quality,audit_wrong_form,p312: Time of Administration
+annotatedCRF_33120100246-_v1.0_-17Aug2021,loop,,quality,stopped_with_open_issues,"stop=plateau, open audit issues=17"

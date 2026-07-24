@@ -1,0 +1,479 @@
+{
+ "stop_reason": "budget",
+ "versions": 5,
+ "best_version": 4,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "error": "generated extractor crashed:\nTraceback (most recent call last):\n  File \"D:\\ubuntu\\codes\\ZS\\otsuka\\ECS\\experiments\\recipe_prototype\\scripts\\sandbox_runner.py\", line 128, in main\n    raw = fn(pages)\n          ^^^^^^^^^\n  File \"<generated_extractor>\", line 233, in extract\n  File \"<generated_extractor>\", line 206, in _label_for_code\nTypeError: unhashable type: 'Line'\n"
+   },
+   "problems": [
+    "Program failed to run: generated extractor crashed:\nTraceback (most recent call last):\n  File \"D:\\ubuntu\\codes\\ZS\\otsuka\\ECS\\experiments\\recipe_prototype\\scripts\\sandbox_runner.py\", line 128, in main\n    raw = fn(pages)\n          ^^^^^^^^^\n  File \"<generated_extractor>\", line 233, in extract\n  File \"<generated_extractor>\", line 206, in _label_for_code\nTypeError: unhashable type: 'Line'\n"
+   ],
+   "warnings": [],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    1,
+    "not_audited",
+    0,
+    0
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "confirm",
+   "outcome": "confirmed_no_fields"
+  },
+  {
+   "version": 2,
+   "kind": "revise_gates",
+   "metrics": {
+    "engine": "codegen",
+    "records": 25,
+    "pages_total": 13,
+    "pages_with_fields": 5,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 5,
+    "fields_per_form": 5.0,
+    "forms_per_100_pages": 38.5,
+    "form_same_page_evidence_records": 25,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 38
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 8,
+   "audit_pages": [
+    9,
+    11,
+    13,
+    15,
+    498,
+    559
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 9,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 11,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 13,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 15,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 498,
+     "missed": [
+      "Time Placed in Position",
+      "Time of Vitals Measurement",
+      "Systolic Blood Pressure (mmHg)",
+      "Systolic Blood Pressure (mmHg)",
+      "Diastolic Blood Pressure (mmHg)",
+      "Heart Rate (bpm)"
+     ],
+     "false": [
+      "Standing",
+      "Difference between Standing and Supine"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 559,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    8,
+    0,
+    -5
+   ],
+   "became_best": true
+  },
+  {
+   "version": 3,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 19,
+    "pages_total": 13,
+    "pages_with_fields": 5,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 5,
+    "fields_per_form": 3.8,
+    "forms_per_100_pages": 38.5,
+    "form_same_page_evidence_records": 18,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 38
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 7,
+   "audit_pages": [
+    9,
+    10,
+    11,
+    13,
+    15,
+    498,
+    518,
+    559
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 9,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 10,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 11,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 13,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 15,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 498,
+     "missed": [
+      "Heart Rate (bpm)",
+      "Time of Vitals Measurement",
+      "Systolic Blood Pressure (mmHg)",
+      "Diastolic Blood Pressure (mmHg)",
+      "Heart Rate (bpm)"
+     ],
+     "false": [
+      "Difference between Standing and Supine"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 518,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 559,
+     "missed": [
+      "Signed by"
+     ],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    7,
+    0,
+    -5
+   ],
+   "became_best": true
+  },
+  {
+   "version": 4,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 14,
+    "pages_total": 13,
+    "pages_with_fields": 5,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 5,
+    "fields_per_form": 2.8,
+    "forms_per_100_pages": 38.5,
+    "form_same_page_evidence_records": 13,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 38
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 16,
+   "audit_pages": [
+    9,
+    11,
+    12,
+    13,
+    15,
+    498,
+    523,
+    559
+   ],
+   "audit_partial": null,
+   "audit_promoted": [
+    523
+   ],
+   "audit_verdicts": [
+    {
+     "page": 9,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 11,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 12,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 13,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 15,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 498,
+     "missed": [
+      "Time of Vitals Measurement",
+      "Heart Rate (bpm)",
+      "Time Placed in Position"
+     ],
+     "false": [
+      "Difference between Standing and Supine"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 523,
+     "missed": [
+      "Number of Brexpiprazole - 2 mg bottles Dispensed",
+      "Bottle Number(s) Brexpiprazole - 3 mg",
+      "Number of Brexpiprazole - 3 mg bottles Dispensed",
+      "Date Bottles Returned",
+      "Number of Sertraline - 50 mg Capsules Returned"
+     ],
+     "false": [],
+     "wrong_form": [
+      "Number of Brexpiprazole - 2 mg Capsules Dispensed (total)",
+      "Number of Brexpiprazole - 3 mg Capsules Dispensed (total)",
+      "Number of Brexpiprazole - 1 mg Capsules Returned",
+      "Number of Brexpiprazole - 2 mg Capsules Returned",
+      "Number of Brexpiprazole - 3 mg Capsules Returned"
+     ]
+    },
+    {
+     "page": 559,
+     "missed": [
+      "Signed by"
+     ],
+     "false": [],
+     "wrong_form": [
+      "ICF was reviewed and verified and the original ICF has been filed in with subject's source documents"
+     ]
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    16,
+    0,
+    -5
+   ],
+   "became_best": true
+  },
+  {
+   "version": 5,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 14,
+    "pages_total": 13,
+    "pages_with_fields": 5,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 5,
+    "fields_per_form": 2.8,
+    "forms_per_100_pages": 38.5,
+    "form_same_page_evidence_records": 13,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 38
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 21,
+   "audit_pages": [
+    9,
+    11,
+    13,
+    14,
+    15,
+    498,
+    523,
+    559
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 9,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 11,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 13,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 14,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 15,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 498,
+     "missed": [
+      "Time of Vitals Measurement",
+      "Time of Vitals Measurement",
+      "Heart Rate (bpm)",
+      "Heart Rate (bpm)",
+      "Time Placed in Position",
+      "Systolic Blood Pressure (mmHg)",
+      "Systolic Blood Pressure (mmHg)",
+      "Diastolic Blood Pressure (mmHg)"
+     ],
+     "false": [
+      "Difference between Standing and Supine"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 523,
+     "missed": [
+      "Number of Brexpiprazole - 2 mg bottles Dispensed",
+      "Bottle Number(s) Brexpiprazole - 3 mg",
+      "Number of Brexpiprazole - 3 mg bottles Dispensed",
+      "Date Bottles Returned",
+      "Number of Sertraline - 50 mg Capsules Returned"
+     ],
+     "false": [],
+     "wrong_form": [
+      "Number of Brexpiprazole - 2 mg Capsules Dispensed (total)",
+      "Number of Brexpiprazole - 3 mg Capsules Dispensed (total)",
+      "Number of Brexpiprazole - 1 mg Capsules Returned",
+      "Number of Brexpiprazole - 2 mg Capsules Returned",
+      "Number of Brexpiprazole - 3 mg Capsules Returned"
+     ]
+    },
+    {
+     "page": 559,
+     "missed": [
+      "Signed by"
+     ],
+     "false": [],
+     "wrong_form": [
+      "ICF was reviewed and verified and the original ICF has been filed in with subject's source documents"
+     ]
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    21,
+    0,
+    -5
+   ],
+   "became_best": false
+  }
+ ]
+}

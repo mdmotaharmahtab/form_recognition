@@ -1,0 +1,186 @@
+x=  36.0 y=  11.5 sz= 9.0 black     | 384-201-00004
+x=  42.0 y=  34.8 sz=12.0 #ffffff   | Subject Eligibility
+x= 498.9 y=  36.6 sz= 9.6 #ffffff   | Origin: CRF
+x=  48.0 y=  55.2 sz= 7.8 #ffffff B | Aliases:
+x=  77.9 y=  55.3 sz= 7.8 #ffffff   | CC Mapping = Inclusion/Exclusion Criteria
+x=  43.5 y=  72.8 sz=10.5 #31708f   | Subject Inclusion Criteria
+x= 398.3 y=  73.4 sz= 8.4 #31708f B | Origin: CRF; Repeating: No; Domain: IE
+x= 249.2 y= 100.7 sz= 7.5 black     | O N/A
+x= 453.5 y= 101.1 sz= 5.6 black   B | INC001
+x=  46.5 y= 101.9 sz= 7.5 black     | 1. Male or female participants between 18 and 55 years of
+x= 453.5 y= 107.7 sz= 5.6 black     | Format: $6
+x= 249.2 y= 109.4 sz= 7.5 black     | O Yes
+x=  46.5 y= 110.6 sz= 7.5 black     | age (inclusive) at time of consent.
+x= 453.5 y= 114.2 sz= 5.6 black     | Data Type: string
+x= 249.2 y= 118.1 sz= 7.5 black     | O No
+x= 453.5 y= 120.8 sz= 5.6 black     | Origin: CRF
+x= 249.2 y= 126.8 sz= 7.5 black     | O Unspecified
+x= 453.5 y= 127.3 sz= 5.6 black     | Description: INC001
+x=  46.5 y= 128.0 sz= 7.5 black     | [INC001]
+x= 453.5 y= 133.8 sz= 5.6 black     | Mandatory?: Yes
+x=  46.5 y= 136.7 sz= 7.5 black     | [SAS Field Name: INC001]
+x= 253.0 y= 139.4 sz= 6.4 #808080   | Code List: IE - Item Met
+x= 453.5 y= 140.3 sz= 5.6 black     | Disallow Future Date: Yes
+x= 249.2 y= 162.1 sz= 7.5 black     | O N/A
+x= 453.5 y= 162.6 sz= 5.6 black   B | INC002
+x=  46.5 y= 167.7 sz= 7.5 black     | 2. Body mass index from 18.0 to 32.0 kg/m2 (inclusive).
+x= 453.5 y= 169.2 sz= 5.6 black     | Format: $6
+x= 249.2 y= 170.8 sz= 7.5 black     | O Yes
+x= 453.5 y= 175.7 sz= 5.6 black     | Data Type: string
+x= 249.2 y= 179.5 sz= 7.5 black     | O No
+x= 453.5 y= 182.2 sz= 5.6 black     | Origin: CRF
+x=  46.5 y= 185.1 sz= 7.5 black     | [INC002]
+x= 249.2 y= 188.2 sz= 7.5 black     | O Unspecified
+x= 453.5 y= 188.8 sz= 5.6 black     | Description: INC002
+x=  46.5 y= 193.8 sz= 7.5 black     | [SAS Field Name: INC002]
+x= 453.5 y= 195.3 sz= 5.6 black     | Mandatory?: Yes
+x= 253.0 y= 200.9 sz= 6.4 #808080   | Code List: IE - Item Met
+x= 453.5 y= 201.8 sz= 5.6 black     | Disallow Future Date: Yes
+x=  46.5 y= 217.3 sz= 7.5 black     | 3. In good health as determined by: a. Medical history b.
+x=  46.5 y= 226.0 sz= 7.5 black     | Physical examination c. Vital signs d. Neurological
+x= 249.2 y= 229.1 sz= 7.5 black     | O N/A
+x= 453.5 y= 229.6 sz= 5.6 black   B | INC003
+x=  46.5 y= 234.7 sz= 7.5 black     | examination e. Electrocardiogram f. Serum chemistry, lipid
+x= 453.5 y= 236.2 sz= 5.6 black     | Format: $6
+x= 249.2 y= 237.8 sz= 7.5 black     | O Yes
+x= 453.5 y= 242.7 sz= 5.6 black     | Data Type: string
+x=  46.5 y= 243.4 sz= 7.5 black     | panel, thyroid panel, coagulation panel, urinalysis,
+x= 249.2 y= 246.5 sz= 7.5 black     | O No
+x= 453.5 y= 249.2 sz= 5.6 black     | Origin: CRF
+x=  46.5 y= 252.1 sz= 7.5 black     | hematology, and serology tests (from screening visit).
+x= 249.2 y= 255.2 sz= 7.5 black     | O Unspecified
+x= 453.5 y= 255.8 sz= 5.6 black     | Description: INC003
+x= 453.5 y= 262.3 sz= 5.6 black     | Mandatory?: Yes
+x= 253.0 y= 267.9 sz= 6.4 #808080   | Code List: IE - Item Met
+x= 453.5 y= 268.8 sz= 5.6 black     | Disallow Future Date: Yes
+x=  46.5 y= 269.5 sz= 7.5 black     | [INC003]
+x=  46.5 y= 278.2 sz= 7.5 black     | [SAS Field Name: INC003]
+x=  46.5 y= 293.0 sz= 7.5 black     | 4. Willing to stay in the clinic for the required period (ie, to
+x= 249.2 y= 296.2 sz= 7.5 black     | O N/A
+x= 453.5 y= 296.7 sz= 5.6 black   B | INC004
+x=  46.5 y= 301.7 sz= 7.5 black     | be hospitalized) and willing to be contacted for the safety
+x= 453.5 y= 303.2 sz= 5.6 black     | Format: $6
+x= 249.2 y= 304.9 sz= 7.5 black     | O Yes
+x= 453.5 y= 309.8 sz= 5.6 black     | Data Type: string
+x=  46.5 y= 310.4 sz= 7.5 black     | follow-up telephone call.
+x= 249.2 y= 313.6 sz= 7.5 black     | O No
+x= 453.5 y= 316.3 sz= 5.6 black     | Origin: CRF
+x= 249.2 y= 322.3 sz= 7.5 black     | O Unspecified
+x= 453.5 y= 322.8 sz= 5.6 black     | Description: INC004
+x=  46.5 y= 327.8 sz= 7.5 black     | [INC004]
+x= 453.5 y= 329.3 sz= 5.6 black     | Mandatory?: Yes
+x= 253.0 y= 334.9 sz= 6.4 #808080   | Code List: IE - Item Met
+x= 453.5 y= 335.9 sz= 5.6 black     | Disallow Future Date: Yes
+x=  46.5 y= 336.5 sz= 7.5 black     | [SAS Field Name: INC004]
+x=  46.5 y= 351.4 sz= 7.5 black     | 5. Ability to provide written, informed consent prior to
+x= 249.2 y= 358.8 sz= 7.5 black     | O N/A
+x= 453.5 y= 359.3 sz= 5.6 black   B | INC005
+x=  46.5 y= 360.1 sz= 7.5 black     | initiation of any trial-related procedures, and ability, in the
+x= 453.5 y= 365.9 sz= 5.6 black     | Format: $6
+x= 249.2 y= 367.5 sz= 7.5 black     | O Yes
+x=  46.5 y= 368.8 sz= 7.5 black     | opinion of the Principal Investigator, to comply with all the
+x= 453.5 y= 372.4 sz= 5.6 black     | Data Type: string
+x= 249.2 y= 376.2 sz= 7.5 black     | O No
+x=  46.5 y= 377.5 sz= 7.5 black     | requirements of the trial.
+x= 453.5 y= 379.0 sz= 5.6 black     | Origin: CRF
+x= 249.2 y= 384.9 sz= 7.5 black     | O Unspecified
+x= 453.5 y= 385.5 sz= 5.6 black     | Description: INC005
+x= 453.5 y= 392.0 sz= 5.6 black     | Mandatory?: Yes
+x=  46.5 y= 394.9 sz= 7.5 black     | [INC005]
+x= 253.0 y= 397.6 sz= 6.4 #808080   | Code List: IE - Item Met
+x= 453.5 y= 398.5 sz= 5.6 black     | Disallow Future Date: Yes
+x=  46.5 y= 403.6 sz= 7.5 black     | [SAS Field Name: INC005]
+x=  43.5 y= 420.1 sz=10.5 #31708f   | Subject Exclusion Criteria
+x= 398.3 y= 420.7 sz= 8.4 #31708f B | Origin: CRF; Repeating: No; Domain: IE
+x= 249.2 y= 447.9 sz= 7.5 black     | O N/A
+x= 453.5 y= 448.4 sz= 5.6 black   B | EXC001
+x=  46.5 y= 453.5 sz= 7.5 black     | 1. Are breast-feeding.
+x= 453.5 y= 455.0 sz= 5.6 black     | Format: $6
+x= 249.2 y= 456.6 sz= 7.5 black     | O Yes
+x= 453.5 y= 461.5 sz= 5.6 black     | Data Type: string
+x= 249.2 y= 465.3 sz= 7.5 black     | O No
+x= 453.5 y= 468.1 sz= 5.6 black     | Origin: CRF
+x=  46.5 y= 470.9 sz= 7.5 black     | [EXC001]
+x= 249.2 y= 474.0 sz= 7.5 black     | O Unspecified
+x= 453.5 y= 474.6 sz= 5.6 black     | Description: EXC001
+x=  46.5 y= 479.6 sz= 7.5 black     | [SAS Field Name: EXC001]
+x= 453.5 y= 481.1 sz= 5.6 black     | Mandatory?: Yes
+x= 253.0 y= 486.7 sz= 6.4 #808080   | Code List: IE - Not Met
+x= 453.5 y= 487.6 sz= 5.6 black     | Disallow Future Date: Yes
+x= 249.2 y= 509.4 sz= 7.5 black     | O N/A
+x= 453.5 y= 509.9 sz= 5.6 black   B | EXC002
+x=  46.5 y= 515.0 sz= 7.5 black     | 2. Have a positive pregnancy test prior to receiving IMP.
+x= 453.5 y= 516.5 sz= 5.6 black     | Format: $6
+x= 249.2 y= 518.1 sz= 7.5 black     | O Yes
+x= 453.5 y= 523.0 sz= 5.6 black     | Data Type: string
+x= 249.2 y= 526.8 sz= 7.5 black     | O No
+x= 453.5 y= 529.5 sz= 5.6 black     | Origin: CRF
+x=  46.5 y= 532.4 sz= 7.5 black     | [EXC002]
+x= 249.2 y= 535.5 sz= 7.5 black     | O Unspecified
+x= 453.5 y= 536.0 sz= 5.6 black     | Description: EXC002
+x=  46.5 y= 541.1 sz= 7.5 black     | [SAS Field Name: EXC002]
+x= 453.5 y= 542.6 sz= 5.6 black     | Mandatory?: Yes
+x= 253.0 y= 548.1 sz= 6.4 #808080   | Code List: IE - Not Met
+x= 453.5 y= 549.1 sz= 5.6 black     | Disallow Future Date: Yes
+x=  46.5 y= 564.6 sz= 7.5 black     | 3. Participants of reproductive potential (PORP)/
+x=  46.5 y= 573.3 sz= 7.5 black     | participants of childbearing potential (POCBP) who do not
+x= 249.2 y= 580.8 sz= 7.5 black     | O N/A
+x= 453.5 y= 581.2 sz= 5.6 black   B | EXC003
+x=  46.5 y= 582.0 sz= 7.5 black     | agree to practice 2 different highly effective methods of
+x= 453.5 y= 587.8 sz= 5.6 black     | Format: $6
+x= 249.2 y= 589.5 sz= 7.5 black     | O Yes
+x=  46.5 y= 590.7 sz= 7.5 black     | birth control or remain fully abstinent from sexual activity
+x= 453.5 y= 594.4 sz= 5.6 black     | Data Type: string
+x= 249.2 y= 598.2 sz= 7.5 black     | O No
+x=  46.5 y= 599.4 sz= 7.5 black     | with the potential for conception, per the guidelines in
+x= 453.5 y= 600.9 sz= 5.6 black     | Origin: CRF
+x= 249.2 y= 606.9 sz= 7.5 black     | O Unspecified
+x= 453.5 y= 607.4 sz= 5.6 black     | Description: EXC003
+x=  46.5 y= 608.1 sz= 7.5 black     | Section 10.3.
+x= 453.5 y= 613.9 sz= 5.6 black     | Mandatory?: Yes
+x= 253.0 y= 619.5 sz= 6.4 #808080   | Code List: IE - Not Met
+x= 453.5 y= 620.5 sz= 5.6 black     | Disallow Future Date: Yes
+x=  46.5 y= 625.5 sz= 7.5 black     | [EXC003]
+x=  46.5 y= 634.2 sz= 7.5 black     | [SAS Field Name: EXC003]
+x=  46.5 y= 649.0 sz= 7.5 black     | 4. Participants who do not agree to refrain from donating
+x= 249.2 y= 652.2 sz= 7.5 black     | O N/A
+x= 453.5 y= 652.6 sz= 5.6 black   B | EXC004
+x=  46.5 y= 657.7 sz= 7.5 black     | sperm or eggs from trial screening through 90 days after
+x= 453.5 y= 659.2 sz= 5.6 black     | Format: $6
+x= 249.2 y= 660.9 sz= 7.5 black     | O Yes
+x= 453.5 y= 665.8 sz= 5.6 black     | Data Type: string
+x=  46.5 y= 666.4 sz= 7.5 black     | the last dose of IMP.
+x= 249.2 y= 669.6 sz= 7.5 black     | O No
+x= 453.5 y= 672.3 sz= 5.6 black     | Origin: CRF
+x= 249.2 y= 678.3 sz= 7.5 black     | O Unspecified
+x= 453.5 y= 678.8 sz= 5.6 black     | Description: EXC004
+x=  46.5 y= 683.8 sz= 7.5 black     | [EXC004]
+x= 453.5 y= 685.3 sz= 5.6 black     | Mandatory?: Yes
+x= 253.0 y= 690.9 sz= 6.4 #808080   | Code List: IE - Not Met
+x= 453.5 y= 691.9 sz= 5.6 black     | Disallow Future Date: Yes
+x=  46.5 y= 692.5 sz= 7.5 black     | [SAS Field Name: EXC004]
+x=  46.5 y= 707.4 sz= 7.5 black     | 5. Participant has any clinically significant unstable medical
+x=  46.5 y= 716.1 sz= 7.5 black     | condition or any clinically significant chronic disease that in
+x=  46.5 y= 724.8 sz= 7.5 black     | the opinion of the investigator, would limit the participant’s
+x=  46.5 y= 733.5 sz= 7.5 black     | ability to complete and/or participate in the study, including
+x= 249.2 y= 741.8 sz= 7.5 black     | O N/A
+x=  46.5 y= 742.2 sz= 7.5 black     | any clinically significant hematological (including deep vein
+x= 453.5 y= 742.3 sz= 5.6 black   B | EXC005
+x= 453.5 y= 748.9 sz= 5.6 black     | Format: $6
+x= 249.2 y= 750.5 sz= 7.5 black     | O Yes
+x=  46.5 y= 750.9 sz= 7.5 black     | thrombosis) or bleeding disorder, renal, metabolic,
+x= 453.5 y= 755.4 sz= 5.6 black     | Data Type: string
+x= 249.2 y= 759.2 sz= 7.5 black     | O No
+x=  46.5 y= 759.6 sz= 7.5 black     | endocrine, pulmonary, gastrointestinal, urological,
+x= 453.5 y= 761.9 sz= 5.6 black     | Origin: CRF
+x= 249.2 y= 767.9 sz= 7.5 black     | O Unspecified
+x=  46.5 y= 768.3 sz= 7.5 black     | cardiovascular, hepatic, neurologic or allergic disease
+x= 453.5 y= 768.4 sz= 5.6 black     | Description: EXC005
+x= 453.5 y= 775.0 sz= 5.6 black     | Mandatory?: Yes
+x=  46.5 y= 777.0 sz= 7.5 black     | (except for untreated seasonal allergies that are
+x= 253.0 y= 780.5 sz= 6.4 #808080   | Code List: IE - Not Met
+x= 453.5 y= 781.5 sz= 5.6 black     | Disallow Future Date: Yes
+x=  46.5 y= 785.7 sz= 7.5 black     | asymptomatic at the time of dosing)
+x=  36.0 y= 817.4 sz= 9.0 black     | Annotated CRF
+x= 276.3 y= 817.4 sz= 9.0 black     | 116 of 238
+x= 445.8 y= 817.4 sz= 9.0 black     | https://drvince.clinspark.com

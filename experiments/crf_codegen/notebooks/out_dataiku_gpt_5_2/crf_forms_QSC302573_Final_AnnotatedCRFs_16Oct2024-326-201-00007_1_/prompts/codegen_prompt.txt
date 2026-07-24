@@ -1,0 +1,325 @@
+You are writing a deterministic extraction program for one specific clinical Case Report Form (CRF) PDF document. Below you will find a small sample of REPRESENTATIVE PAGES (one or two per page-layout cluster) from a document that is 609 pages long. The document is highly repetitive: the sampled pages cover its layouts, but the unsampled pages contain different content in the same layouts.
+
+Each sampled page is shown as structured text lines with geometry:
+    x=<left> y=<top> sz=<font-size> <color-hex or 'black'> <B if bold> | <text>
+
+# Your task
+
+Write a Python function that will run UNCHANGED over all 609 pages and extract every data-entry field of the CRF:
+  - form_name : the CRF form/section the field belongs to
+  - field_name: the human-readable field label/question
+
+That is the complete output. Some CRFs also print machine codes or technical
+annotations near fields - do NOT return those (they are resolved downstream by a
+separate system). You may still USE such markings as structural landmarks if that
+helps you locate fields reliably.
+
+# Runtime contract
+
+def extract(pages):
+    # pages: list of (page_index_0based, lines) tuples for the ENTIRE document, in
+    #        page order. lines is a list of Line objects sorted by y, then x.
+    #        NOTE: y-then-x order is NOT reading order on multi-column pages; if the
+    #        layout has side-by-side columns, use x coordinates to separate them.
+    #        For right-to-left scripts the within-row order is right-to-left, and
+    #        vertical text yields an arbitrary line order - reconstruct reading
+    #        order from the coordinates when the script needs it.
+    # Line attributes:
+    #   .text  (str, stripped visible text of one visual line)
+    #   .x0 .y0 .x1 .y1  (floats; PDF points; origin = top-left of the page)
+    #   .size  (float; font size in points; the largest span on the line)
+    #   .bold  (bool)
+    #   .non_black  (bool; True if any text on the line is printed in color)
+    # returns: list of dicts, one per extracted field occurrence:
+    #   {"form_name": str, "field_name": str, "page": int_1based}
+
+# Hard constraints
+
+- Pure computation only. These modules are already available: re, math, collections,
+  itertools, functools, string, unicodedata, bisect, statistics, json. You may not
+  import anything else, access files/network, or print.
+- Deterministic, fast, simple: loops, regexes, coordinate arithmetic. It must
+  process all 609 pages in seconds.
+- Generalize from STRUCTURE, not content. The unsampled pages contain questions,
+  values and section names you have never seen. Never key your logic on specific
+  question wording from the samples; key it on geometry (x positions, font sizes,
+  color, boldness), on repeated marker/header patterns, and on the SHAPE of text
+  (regexes over character classes). The document may be in any language.
+- You may keep state across pages (the function receives the whole document) -
+  e.g. a form name announced once may govern many following pages.
+
+# Quality bar (your program's output is machine-checked before acceptance)
+
+- It must extract from every page that carries fields, not just the sampled ones.
+- form_name should be non-empty for the large majority of records. If the document
+  genuinely prints no form/section names, use the best available section context;
+  leave it empty only as a last resort.
+- field_name values must be human-readable label text - not machine codes, bare
+  numbers, dates, or page furniture (headers/footers/page numbers/legends).
+- Answer OPTIONS are not fields: choice values (e.g. Yes / No / Unknown / list
+  items - examples here are English, apply the concept in the document's language)
+  belong to a field, they are not field_name records themselves.
+- No duplicate records for the same (form_name, field_name) pair beyond what the
+  document itself repeats.
+
+# Reply format
+
+Reply with ONLY Python source code (no prose outside code comments). Start with a
+comment block (3-6 lines) stating what layout you observed in the samples and the
+extraction strategy you chose. Then define extract(pages) plus any helpers.
+
+# Representative pages of this document
+
+--- page 1 of 609 (layout cluster covers ~1 pages) ---
+x= 235.9 y=  39.1 sz=20.0 #4682b4 B | Annotated CRF
+x=  29.9 y=  76.4 sz=11.0 black   B | Study, Site:
+x= 238.7 y=  76.4 sz=11.0 black   B | Group, Visit:
+x= 445.2 y=  76.4 sz=11.0 black   B | Slot:
+x=  29.9 y=  99.1 sz=11.0 black   B | Schedule Category & Name:
+x= 167.7 y=  99.1 sz=11.0 black     | S_QSC302573, 02 - Group Info/Study ICF Final v1.0
+x=  29.9 y= 121.6 sz=10.0 #4682b4 B | Timepoint
+x= 167.7 y= 121.6 sz=10.0 #4682b4 B | Activity
+x= 488.4 y= 121.6 sz=10.0 #4682b4 B | Line #
+x=  29.9 y= 138.7 sz=10.0 black     | Day 0 (0), -00:00.00
+x= 167.7 y= 138.7 sz=10.0 black   B | Informed Consent: Photo ID #1
+x= 488.4 y= 138.7 sz=10.0 black     | 1.0
+x=  29.9 y= 155.6 sz=10.0 black     | _ _ - _ _ _ - _ _ _ _
+x= 116.7 y= 155.6 sz=10.0 black     | _ _ : _ _
+x= 167.7 y= 155.6 sz=10.0 black   B | Does the participant have a valid photo ID?
+x=  29.9 y= 167.8 sz=10.0 black     | dd - MMM - yyyy
+x= 116.7 y= 167.8 sz=10.0 black     | HH:mm
+x=  30.9 y= 182.9 sz=10.0 #4682b4 B | Staff Initials:
+x= 167.7 y= 199.0 sz=10.0 #4682b4 B | Answer(s):
+x= 238.7 y= 199.0 sz=10.0 black     | O Yes
+x= 238.7 y= 216.0 sz=10.0 black     | O No (Comment Required)
+x=  29.9 y= 233.0 sz=10.0 #4682b4 B | Comment:
+x=  29.9 y= 255.7 sz=10.0 black     | Day 0 (0), -00:00.00
+x= 167.7 y= 255.7 sz=10.0 black   B | Group Information: Group Info Session #1
+x= 488.4 y= 255.7 sz=10.0 black     | 2.0
+x=  29.9 y= 272.6 sz=10.0 black     | _ _ - _ _ _ - _ _ _ _
+x= 116.7 y= 272.6 sz=10.0 black     | _ _ : _ _
+x= 167.7 y= 272.6 sz=10.0 black   B | Did participant complete group information or remote information session?
+x=  29.9 y= 284.8 sz=10.0 black     | dd - MMM - yyyy
+x= 116.7 y= 284.8 sz=10.0 black     | HH:mm
+x=  30.9 y= 300.0 sz=10.0 #4682b4 B | Staff Initials:
+x= 167.7 y= 316.0 sz=10.0 #4682b4 B | Answer(s):
+x= 238.7 y= 316.0 sz=10.0 black     | O Volunteer Completed Group Information Session (Activates Line  5, 4, 3)
+x= 238.7 y= 333.1 sz=10.0 black     | O Volunteer Completed Remote Information Session (Activates Line  5, 4)
+x=  29.9 y= 350.0 sz=10.0 #4682b4 B | Comment:
+x=  29.9 y= 372.7 sz=10.0 black     | Day 0 (0), -00:00.00
+x= 167.7 y= 372.7 sz=10.0 black   B | Group Information: Group info held by #1
+x= 488.4 y= 372.7 sz=10.0 black     | 3.0 (hidden)
+x=  29.9 y= 389.7 sz=10.0 black     | _ _ - _ _ _ - _ _ _ _
+x= 116.7 y= 389.7 sz=10.0 black     | _ _ : _ _
+x= 167.7 y= 389.7 sz=10.0 black   B | Record who held Group Information Session (full name)
+x=  29.9 y= 401.9 sz=10.0 black     | dd - MMM - yyyy
+x= 116.7 y= 401.9 sz=10.0 black     | HH:mm
+x=  30.9 y= 417.1 sz=10.0 #4682b4 B | Staff Initials:
+x= 167.7 y= 433.1 sz=10.0 #4682b4 B | Answer(s):
+x= 238.7 y= 433.1 sz=10.0 black     | ______________________________ (100 char. max.)
+x=  29.9 y= 450.1 sz=10.0 #4682b4 B | Comment:
+x=  29.9 y= 472.7 sz=10.0 black     | Day 0 (0), -00:00.00
+x= 167.7 y= 472.7 sz=10.0 black   B | Informed Consent: Study ICF Database Check #1
+x= 488.4 y= 472.7 sz=10.0 black     | 4.0 (hidden)
+x=  29.9 y= 489.7 sz=10.0 black     | _ _ - _ _ _ - _ _ _ _
+x= 116.7 y= 489.7 sz=10.0 black     | _ _ : _ _
+x= 167.7 y= 489.7 sz=10.0 black   B | Does the Anju study number match the study number in the participants' paper PIS/ICF?
+x=  29.9 y= 501.9 sz=10.0 black     | dd - MMM - yyyy
+x= 116.7 y= 501.9 sz=10.0 black     | HH:mm
+x=  30.9 y= 517.1 sz=10.0 #4682b4 B | Staff Initials:
+x= 167.7 y= 533.1 sz=10.0 #4682b4 B | Answer(s):
+x= 238.7 y= 533.1 sz=10.0 black     | O Yes
+x= 238.7 y= 550.1 sz=10.0 black     | O No (Comment Required)
+x=  29.9 y= 567.1 sz=10.0 #4682b4 B | Comment:
+x=  29.9 y= 589.8 sz=10
+<...page truncated...>
+
+--- page 2 of 609 (layout cluster covers ~1 pages) ---
+x= 235.9 y=  39.1 sz=20.0 #4682b4 B | Annotated CRF
+x=  29.9 y=  71.2 sz=11.0 black   B | Study, Site:
+x= 238.7 y=  71.2 sz=11.0 black   B | Group, Visit:
+x= 445.2 y=  71.2 sz=11.0 black   B | Slot:
+x=  29.9 y=  93.9 sz=11.0 black   B | Schedule Category & Name:
+x= 167.7 y=  93.9 sz=11.0 black     | S_QSC302573, 02 - Group Info/Study ICF Final v1.0
+x=  29.9 y= 116.4 sz=10.0 #4682b4 B | Timepoint
+x= 167.7 y= 116.4 sz=10.0 #4682b4 B | Activity
+x= 488.4 y= 116.4 sz=10.0 #4682b4 B | Line #
+x=  29.9 y= 133.4 sz=10.0 black     | _ _ - _ _ _ - _ _ _ _
+x= 116.7 y= 133.4 sz=10.0 black     | _ _ : _ _
+x= 167.7 y= 133.4 sz=10.0 black   B | Date Study ICF was signed by participant
+x=  29.9 y= 145.6 sz=10.0 black     | dd - MMM - yyyy
+x= 116.7 y= 145.6 sz=10.0 black     | HH:mm
+x=  30.9 y= 160.8 sz=10.0 #4682b4 B | Staff Initials:
+x= 167.7 y= 176.7 sz=10.0 #4682b4 B | Answer(s):
+x= 238.7 y= 176.7 sz=10.0 black     | Date _  _  -  _  _  _  -  _  _  _  _ (dd-MMM-yyyy)
+x= 238.7 y= 193.7 sz=10.0 black     | [DSSTDAT] SAS:[Name=DSSTDAT, Length=50, DataType=Char]
+x=  29.9 y= 210.7 sz=10.0 #4682b4 B | Comment:
+x=  29.9 y= 233.4 sz=10.0 black     | Day 0 (0), -00:00.00
+x= 167.7 y= 233.4 sz=10.0 black   B | Informed Consent: Study ICF Time #1
+x= 488.4 y= 233.4 sz=10.0 black     | 5.2 (hidden)
+x=  29.9 y= 250.5 sz=10.0 black     | _ _ - _ _ _ - _ _ _ _
+x= 116.7 y= 250.5 sz=10.0 black     | _ _ : _ _
+x= 167.7 y= 250.5 sz=10.0 black   B | Time Study ICF was signed by participant
+x=  29.9 y= 262.6 sz=10.0 black     | dd - MMM - yyyy
+x= 116.7 y= 262.6 sz=10.0 black     | HH:mm
+x=  30.9 y= 277.8 sz=10.0 #4682b4 B | Staff Initials:
+x= 167.7 y= 293.8 sz=10.0 #4682b4 B | Answer(s):
+x= 238.7 y= 293.8 sz=10.0 black     | Time _  _  :  _  _ (HH:mm)
+x= 238.7 y= 310.8 sz=10.0 black     | [DSSTTIM] SAS:[Name=DSSTTIM, Length=50, DataType=Char]
+x=  29.9 y= 327.8 sz=10.0 #4682b4 B | Comment:
+x=  29.9 y= 350.5 sz=10.0 black     | Day 0 (0), -00:00.00
+x= 167.7 y= 350.5 sz=10.0 black   B | Informed Consent: Study ICF Part #1
+x= 488.4 y= 350.5 sz=10.0 black     | 5.3 (hidden)
+x=  29.9 y= 367.5 sz=10.0 black     | _ _ - _ _ _ - _ _ _ _
+x= 116.7 y= 367.5 sz=10.0 black     | _ _ : _ _
+x= 167.7 y= 367.5 sz=10.0 black   B | Study ICF Part Number
+x=  29.9 y= 379.6 sz=10.0 black     | dd - MMM - yyyy
+x= 116.7 y= 379.6 sz=10.0 black     | HH:mm
+x=  30.9 y= 394.8 sz=10.0 #4682b4 B | Staff Initials:
+x= 167.7 y= 410.8 sz=10.0 #4682b4 B | Answer(s):
+x= 238.7 y= 410.8 sz=10.0 black     | O Parts 1 and 2
+x= 238.7 y= 427.9 sz=10.0 black     | [DSICFP] SAS:[Name=DSICFP, Length=25, DataType=Char]
+x= 238.7 y= 444.9 sz=10.0 black     | O Part 3
+x= 238.7 y= 461.9 sz=10.0 black     | [DSICFP] SAS:[Name=DSICFP, Length=25, DataType=Char]
+x=  29.9 y= 478.9 sz=10.0 #4682b4 B | Comment:
+x=  29.9 y= 501.5 sz=10.0 black     | Day 0 (0), -00:00.00
+x= 167.7 y= 501.5 sz=10.0 black   B | Informed Consent: Study ICF Version #1
+x= 488.4 y= 501.5 sz=10.0 black     | 5.4 (hidden)
+x=  29.9 y= 518.5 sz=10.0 black     | _ _ - _ _ _ - _ _ _ _
+x= 116.7 y= 518.5 sz=10.0 black     | _ _ : _ _
+x= 167.7 y= 518.5 sz=10.0 black   B | Study ICF Version Number
+x=  29.9 y= 530.7 sz=10.0 black     | dd - MMM - yyyy
+x= 116.7 y= 530.7 sz=10.0 black     | HH:mm
+x= 167.7 y= 530.7 sz=10.0 black   B | (Version must be checked against ICF present in the RSF – escalate any discrepancies)
+x=  30.9 y= 545.9 sz=10.0 #4682b4 B | Staff Initials:
+x= 167.7 y= 561.9 sz=10.0 #4682b4 B | Answer(s):
+x= 238.7 y= 561.9 sz=10.0 black     | Version  _  _  .  _   (#0.0)
+x= 238.7 y= 578.9 sz=10.0 black     | [DSICFVNO] SAS:[Name=DSICFVNO, Length=25, Da
+<...page truncated...>
+
+--- page 152 of 609 (layout cluster covers ~605 pages) ---
+x= 235.9 y=  39.1 sz=20.0 #4682b4 B | Annotated CRF
+x=  29.9 y=  71.2 sz=11.0 black   B | Study, Site:
+x= 238.7 y=  71.2 sz=11.0 black   B | Group, Visit:
+x= 445.2 y=  71.2 sz=11.0 black   B | Slot:
+x=  29.9 y=  93.9 sz=11.0 black   B | Schedule Category & Name:
+x= 167.7 y=  93.9 sz=11.0 black     | S_QSC302573, 05a - Period 1 Final v1.0
+x=  29.9 y= 116.4 sz=10.0 #4682b4 B | Timepoint
+x= 167.7 y= 116.4 sz=10.0 #4682b4 B | Activity
+x= 488.4 y= 116.4 sz=10.0 #4682b4 B | Line #
+x=  29.9 y= 133.4 sz=10.0 black     | Day 1 (0), +05:00.00
+x= 167.7 y= 133.4 sz=10.0 black   B | PK Samples: PK Plasma #6
+x= 488.4 y= 133.4 sz=10.0 black     | 63.0
+x=  29.9 y= 150.4 sz=10.0 black     | _ _ - _ _ _ - _ _ _ _
+x= 116.7 y= 150.4 sz=10.0 black     | _ _ : _ _
+x= 167.7 y= 150.4 sz=10.0 black   B | PK Sample for Bioanalysis - Gently invert tube 8-10 times immediately after collection and
+x=  29.9 y= 162.6 sz=10.0 black     | dd - MMM - yyyy
+x= 116.7 y= 162.6 sz=10.0 black     | HH:mm
+x= 167.7 y= 162.6 sz=10.0 black   B | protect the sample from light (4 mL K2EDTA)
+x= 167.7 y= 176.7 sz=10.0 #4682b4 B | Barcode:
+x= 238.7 y= 176.7 sz=10.0 black     | SMP _  _  _  _  _  _  _  _  _
+x=  30.9 y= 177.7 sz=10.0 #4682b4 B | Staff Initials:
+x=  29.9 y= 193.7 sz=10.0 #4682b4 B | Comment:
+x=  29.9 y= 216.4 sz=10.0 black     | Day 1 (0), +05:00.00
+x= 167.7 y= 216.4 sz=10.0 black   B | AE/CM Surveys: AE/CM Check #6
+x= 488.4 y= 216.4 sz=10.0 black     | 64.0
+x=  29.9 y= 233.4 sz=10.0 black     | _ _ - _ _ _ - _ _ _ _
+x= 116.7 y= 233.4 sz=10.0 black     | _ _ : _ _
+x= 167.7 y= 233.4 sz=10.0 black   B | Confirm an AE and Conmed check has been performed (Record any AE and Conmeds if
+x=  29.9 y= 245.6 sz=10.0 black     | dd - MMM - yyyy
+x= 116.7 y= 245.6 sz=10.0 black     | HH:mm
+x= 167.7 y= 245.6 sz=10.0 black   B | applicable)
+x=  30.9 y= 260.8 sz=10.0 #4682b4 B | Staff Initials:
+x= 167.7 y= 276.7 sz=10.0 #4682b4 B | Answer(s):
+x= 238.7 y= 276.7 sz=10.0 black     | O Yes
+x=  29.9 y= 293.8 sz=10.0 #4682b4 B | Comment:
+x=  29.9 y= 316.5 sz=10.0 black     | Day 1 (0), +06:00.00
+x= 167.7 y= 316.5 sz=10.0 black   B | PK Samples: PK Plasma #7
+x= 488.4 y= 316.5 sz=10.0 black     | 65.0
+x=  29.9 y= 333.5 sz=10.0 black     | _ _ - _ _ _ - _ _ _ _
+x= 116.7 y= 333.5 sz=10.0 black     | _ _ : _ _
+x= 167.7 y= 333.5 sz=10.0 black   B | PK Sample for Bioanalysis - Gently invert tube 8-10 times immediately after collection and
+x=  29.9 y= 345.7 sz=10.0 black     | dd - MMM - yyyy
+x= 116.7 y= 345.7 sz=10.0 black     | HH:mm
+x= 167.7 y= 345.7 sz=10.0 black   B | protect the sample from light (4 mL K2EDTA)
+x= 167.7 y= 359.8 sz=10.0 #4682b4 B | Barcode:
+x= 238.7 y= 359.8 sz=10.0 black     | SMP _  _  _  _  _  _  _  _  _
+x=  30.9 y= 360.8 sz=10.0 #4682b4 B | Staff Initials:
+x=  29.9 y= 376.8 sz=10.0 #4682b4 B | Comment:
+x=  29.9 y= 399.5 sz=10.0 black     | Day 1 (0), +06:00.00
+x= 167.7 y= 399.5 sz=10.0 black   B | AE/CM Surveys: AE/CM Check #7
+x= 488.4 y= 399.5 sz=10.0 black     | 66.0
+x=  29.9 y= 416.5 sz=10.0 black     | _ _ - _ _ _ - _ _ _ _
+x= 116.7 y= 416.5 sz=10.0 black     | _ _ : _ _
+x= 167.7 y= 416.5 sz=10.0 black   B | Confirm an AE and Conmed check has been performed (Record any AE and Conmeds if
+x=  29.9 y= 428.7 sz=10.0 black     | dd - MMM - yyyy
+x= 116.7 y= 428.7 sz=10.0 black     | HH:mm
+x= 167.7 y= 428.7 sz=10.0 black   B | applicable)
+x=  30.9 y= 443.9 sz=10.0 #4682b4 B | Staff Initials:
+x= 167.7 y= 459.8 sz=10.0 #4682b4 B | Answer(s):
+x= 238.7 y= 459.8 sz=10.0 black     | O Yes
+x=  29.9 y= 476.8 sz=10.0 #4682b4 B | Comment:
+x=  29.9 y= 499.5 sz=10.0 black     | Day 1 (0),
+<...page truncated...>
+
+--- page 305 of 609 (layout cluster covers ~605 pages) ---
+x= 235.9 y=  39.1 sz=20.0 #4682b4 B | Annotated CRF
+x=  29.9 y=  71.2 sz=11.0 black   B | Study, Site:
+x= 238.7 y=  71.2 sz=11.0 black   B | Group, Visit:
+x= 445.2 y=  71.2 sz=11.0 black   B | Slot:
+x=  29.9 y=  93.9 sz=11.0 black   B | Schedule Category & Name:
+x= 167.7 y=  93.9 sz=11.0 black     | S_QSC302573, 05c - Period 3 Parts 1 and 2 Final v1.0
+x=  29.9 y= 116.4 sz=10.0 #4682b4 B | Timepoint
+x= 167.7 y= 116.4 sz=10.0 #4682b4 B | Activity
+x= 488.4 y= 116.4 sz=10.0 #4682b4 B | Line #
+x= 167.7 y= 133.4 sz=10.0 #4682b4 B | Answer(s):
+x= 238.7 y= 133.4 sz=10.0 black     | RR interval  _  _  _  _  ms (###0)
+x= 238.7 y= 150.4 sz=10.0 black     | [EGORRES] SAS:[Name=EGORRES, Length=50, DataType=Char]
+x= 238.7 y= 167.4 sz=10.0 black     | QTcF  _  _  _  ms (##0)
+x= 238.7 y= 184.4 sz=10.0 black     | [EGORRES] SAS:[Name=EGORRES, Length=50, DataType=Char]
+x=  29.9 y= 201.4 sz=10.0 #4682b4 B | Comment:
+x=  29.9 y= 224.1 sz=10.0 black     | Day 7 (0), +12:00.00 (-10mins)
+x= 167.7 y= 224.1 sz=10.0 black   B | ECG: ECG Rhythm Assess/Interpretation #2
+x= 488.4 y= 224.1 sz=10.0 black     | 129.0
+x=  29.9 y= 241.1 sz=10.0 black     | _ _ - _ _ _ - _ _ _ _
+x= 116.7 y= 241.1 sz=10.0 black     | _ _ : _ _
+x= 167.7 y= 241.1 sz=10.0 black   B | ECG Rhythm assessment and interpretation
+x=  29.9 y= 253.3 sz=10.0 black     | dd - MMM - yyyy
+x= 116.7 y= 253.3 sz=10.0 black     | HH:mm
+x=  30.9 y= 268.5 sz=10.0 #4682b4 B | Staff Initials:
+x= 167.7 y= 284.5 sz=10.0 #4682b4 B | Answer(s):
+x= 238.7 y= 284.5 sz=10.0 black     | O Normal, Sinus Rhythm
+x= 238.7 y= 301.4 sz=10.0 black     | [EGORRES] SAS:[Name=EGORRES, Length=50, DataType=Char]
+x= 238.7 y= 318.5 sz=10.0 black     | O Abnormal, Sinus Rhythm (Activates Line  130, 131)
+x= 238.7 y= 335.5 sz=10.0 black     | [EGORRES] SAS:[Name=EGORRES, Length=50, DataType=Char]
+x= 238.7 y= 352.5 sz=10.0 black     | O Abnormal, Non-Sinus Rhythm (Activates Line  130, 132)
+x= 238.7 y= 369.5 sz=10.0 black     | [EGORRES] SAS:[Name=EGORRES, Length=50, DataType=Char]
+x= 238.7 y= 386.5 sz=10.0 black     | O Unevaluable (Comment Required)
+x= 238.7 y= 403.5 sz=10.0 black     | [EGORRES] SAS:[Name=EGORRES, Length=50, DataType=Char]
+x=  29.9 y= 420.5 sz=10.0 #4682b4 B | Comment:
+x=  29.9 y= 443.2 sz=10.0 black     | Day 7 (0), +12:00.00 (-10mins)
+x= 167.7 y= 443.2 sz=10.0 black   B | ECG: ECG Significance #2
+x= 488.4 y= 443.2 sz=10.0 black     | 130.0 (hidden)
+x=  29.9 y= 460.2 sz=10.0 black     | _ _ - _ _ _ - _ _ _ _
+x= 116.7 y= 460.2 sz=10.0 black     | _ _ : _ _
+x= 167.7 y= 460.2 sz=10.0 black   B | Was the ECG clinically significant? (Medic to assess)
+x=  29.9 y= 472.4 sz=10.0 black     | dd - MMM - yyyy
+x= 116.7 y= 472.4 sz=10.0 black     | HH:mm
+x=  30.9 y= 487.6 sz=10.0 #4682b4 B | Staff Initials:
+x= 167.7 y= 503.5 sz=10.0 #4682b4 B | Answer(s):
+x= 238.7 y= 503.5 sz=10.0 black     | O No
+x= 238.7 y= 520.5 sz=10.0 black     | [EGCLSIG] SAS:[Name=EGCLSIG, Length=50, DataType=Char]
+x= 238.7 y= 537.5 sz=10.0 black     | O Yes
+x= 238.7 y= 554.6 sz=10.0 black     | [EGCLSIG] SAS:[Name=EGCLSIG, Length=50, DataType=Char]
+x=  29.9 y= 571.6 sz=10.0 #4682b4 B | Comment:
+x=  29.9 y= 594.3 sz=10.0 black     | Day 7 (0), +12:00.00 (-10mins)
+x= 167.7 y= 594.3 sz=10.0 black   B | ECG: ECG Findings #2
+x= 488.4 y= 594.3 sz=10.0 black     | 131.0 (hidden)
+x=  29.9 y= 611.3 sz=10.0 black     | _ _ - _ _ _ - _ _ _ _
+x= 116.7 y= 611.3 sz=10.0 black     | _ _ : _ _
+x= 167.7 y= 611.3 sz=10.0 black   B | ECG Findings
+x=  29.9 y= 623.4 sz=10.0 black     | dd - MMM - yyyy
+x= 116.7 y= 623.4 sz=10.0 black     | HH:mm
+x=  30.9 y= 638.6 sz=10.0 #468
+<...page truncated...>
+

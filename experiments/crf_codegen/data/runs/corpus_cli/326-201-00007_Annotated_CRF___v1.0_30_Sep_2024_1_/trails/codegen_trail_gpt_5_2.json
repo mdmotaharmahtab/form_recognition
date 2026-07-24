@@ -1,0 +1,950 @@
+{
+ "stop_reason": "plateau",
+ "versions": 5,
+ "best_version": 3,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 4257,
+    "pages_total": 489,
+    "pages_with_fields": 489,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 43,
+    "fields_per_form": 99.0,
+    "forms_per_100_pages": 8.8,
+    "form_same_page_evidence_records": 4247,
+    "form_same_page_persistence_pct": 99,
+    "furniture_candidates": [
+     "Answer(s):",
+     "Comment:",
+     "Staff Initials:"
+    ],
+    "pages_covered_pct": 100
+   },
+   "problems": [],
+   "warnings": [
+    "These field_name values were extracted on >=70% of ALL pages: 'Answer(s):'; 'Comment:'; 'Staff Initials:'. Text recurring on nearly every page is usually page template furniture (watermark/footer/stamp), not a field - verify against the page dumps and stop extracting it unless it is genuinely a per-page data-entry field."
+   ],
+   "audit_issues": 76,
+   "audit_pages": [
+    1,
+    2,
+    3,
+    33,
+    47,
+    126,
+    247,
+    368
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [
+      "Has the participant's photographic and wristband ID been verified and wristband applied to participant's wrist?",
+      "______________________________ (9999 char. max.)",
+      "Date _  _  -  _  _  _  -  _  _  _  _ (dd-MMM-yyyy)",
+      "Version  _  _  .  _   (##.0)"
+     ],
+     "false": [
+      "Answer(s):"
+     ],
+     "wrong_form": [
+      "Staff Initials:",
+      "Comment:",
+      "Has the participant's photographic and wristband ID been verified and wristband applied to",
+      "Bag search performed?",
+      "If restricted items removed, record items here",
+      "Has the ICF version been checked?",
+      "Signed ICF Version / Date"
+     ]
+    },
+    {
+     "page": 2,
+     "missed": [
+      "Has the participant consumed any alcohol within 48 hours (72hrs prior to dosing) prior to Admission visit?  (If 'Yes' exclude per exclusion criteria #24)",
+      "Date _  _  -  _  _  _  -  _  _  _  _ (dd-MMM-yyyy)",
+      "Time _  _  :  _  _ (HH:mm)",
+      "No of Units  _  _  units (##)",
+      "Has the participant consumed food and beverages containing methylxanthines (caffeinated coffee, caffeinated tea, caffeinated soda, and chocolate) within 48 hours (72hrs prior to dosing) prior to Admission visit? (If 'Yes' exclude per exclusion criteria #24)"
+     ],
+     "false": [
+      "Answer(s):",
+      "Time (HH:mm) No of Units units (##)"
+     ],
+     "wrong_form": [
+      "Staff Initials:",
+      "Comment:",
+      "Has it been more than 20 days since the Screening visit?",
+      "Has the participant consumed any alcohol within 48 hours (72hrs prior to dosing) prior to",
+      "Has the participant consumed food and beverages containing methylxanthines (caffeinated"
+     ]
+    },
+    {
+     "page": 3,
+     "missed": [
+      "Has participant consumed food or beverages containing pomelo, grapefruit, grapefruit juice, Seville oranges, Seville orange juice, blueberry juice, or cranberry juice within 48 hours (72hrs prior to dosing) prior to Admission visit? (If 'Yes' exclude per exclusion criteria #24)",
+      "Has the participant consumed any food containing poppy seeds within 48 hours prior to Admission visit?",
+      "Has the participant had strenuous activity (e.g. weightlifting) within 72 hours prior to Admission visit?",
+      "Has the participant use of tobacco products or experience daily exposure to second-hand smoke since Screening?  (If 'Yes' exclude per exclusion criteria #14)"
+     ],
+     "false": [
+      "Answer(s):",
+      "Please ensure that a Protocol Deviation is completed"
+     ],
+     "wrong_form": [
+      "Staff Initials:",
+      "Comment:",
+      "Has participant consumed food or beverages containing pomelo, grapefruit, grapefruit juice,",
+      "Has the participant consumed any food containing poppy seeds within 48 hours prior to",
+      "Has the participant had strenuous activity (e.g. weightlifting) within 72 hours prior to Admission",
+      "Has the participant use of tobacco products or experience daily exposure to second-hand"
+     ]
+    },
+    {
+     "page": 33,
+     "missed": [],
+     "false": [],
+     "wrong_form": [
+      "Comment:"
+     ]
+    },
+    {
+     "page": 47,
+     "missed": [
+      "Diastolic  _  _  _  _  mmHg (####)",
+      "Open Field ______________________________ (200 char. max.)",
+      "PRE-DOSE - Targeted Physical Examination:  Does the participant require a targeted physical examination? (If yes, please specify the reason)",
+      "Yes (Specify) ______________________________ (50 char. max.) (Activates Line 145)"
+     ],
+     "false": [
+      "Answer(s):",
+      "PRE-DOSE - Vital Sign Findings"
+     ],
+     "wrong_form": [
+      "Staff Initials:",
+      "Comment:",
+      "PRE-DOSE - Clinical Assessment of Vital Signs (Medic or Nurse to assess vital signs)",
+      "PRE-DOSE - Targeted Physical Examination: Does the participant require a targeted physical"
+     ]
+    },
+    {
+     "page": 126,
+     "missed": [
+      "______________________________ (500 char. max.)"
+     ],
+     "false": [
+      "Answer(s):",
+      "PRE-DOSE Triplicate ECG 2: ECG Findings",
+      "PRE-DOSE Triplicate ECG 2: ECG Findings, including rhythm assessment",
+      "PRE-DOSE Triplicate ECG 3: 12 Lead Standard ECG (To be performed at least 2 minutes after"
+     ],
+     "wrong_form": [
+      "Comment:",
+      "Staff Initials:",
+      "PRE-DOSE Triplicate ECG 2: Was the ECG clinically significant? (Medic to assess)"
+     ]
+    },
+    {
+     "page": 247,
+     "missed": [
+      "QTcF  _  _  _  ms (##0)",
+      "Systolic  _  _  _  mmHg (##0)"
+     ],
+     "false": [
+      "Answer(s):",
+      "interval of >60 msec from baseline (confirmed following a repeat ECG)"
+     ],
+     "wrong_form": [
+      "Staff Initials:",
+      "Comment:",
+      "Diastolic mmHg (##0)",
+      "Heart Rate beats/min (##0)",
+      "Respiratory Rate breaths/mi (##0)",
+      "Oral Temperature Degrees Celsius C (##.0)",
+      "Clinical Assessment of Vital Signs (Medic or Nurse to assess vital signs)"
+     ]
+    },
+    {
+     "page": 368,
+     "missed": [
+      "Open Field ______________________________ (200 char. max.)"
+     ],
+     "false": [
+      "PRE-DOSE - Vital Sign Findings",
+      "Answer(s):",
+      "PK Sample for Bioanalysis - Gently invert tube 8-10 times immediately after collection and"
+     ],
+     "wrong_form": [
+      "Comment:",
+      "Staff Initials:",
+      "Barcode:",
+      "Confirm an AE and Conmed check has been performed (Record any AE and Conmeds if",
+      "I confirm that the participant continues to be eligible to participate in this clinical study.",
+      "Prandial state"
+     ]
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    76,
+    1,
+    -489
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "confirm",
+   "metrics": {
+    "engine": "codegen",
+    "records": 3477,
+    "pages_total": 489,
+    "pages_with_fields": 489,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 99,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 44,
+    "fields_per_form": 79.0,
+    "forms_per_100_pages": 9.0,
+    "form_same_page_evidence_records": 3471,
+    "form_same_page_persistence_pct": 99,
+    "furniture_candidates": [
+     "Comment:",
+     "Staff Initials:"
+    ],
+    "pages_covered_pct": 100
+   },
+   "problems": [],
+   "outcome": "extended_program"
+  },
+  {
+   "version": 2,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 994,
+    "pages_total": 489,
+    "pages_with_fields": 322,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 27,
+    "fields_per_form": 36.8,
+    "forms_per_100_pages": 5.5,
+    "form_same_page_evidence_records": 915,
+    "form_same_page_persistence_pct": 91,
+    "furniture_candidates": [],
+    "pages_covered_pct": 66
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": null,
+   "audit_pages": null,
+   "audit_verdicts": null,
+   "forgiven_pages": null,
+   "score": [
+    0,
+    "not_audited",
+    0,
+    -322
+   ],
+   "became_best": false
+  },
+  {
+   "version": 3,
+   "kind": "confirm_extension",
+   "metrics": {
+    "engine": "codegen",
+    "records": 3477,
+    "pages_total": 489,
+    "pages_with_fields": 489,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 99,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 44,
+    "fields_per_form": 79.0,
+    "forms_per_100_pages": 9.0,
+    "form_same_page_evidence_records": 3471,
+    "form_same_page_persistence_pct": 99,
+    "furniture_candidates": [
+     "Comment:",
+     "Staff Initials:"
+    ],
+    "pages_covered_pct": 100
+   },
+   "problems": [],
+   "warnings": [
+    "These field_name values were extracted on >=70% of ALL pages: 'Comment:'; 'Staff Initials:'. Text recurring on nearly every page is usually page template furniture (watermark/footer/stamp), not a field - verify against the page dumps and stop extracting it unless it is genuinely a per-page data-entry field."
+   ],
+   "audit_issues": 23,
+   "audit_pages": [
+    1,
+    2,
+    3,
+    4,
+    33,
+    47,
+    126,
+    140,
+    247,
+    368
+   ],
+   "audit_partial": null,
+   "audit_promoted": [
+    4
+   ],
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [
+      "Date _  _  -  _  _  _  -  _  _  _  _ (dd-MMM-yyyy)",
+      "Version  _  _  .  _   (##.0)"
+     ],
+     "false": [
+      "Answer(s):",
+      "(9999 char. max.)",
+      "Date (dd-MMM-yyyy) Version (##.0)"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [
+      "Date _  _  -  _  _  _  -  _  _  _  _ (dd-MMM-yyyy)",
+      "Time _  _  :  _  _ (HH:mm)",
+      "No of Units  _  _  units (##)"
+     ],
+     "false": [
+      "Time (HH:mm) No of Units units (##)",
+      "Date (dd-MMM-yyyy) Time (HH:mm) No of Units units (##)"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 3,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 4,
+     "missed": [
+      "Has the participant been unwell or have they had any accidents or injuries since Screening?",
+      "Record time of urine sample (For all Urine Assessments) (Collect Urine Sample)"
+     ],
+     "false": [
+      "Update Medical History where appropriate."
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 33,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 47,
+     "missed": [],
+     "false": [],
+     "wrong_form": [
+      "Diastolic mmHg (####)"
+     ]
+    },
+    {
+     "page": 126,
+     "missed": [
+      "PRE-DOSE Triplicate ECG 2: ECG Findings",
+      "PRE-DOSE Triplicate ECG 2: ECG Findings, including rhythm assessment"
+     ],
+     "false": [
+      "(500 char. max.)"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 140,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 247,
+     "missed": [],
+     "false": [
+      "Vital Signs"
+     ],
+     "wrong_form": [
+      "QTcF ms (##0)"
+     ]
+    },
+    {
+     "page": 368,
+     "missed": [
+      "PRE-DOSE - Vital Sign Findings",
+      "Barcode:",
+      "Confirm an AE and Conmed check has been performed (Record any AE and Conmeds if applicable)",
+      "Prandial state"
+     ],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    23,
+    1,
+    -489
+   ],
+   "became_best": true
+  },
+  {
+   "version": 4,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 2587,
+    "pages_total": 489,
+    "pages_with_fields": 483,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 186,
+    "fields_per_form": 13.9,
+    "forms_per_100_pages": 38.0,
+    "form_same_page_evidence_records": 2587,
+    "form_same_page_persistence_pct": 80,
+    "furniture_candidates": [
+     "Answer(s):"
+    ],
+    "pages_covered_pct": 99
+   },
+   "problems": [],
+   "warnings": [
+    "These field_name values were extracted on >=70% of ALL pages: 'Answer(s):'. Text recurring on nearly every page is usually page template furniture (watermark/footer/stamp), not a field - verify against the page dumps and stop extracting it unless it is genuinely a per-page data-entry field."
+   ],
+   "audit_issues": 87,
+   "audit_pages": [
+    1,
+    2,
+    3,
+    4,
+    33,
+    47,
+    126,
+    247,
+    368,
+    479
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [
+      "Has the participant's photographic and wristband ID been verified and wristband applied to participant's wrist?",
+      "Staff Initials:",
+      "Comment:",
+      "Date _  _  -  _  _  _  -  _  _  _  _ (dd-MMM-yyyy)",
+      "Version  _  _  .  _   (##.0)"
+     ],
+     "false": [
+      "Answer(s):",
+      "Has the participant's photographic and wristband ID been verified and wristband applied to",
+      "Signed ICF Version Date"
+     ],
+     "wrong_form": [
+      "Bag search performed?",
+      "If restricted items removed, record items here",
+      "Has the ICF version been checked?"
+     ]
+    },
+    {
+     "page": 2,
+     "missed": [
+      "Staff Initials:",
+      "Comment:",
+      "Has the participant consumed any alcohol within 48 hours (72hrs prior to dosing) prior to Admission visit?  (If 'Yes' exclude per exclusion criteria #24)",
+      "Has the participant consumed food and beverages containing methylxanthines (caffeinated coffee, caffeinated tea, caffeinated soda, and chocolate) within 48 hours (72hrs prior to dosing) prior to Admission visit? (If 'Yes' exclude per exclusion criteria #24)",
+      "Date _  _  -  _  _  _  -  _  _  _  _ (dd-MMM-yyyy)",
+      "Time _  _  :  _  _ (HH:mm)",
+      "No of Units  _  _  units (##)"
+     ],
+     "false": [
+      "Answer(s):",
+      "Has the participant consumed any alcohol within 48 hours (72hrs prior to dosing) prior to",
+      "Has the participant consumed food and beverages containing methylxanthines (caffeinated"
+     ],
+     "wrong_form": [
+      "Has it been more than 20 days since the Screening visit?",
+      "If consumed; date, time and number of units"
+     ]
+    },
+    {
+     "page": 3,
+     "missed": [
+      "Staff Initials:",
+      "Comment:",
+      "Has participant consumed food or beverages containing pomelo, grapefruit, grapefruit juice, Seville oranges, Seville orange juice, blueberry juice, or cranberry juice within 48 hours (72hrs prior to dosing) prior to Admission visit? (If 'Yes' exclude per exclusion criteria #24)",
+      "Has the participant consumed any food containing poppy seeds within 48 hours prior to Admission visit?",
+      "Has the participant had strenuous activity (e.g. weightlifting) within 72 hours prior to Admission visit?",
+      "Has the participant use of tobacco products or experience daily exposure to second-hand smoke since Screening?  (If 'Yes' exclude per exclusion criteria #14)"
+     ],
+     "false": [
+      "Answer(s):",
+      "Has participant consumed food or beverages containing pomelo, grapefruit, grapefruit juice",
+      "Has the participant consumed any food containing poppy seeds within 48 hours prior to",
+      "Has the participant had strenuous activity (e.g. weightlifting) within 72 hours prior to Admission",
+      "Has the participant use of tobacco products or experience daily exposure to second-hand"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 4,
+     "missed": [
+      "Staff Initials:",
+      "Comment:",
+      "Record time of urine sample (For all Urine Assessments) (Collect Urine Sample)",
+      "What was the bilirubin result?  If any positive result, inform medic/PI. (Perform urinalysis and read results)"
+     ],
+     "false": [
+      "Answer(s):",
+      "What was the bilirubin result? If any positive result, inform medic/PI. (Perform urinalysis and"
+     ],
+     "wrong_form": [
+      "Has the participant been unwell or have they had any accidents or injuries since Screening?",
+      "Has the participant taken any new medication since the screening visit?"
+     ]
+    },
+    {
+     "page": 33,
+     "missed": [
+      "Comment:"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 47,
+     "missed": [
+      "Staff Initials:",
+      "Comment:",
+      "Diastolic  _  _  _  _  mmHg (####)",
+      "PRE-DOSE - Clinical Assessment of Vital Signs (Medic or Nurse to assess vital signs)",
+      "PRE-DOSE - Vital Sign Findings",
+      "Open Field ______________________________ (200 char. max.)",
+      "PRE-DOSE - Targeted Physical Examination:  Does the participant require a targeted physical examination? (If yes, please specify the reason)"
+     ],
+     "false": [
+      "Answer(s):",
+      "PRE-DOSE Vital Signs Difference for DIASTOLIC Drop (Supine)",
+      "PRE-DOSE Clinical Assessment of Vital Signs (Medic or Nurse to assess vital signs)",
+      "PRE-DOSE Vital Sign Findings",
+      "PRE-DOSE Targeted Physical Examination: Does the participant require a targeted physical"
+     ],
+     "wrong_form": [
+      "Comment:"
+     ]
+    },
+    {
+     "page": 126,
+     "missed": [
+      "Staff Initials:",
+      "Comment:"
+     ],
+     "false": [
+      "Answer(s):"
+     ],
+     "wrong_form": [
+      "PRE-DOSE Triplicate ECG 2: Was the ECG clinically significant? (Medic to assess)",
+      "PRE-DOSE Triplicate ECG 2: ECG Findings",
+      "PRE-DOSE Triplicate ECG 2: ECG Findings, including rhythm assessment"
+     ]
+    },
+    {
+     "page": 247,
+     "missed": [
+      "Staff Initials:",
+      "Comment:",
+      "QTcF  _  _  _  ms (##0)",
+      "Systolic  _  _  _  mmHg (##0)",
+      "Diastolic  _  _  _  mmHg (##0)",
+      "Heart Rate  _  _  _  beats/min (##0)",
+      "Respiratory Rate  _  _  _  breaths/mi (##0)",
+      "Oral Temperature - Degrees Celsius  _  _  .  _  C (##.0)"
+     ],
+     "false": [
+      "Answer(s):",
+      "ECG Difference Calculation a participant will be withdrawn where there is an increase in QTcF",
+      "Vital Signs"
+     ],
+     "wrong_form": [
+      "Clinical Assessment of Vital Signs (Medic or Nurse to assess vital signs)"
+     ]
+    },
+    {
+     "page": 368,
+     "missed": [
+      "Staff Initials:",
+      "Comment:",
+      "PRE-DOSE - Vital Sign Findings",
+      "Open Field ______________________________ (200 char. max.)",
+      "Barcode:",
+      "Confirm an AE and Conmed check has been performed (Record any AE and Conmeds if applicable)",
+      "Prandial state"
+     ],
+     "false": [
+      "Answer(s):",
+      "PRE-DOSE Vital Sign Findings",
+      "PK Sample for Bioanalysis Gently invert tube 8-10 times immediately after collection and",
+      "Confirm an AE and Conmed check has been performed (Record any AE and Conmeds if"
+     ],
+     "wrong_form": [
+      "I confirm that the participant continues to be eligible to participate in this clinical study."
+     ]
+    },
+    {
+     "page": 479,
+     "missed": [
+      "Comment:"
+     ],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    87,
+    1,
+    -483
+   ],
+   "became_best": false
+  },
+  {
+   "version": 5,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 7658,
+    "pages_total": 489,
+    "pages_with_fields": 489,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 99,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 164,
+    "fields_per_form": 46.7,
+    "forms_per_100_pages": 33.5,
+    "form_same_page_evidence_records": 7658,
+    "form_same_page_persistence_pct": 99,
+    "furniture_candidates": [
+     "Answer:",
+     "Comment:"
+    ],
+    "pages_covered_pct": 100
+   },
+   "problems": [],
+   "warnings": [
+    "These field_name values were extracted on >=70% of ALL pages: 'Answer:'; 'Comment:'. Text recurring on nearly every page is usually page template furniture (watermark/footer/stamp), not a field - verify against the page dumps and stop extracting it unless it is genuinely a per-page data-entry field."
+   ],
+   "audit_issues": 158,
+   "audit_pages": [
+    1,
+    2,
+    3,
+    4,
+    33,
+    47,
+    126,
+    212,
+    247,
+    368
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [
+      "Has the participant's photographic and wristband ID been verified and wristband applied to participant's wrist?",
+      "Staff Initials:",
+      "Answer(s):",
+      "If restricted items removed, record items here",
+      "Date _  _  -  _  _  _  -  _  _  _  _ (dd-MMM-yyyy)",
+      "Version  _  _  .  _   (##.0)"
+     ],
+     "false": [
+      "Day 0 -00:00.00 Admission Restrictions: Photo ID #1 1.0",
+      "Day 0 -00:00.00",
+      "Answer:",
+      "Has the participant's photographic and wristband ID been verified and wristband applied to",
+      "participant's wrist?",
+      "Day 0 -00:00.00 Admission Restrictions: Bag Search #1 2.0",
+      "Day 0 -00:00.00 Admission Restrictions: Bag Search Items Removed #1 3.0",
+      "Day 0 -00:00.00 Admission Restrictions: ICF Check #1 4.0",
+      "Day 0 -00:00.00 Admission Restrictions: ICF Version/Date #1 5.0",
+      "Date - -",
+      "Version",
+      "(Version must be checked against ICF present in the CSF \u2013 escalate any discrepancies)"
+     ],
+     "wrong_form": [
+      "Answer:",
+      "Comment:"
+     ]
+    },
+    {
+     "page": 2,
+     "missed": [
+      "Has the participant consumed any alcohol within 48 hours (72hrs prior to dosing) prior to Admission visit?  (If 'Yes' exclude per exclusion criteria #24)",
+      "Has the participant consumed food and beverages containing methylxanthines (caffeinated coffee, caffeinated tea, caffeinated soda, and chocolate) within 48 hours (72hrs prior to dosing) prior to Admission visit? (If 'Yes' exclude per exclusion criteria #24)",
+      "Staff Initials:",
+      "Answer(s):",
+      "If consumed; date, time and number of units",
+      "Date _  _  -  _  _  _  -  _  _  _  _ (dd-MMM-yyyy)",
+      "Time _  _  :  _  _ (HH:mm)",
+      "No of Units  _  _  units (##)"
+     ],
+     "false": [
+      "Day 0 -00:00.00 Admission Restrictions: Screening #1 6.0",
+      "Day 0 -00:00.00",
+      "Answer:",
+      "Day 0 -00:00.00 Admission Restrictions: Alcohol #1 7.0",
+      "Has the participant consumed any alcohol within 48 hours (72hrs prior to dosing) prior to",
+      "Admission visit? (If 'Yes' exclude per exclusion criteria #24)",
+      "Day 0 -00:00.00 Admission Restrictions: Alcohol Units #1 8.0 (hidden)",
+      "Date - -",
+      "Time",
+      "No of Units units",
+      "Day 0 -00:00.00 Admission Restrictions: Caffeine #1 9.0",
+      "Has the participant consumed food and beverages containing methylxanthines (caffeinated",
+      "coffee, caffeinated tea, caffeinated soda, and chocolate) within 48 hours (72hrs prior to dosing) prior to Admission visit? (If 'Yes' exclude per exclusion criteria #24)"
+     ],
+     "wrong_form": [
+      "Comment:",
+      "Date - -",
+      "Time",
+      "No of Units units",
+      "Answer:"
+     ]
+    },
+    {
+     "page": 3,
+     "missed": [
+      "Has participant consumed food or beverages containing pomelo, grapefruit, grapefruit juice, Seville oranges, Seville orange juice, blueberry juice, or cranberry juice within 48 hours (72hrs prior to dosing) prior to Admission visit? (If 'Yes' exclude per exclusion criteria #24)",
+      "Has the participant consumed any food containing poppy seeds within 48 hours prior to Admission visit?",
+      "Has the participant had strenuous activity (e.g. weightlifting) within 72 hours prior to Admission visit?",
+      "Has the participant use of tobacco products or experience daily exposure to second-hand smoke since Screening?  (If 'Yes' exclude per exclusion criteria #14)",
+      "Staff Initials:",
+      "Answer(s):"
+     ],
+     "false": [
+      "Day 0 -00:00.00 Admission Restrictions: Grapefruit #1 10.0",
+      "Day 0 -00:00.00",
+      "Answer:",
+      "Has participant consumed food or beverages containing pomelo, grapefruit, grapefruit juice",
+      "Seville oranges, Seville orange juice, blueberry juice, or cranberry juice within 48 hours (72hrs prior to dosing) prior to Admission visit? (If 'Yes' exclude per exclusion criteria #24)",
+      "Day 0 -00:00.00 Admission Restrictions: Poppy seeds #1 11.0",
+      "Has the participant consumed any food containing poppy seeds within 48 hours prior to",
+      "Admission visit?",
+      "Day 0 -00:00.00 Admission Restrictions: Activity #1 12.0",
+      "Has the participant had strenuous activity (e.g. weightlifting) within 72 hours prior to Admission",
+      "visit?",
+      "Day 0 -00:00.00 Admission Restrictions: Smoking #1 13.0",
+      "Has the participant use of tobacco products or experience daily exposure to second-hand",
+      "smoke since Screening? (If 'Yes' exclude per exclusion criteria #14)",
+      "Day 0 -00:00.00 Prompts: PD Prompt #1 14.0 (hidden)",
+      "Day 0 -00:00.00",
+      "Day 0 -00:00.00 Admission Restrictions: Adverse Event #1 15.0"
+     ],
+     "wrong_form": [
+      "Staff Initials:",
+      "Comment:"
+     ]
+    },
+    {
+     "page": 4,
+     "missed": [
+      "Staff Initials:",
+      "Answer(s):",
+      "Record time of urine sample (For all Urine Assessments) (Collect Urine Sample)",
+      "What was the bilirubin result?  If any positive result, inform medic/PI. (Perform urinalysis and read results)"
+     ],
+     "false": [
+      "Answer:",
+      "Update Medical History where appropriate.",
+      "Day 0 -00:00.00 Prompts: AE Prompt #1 16.0 (hidden)",
+      "Day 0 -00:00.00",
+      "Day 0 -00:00.00 Admission Restrictions: Concomitant Meds #1 17.0",
+      "Day 0 -00:00.00",
+      "Day 0 -00:00.00 Prompts: CM Prompt #1 18.0 (hidden)",
+      "Day 0 -00:00.00",
+      "Day 0 -00:00.00 Urinalysis: Collection Time #1 19.0",
+      "Day 0 -00:00.00",
+      "Day 0 -00:00.00 Urinalysis: Bilirubin #1 20.0"
+     ],
+     "wrong_form": [
+      "Has the participant been unwell or have they had any accidents or injuries since Screening?",
+      "Comment:",
+      "Answer:"
+     ]
+    },
+    {
+     "page": 33,
+     "missed": [
+      "Answer(s):"
+     ],
+     "false": [
+      "Answer:"
+     ],
+     "wrong_form": [
+      "Comment:"
+     ]
+    },
+    {
+     "page": 47,
+     "missed": [
+      "Staff Initials:",
+      "Answer(s):",
+      "PRE-DOSE - Targeted Physical Examination:  Does the participant require a targeted physical examination? (If yes, please specify the reason)",
+      "Yes (Specify) ______________________________ (50 char. max.) (Activates Line 145)"
+     ],
+     "false": [
+      "Answer:",
+      "PRE-DOSE - Vital Signs Difference for DIASTOLIC Drop (Supine)",
+      "Day 0 -00:00.00 Pre-dose Vital Signs Standing: Clinical Significance #1 142.0",
+      "Day 0 -00:00.00",
+      "Day 0 -00:00.00 Pre-dose Vital Signs Standing: Vital Signs Findings #1 143.0 (hidden)",
+      "Yes (Specify) (Activates Line",
+      "PRE-DOSE - Targeted Physical Examination: Does the participant require a targeted physical",
+      "examination? (If yes, please specify the reason)",
+      "Day 0 -00:00.00 Predose Targeted Physical Examination: Any clinically significant abnormal 145.0 (hidden)"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 126,
+     "missed": [
+      "ECG Rhythm assessment and interpretation",
+      "Staff Initials:",
+      "Answer(s):",
+      "PRE-DOSE Triplicate ECG 2: ECG Findings"
+     ],
+     "false": [
+      "Answer:",
+      "Day 4 -00:00.00 (-50mins) Pre-dose Triplicate ECG 2: ECG Significance #1 8.0 (hidden)",
+      "Day 4 -00:00.00 (-50mins)",
+      "Day 4 -00:00.00 (-50mins) Pre-dose Triplicate ECG 2: ECG Findings #1 9.0 (hidden)",
+      "Day 4 -00:00.00 (-50mins) Pre-dose Triplicate ECG 2: ECG Findings inc Rhythm #1 10.0 (hidden)",
+      "Day 4 -00:00.00 (-50mins) Pre-dose Triplicate ECG 3: 12 Lead Standard #1 11.0",
+      "Day 4 -00:00.00 (-50mins)"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 212,
+     "missed": [
+      "Answer(s):"
+     ],
+     "false": [
+      "Answer:"
+     ],
+     "wrong_form": [
+      "Comment:"
+     ]
+    },
+    {
+     "page": 247,
+     "missed": [
+      "Staff Initials:",
+      "Answer(s):"
+     ],
+     "false": [
+      "ECG Difference Calculation - a participant will be withdrawn where there is an increase in QTcF",
+      "interval of >60 msec from baseline (confirmed following a repeat ECG)",
+      "Answer:",
+      "Day 8 +24:00.00 (-5mins) Vital Signs: Vital Signs Supine Full Set #5 174.0",
+      "Day 8 +24:00.00 (-5mins)",
+      "Vital Signs",
+      "Day 8 +24:00.00 (-5mins) Vital Signs: Clinical Significance #5 175.0",
+      "Clinical Assessment of Vital Signs (Medic or Nurse to assess vital signs)"
+     ],
+     "wrong_form": [
+      "Comment:",
+      "QTcF ms",
+      "Systolic mmHg",
+      "Diastolic mmHg",
+      "Heart Rate beats/min",
+      "Respiratory Rate breaths/mi",
+      "Oral Temperature - Degrees Celsius C",
+      "Answer:"
+     ]
+    },
+    {
+     "page": 368,
+     "missed": [
+      "Answer(s):",
+      "Staff Initials:",
+      "Confirm an AE and Conmed check has been performed (Record any AE and Conmeds if applicable)"
+     ],
+     "false": [
+      "Day 10 -00:00.00 (-40mins) Pre-dose Vital Signs Standing: Vital Signs Findings #1 27.0 (hidden)",
+      "Day 10 -00:00.00 (-40mins)",
+      "PK Sample for Bioanalysis - Gently invert tube 8-10 times immediately after collection and",
+      "Confirm an AE and Conmed check has been performed (Record any AE and Conmeds if",
+      "applicable)",
+      "Answer:",
+      "Day 10 -00:00.00 (-35mins) PK Samples: PK Plasma #1 28.0",
+      "Day 10 -00:00.00 (-35mins)",
+      "Day 10 -00:00.00 (-35mins) AE/CM Surveys: AE/CM Check #1 29.0",
+      "Day 10 -00:00.00 (-35mins)",
+      "Day 10 -00:00.00 (-31mins) Exposure: Dosing Eligibility Continues #1 30.0",
+      "Day 10 -00:00.00 (-31mins)",
+      "Day 10 -00:00.00 (-30mins) Exposure x: Prandial state #1 31.0",
+      "Day 10 -00:00.00 (-30mins)"
+     ],
+     "wrong_form": [
+      "Barcode:",
+      "Staff Initials:",
+      "Comment:",
+      "SMP"
+     ]
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    158,
+    1,
+    -489
+   ],
+   "became_best": false
+  }
+ ]
+}

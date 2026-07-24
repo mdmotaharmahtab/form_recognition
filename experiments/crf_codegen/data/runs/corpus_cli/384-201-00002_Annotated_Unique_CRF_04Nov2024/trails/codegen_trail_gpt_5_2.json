@@ -1,0 +1,362 @@
+{
+ "stop_reason": "plateau",
+ "versions": 3,
+ "best_version": 1,
+ "score_key": [
+  "gate_problems",
+  "audit_issues",
+  "warnings",
+  "neg_pages_with_fields"
+ ],
+ "cycles": [
+  {
+   "version": 1,
+   "kind": "confirm",
+   "outcome": "confirmed_no_fields"
+  },
+  {
+   "version": 1,
+   "kind": "generate",
+   "metrics": {
+    "engine": "codegen",
+    "records": 1639,
+    "pages_total": 404,
+    "pages_with_fields": 364,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 100,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 76,
+    "fields_per_form": 21.6,
+    "forms_per_100_pages": 18.8,
+    "form_same_page_evidence_records": 1553,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 90
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 17,
+   "audit_pages": [
+    1,
+    2,
+    3,
+    75,
+    128,
+    271,
+    299
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [],
+     "false": [
+      "Folder OID (auto-populated)"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 3,
+     "missed": [],
+     "false": [
+      "VISPERF",
+      "VISREASND $200",
+      "VISDAT",
+      "FOLDER_OI D"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 75,
+     "missed": [],
+     "false": [
+      "EGMETHOD $70",
+      "EGTPT"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 128,
+     "missed": [],
+     "false": [
+      "PCTPT",
+      "PCPERF",
+      "PCREASND $200",
+      "PCDAT",
+      "PCTIM",
+      "PCREFID",
+      "PCSPEC",
+      "PCDTTM"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 271,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 299,
+     "missed": [
+      "If yes, describe:",
+      "If yes, describe:"
+     ],
+     "false": [],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    17,
+    0,
+    -364
+   ],
+   "became_best": true
+  },
+  {
+   "version": 2,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 741,
+    "pages_total": 404,
+    "pages_with_fields": 221,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 97,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 65,
+    "fields_per_form": 11.4,
+    "forms_per_100_pages": 16.1,
+    "form_same_page_evidence_records": 701,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 55
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 13,
+   "audit_pages": [
+    1,
+    2,
+    3,
+    50,
+    54,
+    75,
+    128,
+    271,
+    299
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [
+      "Was visit performed?",
+      "If No, please provide reason",
+      "Visit Date"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 3,
+     "missed": [],
+     "false": [
+      "dd MMM yyyy",
+      "D"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 50,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 54,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 75,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 128,
+     "missed": [],
+     "false": [
+      "dd MMM yyyy",
+      "HH:nn",
+      "dd MMM yyyy HH:nn"
+     ],
+     "wrong_form": []
+    },
+    {
+     "page": 271,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 299,
+     "missed": [
+      "3. Active Suicidal Ideation with Any Methods (Not Plan) without Intent to Act - Past 12 months",
+      "4. Active Suicidal Ideation with Some Intent to Act, without Specific Plan - Lifetime",
+      "If yes, describe:",
+      "If yes, describe:"
+     ],
+     "false": [
+      "without Specific Plan - Lifetime"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    13,
+    0,
+    -221
+   ],
+   "became_best": false
+  },
+  {
+   "version": 3,
+   "kind": "revise_audit",
+   "metrics": {
+    "engine": "codegen",
+    "records": 540,
+    "pages_total": 404,
+    "pages_with_fields": 133,
+    "definition_pages_seen": 0,
+    "forms_nonempty_pct": 100,
+    "labels_look_human_pct": 99,
+    "oids_present_pct": 0,
+    "oids_look_like_codes_pct": 0,
+    "distinct_forms": 64,
+    "fields_per_form": 8.4,
+    "forms_per_100_pages": 15.8,
+    "form_same_page_evidence_records": 524,
+    "form_same_page_persistence_pct": 100,
+    "furniture_candidates": [],
+    "pages_covered_pct": 33
+   },
+   "problems": [],
+   "warnings": [],
+   "audit_issues": 9,
+   "audit_pages": [
+    1,
+    2,
+    3,
+    6,
+    62,
+    75,
+    128,
+    271,
+    299
+   ],
+   "audit_partial": null,
+   "audit_promoted": null,
+   "audit_verdicts": [
+    {
+     "page": 1,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 2,
+     "missed": [
+      "Was visit performed?",
+      "If No, please provide reason",
+      "Visit Date",
+      "Folder OID (auto-populated)"
+     ],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 3,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 6,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 62,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 75,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 128,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 271,
+     "missed": [],
+     "false": [],
+     "wrong_form": []
+    },
+    {
+     "page": 299,
+     "missed": [
+      "3. Active Suicidal Ideation with Any Methods (Not Plan) without Intent to Act - Past 12 months",
+      "4. Active Suicidal Ideation with Some Intent to Act, without Specific Plan - Lifetime",
+      "If yes, describe:",
+      "If yes, describe:"
+     ],
+     "false": [
+      "without Specific Plan - Lifetime"
+     ],
+     "wrong_form": []
+    }
+   ],
+   "forgiven_pages": null,
+   "score": [
+    0,
+    9,
+    0,
+    -133
+   ],
+   "became_best": false
+  }
+ ]
+}

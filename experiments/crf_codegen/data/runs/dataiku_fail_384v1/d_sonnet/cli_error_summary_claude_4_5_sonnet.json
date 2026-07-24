@@ -1,0 +1,25 @@
+{
+ "generated_at": "2026-07-24T03:04:58Z",
+ "documents": 1,
+ "events": 23,
+ "by_severity": {
+  "quality": 17,
+  "blocking": 5,
+  "fatal": 1
+ },
+ "by_stage": {
+  "gates": 14,
+  "audit": 8,
+  "loop": 1
+ },
+ "by_code": {
+  "warn_text_blocklists": 4,
+  "audit_missed": 8,
+  "gate_form_explosion": 5,
+  "warn_other": 5,
+  "no_version_passed_gates": 1
+ },
+ "by_doc": {
+  "384-201-00004_Annotated_CRF___v1.0_05_Mar_2025": 23
+ }
+}

@@ -51,3 +51,22 @@ ECSGENERATION/backup/
 # ---- patterns above would otherwise drop its snapshots ----
 !experiments/recipe_prototype/project_history/
 !experiments/recipe_prototype/project_history/**
+
+# ---- structured project home: track the crf_codegen folder (code + docs + ----
+# ---- curated history + interpretable per-run artifacts), overriding the ----
+# ---- data/, *.png, *.xlsx and *.log rules above for this subtree only ----
+!experiments/crf_codegen/
+!experiments/crf_codegen/**
+# ...but never commit caches inside it
+experiments/crf_codegen/**/__pycache__/
+experiments/crf_codegen/**/*.py[cod]
+experiments/crf_codegen/**/.ipynb_checkpoints/
+# heavy, re-derivable run payloads: rendered page images (~78 MB), verbatim LLM
+# call logs (~43 MB), and the renamed old-run backups (~41 MB). The interpretable
+# results (clusters/trails/fields/prompts/replies/timings/summaries) stay tracked.
+experiments/crf_codegen/**/*.png
+experiments/crf_codegen/**/llm_calls/
+experiments/crf_codegen/data/runs/snapshots/
+# scratch scripts + stray default output dir
+experiments/crf_codegen/tmp/
+experiments/crf_codegen/outdir/

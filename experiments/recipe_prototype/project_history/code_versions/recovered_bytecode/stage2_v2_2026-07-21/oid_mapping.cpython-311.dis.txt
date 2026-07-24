@@ -1,0 +1,1122 @@
+  0           0 RESUME                   0
+
+  1           2 LOAD_CONST               0 ('Name -> OID mapping for non-Rave CRFs: the form-first funnel.\n\nAnnotated Rave books carry printed OIDs, so production never had a\nname->OID step -- its rule matcher starts from OIDs it reads off the page\n(review_table.fuzzy_match_fields). Non-Rave books yield only\n(form_name, field_name), so this module reconstructs the missing OIDs\nagainst the ecs_index library and hands them to that same downstream.\n\nThe funnel (each layer narrows, the last one judges):\n\n  layer 1  FORM scoping    partial_ratio >= FORM_SCOPE_T (70) -- the exact\n                           scorer/threshold production already uses to match\n                           form names (review_table.get_standard_crf).\n                           No form match -> unmapped.\n  layer 2  FIELD in form   token_sort_ratio >= FIELD_T (85) against the\n                           scoped rows only, best row per distinct OID ->\n                           a shortlist of 1..MAX_CANDIDATES OIDs.\n  layer 3  LLM ranker      EVERY shortlisted case is judged: pick one of the\n                           listed OIDs or null. Single candidates are\n                           confirm-or-null, not auto-accepted -- measured on\n                           the Rave book, both lexical-layer errors were\n                           lone candidates that passed the gate while the\n                           right row was absent from the library ("Contact\n                           Method" at similarity 100 from the WRONG\n                           follow-up form). String scores generate\n                           candidates; they never certify them.\n\nWithout an LLM (llm=None) the module runs deterministic-only: a single\ncandidate or a clear leader (>= MARGIN points) maps lexically, near-ties\nabstain. That mode exists for offline smoke runs and A/B comparison.\n\nEverything unresolved exits as unmapped, which is safe by design:\nproduction writes LLM-generated rules for unmapped fields from their names\nalone. The harmful failure is a *mismap* (silently attaches the wrong\nform\'s library rules); every layer here is shaped to minimize that -- the\nshortlist bound means the ranker can never introduce an OID, though it can\nstill echo a listed-but-wrong one, so mismap risk is reduced, not zero.\n\nInputs are pre-normalized strings (caller owns normalization); library\nentries are dicts with keys: field, form (normalized), oid, and optionally\nfield_raw / form_raw for human-readable ranker prompts.\n')
+              4 STORE_NAME               0 (__doc__)
+
+ 43           6 LOAD_CONST               1 (0)
+              8 LOAD_CONST               2 (None)
+             10 IMPORT_NAME              1 (json)
+             12 STORE_NAME               1 (json)
+
+ 44          14 LOAD_CONST               1 (0)
+             16 LOAD_CONST               2 (None)
+             18 IMPORT_NAME              2 (re)
+             20 STORE_NAME               2 (re)
+
+ 45          22 LOAD_CONST               1 (0)
+             24 LOAD_CONST               3 (('dataclass', 'field'))
+             26 IMPORT_NAME              3 (dataclasses)
+             28 IMPORT_FROM              4 (dataclass)
+             30 STORE_NAME               4 (dataclass)
+             32 IMPORT_FROM              5 (field)
+             34 STORE_NAME               6 (dc_field)
+             36 POP_TOP
+
+ 47          38 LOAD_CONST               1 (0)
+             40 LOAD_CONST               4 (('fuzz',))
+             42 IMPORT_NAME              7 (rapidfuzz)
+             44 IMPORT_FROM              8 (fuzz)
+             46 STORE_NAME               8 (fuzz)
+             48 POP_TOP
+
+ 49          50 LOAD_CONST               5 (70)
+             52 STORE_NAME               9 (FORM_SCOPE_T)
+
+ 50          54 LOAD_CONST               6 (85)
+             56 STORE_NAME              10 (FIELD_T)
+
+ 51          58 LOAD_CONST               7 (5)
+             60 STORE_NAME              11 (MARGIN)
+
+ 52          62 LOAD_CONST               7 (5)
+             64 STORE_NAME              12 (MAX_CANDIDATES)
+
+ 53          66 LOAD_CONST               8 (40)
+             68 STORE_NAME              13 (RANKER_CHUNK)
+
+ 55          70 LOAD_CONST               9 ('mapped')
+             72 STORE_NAME              14 (MAPPED)
+
+ 56          74 LOAD_CONST              10 ('abstain')
+             76 STORE_NAME              15 (ABSTAIN)
+
+ 57          78 LOAD_CONST              11 ('unmapped')
+             80 STORE_NAME              16 (UNMAPPED)
+
+ 60          82 LOAD_NAME                4 (dataclass)
+
+ 61          84 PUSH_NULL
+             86 LOAD_BUILD_CLASS
+             88 LOAD_CONST              12 (<code object MapResult at 0x00000290C3813C30, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\oid_mapping.py", line 60>)
+             90 MAKE_FUNCTION            0
+             92 LOAD_CONST              13 ('MapResult')
+             94 PRECALL                  2
+             98 CALL                     2
+
+ 60         108 PRECALL                  0
+            112 CALL                     0
+
+ 61         122 STORE_NAME              17 (MapResult)
+
+ 71         124 LOAD_CONST              14 ('form')
+            126 LOAD_NAME               18 (str)
+            128 LOAD_CONST              15 ('lib')
+            130 LOAD_NAME               19 (list)
+            132 LOAD_NAME               20 (dict)
+            134 BINARY_SUBSCR
+            144 LOAD_CONST              16 ('return')
+            146 LOAD_NAME               19 (list)
+            148 LOAD_NAME               20 (dict)
+            150 BINARY_SUBSCR
+            160 BUILD_TUPLE              6
+            162 LOAD_CONST              17 (<code object scope_form at 0x00000290C3A0E250, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\oid_mapping.py", line 71>)
+            164 MAKE_FUNCTION            4 (annotations)
+            166 STORE_NAME              21 (scope_form)
+
+ 83         168 LOAD_CONST              14 ('form')
+            170 LOAD_NAME               18 (str)
+            172 LOAD_CONST              18 ('field')
+            174 LOAD_NAME               18 (str)
+            176 LOAD_CONST              15 ('lib')
+            178 LOAD_NAME               19 (list)
+            180 LOAD_NAME               20 (dict)
+            182 BINARY_SUBSCR
+            192 LOAD_CONST              16 ('return')
+            194 LOAD_NAME               17 (MapResult)
+            196 BUILD_TUPLE              8
+            198 LOAD_CONST              19 (<code object map_field at 0x00000290C1B0C600, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\oid_mapping.py", line 83>)
+            200 MAKE_FUNCTION            4 (annotations)
+            202 STORE_NAME              22 (map_field)
+
+119         204 LOAD_CONST              20 ('cases')
+            206 LOAD_NAME               19 (list)
+            208 LOAD_NAME               17 (MapResult)
+            210 BINARY_SUBSCR
+            220 LOAD_CONST              16 ('return')
+            222 LOAD_NAME               18 (str)
+            224 BUILD_TUPLE              4
+            226 LOAD_CONST              21 (<code object build_ranker_prompt at 0x00000290C1B494F0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\oid_mapping.py", line 119>)
+            228 MAKE_FUNCTION            4 (annotations)
+            230 STORE_NAME              23 (build_ranker_prompt)
+
+155         232 LOAD_CONST              22 ('reply')
+            234 LOAD_NAME               18 (str)
+            236 LOAD_CONST              16 ('return')
+            238 LOAD_NAME               19 (list)
+            240 LOAD_CONST               2 (None)
+            242 BINARY_OP                7 (|)
+            246 BUILD_TUPLE              4
+            248 LOAD_CONST              23 (<code object _extract_json_array at 0x00000290C11F4B90, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\oid_mapping.py", line 155>)
+            250 MAKE_FUNCTION            4 (annotations)
+            252 STORE_NAME              24 (_extract_json_array)
+
+178         254 LOAD_CONST              22 ('reply')
+            256 LOAD_NAME               18 (str)
+            258 LOAD_CONST              20 ('cases')
+            260 LOAD_NAME               19 (list)
+            262 LOAD_NAME               17 (MapResult)
+            264 BINARY_SUBSCR
+            274 LOAD_CONST              16 ('return')
+            276 LOAD_NAME               20 (dict)
+            278 LOAD_NAME               25 (int)
+            280 LOAD_NAME               18 (str)
+            282 LOAD_CONST               2 (None)
+            284 BINARY_OP                7 (|)
+            288 BUILD_TUPLE              2
+            290 BINARY_SUBSCR
+            300 BUILD_TUPLE              6
+            302 LOAD_CONST              24 (<code object parse_ranker_reply at 0x00000290C1AEC050, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\oid_mapping.py", line 178>)
+            304 MAKE_FUNCTION            4 (annotations)
+            306 STORE_NAME              26 (parse_ranker_reply)
+
+203         308 LOAD_CONST              20 ('cases')
+            310 LOAD_NAME               19 (list)
+            312 LOAD_NAME               17 (MapResult)
+            314 BINARY_SUBSCR
+            324 LOAD_CONST              16 ('return')
+            326 LOAD_CONST               2 (None)
+            328 BUILD_TUPLE              4
+            330 LOAD_CONST              25 (<code object rank_cases at 0x00000290C1B0B140, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\oid_mapping.py", line 203>)
+            332 MAKE_FUNCTION            4 (annotations)
+            334 STORE_NAME              27 (rank_cases)
+
+232         336 NOP
+
+231         338 LOAD_CONST              28 ((None,))
+            340 LOAD_CONST              26 ('pairs')
+            342 LOAD_NAME               19 (list)
+            344 LOAD_NAME               28 (tuple)
+            346 LOAD_NAME               18 (str)
+            348 LOAD_NAME               18 (str)
+            350 BUILD_TUPLE              2
+            352 BINARY_SUBSCR
+            362 BINARY_SUBSCR
+            372 LOAD_CONST              15 ('lib')
+            374 LOAD_NAME               19 (list)
+            376 LOAD_NAME               20 (dict)
+            378 BINARY_SUBSCR
+            388 LOAD_CONST              16 ('return')
+
+232         390 LOAD_NAME               19 (list)
+            392 LOAD_NAME               17 (MapResult)
+            394 BINARY_SUBSCR
+
+231         404 BUILD_TUPLE              6
+            406 LOAD_CONST              27 (<code object map_pairs at 0x00000290C3A51D70, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\oid_mapping.py", line 231>)
+            408 MAKE_FUNCTION            5 (defaults, annotations)
+            410 STORE_NAME              29 (map_pairs)
+            412 LOAD_CONST               2 (None)
+            414 RETURN_VALUE
+
+Disassembly of <code object MapResult at 0x00000290C3813C30, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\oid_mapping.py", line 60>:
+ 60           0 RESUME                   0
+              2 LOAD_NAME                0 (__name__)
+              4 STORE_NAME               1 (__module__)
+              6 LOAD_CONST               0 ('MapResult')
+              8 STORE_NAME               2 (__qualname__)
+             10 SETUP_ANNOTATIONS
+
+ 62          12 LOAD_NAME                3 (str)
+             14 LOAD_NAME                4 (__annotations__)
+             16 LOAD_CONST               1 ('form')
+             18 STORE_SUBSCR
+
+ 63          22 LOAD_NAME                3 (str)
+             24 LOAD_NAME                4 (__annotations__)
+             26 LOAD_CONST               2 ('field')
+             28 STORE_SUBSCR
+
+ 64          32 LOAD_NAME                3 (str)
+             34 LOAD_NAME                4 (__annotations__)
+             36 LOAD_CONST               3 ('status')
+             38 STORE_SUBSCR
+
+ 65          42 LOAD_CONST               4 (None)
+             44 STORE_NAME               5 (oid)
+             46 LOAD_NAME                3 (str)
+             48 LOAD_CONST               4 (None)
+             50 BINARY_OP                7 (|)
+             54 LOAD_NAME                4 (__annotations__)
+             56 LOAD_CONST               5 ('oid')
+             58 STORE_SUBSCR
+
+ 66          62 LOAD_CONST               6 (0.0)
+             64 STORE_NAME               6 (score)
+             66 LOAD_NAME                7 (float)
+             68 LOAD_NAME                4 (__annotations__)
+             70 LOAD_CONST               7 ('score')
+             72 STORE_SUBSCR
+
+ 67          76 LOAD_CONST               8 ('lexical')
+             78 STORE_NAME               8 (via)
+             80 LOAD_NAME                3 (str)
+             82 LOAD_NAME                4 (__annotations__)
+             84 LOAD_CONST               9 ('via')
+             86 STORE_SUBSCR
+
+ 68          90 PUSH_NULL
+             92 LOAD_NAME                9 (dc_field)
+             94 LOAD_NAME               10 (list)
+             96 KW_NAMES                10
+             98 PRECALL                  1
+            102 CALL                     1
+            112 STORE_NAME              11 (candidates)
+            114 LOAD_NAME               10 (list)
+            116 LOAD_NAME                4 (__annotations__)
+            118 LOAD_CONST              11 ('candidates')
+            120 STORE_SUBSCR
+            124 LOAD_CONST               4 (None)
+            126 RETURN_VALUE
+
+Disassembly of <code object scope_form at 0x00000290C3A0E250, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\oid_mapping.py", line 71>:
+              0 MAKE_CELL                0 (form)
+
+ 71           2 RESUME                   0
+
+ 79           4 LOAD_CLOSURE             0 (form)
+              6 BUILD_TUPLE              1
+              8 LOAD_CONST               1 (<code object <listcomp> at 0x00000290C37BB630, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\oid_mapping.py", line 79>)
+             10 MAKE_FUNCTION            8 (closure)
+             12 LOAD_FAST                1 (lib)
+             14 GET_ITER
+             16 PRECALL                  0
+             20 CALL                     0
+             30 RETURN_VALUE
+
+Disassembly of <code object <listcomp> at 0x00000290C37BB630, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\oid_mapping.py", line 79>:
+              0 COPY_FREE_VARS           1
+
+ 79           2 RESUME                   0
+              4 BUILD_LIST               0
+              6 LOAD_FAST                0 (.0)
+        >>    8 FOR_ITER                40 (to 90)
+             10 STORE_FAST               1 (e)
+
+ 80          12 LOAD_GLOBAL              1 (NULL + fuzz)
+             24 LOAD_ATTR                1 (partial_ratio)
+             34 LOAD_DEREF               2 (form)
+             36 LOAD_FAST                1 (e)
+             38 LOAD_CONST               0 ('form')
+             40 BINARY_SUBSCR
+             50 PRECALL                  2
+             54 CALL                     2
+             64 LOAD_GLOBAL              4 (FORM_SCOPE_T)
+             76 COMPARE_OP               5 (>=)
+             82 POP_JUMP_BACKWARD_IF_FALSE    38 (to 8)
+
+ 79          84 LOAD_FAST                1 (e)
+
+ 80          86 LIST_APPEND              2
+             88 JUMP_BACKWARD           41 (to 8)
+        >>   90 RETURN_VALUE
+
+Disassembly of <code object map_field at 0x00000290C1B0C600, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\oid_mapping.py", line 83>:
+ 83           0 RESUME                   0
+
+ 86           2 LOAD_FAST                0 (form)
+              4 LOAD_METHOD              0 (strip)
+             26 PRECALL                  0
+             30 CALL                     0
+             40 POP_JUMP_FORWARD_IF_FALSE    20 (to 82)
+             42 LOAD_FAST                1 (field)
+             44 LOAD_METHOD              0 (strip)
+             66 PRECALL                  0
+             70 CALL                     0
+             80 POP_JUMP_FORWARD_IF_TRUE    22 (to 126)
+
+ 87     >>   82 LOAD_GLOBAL              3 (NULL + MapResult)
+             94 LOAD_FAST                0 (form)
+             96 LOAD_FAST                1 (field)
+             98 LOAD_GLOBAL              4 (UNMAPPED)
+            110 PRECALL                  3
+            114 CALL                     3
+            124 RETURN_VALUE
+
+ 88     >>  126 LOAD_GLOBAL              7 (NULL + scope_form)
+            138 LOAD_FAST                0 (form)
+            140 LOAD_FAST                2 (lib)
+            142 PRECALL                  2
+            146 CALL                     2
+            156 STORE_FAST               3 (scoped)
+
+ 89         158 LOAD_FAST                3 (scoped)
+            160 POP_JUMP_FORWARD_IF_TRUE    22 (to 206)
+
+ 90         162 LOAD_GLOBAL              3 (NULL + MapResult)
+            174 LOAD_FAST                0 (form)
+            176 LOAD_FAST                1 (field)
+            178 LOAD_GLOBAL              4 (UNMAPPED)
+            190 PRECALL                  3
+            194 CALL                     3
+            204 RETURN_VALUE
+
+ 93     >>  206 BUILD_MAP                0
+            208 STORE_FAST               4 (per_oid)
+
+ 94         210 LOAD_FAST                3 (scoped)
+            212 GET_ITER
+        >>  214 FOR_ITER                96 (to 408)
+            216 STORE_FAST               5 (e)
+
+ 95         218 LOAD_GLOBAL              9 (NULL + fuzz)
+            230 LOAD_ATTR                5 (token_sort_ratio)
+            240 LOAD_FAST                1 (field)
+            242 LOAD_FAST                5 (e)
+            244 LOAD_CONST               1 ('field')
+            246 BINARY_SUBSCR
+            256 PRECALL                  2
+            260 CALL                     2
+            270 STORE_FAST               6 (s)
+
+ 96         272 LOAD_FAST                6 (s)
+            274 LOAD_GLOBAL             12 (FIELD_T)
+            286 COMPARE_OP               0 (<)
+            292 POP_JUMP_FORWARD_IF_FALSE     1 (to 296)
+
+ 97         294 JUMP_BACKWARD           41 (to 214)
+
+ 98     >>  296 LOAD_FAST                5 (e)
+            298 LOAD_CONST               2 ('oid')
+            300 BINARY_SUBSCR
+            310 LOAD_METHOD              7 (upper)
+            332 PRECALL                  0
+            336 CALL                     0
+            346 STORE_FAST               7 (key)
+
+ 99         348 LOAD_FAST                7 (key)
+            350 LOAD_FAST                4 (per_oid)
+            352 CONTAINS_OP              1
+            354 POP_JUMP_FORWARD_IF_TRUE    18 (to 392)
+            356 LOAD_FAST                6 (s)
+            358 LOAD_FAST                4 (per_oid)
+            360 LOAD_FAST                7 (key)
+            362 BINARY_SUBSCR
+            372 LOAD_CONST               3 (0)
+            374 BINARY_SUBSCR
+            384 COMPARE_OP               4 (>)
+            390 POP_JUMP_FORWARD_IF_FALSE     7 (to 406)
+
+100     >>  392 LOAD_FAST                6 (s)
+            394 LOAD_FAST                5 (e)
+            396 BUILD_TUPLE              2
+            398 LOAD_FAST                4 (per_oid)
+            400 LOAD_FAST                7 (key)
+            402 STORE_SUBSCR
+        >>  406 JUMP_BACKWARD           97 (to 214)
+
+101     >>  408 LOAD_FAST                4 (per_oid)
+            410 POP_JUMP_FORWARD_IF_TRUE    22 (to 456)
+
+102         412 LOAD_GLOBAL              3 (NULL + MapResult)
+            424 LOAD_FAST                0 (form)
+            426 LOAD_FAST                1 (field)
+            428 LOAD_GLOBAL              4 (UNMAPPED)
+            440 PRECALL                  3
+            444 CALL                     3
+            454 RETURN_VALUE
+
+104     >>  456 LOAD_GLOBAL             17 (NULL + sorted)
+            468 LOAD_CONST               4 (<code object <genexpr> at 0x00000290C3A0F830, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\oid_mapping.py", line 104>)
+            470 MAKE_FUNCTION            0
+            472 LOAD_FAST                4 (per_oid)
+            474 LOAD_METHOD              9 (values)
+            496 PRECALL                  0
+            500 CALL                     0
+            510 GET_ITER
+            512 PRECALL                  0
+            516 CALL                     0
+
+105         526 LOAD_CONST               5 (<code object <lambda> at 0x00000290C3A6D480, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\oid_mapping.py", line 105>)
+            528 MAKE_FUNCTION            0
+            530 LOAD_CONST               6 (True)
+
+104         532 KW_NAMES                 7
+            534 PRECALL                  3
+            538 CALL                     3
+            548 STORE_FAST               8 (ranked)
+
+106         550 LOAD_FAST                8 (ranked)
+            552 LOAD_CONST               3 (0)
+            554 BINARY_SUBSCR
+            564 UNPACK_SEQUENCE          2
+            568 STORE_FAST               9 (best_s)
+            570 STORE_FAST              10 (best_e)
+
+107         572 LOAD_CONST               8 (<code object <listcomp> at 0x00000290C3816E20, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\oid_mapping.py", line 107>)
+            574 MAKE_FUNCTION            0
+
+109         576 LOAD_FAST                8 (ranked)
+            578 LOAD_CONST               9 (None)
+            580 LOAD_GLOBAL             20 (MAX_CANDIDATES)
+            592 BUILD_SLICE              2
+            594 BINARY_SUBSCR
+
+107         604 GET_ITER
+            606 PRECALL                  0
+            610 CALL                     0
+            620 STORE_FAST              11 (shortlist)
+
+110         622 LOAD_GLOBAL             23 (NULL + len)
+            634 LOAD_FAST                8 (ranked)
+            636 PRECALL                  1
+            640 CALL                     1
+            650 LOAD_CONST              10 (1)
+            652 COMPARE_OP               2 (==)
+            658 POP_JUMP_FORWARD_IF_TRUE    26 (to 712)
+            660 LOAD_FAST                9 (best_s)
+            662 LOAD_FAST                8 (ranked)
+            664 LOAD_CONST              10 (1)
+            666 BINARY_SUBSCR
+            676 LOAD_CONST               3 (0)
+            678 BINARY_SUBSCR
+            688 BINARY_OP               10 (-)
+            692 LOAD_GLOBAL             24 (MARGIN)
+            704 COMPARE_OP               5 (>=)
+            710 POP_JUMP_FORWARD_IF_FALSE    32 (to 776)
+
+111     >>  712 LOAD_GLOBAL              3 (NULL + MapResult)
+            724 LOAD_FAST                0 (form)
+            726 LOAD_FAST                1 (field)
+            728 LOAD_GLOBAL             26 (MAPPED)
+            740 LOAD_FAST               10 (best_e)
+            742 LOAD_CONST               2 ('oid')
+            744 BINARY_SUBSCR
+            754 LOAD_FAST                9 (best_s)
+
+112         756 LOAD_FAST               11 (shortlist)
+
+111         758 KW_NAMES                11
+            760 PRECALL                  6
+            764 CALL                     6
+            774 RETURN_VALUE
+
+113     >>  776 LOAD_GLOBAL              3 (NULL + MapResult)
+            788 LOAD_FAST                0 (form)
+            790 LOAD_FAST                1 (field)
+            792 LOAD_GLOBAL             28 (ABSTAIN)
+            804 LOAD_FAST               11 (shortlist)
+            806 KW_NAMES                12
+            808 PRECALL                  4
+            812 CALL                     4
+            822 RETURN_VALUE
+
+Disassembly of <code object <genexpr> at 0x00000290C3A0F830, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\oid_mapping.py", line 104>:
+104           0 RETURN_GENERATOR
+              2 POP_TOP
+              4 RESUME                   0
+              6 LOAD_FAST                0 (.0)
+        >>    8 FOR_ITER                11 (to 32)
+             10 UNPACK_SEQUENCE          2
+             14 STORE_FAST               1 (s)
+             16 STORE_FAST               2 (e)
+             18 LOAD_FAST                1 (s)
+             20 LOAD_FAST                2 (e)
+             22 BUILD_TUPLE              2
+             24 YIELD_VALUE
+             26 RESUME                   1
+             28 POP_TOP
+             30 JUMP_BACKWARD           12 (to 8)
+        >>   32 LOAD_CONST               0 (None)
+             34 RETURN_VALUE
+
+Disassembly of <code object <lambda> at 0x00000290C3A6D480, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\oid_mapping.py", line 105>:
+105           0 RESUME                   0
+              2 LOAD_FAST                0 (t)
+              4 LOAD_CONST               1 (0)
+              6 BINARY_SUBSCR
+             16 RETURN_VALUE
+
+Disassembly of <code object <listcomp> at 0x00000290C3816E20, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\oid_mapping.py", line 107>:
+107           0 RESUME                   0
+              2 BUILD_LIST               0
+              4 LOAD_FAST                0 (.0)
+        >>    6 FOR_ITER                69 (to 146)
+
+109           8 UNPACK_SEQUENCE          2
+             12 STORE_FAST               1 (s)
+             14 STORE_FAST               2 (e)
+
+107          16 LOAD_FAST                1 (s)
+             18 LOAD_FAST                2 (e)
+             20 LOAD_CONST               0 ('oid')
+             22 BINARY_SUBSCR
+             32 LOAD_FAST                2 (e)
+             34 LOAD_METHOD              0 (get)
+             56 LOAD_CONST               1 ('field_raw')
+             58 LOAD_FAST                2 (e)
+             60 LOAD_CONST               2 ('field')
+             62 BINARY_SUBSCR
+             72 PRECALL                  2
+             76 CALL                     2
+
+108          86 LOAD_FAST                2 (e)
+             88 LOAD_METHOD              0 (get)
+            110 LOAD_CONST               3 ('form_raw')
+            112 LOAD_FAST                2 (e)
+            114 LOAD_CONST               4 ('form')
+            116 BINARY_SUBSCR
+            126 PRECALL                  2
+            130 CALL                     2
+
+107         140 BUILD_TUPLE              4
+            142 LIST_APPEND              2
+            144 JUMP_BACKWARD           70 (to 6)
+        >>  146 RETURN_VALUE
+
+Disassembly of <code object build_ranker_prompt at 0x00000290C1B494F0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\oid_mapping.py", line 119>:
+119           0 RESUME                   0
+
+120           2 BUILD_LIST               0
+              4 LOAD_CONST               1 (('You are resolving printed CRF field names to library OIDs.', 'For each case, one or more library entries matched the printed', 'field name by string similarity. String similarity generates these', 'candidates but cannot certify them: a perfect label match can sit', 'on the wrong form, and near-identical labels can be a canonical', 'field vs its derived variant. Judge by MEANING in form context.', '', 'Rules:', '- Reply with ONLY a JSON array: [{"case": 1, "oid": "..."}, ...]', '- "oid" must be exactly one of that case\'s listed OIDs, or null.', '- Candidates may come from DIFFERENT library forms (form matching', '  is fuzzy), and the printed form may not exist in the library at', "  all. If no candidate's library form is genuinely the printed", '  form, answer null -- however perfect the field label match is.', '- A single candidate is a question, not an answer: confirm the', "  library entry's field AND form genuinely mean the printed ones,", '  else null.', '- Prefer the OID representing direct entry of the printed field', '  over derived/computed variants, unless the label says otherwise.', '- When unsure, answer null. A wrong OID is worse than none: it', "  attaches the wrong form's validation rules.", ''))
+              6 LIST_EXTEND              1
+              8 STORE_FAST               1 (lines)
+
+144          10 LOAD_GLOBAL              1 (NULL + enumerate)
+             22 LOAD_FAST                0 (cases)
+             24 LOAD_CONST               2 (1)
+             26 PRECALL                  2
+             30 CALL                     2
+             40 GET_ITER
+        >>   42 FOR_ITER               159 (to 362)
+             44 UNPACK_SEQUENCE          2
+             48 STORE_FAST               2 (i)
+             50 STORE_FAST               3 (c)
+
+145          52 LOAD_FAST                1 (lines)
+             54 LOAD_METHOD              1 (append)
+             76 LOAD_CONST               3 ('Case ')
+             78 LOAD_FAST                2 (i)
+             80 FORMAT_VALUE             0
+             82 LOAD_CONST               4 (':')
+             84 BUILD_STRING             3
+             86 PRECALL                  1
+             90 CALL                     1
+            100 POP_TOP
+
+146         102 LOAD_FAST                1 (lines)
+            104 LOAD_METHOD              1 (append)
+            126 LOAD_CONST               5 ('  form (as printed):  ')
+            128 LOAD_FAST                3 (c)
+            130 LOAD_ATTR                2 (form)
+            140 FORMAT_VALUE             0
+            142 BUILD_STRING             2
+            144 PRECALL                  1
+            148 CALL                     1
+            158 POP_TOP
+
+147         160 LOAD_FAST                1 (lines)
+            162 LOAD_METHOD              1 (append)
+            184 LOAD_CONST               6 ('  field (as printed): ')
+            186 LOAD_FAST                3 (c)
+            188 LOAD_ATTR                3 (field)
+            198 FORMAT_VALUE             0
+            200 BUILD_STRING             2
+            202 PRECALL                  1
+            206 CALL                     1
+            216 POP_TOP
+
+148         218 LOAD_FAST                1 (lines)
+            220 LOAD_METHOD              1 (append)
+            242 LOAD_CONST               7 ('  candidates:')
+            244 PRECALL                  1
+            248 CALL                     1
+            258 POP_TOP
+
+149         260 LOAD_FAST                3 (c)
+            262 LOAD_ATTR                4 (candidates)
+            272 GET_ITER
+        >>  274 FOR_ITER                42 (to 360)
+            276 UNPACK_SEQUENCE          4
+            280 STORE_FAST               4 (s)
+            282 STORE_FAST               5 (oid)
+            284 STORE_FAST               6 (label)
+            286 STORE_FAST               7 (lib_form)
+
+150         288 LOAD_FAST                1 (lines)
+            290 LOAD_METHOD              1 (append)
+            312 LOAD_CONST               8 ('    - ')
+            314 LOAD_FAST                5 (oid)
+            316 FORMAT_VALUE             0
+            318 LOAD_CONST               9 ('  (library label: "')
+            320 LOAD_FAST                6 (label)
+            322 FORMAT_VALUE             0
+            324 LOAD_CONST              10 ('", library form: "')
+
+151         326 LOAD_FAST                7 (lib_form)
+
+150         328 FORMAT_VALUE             0
+            330 LOAD_CONST              11 ('", similarity ')
+
+151         332 LOAD_FAST                4 (s)
+            334 LOAD_CONST              12 ('.0f')
+
+150         336 FORMAT_VALUE             4 (with format)
+            338 LOAD_CONST              13 (')')
+            340 BUILD_STRING             9
+            342 PRECALL                  1
+            346 CALL                     1
+            356 POP_TOP
+            358 JUMP_BACKWARD           43 (to 274)
+
+149     >>  360 JUMP_BACKWARD          160 (to 42)
+
+152     >>  362 LOAD_CONST              14 ('\n')
+            364 LOAD_METHOD              5 (join)
+            386 LOAD_FAST                1 (lines)
+            388 PRECALL                  1
+            392 CALL                     1
+            402 RETURN_VALUE
+
+Disassembly of <code object _extract_json_array at 0x00000290C11F4B90, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\oid_mapping.py", line 155>:
+155           0 RESUME                   0
+
+161           2 NOP
+
+162           4 LOAD_GLOBAL              1 (NULL + json)
+             16 LOAD_ATTR                1 (loads)
+             26 LOAD_FAST                0 (reply)
+             28 PRECALL                  1
+             32 CALL                     1
+             42 STORE_FAST               1 (whole)
+
+163          44 LOAD_GLOBAL              5 (NULL + isinstance)
+             56 LOAD_FAST                1 (whole)
+             58 LOAD_GLOBAL              6 (list)
+             70 PRECALL                  2
+             74 CALL                     2
+             84 POP_JUMP_FORWARD_IF_FALSE     2 (to 90)
+
+164          86 LOAD_FAST                1 (whole)
+             88 RETURN_VALUE
+
+163     >>   90 JUMP_FORWARD            16 (to 124)
+        >>   92 PUSH_EXC_INFO
+
+165          94 LOAD_GLOBAL              8 (ValueError)
+            106 CHECK_EXC_MATCH
+            108 POP_JUMP_FORWARD_IF_FALSE     3 (to 116)
+            110 POP_TOP
+
+166         112 POP_EXCEPT
+            114 JUMP_FORWARD             4 (to 124)
+
+165     >>  116 RERAISE                  0
+        >>  118 COPY                     3
+            120 POP_EXCEPT
+            122 RERAISE                  1
+
+167     >>  124 LOAD_GLOBAL              1 (NULL + json)
+            136 LOAD_ATTR                5 (JSONDecoder)
+            146 PRECALL                  0
+            150 CALL                     0
+            160 STORE_FAST               2 (dec)
+
+168         162 LOAD_GLOBAL             13 (NULL + re)
+            174 LOAD_ATTR                7 (finditer)
+            184 LOAD_CONST               1 ('\\[')
+            186 LOAD_FAST                0 (reply)
+            188 PRECALL                  2
+            192 CALL                     2
+            202 GET_ITER
+        >>  204 FOR_ITER                88 (to 382)
+            206 STORE_FAST               3 (m)
+
+169         208 NOP
+
+170         210 LOAD_FAST                2 (dec)
+            212 LOAD_METHOD              8 (raw_decode)
+            234 LOAD_FAST                0 (reply)
+            236 LOAD_FAST                3 (m)
+            238 LOAD_METHOD              9 (start)
+            260 PRECALL                  0
+            264 CALL                     0
+            274 PRECALL                  2
+            278 CALL                     2
+            288 UNPACK_SEQUENCE          2
+            292 STORE_FAST               4 (val)
+            294 STORE_FAST               5 (_)
+            296 JUMP_FORWARD            16 (to 330)
+        >>  298 PUSH_EXC_INFO
+
+171         300 LOAD_GLOBAL              8 (ValueError)
+            312 CHECK_EXC_MATCH
+            314 POP_JUMP_FORWARD_IF_FALSE     3 (to 322)
+            316 POP_TOP
+
+172         318 POP_EXCEPT
+            320 JUMP_BACKWARD           59 (to 204)
+
+171     >>  322 RERAISE                  0
+        >>  324 COPY                     3
+            326 POP_EXCEPT
+            328 RERAISE                  1
+
+173     >>  330 LOAD_GLOBAL              5 (NULL + isinstance)
+            342 LOAD_FAST                4 (val)
+            344 LOAD_GLOBAL              6 (list)
+            356 PRECALL                  2
+            360 CALL                     2
+            370 POP_JUMP_FORWARD_IF_FALSE     4 (to 380)
+
+174         372 LOAD_FAST                4 (val)
+            374 SWAP                     2
+            376 POP_TOP
+            378 RETURN_VALUE
+
+173     >>  380 JUMP_BACKWARD           89 (to 204)
+
+175     >>  382 LOAD_CONST               2 (None)
+            384 RETURN_VALUE
+ExceptionTable:
+  4 to 86 -> 92 [0]
+  92 to 110 -> 118 [1] lasti
+  116 to 116 -> 118 [1] lasti
+  210 to 294 -> 298 [1]
+  298 to 316 -> 324 [2] lasti
+  322 to 322 -> 324 [2] lasti
+
+Disassembly of <code object parse_ranker_reply at 0x00000290C1AEC050, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\oid_mapping.py", line 178>:
+178           0 RESUME                   0
+
+183           2 LOAD_GLOBAL              1 (NULL + _extract_json_array)
+             14 LOAD_FAST                0 (reply)
+             16 PRECALL                  1
+             20 CALL                     1
+             30 STORE_FAST               2 (arr)
+
+184          32 BUILD_MAP                0
+             34 STORE_FAST               3 (out)
+
+185          36 LOAD_GLOBAL              3 (NULL + isinstance)
+             48 LOAD_FAST                2 (arr)
+             50 LOAD_GLOBAL              4 (list)
+             62 PRECALL                  2
+             66 CALL                     2
+             76 POP_JUMP_FORWARD_IF_FALSE     2 (to 82)
+             78 LOAD_FAST                2 (arr)
+             80 JUMP_FORWARD             1 (to 84)
+        >>   82 BUILD_LIST               0
+        >>   84 GET_ITER
+        >>   86 FOR_ITER               240 (to 568)
+             88 STORE_FAST               4 (item)
+
+186          90 LOAD_GLOBAL              3 (NULL + isinstance)
+            102 LOAD_FAST                4 (item)
+            104 LOAD_GLOBAL              6 (dict)
+            116 PRECALL                  2
+            120 CALL                     2
+            130 POP_JUMP_FORWARD_IF_TRUE     1 (to 134)
+
+187         132 JUMP_BACKWARD           24 (to 86)
+
+188     >>  134 NOP
+
+189         136 LOAD_GLOBAL              9 (NULL + int)
+            148 LOAD_FAST                4 (item)
+            150 LOAD_METHOD              5 (get)
+            172 LOAD_CONST               1 ('case')
+            174 PRECALL                  1
+            178 CALL                     1
+            188 PRECALL                  1
+            192 CALL                     1
+            202 STORE_FAST               5 (idx)
+            204 JUMP_FORWARD            23 (to 252)
+        >>  206 PUSH_EXC_INFO
+
+190         208 LOAD_GLOBAL             12 (TypeError)
+            220 LOAD_GLOBAL             14 (ValueError)
+            232 BUILD_TUPLE              2
+            234 CHECK_EXC_MATCH
+            236 POP_JUMP_FORWARD_IF_FALSE     3 (to 244)
+            238 POP_TOP
+
+191         240 POP_EXCEPT
+            242 JUMP_BACKWARD           79 (to 86)
+
+190     >>  244 RERAISE                  0
+        >>  246 COPY                     3
+            248 POP_EXCEPT
+            250 RERAISE                  1
+
+192     >>  252 LOAD_CONST               2 (1)
+            254 LOAD_FAST                5 (idx)
+            256 SWAP                     2
+            258 COPY                     2
+            260 COMPARE_OP               1 (<=)
+            266 POP_JUMP_FORWARD_IF_FALSE    19 (to 306)
+            268 LOAD_GLOBAL             17 (NULL + len)
+            280 LOAD_FAST                1 (cases)
+            282 PRECALL                  1
+            286 CALL                     1
+            296 COMPARE_OP               1 (<=)
+            302 POP_JUMP_FORWARD_IF_TRUE     3 (to 310)
+            304 JUMP_FORWARD             1 (to 308)
+        >>  306 POP_TOP
+
+193     >>  308 JUMP_BACKWARD          112 (to 86)
+
+194     >>  310 LOAD_FAST                4 (item)
+            312 LOAD_METHOD              5 (get)
+            334 LOAD_CONST               3 ('oid')
+            336 PRECALL                  1
+            340 CALL                     1
+            350 STORE_FAST               6 (oid)
+
+195         352 LOAD_FAST                6 (oid)
+            354 POP_JUMP_FORWARD_IF_NOT_NONE     6 (to 368)
+
+196         356 LOAD_CONST               4 (None)
+            358 LOAD_FAST                3 (out)
+            360 LOAD_FAST                5 (idx)
+            362 STORE_SUBSCR
+
+197         366 JUMP_BACKWARD          141 (to 86)
+
+198     >>  368 LOAD_CONST               5 (<code object <dictcomp> at 0x00000290C3A17130, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\oid_mapping.py", line 198>)
+            370 MAKE_FUNCTION            0
+            372 LOAD_FAST                1 (cases)
+            374 LOAD_FAST                5 (idx)
+            376 LOAD_CONST               2 (1)
+            378 BINARY_OP               10 (-)
+            382 BINARY_SUBSCR
+            392 LOAD_ATTR                9 (candidates)
+            402 GET_ITER
+            404 PRECALL                  0
+            408 CALL                     0
+            418 STORE_FAST               7 (allowed)
+
+199         420 LOAD_FAST                7 (allowed)
+            422 LOAD_METHOD              5 (get)
+            444 LOAD_GLOBAL             21 (NULL + str)
+            456 LOAD_FAST                6 (oid)
+            458 PRECALL                  1
+            462 CALL                     1
+            472 LOAD_METHOD             11 (strip)
+            494 PRECALL                  0
+            498 CALL                     0
+            508 LOAD_METHOD             12 (upper)
+            530 PRECALL                  0
+            534 CALL                     0
+            544 PRECALL                  1
+            548 CALL                     1
+            558 LOAD_FAST                3 (out)
+            560 LOAD_FAST                5 (idx)
+            562 STORE_SUBSCR
+            566 JUMP_BACKWARD          241 (to 86)
+
+200     >>  568 LOAD_FAST                3 (out)
+            570 RETURN_VALUE
+ExceptionTable:
+  136 to 202 -> 206 [1]
+  206 to 238 -> 246 [2] lasti
+  244 to 244 -> 246 [2] lasti
+
+Disassembly of <code object <dictcomp> at 0x00000290C3A17130, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\oid_mapping.py", line 198>:
+198           0 RESUME                   0
+              2 BUILD_MAP                0
+              4 LOAD_FAST                0 (.0)
+        >>    6 FOR_ITER                28 (to 64)
+              8 UNPACK_SEQUENCE          4
+             12 STORE_FAST               1 (_)
+             14 STORE_FAST               2 (o)
+             16 STORE_FAST               1 (_)
+             18 STORE_FAST               1 (_)
+             20 LOAD_FAST                2 (o)
+             22 LOAD_METHOD              0 (upper)
+             44 PRECALL                  0
+             48 CALL                     0
+             58 LOAD_FAST                2 (o)
+             60 MAP_ADD                  2
+             62 JUMP_BACKWARD           29 (to 6)
+        >>   64 RETURN_VALUE
+
+Disassembly of <code object rank_cases at 0x00000290C1B0B140, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\oid_mapping.py", line 203>:
+              0 MAKE_CELL                7 (picks)
+
+203           2 RESUME                   0
+
+214           4 BUILD_LIST               0
+              6 STORE_FAST               2 (all_picks)
+
+215           8 LOAD_GLOBAL              1 (NULL + range)
+             20 LOAD_CONST               1 (0)
+             22 LOAD_GLOBAL              3 (NULL + len)
+             34 LOAD_FAST                0 (cases)
+             36 PRECALL                  1
+             40 CALL                     1
+             50 LOAD_GLOBAL              4 (RANKER_CHUNK)
+             62 PRECALL                  3
+             66 CALL                     3
+             76 GET_ITER
+        >>   78 FOR_ITER               105 (to 290)
+             80 STORE_FAST               3 (start)
+
+216          82 LOAD_FAST                0 (cases)
+             84 LOAD_FAST                3 (start)
+             86 LOAD_FAST                3 (start)
+             88 LOAD_GLOBAL              4 (RANKER_CHUNK)
+            100 BINARY_OP                0 (+)
+            104 BUILD_SLICE              2
+            106 BINARY_SUBSCR
+            116 STORE_FAST               4 (chunk)
+
+217         118 LOAD_GLOBAL              7 (NULL + parse_ranker_reply)
+            130 PUSH_NULL
+            132 LOAD_FAST                1 (llm)
+            134 LOAD_GLOBAL              9 (NULL + build_ranker_prompt)
+            146 LOAD_FAST                4 (chunk)
+            148 PRECALL                  1
+            152 CALL                     1
+            162 PRECALL                  1
+            166 CALL                     1
+            176 LOAD_FAST                4 (chunk)
+            178 PRECALL                  2
+            182 CALL                     2
+            192 STORE_DEREF              7 (picks)
+
+218         194 LOAD_FAST                2 (all_picks)
+            196 LOAD_METHOD              5 (extend)
+            218 LOAD_CLOSURE             7 (picks)
+            220 BUILD_TUPLE              1
+            222 LOAD_CONST               2 (<code object <genexpr> at 0x00000290C3A6A780, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\oid_mapping.py", line 218>)
+            224 MAKE_FUNCTION            8 (closure)
+            226 LOAD_GLOBAL             13 (NULL + enumerate)
+            238 LOAD_FAST                4 (chunk)
+            240 LOAD_CONST               3 (1)
+            242 PRECALL                  2
+            246 CALL                     2
+            256 GET_ITER
+            258 PRECALL                  0
+            262 CALL                     0
+            272 PRECALL                  1
+            276 CALL                     1
+            286 POP_TOP
+            288 JUMP_BACKWARD          106 (to 78)
+
+220     >>  290 LOAD_FAST                2 (all_picks)
+            292 GET_ITER
+        >>  294 FOR_ITER               127 (to 550)
+            296 UNPACK_SEQUENCE          2
+            300 STORE_FAST               5 (c)
+            302 STORE_FAST               6 (oid)
+
+221         304 LOAD_FAST                6 (oid)
+            306 POP_JUMP_FORWARD_IF_FALSE   100 (to 508)
+
+224         308 LOAD_FAST                5 (c)
+            310 LOAD_ATTR                7 (status)
+            320 LOAD_GLOBAL             16 (MAPPED)
+            332 COMPARE_OP               2 (==)
+            338 POP_JUMP_FORWARD_IF_FALSE    56 (to 452)
+            340 LOAD_FAST                5 (c)
+            342 LOAD_ATTR                9 (oid)
+            352 POP_JUMP_FORWARD_IF_FALSE    49 (to 452)
+
+225         354 LOAD_FAST                6 (oid)
+            356 LOAD_METHOD             10 (upper)
+            378 PRECALL                  0
+            382 CALL                     0
+            392 LOAD_FAST                5 (c)
+            394 LOAD_ATTR                9 (oid)
+            404 LOAD_METHOD             10 (upper)
+            426 PRECALL                  0
+            430 CALL                     0
+            440 COMPARE_OP               2 (==)
+            446 POP_JUMP_FORWARD_IF_FALSE     2 (to 452)
+
+224         448 LOAD_CONST               4 ('ranker-confirm')
+            450 JUMP_FORWARD             1 (to 454)
+
+225     >>  452 LOAD_CONST               5 ('ranker-pick')
+
+224     >>  454 LOAD_FAST                5 (c)
+            456 STORE_ATTR              11 (via)
+
+226         466 LOAD_GLOBAL             16 (MAPPED)
+            478 LOAD_FAST                6 (oid)
+            480 SWAP                     2
+            482 LOAD_FAST                5 (c)
+            484 STORE_ATTR               7 (status)
+            494 LOAD_FAST                5 (c)
+            496 STORE_ATTR               9 (oid)
+            506 JUMP_BACKWARD          107 (to 294)
+
+228     >>  508 LOAD_GLOBAL             24 (UNMAPPED)
+            520 LOAD_CONST               6 (None)
+            522 SWAP                     2
+            524 LOAD_FAST                5 (c)
+            526 STORE_ATTR               7 (status)
+            536 LOAD_FAST                5 (c)
+            538 STORE_ATTR               9 (oid)
+            548 JUMP_BACKWARD          128 (to 294)
+
+220     >>  550 LOAD_CONST               6 (None)
+            552 RETURN_VALUE
+
+Disassembly of <code object <genexpr> at 0x00000290C3A6A780, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\oid_mapping.py", line 218>:
+              0 COPY_FREE_VARS           1
+
+218           2 RETURN_GENERATOR
+              4 POP_TOP
+              6 RESUME                   0
+              8 LOAD_FAST                0 (.0)
+        >>   10 FOR_ITER                30 (to 72)
+             12 UNPACK_SEQUENCE          2
+             16 STORE_FAST               1 (i)
+             18 STORE_FAST               2 (c)
+             20 LOAD_FAST                2 (c)
+             22 LOAD_DEREF               3 (picks)
+             24 LOAD_METHOD              0 (get)
+             46 LOAD_FAST                1 (i)
+             48 PRECALL                  1
+             52 CALL                     1
+             62 BUILD_TUPLE              2
+             64 YIELD_VALUE
+             66 RESUME                   1
+             68 POP_TOP
+             70 JUMP_BACKWARD           31 (to 10)
+        >>   72 LOAD_CONST               0 (None)
+             74 RETURN_VALUE
+
+Disassembly of <code object map_pairs at 0x00000290C3A51D70, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\oid_mapping.py", line 231>:
+              0 MAKE_CELL                1 (lib)
+
+231           2 RESUME                   0
+
+238           4 LOAD_CLOSURE             1 (lib)
+              6 BUILD_TUPLE              1
+              8 LOAD_CONST               1 (<code object <listcomp> at 0x00000290C3A1A2E0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\oid_mapping.py", line 238>)
+             10 MAKE_FUNCTION            8 (closure)
+             12 LOAD_FAST                0 (pairs)
+             14 GET_ITER
+             16 PRECALL                  0
+             20 CALL                     0
+             30 STORE_FAST               3 (results)
+
+239          32 LOAD_FAST                2 (llm)
+             34 POP_JUMP_FORWARD_IF_NONE    30 (to 96)
+
+240          36 LOAD_CONST               3 (<code object <listcomp> at 0x00000290C3AA4030, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\oid_mapping.py", line 240>)
+             38 MAKE_FUNCTION            0
+             40 LOAD_FAST                3 (results)
+             42 GET_ITER
+             44 PRECALL                  0
+             48 CALL                     0
+             58 STORE_FAST               4 (judged)
+
+241          60 LOAD_FAST                4 (judged)
+             62 POP_JUMP_FORWARD_IF_FALSE    16 (to 96)
+
+242          64 LOAD_GLOBAL              1 (NULL + rank_cases)
+             76 LOAD_FAST                4 (judged)
+             78 LOAD_FAST                2 (llm)
+             80 PRECALL                  2
+             84 CALL                     2
+             94 POP_TOP
+
+243     >>   96 LOAD_FAST                3 (results)
+             98 RETURN_VALUE
+
+Disassembly of <code object <listcomp> at 0x00000290C3A1A2E0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\oid_mapping.py", line 238>:
+              0 COPY_FREE_VARS           1
+
+238           2 RESUME                   0
+              4 BUILD_LIST               0
+              6 LOAD_FAST                0 (.0)
+        >>    8 FOR_ITER                22 (to 54)
+             10 UNPACK_SEQUENCE          2
+             14 STORE_FAST               1 (f)
+             16 STORE_FAST               2 (l)
+             18 LOAD_GLOBAL              1 (NULL + map_field)
+             30 LOAD_FAST                1 (f)
+             32 LOAD_FAST                2 (l)
+             34 LOAD_DEREF               3 (lib)
+             36 PRECALL                  3
+             40 CALL                     3
+             50 LIST_APPEND              2
+             52 JUMP_BACKWARD           23 (to 8)
+        >>   54 RETURN_VALUE
+
+Disassembly of <code object <listcomp> at 0x00000290C3AA4030, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\oid_mapping.py", line 240>:
+240           0 RESUME                   0
+              2 BUILD_LIST               0
+              4 LOAD_FAST                0 (.0)
+        >>    6 FOR_ITER                11 (to 30)
+              8 STORE_FAST               1 (r)
+             10 LOAD_FAST                1 (r)
+             12 LOAD_ATTR                0 (candidates)
+             22 POP_JUMP_BACKWARD_IF_FALSE     9 (to 6)
+             24 LOAD_FAST                1 (r)
+             26 LIST_APPEND              2
+             28 JUMP_BACKWARD           12 (to 6)
+        >>   30 RETURN_VALUE

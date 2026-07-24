@@ -1,0 +1,287 @@
+# module: D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\induction.py
+# top-level names: ['__doc__', '__future__', 'annotations', 'json', 'os', 're', 'replay', 'ENGINES', 'ReplayResult', 'PROMPT_TEMPLATE', 'REVISION_TEMPLATE', 'load_rep_pages', 'parse_recipe', 'compile', 'CODE_SHAPE', 'score', 'gate_problems', 'gate_warnings', 'validate_recipe', 'build_revision_prompt', 'induce_recipe']
+
+=== module()  [line 1] ===
+  [STR]
+    | Stage 1 shared scoring/gates + the LEGACY recipe-induction path.
+    | 
+    | PRODUCTION-INTENT parts of this module: load_rep_pages, score, gate_problems,
+    | gate_warnings (codegen.py imports them). The recipe/engine-catalog prompt and
+    | induce_recipe below are the LEGACY comparison path - production induction is
+    | codegen.py, where the LLM writes the extraction program itself.
+    | 
+    | The ONLY prior knowledge is: "this is a CRF". The LLM never gets a list of known
+    | vendor formats. It sees the stage-0 representative pages (structured text dumps
+    | with geometry + font info, optionally page images) and must emit a recipe JSON
+    | that parameterises one of the generic layout engines in replay.py.
+    | 
+    | Loop (all bounded, all artifacts saved):
+    |   1. build induction prompt from representative pages
+    |   2. LLM -> recipe JSON
+    |   3. validate: replay the recipe over the representative pages only, compute
+    |      quality metrics, and check them against acceptance gates
+    |   4. if gates fail: send the metrics + a sample of the (bad) output back to the
+    |      LLM for ONE revision round (2 attempts total by default)
+    |   5. if still failing: mark document as needs-manual-template (fail loudly)
+    | 
+    | LLM transport is pluggable:
+    |   - Dataiku LLM Mesh (production; see notebook)
+    |   - local HTTP/CLI shims for testing
+  [STR]
+    | You are configuring a deterministic PDF extraction engine for a clinical Case Report Form (CRF) document. You will see a small sample of REPRESENTATIVE PAGES (one or two per page-layout cluster) from a document that is {n_pages} pages long. The whole document is repetitive: what you see is representative of everything.
+    | 
+    | Each page is given as structured text lines with geometry:
+    |     x=<left> y=<top> sz=<font-size> <color> <B if bold> | <text>
+    | 
+    | # Your task
+    | 
+    | Produce a JSON "recipe" that tells the engine how to extract, for EVERY field on EVERY page of the document:
+    |   - form_name   : the name of the CRF form/section the field belongs to
+    |   - field_name  : the human-readable field label/question
+    |   - field_oid   : the machine identifier (OID / SAS name / export name / variable
+    |                   code) if the document prints one; null if the document is not
+    |                   annotated with machine codes
+    | 
+    | # Engines you can parameterise (pick exactly one)
+    | 
+    | 1. "adjacent_annotation" - machine codes are printed on their own annotation lines
+    |    (often bracketed, often colored) directly next to/under the field label, in the
+    |    same column. Params: column_x_max, oid_regex (capture group 1 = code),
+    |    alt_regex/alt_is_primary (a second code on nearby lines), oid_color_non_black,
+    |    annotation_group_dy, label_max_dy, label_noise (regexes for lines that are
+    |    never labels).
+    | 2. "anchored_blocks" - each field starts at a repeated anchor row (e.g. a bold
+    |    'Prefix: Activity #1' line with a number in a far-right column); everything
+    |    until the next anchor belongs to that field. Params: activity_regex (group 1 =
+    |    form, group 2 = field), activity_x [min,max], line_number_x_min, oid_regex.
+    | 3. "numbered_join" - two page types per form: content pages print each label with
+    |    a join number, definition pages map the same numbers to codes in a column
+    |    under a header. Params: definition_page_all (regexes that all appear on
+    |    definition pages), oid_header (text of the column header the codes sit under),
+    |    row_number_x_max (join keys on definition pages must start left of this),
+    |    data_number_regex (group 1 = join key; same regex applies on BOTH page types),
+    |    data_number_x_min, data_label_x_max, label_noise,
+    |    number_embedded_in_label (true when the join key is printed on/next to the
+    |    label line itself, e.g. 'Consent Date  [2]', rather than in a separate far
+    |    column; the engine then searches the regex inside lines right of
+    |    data_number_x_min and takes the remaining text on that row as the label),
+    |    definition_form_from_carry (true when definition pages do NOT print the form
+    |    name; they are then attributed to the most recent content-page form).
+    |    form_name.strategy must be "regex" for this engine (carry_forward supported).
+    | 4. "column_table" - definition tables with an explicit header row; label and code
+    |    are cells of configurable columns. Params: definition_page_regex, row_key_regex,
+    |    name_header, oid_header, type_header.
+    | 5. "line_pattern" - fallback: a code regex over lines, label = nearest previous
+    |    line matching label_regex within label_window_lines. Params: code_regex,
+    |    code_search (true = search inside line), label_regex, label_window_lines,
+    |    label_noise.
+    | 
+    | # form_name strategies
+    | 
+    | - {{"strategy":"regex","regex":"^Form:\\s*(.+)$"}} - a header line matches a regex (group 1 = name)
+    | - {{"strategy":"colored_font","min_size":14,"carry_forward":true,"noise":[...]}} - the form title is the big colored heading; carry_forward repeats the last seen title on continuation pages
+    | - {{"strategy":"font","min_size":14,"carry_forward":true,"noise":[...]}} - same but title is not colored
+    | - for engine anchored_blocks the form name comes from activity_regex group 1 automatically
+    | 
+    | # Output format (JSON only, no prose)
+    | 
+    | {{
+    |   "format_id": "<short slug you invent>",
+    |   "reasoning": "<2-4 sentences: what layout you saw and why you chose the engine>",
+    |   "detect": {{"all": ["<2-3 regexes that identify this layout>"]}},
+    |   "skip_page_if": ["<optional regexes: pages to skip entirely (title/TOC/approval)>"],
+    |   "form_name": {{...}},
+    |   "fields": {{"engine": "<one of the 5>", ...params...}}
+    | }}
+    | 
+    | # Rules
+    | 
+    | - Regexes are Python re syntax inside JSON strings (escape backslashes).
+    | - Codes are machine identifiers like AESTDAT / QVAL_GENDOTH - short, uppercase,
+    |   underscores/digits allowed. Human text, dates and option values are NOT codes.
+    | - Prefer the most specific engine that fits; use line_pattern only if nothing fits.
+    | - If the document prints NO machine codes at all, still extract form_name +
+    |   field_name (choose the engine that best yields labels; oid_regex may then match
+    |   nothing) and say so in "reasoning".
+    | - Numbers like x/y/size in the dumps are points; use them to set column bounds.
+    | 
+    | # Representative pages
+    | 
+    | {pages}
+  [STR]
+    | Your previous recipe was executed on the SAME representative pages. It did not pass the quality gates.
+    | 
+    | Previous recipe:
+    | {recipe}
+    | 
+    | Execution metrics:
+    | {metrics}
+    | 
+    | Sample of extracted records (form_name | field_name | field_oid):
+    | {sample}
+    | 
+    | Problems to fix (in priority order):
+    | {problems}
+    | 
+    | Emit a corrected recipe now. Same output format: JSON only, no prose. You may switch engine entirely.
+  [STR] 'outdir'
+  [STR] 'str'
+  [STR] 'max_chars_per_page'
+  [STR] 'int'
+  [STR] 'return'
+  [STR] 'tuple[str, list[int]]'
+  [STR] 'raw'
+  [STR] 'dict'
+  [STR] '^[A-Z][A-Z0-9_]{1,39}$'
+  [STR] 'result'
+  [STR] 'ReplayResult'
+  [STR] 'engine'
+  [STR] 'm'
+  [STR] 'list[str]'
+  [STR] 'pdf_path'
+  [STR] 'raw_reply'
+  [STR] 'verdict'
+  [STR] 'max_attempts'
+
+=== load_rep_pages(outdir, max_chars_per_page)  [line 134] ===
+  [STR]
+    | Concatenate the stage-0 representative page dumps for the prompt.
+  [STR] 'clusters.json'
+  [STR] 'utf-8'
+  [STR] 'representative_pages_1based'
+  [STR] 'rep_p'
+  [STR] '.txt'
+  [STR] 'clusters'
+  [STR]
+    | 
+    | <...page truncated...>
+  [STR] '--- page '
+  [STR] ' of '
+  [STR] 'pages'
+  [STR] ' (layout cluster covers ~'
+  [STR]
+    |  pages) ---
+
+=== <genexpr>(.0)  [line 144] ===
+  [STR] 'representatives'
+  [STR] 'n_pages'
+
+=== <listcomp>(.0)  [line 148] ===
+
+=== parse_recipe(raw)  [line 151] ===
+  [STR]
+    | First complete JSON object in an LLM reply. Balanced parse (raw_decode) -
+    |     a greedy `\{.*\}` regex would span from the first to the LAST brace and be
+    |     corrupted by prose containing braces around the payload.
+  [STR] '{'
+  [STR] 'no JSON object in LLM reply'
+
+=== score(result, engine)  [line 179] ===
+  [STR] 'distinct_forms'
+  [STR] 'fields_per_form'
+  [STR] 'forms_per_100_pages'
+
+=== <genexpr>(.0)  [line 188] ===
+
+=== <genexpr>(.0)  [line 196] ===
+  [STR] '[^\\W\\d_]'
+  [STR] '[\\d_]'
+
+=== <genexpr>(.0)  [line 203] ===
+
+=== <genexpr>(.0)  [line 204] ===
+
+=== <genexpr>(.0)  [line 206] ===
+
+=== <setcomp>(.0)  [line 207] ===
+
+=== gate_problems(m)  [line 216] ===
+  [STR]
+    | Contract blockers only: the program crashed upstream, or its output is so
+    |     small it is effectively not extracting. Nothing here encodes corpus statistics.
+    | 
+    |     The <5-records floor applies only to documents of >=20 pages: on a big book
+    |     it means the program is broken, but a 1-2 page CRF can legitimately carry
+    |     3 fields total, and a hard gate would flag every version of a correct
+    |     program as needs_manual_template. Tiny-document low volume is a warning
+    |     (gate_warnings) so the audit still scrutinizes it.
+  [STR] 'records'
+  [STR]
+    | The program extracted ZERO records from the document.
+  [STR] 'pages_total'
+  [STR] 'Only '
+  [STR] ' records from a '
+  [STR]
+    | -page document - the program is effectively not extracting.
+  [STR] 'pages_with_fields'
+  [STR]
+    | Records carry no valid 1-based `page` numbers - the `page` field of every returned record must be the page the field appears on.
+
+=== gate_warnings(m)  [line 240] ===
+  [STR]
+    | Quality signals fed back to the revision loop. A document may legitimately
+    |     violate these (unlabeled forms, very short labels, dense form books), so after
+    |     the revision budget is exhausted the best warning-only attempt is still
+    |     accepted - final quality judgment belongs to the grounded audit.
+  [STR] 'records'
+  [STR] 'pages_total'
+  [STR] 'Only '
+  [STR] ' records from this '
+  [STR]
+    | -page document - plausible for a document this small, but make sure no fields were missed.
+  [STR] 'forms_nonempty_pct'
+  [STR] 'form_name empty for '
+  [STR]
+    | % of records - if the document does print form/section names, fix the form_name strategy (consider carrying the last seen title forward).
+  [STR] 'labels_look_human_pct'
+  [STR]
+    | % of field_name values look like human labels (they look like codes/dates/junk) - fix label selection.
+  [STR] 'oids_present_pct'
+  [STR] 'oids_look_like_codes_pct'
+  [STR]
+    | Extracted field_oid values often don't look like machine codes (
+  [STR] '% ok) - tighten oid_regex.'
+  [STR] 'engine'
+  [STR] 'numbered_join'
+  [STR] 'definition_pages_seen'
+  [STR]
+    |  definition pages were detected but codes were joined to only 
+  [STR]
+    | % of labels. The join is broken: check data_number_regex (group 1 must capture the SAME key on both page types), row_number_x_max, oid_header, and consider number_embedded_in_label:true (key printed on the label line) or definition_form_from_carry:true (definition pages don't print the form name; attribute them to the most recent content-page form).
+  [STR] 'distinct_forms'
+  [STR] ' distinct form_names for '
+  [STR]
+    |  records - check whether form detection is picking up field labels or body text as form names; if so, make the form_name pattern stricter (font size / color / position) or carry the last seen title forward. If the document genuinely has this many forms, keep it as is.
+
+=== validate_recipe(pdf_path, raw_reply)  [line 273] ===
+  [STR]
+    | Parse a reply, replay it over the FULL document (fast - no LLM), and gate.
+    |     Full-document validation matters: representative pages alone can miss a broken
+    |     join (e.g. definition pages present but codes never attached).
+  [STR] 'fields'
+  [STR] 'engine'
+  [STR] '?'
+  [STR] '(none)'
+  [STR] 'error'
+  [STR] 'Recipe failed to execute: '
+
+=== <genexpr>(.0)  [line 283] ===
+  [STR] ' | '
+
+=== build_revision_prompt(raw_reply, verdict)  [line 292] ===
+  [STR] 'recipe'
+  [STR] 'metrics'
+  [STR] 'sample'
+  [STR] 'problems'
+
+=== <genexpr>(.0)  [line 297] ===
+  [STR] '- '
+
+=== induce_recipe(pdf_path, outdir, call_llm, max_attempts)  [line 301] ===
+  [STR]
+    | call_llm: fn(prompt:str) -> str. Returns dict with recipe/metrics/attempts.
+  [STR] 'recipe'
+  [STR] 'metrics'
+  [STR] 'problems'
+  [STR] 'ok'
+  [STR] 'needs_manual_template'

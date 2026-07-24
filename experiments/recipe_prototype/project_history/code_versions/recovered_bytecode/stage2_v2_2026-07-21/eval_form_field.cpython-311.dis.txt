@@ -1,0 +1,2658 @@
+  0           0 RESUME                   0
+
+  1           2 LOAD_CONST               0 ('Evaluate the form+field pipeline (codegen scope) end to end.\n\n1. Extraction quality (Rave doc only - the one with production ground truth):\n   fuzzy-match extracted (form_name, field_name) pairs against digitized.csv.\n2. Downstream OID resolution by NAME MAPPING (all finalized docs):\n   map each extracted (form, field) to a library OID via ecs_index_data\n   (form_field_value -> variable_name), lexical fuzzy matching locally\n   (production would add the stored field embeddings on top).\n   On the Rave doc, mapped OIDs are checked against the printed truth.\n')
+              4 STORE_NAME               0 (__doc__)
+
+ 11           6 LOAD_CONST               1 (0)
+              8 LOAD_CONST               2 (None)
+             10 IMPORT_NAME              1 (csv)
+             12 STORE_NAME               1 (csv)
+
+ 12          14 LOAD_CONST               1 (0)
+             16 LOAD_CONST               2 (None)
+             18 IMPORT_NAME              2 (json)
+             20 STORE_NAME               2 (json)
+
+ 13          22 LOAD_CONST               1 (0)
+             24 LOAD_CONST               2 (None)
+             26 IMPORT_NAME              3 (os)
+             28 STORE_NAME               3 (os)
+
+ 14          30 LOAD_CONST               1 (0)
+             32 LOAD_CONST               2 (None)
+             34 IMPORT_NAME              4 (re)
+             36 STORE_NAME               4 (re)
+
+ 16          38 LOAD_CONST               1 (0)
+             40 LOAD_CONST               2 (None)
+             42 IMPORT_NAME              5 (fitz)
+             44 STORE_NAME               5 (fitz)
+
+ 17          46 LOAD_CONST               1 (0)
+             48 LOAD_CONST               3 (('fuzz',))
+             50 IMPORT_NAME              6 (rapidfuzz)
+             52 IMPORT_FROM              7 (fuzz)
+             54 STORE_NAME               7 (fuzz)
+             56 POP_TOP
+
+ 19          58 LOAD_CONST               1 (0)
+             60 LOAD_CONST               4 (('BASE', 'OUT_DIR'))
+             62 IMPORT_NAME              8 (common)
+             64 IMPORT_FROM              9 (BASE)
+             66 STORE_NAME               9 (BASE)
+             68 IMPORT_FROM             10 (OUT_DIR)
+             70 STORE_NAME              10 (OUT_DIR)
+             72 POP_TOP
+
+ 21          74 LOAD_NAME                3 (os)
+             76 LOAD_ATTR               11 (path)
+             86 LOAD_METHOD             12 (join)
+            108 LOAD_NAME                9 (BASE)
+            110 LOAD_CONST               5 ('data')
+            112 LOAD_CONST               6 ('outputs')
+            114 LOAD_CONST               7 ('outputs_from_384_201_00002_annotated_unique_crf')
+            116 LOAD_CONST               8 ('digitized.csv')
+            118 PRECALL                  5
+            122 CALL                     5
+            132 STORE_NAME              13 (GT)
+
+ 22         134 LOAD_NAME                3 (os)
+            136 LOAD_ATTR               11 (path)
+            146 LOAD_METHOD             12 (join)
+            168 LOAD_NAME                9 (BASE)
+            170 LOAD_CONST               5 ('data')
+            172 LOAD_CONST               9 ('index')
+            174 LOAD_CONST              10 ('ecs_index_data.csv')
+            176 PRECALL                  4
+            180 CALL                     4
+            190 STORE_NAME              14 (INDEX_DATA)
+
+ 23         192 LOAD_NAME                3 (os)
+            194 LOAD_ATTR               11 (path)
+            204 LOAD_METHOD             12 (join)
+            226 LOAD_NAME                9 (BASE)
+            228 LOAD_CONST               5 ('data')
+            230 LOAD_CONST              11 ('crf_forms')
+            232 LOAD_CONST              12 ('384-201-00002_Annotated Unique CRF_04Nov2024.pdf')
+            234 PRECALL                  4
+            238 CALL                     4
+            248 STORE_NAME              15 (RAVE_PDF)
+
+ 24         250 LOAD_CONST              13 ('384-201-00002_Annotated_Unique_CRF_04Nov2024')
+            252 STORE_NAME              16 (RAVE_KEY)
+
+ 26         254 LOAD_CONST              14 (85)
+            256 STORE_NAME              17 (FIELD_T)
+
+ 27         258 LOAD_CONST              15 (75)
+            260 STORE_NAME              18 (FORM_T)
+
+ 30         262 LOAD_CONST              16 ('s')
+            264 LOAD_NAME               19 (str)
+            266 LOAD_CONST              17 ('return')
+            268 LOAD_NAME               19 (str)
+            270 BUILD_TUPLE              4
+            272 LOAD_CONST              18 (<code object norm at 0x00000290C3A7CCB0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\eval_form_field.py", line 30>)
+            274 MAKE_FUNCTION            4 (annotations)
+            276 STORE_NAME              20 (norm)
+
+ 40         278 LOAD_CONST              19 ('key')
+            280 LOAD_NAME               19 (str)
+            282 LOAD_CONST              17 ('return')
+            284 LOAD_NAME               19 (str)
+            286 LOAD_CONST               2 (None)
+            288 BINARY_OP                7 (|)
+            292 BUILD_TUPLE              4
+            294 LOAD_CONST              20 (<code object _export_csv at 0x00000290C1B487B0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\eval_form_field.py", line 40>)
+            296 MAKE_FUNCTION            4 (annotations)
+            298 STORE_NAME              21 (_export_csv)
+
+ 54         300 LOAD_CONST              19 ('key')
+            302 LOAD_NAME               19 (str)
+            304 LOAD_CONST              17 ('return')
+            306 LOAD_NAME               22 (list)
+            308 LOAD_NAME               23 (dict)
+            310 BINARY_SUBSCR
+            320 BUILD_TUPLE              4
+            322 LOAD_CONST              21 (<code object load_extracted at 0x00000290C39FA2B0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\eval_form_field.py", line 54>)
+            324 MAKE_FUNCTION            4 (annotations)
+            326 STORE_NAME              24 (load_extracted)
+
+ 62         328 LOAD_CONST              17 ('return')
+            330 LOAD_NAME               22 (list)
+            332 LOAD_NAME               23 (dict)
+            334 BINARY_SUBSCR
+            344 BUILD_TUPLE              2
+            346 LOAD_CONST              22 (<code object load_gt at 0x00000290C38363F0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\eval_form_field.py", line 62>)
+            348 MAKE_FUNCTION            4 (annotations)
+            350 STORE_NAME              25 (load_gt)
+
+ 67         352 LOAD_CONST              17 ('return')
+            354 LOAD_NAME               22 (list)
+            356 LOAD_NAME               23 (dict)
+            358 BINARY_SUBSCR
+            368 BUILD_TUPLE              2
+            370 LOAD_CONST              23 (<code object load_library at 0x00000290C1B0CDD0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\eval_form_field.py", line 67>)
+            372 MAKE_FUNCTION            4 (annotations)
+            374 STORE_NAME              26 (load_library)
+
+ 88         376 LOAD_CONST              17 ('return')
+            378 LOAD_NAME               23 (dict)
+            380 BUILD_TUPLE              2
+            382 LOAD_CONST              24 (<code object eval_pairs_vs_gt at 0x00000290C1B9D280, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\eval_form_field.py", line 88>)
+            384 MAKE_FUNCTION            4 (annotations)
+            386 STORE_NAME              27 (eval_pairs_vs_gt)
+
+121         388 LOAD_CONST              25 ('gt_pairs')
+            390 LOAD_NAME               22 (list)
+            392 LOAD_CONST              26 ('got_pairs')
+            394 LOAD_NAME               22 (list)
+            396 LOAD_CONST              17 ('return')
+            398 LOAD_NAME               23 (dict)
+            400 BUILD_TUPLE              6
+            402 LOAD_CONST              27 (<code object _recall_breakdown at 0x00000290C1B9E560, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\eval_form_field.py", line 121>)
+            404 MAKE_FUNCTION            4 (annotations)
+            406 STORE_NAME              28 (_recall_breakdown)
+
+184         408 LOAD_CONST              28 ('rows')
+            410 LOAD_NAME               22 (list)
+            412 LOAD_NAME               23 (dict)
+            414 BINARY_SUBSCR
+            424 LOAD_CONST              25 ('gt_pairs')
+            426 LOAD_NAME               22 (list)
+            428 LOAD_CONST              17 ('return')
+            430 LOAD_NAME               23 (dict)
+            432 BUILD_TUPLE              6
+            434 LOAD_CONST              29 (<code object _precision_breakdown at 0x00000290C1B3DBD0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\eval_form_field.py", line 184>)
+            436 MAKE_FUNCTION            4 (annotations)
+            438 STORE_NAME              29 (_precision_breakdown)
+
+246         440 LOAD_CONST              52 ((None,))
+            442 LOAD_CONST              30 ('keys')
+            444 LOAD_NAME               22 (list)
+            446 LOAD_NAME               19 (str)
+            448 BINARY_SUBSCR
+            458 LOAD_CONST              17 ('return')
+            460 LOAD_NAME               22 (list)
+            462 LOAD_NAME               23 (dict)
+            464 BINARY_SUBSCR
+            474 BUILD_TUPLE              4
+            476 LOAD_CONST              31 (<code object eval_mapping at 0x00000290C1AB8260, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\eval_form_field.py", line 246>)
+            478 MAKE_FUNCTION            5 (defaults, annotations)
+            480 STORE_NAME              30 (eval_mapping)
+
+302         482 LOAD_NAME               31 (__name__)
+            484 LOAD_CONST              32 ('__main__')
+            486 COMPARE_OP               2 (==)
+            492 EXTENDED_ARG             1
+            494 POP_JUMP_FORWARD_IF_FALSE   274 (to 1044)
+
+303         496 LOAD_CONST               1 (0)
+            498 LOAD_CONST               2 (None)
+            500 IMPORT_NAME             32 (argparse)
+            502 STORE_NAME              32 (argparse)
+
+305         504 PUSH_NULL
+            506 LOAD_NAME               32 (argparse)
+            508 LOAD_ATTR               33 (ArgumentParser)
+            518 LOAD_NAME                0 (__doc__)
+            520 KW_NAMES                33
+            522 PRECALL                  1
+            526 CALL                     1
+            536 STORE_NAME              34 (ap)
+
+306         538 LOAD_NAME               34 (ap)
+            540 LOAD_METHOD             35 (add_argument)
+            562 LOAD_CONST              34 ('--ranker-model')
+            564 LOAD_CONST               2 (None)
+
+307         566 LOAD_CONST              35 ('resolve abstained pairs with this LLM via the cursor CLI (e.g. claude-4.5-sonnet); omit for deterministic-only')
+
+306         568 KW_NAMES                36
+            570 PRECALL                  3
+            574 CALL                     3
+            584 POP_TOP
+
+309         586 LOAD_NAME               34 (ap)
+            588 LOAD_METHOD             36 (parse_args)
+            610 PRECALL                  0
+            614 CALL                     0
+            624 STORE_NAME              37 (args)
+
+311         626 LOAD_CONST               2 (None)
+            628 STORE_NAME              38 (llm)
+
+312         630 LOAD_NAME               37 (args)
+            632 LOAD_ATTR               39 (ranker_model)
+            642 POP_JUMP_FORWARD_IF_FALSE    21 (to 686)
+
+313         644 LOAD_CONST               1 (0)
+            646 LOAD_CONST              37 (('call_cli', 'find_agent'))
+            648 IMPORT_NAME             40 (run_cli_induction)
+            650 IMPORT_FROM             41 (call_cli)
+            652 STORE_NAME              41 (call_cli)
+            654 IMPORT_FROM             42 (find_agent)
+            656 STORE_NAME              42 (find_agent)
+            658 POP_TOP
+
+314         660 PUSH_NULL
+            662 LOAD_NAME               42 (find_agent)
+            664 PRECALL                  0
+            668 CALL                     0
+            678 STORE_NAME              43 (agent_bin)
+
+315         680 LOAD_CONST              38 (<code object <lambda> at 0x00000290C3A17930, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\eval_form_field.py", line 315>)
+            682 MAKE_FUNCTION            0
+            684 STORE_NAME              38 (llm)
+
+317     >>  686 LOAD_CONST              39 (<code object <listcomp> at 0x00000290C3796590, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\eval_form_field.py", line 317>)
+            688 MAKE_FUNCTION            0
+            690 PUSH_NULL
+            692 LOAD_NAME               44 (sorted)
+            694 PUSH_NULL
+            696 LOAD_NAME                3 (os)
+            698 LOAD_ATTR               45 (listdir)
+            708 LOAD_NAME               10 (OUT_DIR)
+            710 PRECALL                  1
+            714 CALL                     1
+            724 PRECALL                  1
+            728 CALL                     1
+            738 GET_ITER
+            740 PRECALL                  0
+            744 CALL                     0
+            754 STORE_NAME              46 (keys)
+
+320         756 PUSH_NULL
+            758 LOAD_NAME               27 (eval_pairs_vs_gt)
+            760 PRECALL                  0
+            764 CALL                     0
+
+321         774 PUSH_NULL
+            776 LOAD_NAME               30 (eval_mapping)
+            778 LOAD_NAME               46 (keys)
+            780 LOAD_NAME               38 (llm)
+            782 KW_NAMES                40
+            784 PRECALL                  2
+            788 CALL                     2
+
+322         798 LOAD_CONST              41 ('form-first funnel (oid_mapping.py): form scoping at partial_ratio>=70 as in review_table.get_standard_crf, field>=85 within the form, every candidate-bearing pair judged by the LLM ranker (pick a listed OID or refuse)')
+
+326         800 LOAD_NAME               38 (llm)
+            802 POP_JUMP_FORWARD_IF_FALSE     2 (to 808)
+            804 LOAD_CONST              42 ('')
+            806 JUMP_FORWARD             1 (to 810)
+        >>  808 LOAD_CONST              43 (' -- ranker OFF this run: clear leaders map lexically, near-ties stay abstained')
+
+322     >>  810 BINARY_OP                0 (+)
+
+328         814 LOAD_CONST              44 ('ecs_index_data has only 286 Standard rows; mapping coverage is bounded by library breadth, not extraction quality.')
+
+319         816 LOAD_CONST              45 (('extraction_vs_ground_truth_rave', 'name_to_oid_mapping', 'mapping_logic_note', 'library_size_note'))
+            818 BUILD_CONST_KEY_MAP      4
+            820 STORE_NAME              47 (report)
+
+330         822 PUSH_NULL
+            824 LOAD_NAME               48 (open)
+            826 LOAD_NAME                3 (os)
+            828 LOAD_ATTR               11 (path)
+            838 LOAD_METHOD             12 (join)
+            860 LOAD_NAME               10 (OUT_DIR)
+            862 LOAD_CONST              46 ('evaluation_form_field.json')
+            864 PRECALL                  2
+            868 CALL                     2
+            878 LOAD_CONST              47 ('w')
+            880 LOAD_CONST              48 ('utf-8')
+            882 KW_NAMES                49
+            884 PRECALL                  3
+            888 CALL                     3
+            898 BEFORE_WITH
+            900 STORE_NAME              49 (f)
+
+331         902 PUSH_NULL
+            904 LOAD_NAME                2 (json)
+            906 LOAD_ATTR               50 (dump)
+            916 LOAD_NAME               47 (report)
+            918 LOAD_NAME               49 (f)
+            920 LOAD_CONST              50 (1)
+            922 KW_NAMES                51
+            924 PRECALL                  3
+            928 CALL                     3
+            938 POP_TOP
+
+330         940 LOAD_CONST               2 (None)
+            942 LOAD_CONST               2 (None)
+            944 LOAD_CONST               2 (None)
+            946 PRECALL                  2
+            950 CALL                     2
+            960 POP_TOP
+            962 JUMP_FORWARD            11 (to 986)
+        >>  964 PUSH_EXC_INFO
+            966 WITH_EXCEPT_START
+            968 POP_JUMP_FORWARD_IF_TRUE     4 (to 978)
+            970 RERAISE                  2
+        >>  972 COPY                     3
+            974 POP_EXCEPT
+            976 RERAISE                  1
+        >>  978 POP_TOP
+            980 POP_EXCEPT
+            982 POP_TOP
+            984 POP_TOP
+
+332     >>  986 PUSH_NULL
+            988 LOAD_NAME               51 (print)
+            990 PUSH_NULL
+            992 LOAD_NAME                2 (json)
+            994 LOAD_ATTR               52 (dumps)
+           1004 LOAD_NAME               47 (report)
+           1006 LOAD_CONST              50 (1)
+           1008 KW_NAMES                51
+           1010 PRECALL                  2
+           1014 CALL                     2
+           1024 PRECALL                  1
+           1028 CALL                     1
+           1038 POP_TOP
+           1040 LOAD_CONST               2 (None)
+           1042 RETURN_VALUE
+
+302     >> 1044 LOAD_CONST               2 (None)
+           1046 RETURN_VALUE
+ExceptionTable:
+  900 to 938 -> 964 [1] lasti
+  964 to 970 -> 972 [3] lasti
+  978 to 978 -> 972 [3] lasti
+
+Disassembly of <code object norm at 0x00000290C3A7CCB0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\eval_form_field.py", line 30>:
+ 30           0 RESUME                   0
+
+ 34           2 LOAD_FAST                0 (s)
+              4 JUMP_IF_TRUE_OR_POP      1 (to 8)
+              6 LOAD_CONST               1 ('')
+        >>    8 LOAD_METHOD              0 (lower)
+             30 PRECALL                  0
+             34 CALL                     0
+             44 STORE_FAST               0 (s)
+
+ 35          46 LOAD_GLOBAL              3 (NULL + re)
+             58 LOAD_ATTR                2 (sub)
+             68 LOAD_CONST               2 ('\\(.*?\\)')
+             70 LOAD_CONST               3 (' ')
+             72 LOAD_FAST                0 (s)
+             74 PRECALL                  3
+             78 CALL                     3
+             88 STORE_FAST               0 (s)
+
+ 36          90 LOAD_GLOBAL              3 (NULL + re)
+            102 LOAD_ATTR                2 (sub)
+            112 LOAD_CONST               4 ('[^a-z0-9 ]+')
+            114 LOAD_CONST               3 (' ')
+            116 LOAD_FAST                0 (s)
+            118 PRECALL                  3
+            122 CALL                     3
+            132 STORE_FAST               0 (s)
+
+ 37         134 LOAD_GLOBAL              3 (NULL + re)
+            146 LOAD_ATTR                2 (sub)
+            156 LOAD_CONST               5 ('\\s+')
+            158 LOAD_CONST               3 (' ')
+            160 LOAD_FAST                0 (s)
+            162 PRECALL                  3
+            166 CALL                     3
+            176 LOAD_METHOD              3 (strip)
+            198 PRECALL                  0
+            202 CALL                     0
+            212 RETURN_VALUE
+
+Disassembly of <code object _export_csv at 0x00000290C1B487B0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\eval_form_field.py", line 40>:
+              0 MAKE_CELL                3 (folder)
+
+ 40           2 RESUME                   0
+
+ 43           4 LOAD_GLOBAL              0 (os)
+             16 LOAD_ATTR                1 (path)
+             26 LOAD_METHOD              2 (join)
+             48 LOAD_GLOBAL              6 (OUT_DIR)
+             60 LOAD_FAST                0 (key)
+             62 PRECALL                  2
+             66 CALL                     2
+             76 STORE_DEREF              3 (folder)
+
+ 44          78 LOAD_GLOBAL              9 (NULL + sorted)
+
+ 45          90 LOAD_CLOSURE             3 (folder)
+             92 BUILD_TUPLE              1
+             94 LOAD_CONST               1 (<code object <genexpr> at 0x00000290C3796420, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\eval_form_field.py", line 45>)
+             96 MAKE_FUNCTION            8 (closure)
+             98 LOAD_GLOBAL              1 (NULL + os)
+            110 LOAD_ATTR                5 (listdir)
+            120 LOAD_DEREF               3 (folder)
+            122 PRECALL                  1
+            126 CALL                     1
+            136 GET_ITER
+            138 PRECALL                  0
+            142 CALL                     0
+
+ 47         152 LOAD_GLOBAL              0 (os)
+            164 LOAD_ATTR                1 (path)
+            174 LOAD_ATTR                6 (getmtime)
+            184 LOAD_CONST               2 (True)
+
+ 44         186 KW_NAMES                 3
+            188 PRECALL                  3
+            192 CALL                     3
+            202 STORE_FAST               1 (tagged)
+
+ 48         204 LOAD_FAST                1 (tagged)
+            206 LOAD_GLOBAL              0 (os)
+            218 LOAD_ATTR                1 (path)
+            228 LOAD_METHOD              2 (join)
+            250 LOAD_DEREF               3 (folder)
+            252 LOAD_CONST               4 ('fields_codegen.csv')
+            254 PRECALL                  2
+            258 CALL                     2
+            268 BUILD_LIST               1
+            270 BINARY_OP                0 (+)
+            274 GET_ITER
+        >>  276 FOR_ITER                37 (to 352)
+            278 STORE_FAST               2 (path)
+
+ 49         280 LOAD_GLOBAL              0 (os)
+            292 LOAD_ATTR                1 (path)
+            302 LOAD_METHOD              7 (exists)
+            324 LOAD_FAST                2 (path)
+            326 PRECALL                  1
+            330 CALL                     1
+            340 POP_JUMP_FORWARD_IF_FALSE     4 (to 350)
+
+ 50         342 LOAD_FAST                2 (path)
+            344 SWAP                     2
+            346 POP_TOP
+            348 RETURN_VALUE
+
+ 49     >>  350 JUMP_BACKWARD           38 (to 276)
+
+ 51     >>  352 LOAD_CONST               5 (None)
+            354 RETURN_VALUE
+
+Disassembly of <code object <genexpr> at 0x00000290C3796420, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\eval_form_field.py", line 45>:
+              0 COPY_FREE_VARS           1
+
+ 45           2 RETURN_GENERATOR
+              4 POP_TOP
+              6 RESUME                   0
+              8 LOAD_FAST                0 (.0)
+        >>   10 FOR_ITER                78 (to 168)
+             12 STORE_FAST               1 (f)
+
+ 46          14 LOAD_FAST                1 (f)
+             16 LOAD_METHOD              0 (startswith)
+             38 LOAD_CONST               0 ('fields_codegen_')
+             40 PRECALL                  1
+             44 CALL                     1
+
+ 45          54 POP_JUMP_BACKWARD_IF_FALSE    23 (to 10)
+
+ 46          56 LOAD_FAST                1 (f)
+             58 LOAD_METHOD              1 (endswith)
+             80 LOAD_CONST               1 ('.csv')
+             82 PRECALL                  1
+             86 CALL                     1
+
+ 45          96 POP_JUMP_BACKWARD_IF_FALSE    44 (to 10)
+             98 LOAD_GLOBAL              4 (os)
+            110 LOAD_ATTR                3 (path)
+            120 LOAD_METHOD              4 (join)
+            142 LOAD_DEREF               2 (folder)
+            144 LOAD_FAST                1 (f)
+            146 PRECALL                  2
+            150 CALL                     2
+            160 YIELD_VALUE
+            162 RESUME                   1
+            164 POP_TOP
+            166 JUMP_BACKWARD           79 (to 10)
+        >>  168 LOAD_CONST               2 (None)
+            170 RETURN_VALUE
+
+Disassembly of <code object load_extracted at 0x00000290C39FA2B0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\eval_form_field.py", line 54>:
+ 54           0 RESUME                   0
+
+ 55           2 LOAD_GLOBAL              1 (NULL + _export_csv)
+             14 LOAD_FAST                0 (key)
+             16 PRECALL                  1
+             20 CALL                     1
+             30 STORE_FAST               1 (path)
+
+ 56          32 LOAD_FAST                1 (path)
+             34 POP_JUMP_FORWARD_IF_TRUE     2 (to 40)
+
+ 57          36 BUILD_LIST               0
+             38 RETURN_VALUE
+
+ 58     >>   40 LOAD_GLOBAL              3 (NULL + open)
+             52 LOAD_FAST                1 (path)
+             54 LOAD_CONST               1 ('utf-8')
+             56 KW_NAMES                 2
+             58 PRECALL                  2
+             62 CALL                     2
+             72 BEFORE_WITH
+             74 STORE_FAST               2 (f)
+
+ 59          76 LOAD_GLOBAL              5 (NULL + list)
+             88 LOAD_GLOBAL              7 (NULL + csv)
+            100 LOAD_ATTR                4 (DictReader)
+            110 LOAD_FAST                2 (f)
+            112 PRECALL                  1
+            116 CALL                     1
+            126 PRECALL                  1
+            130 CALL                     1
+
+ 58         140 SWAP                     2
+            142 LOAD_CONST               0 (None)
+            144 LOAD_CONST               0 (None)
+            146 LOAD_CONST               0 (None)
+            148 PRECALL                  2
+            152 CALL                     2
+            162 POP_TOP
+            164 RETURN_VALUE
+        >>  166 PUSH_EXC_INFO
+            168 WITH_EXCEPT_START
+            170 POP_JUMP_FORWARD_IF_TRUE     4 (to 180)
+            172 RERAISE                  2
+        >>  174 COPY                     3
+            176 POP_EXCEPT
+            178 RERAISE                  1
+        >>  180 POP_TOP
+            182 POP_EXCEPT
+            184 POP_TOP
+            186 POP_TOP
+            188 LOAD_CONST               0 (None)
+            190 RETURN_VALUE
+ExceptionTable:
+  74 to 138 -> 166 [1] lasti
+  166 to 172 -> 174 [3] lasti
+  180 to 180 -> 174 [3] lasti
+
+Disassembly of <code object load_gt at 0x00000290C38363F0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\eval_form_field.py", line 62>:
+ 62           0 RESUME                   0
+
+ 63           2 LOAD_GLOBAL              1 (NULL + open)
+             14 LOAD_GLOBAL              2 (GT)
+             26 LOAD_CONST               1 ('utf-8')
+             28 KW_NAMES                 2
+             30 PRECALL                  2
+             34 CALL                     2
+             44 BEFORE_WITH
+             46 STORE_FAST               0 (f)
+
+ 64          48 LOAD_GLOBAL              5 (NULL + list)
+             60 LOAD_GLOBAL              7 (NULL + csv)
+             72 LOAD_ATTR                4 (DictReader)
+             82 LOAD_FAST                0 (f)
+             84 PRECALL                  1
+             88 CALL                     1
+             98 PRECALL                  1
+            102 CALL                     1
+
+ 63         112 SWAP                     2
+            114 LOAD_CONST               0 (None)
+            116 LOAD_CONST               0 (None)
+            118 LOAD_CONST               0 (None)
+            120 PRECALL                  2
+            124 CALL                     2
+            134 POP_TOP
+            136 RETURN_VALUE
+        >>  138 PUSH_EXC_INFO
+            140 WITH_EXCEPT_START
+            142 POP_JUMP_FORWARD_IF_TRUE     4 (to 152)
+            144 RERAISE                  2
+        >>  146 COPY                     3
+            148 POP_EXCEPT
+            150 RERAISE                  1
+        >>  152 POP_TOP
+            154 POP_EXCEPT
+            156 POP_TOP
+            158 POP_TOP
+            160 LOAD_CONST               0 (None)
+            162 RETURN_VALUE
+ExceptionTable:
+  46 to 110 -> 138 [1] lasti
+  138 to 144 -> 146 [3] lasti
+  152 to 152 -> 146 [3] lasti
+
+Disassembly of <code object load_library at 0x00000290C1B0CDD0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\eval_form_field.py", line 67>:
+ 67           0 RESUME                   0
+
+ 68           2 LOAD_GLOBAL              1 (NULL + open)
+             14 LOAD_GLOBAL              2 (INDEX_DATA)
+             26 LOAD_CONST               1 ('utf-8')
+             28 KW_NAMES                 2
+             30 PRECALL                  2
+             34 CALL                     2
+             44 BEFORE_WITH
+             46 STORE_FAST               0 (f)
+
+ 69          48 LOAD_GLOBAL              5 (NULL + list)
+             60 LOAD_GLOBAL              7 (NULL + csv)
+             72 LOAD_ATTR                4 (DictReader)
+             82 LOAD_FAST                0 (f)
+             84 PRECALL                  1
+             88 CALL                     1
+             98 PRECALL                  1
+            102 CALL                     1
+            112 STORE_FAST               1 (rows)
+
+ 68         114 LOAD_CONST               0 (None)
+            116 LOAD_CONST               0 (None)
+            118 LOAD_CONST               0 (None)
+            120 PRECALL                  2
+            124 CALL                     2
+            134 POP_TOP
+            136 JUMP_FORWARD            11 (to 160)
+        >>  138 PUSH_EXC_INFO
+            140 WITH_EXCEPT_START
+            142 POP_JUMP_FORWARD_IF_TRUE     4 (to 152)
+            144 RERAISE                  2
+        >>  146 COPY                     3
+            148 POP_EXCEPT
+            150 RERAISE                  1
+        >>  152 POP_TOP
+            154 POP_EXCEPT
+            156 POP_TOP
+            158 POP_TOP
+
+ 70     >>  160 BUILD_LIST               0
+            162 STORE_FAST               2 (lib)
+
+ 71         164 LOAD_FAST                1 (rows)
+            166 GET_ITER
+        >>  168 FOR_ITER               216 (to 602)
+            170 STORE_FAST               3 (r)
+
+ 72         172 LOAD_FAST                3 (r)
+            174 LOAD_METHOD              5 (get)
+            196 LOAD_CONST               3 ('form_field_value')
+            198 PRECALL                  1
+            202 CALL                     1
+            212 POP_JUMP_FORWARD_IF_FALSE    21 (to 256)
+            214 LOAD_FAST                3 (r)
+            216 LOAD_METHOD              5 (get)
+            238 LOAD_CONST               4 ('variable_name')
+            240 PRECALL                  1
+            244 CALL                     1
+            254 POP_JUMP_FORWARD_IF_TRUE     1 (to 258)
+
+ 73     >>  256 JUMP_BACKWARD           45 (to 168)
+
+ 74     >>  258 LOAD_GLOBAL             13 (NULL + norm)
+            270 LOAD_FAST                3 (r)
+            272 LOAD_CONST               3 ('form_field_value')
+            274 BINARY_SUBSCR
+            284 PRECALL                  1
+            288 CALL                     1
+            298 STORE_FAST               4 (field)
+
+ 75         300 LOAD_FAST                4 (field)
+            302 POP_JUMP_FORWARD_IF_TRUE     1 (to 306)
+
+ 76         304 JUMP_BACKWARD           69 (to 168)
+
+ 77     >>  306 LOAD_FAST                2 (lib)
+            308 LOAD_METHOD              7 (append)
+            330 LOAD_FAST                4 (field)
+
+ 78         332 LOAD_GLOBAL             13 (NULL + norm)
+            344 LOAD_FAST                3 (r)
+            346 LOAD_METHOD              5 (get)
+            368 LOAD_CONST               5 ('form_name')
+            370 LOAD_CONST               6 ('')
+            372 PRECALL                  2
+            376 CALL                     2
+            386 PRECALL                  1
+            390 CALL                     1
+
+ 79         400 LOAD_FAST                3 (r)
+            402 LOAD_CONST               4 ('variable_name')
+            404 BINARY_SUBSCR
+            414 LOAD_METHOD              8 (strip)
+            436 PRECALL                  0
+            440 CALL                     0
+
+ 80         450 LOAD_FAST                3 (r)
+            452 LOAD_CONST               3 ('form_field_value')
+            454 BINARY_SUBSCR
+            464 LOAD_METHOD              8 (strip)
+            486 PRECALL                  0
+            490 CALL                     0
+
+ 81         500 LOAD_FAST                3 (r)
+            502 LOAD_METHOD              5 (get)
+            524 LOAD_CONST               5 ('form_name')
+            526 PRECALL                  1
+            530 CALL                     1
+            540 JUMP_IF_TRUE_OR_POP      1 (to 544)
+            542 LOAD_CONST               6 ('')
+        >>  544 LOAD_METHOD              8 (strip)
+            566 PRECALL                  0
+            570 CALL                     0
+
+ 77         580 LOAD_CONST               7 (('field', 'form', 'oid', 'field_raw', 'form_raw'))
+            582 BUILD_CONST_KEY_MAP      5
+            584 PRECALL                  1
+            588 CALL                     1
+            598 POP_TOP
+            600 JUMP_BACKWARD          217 (to 168)
+
+ 82     >>  602 LOAD_FAST                2 (lib)
+            604 RETURN_VALUE
+ExceptionTable:
+  46 to 112 -> 138 [1] lasti
+  138 to 144 -> 146 [3] lasti
+  152 to 152 -> 146 [3] lasti
+
+Disassembly of <code object eval_pairs_vs_gt at 0x00000290C1B9D280, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\eval_form_field.py", line 88>:
+              0 MAKE_CELL                5 (best_match)
+              2 MAKE_CELL                6 (got_pairs)
+              4 MAKE_CELL                7 (gt_pairs)
+
+ 88           6 RESUME                   0
+
+ 89           8 LOAD_CONST               1 (<code object <listcomp> at 0x00000290C3816B80, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\eval_form_field.py", line 89>)
+             10 MAKE_FUNCTION            0
+
+ 90          12 LOAD_GLOBAL              1 (NULL + load_gt)
+             24 PRECALL                  0
+             28 CALL                     0
+
+ 89          38 GET_ITER
+             40 PRECALL                  0
+             44 CALL                     0
+             54 STORE_FAST               0 (gt)
+
+ 91          56 LOAD_GLOBAL              3 (NULL + load_extracted)
+             68 LOAD_GLOBAL              4 (RAVE_KEY)
+             80 PRECALL                  1
+             84 CALL                     1
+             94 STORE_FAST               1 (rows)
+
+ 92          96 LOAD_CONST               2 (<code object <listcomp> at 0x00000290C37BB630, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\eval_form_field.py", line 92>)
+             98 MAKE_FUNCTION            0
+            100 LOAD_FAST                1 (rows)
+            102 GET_ITER
+            104 PRECALL                  0
+            108 CALL                     0
+            118 STORE_FAST               2 (got)
+
+ 93         120 LOAD_GLOBAL              7 (NULL + sorted)
+            132 LOAD_CONST               3 (<code object <setcomp> at 0x00000290C3A0FC90, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\eval_form_field.py", line 93>)
+            134 MAKE_FUNCTION            0
+            136 LOAD_FAST                0 (gt)
+            138 GET_ITER
+            140 PRECALL                  0
+            144 CALL                     0
+            154 PRECALL                  1
+            158 CALL                     1
+            168 STORE_DEREF              7 (gt_pairs)
+
+ 94         170 LOAD_GLOBAL              7 (NULL + sorted)
+            182 LOAD_GLOBAL              9 (NULL + set)
+            194 LOAD_FAST                2 (got)
+            196 PRECALL                  1
+            200 CALL                     1
+            210 PRECALL                  1
+            214 CALL                     1
+            224 STORE_DEREF              6 (got_pairs)
+
+ 96         226 LOAD_CONST               4 (<code object best_match at 0x00000290C3A7D480, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\eval_form_field.py", line 96>)
+            228 MAKE_FUNCTION            0
+            230 STORE_DEREF              5 (best_match)
+
+109         232 LOAD_GLOBAL             11 (NULL + sum)
+            244 LOAD_CLOSURE             5 (best_match)
+            246 LOAD_CLOSURE             6 (got_pairs)
+            248 BUILD_TUPLE              2
+            250 LOAD_CONST               5 (<code object <genexpr> at 0x00000290C3A16330, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\eval_form_field.py", line 109>)
+            252 MAKE_FUNCTION            8 (closure)
+            254 LOAD_DEREF               7 (gt_pairs)
+            256 GET_ITER
+            258 PRECALL                  0
+            262 CALL                     0
+            272 PRECALL                  1
+            276 CALL                     1
+            286 STORE_FAST               3 (matched_gt)
+
+110         288 LOAD_GLOBAL             11 (NULL + sum)
+            300 LOAD_CLOSURE             5 (best_match)
+            302 LOAD_CLOSURE             7 (gt_pairs)
+            304 BUILD_TUPLE              2
+            306 LOAD_CONST               6 (<code object <genexpr> at 0x00000290C3A16F30, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\eval_form_field.py", line 110>)
+            308 MAKE_FUNCTION            8 (closure)
+            310 LOAD_DEREF               6 (got_pairs)
+            312 GET_ITER
+            314 PRECALL                  0
+            318 CALL                     0
+            328 PRECALL                  1
+            332 CALL                     1
+            342 STORE_FAST               4 (matched_got)
+
+112         344 LOAD_GLOBAL             13 (NULL + len)
+            356 LOAD_DEREF               7 (gt_pairs)
+            358 PRECALL                  1
+            362 CALL                     1
+
+113         372 LOAD_GLOBAL             13 (NULL + len)
+            384 LOAD_DEREF               6 (got_pairs)
+            386 PRECALL                  1
+            390 CALL                     1
+
+114         400 LOAD_GLOBAL             15 (NULL + round)
+            412 LOAD_CONST               7 (100)
+            414 LOAD_FAST                3 (matched_gt)
+            416 BINARY_OP                5 (*)
+            420 LOAD_GLOBAL             17 (NULL + max)
+            432 LOAD_CONST               8 (1)
+            434 LOAD_GLOBAL             13 (NULL + len)
+            446 LOAD_DEREF               7 (gt_pairs)
+            448 PRECALL                  1
+            452 CALL                     1
+            462 PRECALL                  2
+            466 CALL                     2
+            476 BINARY_OP               11 (/)
+            480 PRECALL                  1
+            484 CALL                     1
+
+115         494 LOAD_GLOBAL             15 (NULL + round)
+            506 LOAD_CONST               7 (100)
+            508 LOAD_FAST                4 (matched_got)
+            510 BINARY_OP                5 (*)
+            514 LOAD_GLOBAL             17 (NULL + max)
+            526 LOAD_CONST               8 (1)
+            528 LOAD_GLOBAL             13 (NULL + len)
+            540 LOAD_DEREF               6 (got_pairs)
+            542 PRECALL                  1
+            546 CALL                     1
+            556 PRECALL                  2
+            560 CALL                     2
+            570 BINARY_OP               11 (/)
+            574 PRECALL                  1
+            578 CALL                     1
+
+116         588 LOAD_GLOBAL             19 (NULL + _precision_breakdown)
+            600 LOAD_FAST                1 (rows)
+            602 LOAD_DEREF               7 (gt_pairs)
+            604 LOAD_DEREF               5 (best_match)
+            606 PRECALL                  3
+            610 CALL                     3
+
+117         620 LOAD_GLOBAL             21 (NULL + _recall_breakdown)
+            632 LOAD_DEREF               7 (gt_pairs)
+            634 LOAD_DEREF               6 (got_pairs)
+            636 LOAD_DEREF               5 (best_match)
+            638 PRECALL                  3
+            642 CALL                     3
+
+111         652 LOAD_CONST               9 (('gt_distinct_pairs', 'extracted_distinct_pairs', 'pair_recall_pct', 'pair_precision_pct', 'precision_breakdown', 'recall_breakdown'))
+            654 BUILD_CONST_KEY_MAP      6
+            656 RETURN_VALUE
+
+Disassembly of <code object <listcomp> at 0x00000290C3816B80, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\eval_form_field.py", line 89>:
+ 89           0 RESUME                   0
+              2 BUILD_LIST               0
+              4 LOAD_FAST                0 (.0)
+        >>    6 FOR_ITER                69 (to 146)
+
+ 90           8 STORE_FAST               1 (r)
+
+ 89          10 LOAD_GLOBAL              1 (NULL + norm)
+             22 LOAD_FAST                1 (r)
+             24 LOAD_CONST               0 ('form_name')
+             26 BINARY_SUBSCR
+             36 PRECALL                  1
+             40 CALL                     1
+             50 LOAD_GLOBAL              1 (NULL + norm)
+             62 LOAD_FAST                1 (r)
+             64 LOAD_CONST               1 ('field_name')
+             66 BINARY_SUBSCR
+             76 PRECALL                  1
+             80 CALL                     1
+             90 LOAD_FAST                1 (r)
+             92 LOAD_CONST               2 ('field_oid')
+             94 BINARY_SUBSCR
+            104 LOAD_METHOD              1 (strip)
+            126 PRECALL                  0
+            130 CALL                     0
+            140 BUILD_TUPLE              3
+            142 LIST_APPEND              2
+            144 JUMP_BACKWARD           70 (to 6)
+        >>  146 RETURN_VALUE
+
+Disassembly of <code object <listcomp> at 0x00000290C37BB630, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\eval_form_field.py", line 92>:
+ 92           0 RESUME                   0
+              2 BUILD_LIST               0
+              4 LOAD_FAST                0 (.0)
+        >>    6 FOR_ITER                44 (to 96)
+              8 STORE_FAST               1 (r)
+             10 LOAD_GLOBAL              1 (NULL + norm)
+             22 LOAD_FAST                1 (r)
+             24 LOAD_CONST               0 ('form_name')
+             26 BINARY_SUBSCR
+             36 PRECALL                  1
+             40 CALL                     1
+             50 LOAD_GLOBAL              1 (NULL + norm)
+             62 LOAD_FAST                1 (r)
+             64 LOAD_CONST               1 ('field_name')
+             66 BINARY_SUBSCR
+             76 PRECALL                  1
+             80 CALL                     1
+             90 BUILD_TUPLE              2
+             92 LIST_APPEND              2
+             94 JUMP_BACKWARD           45 (to 6)
+        >>   96 RETURN_VALUE
+
+Disassembly of <code object <setcomp> at 0x00000290C3A0FC90, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\eval_form_field.py", line 93>:
+ 93           0 RESUME                   0
+              2 BUILD_SET                0
+              4 LOAD_FAST                0 (.0)
+        >>    6 FOR_ITER                10 (to 28)
+              8 UNPACK_SEQUENCE          3
+             12 STORE_FAST               1 (f)
+             14 STORE_FAST               2 (l)
+             16 STORE_FAST               3 (_)
+             18 LOAD_FAST                1 (f)
+             20 LOAD_FAST                2 (l)
+             22 BUILD_TUPLE              2
+             24 SET_ADD                  2
+             26 JUMP_BACKWARD           11 (to 6)
+        >>   28 RETURN_VALUE
+
+Disassembly of <code object best_match at 0x00000290C3A7D480, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\eval_form_field.py", line 96>:
+ 96           0 RESUME                   0
+
+ 97           2 LOAD_FAST                0 (pair)
+              4 UNPACK_SEQUENCE          2
+              8 STORE_FAST               2 (pf)
+             10 STORE_FAST               3 (pl)
+
+ 98          12 LOAD_CONST               1 (0.0)
+             14 STORE_FAST               4 (best)
+
+ 99          16 LOAD_FAST                1 (pool)
+             18 GET_ITER
+        >>   20 FOR_ITER                93 (to 208)
+             22 UNPACK_SEQUENCE          2
+             26 STORE_FAST               5 (qf)
+             28 STORE_FAST               6 (ql)
+
+100          30 LOAD_GLOBAL              1 (NULL + fuzz)
+             42 LOAD_ATTR                1 (token_sort_ratio)
+             52 LOAD_FAST                3 (pl)
+             54 LOAD_FAST                6 (ql)
+             56 PRECALL                  2
+             60 CALL                     2
+             70 STORE_FAST               7 (fl)
+
+101          72 LOAD_FAST                7 (fl)
+             74 LOAD_GLOBAL              4 (FIELD_T)
+             86 COMPARE_OP               0 (<)
+             92 POP_JUMP_FORWARD_IF_FALSE     1 (to 96)
+
+102          94 JUMP_BACKWARD           38 (to 20)
+
+103     >>   96 LOAD_GLOBAL              1 (NULL + fuzz)
+            108 LOAD_ATTR                1 (token_sort_ratio)
+            118 LOAD_FAST                2 (pf)
+            120 LOAD_FAST                5 (qf)
+            122 PRECALL                  2
+            126 CALL                     2
+            136 STORE_FAST               8 (fm)
+
+104         138 LOAD_FAST                8 (fm)
+            140 LOAD_GLOBAL              6 (FORM_T)
+            152 COMPARE_OP               0 (<)
+            158 POP_JUMP_FORWARD_IF_FALSE     1 (to 162)
+
+105         160 JUMP_BACKWARD           71 (to 20)
+
+106     >>  162 LOAD_GLOBAL              9 (NULL + max)
+            174 LOAD_FAST                4 (best)
+            176 LOAD_FAST                7 (fl)
+            178 LOAD_FAST                8 (fm)
+            180 BINARY_OP                0 (+)
+            184 LOAD_CONST               2 (2)
+            186 BINARY_OP               11 (/)
+            190 PRECALL                  2
+            194 CALL                     2
+            204 STORE_FAST               4 (best)
+            206 JUMP_BACKWARD           94 (to 20)
+
+107     >>  208 LOAD_FAST                4 (best)
+            210 RETURN_VALUE
+
+Disassembly of <code object <genexpr> at 0x00000290C3A16330, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\eval_form_field.py", line 109>:
+              0 COPY_FREE_VARS           2
+
+109           2 RETURN_GENERATOR
+              4 POP_TOP
+              6 RESUME                   0
+              8 LOAD_FAST                0 (.0)
+        >>   10 FOR_ITER                22 (to 56)
+             12 STORE_FAST               1 (p)
+             14 PUSH_NULL
+             16 LOAD_DEREF               2 (best_match)
+             18 LOAD_FAST                1 (p)
+             20 LOAD_DEREF               3 (got_pairs)
+             22 PRECALL                  2
+             26 CALL                     2
+             36 LOAD_CONST               0 (0)
+             38 COMPARE_OP               4 (>)
+             44 POP_JUMP_BACKWARD_IF_FALSE    18 (to 10)
+             46 LOAD_CONST               1 (1)
+             48 YIELD_VALUE
+             50 RESUME                   1
+             52 POP_TOP
+             54 JUMP_BACKWARD           23 (to 10)
+        >>   56 LOAD_CONST               2 (None)
+             58 RETURN_VALUE
+
+Disassembly of <code object <genexpr> at 0x00000290C3A16F30, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\eval_form_field.py", line 110>:
+              0 COPY_FREE_VARS           2
+
+110           2 RETURN_GENERATOR
+              4 POP_TOP
+              6 RESUME                   0
+              8 LOAD_FAST                0 (.0)
+        >>   10 FOR_ITER                22 (to 56)
+             12 STORE_FAST               1 (p)
+             14 PUSH_NULL
+             16 LOAD_DEREF               2 (best_match)
+             18 LOAD_FAST                1 (p)
+             20 LOAD_DEREF               3 (gt_pairs)
+             22 PRECALL                  2
+             26 CALL                     2
+             36 LOAD_CONST               0 (0)
+             38 COMPARE_OP               4 (>)
+             44 POP_JUMP_BACKWARD_IF_FALSE    18 (to 10)
+             46 LOAD_CONST               1 (1)
+             48 YIELD_VALUE
+             50 RESUME                   1
+             52 POP_TOP
+             54 JUMP_BACKWARD           23 (to 10)
+        >>   56 LOAD_CONST               2 (None)
+             58 RETURN_VALUE
+
+Disassembly of <code object _recall_breakdown at 0x00000290C1B9E560, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\eval_form_field.py", line 121>:
+              0 MAKE_CELL                1 (got_pairs)
+              2 MAKE_CELL                2 (best_match)
+              4 MAKE_CELL               14 (oid_of)
+              6 MAKE_CELL               15 (pf)
+              8 MAKE_CELL               16 (pl)
+
+121          10 RESUME                   0
+
+143          12 BUILD_MAP                0
+             14 STORE_DEREF             14 (oid_of)
+
+144          16 LOAD_GLOBAL              1 (NULL + load_gt)
+             28 PRECALL                  0
+             32 CALL                     0
+             42 GET_ITER
+        >>   44 FOR_ITER                99 (to 244)
+             46 STORE_FAST               3 (r)
+
+145          48 LOAD_GLOBAL              3 (NULL + norm)
+             60 LOAD_FAST                3 (r)
+             62 LOAD_CONST               1 ('form_name')
+             64 BINARY_SUBSCR
+             74 PRECALL                  1
+             78 CALL                     1
+             88 LOAD_GLOBAL              3 (NULL + norm)
+            100 LOAD_FAST                3 (r)
+            102 LOAD_CONST               2 ('field_name')
+            104 BINARY_SUBSCR
+            114 PRECALL                  1
+            118 CALL                     1
+            128 BUILD_TUPLE              2
+            130 STORE_FAST               4 (p)
+
+146         132 LOAD_FAST                3 (r)
+            134 LOAD_CONST               3 ('field_oid')
+            136 BINARY_SUBSCR
+            146 LOAD_METHOD              2 (strip)
+            168 PRECALL                  0
+            172 CALL                     0
+            182 POP_JUMP_FORWARD_IF_FALSE    29 (to 242)
+
+147         184 LOAD_FAST                3 (r)
+            186 LOAD_CONST               3 ('field_oid')
+            188 BINARY_SUBSCR
+            198 LOAD_METHOD              2 (strip)
+            220 PRECALL                  0
+            224 CALL                     0
+            234 LOAD_DEREF              14 (oid_of)
+            236 LOAD_FAST                4 (p)
+            238 STORE_SUBSCR
+        >>  242 JUMP_BACKWARD          100 (to 44)
+
+149     >>  244 LOAD_GLOBAL              7 (NULL + fitz)
+            256 LOAD_ATTR                4 (open)
+            266 LOAD_GLOBAL             10 (RAVE_PDF)
+            278 PRECALL                  1
+            282 CALL                     1
+            292 STORE_FAST               5 (doc)
+
+150         294 LOAD_GLOBAL             13 (NULL + sorted)
+            306 LOAD_CONST               4 (<code object <setcomp> at 0x00000290C3836D90, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\eval_form_field.py", line 150>)
+            308 MAKE_FUNCTION            0
+            310 LOAD_FAST                5 (doc)
+            312 GET_ITER
+            314 PRECALL                  0
+            318 CALL                     0
+            328 PRECALL                  1
+            332 CALL                     1
+            342 STORE_FAST               6 (book_lines)
+
+152         344 LOAD_FAST                5 (doc)
+            346 LOAD_METHOD              7 (close)
+            368 PRECALL                  0
+            372 CALL                     0
+            382 POP_TOP
+
+154         384 LOAD_CLOSURE             2 (best_match)
+            386 LOAD_CLOSURE             1 (got_pairs)
+            388 BUILD_TUPLE              2
+            390 LOAD_CONST               5 (<code object <listcomp> at 0x00000290C3A787B0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\eval_form_field.py", line 154>)
+            392 MAKE_FUNCTION            8 (closure)
+            394 LOAD_FAST                0 (gt_pairs)
+            396 GET_ITER
+            398 PRECALL                  0
+            402 CALL                     0
+            412 STORE_FAST               7 (missed)
+
+155         414 LOAD_CONST               6 (<code object <dictcomp> at 0x00000290C3A6D140, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\eval_form_field.py", line 155>)
+            416 MAKE_FUNCTION            0
+            418 LOAD_CONST               7 (('no_oid_in_truth', 'different_form', 'near_miss_wording', 'printed_not_extracted', 'label_not_printed'))
+            420 GET_ITER
+            422 PRECALL                  0
+            426 CALL                     0
+            436 STORE_FAST               8 (buckets)
+
+158         438 LOAD_FAST                7 (missed)
+            440 GET_ITER
+        >>  442 FOR_ITER               248 (to 940)
+            444 UNPACK_SEQUENCE          2
+            448 STORE_DEREF             15 (pf)
+            450 STORE_DEREF             16 (pl)
+
+159         452 LOAD_DEREF              15 (pf)
+            454 LOAD_DEREF              16 (pl)
+            456 BUILD_TUPLE              2
+            458 LOAD_DEREF              14 (oid_of)
+            460 CONTAINS_OP              1
+            462 POP_JUMP_FORWARD_IF_FALSE    30 (to 524)
+
+160         464 LOAD_FAST                8 (buckets)
+            466 LOAD_CONST               8 ('no_oid_in_truth')
+            468 BINARY_SUBSCR
+            478 LOAD_METHOD              8 (append)
+            500 LOAD_DEREF              15 (pf)
+            502 LOAD_DEREF              16 (pl)
+            504 BUILD_TUPLE              2
+            506 PRECALL                  1
+            510 CALL                     1
+            520 POP_TOP
+            522 JUMP_BACKWARD           41 (to 442)
+
+161     >>  524 LOAD_GLOBAL             19 (NULL + any)
+            536 LOAD_CLOSURE            16 (pl)
+            538 BUILD_TUPLE              1
+            540 LOAD_CONST               9 (<code object <genexpr> at 0x00000290C3A51C50, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\eval_form_field.py", line 161>)
+            542 MAKE_FUNCTION            8 (closure)
+            544 LOAD_DEREF               1 (got_pairs)
+            546 GET_ITER
+            548 PRECALL                  0
+            552 CALL                     0
+            562 PRECALL                  1
+            566 CALL                     1
+            576 POP_JUMP_FORWARD_IF_FALSE    30 (to 638)
+
+162         578 LOAD_FAST                8 (buckets)
+            580 LOAD_CONST              10 ('different_form')
+            582 BINARY_SUBSCR
+            592 LOAD_METHOD              8 (append)
+            614 LOAD_DEREF              15 (pf)
+            616 LOAD_DEREF              16 (pl)
+            618 BUILD_TUPLE              2
+            620 PRECALL                  1
+            624 CALL                     1
+            634 POP_TOP
+            636 JUMP_BACKWARD           98 (to 442)
+
+163     >>  638 LOAD_GLOBAL             21 (NULL + max)
+            650 LOAD_CLOSURE            15 (pf)
+            652 LOAD_CLOSURE            16 (pl)
+            654 BUILD_TUPLE              2
+            656 LOAD_CONST              11 (<code object <genexpr> at 0x00000290C38135F0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\eval_form_field.py", line 163>)
+            658 MAKE_FUNCTION            8 (closure)
+            660 LOAD_DEREF               1 (got_pairs)
+            662 GET_ITER
+            664 PRECALL                  0
+            668 CALL                     0
+
+164         678 LOAD_CONST              12 (0)
+
+163         680 KW_NAMES                13
+            682 PRECALL                  2
+            686 CALL                     2
+
+164         696 LOAD_CONST              14 (70)
+
+163         698 COMPARE_OP               5 (>=)
+            704 POP_JUMP_FORWARD_IF_FALSE    30 (to 766)
+
+165         706 LOAD_FAST                8 (buckets)
+            708 LOAD_CONST              15 ('near_miss_wording')
+            710 BINARY_SUBSCR
+            720 LOAD_METHOD              8 (append)
+            742 LOAD_DEREF              15 (pf)
+            744 LOAD_DEREF              16 (pl)
+            746 BUILD_TUPLE              2
+            748 PRECALL                  1
+            752 CALL                     1
+            762 POP_TOP
+            764 JUMP_BACKWARD          162 (to 442)
+
+166     >>  766 LOAD_GLOBAL             19 (NULL + any)
+            778 LOAD_CLOSURE            16 (pl)
+            780 BUILD_TUPLE              1
+            782 LOAD_CONST              16 (<code object <genexpr> at 0x00000290C3A6A120, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\eval_form_field.py", line 166>)
+            784 MAKE_FUNCTION            8 (closure)
+            786 LOAD_FAST                6 (book_lines)
+            788 GET_ITER
+            790 PRECALL                  0
+            794 CALL                     0
+            804 PRECALL                  1
+            808 CALL                     1
+            818 POP_JUMP_FORWARD_IF_FALSE    30 (to 880)
+
+167         820 LOAD_FAST                8 (buckets)
+            822 LOAD_CONST              17 ('printed_not_extracted')
+            824 BINARY_SUBSCR
+            834 LOAD_METHOD              8 (append)
+            856 LOAD_DEREF              15 (pf)
+            858 LOAD_DEREF              16 (pl)
+            860 BUILD_TUPLE              2
+            862 PRECALL                  1
+            866 CALL                     1
+            876 POP_TOP
+            878 JUMP_BACKWARD          219 (to 442)
+
+169     >>  880 LOAD_FAST                8 (buckets)
+            882 LOAD_CONST              18 ('label_not_printed')
+            884 BINARY_SUBSCR
+            894 LOAD_METHOD              8 (append)
+            916 LOAD_DEREF              15 (pf)
+            918 LOAD_DEREF              16 (pl)
+            920 BUILD_TUPLE              2
+            922 PRECALL                  1
+            926 CALL                     1
+            936 POP_TOP
+            938 JUMP_BACKWARD          249 (to 442)
+
+171     >>  940 LOAD_CLOSURE            14 (oid_of)
+            942 BUILD_TUPLE              1
+            944 LOAD_CONST              19 (<code object <listcomp> at 0x00000290C3A0FAD0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\eval_form_field.py", line 171>)
+            946 MAKE_FUNCTION            8 (closure)
+            948 LOAD_FAST                0 (gt_pairs)
+            950 GET_ITER
+            952 PRECALL                  0
+            956 CALL                     0
+            966 STORE_FAST               9 (oid_pairs)
+
+172         968 LOAD_GLOBAL             23 (NULL + sum)
+            980 LOAD_CLOSURE             2 (best_match)
+            982 LOAD_CLOSURE             1 (got_pairs)
+            984 BUILD_TUPLE              2
+            986 LOAD_CONST              20 (<code object <genexpr> at 0x00000290C3A17430, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\eval_form_field.py", line 172>)
+            988 MAKE_FUNCTION            8 (closure)
+            990 LOAD_FAST                9 (oid_pairs)
+            992 GET_ITER
+            994 PRECALL                  0
+            998 CALL                     0
+           1008 PRECALL                  1
+           1012 CALL                     1
+           1022 STORE_FAST              10 (oid_found)
+
+173        1024 LOAD_CONST              21 ('missed_total')
+           1026 LOAD_GLOBAL             25 (NULL + len)
+           1038 LOAD_FAST                7 (missed)
+           1040 PRECALL                  1
+           1044 CALL                     1
+           1054 BUILD_MAP                1
+           1056 STORE_FAST              11 (out)
+
+174        1058 LOAD_FAST                8 (buckets)
+           1060 LOAD_METHOD             13 (items)
+           1082 PRECALL                  0
+           1086 CALL                     0
+           1096 GET_ITER
+        >> 1098 FOR_ITER                51 (to 1202)
+           1100 UNPACK_SEQUENCE          2
+           1104 STORE_FAST              12 (k)
+           1106 STORE_FAST              13 (v)
+
+175        1108 LOAD_GLOBAL             25 (NULL + len)
+           1120 LOAD_FAST               13 (v)
+           1122 PRECALL                  1
+           1126 CALL                     1
+           1136 LOAD_FAST               11 (out)
+           1138 LOAD_FAST               12 (k)
+           1140 STORE_SUBSCR
+
+176        1144 LOAD_FAST               13 (v)
+           1146 POP_JUMP_FORWARD_IF_FALSE    26 (to 1200)
+
+177        1148 LOAD_CONST              22 (<code object <listcomp> at 0x00000290C3A79110, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\eval_form_field.py", line 177>)
+           1150 MAKE_FUNCTION            0
+           1152 LOAD_FAST               13 (v)
+           1154 LOAD_CONST              23 (None)
+           1156 LOAD_CONST              24 (4)
+           1158 BUILD_SLICE              2
+           1160 BINARY_SUBSCR
+           1170 GET_ITER
+           1172 PRECALL                  0
+           1176 CALL                     0
+           1186 LOAD_FAST               11 (out)
+           1188 LOAD_FAST               12 (k)
+           1190 LOAD_CONST              25 ('_examples')
+           1192 BINARY_OP                0 (+)
+           1196 STORE_SUBSCR
+        >> 1200 JUMP_BACKWARD           52 (to 1098)
+
+178     >> 1202 LOAD_GLOBAL             25 (NULL + len)
+           1214 LOAD_FAST                9 (oid_pairs)
+           1216 PRECALL                  1
+           1220 CALL                     1
+           1230 LOAD_FAST               11 (out)
+           1232 LOAD_CONST              26 ('oid_bearing_truth_pairs')
+           1234 STORE_SUBSCR
+
+179        1238 LOAD_FAST               10 (oid_found)
+           1240 LOAD_FAST               11 (out)
+           1242 LOAD_CONST              27 ('oid_bearing_found')
+           1244 STORE_SUBSCR
+
+180        1248 LOAD_GLOBAL             29 (NULL + round)
+           1260 LOAD_CONST              28 (100)
+           1262 LOAD_FAST               10 (oid_found)
+           1264 BINARY_OP                5 (*)
+           1268 LOAD_GLOBAL             21 (NULL + max)
+           1280 LOAD_CONST              29 (1)
+           1282 LOAD_GLOBAL             25 (NULL + len)
+           1294 LOAD_FAST                9 (oid_pairs)
+           1296 PRECALL                  1
+           1300 CALL                     1
+           1310 PRECALL                  2
+           1314 CALL                     2
+           1324 BINARY_OP               11 (/)
+           1328 PRECALL                  1
+           1332 CALL                     1
+           1342 LOAD_FAST               11 (out)
+           1344 LOAD_CONST              30 ('oid_bearing_recall_pct')
+           1346 STORE_SUBSCR
+
+181        1350 LOAD_FAST               11 (out)
+           1352 RETURN_VALUE
+
+Disassembly of <code object <setcomp> at 0x00000290C3836D90, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\eval_form_field.py", line 150>:
+150           0 RESUME                   0
+              2 BUILD_SET                0
+              4 LOAD_FAST                0 (.0)
+        >>    6 FOR_ITER                74 (to 156)
+              8 STORE_FAST               1 (page)
+
+151          10 LOAD_FAST                1 (page)
+             12 LOAD_METHOD              0 (get_text)
+             34 LOAD_CONST               0 ('text')
+             36 PRECALL                  1
+             40 CALL                     1
+             50 LOAD_METHOD              1 (splitlines)
+             72 PRECALL                  0
+             76 CALL                     0
+
+150          86 GET_ITER
+        >>   88 FOR_ITER                32 (to 154)
+
+151          90 STORE_FAST               2 (ln)
+             92 LOAD_GLOBAL              5 (NULL + norm)
+            104 LOAD_FAST                2 (ln)
+            106 PRECALL                  1
+            110 CALL                     1
+
+150         120 POP_JUMP_BACKWARD_IF_FALSE    17 (to 88)
+            122 LOAD_GLOBAL              5 (NULL + norm)
+            134 LOAD_FAST                2 (ln)
+            136 PRECALL                  1
+            140 CALL                     1
+            150 SET_ADD                  3
+            152 JUMP_BACKWARD           33 (to 88)
+        >>  154 JUMP_BACKWARD           75 (to 6)
+        >>  156 RETURN_VALUE
+
+Disassembly of <code object <listcomp> at 0x00000290C3A787B0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\eval_form_field.py", line 154>:
+              0 COPY_FREE_VARS           2
+
+154           2 RESUME                   0
+              4 BUILD_LIST               0
+              6 LOAD_FAST                0 (.0)
+        >>    8 FOR_ITER                20 (to 50)
+             10 STORE_FAST               1 (p)
+             12 PUSH_NULL
+             14 LOAD_DEREF               2 (best_match)
+             16 LOAD_FAST                1 (p)
+             18 LOAD_DEREF               3 (got_pairs)
+             20 PRECALL                  2
+             24 CALL                     2
+             34 LOAD_CONST               0 (0)
+             36 COMPARE_OP               2 (==)
+             42 POP_JUMP_BACKWARD_IF_FALSE    18 (to 8)
+             44 LOAD_FAST                1 (p)
+             46 LIST_APPEND              2
+             48 JUMP_BACKWARD           21 (to 8)
+        >>   50 RETURN_VALUE
+
+Disassembly of <code object <dictcomp> at 0x00000290C3A6D140, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\eval_form_field.py", line 155>:
+155           0 RESUME                   0
+              2 BUILD_MAP                0
+              4 LOAD_FAST                0 (.0)
+        >>    6 FOR_ITER                 5 (to 18)
+              8 STORE_FAST               1 (k)
+             10 LOAD_FAST                1 (k)
+             12 BUILD_LIST               0
+             14 MAP_ADD                  2
+             16 JUMP_BACKWARD            6 (to 6)
+        >>   18 RETURN_VALUE
+
+Disassembly of <code object <genexpr> at 0x00000290C3A51C50, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\eval_form_field.py", line 161>:
+              0 COPY_FREE_VARS           1
+
+161           2 RETURN_GENERATOR
+              4 POP_TOP
+              6 RESUME                   0
+              8 LOAD_FAST                0 (.0)
+        >>   10 FOR_ITER                37 (to 86)
+             12 UNPACK_SEQUENCE          2
+             16 STORE_FAST               1 (_)
+             18 STORE_FAST               2 (ql)
+             20 LOAD_GLOBAL              1 (NULL + fuzz)
+             32 LOAD_ATTR                1 (token_sort_ratio)
+             42 LOAD_DEREF               3 (pl)
+             44 LOAD_FAST                2 (ql)
+             46 PRECALL                  2
+             50 CALL                     2
+             60 LOAD_GLOBAL              4 (FIELD_T)
+             72 COMPARE_OP               5 (>=)
+             78 YIELD_VALUE
+             80 RESUME                   1
+             82 POP_TOP
+             84 JUMP_BACKWARD           38 (to 10)
+        >>   86 LOAD_CONST               0 (None)
+             88 RETURN_VALUE
+
+Disassembly of <code object <genexpr> at 0x00000290C38135F0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\eval_form_field.py", line 163>:
+              0 COPY_FREE_VARS           2
+
+163           2 RETURN_GENERATOR
+              4 POP_TOP
+              6 RESUME                   0
+              8 LOAD_FAST                0 (.0)
+        >>   10 FOR_ITER                58 (to 128)
+             12 UNPACK_SEQUENCE          2
+             16 STORE_FAST               1 (qf)
+             18 STORE_FAST               2 (ql)
+
+164          20 LOAD_GLOBAL              1 (NULL + fuzz)
+             32 LOAD_ATTR                1 (token_sort_ratio)
+             42 LOAD_DEREF               3 (pf)
+             44 LOAD_FAST                1 (qf)
+             46 PRECALL                  2
+             50 CALL                     2
+             60 LOAD_GLOBAL              4 (FORM_T)
+             72 COMPARE_OP               5 (>=)
+             78 POP_JUMP_BACKWARD_IF_FALSE    35 (to 10)
+
+163          80 LOAD_GLOBAL              1 (NULL + fuzz)
+             92 LOAD_ATTR                1 (token_sort_ratio)
+            102 LOAD_DEREF               4 (pl)
+            104 LOAD_FAST                2 (ql)
+            106 PRECALL                  2
+            110 CALL                     2
+
+164         120 YIELD_VALUE
+            122 RESUME                   1
+            124 POP_TOP
+            126 JUMP_BACKWARD           59 (to 10)
+
+163     >>  128 LOAD_CONST               0 (None)
+            130 RETURN_VALUE
+
+Disassembly of <code object <genexpr> at 0x00000290C3A6A120, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\eval_form_field.py", line 166>:
+              0 COPY_FREE_VARS           1
+
+166           2 RETURN_GENERATOR
+              4 POP_TOP
+              6 RESUME                   0
+              8 LOAD_FAST                0 (.0)
+        >>   10 FOR_ITER                34 (to 80)
+             12 STORE_FAST               1 (ln)
+             14 LOAD_GLOBAL              1 (NULL + fuzz)
+             26 LOAD_ATTR                1 (token_sort_ratio)
+             36 LOAD_DEREF               2 (pl)
+             38 LOAD_FAST                1 (ln)
+             40 PRECALL                  2
+             44 CALL                     2
+             54 LOAD_GLOBAL              4 (FIELD_T)
+             66 COMPARE_OP               5 (>=)
+             72 YIELD_VALUE
+             74 RESUME                   1
+             76 POP_TOP
+             78 JUMP_BACKWARD           35 (to 10)
+        >>   80 LOAD_CONST               0 (None)
+             82 RETURN_VALUE
+
+Disassembly of <code object <listcomp> at 0x00000290C3A0FAD0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\eval_form_field.py", line 171>:
+              0 COPY_FREE_VARS           1
+
+171           2 RESUME                   0
+              4 BUILD_LIST               0
+              6 LOAD_FAST                0 (.0)
+        >>    8 FOR_ITER                 8 (to 26)
+             10 STORE_FAST               1 (p)
+             12 LOAD_FAST                1 (p)
+             14 LOAD_DEREF               2 (oid_of)
+             16 CONTAINS_OP              0
+             18 POP_JUMP_BACKWARD_IF_FALSE     6 (to 8)
+             20 LOAD_FAST                1 (p)
+             22 LIST_APPEND              2
+             24 JUMP_BACKWARD            9 (to 8)
+        >>   26 RETURN_VALUE
+
+Disassembly of <code object <genexpr> at 0x00000290C3A17430, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\eval_form_field.py", line 172>:
+              0 COPY_FREE_VARS           2
+
+172           2 RETURN_GENERATOR
+              4 POP_TOP
+              6 RESUME                   0
+              8 LOAD_FAST                0 (.0)
+        >>   10 FOR_ITER                22 (to 56)
+             12 STORE_FAST               1 (p)
+             14 PUSH_NULL
+             16 LOAD_DEREF               2 (best_match)
+             18 LOAD_FAST                1 (p)
+             20 LOAD_DEREF               3 (got_pairs)
+             22 PRECALL                  2
+             26 CALL                     2
+             36 LOAD_CONST               0 (0)
+             38 COMPARE_OP               4 (>)
+             44 POP_JUMP_BACKWARD_IF_FALSE    18 (to 10)
+             46 LOAD_CONST               1 (1)
+             48 YIELD_VALUE
+             50 RESUME                   1
+             52 POP_TOP
+             54 JUMP_BACKWARD           23 (to 10)
+        >>   56 LOAD_CONST               2 (None)
+             58 RETURN_VALUE
+
+Disassembly of <code object <listcomp> at 0x00000290C3A79110, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\eval_form_field.py", line 177>:
+177           0 RESUME                   0
+              2 BUILD_LIST               0
+              4 LOAD_FAST                0 (.0)
+        >>    6 FOR_ITER                23 (to 54)
+              8 STORE_FAST               1 (p)
+             10 LOAD_CONST               0 (' | ')
+             12 LOAD_METHOD              0 (join)
+             34 LOAD_FAST                1 (p)
+             36 PRECALL                  1
+             40 CALL                     1
+             50 LIST_APPEND              2
+             52 JUMP_BACKWARD           24 (to 6)
+        >>   54 RETURN_VALUE
+
+Disassembly of <code object _precision_breakdown at 0x00000290C1B3DBD0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\eval_form_field.py", line 184>:
+              0 MAKE_CELL                1 (gt_pairs)
+              2 MAKE_CELL                2 (best_match)
+              4 MAKE_CELL               15 (appendix_pages)
+              6 MAKE_CELL               16 (kept)
+              8 MAKE_CELL               17 (p)
+             10 MAKE_CELL               18 (pair_pages)
+             12 MAKE_CELL               19 (pair_raw)
+
+184          14 RESUME                   0
+
+192          16 BUILD_MAP                0
+             18 STORE_DEREF             18 (pair_pages)
+
+193          20 BUILD_MAP                0
+             22 STORE_DEREF             19 (pair_raw)
+
+194          24 LOAD_FAST                0 (rows)
+             26 GET_ITER
+        >>   28 FOR_ITER               173 (to 376)
+             30 STORE_FAST               3 (r)
+
+195          32 LOAD_GLOBAL              1 (NULL + norm)
+             44 LOAD_FAST                3 (r)
+             46 LOAD_CONST               1 ('form_name')
+             48 BINARY_SUBSCR
+             58 PRECALL                  1
+             62 CALL                     1
+             72 LOAD_GLOBAL              1 (NULL + norm)
+             84 LOAD_FAST                3 (r)
+             86 LOAD_CONST               2 ('field_name')
+             88 BINARY_SUBSCR
+             98 PRECALL                  1
+            102 CALL                     1
+            112 BUILD_TUPLE              2
+            114 STORE_DEREF             17 (p)
+
+196         116 LOAD_FAST                3 (r)
+            118 LOAD_METHOD              1 (get)
+            140 LOAD_CONST               3 ('page')
+            142 PRECALL                  1
+            146 CALL                     1
+            156 POP_JUMP_FORWARD_IF_FALSE    72 (to 302)
+
+197         158 LOAD_DEREF              18 (pair_pages)
+            160 LOAD_METHOD              2 (setdefault)
+            182 LOAD_DEREF              17 (p)
+            184 LOAD_GLOBAL              7 (NULL + set)
+            196 PRECALL                  0
+            200 CALL                     0
+            210 PRECALL                  2
+            214 CALL                     2
+            224 LOAD_METHOD              4 (add)
+            246 LOAD_GLOBAL             11 (NULL + int)
+            258 LOAD_FAST                3 (r)
+            260 LOAD_CONST               3 ('page')
+            262 BINARY_SUBSCR
+            272 PRECALL                  1
+            276 CALL                     1
+            286 PRECALL                  1
+            290 CALL                     1
+            300 POP_TOP
+
+198     >>  302 LOAD_DEREF              19 (pair_raw)
+            304 LOAD_METHOD              2 (setdefault)
+            326 LOAD_DEREF              17 (p)
+            328 LOAD_FAST                3 (r)
+            330 LOAD_CONST               1 ('form_name')
+            332 BINARY_SUBSCR
+            342 LOAD_FAST                3 (r)
+            344 LOAD_CONST               2 ('field_name')
+            346 BINARY_SUBSCR
+            356 BUILD_TUPLE              2
+            358 PRECALL                  2
+            362 CALL                     2
+            372 POP_TOP
+            374 JUMP_BACKWARD          174 (to 28)
+
+200     >>  376 LOAD_GLOBAL             12 (os)
+            388 LOAD_ATTR                7 (path)
+            398 LOAD_METHOD              8 (join)
+            420 LOAD_GLOBAL             18 (OUT_DIR)
+            432 LOAD_GLOBAL             20 (RAVE_KEY)
+            444 LOAD_CONST               4 ('clusters.json')
+            446 PRECALL                  3
+            450 CALL                     3
+            460 STORE_FAST               4 (meta_path)
+
+201         462 LOAD_GLOBAL              7 (NULL + set)
+            474 PRECALL                  0
+            478 CALL                     0
+            488 STORE_DEREF             15 (appendix_pages)
+
+202         490 LOAD_GLOBAL             12 (os)
+            502 LOAD_ATTR                7 (path)
+            512 LOAD_METHOD             11 (exists)
+            534 LOAD_FAST                4 (meta_path)
+            536 PRECALL                  1
+            540 CALL                     1
+            550 POP_JUMP_FORWARD_IF_FALSE   103 (to 758)
+
+203         552 LOAD_GLOBAL             25 (NULL + open)
+            564 LOAD_FAST                4 (meta_path)
+            566 LOAD_CONST               5 ('utf-8')
+            568 KW_NAMES                 6
+            570 PRECALL                  2
+            574 CALL                     2
+            584 BEFORE_WITH
+            586 STORE_FAST               5 (f)
+
+204         588 LOAD_GLOBAL             27 (NULL + json)
+            600 LOAD_ATTR               14 (load)
+            610 LOAD_FAST                5 (f)
+            612 PRECALL                  1
+            616 CALL                     1
+            626 LOAD_CONST               7 ('clusters')
+            628 BINARY_SUBSCR
+            638 STORE_FAST               6 (clusters)
+
+203         640 LOAD_CONST               8 (None)
+            642 LOAD_CONST               8 (None)
+            644 LOAD_CONST               8 (None)
+            646 PRECALL                  2
+            650 CALL                     2
+            660 POP_TOP
+            662 JUMP_FORWARD            11 (to 686)
+        >>  664 PUSH_EXC_INFO
+            666 WITH_EXCEPT_START
+            668 POP_JUMP_FORWARD_IF_TRUE     4 (to 678)
+            670 RERAISE                  2
+        >>  672 COPY                     3
+            674 POP_EXCEPT
+            676 RERAISE                  1
+        >>  678 POP_TOP
+            680 POP_EXCEPT
+            682 POP_TOP
+            684 POP_TOP
+
+205     >>  686 LOAD_GLOBAL             31 (NULL + max)
+            698 LOAD_FAST                6 (clusters)
+            700 LOAD_CONST               9 (<code object <lambda> at 0x00000290C3A793E0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\eval_form_field.py", line 205>)
+            702 MAKE_FUNCTION            0
+            704 KW_NAMES                10
+            706 PRECALL                  2
+            710 CALL                     2
+            720 STORE_FAST               7 (largest)
+
+206         722 LOAD_CONST              11 (<code object <setcomp> at 0x00000290C3A6D550, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\eval_form_field.py", line 206>)
+            724 MAKE_FUNCTION            0
+            726 LOAD_FAST                7 (largest)
+            728 LOAD_CONST              12 ('pages')
+            730 BINARY_SUBSCR
+            740 GET_ITER
+            742 PRECALL                  0
+            746 CALL                     0
+            756 STORE_DEREF             15 (appendix_pages)
+
+208     >>  758 LOAD_GLOBAL             33 (NULL + sorted)
+            770 LOAD_CONST              13 (<code object <setcomp> at 0x00000290C3A6D620, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\eval_form_field.py", line 208>)
+            772 MAKE_FUNCTION            0
+            774 LOAD_DEREF               1 (gt_pairs)
+            776 GET_ITER
+            778 PRECALL                  0
+            782 CALL                     0
+            792 PRECALL                  1
+            796 CALL                     1
+            806 STORE_FAST               8 (gt_forms)
+
+209         808 BUILD_LIST               0
+            810 BUILD_LIST               0
+            812 BUILD_LIST               0
+            814 STORE_FAST              11 (form_absent)
+            816 STORE_FAST              10 (field_wording)
+            818 STORE_FAST               9 (appendix_only)
+
+210         820 LOAD_GLOBAL             33 (NULL + sorted)
+            832 LOAD_DEREF              18 (pair_pages)
+            834 PRECALL                  1
+            838 CALL                     1
+            848 GET_ITER
+        >>  850 FOR_ITER               125 (to 1102)
+            852 STORE_DEREF             17 (p)
+
+211         854 PUSH_NULL
+            856 LOAD_DEREF               2 (best_match)
+            858 LOAD_DEREF              17 (p)
+            860 LOAD_DEREF               1 (gt_pairs)
+            862 PRECALL                  2
+            866 CALL                     2
+            876 LOAD_CONST              14 (0)
+            878 COMPARE_OP               4 (>)
+            884 POP_JUMP_FORWARD_IF_FALSE     1 (to 888)
+
+212         886 JUMP_BACKWARD           19 (to 850)
+
+213     >>  888 LOAD_DEREF              15 (appendix_pages)
+            890 POP_JUMP_FORWARD_IF_FALSE    34 (to 960)
+            892 LOAD_DEREF              18 (pair_pages)
+            894 LOAD_DEREF              17 (p)
+            896 BINARY_SUBSCR
+            906 LOAD_DEREF              15 (appendix_pages)
+            908 COMPARE_OP               1 (<=)
+            914 POP_JUMP_FORWARD_IF_FALSE    22 (to 960)
+
+214         916 LOAD_FAST                9 (appendix_only)
+            918 LOAD_METHOD             17 (append)
+            940 LOAD_DEREF              17 (p)
+            942 PRECALL                  1
+            946 CALL                     1
+            956 POP_TOP
+            958 JUMP_BACKWARD           55 (to 850)
+
+215     >>  960 LOAD_GLOBAL             37 (NULL + any)
+            972 LOAD_CLOSURE            17 (p)
+            974 BUILD_TUPLE              1
+            976 LOAD_CONST              15 (<code object <genexpr> at 0x00000290C3A50C90, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\eval_form_field.py", line 215>)
+            978 MAKE_FUNCTION            8 (closure)
+            980 LOAD_FAST                8 (gt_forms)
+            982 GET_ITER
+            984 PRECALL                  0
+            988 CALL                     0
+            998 PRECALL                  1
+           1002 CALL                     1
+           1012 POP_JUMP_FORWARD_IF_FALSE    22 (to 1058)
+
+216        1014 LOAD_FAST               10 (field_wording)
+           1016 LOAD_METHOD             17 (append)
+           1038 LOAD_DEREF              17 (p)
+           1040 PRECALL                  1
+           1044 CALL                     1
+           1054 POP_TOP
+           1056 JUMP_BACKWARD          104 (to 850)
+
+218     >> 1058 LOAD_FAST               11 (form_absent)
+           1060 LOAD_METHOD             17 (append)
+           1082 LOAD_DEREF              17 (p)
+           1084 PRECALL                  1
+           1088 CALL                     1
+           1098 POP_TOP
+           1100 JUMP_BACKWARD          126 (to 850)
+
+221     >> 1102 LOAD_CLOSURE            15 (appendix_pages)
+           1104 LOAD_CLOSURE            18 (pair_pages)
+           1106 BUILD_TUPLE              2
+           1108 LOAD_CONST              16 (<code object <listcomp> at 0x00000290C3A794D0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\eval_form_field.py", line 221>)
+           1110 MAKE_FUNCTION            8 (closure)
+           1112 LOAD_DEREF              18 (pair_pages)
+           1114 GET_ITER
+           1116 PRECALL                  0
+           1120 CALL                     0
+           1130 STORE_DEREF             16 (kept)
+
+223        1132 LOAD_GLOBAL             39 (NULL + round)
+           1144 LOAD_CONST              17 (100)
+           1146 LOAD_GLOBAL             41 (NULL + sum)
+           1158 LOAD_CLOSURE             2 (best_match)
+           1160 LOAD_CLOSURE             1 (gt_pairs)
+           1162 BUILD_TUPLE              2
+           1164 LOAD_CONST              18 (<code object <genexpr> at 0x00000290C3A17630, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\eval_form_field.py", line 223>)
+           1166 MAKE_FUNCTION            8 (closure)
+           1168 LOAD_DEREF              16 (kept)
+           1170 GET_ITER
+           1172 PRECALL                  0
+           1176 CALL                     0
+           1186 PRECALL                  1
+           1190 CALL                     1
+           1200 BINARY_OP                5 (*)
+
+224        1204 LOAD_GLOBAL             31 (NULL + max)
+           1216 LOAD_CONST              19 (1)
+           1218 LOAD_GLOBAL             43 (NULL + len)
+           1230 LOAD_DEREF              16 (kept)
+           1232 PRECALL                  1
+           1236 CALL                     1
+           1246 PRECALL                  2
+           1250 CALL                     2
+
+223        1260 BINARY_OP               11 (/)
+           1264 PRECALL                  1
+           1268 CALL                     1
+           1278 STORE_FAST              12 (cf_prec)
+
+225        1280 LOAD_GLOBAL             39 (NULL + round)
+           1292 LOAD_CONST              17 (100)
+           1294 LOAD_GLOBAL             41 (NULL + sum)
+           1306 LOAD_CLOSURE             2 (best_match)
+           1308 LOAD_CLOSURE            16 (kept)
+           1310 BUILD_TUPLE              2
+           1312 LOAD_CONST              20 (<code object <genexpr> at 0x00000290C3A17730, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\eval_form_field.py", line 225>)
+           1314 MAKE_FUNCTION            8 (closure)
+           1316 LOAD_DEREF               1 (gt_pairs)
+           1318 GET_ITER
+           1320 PRECALL                  0
+           1324 CALL                     0
+           1334 PRECALL                  1
+           1338 CALL                     1
+           1348 BINARY_OP                5 (*)
+
+226        1352 LOAD_GLOBAL             31 (NULL + max)
+           1364 LOAD_CONST              19 (1)
+           1366 LOAD_GLOBAL             43 (NULL + len)
+           1378 LOAD_DEREF               1 (gt_pairs)
+           1380 PRECALL                  1
+           1384 CALL                     1
+           1394 PRECALL                  2
+           1398 CALL                     2
+
+225        1408 BINARY_OP               11 (/)
+           1412 PRECALL                  1
+           1416 CALL                     1
+           1426 STORE_FAST              13 (cf_rec)
+
+228        1428 LOAD_CONST              25 ((4,))
+           1430 LOAD_CLOSURE            19 (pair_raw)
+           1432 BUILD_TUPLE              1
+           1434 LOAD_CONST              22 (<code object ex at 0x00000290C3A795C0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\eval_form_field.py", line 228>)
+           1436 MAKE_FUNCTION            9 (defaults, closure)
+           1438 STORE_FAST              14 (ex)
+
+232        1440 LOAD_GLOBAL             43 (NULL + len)
+           1452 LOAD_FAST                9 (appendix_only)
+           1454 PRECALL                  1
+           1458 CALL                     1
+           1468 LOAD_GLOBAL             43 (NULL + len)
+           1480 LOAD_FAST               10 (field_wording)
+           1482 PRECALL                  1
+           1486 CALL                     1
+           1496 BINARY_OP                0 (+)
+           1500 LOAD_GLOBAL             43 (NULL + len)
+           1512 LOAD_FAST               11 (form_absent)
+           1514 PRECALL                  1
+           1518 CALL                     1
+           1528 BINARY_OP                0 (+)
+
+233        1532 LOAD_GLOBAL             43 (NULL + len)
+           1544 LOAD_FAST                9 (appendix_only)
+           1546 PRECALL                  1
+           1550 CALL                     1
+
+234        1560 PUSH_NULL
+           1562 LOAD_FAST               14 (ex)
+           1564 LOAD_FAST                9 (appendix_only)
+           1566 PRECALL                  1
+           1570 CALL                     1
+
+235        1580 LOAD_GLOBAL             43 (NULL + len)
+           1592 LOAD_FAST               10 (field_wording)
+           1594 PRECALL                  1
+           1598 CALL                     1
+
+236        1608 PUSH_NULL
+           1610 LOAD_FAST               14 (ex)
+           1612 LOAD_FAST               10 (field_wording)
+           1614 PRECALL                  1
+           1618 CALL                     1
+
+237        1628 LOAD_GLOBAL             43 (NULL + len)
+           1640 LOAD_FAST               11 (form_absent)
+           1642 PRECALL                  1
+           1646 CALL                     1
+
+238        1656 LOAD_FAST               12 (cf_prec)
+
+239        1658 LOAD_FAST               13 (cf_rec)
+
+238        1660 LOAD_CONST              23 (('pair_precision_pct', 'pair_recall_pct'))
+           1662 BUILD_CONST_KEY_MAP      2
+
+231        1664 LOAD_CONST              24 (('unmatched_total', 'appendix_code_rows', 'appendix_examples', 'field_wording_gaps', 'field_wording_examples', 'forms_not_in_truth', 'excluding_appendix'))
+           1666 BUILD_CONST_KEY_MAP      7
+           1668 RETURN_VALUE
+ExceptionTable:
+  586 to 638 -> 664 [1] lasti
+  664 to 670 -> 672 [3] lasti
+  678 to 678 -> 672 [3] lasti
+
+Disassembly of <code object <lambda> at 0x00000290C3A793E0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\eval_form_field.py", line 205>:
+205           0 RESUME                   0
+              2 LOAD_GLOBAL              1 (NULL + len)
+             14 LOAD_FAST                0 (c)
+             16 LOAD_CONST               1 ('pages')
+             18 BINARY_SUBSCR
+             28 PRECALL                  1
+             32 CALL                     1
+             42 RETURN_VALUE
+
+Disassembly of <code object <setcomp> at 0x00000290C3A6D550, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\eval_form_field.py", line 206>:
+206           0 RESUME                   0
+              2 BUILD_SET                0
+              4 LOAD_FAST                0 (.0)
+        >>    6 FOR_ITER                 7 (to 22)
+              8 STORE_FAST               1 (p)
+             10 LOAD_FAST                1 (p)
+             12 LOAD_CONST               0 (1)
+             14 BINARY_OP                0 (+)
+             18 SET_ADD                  2
+             20 JUMP_BACKWARD            8 (to 6)
+        >>   22 RETURN_VALUE
+
+Disassembly of <code object <setcomp> at 0x00000290C3A6D620, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\eval_form_field.py", line 208>:
+208           0 RESUME                   0
+              2 BUILD_SET                0
+              4 LOAD_FAST                0 (.0)
+        >>    6 FOR_ITER                 7 (to 22)
+              8 UNPACK_SEQUENCE          2
+             12 STORE_FAST               1 (f)
+             14 STORE_FAST               2 (_)
+             16 LOAD_FAST                1 (f)
+             18 SET_ADD                  2
+             20 JUMP_BACKWARD            8 (to 6)
+        >>   22 RETURN_VALUE
+
+Disassembly of <code object <genexpr> at 0x00000290C3A50C90, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\eval_form_field.py", line 215>:
+              0 COPY_FREE_VARS           1
+
+215           2 RETURN_GENERATOR
+              4 POP_TOP
+              6 RESUME                   0
+              8 LOAD_FAST                0 (.0)
+        >>   10 FOR_ITER                40 (to 92)
+             12 STORE_FAST               1 (qf)
+             14 LOAD_GLOBAL              1 (NULL + fuzz)
+             26 LOAD_ATTR                1 (token_sort_ratio)
+             36 LOAD_DEREF               2 (p)
+             38 LOAD_CONST               0 (0)
+             40 BINARY_SUBSCR
+             50 LOAD_FAST                1 (qf)
+             52 PRECALL                  2
+             56 CALL                     2
+             66 LOAD_GLOBAL              4 (FORM_T)
+             78 COMPARE_OP               5 (>=)
+             84 YIELD_VALUE
+             86 RESUME                   1
+             88 POP_TOP
+             90 JUMP_BACKWARD           41 (to 10)
+        >>   92 LOAD_CONST               1 (None)
+             94 RETURN_VALUE
+
+Disassembly of <code object <listcomp> at 0x00000290C3A794D0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\eval_form_field.py", line 221>:
+              0 COPY_FREE_VARS           2
+
+221           2 RESUME                   0
+              4 BUILD_LIST               0
+              6 LOAD_FAST                0 (.0)
+        >>    8 FOR_ITER                18 (to 46)
+             10 STORE_FAST               1 (p)
+
+222          12 LOAD_DEREF               2 (appendix_pages)
+
+221          14 POP_JUMP_FORWARD_IF_FALSE    12 (to 40)
+
+222          16 LOAD_DEREF               3 (pair_pages)
+             18 LOAD_FAST                1 (p)
+             20 BINARY_SUBSCR
+             30 LOAD_DEREF               2 (appendix_pages)
+             32 COMPARE_OP               1 (<=)
+             38 POP_JUMP_BACKWARD_IF_TRUE    16 (to 8)
+
+221     >>   40 LOAD_FAST                1 (p)
+
+222          42 LIST_APPEND              2
+             44 JUMP_BACKWARD           19 (to 8)
+        >>   46 RETURN_VALUE
+
+Disassembly of <code object <genexpr> at 0x00000290C3A17630, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\eval_form_field.py", line 223>:
+              0 COPY_FREE_VARS           2
+
+223           2 RETURN_GENERATOR
+              4 POP_TOP
+              6 RESUME                   0
+              8 LOAD_FAST                0 (.0)
+        >>   10 FOR_ITER                22 (to 56)
+             12 STORE_FAST               1 (p)
+             14 PUSH_NULL
+             16 LOAD_DEREF               2 (best_match)
+             18 LOAD_FAST                1 (p)
+             20 LOAD_DEREF               3 (gt_pairs)
+             22 PRECALL                  2
+             26 CALL                     2
+             36 LOAD_CONST               0 (0)
+             38 COMPARE_OP               4 (>)
+             44 POP_JUMP_BACKWARD_IF_FALSE    18 (to 10)
+             46 LOAD_CONST               1 (1)
+             48 YIELD_VALUE
+             50 RESUME                   1
+             52 POP_TOP
+             54 JUMP_BACKWARD           23 (to 10)
+        >>   56 LOAD_CONST               2 (None)
+             58 RETURN_VALUE
+
+Disassembly of <code object <genexpr> at 0x00000290C3A17730, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\eval_form_field.py", line 225>:
+              0 COPY_FREE_VARS           2
+
+225           2 RETURN_GENERATOR
+              4 POP_TOP
+              6 RESUME                   0
+              8 LOAD_FAST                0 (.0)
+        >>   10 FOR_ITER                22 (to 56)
+             12 STORE_FAST               1 (g)
+             14 PUSH_NULL
+             16 LOAD_DEREF               2 (best_match)
+             18 LOAD_FAST                1 (g)
+             20 LOAD_DEREF               3 (kept)
+             22 PRECALL                  2
+             26 CALL                     2
+             36 LOAD_CONST               0 (0)
+             38 COMPARE_OP               4 (>)
+             44 POP_JUMP_BACKWARD_IF_FALSE    18 (to 10)
+             46 LOAD_CONST               1 (1)
+             48 YIELD_VALUE
+             50 RESUME                   1
+             52 POP_TOP
+             54 JUMP_BACKWARD           23 (to 10)
+        >>   56 LOAD_CONST               2 (None)
+             58 RETURN_VALUE
+
+Disassembly of <code object ex at 0x00000290C3A795C0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\eval_form_field.py", line 228>:
+              0 COPY_FREE_VARS           1
+
+228           2 RESUME                   0
+
+229           4 LOAD_CLOSURE             2 (pair_raw)
+              6 BUILD_TUPLE              1
+              8 LOAD_CONST               1 (<code object <listcomp> at 0x00000290C3A17830, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\eval_form_field.py", line 229>)
+             10 MAKE_FUNCTION            8 (closure)
+             12 LOAD_FAST                0 (pairs)
+             14 LOAD_CONST               0 (None)
+             16 LOAD_FAST                1 (n)
+             18 BUILD_SLICE              2
+             20 BINARY_SUBSCR
+             30 GET_ITER
+             32 PRECALL                  0
+             36 CALL                     0
+             46 RETURN_VALUE
+
+Disassembly of <code object <listcomp> at 0x00000290C3A17830, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\eval_form_field.py", line 229>:
+              0 COPY_FREE_VARS           1
+
+229           2 RESUME                   0
+              4 BUILD_LIST               0
+              6 LOAD_FAST                0 (.0)
+        >>    8 FOR_ITER                29 (to 68)
+             10 STORE_FAST               1 (p)
+             12 LOAD_CONST               0 (' | ')
+             14 LOAD_METHOD              0 (join)
+             36 LOAD_DEREF               2 (pair_raw)
+             38 LOAD_FAST                1 (p)
+             40 BINARY_SUBSCR
+             50 PRECALL                  1
+             54 CALL                     1
+             64 LIST_APPEND              2
+             66 JUMP_BACKWARD           30 (to 8)
+        >>   68 RETURN_VALUE
+
+Disassembly of <code object eval_mapping at 0x00000290C1AB8260, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\eval_form_field.py", line 246>:
+              0 MAKE_CELL               18 (ABSTAIN)
+              2 MAKE_CELL               19 (MAPPED)
+              4 MAKE_CELL               20 (mapped)
+
+246           6 RESUME                   0
+
+249           8 LOAD_CONST               1 (0)
+             10 LOAD_CONST               2 (('ABSTAIN', 'MAPPED', 'map_pairs'))
+             12 IMPORT_NAME              0 (oid_mapping)
+             14 IMPORT_FROM              1 (ABSTAIN)
+             16 STORE_DEREF             18 (ABSTAIN)
+             18 IMPORT_FROM              2 (MAPPED)
+             20 STORE_DEREF             19 (MAPPED)
+             22 IMPORT_FROM              3 (map_pairs)
+             24 STORE_FAST               2 (map_pairs)
+             26 POP_TOP
+
+251          28 LOAD_GLOBAL              9 (NULL + load_library)
+             40 PRECALL                  0
+             44 CALL                     0
+             54 STORE_FAST               3 (lib)
+
+254          56 BUILD_MAP                0
+             58 STORE_FAST               4 (gt_lookup)
+
+255          60 LOAD_GLOBAL             11 (NULL + load_gt)
+             72 PRECALL                  0
+             76 CALL                     0
+             86 GET_ITER
+        >>   88 FOR_ITER               110 (to 310)
+             90 STORE_FAST               5 (r)
+
+256          92 LOAD_FAST                5 (r)
+             94 LOAD_CONST               3 ('field_oid')
+             96 BINARY_SUBSCR
+            106 LOAD_METHOD              6 (strip)
+            128 PRECALL                  0
+            132 CALL                     0
+            142 LOAD_METHOD              7 (upper)
+            164 PRECALL                  0
+            168 CALL                     0
+            178 STORE_FAST               6 (oid)
+
+257         180 LOAD_FAST                6 (oid)
+            182 POP_JUMP_FORWARD_IF_FALSE    62 (to 308)
+
+258         184 LOAD_FAST                4 (gt_lookup)
+            186 LOAD_METHOD              8 (setdefault)
+            208 LOAD_GLOBAL             19 (NULL + norm)
+            220 LOAD_FAST                5 (r)
+            222 LOAD_CONST               4 ('form_name')
+            224 BINARY_SUBSCR
+            234 PRECALL                  1
+            238 CALL                     1
+            248 LOAD_GLOBAL             19 (NULL + norm)
+            260 LOAD_FAST                5 (r)
+            262 LOAD_CONST               5 ('field_name')
+            264 BINARY_SUBSCR
+            274 PRECALL                  1
+            278 CALL                     1
+            288 BUILD_TUPLE              2
+            290 LOAD_FAST                6 (oid)
+            292 PRECALL                  2
+            296 CALL                     2
+            306 POP_TOP
+        >>  308 JUMP_BACKWARD          111 (to 88)
+
+260     >>  310 BUILD_LIST               0
+            312 STORE_FAST               7 (out)
+
+261         314 LOAD_FAST                0 (keys)
+            316 GET_ITER
+        >>  318 EXTENDED_ARG             1
+            320 FOR_ITER               509 (to 1340)
+            322 STORE_FAST               8 (key)
+
+262         324 LOAD_GLOBAL             21 (NULL + load_extracted)
+            336 LOAD_FAST                8 (key)
+            338 PRECALL                  1
+            342 CALL                     1
+            352 STORE_FAST               9 (rows)
+
+263         354 LOAD_FAST                9 (rows)
+            356 POP_JUMP_FORWARD_IF_TRUE     1 (to 360)
+
+264         358 JUMP_BACKWARD           21 (to 318)
+
+265     >>  360 LOAD_GLOBAL             23 (NULL + sorted)
+            372 LOAD_CONST               6 (<code object <setcomp> at 0x00000290C3A51E90, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\eval_form_field.py", line 265>)
+            374 MAKE_FUNCTION            0
+            376 LOAD_FAST                9 (rows)
+            378 GET_ITER
+            380 PRECALL                  0
+            384 CALL                     0
+            394 PRECALL                  1
+            398 CALL                     1
+            408 STORE_FAST              10 (pairs)
+
+266         410 PUSH_NULL
+            412 LOAD_FAST                2 (map_pairs)
+            414 LOAD_FAST               10 (pairs)
+            416 LOAD_FAST                3 (lib)
+            418 LOAD_FAST                1 (llm)
+            420 KW_NAMES                 7
+            422 PRECALL                  3
+            426 CALL                     3
+            436 STORE_FAST              11 (results)
+
+268         438 LOAD_CLOSURE            19 (MAPPED)
+            440 BUILD_TUPLE              1
+            442 LOAD_CONST               8 (<code object <listcomp> at 0x00000290C3A796B0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\eval_form_field.py", line 268>)
+            444 MAKE_FUNCTION            8 (closure)
+            446 LOAD_FAST               11 (results)
+            448 GET_ITER
+            450 PRECALL                  0
+            454 CALL                     0
+            464 STORE_DEREF             20 (mapped)
+
+269         466 LOAD_CLOSURE            18 (ABSTAIN)
+            468 BUILD_TUPLE              1
+            470 LOAD_CONST               9 (<code object <listcomp> at 0x00000290C3A797A0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\eval_form_field.py", line 269>)
+            472 MAKE_FUNCTION            8 (closure)
+            474 LOAD_FAST               11 (results)
+            476 GET_ITER
+            478 PRECALL                  0
+            482 CALL                     0
+            492 STORE_FAST              12 (abstained)
+
+270         494 LOAD_CONST               1 (0)
+            496 LOAD_CONST               1 (0)
+            498 BUILD_LIST               0
+            500 STORE_FAST              15 (examples)
+            502 STORE_FAST              14 (checkable)
+            504 STORE_FAST              13 (correct)
+
+271         506 LOAD_FAST                8 (key)
+            508 LOAD_GLOBAL             24 (RAVE_KEY)
+            520 COMPARE_OP               2 (==)
+            526 POP_JUMP_FORWARD_IF_FALSE   147 (to 822)
+
+272         528 LOAD_DEREF              20 (mapped)
+            530 GET_ITER
+        >>  532 FOR_ITER               144 (to 822)
+            534 STORE_FAST               5 (r)
+
+273         536 LOAD_FAST                4 (gt_lookup)
+            538 LOAD_METHOD             13 (get)
+            560 LOAD_FAST                5 (r)
+            562 LOAD_ATTR               14 (form)
+            572 LOAD_FAST                5 (r)
+            574 LOAD_ATTR               15 (field)
+            584 BUILD_TUPLE              2
+            586 PRECALL                  1
+            590 CALL                     1
+            600 STORE_FAST              16 (truth)
+
+274         602 LOAD_FAST               16 (truth)
+            604 POP_JUMP_FORWARD_IF_TRUE     1 (to 608)
+
+275         606 JUMP_BACKWARD           38 (to 532)
+
+276     >>  608 LOAD_FAST               14 (checkable)
+            610 LOAD_CONST              10 (1)
+            612 BINARY_OP               13 (+=)
+            616 STORE_FAST              14 (checkable)
+
+277         618 LOAD_FAST                5 (r)
+            620 LOAD_ATTR               16 (oid)
+            630 LOAD_METHOD              7 (upper)
+            652 PRECALL                  0
+            656 CALL                     0
+            666 LOAD_FAST               16 (truth)
+            668 COMPARE_OP               2 (==)
+            674 POP_JUMP_FORWARD_IF_FALSE     6 (to 688)
+
+278         676 LOAD_FAST               13 (correct)
+            678 LOAD_CONST              10 (1)
+            680 BINARY_OP               13 (+=)
+            684 STORE_FAST              13 (correct)
+            686 JUMP_BACKWARD           78 (to 532)
+
+279     >>  688 LOAD_GLOBAL             35 (NULL + len)
+            700 LOAD_FAST               15 (examples)
+            702 PRECALL                  1
+            706 CALL                     1
+            716 LOAD_CONST              11 (8)
+            718 COMPARE_OP               0 (<)
+            724 POP_JUMP_FORWARD_IF_FALSE    47 (to 820)
+
+280         726 LOAD_FAST               15 (examples)
+            728 LOAD_METHOD             18 (append)
+            750 LOAD_FAST                5 (r)
+            752 LOAD_ATTR               15 (field)
+            762 FORMAT_VALUE             2 (repr)
+            764 LOAD_CONST              12 (' -> mapped ')
+            766 LOAD_FAST                5 (r)
+            768 LOAD_ATTR               16 (oid)
+            778 FORMAT_VALUE             0
+            780 LOAD_CONST              13 (' via ')
+            782 LOAD_FAST                5 (r)
+            784 LOAD_ATTR               19 (via)
+            794 FORMAT_VALUE             0
+            796 LOAD_CONST              14 (', printed truth ')
+            798 LOAD_FAST               16 (truth)
+            800 FORMAT_VALUE             0
+            802 BUILD_STRING             7
+            804 PRECALL                  1
+            808 CALL                     1
+            818 POP_TOP
+        >>  820 JUMP_BACKWARD          145 (to 532)
+
+282     >>  822 LOAD_FAST                8 (key)
+            824 LOAD_CONST              15 (None)
+            826 LOAD_CONST              16 (52)
+            828 BUILD_SLICE              2
+            830 BINARY_SUBSCR
+            840 LOAD_GLOBAL             35 (NULL + len)
+            852 LOAD_FAST               10 (pairs)
+            854 PRECALL                  1
+            858 CALL                     1
+
+283         868 LOAD_GLOBAL             35 (NULL + len)
+            880 LOAD_DEREF              20 (mapped)
+            882 PRECALL                  1
+            886 CALL                     1
+
+284         896 LOAD_CLOSURE            20 (mapped)
+            898 BUILD_TUPLE              1
+            900 LOAD_CONST              17 (<code object <dictcomp> at 0x00000290C3A6A230, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\eval_form_field.py", line 284>)
+            902 MAKE_FUNCTION            8 (closure)
+
+285         904 LOAD_GLOBAL             23 (NULL + sorted)
+            916 LOAD_CONST              18 (<code object <setcomp> at 0x00000290C3AA0030, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\eval_form_field.py", line 285>)
+            918 MAKE_FUNCTION            0
+            920 LOAD_DEREF              20 (mapped)
+            922 GET_ITER
+            924 PRECALL                  0
+            928 CALL                     0
+            938 PRECALL                  1
+            942 CALL                     1
+
+284         952 GET_ITER
+            954 PRECALL                  0
+            958 CALL                     0
+
+286         968 LOAD_GLOBAL             35 (NULL + len)
+            980 LOAD_FAST               12 (abstained)
+            982 PRECALL                  1
+            986 CALL                     1
+
+287         996 LOAD_GLOBAL             41 (NULL + round)
+           1008 LOAD_CONST              19 (100)
+           1010 LOAD_GLOBAL             35 (NULL + len)
+           1022 LOAD_DEREF              20 (mapped)
+           1024 PRECALL                  1
+           1028 CALL                     1
+           1038 BINARY_OP                5 (*)
+           1042 LOAD_GLOBAL             43 (NULL + max)
+           1054 LOAD_CONST              10 (1)
+           1056 LOAD_GLOBAL             35 (NULL + len)
+           1068 LOAD_FAST               10 (pairs)
+           1070 PRECALL                  1
+           1074 CALL                     1
+           1084 PRECALL                  2
+           1088 CALL                     2
+           1098 BINARY_OP               11 (/)
+           1102 PRECALL                  1
+           1106 CALL                     1
+
+282        1116 LOAD_CONST              20 (('doc', 'distinct_pairs', 'mapped', 'mapped_by', 'abstained_unresolved', 'mapped_pct'))
+           1118 BUILD_CONST_KEY_MAP      6
+           1120 STORE_FAST              17 (rec)
+
+288        1122 LOAD_FAST                8 (key)
+           1124 LOAD_GLOBAL             24 (RAVE_KEY)
+           1136 COMPARE_OP               2 (==)
+           1142 POP_JUMP_FORWARD_IF_FALSE    75 (to 1294)
+
+292        1144 LOAD_FAST               17 (rec)
+           1146 LOAD_METHOD             22 (update)
+           1168 LOAD_FAST               14 (checkable)
+
+293        1170 LOAD_GLOBAL             35 (NULL + len)
+           1182 LOAD_DEREF              20 (mapped)
+           1184 PRECALL                  1
+           1188 CALL                     1
+           1198 LOAD_FAST               14 (checkable)
+           1200 BINARY_OP               10 (-)
+
+294        1204 LOAD_GLOBAL             41 (NULL + round)
+           1216 LOAD_CONST              19 (100)
+           1218 LOAD_FAST               13 (correct)
+           1220 BINARY_OP                5 (*)
+           1224 LOAD_GLOBAL             43 (NULL + max)
+           1236 LOAD_CONST              10 (1)
+           1238 LOAD_FAST               14 (checkable)
+           1240 PRECALL                  2
+           1244 CALL                     2
+           1254 BINARY_OP               11 (/)
+           1258 PRECALL                  1
+           1262 CALL                     1
+
+295        1272 LOAD_CONST              21 ('accuracy over the truth-checkable subset of mapped pairs, not over all mappings')
+
+297        1274 LOAD_FAST               15 (examples)
+
+292        1276 KW_NAMES                22
+           1278 PRECALL                  5
+           1282 CALL                     5
+           1292 POP_TOP
+
+298     >> 1294 LOAD_FAST                7 (out)
+           1296 LOAD_METHOD             18 (append)
+           1318 LOAD_FAST               17 (rec)
+           1320 PRECALL                  1
+           1324 CALL                     1
+           1334 POP_TOP
+           1336 EXTENDED_ARG             1
+           1338 JUMP_BACKWARD          511 (to 318)
+
+299     >> 1340 LOAD_FAST                7 (out)
+           1342 RETURN_VALUE
+
+Disassembly of <code object <setcomp> at 0x00000290C3A51E90, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\eval_form_field.py", line 265>:
+265           0 RESUME                   0
+              2 BUILD_SET                0
+              4 LOAD_FAST                0 (.0)
+        >>    6 FOR_ITER                44 (to 96)
+              8 STORE_FAST               1 (r)
+             10 LOAD_GLOBAL              1 (NULL + norm)
+             22 LOAD_FAST                1 (r)
+             24 LOAD_CONST               0 ('form_name')
+             26 BINARY_SUBSCR
+             36 PRECALL                  1
+             40 CALL                     1
+             50 LOAD_GLOBAL              1 (NULL + norm)
+             62 LOAD_FAST                1 (r)
+             64 LOAD_CONST               1 ('field_name')
+             66 BINARY_SUBSCR
+             76 PRECALL                  1
+             80 CALL                     1
+             90 BUILD_TUPLE              2
+             92 SET_ADD                  2
+             94 JUMP_BACKWARD           45 (to 6)
+        >>   96 RETURN_VALUE
+
+Disassembly of <code object <listcomp> at 0x00000290C3A796B0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\eval_form_field.py", line 268>:
+              0 COPY_FREE_VARS           1
+
+268           2 RESUME                   0
+              4 BUILD_LIST               0
+              6 LOAD_FAST                0 (.0)
+        >>    8 FOR_ITER                15 (to 40)
+             10 STORE_FAST               1 (r)
+             12 LOAD_FAST                1 (r)
+             14 LOAD_ATTR                0 (status)
+             24 LOAD_DEREF               2 (MAPPED)
+             26 COMPARE_OP               2 (==)
+             32 POP_JUMP_BACKWARD_IF_FALSE    13 (to 8)
+             34 LOAD_FAST                1 (r)
+             36 LIST_APPEND              2
+             38 JUMP_BACKWARD           16 (to 8)
+        >>   40 RETURN_VALUE
+
+Disassembly of <code object <listcomp> at 0x00000290C3A797A0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\eval_form_field.py", line 269>:
+              0 COPY_FREE_VARS           1
+
+269           2 RESUME                   0
+              4 BUILD_LIST               0
+              6 LOAD_FAST                0 (.0)
+        >>    8 FOR_ITER                15 (to 40)
+             10 STORE_FAST               1 (r)
+             12 LOAD_FAST                1 (r)
+             14 LOAD_ATTR                0 (status)
+             24 LOAD_DEREF               2 (ABSTAIN)
+             26 COMPARE_OP               2 (==)
+             32 POP_JUMP_BACKWARD_IF_FALSE    13 (to 8)
+             34 LOAD_FAST                1 (r)
+             36 LIST_APPEND              2
+             38 JUMP_BACKWARD           16 (to 8)
+        >>   40 RETURN_VALUE
+
+Disassembly of <code object <dictcomp> at 0x00000290C3A6A230, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\eval_form_field.py", line 284>:
+              0 COPY_FREE_VARS           1
+              2 MAKE_CELL                1 (v)
+
+284           4 RESUME                   0
+              6 BUILD_MAP                0
+              8 LOAD_FAST                0 (.0)
+        >>   10 FOR_ITER                30 (to 72)
+
+285          12 STORE_DEREF              1 (v)
+
+284          14 LOAD_DEREF               1 (v)
+             16 LOAD_GLOBAL              1 (NULL + sum)
+             28 LOAD_CLOSURE             1 (v)
+             30 BUILD_TUPLE              1
+             32 LOAD_CONST               0 (<code object <genexpr> at 0x00000290C3A792F0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\eval_form_field.py", line 284>)
+             34 MAKE_FUNCTION            8 (closure)
+             36 LOAD_DEREF               2 (mapped)
+             38 GET_ITER
+             40 PRECALL                  0
+             44 CALL                     0
+             54 PRECALL                  1
+             58 CALL                     1
+             68 MAP_ADD                  2
+             70 JUMP_BACKWARD           31 (to 10)
+        >>   72 RETURN_VALUE
+
+Disassembly of <code object <genexpr> at 0x00000290C3A792F0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\eval_form_field.py", line 284>:
+              0 COPY_FREE_VARS           1
+
+284           2 RETURN_GENERATOR
+              4 POP_TOP
+              6 RESUME                   0
+              8 LOAD_FAST                0 (.0)
+        >>   10 FOR_ITER                17 (to 46)
+             12 STORE_FAST               1 (r)
+             14 LOAD_FAST                1 (r)
+             16 LOAD_ATTR                0 (via)
+             26 LOAD_DEREF               2 (v)
+             28 COMPARE_OP               2 (==)
+             34 POP_JUMP_BACKWARD_IF_FALSE    13 (to 10)
+             36 LOAD_CONST               0 (1)
+             38 YIELD_VALUE
+             40 RESUME                   1
+             42 POP_TOP
+             44 JUMP_BACKWARD           18 (to 10)
+        >>   46 LOAD_CONST               1 (None)
+             48 RETURN_VALUE
+
+Disassembly of <code object <setcomp> at 0x00000290C3AA0030, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\eval_form_field.py", line 285>:
+285           0 RESUME                   0
+              2 BUILD_SET                0
+              4 LOAD_FAST                0 (.0)
+        >>    6 FOR_ITER                 9 (to 26)
+              8 STORE_FAST               1 (r)
+             10 LOAD_FAST                1 (r)
+             12 LOAD_ATTR                0 (via)
+             22 SET_ADD                  2
+             24 JUMP_BACKWARD           10 (to 6)
+        >>   26 RETURN_VALUE
+
+Disassembly of <code object <lambda> at 0x00000290C3A17930, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\eval_form_field.py", line 315>:
+315           0 RESUME                   0
+              2 LOAD_GLOBAL              1 (NULL + call_cli)
+             14 LOAD_GLOBAL              2 (agent_bin)
+             26 LOAD_GLOBAL              4 (args)
+             38 LOAD_ATTR                3 (ranker_model)
+             48 LOAD_FAST                0 (prompt)
+             50 PRECALL                  3
+             54 CALL                     3
+             64 RETURN_VALUE
+
+Disassembly of <code object <listcomp> at 0x00000290C3796590, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\eval_form_field.py", line 317>:
+317           0 RESUME                   0
+              2 BUILD_LIST               0
+              4 LOAD_FAST                0 (.0)
+        >>    6 FOR_ITER                85 (to 178)
+              8 STORE_FAST               1 (k)
+
+318          10 LOAD_GLOBAL              0 (os)
+             22 LOAD_ATTR                1 (path)
+             32 LOAD_METHOD              2 (isdir)
+             54 LOAD_GLOBAL              0 (os)
+             66 LOAD_ATTR                1 (path)
+             76 LOAD_METHOD              3 (join)
+             98 LOAD_GLOBAL              8 (OUT_DIR)
+            110 LOAD_FAST                1 (k)
+            112 PRECALL                  2
+            116 CALL                     2
+            126 PRECALL                  1
+            130 CALL                     1
+
+317         140 POP_JUMP_BACKWARD_IF_FALSE    68 (to 6)
+
+318         142 LOAD_GLOBAL             11 (NULL + _export_csv)
+            154 LOAD_FAST                1 (k)
+            156 PRECALL                  1
+            160 CALL                     1
+
+317         170 POP_JUMP_BACKWARD_IF_FALSE    83 (to 6)
+            172 LOAD_FAST                1 (k)
+            174 LIST_APPEND              2
+            176 JUMP_BACKWARD           86 (to 6)
+        >>  178 RETURN_VALUE

@@ -1,0 +1,268 @@
+# module: D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\replay.py
+# top-level names: ['__doc__', '__future__', 'annotations', 'json', 'os', 're', 'dataclasses', 'dataclass', 'field', 'fitz', 'common', 'Line', 'build_page_lines', 'FieldRec', 'ReplayResult', '_compile', '_is_noise', 'find_form_name', 'extract_adjacent_annotation', 'extract_anchored_blocks', 'extract_numbered_join', '_parse_definition_page', '_parse_content_page', 'extract_column_table', 'extract_line_pattern', 'ENGINES', 'build_pages', 'replay', 'detect_format']
+
+=== module()  [line 1] ===
+  [STR]
+    | LEGACY COMPARISON PATH - not the production flow.
+    | 
+    | Production induction is codegen.py (the LLM writes the extraction program itself;
+    | no fixed engine catalog). This module remains for two reasons only:
+    |   - FieldRec / ReplayResult are the shared record/result types
+    |   - the engine catalog + reference_recipes serve as a measurable baseline the
+    |     codegen output is compared against
+    | Engine parameter DEFAULTS below (e.g. oid_header="Include", column headers
+    | "Name"/"Export Name") come from the local sample corpus - they are baseline
+    | fixtures, NOT priors to ship. Do not route production documents through here.
+    | 
+    | A recipe is a small JSON document emitted once per document by the induction LLM,
+    | which only ever sees the stage-0 representative pages. The engines below execute
+    | recipes at native speed - no LLM anywhere in the per-page path.
+    | 
+    | Any CRF layout is expressed as one of these engines plus parameters:
+    | 
+    |   adjacent_annotation - machine codes printed on their own annotation lines next to
+    |                         (usually under) the human field label, in the same column
+    |   anchored_blocks     - repeated anchor rows (e.g. bold 'Prefix: Activity #n' with a
+    |                         number in a far column) delimit blocks; codes found per block
+    |   numbered_join       - two page types joined by a printed number: content pages
+    |                         (label + number) and definition pages (number + code column)
+    |   column_table        - definition tables with a header row; label and code are
+    |                         cells in configurable columns
+    |   line_pattern        - generic fallback: regex roles over sequential text lines
+  [STR] 'FieldRec'
+  [STR] 'ReplayResult'
+  [STR] 'return'
+  [STR] 'list[re.Pattern]'
+  [STR] 'text'
+  [STR] 'str'
+  [STR] 'noise'
+  [STR] 'bool'
+  [STR] 'lines'
+  [STR] 'list[Line]'
+  [STR] 'cfg'
+  [STR] 'dict'
+  [STR] 'carry'
+  [STR] 'str | None'
+  [STR] 'recipe'
+  [STR] 'result'
+  [STR] 'None'
+  [STR] 'fcfg'
+  [STR] 'num_rx'
+  [STR] 're.Pattern'
+  [STR] 'out'
+  [STR] 'dict[str, str]'
+  [STR] 'list[tuple[str, str]]'
+  [STR] 'pdf_path'
+  [STR] 'recipes'
+  [STR] 'list[dict]'
+  [STR] 'sample_pages'
+  [STR] 'list[int]'
+  [STR] 'tuple[dict | None, dict]'
+
+=== FieldRec()  [line 40] ===
+  [STR] 'FieldRec'
+  [STR] 'str'
+  [STR] 'form_name'
+  [STR] 'field_name'
+  [STR] 'str | None'
+  [STR] 'field_oid'
+  [STR] 'oid_alt'
+  [STR] 'int'
+  [STR] 'page'
+  [STR] 'extra'
+
+=== ReplayResult()  [line 50] ===
+  [STR] 'ReplayResult'
+  [STR] 'str'
+  [STR] 'format_id'
+  [STR] 'list[FieldRec]'
+  [STR] 'records'
+  [STR] 'int'
+  [STR] 'pages_with_fields'
+  [STR] 'pages_total'
+  [STR] 'definition_pages_seen'
+  [STR] 'set'
+  [STR] 'covered_pages'
+  [STR] 'return'
+  [STR] 'None'
+
+=== dedup(self)  [line 60] ===
+  [STR]
+    | Collapse duplicates WITHIN a page only. The key includes `page`:
+    |         a field repeated across pages (visit forms, log lines) is a real
+    |         occurrence on every page it appears on. A page-blind key would keep
+    |         only the first occurrence, making every later page look unextracted -
+    |         the grounded audit then files phantom 'missed' findings against pages
+    |         whose records were silently dropped, and convergence on repetitive
+    |         form books (the core document class) becomes impossible.
+
+=== _compile(rxs)  [line 78] ===
+
+=== <listcomp>(.0)  [line 79] ===
+
+=== _is_noise(text, noise)  [line 82] ===
+
+=== <genexpr>(.0)  [line 83] ===
+
+=== find_form_name(lines, cfg, carry)  [line 89] ===
+  [STR] 'strategy'
+  [STR] 'regex'
+  [STR] 'carry_forward'
+  [STR] 'noise'
+  [STR] 'min_size'
+  [STR] 'colored_font'
+  [STR] '[A-Za-z]'
+  [STR] 'pick'
+  [STR] 'last_above_first_field'
+
+=== extract_adjacent_annotation(pages, recipe, result)  [line 123] ===
+  [STR] 'fields'
+  [STR] 'oid_regex'
+  [STR] 'alt_regex'
+  [STR] 'label_noise'
+  [STR] 'column_x_max'
+  [STR] 'oid_color_non_black'
+  [STR] 'annotation_group_dy'
+  [STR] 'label_max_dy'
+  [STR] '^\\[.+'
+  [STR] 'form_name'
+  [STR] 'alt_is_primary'
+  [STR] '\\s+'
+
+=== <listcomp>(.0)  [line 135] ===
+
+=== <listcomp>(.0)  [line 168] ===
+  [STR] '^\\[.+'
+
+=== <lambda>(L)  [line 173] ===
+
+=== extract_anchored_blocks(pages, recipe, result)  [line 192] ===
+  [STR] 'fields'
+  [STR] 'activity_regex'
+  [STR] 'oid_regex'
+  [STR] 'activity_x'
+  [STR] 'line_number_x_min'
+
+=== <genexpr>(.0)  [line 204] ===
+
+=== <listcomp>(.0)  [line 211] ===
+
+=== extract_numbered_join(pages, recipe, result)  [line 229] ===
+  [STR] 'fields'
+  [STR] 'form_name'
+  [STR] 'regex'
+  [STR] 'definition_page_all'
+  [STR] 'data_number_regex'
+  [STR] '^(\\d+)(\\.\\d+)?$'
+  [STR] 'label_noise'
+  [STR] 'definition_form_from_carry'
+  [STR] 'carry_forward'
+
+=== <listcomp>(.0)  [line 241] ===
+
+=== <genexpr>(.0)  [line 242] ===
+
+=== <genexpr>(.0)  [line 242] ===
+
+=== <genexpr>(.0)  [line 262] ===
+
+=== _parse_definition_page(lines, fcfg, num_rx, out)  [line 272] ===
+  [STR]
+    | Rows are keyed by the join number in the left margin (same regex as content
+    |     pages, group 1 = key); the code lives in the column under `oid_header`.
+  [STR] 'row_number_x_max'
+  [STR] '^(\\d+)$'
+  [STR] '^(\\d+)\\s+\\S+$'
+
+=== <genexpr>(.0)  [line 275] ===
+  [STR] 'oid_header'
+  [STR] 'Include'
+
+=== <listcomp>(.0)  [line 281] ===
+
+=== <lambda>(t)  [line 292] ===
+
+=== <listcomp>(.0)  [line 294] ===
+
+=== <genexpr>(.0)  [line 295] ===
+
+=== <listcomp>(.0)  [line 301] ===
+  [STR] '\\s'
+
+=== _parse_content_page(lines, fcfg, num_rx, noise)  [line 309] ===
+  [STR] 'data_number_x_min'
+  [STR] 'data_label_x_max'
+  [STR] 'number_embedded_in_label'
+  [STR] ' -:–'
+  [STR] '[A-Za-z]'
+
+=== <listcomp>(.0)  [line 323] ===
+  [STR] '[A-Za-z]'
+
+=== <listcomp>(.0)  [line 330] ===
+  [STR] '[A-Za-z]'
+
+=== <lambda>(L)  [line 334] ===
+
+=== extract_column_table(pages, recipe, result)  [line 342] ===
+  [STR] 'fields'
+  [STR] 'definition_page_regex'
+  [STR] 'row_key_regex'
+  [STR] '^\\[(\\d+)\\]$'
+  [STR] 'form_name'
+  [STR] 'name_header'
+  [STR] 'Name'
+  [STR] 'oid_header'
+  [STR] 'Export Name'
+  [STR] 'type_header'
+  [STR] 'Type'
+  [STR] '\\s+'
+
+=== <genexpr>(.0)  [line 353] ===
+
+=== <dictcomp>(.0)  [line 355] ===
+
+=== <listcomp>(.0)  [line 361] ===
+
+=== <lambda>(L)  [line 362] ===
+
+=== <listcomp>(.0)  [line 366] ===
+
+=== <listcomp>(.0)  [line 367] ===
+
+=== extract_line_pattern(pages, recipe, result)  [line 382] ===
+  [STR] 'fields'
+  [STR] 'code_regex'
+  [STR] 'label_regex'
+  [STR] '^(?=.*[A-Za-z]).{3,140}$'
+  [STR] 'label_window_lines'
+  [STR] 'label_noise'
+  [STR] 'form_name'
+  [STR] 'code_search'
+
+=== build_pages(doc, recipe, page_indices)  [line 423] ===
+  [STR] 'skip_page_if'
+
+=== <genexpr>(.0)  [line 431] ===
+
+=== replay(pdf_path, recipe, page_indices)  [line 437] ===
+  [STR]
+    | Execute a recipe. `page_indices` restricts the run (used by the induction
+    |     validator, which replays only the representative pages).
+  [STR] 'format_id'
+  [STR] 'unknown'
+  [STR] 'fields'
+  [STR] 'engine'
+  [STR] 'unknown engine '
+  [STR] '; must be one of '
+
+=== detect_format(pdf_path, recipes, sample_pages)  [line 452] ===
+  [STR]
+    | Score each recipe's detect markers against the sampled (representative) pages.
+  [STR] 'detect'
+  [STR] 'all'
+  [STR] 'format_id'
+
+=== <genexpr>(.0)  [line 455] ===
+
+=== <genexpr>(.0)  [line 461] ===

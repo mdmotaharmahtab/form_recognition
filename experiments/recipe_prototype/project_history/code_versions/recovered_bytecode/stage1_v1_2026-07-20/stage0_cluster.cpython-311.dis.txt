@@ -1,0 +1,646 @@
+  0           0 RESUME                   0
+
+  1           2 LOAD_CONST               0 ('Stage 0: cluster every page of every CRF by layout fingerprint, save representative\npage dumps (structured text) and PNGs. These representatives are the ONLY thing the\nrecipe-induction step (LLM in production, hand-authored in this prototype) may look at.\n')
+              4 STORE_NAME               0 (__doc__)
+
+  5           6 LOAD_CONST               1 (0)
+              8 LOAD_CONST               2 (None)
+             10 IMPORT_NAME              1 (glob)
+             12 STORE_NAME               1 (glob)
+
+  6          14 LOAD_CONST               1 (0)
+             16 LOAD_CONST               2 (None)
+             18 IMPORT_NAME              2 (json)
+             20 STORE_NAME               2 (json)
+
+  7          22 LOAD_CONST               1 (0)
+             24 LOAD_CONST               2 (None)
+             26 IMPORT_NAME              3 (os)
+             28 STORE_NAME               3 (os)
+
+  9          30 LOAD_CONST               1 (0)
+             32 LOAD_CONST               2 (None)
+             34 IMPORT_NAME              4 (fitz)
+             36 STORE_NAME               4 (fitz)
+
+ 11          38 LOAD_CONST               1 (0)
+             40 LOAD_CONST               3 (('OUT_DIR', 'cluster_pages', 'doc_key', 'dump_rep_page', 'list_root_pdfs'))
+             42 IMPORT_NAME              5 (common)
+             44 IMPORT_FROM              6 (OUT_DIR)
+             46 STORE_NAME               6 (OUT_DIR)
+             48 IMPORT_FROM              7 (cluster_pages)
+             50 STORE_NAME               7 (cluster_pages)
+             52 IMPORT_FROM              8 (doc_key)
+             54 STORE_NAME               8 (doc_key)
+             56 IMPORT_FROM              9 (dump_rep_page)
+             58 STORE_NAME               9 (dump_rep_page)
+             60 IMPORT_FROM             10 (list_root_pdfs)
+             62 STORE_NAME              10 (list_root_pdfs)
+             64 POP_TOP
+
+ 14          66 LOAD_CONST               4 ('path')
+             68 LOAD_NAME               11 (str)
+             70 LOAD_CONST               5 ('return')
+             72 LOAD_NAME               12 (dict)
+             74 BUILD_TUPLE              4
+             76 LOAD_CONST               6 (<code object run at 0x00000290C1B12BC0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\stage0_cluster.py", line 14>)
+             78 MAKE_FUNCTION            4 (annotations)
+             80 STORE_NAME              13 (run)
+
+ 59          82 LOAD_NAME               14 (__name__)
+             84 LOAD_CONST               7 ('__main__')
+             86 COMPARE_OP               2 (==)
+             92 POP_JUMP_FORWARD_IF_FALSE   228 (to 550)
+
+ 60          94 BUILD_LIST               0
+             96 STORE_NAME              15 (summary)
+
+ 61          98 PUSH_NULL
+            100 LOAD_NAME               10 (list_root_pdfs)
+            102 PRECALL                  0
+            106 CALL                     0
+            116 GET_ITER
+        >>  118 FOR_ITER               143 (to 406)
+            120 STORE_NAME              16 (path)
+
+ 62         122 PUSH_NULL
+            124 LOAD_NAME               13 (run)
+            126 LOAD_NAME               16 (path)
+            128 PRECALL                  1
+            132 CALL                     1
+            142 STORE_NAME              17 (m)
+
+ 63         144 LOAD_NAME               15 (summary)
+            146 LOAD_METHOD             18 (append)
+            168 LOAD_NAME               17 (m)
+            170 PRECALL                  1
+            174 CALL                     1
+            184 POP_TOP
+
+ 64         186 LOAD_NAME               17 (m)
+            188 LOAD_METHOD             19 (get)
+            210 LOAD_CONST               8 ('status')
+            212 LOAD_CONST               9 ('ok')
+            214 PRECALL                  2
+            218 CALL                     2
+            228 LOAD_CONST               9 ('ok')
+            230 COMPARE_OP               2 (==)
+            236 POP_JUMP_FORWARD_IF_FALSE     2 (to 242)
+            238 LOAD_CONST              10 ('')
+            240 JUMP_FORWARD            11 (to 264)
+        >>  242 LOAD_CONST              11 ('  [')
+            244 LOAD_NAME               17 (m)
+            246 LOAD_CONST               8 ('status')
+            248 BINARY_SUBSCR
+            258 FORMAT_VALUE             0
+            260 LOAD_CONST              12 (' - skipping induction]')
+            262 BUILD_STRING             3
+        >>  264 STORE_NAME              20 (flag)
+
+ 65         266 PUSH_NULL
+            268 LOAD_NAME               21 (print)
+            270 LOAD_NAME               17 (m)
+            272 LOAD_CONST              13 ('file')
+            274 BINARY_SUBSCR
+            284 LOAD_CONST               2 (None)
+            286 LOAD_CONST              14 (60)
+            288 BUILD_SLICE              2
+            290 BINARY_SUBSCR
+            300 LOAD_CONST              15 ('60s')
+            302 FORMAT_VALUE             4 (with format)
+            304 LOAD_CONST              16 (' pages=')
+            306 LOAD_NAME               17 (m)
+            308 LOAD_CONST              17 ('pages')
+            310 BINARY_SUBSCR
+            320 LOAD_CONST              18 ('5d')
+            322 FORMAT_VALUE             4 (with format)
+            324 LOAD_CONST              19 (' clusters=')
+            326 LOAD_NAME               17 (m)
+            328 LOAD_CONST              20 ('n_clusters')
+            330 BINARY_SUBSCR
+            340 LOAD_CONST              21 ('3d')
+            342 FORMAT_VALUE             4 (with format)
+            344 LOAD_CONST              22 (' reps=')
+            346 PUSH_NULL
+            348 LOAD_NAME               22 (len)
+            350 LOAD_NAME               17 (m)
+            352 LOAD_CONST              23 ('representative_pages_1based')
+            354 BINARY_SUBSCR
+            364 PRECALL                  1
+            368 CALL                     1
+            378 LOAD_CONST              21 ('3d')
+            380 FORMAT_VALUE             4 (with format)
+            382 LOAD_NAME               20 (flag)
+            384 FORMAT_VALUE             0
+            386 BUILD_STRING             8
+            388 PRECALL                  1
+            392 CALL                     1
+            402 POP_TOP
+            404 JUMP_BACKWARD          144 (to 118)
+
+ 66     >>  406 PUSH_NULL
+            408 LOAD_NAME               23 (sum)
+            410 LOAD_CONST              24 (<code object <genexpr> at 0x00000290C3A0FC90, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\stage0_cluster.py", line 66>)
+            412 MAKE_FUNCTION            0
+            414 LOAD_NAME               15 (summary)
+            416 GET_ITER
+            418 PRECALL                  0
+            422 CALL                     0
+            432 PRECALL                  1
+            436 CALL                     1
+            446 STORE_NAME              24 (total_pages)
+
+ 67         448 PUSH_NULL
+            450 LOAD_NAME               23 (sum)
+            452 LOAD_CONST              25 (<code object <genexpr> at 0x00000290C3A16330, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\stage0_cluster.py", line 67>)
+            454 MAKE_FUNCTION            0
+            456 LOAD_NAME               15 (summary)
+            458 GET_ITER
+            460 PRECALL                  0
+            464 CALL                     0
+            474 PRECALL                  1
+            478 CALL                     1
+            488 STORE_NAME              25 (total_reps)
+
+ 68         490 PUSH_NULL
+            492 LOAD_NAME               21 (print)
+            494 LOAD_CONST              26 ('\nTOTAL pages=')
+            496 LOAD_NAME               24 (total_pages)
+            498 FORMAT_VALUE             0
+            500 LOAD_CONST              27 ('  representative pages=')
+            502 LOAD_NAME               25 (total_reps)
+            504 FORMAT_VALUE             0
+            506 LOAD_CONST              28 (' (')
+
+ 69         508 LOAD_CONST              29 (100)
+            510 LOAD_NAME               25 (total_reps)
+            512 BINARY_OP                5 (*)
+            516 LOAD_NAME               24 (total_pages)
+            518 BINARY_OP               11 (/)
+            522 LOAD_CONST              30 ('.1f')
+
+ 68         524 FORMAT_VALUE             4 (with format)
+            526 LOAD_CONST              31 ('% would go to the LLM)')
+            528 BUILD_STRING             7
+            530 PRECALL                  1
+            534 CALL                     1
+            544 POP_TOP
+            546 LOAD_CONST               2 (None)
+            548 RETURN_VALUE
+
+ 59     >>  550 LOAD_CONST               2 (None)
+            552 RETURN_VALUE
+
+Disassembly of <code object run at 0x00000290C1B12BC0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\stage0_cluster.py", line 14>:
+ 14           0 RESUME                   0
+
+ 19           2 LOAD_GLOBAL              1 (NULL + doc_key)
+             14 LOAD_FAST                0 (path)
+             16 PRECALL                  1
+             20 CALL                     1
+             30 STORE_FAST               1 (key)
+
+ 20          32 LOAD_GLOBAL              2 (os)
+             44 LOAD_ATTR                2 (path)
+             54 LOAD_METHOD              3 (join)
+             76 LOAD_GLOBAL              8 (OUT_DIR)
+             88 LOAD_FAST                1 (key)
+             90 PRECALL                  2
+             94 CALL                     2
+            104 STORE_FAST               2 (out)
+
+ 21         106 LOAD_GLOBAL              3 (NULL + os)
+            118 LOAD_ATTR                5 (makedirs)
+            128 LOAD_FAST                2 (out)
+            130 LOAD_CONST               1 (True)
+            132 KW_NAMES                 2
+            134 PRECALL                  2
+            138 CALL                     2
+            148 POP_TOP
+
+ 22         150 LOAD_GLOBAL             13 (NULL + glob)
+            162 LOAD_ATTR                6 (glob)
+            172 LOAD_GLOBAL              2 (os)
+            184 LOAD_ATTR                2 (path)
+            194 LOAD_METHOD              3 (join)
+            216 LOAD_FAST                2 (out)
+            218 LOAD_CONST               3 ('rep_*')
+            220 PRECALL                  2
+            224 CALL                     2
+            234 PRECALL                  1
+            238 CALL                     1
+            248 GET_ITER
+        >>  250 FOR_ITER                22 (to 296)
+            252 STORE_FAST               3 (stale)
+
+ 23         254 LOAD_GLOBAL              3 (NULL + os)
+            266 LOAD_ATTR                7 (remove)
+            276 LOAD_FAST                3 (stale)
+            278 PRECALL                  1
+            282 CALL                     1
+            292 POP_TOP
+            294 JUMP_BACKWARD           23 (to 250)
+
+ 24     >>  296 LOAD_GLOBAL             17 (NULL + fitz)
+            308 LOAD_ATTR                9 (open)
+            318 LOAD_FAST                0 (path)
+            320 PRECALL                  1
+            324 CALL                     1
+            334 STORE_FAST               4 (doc)
+
+ 25         336 LOAD_FAST                4 (doc)
+            338 LOAD_ATTR               10 (needs_pass)
+            348 POP_JUMP_FORWARD_IF_FALSE   155 (to 660)
+
+ 26         350 LOAD_FAST                4 (doc)
+            352 LOAD_METHOD             11 (close)
+            374 PRECALL                  0
+            378 CALL                     0
+            388 POP_TOP
+
+ 27         390 LOAD_GLOBAL              2 (os)
+            402 LOAD_ATTR                2 (path)
+            412 LOAD_METHOD             12 (basename)
+            434 LOAD_FAST                0 (path)
+            436 PRECALL                  1
+            440 CALL                     1
+            450 LOAD_CONST               4 ('encrypted')
+
+ 28         452 LOAD_CONST               5 (0)
+            454 LOAD_CONST               5 (0)
+            456 BUILD_LIST               0
+            458 BUILD_LIST               0
+
+ 27         460 LOAD_CONST               6 (('file', 'status', 'pages', 'n_clusters', 'representative_pages_1based', 'clusters'))
+            462 BUILD_CONST_KEY_MAP      6
+            464 STORE_FAST               5 (meta)
+
+ 29         466 LOAD_GLOBAL             19 (NULL + open)
+            478 LOAD_GLOBAL              2 (os)
+            490 LOAD_ATTR                2 (path)
+            500 LOAD_METHOD              3 (join)
+            522 LOAD_FAST                2 (out)
+            524 LOAD_CONST               7 ('clusters.json')
+            526 PRECALL                  2
+            530 CALL                     2
+            540 LOAD_CONST               8 ('w')
+            542 LOAD_CONST               9 ('utf-8')
+            544 KW_NAMES                10
+            546 PRECALL                  3
+            550 CALL                     3
+            560 BEFORE_WITH
+            562 STORE_FAST               6 (f)
+
+ 30         564 LOAD_GLOBAL             27 (NULL + json)
+            576 LOAD_ATTR               14 (dump)
+            586 LOAD_FAST                5 (meta)
+            588 LOAD_FAST                6 (f)
+            590 LOAD_CONST              11 (1)
+            592 KW_NAMES                12
+            594 PRECALL                  3
+            598 CALL                     3
+            608 POP_TOP
+
+ 29         610 LOAD_CONST              13 (None)
+            612 LOAD_CONST              13 (None)
+            614 LOAD_CONST              13 (None)
+            616 PRECALL                  2
+            620 CALL                     2
+            630 POP_TOP
+            632 JUMP_FORWARD            11 (to 656)
+        >>  634 PUSH_EXC_INFO
+            636 WITH_EXCEPT_START
+            638 POP_JUMP_FORWARD_IF_TRUE     4 (to 648)
+            640 RERAISE                  2
+        >>  642 COPY                     3
+            644 POP_EXCEPT
+            646 RERAISE                  1
+        >>  648 POP_TOP
+            650 POP_EXCEPT
+            652 POP_TOP
+            654 POP_TOP
+
+ 31     >>  656 LOAD_FAST                5 (meta)
+            658 RETURN_VALUE
+
+ 32     >>  660 LOAD_GLOBAL             31 (NULL + cluster_pages)
+            672 LOAD_FAST                4 (doc)
+            674 PRECALL                  1
+            678 CALL                     1
+            688 STORE_FAST               7 (res)
+
+ 33         690 LOAD_FAST                7 (res)
+            692 LOAD_CONST              14 ('clusters')
+            694 BINARY_SUBSCR
+            704 STORE_FAST               8 (clusters)
+
+ 34         706 LOAD_FAST                7 (res)
+            708 LOAD_CONST              15 ('page_lines')
+            710 BINARY_SUBSCR
+            720 STORE_FAST               9 (page_lines)
+
+ 36         722 LOAD_GLOBAL             33 (NULL + sum)
+            734 LOAD_CONST              16 (<code object <genexpr> at 0x00000290C3A0FAD0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\stage0_cluster.py", line 36>)
+            736 MAKE_FUNCTION            0
+            738 LOAD_FAST                9 (page_lines)
+            740 LOAD_METHOD             17 (values)
+            762 PRECALL                  0
+            766 CALL                     0
+            776 GET_ITER
+            778 PRECALL                  0
+            782 CALL                     0
+            792 PRECALL                  1
+            796 CALL                     1
+            806 STORE_FAST              10 (pages_without_text)
+
+ 37         808 LOAD_GLOBAL             37 (NULL + round)
+            820 LOAD_CONST              17 (100)
+            822 LOAD_FAST                4 (doc)
+            824 LOAD_ATTR               19 (page_count)
+            834 LOAD_FAST               10 (pages_without_text)
+            836 BINARY_OP               10 (-)
+            840 BINARY_OP                5 (*)
+            844 LOAD_GLOBAL             41 (NULL + max)
+            856 LOAD_CONST              11 (1)
+            858 LOAD_FAST                4 (doc)
+            860 LOAD_ATTR               19 (page_count)
+            870 PRECALL                  2
+            874 CALL                     2
+            884 BINARY_OP               11 (/)
+            888 PRECALL                  1
+            892 CALL                     1
+            902 STORE_FAST              11 (text_layer_pct)
+
+ 39         904 LOAD_FAST                7 (res)
+            906 LOAD_CONST              18 ('representatives')
+            908 BINARY_SUBSCR
+            918 STORE_FAST              12 (rep_pages)
+
+ 40         920 LOAD_FAST               12 (rep_pages)
+            922 GET_ITER
+        >>  924 FOR_ITER               145 (to 1216)
+            926 STORE_FAST              13 (p)
+
+ 41         928 LOAD_GLOBAL             43 (NULL + dump_rep_page)
+            940 LOAD_FAST                9 (page_lines)
+            942 LOAD_FAST               13 (p)
+            944 BINARY_SUBSCR
+            954 LOAD_GLOBAL              2 (os)
+            966 LOAD_ATTR                2 (path)
+            976 LOAD_METHOD              3 (join)
+            998 LOAD_FAST                2 (out)
+           1000 LOAD_CONST              19 ('rep_p')
+           1002 LOAD_FAST               13 (p)
+           1004 LOAD_CONST              11 (1)
+           1006 BINARY_OP                0 (+)
+           1010 FORMAT_VALUE             0
+           1012 LOAD_CONST              20 ('.txt')
+           1014 BUILD_STRING             3
+           1016 PRECALL                  2
+           1020 CALL                     2
+           1030 PRECALL                  2
+           1034 CALL                     2
+           1044 POP_TOP
+
+ 42        1046 LOAD_FAST                4 (doc)
+           1048 LOAD_FAST               13 (p)
+           1050 BINARY_SUBSCR
+           1060 LOAD_METHOD             22 (get_pixmap)
+           1082 LOAD_CONST              17 (100)
+           1084 KW_NAMES                21
+           1086 PRECALL                  1
+           1090 CALL                     1
+           1100 LOAD_METHOD             23 (save)
+           1122 LOAD_GLOBAL              2 (os)
+           1134 LOAD_ATTR                2 (path)
+           1144 LOAD_METHOD              3 (join)
+           1166 LOAD_FAST                2 (out)
+           1168 LOAD_CONST              19 ('rep_p')
+           1170 LOAD_FAST               13 (p)
+           1172 LOAD_CONST              11 (1)
+           1174 BINARY_OP                0 (+)
+           1178 FORMAT_VALUE             0
+           1180 LOAD_CONST              22 ('.png')
+           1182 BUILD_STRING             3
+           1184 PRECALL                  2
+           1188 CALL                     2
+           1198 PRECALL                  1
+           1202 CALL                     1
+           1212 POP_TOP
+           1214 JUMP_BACKWARD          146 (to 924)
+
+ 45     >> 1216 LOAD_GLOBAL              2 (os)
+           1228 LOAD_ATTR                2 (path)
+           1238 LOAD_METHOD             12 (basename)
+           1260 LOAD_FAST                0 (path)
+           1262 PRECALL                  1
+           1266 CALL                     1
+
+ 46        1276 LOAD_FAST               11 (text_layer_pct)
+           1278 LOAD_CONST              23 (20)
+           1280 COMPARE_OP               5 (>=)
+           1286 POP_JUMP_FORWARD_IF_FALSE     2 (to 1292)
+           1288 LOAD_CONST              24 ('ok')
+           1290 JUMP_FORWARD             1 (to 1294)
+        >> 1292 LOAD_CONST              25 ('no_text_layer')
+
+ 47     >> 1294 LOAD_FAST                4 (doc)
+           1296 LOAD_ATTR               19 (page_count)
+
+ 48        1306 LOAD_FAST               11 (text_layer_pct)
+
+ 49        1308 LOAD_GLOBAL             49 (NULL + len)
+           1320 LOAD_FAST                8 (clusters)
+           1322 PRECALL                  1
+           1326 CALL                     1
+
+ 50        1336 LOAD_CONST              26 (<code object <listcomp> at 0x00000290C3A6D070, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\stage0_cluster.py", line 50>)
+           1338 MAKE_FUNCTION            0
+           1340 LOAD_FAST               12 (rep_pages)
+           1342 GET_ITER
+           1344 PRECALL                  0
+           1348 CALL                     0
+
+ 51        1358 LOAD_CONST              27 (<code object <listcomp> at 0x00000290C3A804F0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\stage0_cluster.py", line 51>)
+           1360 MAKE_FUNCTION            0
+           1362 LOAD_FAST                8 (clusters)
+           1364 GET_ITER
+           1366 PRECALL                  0
+           1370 CALL                     0
+
+ 44        1380 LOAD_CONST              28 (('file', 'status', 'pages', 'text_layer_pct', 'n_clusters', 'representative_pages_1based', 'clusters'))
+           1382 BUILD_CONST_KEY_MAP      7
+           1384 STORE_FAST               5 (meta)
+
+ 53        1386 LOAD_GLOBAL             19 (NULL + open)
+           1398 LOAD_GLOBAL              2 (os)
+           1410 LOAD_ATTR                2 (path)
+           1420 LOAD_METHOD              3 (join)
+           1442 LOAD_FAST                2 (out)
+           1444 LOAD_CONST               7 ('clusters.json')
+           1446 PRECALL                  2
+           1450 CALL                     2
+           1460 LOAD_CONST               8 ('w')
+           1462 LOAD_CONST               9 ('utf-8')
+           1464 KW_NAMES                10
+           1466 PRECALL                  3
+           1470 CALL                     3
+           1480 BEFORE_WITH
+           1482 STORE_FAST               6 (f)
+
+ 54        1484 LOAD_GLOBAL             27 (NULL + json)
+           1496 LOAD_ATTR               14 (dump)
+           1506 LOAD_FAST                5 (meta)
+           1508 LOAD_FAST                6 (f)
+           1510 LOAD_CONST              11 (1)
+           1512 KW_NAMES                12
+           1514 PRECALL                  3
+           1518 CALL                     3
+           1528 POP_TOP
+
+ 53        1530 LOAD_CONST              13 (None)
+           1532 LOAD_CONST              13 (None)
+           1534 LOAD_CONST              13 (None)
+           1536 PRECALL                  2
+           1540 CALL                     2
+           1550 POP_TOP
+           1552 JUMP_FORWARD            11 (to 1576)
+        >> 1554 PUSH_EXC_INFO
+           1556 WITH_EXCEPT_START
+           1558 POP_JUMP_FORWARD_IF_TRUE     4 (to 1568)
+           1560 RERAISE                  2
+        >> 1562 COPY                     3
+           1564 POP_EXCEPT
+           1566 RERAISE                  1
+        >> 1568 POP_TOP
+           1570 POP_EXCEPT
+           1572 POP_TOP
+           1574 POP_TOP
+
+ 55     >> 1576 LOAD_FAST                4 (doc)
+           1578 LOAD_METHOD             11 (close)
+           1600 PRECALL                  0
+           1604 CALL                     0
+           1614 POP_TOP
+
+ 56        1616 LOAD_FAST                5 (meta)
+           1618 RETURN_VALUE
+ExceptionTable:
+  562 to 608 -> 634 [1] lasti
+  634 to 640 -> 642 [3] lasti
+  648 to 648 -> 642 [3] lasti
+  1482 to 1528 -> 1554 [1] lasti
+  1554 to 1560 -> 1562 [3] lasti
+  1568 to 1568 -> 1562 [3] lasti
+
+Disassembly of <code object <genexpr> at 0x00000290C3A0FAD0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\stage0_cluster.py", line 36>:
+ 36           0 RETURN_GENERATOR
+              2 POP_TOP
+              4 RESUME                   0
+              6 LOAD_FAST                0 (.0)
+        >>    8 FOR_ITER                 8 (to 26)
+             10 STORE_FAST               1 (lines)
+             12 LOAD_FAST                1 (lines)
+             14 POP_JUMP_BACKWARD_IF_TRUE     4 (to 8)
+             16 LOAD_CONST               0 (1)
+             18 YIELD_VALUE
+             20 RESUME                   1
+             22 POP_TOP
+             24 JUMP_BACKWARD            9 (to 8)
+        >>   26 LOAD_CONST               1 (None)
+             28 RETURN_VALUE
+
+Disassembly of <code object <listcomp> at 0x00000290C3A6D070, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\stage0_cluster.py", line 50>:
+ 50           0 RESUME                   0
+              2 BUILD_LIST               0
+              4 LOAD_FAST                0 (.0)
+        >>    6 FOR_ITER                 7 (to 22)
+              8 STORE_FAST               1 (p)
+             10 LOAD_FAST                1 (p)
+             12 LOAD_CONST               0 (1)
+             14 BINARY_OP                0 (+)
+             18 LIST_APPEND              2
+             20 JUMP_BACKWARD            8 (to 6)
+        >>   22 RETURN_VALUE
+
+Disassembly of <code object <listcomp> at 0x00000290C3A804F0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\stage0_cluster.py", line 51>:
+ 51           0 RESUME                   0
+              2 BUILD_LIST               0
+              4 LOAD_FAST                0 (.0)
+        >>    6 FOR_ITER                49 (to 106)
+              8 STORE_FAST               1 (c)
+             10 LOAD_CONST               0 (<code object <dictcomp> at 0x00000290C3A0F830, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\stage0_cluster.py", line 51>)
+             12 MAKE_FUNCTION            0
+             14 LOAD_FAST                1 (c)
+             16 LOAD_METHOD              0 (items)
+             38 PRECALL                  0
+             42 CALL                     0
+             52 GET_ITER
+             54 PRECALL                  0
+             58 CALL                     0
+             68 LOAD_CONST               1 ('header')
+             70 LOAD_FAST                1 (c)
+             72 LOAD_CONST               2 ('signature')
+             74 BINARY_SUBSCR
+             84 LOAD_CONST               3 (0)
+             86 BINARY_SUBSCR
+             96 BUILD_MAP                1
+             98 BINARY_OP                7 (|)
+            102 LIST_APPEND              2
+            104 JUMP_BACKWARD           50 (to 6)
+        >>  106 RETURN_VALUE
+
+Disassembly of <code object <dictcomp> at 0x00000290C3A0F830, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\stage0_cluster.py", line 51>:
+ 51           0 RESUME                   0
+              2 BUILD_MAP                0
+              4 LOAD_FAST                0 (.0)
+        >>    6 FOR_ITER                14 (to 36)
+              8 UNPACK_SEQUENCE          2
+             12 STORE_FAST               1 (k)
+             14 STORE_FAST               2 (v)
+             16 LOAD_FAST                1 (k)
+             18 LOAD_CONST               0 ('signature')
+             20 COMPARE_OP               3 (!=)
+             26 POP_JUMP_BACKWARD_IF_FALSE    11 (to 6)
+             28 LOAD_FAST                1 (k)
+             30 LOAD_FAST                2 (v)
+             32 MAP_ADD                  2
+             34 JUMP_BACKWARD           15 (to 6)
+        >>   36 RETURN_VALUE
+
+Disassembly of <code object <genexpr> at 0x00000290C3A0FC90, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\stage0_cluster.py", line 66>:
+ 66           0 RETURN_GENERATOR
+              2 POP_TOP
+              4 RESUME                   0
+              6 LOAD_FAST                0 (.0)
+        >>    8 FOR_ITER                12 (to 34)
+             10 STORE_FAST               1 (m)
+             12 LOAD_FAST                1 (m)
+             14 LOAD_CONST               0 ('pages')
+             16 BINARY_SUBSCR
+             26 YIELD_VALUE
+             28 RESUME                   1
+             30 POP_TOP
+             32 JUMP_BACKWARD           13 (to 8)
+        >>   34 LOAD_CONST               1 (None)
+             36 RETURN_VALUE
+
+Disassembly of <code object <genexpr> at 0x00000290C3A16330, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\stage0_cluster.py", line 67>:
+ 67           0 RETURN_GENERATOR
+              2 POP_TOP
+              4 RESUME                   0
+              6 LOAD_FAST                0 (.0)
+        >>    8 FOR_ITER                25 (to 60)
+             10 STORE_FAST               1 (m)
+             12 LOAD_GLOBAL              1 (NULL + len)
+             24 LOAD_FAST                1 (m)
+             26 LOAD_CONST               0 ('representative_pages_1based')
+             28 BINARY_SUBSCR
+             38 PRECALL                  1
+             42 CALL                     1
+             52 YIELD_VALUE
+             54 RESUME                   1
+             56 POP_TOP
+             58 JUMP_BACKWARD           26 (to 8)
+        >>   60 LOAD_CONST               1 (None)
+             62 RETURN_VALUE

@@ -1,0 +1,3650 @@
+  0           0 RESUME                   0
+
+  1           2 LOAD_CONST               0 ('LEGACY COMPARISON PATH - not the production flow.\n\nProduction induction is codegen.py (the LLM writes the extraction program itself;\nno fixed engine catalog). This module remains for two reasons only:\n  - FieldRec / ReplayResult are the shared record/result types\n  - the engine catalog + reference_recipes serve as a measurable baseline the\n    codegen output is compared against\nEngine parameter DEFAULTS below (e.g. oid_header="Include", column headers\n"Name"/"Export Name") come from the local sample corpus - they are baseline\nfixtures, NOT priors to ship. Do not route production documents through here.\n\nA recipe is a small JSON document emitted once per document by the induction LLM,\nwhich only ever sees the stage-0 representative pages. The engines below execute\nrecipes at native speed - no LLM anywhere in the per-page path.\n\nAny CRF layout is expressed as one of these engines plus parameters:\n\n  adjacent_annotation - machine codes printed on their own annotation lines next to\n                        (usually under) the human field label, in the same column\n  anchored_blocks     - repeated anchor rows (e.g. bold \'Prefix: Activity #n\' with a\n                        number in a far column) delimit blocks; codes found per block\n  numbered_join       - two page types joined by a printed number: content pages\n                        (label + number) and definition pages (number + code column)\n  column_table        - definition tables with a header row; label and code are\n                        cells in configurable columns\n  line_pattern        - generic fallback: regex roles over sequential text lines\n')
+              4 STORE_NAME               0 (__doc__)
+
+ 28           6 LOAD_CONST               1 (0)
+              8 LOAD_CONST               2 (('annotations',))
+             10 IMPORT_NAME              1 (__future__)
+             12 IMPORT_FROM              2 (annotations)
+             14 STORE_NAME               2 (annotations)
+             16 POP_TOP
+
+ 30          18 LOAD_CONST               1 (0)
+             20 LOAD_CONST               3 (None)
+             22 IMPORT_NAME              3 (json)
+             24 STORE_NAME               3 (json)
+
+ 31          26 LOAD_CONST               1 (0)
+             28 LOAD_CONST               3 (None)
+             30 IMPORT_NAME              4 (os)
+             32 STORE_NAME               4 (os)
+
+ 32          34 LOAD_CONST               1 (0)
+             36 LOAD_CONST               3 (None)
+             38 IMPORT_NAME              5 (re)
+             40 STORE_NAME               5 (re)
+
+ 33          42 LOAD_CONST               1 (0)
+             44 LOAD_CONST               4 (('dataclass', 'field'))
+             46 IMPORT_NAME              6 (dataclasses)
+             48 IMPORT_FROM              7 (dataclass)
+             50 STORE_NAME               7 (dataclass)
+             52 IMPORT_FROM              8 (field)
+             54 STORE_NAME               8 (field)
+             56 POP_TOP
+
+ 35          58 LOAD_CONST               1 (0)
+             60 LOAD_CONST               3 (None)
+             62 IMPORT_NAME              9 (fitz)
+             64 STORE_NAME               9 (fitz)
+
+ 37          66 LOAD_CONST               1 (0)
+             68 LOAD_CONST               5 (('Line', 'build_page_lines'))
+             70 IMPORT_NAME             10 (common)
+             72 IMPORT_FROM             11 (Line)
+             74 STORE_NAME              11 (Line)
+             76 IMPORT_FROM             12 (build_page_lines)
+             78 STORE_NAME              12 (build_page_lines)
+             80 POP_TOP
+
+ 40          82 LOAD_NAME                7 (dataclass)
+
+ 41          84 PUSH_NULL
+             86 LOAD_BUILD_CLASS
+             88 LOAD_CONST               6 (<code object FieldRec at 0x00000290C3A6A120, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\replay.py", line 40>)
+             90 MAKE_FUNCTION            0
+             92 LOAD_CONST               7 ('FieldRec')
+             94 PRECALL                  2
+             98 CALL                     2
+
+ 40         108 PRECALL                  0
+            112 CALL                     0
+
+ 41         122 STORE_NAME              13 (FieldRec)
+
+ 50         124 LOAD_NAME                7 (dataclass)
+
+ 51         126 PUSH_NULL
+            128 LOAD_BUILD_CLASS
+            130 LOAD_CONST               8 (<code object ReplayResult at 0x00000290C38170C0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\replay.py", line 50>)
+            132 MAKE_FUNCTION            0
+            134 LOAD_CONST               9 ('ReplayResult')
+            136 PRECALL                  2
+            140 CALL                     2
+
+ 50         150 PRECALL                  0
+            154 CALL                     0
+
+ 51         164 STORE_NAME              14 (ReplayResult)
+
+ 78         166 LOAD_CONST              51 (('return', 'list[re.Pattern]'))
+            168 LOAD_CONST              12 (<code object _compile at 0x00000290C3A0FC90, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\replay.py", line 78>)
+            170 MAKE_FUNCTION            4 (annotations)
+            172 STORE_NAME              15 (_compile)
+
+ 82         174 LOAD_CONST              52 (('text', 'str', 'noise', 'list[re.Pattern]', 'return', 'bool'))
+            176 LOAD_CONST              17 (<code object _is_noise at 0x00000290C3A16330, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\replay.py", line 82>)
+            178 MAKE_FUNCTION            4 (annotations)
+            180 STORE_NAME              16 (_is_noise)
+
+ 89         182 LOAD_CONST              53 (('lines', 'list[Line]', 'cfg', 'dict', 'carry', 'str | None', 'return', 'str | None'))
+            184 LOAD_CONST              24 (<code object find_form_name at 0x00000290C1B090F0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\replay.py", line 89>)
+            186 MAKE_FUNCTION            4 (annotations)
+            188 STORE_NAME              17 (find_form_name)
+
+123         190 LOAD_CONST              54 (('recipe', 'dict', 'result', 'ReplayResult', 'return', 'None'))
+            192 LOAD_CONST              28 (<code object extract_adjacent_annotation at 0x00000290C1AF3050, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\replay.py", line 123>)
+            194 MAKE_FUNCTION            4 (annotations)
+            196 STORE_NAME              18 (extract_adjacent_annotation)
+
+192         198 LOAD_CONST              54 (('recipe', 'dict', 'result', 'ReplayResult', 'return', 'None'))
+            200 LOAD_CONST              29 (<code object extract_anchored_blocks at 0x00000290C1B0E060, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\replay.py", line 192>)
+            202 MAKE_FUNCTION            4 (annotations)
+            204 STORE_NAME              19 (extract_anchored_blocks)
+
+229         206 LOAD_CONST              54 (('recipe', 'dict', 'result', 'ReplayResult', 'return', 'None'))
+            208 LOAD_CONST              30 (<code object extract_numbered_join at 0x00000290C1B0EB30, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\replay.py", line 229>)
+            210 MAKE_FUNCTION            4 (annotations)
+            212 STORE_NAME              20 (extract_numbered_join)
+
+272         214 LOAD_CONST              55 (('lines', 'list[Line]', 'fcfg', 'dict', 'num_rx', 're.Pattern', 'out', 'dict[str, str]', 'return', 'None'))
+            216 LOAD_CONST              36 (<code object _parse_definition_page at 0x00000290C1B0F820, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\replay.py", line 272>)
+            218 MAKE_FUNCTION            4 (annotations)
+            220 STORE_NAME              21 (_parse_definition_page)
+
+309         222 LOAD_CONST              56 (('return', 'list[tuple[str, str]]'))
+            224 LOAD_CONST              38 (<code object _parse_content_page at 0x00000290C1B10110, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\replay.py", line 309>)
+            226 MAKE_FUNCTION            4 (annotations)
+            228 STORE_NAME              22 (_parse_content_page)
+
+342         230 LOAD_CONST              54 (('recipe', 'dict', 'result', 'ReplayResult', 'return', 'None'))
+            232 LOAD_CONST              39 (<code object extract_column_table at 0x00000290C1B10570, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\replay.py", line 342>)
+            234 MAKE_FUNCTION            4 (annotations)
+            236 STORE_NAME              23 (extract_column_table)
+
+382         238 LOAD_CONST              54 (('recipe', 'dict', 'result', 'ReplayResult', 'return', 'None'))
+            240 LOAD_CONST              40 (<code object extract_line_pattern at 0x00000290C1B41FD0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\replay.py", line 382>)
+            242 MAKE_FUNCTION            4 (annotations)
+            244 STORE_NAME              24 (extract_line_pattern)
+
+415         246 LOAD_NAME               18 (extract_adjacent_annotation)
+
+416         248 LOAD_NAME               19 (extract_anchored_blocks)
+
+417         250 LOAD_NAME               20 (extract_numbered_join)
+
+418         252 LOAD_NAME               23 (extract_column_table)
+
+419         254 LOAD_NAME               24 (extract_line_pattern)
+
+414         256 LOAD_CONST              41 (('adjacent_annotation', 'anchored_blocks', 'numbered_join', 'column_table', 'line_pattern'))
+            258 BUILD_CONST_KEY_MAP      5
+            260 STORE_NAME              25 (ENGINES)
+
+423         262 LOAD_CONST              57 ((None,))
+            264 LOAD_CONST              58 (('recipe', 'dict'))
+            266 LOAD_CONST              42 (<code object build_pages at 0x00000290C377B430, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\replay.py", line 423>)
+            268 MAKE_FUNCTION            5 (defaults, annotations)
+            270 STORE_NAME              26 (build_pages)
+
+437         272 LOAD_CONST              57 ((None,))
+            274 LOAD_CONST              59 (('pdf_path', 'str', 'recipe', 'dict', 'return', 'ReplayResult'))
+            276 LOAD_CONST              44 (<code object replay at 0x00000290C1AEE240, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\replay.py", line 437>)
+            278 MAKE_FUNCTION            5 (defaults, annotations)
+            280 STORE_NAME              27 (replay)
+
+452         282 LOAD_CONST              60 (('pdf_path', 'str', 'recipes', 'list[dict]', 'sample_pages', 'list[int]', 'return', 'tuple[dict | None, dict]'))
+            284 LOAD_CONST              50 (<code object detect_format at 0x00000290C1B10F00, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\replay.py", line 452>)
+            286 MAKE_FUNCTION            4 (annotations)
+            288 STORE_NAME              28 (detect_format)
+            290 LOAD_CONST               3 (None)
+            292 RETURN_VALUE
+
+Disassembly of <code object FieldRec at 0x00000290C3A6A120, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\replay.py", line 40>:
+ 40           0 RESUME                   0
+              2 LOAD_NAME                0 (__name__)
+              4 STORE_NAME               1 (__module__)
+              6 LOAD_CONST               0 ('FieldRec')
+              8 STORE_NAME               2 (__qualname__)
+             10 SETUP_ANNOTATIONS
+
+ 42          12 LOAD_CONST               1 ('str')
+             14 LOAD_NAME                3 (__annotations__)
+             16 LOAD_CONST               2 ('form_name')
+             18 STORE_SUBSCR
+
+ 43          22 LOAD_CONST               1 ('str')
+             24 LOAD_NAME                3 (__annotations__)
+             26 LOAD_CONST               3 ('field_name')
+             28 STORE_SUBSCR
+
+ 44          32 LOAD_CONST               4 ('str | None')
+             34 LOAD_NAME                3 (__annotations__)
+             36 LOAD_CONST               5 ('field_oid')
+             38 STORE_SUBSCR
+
+ 45          42 LOAD_CONST               6 (None)
+             44 STORE_NAME               4 (oid_alt)
+             46 LOAD_CONST               4 ('str | None')
+             48 LOAD_NAME                3 (__annotations__)
+             50 LOAD_CONST               7 ('oid_alt')
+             52 STORE_SUBSCR
+
+ 46          56 LOAD_CONST               8 (0)
+             58 STORE_NAME               5 (page)
+             60 LOAD_CONST               9 ('int')
+             62 LOAD_NAME                3 (__annotations__)
+             64 LOAD_CONST              10 ('page')
+             66 STORE_SUBSCR
+
+ 47          70 LOAD_CONST              11 ('')
+             72 STORE_NAME               6 (extra)
+             74 LOAD_CONST               1 ('str')
+             76 LOAD_NAME                3 (__annotations__)
+             78 LOAD_CONST              12 ('extra')
+             80 STORE_SUBSCR
+             84 LOAD_CONST               6 (None)
+             86 RETURN_VALUE
+
+Disassembly of <code object ReplayResult at 0x00000290C38170C0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\replay.py", line 50>:
+ 50           0 RESUME                   0
+              2 LOAD_NAME                0 (__name__)
+              4 STORE_NAME               1 (__module__)
+              6 LOAD_CONST               0 ('ReplayResult')
+              8 STORE_NAME               2 (__qualname__)
+             10 SETUP_ANNOTATIONS
+
+ 52          12 LOAD_CONST               1 ('str')
+             14 LOAD_NAME                3 (__annotations__)
+             16 LOAD_CONST               2 ('format_id')
+             18 STORE_SUBSCR
+
+ 53          22 PUSH_NULL
+             24 LOAD_NAME                4 (field)
+             26 LOAD_NAME                5 (list)
+             28 KW_NAMES                 3
+             30 PRECALL                  1
+             34 CALL                     1
+             44 STORE_NAME               6 (records)
+             46 LOAD_CONST               4 ('list[FieldRec]')
+             48 LOAD_NAME                3 (__annotations__)
+             50 LOAD_CONST               5 ('records')
+             52 STORE_SUBSCR
+
+ 54          56 LOAD_CONST               6 (0)
+             58 STORE_NAME               7 (pages_with_fields)
+             60 LOAD_CONST               7 ('int')
+             62 LOAD_NAME                3 (__annotations__)
+             64 LOAD_CONST               8 ('pages_with_fields')
+             66 STORE_SUBSCR
+
+ 55          70 LOAD_CONST               6 (0)
+             72 STORE_NAME               8 (pages_total)
+             74 LOAD_CONST               7 ('int')
+             76 LOAD_NAME                3 (__annotations__)
+             78 LOAD_CONST               9 ('pages_total')
+             80 STORE_SUBSCR
+
+ 56          84 LOAD_CONST               6 (0)
+             86 STORE_NAME               9 (definition_pages_seen)
+             88 LOAD_CONST               7 ('int')
+             90 LOAD_NAME                3 (__annotations__)
+             92 LOAD_CONST              10 ('definition_pages_seen')
+             94 STORE_SUBSCR
+
+ 57          98 PUSH_NULL
+            100 LOAD_NAME                4 (field)
+            102 LOAD_NAME               10 (set)
+            104 KW_NAMES                 3
+            106 PRECALL                  1
+            110 CALL                     1
+            120 STORE_NAME              11 (covered_pages)
+            122 LOAD_CONST              11 ('set')
+            124 LOAD_NAME                3 (__annotations__)
+            126 LOAD_CONST              12 ('covered_pages')
+            128 STORE_SUBSCR
+
+ 60         132 LOAD_CONST              17 (('return', 'None'))
+            134 LOAD_CONST              15 (<code object dedup at 0x00000290C1B4A520, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\replay.py", line 60>)
+            136 MAKE_FUNCTION            4 (annotations)
+            138 STORE_NAME              12 (dedup)
+            140 LOAD_CONST              16 (None)
+            142 RETURN_VALUE
+
+Disassembly of <code object dedup at 0x00000290C1B4A520, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\replay.py", line 60>:
+ 60           0 RESUME                   0
+
+ 68           2 LOAD_GLOBAL              1 (NULL + set)
+             14 PRECALL                  0
+             18 CALL                     0
+             28 BUILD_LIST               0
+             30 STORE_FAST               2 (out)
+             32 STORE_FAST               1 (seen)
+
+ 69          34 LOAD_FAST                0 (self)
+             36 LOAD_ATTR                1 (records)
+             46 GET_ITER
+        >>   48 FOR_ITER               166 (to 382)
+             50 STORE_FAST               3 (r)
+
+ 70          52 LOAD_FAST                3 (r)
+             54 LOAD_ATTR                2 (form_name)
+             64 LOAD_METHOD              3 (strip)
+             86 PRECALL                  0
+             90 CALL                     0
+            100 LOAD_METHOD              4 (lower)
+            122 PRECALL                  0
+            126 CALL                     0
+            136 LOAD_FAST                3 (r)
+            138 LOAD_ATTR                5 (field_name)
+            148 LOAD_METHOD              3 (strip)
+            170 PRECALL                  0
+            174 CALL                     0
+            184 LOAD_METHOD              4 (lower)
+            206 PRECALL                  0
+            210 CALL                     0
+
+ 71         220 LOAD_FAST                3 (r)
+            222 LOAD_ATTR                6 (field_oid)
+            232 JUMP_IF_TRUE_OR_POP      1 (to 236)
+            234 LOAD_CONST               1 ('')
+        >>  236 LOAD_METHOD              3 (strip)
+            258 PRECALL                  0
+            262 CALL                     0
+            272 LOAD_FAST                3 (r)
+            274 LOAD_ATTR                7 (page)
+
+ 70         284 BUILD_TUPLE              4
+            286 STORE_FAST               4 (key)
+
+ 72         288 LOAD_FAST                4 (key)
+            290 LOAD_FAST                1 (seen)
+            292 CONTAINS_OP              1
+            294 POP_JUMP_FORWARD_IF_FALSE    42 (to 380)
+
+ 73         296 LOAD_FAST                1 (seen)
+            298 LOAD_METHOD              8 (add)
+            320 LOAD_FAST                4 (key)
+            322 PRECALL                  1
+            326 CALL                     1
+            336 POP_TOP
+
+ 74         338 LOAD_FAST                2 (out)
+            340 LOAD_METHOD              9 (append)
+            362 LOAD_FAST                3 (r)
+            364 PRECALL                  1
+            368 CALL                     1
+            378 POP_TOP
+        >>  380 JUMP_BACKWARD          167 (to 48)
+
+ 75     >>  382 LOAD_FAST                2 (out)
+            384 LOAD_FAST                0 (self)
+            386 STORE_ATTR               1 (records)
+            396 LOAD_CONST               2 (None)
+            398 RETURN_VALUE
+
+Disassembly of <code object _compile at 0x00000290C3A0FC90, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\replay.py", line 78>:
+ 78           0 RESUME                   0
+
+ 79           2 LOAD_CONST               1 (<code object <listcomp> at 0x00000290C3A1A1F0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\replay.py", line 79>)
+              4 MAKE_FUNCTION            0
+              6 LOAD_FAST                0 (rxs)
+              8 JUMP_IF_TRUE_OR_POP      1 (to 12)
+             10 BUILD_LIST               0
+        >>   12 GET_ITER
+             14 PRECALL                  0
+             18 CALL                     0
+             28 RETURN_VALUE
+
+Disassembly of <code object <listcomp> at 0x00000290C3A1A1F0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\replay.py", line 79>:
+ 79           0 RESUME                   0
+              2 BUILD_LIST               0
+              4 LOAD_FAST                0 (.0)
+        >>    6 FOR_ITER                22 (to 52)
+              8 STORE_FAST               1 (rx)
+             10 LOAD_GLOBAL              1 (NULL + re)
+             22 LOAD_ATTR                1 (compile)
+             32 LOAD_FAST                1 (rx)
+             34 PRECALL                  1
+             38 CALL                     1
+             48 LIST_APPEND              2
+             50 JUMP_BACKWARD           23 (to 6)
+        >>   52 RETURN_VALUE
+
+Disassembly of <code object _is_noise at 0x00000290C3A16330, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\replay.py", line 82>:
+              0 MAKE_CELL                0 (text)
+
+ 82           2 RESUME                   0
+
+ 83           4 LOAD_GLOBAL              1 (NULL + any)
+             16 LOAD_CLOSURE             0 (text)
+             18 BUILD_TUPLE              1
+             20 LOAD_CONST               1 (<code object <genexpr> at 0x00000290C3A17030, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\replay.py", line 83>)
+             22 MAKE_FUNCTION            8 (closure)
+             24 LOAD_FAST                1 (noise)
+             26 GET_ITER
+             28 PRECALL                  0
+             32 CALL                     0
+             42 PRECALL                  1
+             46 CALL                     1
+             56 RETURN_VALUE
+
+Disassembly of <code object <genexpr> at 0x00000290C3A17030, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\replay.py", line 83>:
+              0 COPY_FREE_VARS           1
+
+ 83           2 RETURN_GENERATOR
+              4 POP_TOP
+              6 RESUME                   0
+              8 LOAD_FAST                0 (.0)
+        >>   10 FOR_ITER                25 (to 62)
+             12 STORE_FAST               1 (rx)
+             14 LOAD_FAST                1 (rx)
+             16 LOAD_METHOD              0 (search)
+             38 LOAD_DEREF               2 (text)
+             40 PRECALL                  1
+             44 CALL                     1
+             54 YIELD_VALUE
+             56 RESUME                   1
+             58 POP_TOP
+             60 JUMP_BACKWARD           26 (to 10)
+        >>   62 LOAD_CONST               0 (None)
+             64 RETURN_VALUE
+
+Disassembly of <code object find_form_name at 0x00000290C1B090F0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\replay.py", line 89>:
+ 89           0 RESUME                   0
+
+ 90           2 LOAD_FAST                1 (cfg)
+              4 LOAD_METHOD              0 (get)
+             26 LOAD_CONST               1 ('strategy')
+             28 PRECALL                  1
+             32 CALL                     1
+             42 STORE_FAST               3 (strat)
+
+ 91          44 LOAD_FAST                3 (strat)
+             46 LOAD_CONST               2 ('regex')
+             48 COMPARE_OP               2 (==)
+             54 POP_JUMP_FORWARD_IF_FALSE   125 (to 306)
+
+ 92          56 LOAD_GLOBAL              3 (NULL + re)
+             68 LOAD_ATTR                2 (compile)
+             78 LOAD_FAST                1 (cfg)
+             80 LOAD_CONST               2 ('regex')
+             82 BINARY_SUBSCR
+             92 PRECALL                  1
+             96 CALL                     1
+            106 STORE_FAST               4 (rx)
+
+ 93         108 LOAD_FAST                0 (lines)
+            110 GET_ITER
+        >>  112 FOR_ITER                71 (to 256)
+            114 STORE_FAST               5 (L)
+
+ 94         116 LOAD_FAST                4 (rx)
+            118 LOAD_METHOD              3 (match)
+            140 LOAD_FAST                5 (L)
+            142 LOAD_ATTR                4 (text)
+            152 PRECALL                  1
+            156 CALL                     1
+            166 STORE_FAST               6 (m)
+
+ 95         168 LOAD_FAST                6 (m)
+            170 POP_JUMP_FORWARD_IF_FALSE    41 (to 254)
+
+ 96         172 LOAD_FAST                6 (m)
+            174 LOAD_METHOD              5 (group)
+            196 LOAD_CONST               3 (1)
+            198 PRECALL                  1
+            202 CALL                     1
+            212 LOAD_METHOD              6 (strip)
+            234 PRECALL                  0
+            238 CALL                     0
+            248 SWAP                     2
+            250 POP_TOP
+            252 RETURN_VALUE
+
+ 95     >>  254 JUMP_BACKWARD           72 (to 112)
+
+ 97     >>  256 LOAD_FAST                1 (cfg)
+            258 LOAD_METHOD              0 (get)
+            280 LOAD_CONST               4 ('carry_forward')
+            282 PRECALL                  1
+            286 CALL                     1
+            296 POP_JUMP_FORWARD_IF_FALSE     2 (to 302)
+            298 LOAD_FAST                2 (carry)
+            300 JUMP_FORWARD             1 (to 304)
+        >>  302 LOAD_CONST               0 (None)
+        >>  304 RETURN_VALUE
+
+ 98     >>  306 LOAD_FAST                3 (strat)
+            308 LOAD_CONST               5 (('colored_font', 'font'))
+            310 CONTAINS_OP              0
+            312 POP_JUMP_FORWARD_IF_FALSE   216 (to 746)
+
+ 99         314 LOAD_GLOBAL             15 (NULL + _compile)
+            326 LOAD_FAST                1 (cfg)
+            328 LOAD_METHOD              0 (get)
+            350 LOAD_CONST               6 ('noise')
+            352 PRECALL                  1
+            356 CALL                     1
+            366 PRECALL                  1
+            370 CALL                     1
+            380 STORE_FAST               7 (noise)
+
+100         382 LOAD_CONST               0 (None)
+            384 STORE_FAST               8 (best)
+
+101         386 LOAD_FAST                0 (lines)
+            388 GET_ITER
+        >>  390 FOR_ITER               173 (to 738)
+            392 STORE_FAST               5 (L)
+
+102         394 LOAD_FAST                5 (L)
+            396 LOAD_ATTR                8 (size)
+            406 LOAD_FAST                1 (cfg)
+            408 LOAD_METHOD              0 (get)
+            430 LOAD_CONST               7 ('min_size')
+            432 LOAD_CONST               8 (14)
+            434 PRECALL                  2
+            438 CALL                     2
+            448 COMPARE_OP               0 (<)
+            454 POP_JUMP_FORWARD_IF_FALSE     1 (to 458)
+
+103         456 JUMP_BACKWARD           34 (to 390)
+
+104     >>  458 LOAD_FAST                3 (strat)
+            460 LOAD_CONST               9 ('colored_font')
+            462 COMPARE_OP               2 (==)
+            468 POP_JUMP_FORWARD_IF_FALSE     8 (to 486)
+            470 LOAD_FAST                5 (L)
+            472 LOAD_ATTR                9 (non_black)
+            482 POP_JUMP_FORWARD_IF_TRUE     1 (to 486)
+
+105         484 JUMP_BACKWARD           48 (to 390)
+
+106     >>  486 LOAD_GLOBAL             21 (NULL + _is_noise)
+            498 LOAD_FAST                5 (L)
+            500 LOAD_ATTR                4 (text)
+            510 LOAD_FAST                7 (noise)
+            512 PRECALL                  2
+            516 CALL                     2
+            526 POP_JUMP_FORWARD_IF_TRUE    26 (to 580)
+            528 LOAD_GLOBAL              3 (NULL + re)
+            540 LOAD_ATTR               11 (search)
+            550 LOAD_CONST              10 ('[A-Za-z]')
+            552 LOAD_FAST                5 (L)
+            554 LOAD_ATTR                4 (text)
+            564 PRECALL                  2
+            568 CALL                     2
+            578 POP_JUMP_FORWARD_IF_TRUE     1 (to 582)
+
+107     >>  580 JUMP_BACKWARD           96 (to 390)
+
+108     >>  582 LOAD_FAST                1 (cfg)
+            584 LOAD_METHOD              0 (get)
+            606 LOAD_CONST              11 ('pick')
+            608 PRECALL                  1
+            612 CALL                     1
+            622 LOAD_CONST              12 ('last_above_first_field')
+            624 COMPARE_OP               2 (==)
+            630 POP_JUMP_FORWARD_IF_FALSE    26 (to 684)
+
+112         632 LOAD_FAST                5 (L)
+            634 LOAD_ATTR                4 (text)
+            644 LOAD_METHOD              6 (strip)
+            666 PRECALL                  0
+            670 CALL                     0
+            680 STORE_FAST               8 (best)
+            682 JUMP_BACKWARD          147 (to 390)
+
+114     >>  684 LOAD_FAST                5 (L)
+            686 LOAD_ATTR                4 (text)
+            696 LOAD_METHOD              6 (strip)
+            718 PRECALL                  0
+            722 CALL                     0
+            732 SWAP                     2
+            734 POP_TOP
+            736 RETURN_VALUE
+
+115     >>  738 LOAD_FAST                8 (best)
+            740 POP_JUMP_FORWARD_IF_FALSE     2 (to 746)
+
+116         742 LOAD_FAST                8 (best)
+            744 RETURN_VALUE
+
+117     >>  746 LOAD_FAST                1 (cfg)
+            748 LOAD_METHOD              0 (get)
+            770 LOAD_CONST               4 ('carry_forward')
+            772 PRECALL                  1
+            776 CALL                     1
+            786 POP_JUMP_FORWARD_IF_FALSE     2 (to 792)
+            788 LOAD_FAST                2 (carry)
+            790 JUMP_FORWARD             1 (to 794)
+        >>  792 LOAD_CONST               0 (None)
+        >>  794 RETURN_VALUE
+
+Disassembly of <code object extract_adjacent_annotation at 0x00000290C1AF3050, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\replay.py", line 123>:
+              0 MAKE_CELL               28 (label_max_dy)
+              2 MAKE_CELL               29 (noise)
+              4 MAKE_CELL               30 (top)
+              6 MAKE_CELL               31 (x_max)
+
+123           8 RESUME                   0
+
+124          10 LOAD_FAST                1 (recipe)
+             12 LOAD_CONST               1 ('fields')
+             14 BINARY_SUBSCR
+             24 STORE_FAST               3 (fcfg)
+
+125          26 LOAD_GLOBAL              1 (NULL + re)
+             38 LOAD_ATTR                1 (compile)
+             48 LOAD_FAST                3 (fcfg)
+             50 LOAD_CONST               2 ('oid_regex')
+             52 BINARY_SUBSCR
+             62 PRECALL                  1
+             66 CALL                     1
+             76 STORE_FAST               4 (oid_rx)
+
+126          78 LOAD_FAST                3 (fcfg)
+             80 LOAD_METHOD              2 (get)
+            102 LOAD_CONST               3 ('alt_regex')
+            104 PRECALL                  1
+            108 CALL                     1
+            118 POP_JUMP_FORWARD_IF_FALSE    26 (to 172)
+            120 LOAD_GLOBAL              1 (NULL + re)
+            132 LOAD_ATTR                1 (compile)
+            142 LOAD_FAST                3 (fcfg)
+            144 LOAD_CONST               3 ('alt_regex')
+            146 BINARY_SUBSCR
+            156 PRECALL                  1
+            160 CALL                     1
+            170 JUMP_FORWARD             1 (to 174)
+        >>  172 LOAD_CONST               0 (None)
+        >>  174 STORE_FAST               5 (alt_rx)
+
+127         176 LOAD_GLOBAL              7 (NULL + _compile)
+            188 LOAD_FAST                3 (fcfg)
+            190 LOAD_METHOD              2 (get)
+            212 LOAD_CONST               4 ('label_noise')
+            214 PRECALL                  1
+            218 CALL                     1
+            228 PRECALL                  1
+            232 CALL                     1
+            242 STORE_DEREF             29 (noise)
+
+128         244 LOAD_FAST                3 (fcfg)
+            246 LOAD_METHOD              2 (get)
+            268 LOAD_CONST               5 ('column_x_max')
+            270 LOAD_CONST               6 (320)
+            272 PRECALL                  2
+            276 CALL                     2
+            286 STORE_DEREF             31 (x_max)
+
+129         288 LOAD_FAST                3 (fcfg)
+            290 LOAD_METHOD              2 (get)
+            312 LOAD_CONST               7 ('oid_color_non_black')
+            314 LOAD_CONST               8 (False)
+            316 PRECALL                  2
+            320 CALL                     2
+            330 STORE_FAST               6 (need_color)
+
+130         332 LOAD_FAST                3 (fcfg)
+            334 LOAD_METHOD              2 (get)
+            356 LOAD_CONST               9 ('annotation_group_dy')
+            358 LOAD_CONST              10 (16)
+            360 PRECALL                  2
+            364 CALL                     2
+            374 STORE_FAST               7 (join_dy)
+
+131         376 LOAD_FAST                3 (fcfg)
+            378 LOAD_METHOD              2 (get)
+            400 LOAD_CONST              11 ('label_max_dy')
+            402 LOAD_CONST              12 (160)
+            404 PRECALL                  2
+            408 CALL                     2
+            418 STORE_DEREF             28 (label_max_dy)
+
+133         420 LOAD_CONST               0 (None)
+            422 STORE_FAST               8 (carry)
+
+134         424 LOAD_FAST                0 (pages)
+            426 GET_ITER
+        >>  428 EXTENDED_ARG             2
+            430 FOR_ITER               759 (to 1950)
+            432 UNPACK_SEQUENCE          2
+            436 STORE_FAST               9 (pno)
+            438 STORE_FAST              10 (lines)
+
+135         440 LOAD_CLOSURE            31 (x_max)
+            442 BUILD_TUPLE              1
+            444 LOAD_CONST              13 (<code object <listcomp> at 0x00000290C3A78A80, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\replay.py", line 135>)
+            446 MAKE_FUNCTION            8 (closure)
+            448 LOAD_FAST               10 (lines)
+            450 GET_ITER
+            452 PRECALL                  0
+            456 CALL                     0
+            466 STORE_FAST              11 (col)
+
+137         468 BUILD_LIST               0
+            470 BUILD_LIST               0
+            472 STORE_FAST              13 (cur)
+            474 STORE_FAST              12 (groups)
+
+138         476 LOAD_FAST               11 (col)
+            478 GET_ITER
+        >>  480 FOR_ITER               162 (to 806)
+            482 STORE_FAST              14 (L)
+
+139         484 LOAD_GLOBAL              9 (NULL + bool)
+            496 LOAD_GLOBAL              1 (NULL + re)
+            508 LOAD_ATTR                5 (match)
+            518 LOAD_CONST              14 ('^\\[.+')
+            520 LOAD_FAST               14 (L)
+            522 LOAD_ATTR                6 (text)
+            532 PRECALL                  2
+            536 CALL                     2
+            546 PRECALL                  1
+            550 CALL                     1
+            560 JUMP_IF_FALSE_OR_POP     9 (to 580)
+            562 LOAD_FAST               14 (L)
+            564 LOAD_ATTR                7 (non_black)
+            574 JUMP_IF_TRUE_OR_POP      2 (to 580)
+            576 LOAD_FAST                6 (need_color)
+            578 UNARY_NOT
+        >>  580 STORE_FAST              15 (is_annot)
+
+140         582 LOAD_FAST               15 (is_annot)
+            584 POP_JUMP_FORWARD_IF_FALSE    79 (to 744)
+            586 LOAD_FAST               13 (cur)
+            588 POP_JUMP_FORWARD_IF_FALSE    55 (to 700)
+            590 LOAD_FAST               14 (L)
+            592 LOAD_ATTR                8 (y0)
+            602 LOAD_FAST               13 (cur)
+            604 LOAD_CONST              15 (-1)
+            606 BINARY_SUBSCR
+            616 LOAD_ATTR                8 (y0)
+            626 BINARY_OP               10 (-)
+            630 LOAD_FAST                7 (join_dy)
+            632 LOAD_GLOBAL             19 (NULL + max)
+            644 LOAD_CONST              16 (1)
+            646 LOAD_GLOBAL             21 (NULL + len)
+            658 LOAD_FAST               13 (cur)
+            660 PRECALL                  1
+            664 CALL                     1
+            674 PRECALL                  2
+            678 CALL                     2
+            688 BINARY_OP                5 (*)
+            692 COMPARE_OP               1 (<=)
+            698 POP_JUMP_FORWARD_IF_FALSE    22 (to 744)
+
+141     >>  700 LOAD_FAST               13 (cur)
+            702 LOAD_METHOD             11 (append)
+            724 LOAD_FAST               14 (L)
+            726 PRECALL                  1
+            730 CALL                     1
+            740 POP_TOP
+            742 JUMP_BACKWARD          132 (to 480)
+
+143     >>  744 LOAD_FAST               13 (cur)
+            746 POP_JUMP_FORWARD_IF_FALSE    21 (to 790)
+
+144         748 LOAD_FAST               12 (groups)
+            750 LOAD_METHOD             11 (append)
+            772 LOAD_FAST               13 (cur)
+            774 PRECALL                  1
+            778 CALL                     1
+            788 POP_TOP
+
+145     >>  790 LOAD_FAST               15 (is_annot)
+            792 POP_JUMP_FORWARD_IF_FALSE     3 (to 800)
+            794 LOAD_FAST               14 (L)
+            796 BUILD_LIST               1
+            798 JUMP_FORWARD             1 (to 802)
+        >>  800 BUILD_LIST               0
+        >>  802 STORE_FAST              13 (cur)
+            804 JUMP_BACKWARD          163 (to 480)
+
+146     >>  806 LOAD_FAST               13 (cur)
+            808 POP_JUMP_FORWARD_IF_FALSE    21 (to 852)
+
+147         810 LOAD_FAST               12 (groups)
+            812 LOAD_METHOD             11 (append)
+            834 LOAD_FAST               13 (cur)
+            836 PRECALL                  1
+            840 CALL                     1
+            850 POP_TOP
+
+149     >>  852 LOAD_FAST                1 (recipe)
+            854 LOAD_CONST              17 ('form_name')
+            856 BINARY_SUBSCR
+            866 STORE_FAST              16 (form_cfg)
+
+150         868 LOAD_GLOBAL             25 (NULL + find_form_name)
+            880 LOAD_FAST               10 (lines)
+            882 LOAD_FAST               16 (form_cfg)
+            884 LOAD_FAST                8 (carry)
+            886 PRECALL                  3
+            890 CALL                     3
+            900 STORE_FAST              17 (form)
+
+151         902 LOAD_CONST               8 (False)
+            904 STORE_FAST              18 (got_field)
+
+152         906 LOAD_FAST               12 (groups)
+            908 GET_ITER
+        >>  910 EXTENDED_ARG             1
+            912 FOR_ITER               494 (to 1902)
+            914 STORE_FAST              19 (g)
+
+153         916 LOAD_CONST               0 (None)
+            918 COPY                     1
+            920 STORE_FAST              20 (oid)
+            922 STORE_FAST              21 (alt)
+
+154         924 LOAD_FAST               19 (g)
+            926 GET_ITER
+        >>  928 FOR_ITER               107 (to 1144)
+            930 STORE_FAST              14 (L)
+
+155         932 LOAD_FAST                4 (oid_rx)
+            934 LOAD_METHOD              5 (match)
+            956 LOAD_FAST               14 (L)
+            958 LOAD_ATTR                6 (text)
+            968 PRECALL                  1
+            972 CALL                     1
+            982 STORE_FAST              22 (m)
+
+156         984 LOAD_FAST               22 (m)
+            986 POP_JUMP_FORWARD_IF_FALSE    24 (to 1036)
+            988 LOAD_FAST               20 (oid)
+            990 POP_JUMP_FORWARD_IF_TRUE    22 (to 1036)
+
+157         992 LOAD_FAST               22 (m)
+            994 LOAD_METHOD             13 (group)
+           1016 LOAD_CONST              16 (1)
+           1018 PRECALL                  1
+           1022 CALL                     1
+           1032 STORE_FAST              20 (oid)
+           1034 JUMP_BACKWARD           54 (to 928)
+
+158     >> 1036 LOAD_FAST                5 (alt_rx)
+           1038 POP_JUMP_FORWARD_IF_FALSE    51 (to 1142)
+
+159        1040 LOAD_FAST                5 (alt_rx)
+           1042 LOAD_METHOD              5 (match)
+           1064 LOAD_FAST               14 (L)
+           1066 LOAD_ATTR                6 (text)
+           1076 PRECALL                  1
+           1080 CALL                     1
+           1090 STORE_FAST              23 (m2)
+
+160        1092 LOAD_FAST               23 (m2)
+           1094 POP_JUMP_FORWARD_IF_FALSE    23 (to 1142)
+           1096 LOAD_FAST               21 (alt)
+           1098 POP_JUMP_FORWARD_IF_TRUE    21 (to 1142)
+
+161        1100 LOAD_FAST               23 (m2)
+           1102 LOAD_METHOD             13 (group)
+           1124 LOAD_CONST              16 (1)
+           1126 PRECALL                  1
+           1130 CALL                     1
+           1140 STORE_FAST              21 (alt)
+        >> 1142 JUMP_BACKWARD          108 (to 928)
+
+162     >> 1144 LOAD_FAST                3 (fcfg)
+           1146 LOAD_METHOD              2 (get)
+           1168 LOAD_CONST              18 ('alt_is_primary')
+           1170 PRECALL                  1
+           1174 CALL                     1
+           1184 POP_JUMP_FORWARD_IF_FALSE     6 (to 1198)
+           1186 LOAD_FAST               21 (alt)
+           1188 POP_JUMP_FORWARD_IF_FALSE     4 (to 1198)
+
+163        1190 LOAD_FAST               21 (alt)
+           1192 LOAD_FAST               20 (oid)
+           1194 STORE_FAST              21 (alt)
+           1196 STORE_FAST              20 (oid)
+
+164     >> 1198 LOAD_FAST               20 (oid)
+           1200 POP_JUMP_FORWARD_IF_TRUE     1 (to 1204)
+
+165        1202 JUMP_BACKWARD          147 (to 910)
+
+167     >> 1204 LOAD_FAST               19 (g)
+           1206 LOAD_CONST              19 (0)
+           1208 BINARY_SUBSCR
+           1218 STORE_DEREF             30 (top)
+
+168        1220 LOAD_CLOSURE            28 (label_max_dy)
+           1222 LOAD_CLOSURE            29 (noise)
+           1224 LOAD_CLOSURE            30 (top)
+           1226 BUILD_TUPLE              3
+           1228 LOAD_CONST              20 (<code object <listcomp> at 0x00000290C39FA8B0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\replay.py", line 168>)
+           1230 MAKE_FUNCTION            8 (closure)
+           1232 LOAD_FAST               11 (col)
+           1234 GET_ITER
+           1236 PRECALL                  0
+           1240 CALL                     0
+           1250 STORE_FAST              24 (cand)
+
+171        1252 LOAD_FAST               24 (cand)
+           1254 POP_JUMP_FORWARD_IF_TRUE     1 (to 1258)
+
+172        1256 JUMP_BACKWARD          174 (to 910)
+
+173     >> 1258 LOAD_FAST               24 (cand)
+           1260 LOAD_METHOD             14 (sort)
+           1282 LOAD_CONST              21 (<code object <lambda> at 0x00000290C3A6D6F0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\replay.py", line 173>)
+           1284 MAKE_FUNCTION            0
+           1286 KW_NAMES                22
+           1288 PRECALL                  1
+           1292 CALL                     1
+           1302 POP_TOP
+
+174        1304 LOAD_FAST               24 (cand)
+           1306 LOAD_CONST              15 (-1)
+           1308 BINARY_SUBSCR
+           1318 LOAD_ATTR                6 (text)
+           1328 BUILD_LIST               1
+           1330 STORE_FAST              25 (label_parts)
+
+176        1332 LOAD_GLOBAL             21 (NULL + len)
+           1344 LOAD_FAST               24 (cand)
+           1346 PRECALL                  1
+           1350 CALL                     1
+           1360 LOAD_CONST              23 (2)
+           1362 BINARY_OP               10 (-)
+           1366 STORE_FAST              26 (k)
+
+177        1368 LOAD_FAST               26 (k)
+           1370 LOAD_CONST              19 (0)
+           1372 COMPARE_OP               5 (>=)
+           1378 POP_JUMP_FORWARD_IF_FALSE   150 (to 1680)
+           1380 LOAD_FAST               24 (cand)
+           1382 LOAD_FAST               26 (k)
+           1384 LOAD_CONST              16 (1)
+           1386 BINARY_OP                0 (+)
+           1390 BINARY_SUBSCR
+           1400 LOAD_ATTR                8 (y0)
+           1410 LOAD_FAST               24 (cand)
+           1412 LOAD_FAST               26 (k)
+           1414 BINARY_SUBSCR
+           1424 LOAD_ATTR                8 (y0)
+           1434 BINARY_OP               10 (-)
+           1438 LOAD_FAST                7 (join_dy)
+           1440 COMPARE_OP               1 (<=)
+           1446 POP_JUMP_FORWARD_IF_FALSE   116 (to 1680)
+           1448 LOAD_GLOBAL             21 (NULL + len)
+           1460 LOAD_FAST               25 (label_parts)
+           1462 PRECALL                  1
+           1466 CALL                     1
+           1476 LOAD_CONST              24 (4)
+           1478 COMPARE_OP               0 (<)
+           1484 POP_JUMP_FORWARD_IF_FALSE    97 (to 1680)
+
+178     >> 1486 LOAD_FAST               25 (label_parts)
+           1488 LOAD_METHOD             15 (insert)
+           1510 LOAD_CONST              19 (0)
+           1512 LOAD_FAST               24 (cand)
+           1514 LOAD_FAST               26 (k)
+           1516 BINARY_SUBSCR
+           1526 LOAD_ATTR                6 (text)
+           1536 PRECALL                  2
+           1540 CALL                     2
+           1550 POP_TOP
+
+179        1552 LOAD_FAST               26 (k)
+           1554 LOAD_CONST              16 (1)
+           1556 BINARY_OP               23 (-=)
+           1560 STORE_FAST              26 (k)
+
+177        1562 LOAD_FAST               26 (k)
+           1564 LOAD_CONST              19 (0)
+           1566 COMPARE_OP               5 (>=)
+           1572 POP_JUMP_FORWARD_IF_FALSE    53 (to 1680)
+           1574 LOAD_FAST               24 (cand)
+           1576 LOAD_FAST               26 (k)
+           1578 LOAD_CONST              16 (1)
+           1580 BINARY_OP                0 (+)
+           1584 BINARY_SUBSCR
+           1594 LOAD_ATTR                8 (y0)
+           1604 LOAD_FAST               24 (cand)
+           1606 LOAD_FAST               26 (k)
+           1608 BINARY_SUBSCR
+           1618 LOAD_ATTR                8 (y0)
+           1628 BINARY_OP               10 (-)
+           1632 LOAD_FAST                7 (join_dy)
+           1634 COMPARE_OP               1 (<=)
+           1640 POP_JUMP_FORWARD_IF_FALSE    19 (to 1680)
+           1642 LOAD_GLOBAL             21 (NULL + len)
+           1654 LOAD_FAST               25 (label_parts)
+           1656 PRECALL                  1
+           1660 CALL                     1
+           1670 LOAD_CONST              24 (4)
+           1672 COMPARE_OP               0 (<)
+           1678 POP_JUMP_BACKWARD_IF_TRUE    97 (to 1486)
+
+180     >> 1680 LOAD_GLOBAL              1 (NULL + re)
+           1692 LOAD_ATTR               16 (sub)
+           1702 LOAD_CONST              25 ('\\s+')
+           1704 LOAD_CONST              26 (' ')
+           1706 LOAD_CONST              26 (' ')
+           1708 LOAD_METHOD             17 (join)
+           1730 LOAD_FAST               25 (label_parts)
+           1732 PRECALL                  1
+           1736 CALL                     1
+           1746 PRECALL                  3
+           1750 CALL                     3
+           1760 LOAD_METHOD             18 (strip)
+           1782 PRECALL                  0
+           1786 CALL                     0
+           1796 STORE_FAST              27 (label)
+
+181        1798 LOAD_FAST                2 (result)
+           1800 LOAD_ATTR               19 (records)
+           1810 LOAD_METHOD             11 (append)
+           1832 LOAD_GLOBAL             41 (NULL + FieldRec)
+           1844 LOAD_FAST               17 (form)
+           1846 JUMP_IF_TRUE_OR_POP      1 (to 1850)
+           1848 LOAD_CONST              27 ('')
+        >> 1850 LOAD_FAST               27 (label)
+           1852 LOAD_FAST               20 (oid)
+           1854 LOAD_FAST               21 (alt)
+           1856 LOAD_FAST                9 (pno)
+           1858 LOAD_CONST              16 (1)
+           1860 BINARY_OP                0 (+)
+           1864 PRECALL                  5
+           1868 CALL                     5
+           1878 PRECALL                  1
+           1882 CALL                     1
+           1892 POP_TOP
+
+182        1894 LOAD_CONST              28 (True)
+           1896 STORE_FAST              18 (got_field)
+           1898 EXTENDED_ARG             1
+           1900 JUMP_BACKWARD          496 (to 910)
+
+183     >> 1902 LOAD_FAST               18 (got_field)
+           1904 POP_JUMP_FORWARD_IF_FALSE    16 (to 1938)
+
+184        1906 LOAD_FAST                2 (result)
+           1908 COPY                     1
+           1910 LOAD_ATTR               21 (pages_with_fields)
+           1920 LOAD_CONST              16 (1)
+           1922 BINARY_OP               13 (+=)
+           1926 SWAP                     2
+           1928 STORE_ATTR              21 (pages_with_fields)
+
+185     >> 1938 LOAD_FAST               17 (form)
+           1940 POP_JUMP_FORWARD_IF_FALSE     2 (to 1946)
+
+186        1942 LOAD_FAST               17 (form)
+           1944 STORE_FAST               8 (carry)
+        >> 1946 EXTENDED_ARG             2
+           1948 JUMP_BACKWARD          761 (to 428)
+
+134     >> 1950 LOAD_CONST               0 (None)
+           1952 RETURN_VALUE
+
+Disassembly of <code object <listcomp> at 0x00000290C3A78A80, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\replay.py", line 135>:
+              0 COPY_FREE_VARS           1
+
+135           2 RESUME                   0
+              4 BUILD_LIST               0
+              6 LOAD_FAST                0 (.0)
+        >>    8 FOR_ITER                15 (to 40)
+             10 STORE_FAST               1 (L)
+             12 LOAD_FAST                1 (L)
+             14 LOAD_ATTR                0 (x0)
+             24 LOAD_DEREF               2 (x_max)
+             26 COMPARE_OP               1 (<=)
+             32 POP_JUMP_BACKWARD_IF_FALSE    13 (to 8)
+             34 LOAD_FAST                1 (L)
+             36 LIST_APPEND              2
+             38 JUMP_BACKWARD           16 (to 8)
+        >>   40 RETURN_VALUE
+
+Disassembly of <code object <listcomp> at 0x00000290C39FA8B0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\replay.py", line 168>:
+              0 COPY_FREE_VARS           3
+
+168           2 RESUME                   0
+              4 BUILD_LIST               0
+              6 LOAD_FAST                0 (.0)
+        >>    8 FOR_ITER                89 (to 188)
+             10 STORE_FAST               1 (L)
+
+169          12 LOAD_FAST                1 (L)
+             14 LOAD_ATTR                0 (y1)
+             24 LOAD_DEREF               4 (top)
+             26 LOAD_ATTR                1 (y0)
+             36 LOAD_CONST               0 (2)
+             38 BINARY_OP                0 (+)
+             42 COMPARE_OP               1 (<=)
+             48 POP_JUMP_BACKWARD_IF_FALSE    21 (to 8)
+             50 LOAD_DEREF               4 (top)
+             52 LOAD_ATTR                1 (y0)
+             62 LOAD_FAST                1 (L)
+             64 LOAD_ATTR                1 (y0)
+             74 BINARY_OP               10 (-)
+             78 LOAD_DEREF               2 (label_max_dy)
+             80 COMPARE_OP               1 (<=)
+             86 POP_JUMP_BACKWARD_IF_FALSE    40 (to 8)
+
+170          88 LOAD_GLOBAL              5 (NULL + re)
+            100 LOAD_ATTR                3 (match)
+            110 LOAD_CONST               1 ('^\\[.+')
+            112 LOAD_FAST                1 (L)
+            114 LOAD_ATTR                4 (text)
+            124 PRECALL                  2
+            128 CALL                     2
+
+169         138 POP_JUMP_BACKWARD_IF_TRUE    66 (to 8)
+
+170         140 LOAD_GLOBAL             11 (NULL + _is_noise)
+            152 LOAD_FAST                1 (L)
+            154 LOAD_ATTR                4 (text)
+            164 LOAD_DEREF               3 (noise)
+            166 PRECALL                  2
+            170 CALL                     2
+
+169         180 POP_JUMP_BACKWARD_IF_TRUE    87 (to 8)
+
+168         182 LOAD_FAST                1 (L)
+
+169         184 LIST_APPEND              2
+            186 JUMP_BACKWARD           90 (to 8)
+        >>  188 RETURN_VALUE
+
+Disassembly of <code object <lambda> at 0x00000290C3A6D6F0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\replay.py", line 173>:
+173           0 RESUME                   0
+              2 LOAD_FAST                0 (L)
+              4 LOAD_ATTR                0 (y0)
+             14 RETURN_VALUE
+
+Disassembly of <code object extract_anchored_blocks at 0x00000290C1B0E060, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\replay.py", line 192>:
+              0 MAKE_CELL               21 (L)
+              2 MAKE_CELL               22 (line_no_x)
+
+192           4 RESUME                   0
+
+193           6 LOAD_FAST                1 (recipe)
+              8 LOAD_CONST               1 ('fields')
+             10 BINARY_SUBSCR
+             20 STORE_FAST               3 (fcfg)
+
+194          22 LOAD_GLOBAL              1 (NULL + re)
+             34 LOAD_ATTR                1 (compile)
+             44 LOAD_FAST                3 (fcfg)
+             46 LOAD_CONST               2 ('activity_regex')
+             48 BINARY_SUBSCR
+             58 PRECALL                  1
+             62 CALL                     1
+             72 STORE_FAST               4 (act_rx)
+
+195          74 LOAD_GLOBAL              1 (NULL + re)
+             86 LOAD_ATTR                1 (compile)
+             96 LOAD_FAST                3 (fcfg)
+             98 LOAD_CONST               3 ('oid_regex')
+            100 BINARY_SUBSCR
+            110 PRECALL                  1
+            114 CALL                     1
+            124 STORE_FAST               5 (oid_rx)
+
+196         126 LOAD_FAST                3 (fcfg)
+            128 LOAD_METHOD              2 (get)
+            150 LOAD_CONST               4 ('activity_x')
+            152 LOAD_CONST               5 (150)
+            154 LOAD_CONST               6 (200)
+            156 BUILD_LIST               2
+            158 PRECALL                  2
+            162 CALL                     2
+            172 UNPACK_SEQUENCE          2
+            176 STORE_FAST               6 (ax_min)
+            178 STORE_FAST               7 (ax_max)
+
+197         180 LOAD_FAST                3 (fcfg)
+            182 LOAD_METHOD              2 (get)
+            204 LOAD_CONST               7 ('line_number_x_min')
+            206 LOAD_CONST               8 (460)
+            208 PRECALL                  2
+            212 CALL                     2
+            222 STORE_DEREF             22 (line_no_x)
+
+199         224 LOAD_FAST                0 (pages)
+            226 GET_ITER
+        >>  228 EXTENDED_ARG             1
+            230 FOR_ITER               511 (to 1254)
+            232 UNPACK_SEQUENCE          2
+            236 STORE_FAST               8 (pno)
+            238 STORE_FAST               9 (lines)
+
+200         240 BUILD_LIST               0
+            242 STORE_FAST              10 (blocks)
+
+201         244 LOAD_FAST                9 (lines)
+            246 GET_ITER
+        >>  248 FOR_ITER               192 (to 634)
+            250 STORE_DEREF             21 (L)
+
+202         252 LOAD_FAST                6 (ax_min)
+            254 LOAD_DEREF              21 (L)
+            256 LOAD_ATTR                3 (x0)
+            266 SWAP                     2
+            268 COPY                     2
+            270 COMPARE_OP               1 (<=)
+            276 POP_JUMP_FORWARD_IF_FALSE     6 (to 290)
+            278 LOAD_FAST                7 (ax_max)
+            280 COMPARE_OP               1 (<=)
+            286 POP_JUMP_FORWARD_IF_FALSE    10 (to 308)
+            288 JUMP_FORWARD             2 (to 294)
+        >>  290 POP_TOP
+            292 JUMP_FORWARD             7 (to 308)
+        >>  294 LOAD_DEREF              21 (L)
+            296 LOAD_ATTR                4 (bold)
+            306 POP_JUMP_FORWARD_IF_TRUE     1 (to 310)
+
+203     >>  308 JUMP_BACKWARD           31 (to 248)
+
+204     >>  310 LOAD_GLOBAL             11 (NULL + any)
+            322 LOAD_CLOSURE            21 (L)
+            324 LOAD_CLOSURE            22 (line_no_x)
+            326 BUILD_TUPLE              2
+            328 LOAD_CONST               9 (<code object <genexpr> at 0x00000290C3A80880, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\replay.py", line 204>)
+            330 MAKE_FUNCTION            8 (closure)
+            332 LOAD_FAST                9 (lines)
+            334 GET_ITER
+            336 PRECALL                  0
+            340 CALL                     0
+            350 PRECALL                  1
+            354 CALL                     1
+            364 STORE_FAST              11 (same_row_num)
+
+205         366 LOAD_FAST                4 (act_rx)
+            368 LOAD_METHOD              6 (match)
+            390 LOAD_DEREF              21 (L)
+            392 LOAD_ATTR                7 (text)
+            402 PRECALL                  1
+            406 CALL                     1
+            416 STORE_FAST              12 (m)
+
+206         418 LOAD_FAST               12 (m)
+            420 POP_JUMP_FORWARD_IF_FALSE   105 (to 632)
+            422 LOAD_FAST               11 (same_row_num)
+            424 POP_JUMP_FORWARD_IF_FALSE   103 (to 632)
+
+207         426 LOAD_FAST               10 (blocks)
+            428 LOAD_METHOD              8 (append)
+            450 LOAD_DEREF              21 (L)
+            452 LOAD_ATTR                9 (y0)
+            462 LOAD_FAST               12 (m)
+            464 LOAD_METHOD             10 (group)
+            486 LOAD_CONST              10 (1)
+            488 PRECALL                  1
+            492 CALL                     1
+            502 LOAD_METHOD             11 (strip)
+            524 PRECALL                  0
+            528 CALL                     0
+            538 LOAD_FAST               12 (m)
+            540 LOAD_METHOD             10 (group)
+            562 LOAD_CONST              11 (2)
+            564 PRECALL                  1
+            568 CALL                     1
+            578 LOAD_METHOD             11 (strip)
+            600 PRECALL                  0
+            604 CALL                     0
+            614 BUILD_TUPLE              3
+            616 PRECALL                  1
+            620 CALL                     1
+            630 POP_TOP
+        >>  632 JUMP_BACKWARD          193 (to 248)
+
+208     >>  634 LOAD_FAST               10 (blocks)
+            636 POP_JUMP_FORWARD_IF_TRUE     1 (to 640)
+
+209         638 JUMP_BACKWARD          206 (to 228)
+
+210     >>  640 LOAD_FAST                2 (result)
+            642 COPY                     1
+            644 LOAD_ATTR               12 (pages_with_fields)
+            654 LOAD_CONST              10 (1)
+            656 BINARY_OP               13 (+=)
+            660 SWAP                     2
+            662 STORE_ATTR              12 (pages_with_fields)
+
+211         672 LOAD_CONST              12 (<code object <listcomp> at 0x00000290C3AA4110, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\replay.py", line 211>)
+            674 MAKE_FUNCTION            0
+            676 LOAD_FAST               10 (blocks)
+            678 GET_ITER
+            680 PRECALL                  0
+            684 CALL                     0
+            694 LOAD_CONST              13 (1000000000)
+            696 BUILD_LIST               1
+            698 BINARY_OP                0 (+)
+            702 STORE_FAST              13 (bounds)
+
+212         704 LOAD_GLOBAL             27 (NULL + enumerate)
+            716 LOAD_FAST               10 (blocks)
+            718 PRECALL                  1
+            722 CALL                     1
+            732 GET_ITER
+        >>  734 EXTENDED_ARG             1
+            736 FOR_ITER               256 (to 1250)
+            738 UNPACK_SEQUENCE          2
+            742 STORE_FAST              14 (i)
+            744 UNPACK_SEQUENCE          3
+            748 STORE_FAST              15 (y)
+            750 STORE_FAST              16 (form)
+            752 STORE_FAST              17 (fieldname)
+
+213         754 BUILD_LIST               0
+            756 LOAD_CONST              14 ('')
+            758 STORE_FAST              19 (question)
+            760 STORE_FAST              18 (oids)
+
+214         762 LOAD_FAST                9 (lines)
+            764 GET_ITER
+        >>  766 FOR_ITER               159 (to 1086)
+            768 STORE_DEREF             21 (L)
+
+215         770 LOAD_FAST               15 (y)
+            772 LOAD_DEREF              21 (L)
+            774 LOAD_ATTR                9 (y0)
+            784 SWAP                     2
+            786 COPY                     2
+            788 COMPARE_OP               0 (<)
+            794 POP_JUMP_FORWARD_IF_FALSE    15 (to 826)
+            796 LOAD_FAST               13 (bounds)
+            798 LOAD_FAST               14 (i)
+            800 LOAD_CONST              10 (1)
+            802 BINARY_OP                0 (+)
+            806 BINARY_SUBSCR
+            816 COMPARE_OP               0 (<)
+            822 POP_JUMP_FORWARD_IF_TRUE     3 (to 830)
+            824 JUMP_FORWARD             1 (to 828)
+        >>  826 POP_TOP
+
+216     >>  828 JUMP_BACKWARD           32 (to 766)
+
+217     >>  830 LOAD_FAST                5 (oid_rx)
+            832 LOAD_METHOD             14 (search)
+            854 LOAD_DEREF              21 (L)
+            856 LOAD_ATTR                7 (text)
+            866 PRECALL                  1
+            870 CALL                     1
+            880 STORE_FAST              12 (m)
+
+218         882 LOAD_FAST               12 (m)
+            884 POP_JUMP_FORWARD_IF_FALSE    41 (to 968)
+
+219         886 LOAD_FAST               18 (oids)
+            888 LOAD_METHOD              8 (append)
+            910 LOAD_FAST               12 (m)
+            912 LOAD_METHOD             10 (group)
+            934 LOAD_CONST              10 (1)
+            936 PRECALL                  1
+            940 CALL                     1
+            950 PRECALL                  1
+            954 CALL                     1
+            964 POP_TOP
+            966 JUMP_BACKWARD          101 (to 766)
+
+220     >>  968 LOAD_FAST               19 (question)
+            970 POP_JUMP_FORWARD_IF_TRUE    56 (to 1084)
+            972 LOAD_DEREF              21 (L)
+            974 LOAD_ATTR                4 (bold)
+            984 POP_JUMP_FORWARD_IF_FALSE    49 (to 1084)
+            986 LOAD_FAST                6 (ax_min)
+            988 LOAD_DEREF              21 (L)
+            990 LOAD_ATTR                3 (x0)
+           1000 SWAP                     2
+           1002 COPY                     2
+           1004 COMPARE_OP               1 (<=)
+           1010 POP_JUMP_FORWARD_IF_FALSE     9 (to 1030)
+           1012 LOAD_FAST                7 (ax_max)
+           1014 LOAD_CONST              15 (5)
+           1016 BINARY_OP                0 (+)
+           1020 COMPARE_OP               1 (<=)
+           1026 POP_JUMP_FORWARD_IF_FALSE    28 (to 1084)
+           1028 JUMP_FORWARD             2 (to 1034)
+        >> 1030 POP_TOP
+           1032 JUMP_BACKWARD          134 (to 766)
+
+221     >> 1034 LOAD_DEREF              21 (L)
+           1036 LOAD_ATTR                7 (text)
+           1046 LOAD_METHOD             11 (strip)
+           1068 PRECALL                  0
+           1072 CALL                     0
+           1082 STORE_FAST              19 (question)
+        >> 1084 JUMP_BACKWARD          160 (to 766)
+
+222     >> 1086 LOAD_GLOBAL             30 (dict)
+           1098 LOAD_METHOD             16 (fromkeys)
+           1120 LOAD_FAST               18 (oids)
+           1122 PRECALL                  1
+           1126 CALL                     1
+           1136 JUMP_IF_TRUE_OR_POP      2 (to 1142)
+           1138 LOAD_CONST               0 (None)
+           1140 BUILD_LIST               1
+        >> 1142 GET_ITER
+        >> 1144 FOR_ITER                50 (to 1246)
+           1146 STORE_FAST              20 (oid)
+
+223        1148 LOAD_FAST                2 (result)
+           1150 LOAD_ATTR               17 (records)
+           1160 LOAD_METHOD              8 (append)
+           1182 LOAD_GLOBAL             37 (NULL + FieldRec)
+           1194 LOAD_FAST               16 (form)
+           1196 LOAD_FAST               17 (fieldname)
+           1198 LOAD_FAST               20 (oid)
+           1200 LOAD_CONST               0 (None)
+           1202 LOAD_FAST                8 (pno)
+           1204 LOAD_CONST              10 (1)
+           1206 BINARY_OP                0 (+)
+           1210 LOAD_FAST               19 (question)
+           1212 KW_NAMES                16
+           1214 PRECALL                  6
+           1218 CALL                     6
+           1228 PRECALL                  1
+           1232 CALL                     1
+           1242 POP_TOP
+           1244 JUMP_BACKWARD           51 (to 1144)
+
+222     >> 1246 EXTENDED_ARG             1
+           1248 JUMP_BACKWARD          258 (to 734)
+
+212     >> 1250 EXTENDED_ARG             2
+           1252 JUMP_BACKWARD          513 (to 228)
+
+199     >> 1254 LOAD_CONST               0 (None)
+           1256 RETURN_VALUE
+
+Disassembly of <code object <genexpr> at 0x00000290C3A80880, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\replay.py", line 204>:
+              0 COPY_FREE_VARS           2
+
+204           2 RETURN_GENERATOR
+              4 POP_TOP
+              6 RESUME                   0
+              8 LOAD_FAST                0 (.0)
+        >>   10 FOR_ITER                47 (to 106)
+             12 STORE_FAST               1 (o)
+             14 LOAD_GLOBAL              1 (NULL + abs)
+             26 LOAD_FAST                1 (o)
+             28 LOAD_ATTR                1 (y0)
+             38 LOAD_DEREF               2 (L)
+             40 LOAD_ATTR                1 (y0)
+             50 BINARY_OP               10 (-)
+             54 PRECALL                  1
+             58 CALL                     1
+             68 LOAD_CONST               0 (4)
+             70 COMPARE_OP               0 (<)
+             76 JUMP_IF_FALSE_OR_POP    10 (to 98)
+             78 LOAD_FAST                1 (o)
+             80 LOAD_ATTR                2 (x0)
+             90 LOAD_DEREF               3 (line_no_x)
+             92 COMPARE_OP               5 (>=)
+        >>   98 YIELD_VALUE
+            100 RESUME                   1
+            102 POP_TOP
+            104 JUMP_BACKWARD           48 (to 10)
+        >>  106 LOAD_CONST               1 (None)
+            108 RETURN_VALUE
+
+Disassembly of <code object <listcomp> at 0x00000290C3AA4110, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\replay.py", line 211>:
+211           0 RESUME                   0
+              2 BUILD_LIST               0
+              4 LOAD_FAST                0 (.0)
+        >>    6 FOR_ITER                10 (to 28)
+              8 STORE_FAST               1 (b)
+             10 LOAD_FAST                1 (b)
+             12 LOAD_CONST               0 (0)
+             14 BINARY_SUBSCR
+             24 LIST_APPEND              2
+             26 JUMP_BACKWARD           11 (to 6)
+        >>   28 RETURN_VALUE
+
+Disassembly of <code object extract_numbered_join at 0x00000290C1B0EB30, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\replay.py", line 229>:
+              0 MAKE_CELL               20 (pno)
+              2 MAKE_CELL               21 (texts)
+
+229           4 RESUME                   0
+
+230           6 LOAD_FAST                1 (recipe)
+              8 LOAD_CONST               1 ('fields')
+             10 BINARY_SUBSCR
+             20 STORE_FAST               3 (fcfg)
+
+231          22 LOAD_GLOBAL              1 (NULL + re)
+             34 LOAD_ATTR                1 (compile)
+             44 LOAD_FAST                1 (recipe)
+             46 LOAD_CONST               2 ('form_name')
+             48 BINARY_SUBSCR
+             58 LOAD_CONST               3 ('regex')
+             60 BINARY_SUBSCR
+             70 PRECALL                  1
+             74 CALL                     1
+             84 STORE_FAST               4 (form_rx)
+
+232          86 LOAD_GLOBAL              5 (NULL + _compile)
+             98 LOAD_FAST                3 (fcfg)
+            100 LOAD_CONST               4 ('definition_page_all')
+            102 BINARY_SUBSCR
+            112 PRECALL                  1
+            116 CALL                     1
+            126 STORE_FAST               5 (def_marker)
+
+233         128 LOAD_GLOBAL              1 (NULL + re)
+            140 LOAD_ATTR                1 (compile)
+            150 LOAD_FAST                3 (fcfg)
+            152 LOAD_METHOD              3 (get)
+            174 LOAD_CONST               5 ('data_number_regex')
+            176 LOAD_CONST               6 ('^(\\d+)(\\.\\d+)?$')
+            178 PRECALL                  2
+            182 CALL                     2
+            192 PRECALL                  1
+            196 CALL                     1
+            206 STORE_FAST               6 (num_rx)
+
+234         208 LOAD_GLOBAL              5 (NULL + _compile)
+            220 LOAD_FAST                3 (fcfg)
+            222 LOAD_METHOD              3 (get)
+            244 LOAD_CONST               7 ('label_noise')
+            246 PRECALL                  1
+            250 CALL                     1
+            260 PRECALL                  1
+            264 CALL                     1
+            274 STORE_FAST               7 (noise)
+
+236         276 BUILD_MAP                0
+            278 STORE_FAST               8 (data)
+
+237         280 BUILD_MAP                0
+            282 STORE_FAST               9 (codes)
+
+239         284 LOAD_CONST               0 (None)
+            286 STORE_FAST              10 (carry)
+
+240         288 LOAD_FAST                0 (pages)
+            290 GET_ITER
+        >>  292 EXTENDED_ARG             1
+            294 FOR_ITER               348 (to 992)
+            296 UNPACK_SEQUENCE          2
+            300 STORE_DEREF             20 (pno)
+            302 STORE_FAST              11 (lines)
+
+241         304 LOAD_CONST               8 (<code object <listcomp> at 0x00000290C3AA42D0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\replay.py", line 241>)
+            306 MAKE_FUNCTION            0
+            308 LOAD_FAST               11 (lines)
+            310 GET_ITER
+            312 PRECALL                  0
+            316 CALL                     0
+            326 STORE_DEREF             21 (texts)
+
+242         328 LOAD_GLOBAL              9 (NULL + all)
+            340 LOAD_CLOSURE            21 (texts)
+            342 BUILD_TUPLE              1
+            344 LOAD_CONST               9 (<code object <genexpr> at 0x00000290C3A6A670, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\replay.py", line 242>)
+            346 MAKE_FUNCTION            8 (closure)
+            348 LOAD_FAST                5 (def_marker)
+            350 GET_ITER
+            352 PRECALL                  0
+            356 CALL                     0
+            366 PRECALL                  1
+            370 CALL                     1
+            380 STORE_FAST              12 (is_def)
+
+244         382 LOAD_CONST               0 (None)
+            384 STORE_FAST              13 (form)
+
+245         386 LOAD_FAST               12 (is_def)
+            388 POP_JUMP_FORWARD_IF_FALSE    21 (to 432)
+            390 LOAD_FAST                3 (fcfg)
+            392 LOAD_METHOD              3 (get)
+            414 LOAD_CONST              10 ('definition_form_from_carry')
+            416 PRECALL                  1
+            420 CALL                     1
+            430 POP_JUMP_FORWARD_IF_TRUE    74 (to 580)
+
+246     >>  432 LOAD_FAST               11 (lines)
+            434 GET_ITER
+        >>  436 FOR_ITER                71 (to 580)
+            438 STORE_FAST              14 (L)
+
+247         440 LOAD_FAST                4 (form_rx)
+            442 LOAD_METHOD              5 (match)
+            464 LOAD_FAST               14 (L)
+            466 LOAD_ATTR                6 (text)
+            476 PRECALL                  1
+            480 CALL                     1
+            490 STORE_FAST              15 (m)
+
+248         492 LOAD_FAST               15 (m)
+            494 POP_JUMP_FORWARD_IF_FALSE    41 (to 578)
+
+249         496 LOAD_FAST               15 (m)
+            498 LOAD_METHOD              7 (group)
+            520 LOAD_CONST              11 (1)
+            522 PRECALL                  1
+            526 CALL                     1
+            536 LOAD_METHOD              8 (strip)
+            558 PRECALL                  0
+            562 CALL                     0
+            572 STORE_FAST              13 (form)
+
+250         574 POP_TOP
+            576 JUMP_FORWARD             1 (to 580)
+
+248     >>  578 JUMP_BACKWARD           72 (to 436)
+
+251     >>  580 LOAD_FAST               13 (form)
+            582 POP_JUMP_FORWARD_IF_TRUE    50 (to 684)
+            584 LOAD_FAST                1 (recipe)
+            586 LOAD_CONST               2 ('form_name')
+            588 BINARY_SUBSCR
+            598 LOAD_METHOD              3 (get)
+            620 LOAD_CONST              12 ('carry_forward')
+            622 PRECALL                  1
+            626 CALL                     1
+            636 POP_JUMP_FORWARD_IF_TRUE    21 (to 680)
+            638 LOAD_FAST                3 (fcfg)
+            640 LOAD_METHOD              3 (get)
+            662 LOAD_CONST              10 ('definition_form_from_carry')
+            664 PRECALL                  1
+            668 CALL                     1
+            678 POP_JUMP_FORWARD_IF_FALSE     2 (to 684)
+
+252     >>  680 LOAD_FAST               10 (carry)
+            682 STORE_FAST              13 (form)
+
+253     >>  684 LOAD_FAST               13 (form)
+            686 POP_JUMP_FORWARD_IF_TRUE     1 (to 690)
+
+254         688 JUMP_BACKWARD          199 (to 292)
+
+256     >>  690 LOAD_FAST               12 (is_def)
+            692 POP_JUMP_FORWARD_IF_FALSE    56 (to 806)
+
+257         694 LOAD_FAST                2 (result)
+            696 COPY                     1
+            698 LOAD_ATTR                9 (definition_pages_seen)
+            708 LOAD_CONST              11 (1)
+            710 BINARY_OP               13 (+=)
+            714 SWAP                     2
+            716 STORE_ATTR               9 (definition_pages_seen)
+
+258         726 LOAD_GLOBAL             21 (NULL + _parse_definition_page)
+            738 LOAD_FAST               11 (lines)
+            740 LOAD_FAST                3 (fcfg)
+            742 LOAD_FAST                6 (num_rx)
+            744 LOAD_FAST                9 (codes)
+            746 LOAD_METHOD             11 (setdefault)
+            768 LOAD_FAST               13 (form)
+            770 BUILD_MAP                0
+            772 PRECALL                  2
+            776 CALL                     2
+            786 PRECALL                  4
+            790 CALL                     4
+            800 POP_TOP
+            802 EXTENDED_ARG             1
+            804 JUMP_BACKWARD          257 (to 292)
+
+260     >>  806 LOAD_GLOBAL             25 (NULL + _parse_content_page)
+            818 LOAD_FAST               11 (lines)
+            820 LOAD_FAST                3 (fcfg)
+            822 LOAD_FAST                6 (num_rx)
+            824 LOAD_FAST                7 (noise)
+            826 PRECALL                  4
+            830 CALL                     4
+            840 STORE_FAST              16 (rows)
+
+261         842 LOAD_FAST               16 (rows)
+            844 POP_JUMP_FORWARD_IF_FALSE    69 (to 984)
+
+262         846 LOAD_FAST                8 (data)
+            848 LOAD_METHOD             11 (setdefault)
+            870 LOAD_FAST               13 (form)
+            872 BUILD_LIST               0
+            874 PRECALL                  2
+            878 CALL                     2
+            888 LOAD_METHOD             13 (extend)
+            910 LOAD_CLOSURE            20 (pno)
+            912 BUILD_TUPLE              1
+            914 LOAD_CONST              13 (<code object <genexpr> at 0x00000290C3A79980, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\replay.py", line 262>)
+            916 MAKE_FUNCTION            8 (closure)
+            918 LOAD_FAST               16 (rows)
+            920 GET_ITER
+            922 PRECALL                  0
+            926 CALL                     0
+            936 PRECALL                  1
+            940 CALL                     1
+            950 POP_TOP
+
+263         952 LOAD_FAST                2 (result)
+            954 COPY                     1
+            956 LOAD_ATTR               14 (pages_with_fields)
+            966 LOAD_CONST              11 (1)
+            968 BINARY_OP               13 (+=)
+            972 SWAP                     2
+            974 STORE_ATTR              14 (pages_with_fields)
+
+264     >>  984 LOAD_FAST               13 (form)
+            986 STORE_FAST              10 (carry)
+            988 EXTENDED_ARG             1
+            990 JUMP_BACKWARD          350 (to 292)
+
+266     >>  992 LOAD_FAST                8 (data)
+            994 LOAD_METHOD             15 (items)
+           1016 PRECALL                  0
+           1020 CALL                     0
+           1030 GET_ITER
+        >> 1032 FOR_ITER                98 (to 1230)
+           1034 UNPACK_SEQUENCE          2
+           1038 STORE_FAST              13 (form)
+           1040 STORE_FAST              16 (rows)
+
+267        1042 LOAD_FAST                9 (codes)
+           1044 LOAD_METHOD              3 (get)
+           1066 LOAD_FAST               13 (form)
+           1068 BUILD_MAP                0
+           1070 PRECALL                  2
+           1074 CALL                     2
+           1084 STORE_FAST              17 (cmap)
+
+268        1086 LOAD_FAST               16 (rows)
+           1088 GET_ITER
+        >> 1090 FOR_ITER                68 (to 1228)
+           1092 UNPACK_SEQUENCE          3
+           1096 STORE_FAST              18 (num)
+           1098 STORE_FAST              19 (label)
+           1100 STORE_DEREF             20 (pno)
+
+269        1102 LOAD_FAST                2 (result)
+           1104 LOAD_ATTR               16 (records)
+           1114 LOAD_METHOD             17 (append)
+           1136 LOAD_GLOBAL             37 (NULL + FieldRec)
+           1148 LOAD_FAST               13 (form)
+           1150 LOAD_FAST               19 (label)
+           1152 LOAD_FAST               17 (cmap)
+           1154 LOAD_METHOD              3 (get)
+           1176 LOAD_FAST               18 (num)
+           1178 PRECALL                  1
+           1182 CALL                     1
+           1192 LOAD_CONST               0 (None)
+           1194 LOAD_DEREF              20 (pno)
+           1196 PRECALL                  5
+           1200 CALL                     5
+           1210 PRECALL                  1
+           1214 CALL                     1
+           1224 POP_TOP
+           1226 JUMP_BACKWARD           69 (to 1090)
+
+268     >> 1228 JUMP_BACKWARD           99 (to 1032)
+
+266     >> 1230 LOAD_CONST               0 (None)
+           1232 RETURN_VALUE
+
+Disassembly of <code object <listcomp> at 0x00000290C3AA42D0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\replay.py", line 241>:
+241           0 RESUME                   0
+              2 BUILD_LIST               0
+              4 LOAD_FAST                0 (.0)
+        >>    6 FOR_ITER                 9 (to 26)
+              8 STORE_FAST               1 (L)
+             10 LOAD_FAST                1 (L)
+             12 LOAD_ATTR                0 (text)
+             22 LIST_APPEND              2
+             24 JUMP_BACKWARD           10 (to 6)
+        >>   26 RETURN_VALUE
+
+Disassembly of <code object <genexpr> at 0x00000290C3A6A670, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\replay.py", line 242>:
+              0 COPY_FREE_VARS           1
+              2 MAKE_CELL                1 (rx)
+
+242           4 RETURN_GENERATOR
+              6 POP_TOP
+              8 RESUME                   0
+             10 LOAD_FAST                0 (.0)
+        >>   12 FOR_ITER                31 (to 76)
+             14 STORE_DEREF              1 (rx)
+             16 LOAD_GLOBAL              1 (NULL + any)
+             28 LOAD_CLOSURE             1 (rx)
+             30 BUILD_TUPLE              1
+             32 LOAD_CONST               0 (<code object <genexpr> at 0x00000290C3A17330, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\replay.py", line 242>)
+             34 MAKE_FUNCTION            8 (closure)
+             36 LOAD_DEREF               2 (texts)
+             38 GET_ITER
+             40 PRECALL                  0
+             44 CALL                     0
+             54 PRECALL                  1
+             58 CALL                     1
+             68 YIELD_VALUE
+             70 RESUME                   1
+             72 POP_TOP
+             74 JUMP_BACKWARD           32 (to 12)
+        >>   76 LOAD_CONST               1 (None)
+             78 RETURN_VALUE
+
+Disassembly of <code object <genexpr> at 0x00000290C3A17330, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\replay.py", line 242>:
+              0 COPY_FREE_VARS           1
+
+242           2 RETURN_GENERATOR
+              4 POP_TOP
+              6 RESUME                   0
+              8 LOAD_FAST                0 (.0)
+        >>   10 FOR_ITER                25 (to 62)
+             12 STORE_FAST               1 (t)
+             14 LOAD_DEREF               2 (rx)
+             16 LOAD_METHOD              0 (search)
+             38 LOAD_FAST                1 (t)
+             40 PRECALL                  1
+             44 CALL                     1
+             54 YIELD_VALUE
+             56 RESUME                   1
+             58 POP_TOP
+             60 JUMP_BACKWARD           26 (to 10)
+        >>   62 LOAD_CONST               0 (None)
+             64 RETURN_VALUE
+
+Disassembly of <code object <genexpr> at 0x00000290C3A79980, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\replay.py", line 262>:
+              0 COPY_FREE_VARS           1
+
+262           2 RETURN_GENERATOR
+              4 POP_TOP
+              6 RESUME                   0
+              8 LOAD_FAST                0 (.0)
+        >>   10 FOR_ITER                15 (to 42)
+             12 UNPACK_SEQUENCE          2
+             16 STORE_FAST               1 (n)
+             18 STORE_FAST               2 (lbl)
+             20 LOAD_FAST                1 (n)
+             22 LOAD_FAST                2 (lbl)
+             24 LOAD_DEREF               3 (pno)
+             26 LOAD_CONST               0 (1)
+             28 BINARY_OP                0 (+)
+             32 BUILD_TUPLE              3
+             34 YIELD_VALUE
+             36 RESUME                   1
+             38 POP_TOP
+             40 JUMP_BACKWARD           16 (to 10)
+        >>   42 LOAD_CONST               1 (None)
+             44 RETURN_VALUE
+
+Disassembly of <code object _parse_definition_page at 0x00000290C1B0F820, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\replay.py", line 272>:
+              0 MAKE_CELL                1 (fcfg)
+              2 MAKE_CELL               16 (anchor)
+              4 MAKE_CELL               17 (code_x)
+              6 MAKE_CELL               18 (code_x_hi)
+              8 MAKE_CELL               19 (header_y)
+             10 MAKE_CELL               20 (rows)
+             12 MAKE_CELL               21 (y_hi)
+             14 MAKE_CELL               22 (y_lo)
+
+272          16 RESUME                   0
+
+275          18 LOAD_GLOBAL              1 (NULL + next)
+             30 LOAD_CLOSURE             1 (fcfg)
+             32 BUILD_TUPLE              1
+             34 LOAD_CONST               1 (<code object <genexpr> at 0x00000290C3836D90, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\replay.py", line 275>)
+             36 MAKE_FUNCTION            8 (closure)
+             38 LOAD_FAST                0 (lines)
+             40 GET_ITER
+             42 PRECALL                  0
+             46 CALL                     0
+             56 LOAD_CONST               2 (None)
+             58 PRECALL                  2
+             62 CALL                     2
+             72 STORE_DEREF             16 (anchor)
+
+276          74 LOAD_DEREF              16 (anchor)
+             76 POP_JUMP_FORWARD_IF_NOT_NONE     2 (to 82)
+
+277          78 LOAD_CONST               2 (None)
+             80 RETURN_VALUE
+
+278     >>   82 LOAD_DEREF              16 (anchor)
+             84 LOAD_ATTR                1 (x0)
+             94 LOAD_CONST               3 (6)
+             96 BINARY_OP               10 (-)
+            100 STORE_DEREF             17 (code_x)
+
+281         102 LOAD_CLOSURE            16 (anchor)
+            104 BUILD_TUPLE              1
+            106 LOAD_CONST               4 (<code object <listcomp> at 0x00000290C3813870, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\replay.py", line 281>)
+            108 MAKE_FUNCTION            8 (closure)
+            110 LOAD_FAST                0 (lines)
+            112 GET_ITER
+            114 PRECALL                  0
+            118 CALL                     0
+            128 STORE_FAST               4 (right)
+
+282         130 LOAD_FAST                4 (right)
+            132 POP_JUMP_FORWARD_IF_FALSE    18 (to 170)
+            134 LOAD_GLOBAL              5 (NULL + min)
+            146 LOAD_FAST                4 (right)
+            148 PRECALL                  1
+            152 CALL                     1
+            162 LOAD_CONST               5 (4)
+            164 BINARY_OP               10 (-)
+            168 JUMP_FORWARD             1 (to 172)
+        >>  170 LOAD_CONST               6 (1000000000)
+        >>  172 STORE_DEREF             18 (code_x_hi)
+
+283         174 LOAD_DEREF               1 (fcfg)
+            176 LOAD_METHOD              3 (get)
+            198 LOAD_CONST               7 ('row_number_x_max')
+            200 LOAD_CONST               8 (108)
+            202 PRECALL                  2
+            206 CALL                     2
+            216 STORE_FAST               5 (num_x_max)
+
+284         218 BUILD_LIST               0
+            220 STORE_DEREF             20 (rows)
+
+285         222 LOAD_FAST                0 (lines)
+            224 GET_ITER
+        >>  226 FOR_ITER               145 (to 518)
+            228 STORE_FAST               6 (L)
+
+286         230 LOAD_FAST                6 (L)
+            232 LOAD_ATTR                4 (text)
+            242 LOAD_METHOD              5 (strip)
+            264 PRECALL                  0
+            268 CALL                     0
+            278 STORE_FAST               7 (t)
+
+289         280 LOAD_FAST                2 (num_rx)
+            282 LOAD_METHOD              6 (match)
+            304 LOAD_FAST                7 (t)
+            306 PRECALL                  1
+            310 CALL                     1
+            320 JUMP_IF_TRUE_OR_POP     41 (to 404)
+            322 LOAD_GLOBAL             15 (NULL + re)
+            334 LOAD_ATTR                6 (match)
+            344 LOAD_CONST               9 ('^(\\d+)$')
+            346 LOAD_FAST                7 (t)
+            348 PRECALL                  2
+            352 CALL                     2
+            362 JUMP_IF_TRUE_OR_POP     20 (to 404)
+            364 LOAD_GLOBAL             15 (NULL + re)
+            376 LOAD_ATTR                6 (match)
+            386 LOAD_CONST              10 ('^(\\d+)\\s+\\S+$')
+            388 LOAD_FAST                7 (t)
+            390 PRECALL                  2
+            394 CALL                     2
+        >>  404 STORE_FAST               8 (m)
+
+290         406 LOAD_FAST                8 (m)
+            408 POP_JUMP_FORWARD_IF_FALSE    53 (to 516)
+            410 LOAD_FAST                6 (L)
+            412 LOAD_ATTR                1 (x0)
+            422 LOAD_FAST                5 (num_x_max)
+            424 COMPARE_OP               0 (<)
+            430 POP_JUMP_FORWARD_IF_FALSE    42 (to 516)
+
+291         432 LOAD_DEREF              20 (rows)
+            434 LOAD_METHOD              8 (append)
+            456 LOAD_FAST                6 (L)
+            458 LOAD_FAST                8 (m)
+            460 LOAD_METHOD              9 (group)
+            482 LOAD_CONST              11 (1)
+            484 PRECALL                  1
+            488 CALL                     1
+            498 BUILD_TUPLE              2
+            500 PRECALL                  1
+            504 CALL                     1
+            514 POP_TOP
+        >>  516 JUMP_BACKWARD          146 (to 226)
+
+292     >>  518 LOAD_DEREF              20 (rows)
+            520 LOAD_METHOD             10 (sort)
+            542 LOAD_CONST              12 (<code object <lambda> at 0x00000290C3AA4490, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\replay.py", line 292>)
+            544 MAKE_FUNCTION            0
+            546 KW_NAMES                13
+            548 PRECALL                  1
+            552 CALL                     1
+            562 POP_TOP
+
+293         564 LOAD_DEREF              16 (anchor)
+            566 LOAD_ATTR               11 (y0)
+            576 STORE_DEREF             19 (header_y)
+
+294         578 LOAD_CLOSURE            20 (rows)
+            580 BUILD_TUPLE              1
+            582 LOAD_CONST              14 (<code object <listcomp> at 0x00000290C3A516B0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\replay.py", line 294>)
+            584 MAKE_FUNCTION            8 (closure)
+            586 LOAD_GLOBAL             25 (NULL + range)
+            598 LOAD_GLOBAL             27 (NULL + len)
+            610 LOAD_DEREF              20 (rows)
+            612 PRECALL                  1
+            616 CALL                     1
+            626 LOAD_CONST              11 (1)
+            628 BINARY_OP               10 (-)
+            632 PRECALL                  1
+            636 CALL                     1
+            646 GET_ITER
+            648 PRECALL                  0
+            652 CALL                     0
+            662 STORE_FAST               9 (gaps)
+
+295         664 LOAD_GLOBAL             29 (NULL + sorted)
+            676 LOAD_CONST              15 (<code object <genexpr> at 0x00000290C3AA4570, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\replay.py", line 295>)
+            678 MAKE_FUNCTION            0
+            680 LOAD_FAST                9 (gaps)
+            682 GET_ITER
+            684 PRECALL                  0
+            688 CALL                     0
+            698 PRECALL                  1
+            702 CALL                     1
+            712 STORE_FAST               9 (gaps)
+
+296         714 LOAD_FAST                9 (gaps)
+            716 POP_JUMP_FORWARD_IF_FALSE    24 (to 766)
+            718 LOAD_FAST                9 (gaps)
+            720 LOAD_GLOBAL             27 (NULL + len)
+            732 LOAD_FAST                9 (gaps)
+            734 PRECALL                  1
+            738 CALL                     1
+            748 LOAD_CONST              16 (2)
+            750 BINARY_OP                2 (//)
+            754 BINARY_SUBSCR
+            764 JUMP_FORWARD             1 (to 768)
+        >>  766 LOAD_CONST              17 (40.0)
+        >>  768 STORE_FAST              10 (typ_gap)
+
+297         770 LOAD_GLOBAL             31 (NULL + enumerate)
+            782 LOAD_DEREF              20 (rows)
+            784 PRECALL                  1
+            788 CALL                     1
+            798 GET_ITER
+        >>  800 FOR_ITER               156 (to 1114)
+            802 UNPACK_SEQUENCE          2
+            806 STORE_FAST              11 (i)
+            808 UNPACK_SEQUENCE          2
+            812 STORE_FAST              12 (R)
+            814 STORE_FAST              13 (key)
+
+298         816 LOAD_FAST               12 (R)
+            818 LOAD_ATTR               11 (y0)
+            828 LOAD_CONST              18 (8)
+            830 BINARY_OP               10 (-)
+            834 STORE_DEREF             22 (y_lo)
+
+300         836 LOAD_FAST               11 (i)
+            838 LOAD_CONST              11 (1)
+            840 BINARY_OP                0 (+)
+            844 LOAD_GLOBAL             27 (NULL + len)
+            856 LOAD_DEREF              20 (rows)
+            858 PRECALL                  1
+            862 CALL                     1
+            872 COMPARE_OP               0 (<)
+            878 POP_JUMP_FORWARD_IF_FALSE    25 (to 930)
+            880 LOAD_DEREF              20 (rows)
+            882 LOAD_FAST               11 (i)
+            884 LOAD_CONST              11 (1)
+            886 BINARY_OP                0 (+)
+            890 BINARY_SUBSCR
+            900 LOAD_CONST              19 (0)
+            902 BINARY_SUBSCR
+            912 LOAD_ATTR               11 (y0)
+            922 LOAD_CONST              18 (8)
+            924 BINARY_OP               10 (-)
+            928 JUMP_FORWARD            26 (to 982)
+        >>  930 LOAD_FAST               12 (R)
+            932 LOAD_ATTR               11 (y0)
+            942 LOAD_GLOBAL             33 (NULL + max)
+            954 LOAD_CONST              20 (3)
+            956 LOAD_FAST               10 (typ_gap)
+            958 BINARY_OP                5 (*)
+            962 LOAD_CONST              21 (48)
+            964 PRECALL                  2
+            968 CALL                     2
+            978 BINARY_OP                0 (+)
+        >>  982 STORE_DEREF             21 (y_hi)
+
+301         984 LOAD_CLOSURE            17 (code_x)
+            986 LOAD_CLOSURE            18 (code_x_hi)
+            988 LOAD_CLOSURE            19 (header_y)
+            990 LOAD_CLOSURE            21 (y_hi)
+            992 LOAD_CLOSURE            22 (y_lo)
+            994 BUILD_TUPLE              5
+            996 LOAD_CONST              22 (<code object <listcomp> at 0x00000290C3A05D30, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\replay.py", line 301>)
+            998 MAKE_FUNCTION            8 (closure)
+           1000 LOAD_FAST                0 (lines)
+           1002 GET_ITER
+           1004 PRECALL                  0
+           1008 CALL                     0
+           1018 STORE_FAST              14 (parts)
+
+304        1020 LOAD_CONST              23 ('')
+           1022 LOAD_METHOD             17 (join)
+           1044 LOAD_FAST               14 (parts)
+           1046 PRECALL                  1
+           1050 CALL                     1
+           1060 LOAD_METHOD              5 (strip)
+           1082 PRECALL                  0
+           1086 CALL                     0
+           1096 STORE_FAST              15 (code)
+
+305        1098 LOAD_FAST               15 (code)
+           1100 POP_JUMP_FORWARD_IF_FALSE     5 (to 1112)
+
+306        1102 LOAD_FAST               15 (code)
+           1104 LOAD_FAST                3 (out)
+           1106 LOAD_FAST               13 (key)
+           1108 STORE_SUBSCR
+        >> 1112 JUMP_BACKWARD          157 (to 800)
+
+297     >> 1114 LOAD_CONST               2 (None)
+           1116 RETURN_VALUE
+
+Disassembly of <code object <genexpr> at 0x00000290C3836D90, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\replay.py", line 275>:
+              0 COPY_FREE_VARS           1
+
+275           2 RETURN_GENERATOR
+              4 POP_TOP
+              6 RESUME                   0
+              8 LOAD_FAST                0 (.0)
+        >>   10 FOR_ITER                70 (to 152)
+             12 STORE_FAST               1 (L)
+             14 LOAD_FAST                1 (L)
+             16 LOAD_ATTR                0 (text)
+             26 LOAD_METHOD              1 (strip)
+             48 PRECALL                  0
+             52 CALL                     0
+             62 LOAD_METHOD              2 (startswith)
+             84 LOAD_DEREF               2 (fcfg)
+             86 LOAD_METHOD              3 (get)
+            108 LOAD_CONST               0 ('oid_header')
+            110 LOAD_CONST               1 ('Include')
+            112 PRECALL                  2
+            116 CALL                     2
+            126 PRECALL                  1
+            130 CALL                     1
+            140 POP_JUMP_BACKWARD_IF_FALSE    66 (to 10)
+            142 LOAD_FAST                1 (L)
+            144 YIELD_VALUE
+            146 RESUME                   1
+            148 POP_TOP
+            150 JUMP_BACKWARD           71 (to 10)
+        >>  152 LOAD_CONST               2 (None)
+            154 RETURN_VALUE
+
+Disassembly of <code object <listcomp> at 0x00000290C3813870, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\replay.py", line 281>:
+              0 COPY_FREE_VARS           1
+
+281           2 RESUME                   0
+              4 BUILD_LIST               0
+              6 LOAD_FAST                0 (.0)
+        >>    8 FOR_ITER                60 (to 130)
+             10 STORE_FAST               1 (L)
+             12 LOAD_GLOBAL              1 (NULL + abs)
+             24 LOAD_FAST                1 (L)
+             26 LOAD_ATTR                1 (y0)
+             36 LOAD_DEREF               2 (anchor)
+             38 LOAD_ATTR                1 (y0)
+             48 BINARY_OP               10 (-)
+             52 PRECALL                  1
+             56 CALL                     1
+             66 LOAD_CONST               0 (5)
+             68 COMPARE_OP               0 (<)
+             74 POP_JUMP_BACKWARD_IF_FALSE    34 (to 8)
+             76 LOAD_FAST                1 (L)
+             78 LOAD_ATTR                2 (x0)
+             88 LOAD_DEREF               2 (anchor)
+             90 LOAD_ATTR                2 (x0)
+            100 LOAD_CONST               1 (10)
+            102 BINARY_OP                0 (+)
+            106 COMPARE_OP               4 (>)
+            112 POP_JUMP_BACKWARD_IF_FALSE    53 (to 8)
+            114 LOAD_FAST                1 (L)
+            116 LOAD_ATTR                2 (x0)
+            126 LIST_APPEND              2
+            128 JUMP_BACKWARD           61 (to 8)
+        >>  130 RETURN_VALUE
+
+Disassembly of <code object <lambda> at 0x00000290C3AA4490, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\replay.py", line 292>:
+292           0 RESUME                   0
+              2 LOAD_FAST                0 (t)
+              4 LOAD_CONST               1 (0)
+              6 BINARY_SUBSCR
+             16 LOAD_ATTR                0 (y0)
+             26 RETURN_VALUE
+
+Disassembly of <code object <listcomp> at 0x00000290C3A516B0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\replay.py", line 294>:
+              0 COPY_FREE_VARS           1
+
+294           2 RESUME                   0
+              4 BUILD_LIST               0
+              6 LOAD_FAST                0 (.0)
+        >>    8 FOR_ITER                44 (to 98)
+             10 STORE_FAST               1 (i)
+             12 LOAD_DEREF               2 (rows)
+             14 LOAD_FAST                1 (i)
+             16 LOAD_CONST               0 (1)
+             18 BINARY_OP                0 (+)
+             22 BINARY_SUBSCR
+             32 LOAD_CONST               1 (0)
+             34 BINARY_SUBSCR
+             44 LOAD_ATTR                0 (y0)
+             54 LOAD_DEREF               2 (rows)
+             56 LOAD_FAST                1 (i)
+             58 BINARY_SUBSCR
+             68 LOAD_CONST               1 (0)
+             70 BINARY_SUBSCR
+             80 LOAD_ATTR                0 (y0)
+             90 BINARY_OP               10 (-)
+             94 LIST_APPEND              2
+             96 JUMP_BACKWARD           45 (to 8)
+        >>   98 RETURN_VALUE
+
+Disassembly of <code object <genexpr> at 0x00000290C3AA4570, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\replay.py", line 295>:
+295           0 RETURN_GENERATOR
+              2 POP_TOP
+              4 RESUME                   0
+              6 LOAD_FAST                0 (.0)
+        >>    8 FOR_ITER                12 (to 34)
+             10 STORE_FAST               1 (g)
+             12 LOAD_FAST                1 (g)
+             14 LOAD_CONST               0 (0)
+             16 COMPARE_OP               4 (>)
+             22 POP_JUMP_BACKWARD_IF_FALSE     8 (to 8)
+             24 LOAD_FAST                1 (g)
+             26 YIELD_VALUE
+             28 RESUME                   1
+             30 POP_TOP
+             32 JUMP_BACKWARD           13 (to 8)
+        >>   34 LOAD_CONST               1 (None)
+             36 RETURN_VALUE
+
+Disassembly of <code object <listcomp> at 0x00000290C3A05D30, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\replay.py", line 301>:
+              0 COPY_FREE_VARS           5
+
+301           2 RESUME                   0
+              4 BUILD_LIST               0
+              6 LOAD_FAST                0 (.0)
+        >>    8 FOR_ITER               127 (to 264)
+             10 STORE_FAST               1 (L)
+
+302          12 LOAD_DEREF               2 (code_x)
+             14 LOAD_FAST                1 (L)
+             16 LOAD_ATTR                0 (x0)
+             26 SWAP                     2
+             28 COPY                     2
+             30 COMPARE_OP               1 (<=)
+             36 POP_JUMP_FORWARD_IF_FALSE     6 (to 50)
+             38 LOAD_DEREF               3 (code_x_hi)
+             40 COMPARE_OP               0 (<)
+             46 POP_JUMP_BACKWARD_IF_FALSE    20 (to 8)
+             48 JUMP_FORWARD             2 (to 54)
+        >>   50 POP_TOP
+             52 JUMP_FORWARD           104 (to 262)
+        >>   54 LOAD_DEREF               6 (y_lo)
+             56 LOAD_FAST                1 (L)
+             58 LOAD_ATTR                1 (y0)
+             68 SWAP                     2
+             70 COPY                     2
+             72 COMPARE_OP               1 (<=)
+             78 POP_JUMP_FORWARD_IF_FALSE     6 (to 92)
+             80 LOAD_DEREF               5 (y_hi)
+             82 COMPARE_OP               0 (<)
+             88 POP_JUMP_BACKWARD_IF_FALSE    41 (to 8)
+             90 JUMP_FORWARD             2 (to 96)
+        >>   92 POP_TOP
+             94 JUMP_FORWARD            83 (to 262)
+        >>   96 LOAD_FAST                1 (L)
+             98 LOAD_ATTR                1 (y0)
+            108 LOAD_DEREF               4 (header_y)
+            110 LOAD_CONST               0 (5)
+            112 BINARY_OP                0 (+)
+            116 COMPARE_OP               4 (>)
+            122 POP_JUMP_BACKWARD_IF_FALSE    58 (to 8)
+
+303         124 LOAD_GLOBAL              5 (NULL + re)
+            136 LOAD_ATTR                3 (search)
+            146 LOAD_CONST               1 ('\\s')
+            148 LOAD_FAST                1 (L)
+            150 LOAD_ATTR                4 (text)
+            160 LOAD_METHOD              5 (strip)
+            182 PRECALL                  0
+            186 CALL                     0
+            196 PRECALL                  2
+            200 CALL                     2
+
+302         210 POP_JUMP_BACKWARD_IF_TRUE   102 (to 8)
+
+301         212 LOAD_FAST                1 (L)
+            214 LOAD_ATTR                4 (text)
+            224 LOAD_METHOD              5 (strip)
+            246 PRECALL                  0
+            250 CALL                     0
+
+302         260 LIST_APPEND              2
+        >>  262 JUMP_BACKWARD          128 (to 8)
+        >>  264 RETURN_VALUE
+
+Disassembly of <code object _parse_content_page at 0x00000290C1B10110, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\replay.py", line 309>:
+              0 MAKE_CELL                3 (noise)
+              2 MAKE_CELL               12 (N)
+              4 MAKE_CELL               13 (label_x_max)
+
+309           6 RESUME                   0
+
+310           8 LOAD_FAST                1 (fcfg)
+             10 LOAD_METHOD              0 (get)
+             32 LOAD_CONST               1 ('data_number_x_min')
+             34 LOAD_CONST               2 (480)
+             36 PRECALL                  2
+             40 CALL                     2
+             50 STORE_FAST               4 (num_x_min)
+
+311          52 LOAD_FAST                1 (fcfg)
+             54 LOAD_METHOD              0 (get)
+             76 LOAD_CONST               3 ('data_label_x_max')
+             78 LOAD_CONST               4 (320)
+             80 PRECALL                  2
+             84 CALL                     2
+             94 STORE_DEREF             13 (label_x_max)
+
+312          96 LOAD_GLOBAL              3 (NULL + bool)
+            108 LOAD_FAST                1 (fcfg)
+            110 LOAD_METHOD              0 (get)
+            132 LOAD_CONST               5 ('number_embedded_in_label')
+            134 PRECALL                  1
+            138 CALL                     1
+            148 PRECALL                  1
+            152 CALL                     1
+            162 STORE_FAST               5 (embedded)
+
+313         164 BUILD_LIST               0
+            166 STORE_FAST               6 (out)
+
+314         168 LOAD_FAST                0 (lines)
+            170 GET_ITER
+        >>  172 EXTENDED_ARG             1
+            174 FOR_ITER               363 (to 902)
+            176 STORE_DEREF             12 (N)
+
+315         178 LOAD_DEREF              12 (N)
+            180 LOAD_ATTR                2 (text)
+            190 LOAD_METHOD              3 (strip)
+            212 PRECALL                  0
+            216 CALL                     0
+            226 STORE_FAST               7 (t)
+
+316         228 LOAD_FAST                5 (embedded)
+            230 POP_JUMP_FORWARD_IF_TRUE    21 (to 274)
+            232 LOAD_FAST                2 (num_rx)
+            234 LOAD_METHOD              4 (match)
+            256 LOAD_FAST                7 (t)
+            258 PRECALL                  1
+            262 CALL                     1
+            272 JUMP_FORWARD            20 (to 314)
+        >>  274 LOAD_FAST                2 (num_rx)
+            276 LOAD_METHOD              5 (search)
+            298 LOAD_FAST                7 (t)
+            300 PRECALL                  1
+            304 CALL                     1
+        >>  314 STORE_FAST               8 (m)
+
+317         316 LOAD_FAST                8 (m)
+            318 POP_JUMP_FORWARD_IF_FALSE    11 (to 342)
+            320 LOAD_DEREF              12 (N)
+            322 LOAD_ATTR                6 (x0)
+            332 LOAD_FAST                4 (num_x_min)
+            334 COMPARE_OP               0 (<)
+            340 POP_JUMP_FORWARD_IF_FALSE     1 (to 344)
+
+318     >>  342 JUMP_BACKWARD           86 (to 172)
+
+319     >>  344 LOAD_FAST                5 (embedded)
+            346 POP_JUMP_FORWARD_IF_FALSE   174 (to 696)
+
+321         348 LOAD_FAST                2 (num_rx)
+            350 LOAD_METHOD              7 (sub)
+            372 LOAD_CONST               6 ('')
+            374 LOAD_FAST                7 (t)
+            376 PRECALL                  2
+            380 CALL                     2
+            390 LOAD_METHOD              3 (strip)
+            412 LOAD_CONST               7 (' -:–')
+            414 PRECALL                  1
+            418 CALL                     1
+            428 STORE_FAST               9 (label)
+
+322         430 LOAD_GLOBAL             17 (NULL + re)
+            442 LOAD_ATTR                5 (search)
+            452 LOAD_CONST               8 ('[A-Za-z]')
+            454 LOAD_FAST                9 (label)
+            456 PRECALL                  2
+            460 CALL                     2
+            470 POP_JUMP_FORWARD_IF_FALSE    16 (to 504)
+            472 LOAD_GLOBAL             19 (NULL + _is_noise)
+            484 LOAD_FAST                9 (label)
+            486 LOAD_DEREF               3 (noise)
+            488 PRECALL                  2
+            492 CALL                     2
+            502 POP_JUMP_FORWARD_IF_FALSE    50 (to 604)
+
+323     >>  504 LOAD_CLOSURE            12 (N)
+            506 LOAD_CLOSURE             3 (noise)
+            508 BUILD_TUPLE              2
+            510 LOAD_CONST               9 (<code object <listcomp> at 0x00000290C38320B0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\replay.py", line 323>)
+            512 MAKE_FUNCTION            8 (closure)
+            514 LOAD_FAST                0 (lines)
+            516 GET_ITER
+            518 PRECALL                  0
+            522 CALL                     0
+            532 STORE_FAST              10 (same_row)
+
+326         534 LOAD_FAST               10 (same_row)
+            536 POP_JUMP_FORWARD_IF_FALSE    31 (to 600)
+            538 LOAD_FAST               10 (same_row)
+            540 LOAD_CONST              10 (-1)
+            542 BINARY_SUBSCR
+            552 LOAD_ATTR                2 (text)
+            562 LOAD_METHOD              3 (strip)
+            584 PRECALL                  0
+            588 CALL                     0
+            598 JUMP_FORWARD             1 (to 602)
+        >>  600 LOAD_CONST               6 ('')
+        >>  602 STORE_FAST               9 (label)
+
+327     >>  604 LOAD_FAST                9 (label)
+            606 POP_JUMP_FORWARD_IF_FALSE    42 (to 692)
+
+328         608 LOAD_FAST                6 (out)
+            610 LOAD_METHOD             10 (append)
+            632 LOAD_FAST                8 (m)
+            634 LOAD_METHOD             11 (group)
+            656 LOAD_CONST              11 (1)
+            658 PRECALL                  1
+            662 CALL                     1
+            672 LOAD_FAST                9 (label)
+            674 BUILD_TUPLE              2
+            676 PRECALL                  1
+            680 CALL                     1
+            690 POP_TOP
+
+329     >>  692 EXTENDED_ARG             1
+            694 JUMP_BACKWARD          262 (to 172)
+
+330     >>  696 LOAD_CLOSURE            12 (N)
+            698 LOAD_CLOSURE            13 (label_x_max)
+            700 LOAD_CLOSURE             3 (noise)
+            702 BUILD_TUPLE              3
+            704 LOAD_CONST              12 (<code object <listcomp> at 0x00000290C39F9FB0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\replay.py", line 330>)
+            706 MAKE_FUNCTION            8 (closure)
+            708 LOAD_FAST                0 (lines)
+            710 GET_ITER
+            712 PRECALL                  0
+            716 CALL                     0
+            726 STORE_FAST              11 (cand)
+
+333         728 LOAD_FAST               11 (cand)
+            730 POP_JUMP_FORWARD_IF_FALSE    83 (to 898)
+
+334         732 LOAD_GLOBAL             25 (NULL + max)
+            744 LOAD_FAST               11 (cand)
+            746 LOAD_CONST              13 (<code object <lambda> at 0x00000290C3A6D2E0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\replay.py", line 334>)
+            748 MAKE_FUNCTION            0
+            750 KW_NAMES                14
+            752 PRECALL                  2
+            756 CALL                     2
+            766 LOAD_ATTR                2 (text)
+            776 LOAD_METHOD              3 (strip)
+            798 PRECALL                  0
+            802 CALL                     0
+            812 STORE_FAST               9 (label)
+
+335         814 LOAD_FAST                6 (out)
+            816 LOAD_METHOD             10 (append)
+            838 LOAD_FAST                8 (m)
+            840 LOAD_METHOD             11 (group)
+            862 LOAD_CONST              11 (1)
+            864 PRECALL                  1
+            868 CALL                     1
+            878 LOAD_FAST                9 (label)
+            880 BUILD_TUPLE              2
+            882 PRECALL                  1
+            886 CALL                     1
+            896 POP_TOP
+        >>  898 EXTENDED_ARG             1
+            900 JUMP_BACKWARD          365 (to 172)
+
+336     >>  902 LOAD_FAST                6 (out)
+            904 RETURN_VALUE
+
+Disassembly of <code object <listcomp> at 0x00000290C38320B0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\replay.py", line 323>:
+              0 COPY_FREE_VARS           2
+
+323           2 RESUME                   0
+              4 BUILD_LIST               0
+              6 LOAD_FAST                0 (.0)
+        >>    8 FOR_ITER               103 (to 216)
+             10 STORE_FAST               1 (L)
+
+324          12 LOAD_FAST                1 (L)
+             14 LOAD_DEREF               2 (N)
+             16 IS_OP                    1
+             18 POP_JUMP_BACKWARD_IF_FALSE     6 (to 8)
+             20 LOAD_GLOBAL              1 (NULL + abs)
+             32 LOAD_FAST                1 (L)
+             34 LOAD_ATTR                1 (y0)
+             44 LOAD_DEREF               2 (N)
+             46 LOAD_ATTR                1 (y0)
+             56 BINARY_OP               10 (-)
+             60 PRECALL                  1
+             64 CALL                     1
+             74 LOAD_CONST               0 (6)
+             76 COMPARE_OP               1 (<=)
+             82 POP_JUMP_BACKWARD_IF_FALSE    38 (to 8)
+             84 LOAD_FAST                1 (L)
+             86 LOAD_ATTR                2 (x0)
+             96 LOAD_DEREF               2 (N)
+             98 LOAD_ATTR                2 (x0)
+            108 COMPARE_OP               0 (<)
+            114 POP_JUMP_BACKWARD_IF_FALSE    54 (to 8)
+
+325         116 LOAD_GLOBAL              7 (NULL + re)
+            128 LOAD_ATTR                4 (search)
+            138 LOAD_CONST               1 ('[A-Za-z]')
+            140 LOAD_FAST                1 (L)
+            142 LOAD_ATTR                5 (text)
+            152 PRECALL                  2
+            156 CALL                     2
+
+324         166 POP_JUMP_BACKWARD_IF_FALSE    80 (to 8)
+
+325         168 LOAD_GLOBAL             13 (NULL + _is_noise)
+            180 LOAD_FAST                1 (L)
+            182 LOAD_ATTR                5 (text)
+            192 LOAD_DEREF               3 (noise)
+            194 PRECALL                  2
+            198 CALL                     2
+
+324         208 POP_JUMP_BACKWARD_IF_TRUE   101 (to 8)
+
+323         210 LOAD_FAST                1 (L)
+
+324         212 LIST_APPEND              2
+            214 JUMP_BACKWARD          104 (to 8)
+        >>  216 RETURN_VALUE
+
+Disassembly of <code object <listcomp> at 0x00000290C39F9FB0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\replay.py", line 330>:
+              0 COPY_FREE_VARS           3
+
+330           2 RESUME                   0
+              4 BUILD_LIST               0
+              6 LOAD_FAST                0 (.0)
+        >>    8 FOR_ITER                91 (to 192)
+             10 STORE_FAST               1 (L)
+
+331          12 LOAD_FAST                1 (L)
+             14 LOAD_ATTR                0 (x0)
+             24 LOAD_DEREF               3 (label_x_max)
+             26 COMPARE_OP               1 (<=)
+             32 POP_JUMP_BACKWARD_IF_FALSE    13 (to 8)
+             34 LOAD_CONST               0 (-8)
+             36 LOAD_FAST                1 (L)
+             38 LOAD_ATTR                1 (y0)
+             48 LOAD_DEREF               2 (N)
+             50 LOAD_ATTR                1 (y0)
+             60 BINARY_OP               10 (-)
+             64 SWAP                     2
+             66 COPY                     2
+             68 COMPARE_OP               1 (<=)
+             74 POP_JUMP_FORWARD_IF_FALSE     6 (to 88)
+             76 LOAD_CONST               1 (16)
+             78 COMPARE_OP               1 (<=)
+             84 POP_JUMP_BACKWARD_IF_FALSE    39 (to 8)
+             86 JUMP_FORWARD             2 (to 92)
+        >>   88 POP_TOP
+             90 JUMP_FORWARD            49 (to 190)
+
+332     >>   92 LOAD_GLOBAL              5 (NULL + re)
+            104 LOAD_ATTR                3 (search)
+            114 LOAD_CONST               2 ('[A-Za-z]')
+            116 LOAD_FAST                1 (L)
+            118 LOAD_ATTR                4 (text)
+            128 PRECALL                  2
+            132 CALL                     2
+
+331         142 POP_JUMP_BACKWARD_IF_FALSE    68 (to 8)
+
+332         144 LOAD_GLOBAL             11 (NULL + _is_noise)
+            156 LOAD_FAST                1 (L)
+            158 LOAD_ATTR                4 (text)
+            168 LOAD_DEREF               4 (noise)
+            170 PRECALL                  2
+            174 CALL                     2
+
+331         184 POP_JUMP_BACKWARD_IF_TRUE    89 (to 8)
+
+330         186 LOAD_FAST                1 (L)
+
+331         188 LIST_APPEND              2
+        >>  190 JUMP_BACKWARD           92 (to 8)
+        >>  192 RETURN_VALUE
+
+Disassembly of <code object <lambda> at 0x00000290C3A6D2E0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\replay.py", line 334>:
+334           0 RESUME                   0
+              2 LOAD_FAST                0 (L)
+              4 LOAD_ATTR                0 (y0)
+             14 RETURN_VALUE
+
+Disassembly of <code object extract_column_table at 0x00000290C1B10570, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\replay.py", line 342>:
+              0 MAKE_CELL               17 (def_marker)
+              2 MAKE_CELL               18 (row_rx)
+              4 MAKE_CELL               19 (x_name)
+              6 MAKE_CELL               20 (x_oid)
+              8 MAKE_CELL               21 (x_type)
+             10 MAKE_CELL               22 (y_hi)
+             12 MAKE_CELL               23 (y_lo)
+
+342          14 RESUME                   0
+
+343          16 LOAD_FAST                1 (recipe)
+             18 LOAD_CONST               1 ('fields')
+             20 BINARY_SUBSCR
+             30 STORE_FAST               3 (fcfg)
+
+344          32 LOAD_GLOBAL              1 (NULL + re)
+             44 LOAD_ATTR                1 (compile)
+             54 LOAD_FAST                3 (fcfg)
+             56 LOAD_CONST               2 ('definition_page_regex')
+             58 BINARY_SUBSCR
+             68 PRECALL                  1
+             72 CALL                     1
+             82 STORE_DEREF             17 (def_marker)
+
+345          84 LOAD_GLOBAL              1 (NULL + re)
+             96 LOAD_ATTR                1 (compile)
+            106 LOAD_FAST                3 (fcfg)
+            108 LOAD_METHOD              2 (get)
+            130 LOAD_CONST               3 ('row_key_regex')
+            132 LOAD_CONST               4 ('^\\[(\\d+)\\]$')
+            134 PRECALL                  2
+            138 CALL                     2
+            148 PRECALL                  1
+            152 CALL                     1
+            162 STORE_DEREF             18 (row_rx)
+
+346         164 LOAD_CONST               0 (None)
+            166 STORE_FAST               4 (carry)
+
+348         168 LOAD_FAST                0 (pages)
+            170 GET_ITER
+        >>  172 EXTENDED_ARG             1
+            174 FOR_ITER               489 (to 1154)
+            176 UNPACK_SEQUENCE          2
+            180 STORE_FAST               5 (pno)
+            182 STORE_FAST               6 (lines)
+
+349         184 LOAD_FAST                1 (recipe)
+            186 LOAD_CONST               5 ('form_name')
+            188 BINARY_SUBSCR
+            198 STORE_FAST               7 (form_cfg)
+
+350         200 LOAD_GLOBAL              7 (NULL + find_form_name)
+            212 LOAD_FAST                6 (lines)
+            214 LOAD_FAST                7 (form_cfg)
+            216 LOAD_CONST               0 (None)
+            218 PRECALL                  3
+            222 CALL                     3
+            232 STORE_FAST               8 (form)
+
+351         234 LOAD_FAST                8 (form)
+            236 POP_JUMP_FORWARD_IF_FALSE     2 (to 242)
+
+352         238 LOAD_FAST                8 (form)
+            240 STORE_FAST               4 (carry)
+
+353     >>  242 LOAD_GLOBAL              9 (NULL + any)
+            254 LOAD_CLOSURE            17 (def_marker)
+            256 BUILD_TUPLE              1
+            258 LOAD_CONST               6 (<code object <genexpr> at 0x00000290C3A804F0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\replay.py", line 353>)
+            260 MAKE_FUNCTION            8 (closure)
+            262 LOAD_FAST                6 (lines)
+            264 GET_ITER
+            266 PRECALL                  0
+            270 CALL                     0
+            280 PRECALL                  1
+            284 CALL                     1
+            294 POP_JUMP_FORWARD_IF_TRUE     1 (to 298)
+
+354         296 JUMP_BACKWARD           63 (to 172)
+
+355     >>  298 LOAD_CONST               7 (<code object <dictcomp> at 0x00000290C3A51C50, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\replay.py", line 355>)
+            300 MAKE_FUNCTION            0
+            302 LOAD_FAST                6 (lines)
+            304 GET_ITER
+            306 PRECALL                  0
+            310 CALL                     0
+            320 STORE_FAST               9 (headers)
+
+356         322 LOAD_FAST                9 (headers)
+            324 LOAD_METHOD              2 (get)
+            346 LOAD_FAST                3 (fcfg)
+            348 LOAD_METHOD              2 (get)
+            370 LOAD_CONST               8 ('name_header')
+            372 LOAD_CONST               9 ('Name')
+            374 PRECALL                  2
+            378 CALL                     2
+            388 PRECALL                  1
+            392 CALL                     1
+            402 STORE_DEREF             19 (x_name)
+
+357         404 LOAD_FAST                9 (headers)
+            406 LOAD_METHOD              2 (get)
+            428 LOAD_FAST                3 (fcfg)
+            430 LOAD_METHOD              2 (get)
+            452 LOAD_CONST              10 ('oid_header')
+            454 LOAD_CONST              11 ('Export Name')
+            456 PRECALL                  2
+            460 CALL                     2
+            470 PRECALL                  1
+            474 CALL                     1
+            484 STORE_DEREF             20 (x_oid)
+
+358         486 LOAD_FAST                9 (headers)
+            488 LOAD_METHOD              2 (get)
+            510 LOAD_FAST                3 (fcfg)
+            512 LOAD_METHOD              2 (get)
+            534 LOAD_CONST              12 ('type_header')
+            536 LOAD_CONST              13 ('Type')
+            538 PRECALL                  2
+            542 CALL                     2
+            552 PRECALL                  1
+            556 CALL                     1
+            566 STORE_DEREF             21 (x_type)
+
+359         568 LOAD_DEREF              19 (x_name)
+            570 POP_JUMP_FORWARD_IF_NONE     2 (to 576)
+            572 LOAD_DEREF              20 (x_oid)
+            574 POP_JUMP_FORWARD_IF_NOT_NONE     1 (to 578)
+
+360     >>  576 JUMP_BACKWARD          203 (to 172)
+
+361     >>  578 LOAD_CLOSURE            18 (row_rx)
+            580 LOAD_CLOSURE            19 (x_name)
+            582 BUILD_TUPLE              2
+            584 LOAD_CONST              14 (<code object <listcomp> at 0x00000290C3813230, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\replay.py", line 361>)
+            586 MAKE_FUNCTION            8 (closure)
+            588 LOAD_FAST                6 (lines)
+            590 GET_ITER
+            592 PRECALL                  0
+            596 CALL                     0
+            606 STORE_FAST              10 (rows)
+
+362         608 LOAD_FAST               10 (rows)
+            610 LOAD_METHOD              5 (sort)
+            632 LOAD_CONST              15 (<code object <lambda> at 0x00000290C3A6D550, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\replay.py", line 362>)
+            634 MAKE_FUNCTION            0
+            636 KW_NAMES                16
+            638 PRECALL                  1
+            642 CALL                     1
+            652 POP_TOP
+
+363         654 LOAD_CONST              17 (False)
+            656 STORE_FAST              11 (got)
+
+364         658 LOAD_GLOBAL             13 (NULL + enumerate)
+            670 LOAD_FAST               10 (rows)
+            672 PRECALL                  1
+            676 CALL                     1
+            686 GET_ITER
+        >>  688 FOR_ITER               212 (to 1114)
+            690 UNPACK_SEQUENCE          2
+            694 STORE_FAST              12 (i)
+            696 STORE_FAST              13 (R)
+
+365         698 LOAD_FAST               13 (R)
+            700 LOAD_ATTR                7 (y0)
+            710 LOAD_CONST              18 (3)
+            712 BINARY_OP               10 (-)
+            716 LOAD_FAST               12 (i)
+            718 LOAD_CONST              19 (1)
+            720 BINARY_OP                0 (+)
+            724 LOAD_GLOBAL             17 (NULL + len)
+            736 LOAD_FAST               10 (rows)
+            738 PRECALL                  1
+            742 CALL                     1
+            752 COMPARE_OP               0 (<)
+            758 POP_JUMP_FORWARD_IF_FALSE    19 (to 798)
+            760 LOAD_FAST               10 (rows)
+            762 LOAD_FAST               12 (i)
+            764 LOAD_CONST              19 (1)
+            766 BINARY_OP                0 (+)
+            770 BINARY_SUBSCR
+            780 LOAD_ATTR                7 (y0)
+            790 LOAD_CONST              18 (3)
+            792 BINARY_OP               10 (-)
+            796 JUMP_FORWARD             1 (to 800)
+        >>  798 LOAD_CONST              20 (1000000000)
+        >>  800 SWAP                     2
+            802 STORE_DEREF             23 (y_lo)
+            804 STORE_DEREF             22 (y_hi)
+
+366         806 LOAD_CLOSURE            19 (x_name)
+            808 LOAD_CLOSURE            22 (y_hi)
+            810 LOAD_CLOSURE            23 (y_lo)
+            812 BUILD_TUPLE              3
+            814 LOAD_CONST              21 (<code object <listcomp> at 0x00000290C38363F0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\replay.py", line 366>)
+            816 MAKE_FUNCTION            8 (closure)
+            818 LOAD_FAST                6 (lines)
+            820 GET_ITER
+            822 PRECALL                  0
+            826 CALL                     0
+            836 STORE_FAST              14 (names)
+
+367         838 LOAD_CLOSURE            20 (x_oid)
+            840 LOAD_CLOSURE            21 (x_type)
+            842 LOAD_CLOSURE            22 (y_hi)
+            844 LOAD_CLOSURE            23 (y_lo)
+            846 BUILD_TUPLE              4
+            848 LOAD_CONST              22 (<code object <listcomp> at 0x00000290C39FA2B0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\replay.py", line 367>)
+            850 MAKE_FUNCTION            8 (closure)
+            852 LOAD_FAST                6 (lines)
+            854 GET_ITER
+            856 PRECALL                  0
+            860 CALL                     0
+            870 STORE_FAST              15 (oid_cands)
+
+370         872 LOAD_FAST               14 (names)
+            874 POP_JUMP_FORWARD_IF_FALSE     2 (to 880)
+            876 LOAD_FAST               15 (oid_cands)
+            878 POP_JUMP_FORWARD_IF_TRUE     1 (to 882)
+
+371     >>  880 JUMP_BACKWARD           97 (to 688)
+
+372     >>  882 LOAD_GLOBAL              1 (NULL + re)
+            894 LOAD_ATTR                9 (sub)
+            904 LOAD_CONST              23 ('\\s+')
+            906 LOAD_CONST              24 (' ')
+            908 LOAD_CONST              24 (' ')
+            910 LOAD_METHOD             10 (join)
+            932 LOAD_FAST               14 (names)
+            934 PRECALL                  1
+            938 CALL                     1
+            948 PRECALL                  3
+            952 CALL                     3
+            962 LOAD_METHOD             11 (strip)
+            984 PRECALL                  0
+            988 CALL                     0
+            998 STORE_FAST              16 (label)
+
+373        1000 LOAD_FAST                2 (result)
+           1002 LOAD_ATTR               12 (records)
+           1012 LOAD_METHOD             13 (append)
+           1034 LOAD_GLOBAL             29 (NULL + FieldRec)
+           1046 LOAD_FAST                4 (carry)
+           1048 JUMP_IF_TRUE_OR_POP      1 (to 1052)
+           1050 LOAD_CONST              25 ('')
+        >> 1052 LOAD_FAST               16 (label)
+           1054 LOAD_FAST               15 (oid_cands)
+           1056 LOAD_CONST              26 (0)
+           1058 BINARY_SUBSCR
+           1068 LOAD_CONST               0 (None)
+           1070 LOAD_FAST                5 (pno)
+           1072 LOAD_CONST              19 (1)
+           1074 BINARY_OP                0 (+)
+           1078 PRECALL                  5
+           1082 CALL                     5
+           1092 PRECALL                  1
+           1096 CALL                     1
+           1106 POP_TOP
+
+374        1108 LOAD_CONST              27 (True)
+           1110 STORE_FAST              11 (got)
+           1112 JUMP_BACKWARD          213 (to 688)
+
+375     >> 1114 LOAD_FAST               11 (got)
+           1116 POP_JUMP_FORWARD_IF_FALSE    16 (to 1150)
+
+376        1118 LOAD_FAST                2 (result)
+           1120 COPY                     1
+           1122 LOAD_ATTR               15 (pages_with_fields)
+           1132 LOAD_CONST              19 (1)
+           1134 BINARY_OP               13 (+=)
+           1138 SWAP                     2
+           1140 STORE_ATTR              15 (pages_with_fields)
+        >> 1150 EXTENDED_ARG             1
+           1152 JUMP_BACKWARD          491 (to 172)
+
+348     >> 1154 LOAD_CONST               0 (None)
+           1156 RETURN_VALUE
+
+Disassembly of <code object <genexpr> at 0x00000290C3A804F0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\replay.py", line 353>:
+              0 COPY_FREE_VARS           1
+
+353           2 RETURN_GENERATOR
+              4 POP_TOP
+              6 RESUME                   0
+              8 LOAD_FAST                0 (.0)
+        >>   10 FOR_ITER                48 (to 108)
+             12 STORE_FAST               1 (L)
+             14 LOAD_DEREF               2 (def_marker)
+             16 LOAD_METHOD              0 (match)
+             38 LOAD_FAST                1 (L)
+             40 LOAD_ATTR                1 (text)
+             50 LOAD_METHOD              2 (strip)
+             72 PRECALL                  0
+             76 CALL                     0
+             86 PRECALL                  1
+             90 CALL                     1
+            100 YIELD_VALUE
+            102 RESUME                   1
+            104 POP_TOP
+            106 JUMP_BACKWARD           49 (to 10)
+        >>  108 LOAD_CONST               0 (None)
+            110 RETURN_VALUE
+
+Disassembly of <code object <dictcomp> at 0x00000290C3A51C50, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\replay.py", line 355>:
+355           0 RESUME                   0
+              2 BUILD_MAP                0
+              4 LOAD_FAST                0 (.0)
+        >>    6 FOR_ITER                40 (to 88)
+              8 STORE_FAST               1 (L)
+             10 LOAD_FAST                1 (L)
+             12 LOAD_ATTR                0 (bold)
+             22 POP_JUMP_BACKWARD_IF_FALSE     9 (to 6)
+             24 LOAD_FAST                1 (L)
+             26 LOAD_ATTR                1 (text)
+             36 LOAD_METHOD              2 (strip)
+             58 PRECALL                  0
+             62 CALL                     0
+             72 LOAD_FAST                1 (L)
+             74 LOAD_ATTR                3 (x0)
+             84 MAP_ADD                  2
+             86 JUMP_BACKWARD           41 (to 6)
+        >>   88 RETURN_VALUE
+
+Disassembly of <code object <listcomp> at 0x00000290C3813230, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\replay.py", line 361>:
+              0 COPY_FREE_VARS           2
+
+361           2 RESUME                   0
+              4 BUILD_LIST               0
+              6 LOAD_FAST                0 (.0)
+        >>    8 FOR_ITER                62 (to 134)
+             10 STORE_FAST               1 (L)
+             12 LOAD_DEREF               2 (row_rx)
+             14 LOAD_METHOD              0 (match)
+             36 LOAD_FAST                1 (L)
+             38 LOAD_ATTR                1 (text)
+             48 LOAD_METHOD              2 (strip)
+             70 PRECALL                  0
+             74 CALL                     0
+             84 PRECALL                  1
+             88 CALL                     1
+             98 POP_JUMP_BACKWARD_IF_FALSE    46 (to 8)
+            100 LOAD_FAST                1 (L)
+            102 LOAD_ATTR                3 (x0)
+            112 LOAD_DEREF               3 (x_name)
+            114 LOAD_CONST               0 (5)
+            116 BINARY_OP               10 (-)
+            120 COMPARE_OP               0 (<)
+            126 POP_JUMP_BACKWARD_IF_FALSE    60 (to 8)
+            128 LOAD_FAST                1 (L)
+            130 LIST_APPEND              2
+            132 JUMP_BACKWARD           63 (to 8)
+        >>  134 RETURN_VALUE
+
+Disassembly of <code object <lambda> at 0x00000290C3A6D550, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\replay.py", line 362>:
+362           0 RESUME                   0
+              2 LOAD_FAST                0 (L)
+              4 LOAD_ATTR                0 (y0)
+             14 RETURN_VALUE
+
+Disassembly of <code object <listcomp> at 0x00000290C38363F0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\replay.py", line 366>:
+              0 COPY_FREE_VARS           3
+
+366           2 RESUME                   0
+              4 BUILD_LIST               0
+              6 LOAD_FAST                0 (.0)
+        >>    8 FOR_ITER                75 (to 160)
+             10 STORE_FAST               1 (L)
+             12 LOAD_GLOBAL              1 (NULL + abs)
+             24 LOAD_FAST                1 (L)
+             26 LOAD_ATTR                1 (x0)
+             36 LOAD_DEREF               2 (x_name)
+             38 BINARY_OP               10 (-)
+             42 PRECALL                  1
+             46 CALL                     1
+             56 LOAD_CONST               0 (8)
+             58 COMPARE_OP               0 (<)
+             64 POP_JUMP_BACKWARD_IF_FALSE    29 (to 8)
+             66 LOAD_DEREF               4 (y_lo)
+             68 LOAD_FAST                1 (L)
+             70 LOAD_ATTR                2 (y0)
+             80 SWAP                     2
+             82 COPY                     2
+             84 COMPARE_OP               1 (<=)
+             90 POP_JUMP_FORWARD_IF_FALSE     6 (to 104)
+             92 LOAD_DEREF               3 (y_hi)
+             94 COMPARE_OP               0 (<)
+            100 POP_JUMP_BACKWARD_IF_FALSE    47 (to 8)
+            102 JUMP_FORWARD             2 (to 108)
+        >>  104 POP_TOP
+            106 JUMP_FORWARD            25 (to 158)
+        >>  108 LOAD_FAST                1 (L)
+            110 LOAD_ATTR                3 (text)
+            120 LOAD_METHOD              4 (strip)
+            142 PRECALL                  0
+            146 CALL                     0
+            156 LIST_APPEND              2
+        >>  158 JUMP_BACKWARD           76 (to 8)
+        >>  160 RETURN_VALUE
+
+Disassembly of <code object <listcomp> at 0x00000290C39FA2B0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\replay.py", line 367>:
+              0 COPY_FREE_VARS           4
+
+367           2 RESUME                   0
+              4 BUILD_LIST               0
+              6 LOAD_FAST                0 (.0)
+        >>    8 FOR_ITER                91 (to 192)
+             10 STORE_FAST               1 (L)
+
+368          12 LOAD_GLOBAL              1 (NULL + abs)
+             24 LOAD_FAST                1 (L)
+             26 LOAD_ATTR                1 (x0)
+             36 LOAD_DEREF               2 (x_oid)
+             38 BINARY_OP               10 (-)
+             42 PRECALL                  1
+             46 CALL                     1
+             56 LOAD_CONST               0 (8)
+             58 COMPARE_OP               0 (<)
+             64 POP_JUMP_FORWARD_IF_FALSE    62 (to 190)
+             66 LOAD_DEREF               5 (y_lo)
+             68 LOAD_FAST                1 (L)
+             70 LOAD_ATTR                2 (y0)
+             80 SWAP                     2
+             82 COPY                     2
+             84 COMPARE_OP               1 (<=)
+             90 POP_JUMP_FORWARD_IF_FALSE     6 (to 104)
+             92 LOAD_DEREF               4 (y_hi)
+             94 COMPARE_OP               0 (<)
+            100 POP_JUMP_FORWARD_IF_FALSE    44 (to 190)
+            102 JUMP_FORWARD             2 (to 108)
+        >>  104 POP_TOP
+            106 JUMP_FORWARD            41 (to 190)
+
+369     >>  108 LOAD_DEREF               3 (x_type)
+            110 POP_JUMP_FORWARD_IF_NONE    14 (to 140)
+            112 LOAD_FAST                1 (L)
+            114 LOAD_ATTR                1 (x0)
+            124 LOAD_DEREF               3 (x_type)
+            126 LOAD_CONST               2 (5)
+            128 BINARY_OP               10 (-)
+            132 COMPARE_OP               0 (<)
+            138 POP_JUMP_BACKWARD_IF_FALSE    66 (to 8)
+
+367     >>  140 LOAD_FAST                1 (L)
+            142 LOAD_ATTR                3 (text)
+            152 LOAD_METHOD              4 (strip)
+            174 PRECALL                  0
+            178 CALL                     0
+
+369         188 LIST_APPEND              2
+        >>  190 JUMP_BACKWARD           92 (to 8)
+        >>  192 RETURN_VALUE
+
+Disassembly of <code object extract_line_pattern at 0x00000290C1B41FD0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\replay.py", line 382>:
+382           0 RESUME                   0
+
+383           2 LOAD_FAST                1 (recipe)
+              4 LOAD_CONST               1 ('fields')
+              6 BINARY_SUBSCR
+             16 STORE_FAST               3 (fcfg)
+
+384          18 LOAD_GLOBAL              1 (NULL + re)
+             30 LOAD_ATTR                1 (compile)
+             40 LOAD_FAST                3 (fcfg)
+             42 LOAD_CONST               2 ('code_regex')
+             44 BINARY_SUBSCR
+             54 PRECALL                  1
+             58 CALL                     1
+             68 STORE_FAST               4 (code_rx)
+
+385          70 LOAD_GLOBAL              1 (NULL + re)
+             82 LOAD_ATTR                1 (compile)
+             92 LOAD_FAST                3 (fcfg)
+             94 LOAD_METHOD              2 (get)
+            116 LOAD_CONST               3 ('label_regex')
+            118 LOAD_CONST               4 ('^(?=.*[A-Za-z]).{3,140}$')
+            120 PRECALL                  2
+            124 CALL                     2
+            134 PRECALL                  1
+            138 CALL                     1
+            148 STORE_FAST               5 (label_rx)
+
+386         150 LOAD_FAST                3 (fcfg)
+            152 LOAD_METHOD              2 (get)
+            174 LOAD_CONST               5 ('label_window_lines')
+            176 LOAD_CONST               6 (4)
+            178 PRECALL                  2
+            182 CALL                     2
+            192 STORE_FAST               6 (window)
+
+387         194 LOAD_GLOBAL              7 (NULL + _compile)
+            206 LOAD_FAST                3 (fcfg)
+            208 LOAD_METHOD              2 (get)
+            230 LOAD_CONST               7 ('label_noise')
+            232 PRECALL                  1
+            236 CALL                     1
+            246 PRECALL                  1
+            250 CALL                     1
+            260 STORE_FAST               7 (noise)
+
+388         262 LOAD_CONST               0 (None)
+            264 STORE_FAST               8 (carry)
+
+389         266 LOAD_FAST                0 (pages)
+            268 GET_ITER
+        >>  270 EXTENDED_ARG             1
+            272 FOR_ITER               377 (to 1028)
+            274 UNPACK_SEQUENCE          2
+            278 STORE_FAST               9 (pno)
+            280 STORE_FAST              10 (lines)
+
+390         282 LOAD_GLOBAL              9 (NULL + find_form_name)
+            294 LOAD_FAST               10 (lines)
+            296 LOAD_FAST                1 (recipe)
+            298 LOAD_CONST               8 ('form_name')
+            300 BINARY_SUBSCR
+            310 LOAD_FAST                8 (carry)
+            312 PRECALL                  3
+            316 CALL                     3
+            326 STORE_FAST              11 (form)
+
+391         328 LOAD_FAST               11 (form)
+            330 POP_JUMP_FORWARD_IF_FALSE     2 (to 336)
+
+392         332 LOAD_FAST               11 (form)
+            334 STORE_FAST               8 (carry)
+
+393     >>  336 LOAD_CONST               9 (False)
+            338 STORE_FAST              12 (got)
+
+394         340 LOAD_GLOBAL             11 (NULL + enumerate)
+            352 LOAD_FAST               10 (lines)
+            354 PRECALL                  1
+            358 CALL                     1
+            368 GET_ITER
+        >>  370 EXTENDED_ARG             1
+            372 FOR_ITER               307 (to 988)
+            374 UNPACK_SEQUENCE          2
+            378 STORE_FAST              13 (i)
+            380 STORE_FAST              14 (L)
+
+395         382 LOAD_FAST               14 (L)
+            384 LOAD_ATTR                6 (text)
+            394 LOAD_METHOD              7 (strip)
+            416 PRECALL                  0
+            420 CALL                     0
+            430 STORE_FAST              15 (t)
+
+396         432 LOAD_FAST                3 (fcfg)
+            434 LOAD_METHOD              2 (get)
+            456 LOAD_CONST              10 ('code_search')
+            458 PRECALL                  1
+            462 CALL                     1
+            472 POP_JUMP_FORWARD_IF_FALSE    21 (to 516)
+            474 LOAD_FAST                4 (code_rx)
+            476 LOAD_METHOD              8 (search)
+            498 LOAD_FAST               15 (t)
+            500 PRECALL                  1
+            504 CALL                     1
+            514 JUMP_FORWARD            20 (to 556)
+        >>  516 LOAD_FAST                4 (code_rx)
+            518 LOAD_METHOD              9 (match)
+            540 LOAD_FAST               15 (t)
+            542 PRECALL                  1
+            546 CALL                     1
+        >>  556 STORE_FAST              16 (m)
+
+397         558 LOAD_FAST               16 (m)
+            560 POP_JUMP_FORWARD_IF_TRUE     1 (to 564)
+
+398         562 JUMP_BACKWARD           97 (to 370)
+
+399     >>  564 LOAD_CONST               0 (None)
+            566 STORE_FAST              17 (label)
+
+400         568 LOAD_GLOBAL             21 (NULL + range)
+            580 LOAD_FAST               13 (i)
+            582 LOAD_CONST              11 (1)
+            584 BINARY_OP               10 (-)
+            588 LOAD_GLOBAL             23 (NULL + max)
+            600 LOAD_CONST              12 (-1)
+            602 LOAD_FAST               13 (i)
+            604 LOAD_CONST              11 (1)
+            606 BINARY_OP               10 (-)
+            610 LOAD_FAST                6 (window)
+            612 BINARY_OP               10 (-)
+            616 PRECALL                  2
+            620 CALL                     2
+            630 LOAD_CONST              12 (-1)
+            632 PRECALL                  3
+            636 CALL                     3
+            646 GET_ITER
+        >>  648 FOR_ITER                96 (to 842)
+            650 STORE_FAST              18 (j)
+
+401         652 LOAD_FAST               10 (lines)
+            654 LOAD_FAST               18 (j)
+            656 BINARY_SUBSCR
+            666 LOAD_ATTR                6 (text)
+            676 LOAD_METHOD              7 (strip)
+            698 PRECALL                  0
+            702 CALL                     0
+            712 STORE_FAST              19 (cand)
+
+402         714 LOAD_FAST                4 (code_rx)
+            716 LOAD_METHOD              8 (search)
+            738 LOAD_FAST               19 (cand)
+            740 PRECALL                  1
+            744 CALL                     1
+            754 POP_JUMP_FORWARD_IF_TRUE    16 (to 788)
+            756 LOAD_GLOBAL             25 (NULL + _is_noise)
+            768 LOAD_FAST               19 (cand)
+            770 LOAD_FAST                7 (noise)
+            772 PRECALL                  2
+            776 CALL                     2
+            786 POP_JUMP_FORWARD_IF_FALSE     1 (to 790)
+
+403     >>  788 JUMP_BACKWARD           71 (to 648)
+
+404     >>  790 LOAD_FAST                5 (label_rx)
+            792 LOAD_METHOD              9 (match)
+            814 LOAD_FAST               19 (cand)
+            816 PRECALL                  1
+            820 CALL                     1
+            830 POP_JUMP_FORWARD_IF_FALSE     4 (to 840)
+
+405         832 LOAD_FAST               19 (cand)
+            834 STORE_FAST              17 (label)
+
+406         836 POP_TOP
+            838 JUMP_FORWARD             1 (to 842)
+
+404     >>  840 JUMP_BACKWARD           97 (to 648)
+
+407     >>  842 LOAD_FAST               17 (label)
+            844 POP_JUMP_FORWARD_IF_FALSE    69 (to 984)
+
+408         846 LOAD_FAST                2 (result)
+            848 LOAD_ATTR               13 (records)
+            858 LOAD_METHOD             14 (append)
+            880 LOAD_GLOBAL             31 (NULL + FieldRec)
+            892 LOAD_FAST               11 (form)
+            894 JUMP_IF_TRUE_OR_POP      1 (to 898)
+            896 LOAD_CONST              13 ('')
+        >>  898 LOAD_FAST               17 (label)
+            900 LOAD_FAST               16 (m)
+            902 LOAD_METHOD             16 (group)
+            924 LOAD_CONST              11 (1)
+            926 PRECALL                  1
+            930 CALL                     1
+            940 LOAD_CONST               0 (None)
+            942 LOAD_FAST                9 (pno)
+            944 LOAD_CONST              11 (1)
+            946 BINARY_OP                0 (+)
+            950 PRECALL                  5
+            954 CALL                     5
+            964 PRECALL                  1
+            968 CALL                     1
+            978 POP_TOP
+
+409         980 LOAD_CONST              14 (True)
+            982 STORE_FAST              12 (got)
+        >>  984 EXTENDED_ARG             1
+            986 JUMP_BACKWARD          309 (to 370)
+
+410     >>  988 LOAD_FAST               12 (got)
+            990 POP_JUMP_FORWARD_IF_FALSE    16 (to 1024)
+
+411         992 LOAD_FAST                2 (result)
+            994 COPY                     1
+            996 LOAD_ATTR               17 (pages_with_fields)
+           1006 LOAD_CONST              11 (1)
+           1008 BINARY_OP               13 (+=)
+           1012 SWAP                     2
+           1014 STORE_ATTR              17 (pages_with_fields)
+        >> 1024 EXTENDED_ARG             1
+           1026 JUMP_BACKWARD          379 (to 270)
+
+389     >> 1028 LOAD_CONST               0 (None)
+           1030 RETURN_VALUE
+
+Disassembly of <code object build_pages at 0x00000290C377B430, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\replay.py", line 423>:
+              0 MAKE_CELL                7 (skip)
+
+423           2 RESUME                   0
+
+424           4 LOAD_GLOBAL              1 (NULL + _compile)
+             16 LOAD_FAST                1 (recipe)
+             18 LOAD_METHOD              1 (get)
+             40 LOAD_CONST               1 ('skip_page_if')
+             42 PRECALL                  1
+             46 CALL                     1
+             56 PRECALL                  1
+             60 CALL                     1
+             70 STORE_DEREF              7 (skip)
+
+425          72 BUILD_LIST               0
+             74 STORE_FAST               3 (pages)
+
+426          76 LOAD_FAST                2 (page_indices)
+             78 POP_JUMP_FORWARD_IF_NOT_NONE    20 (to 120)
+             80 LOAD_GLOBAL              5 (NULL + range)
+             92 LOAD_FAST                0 (doc)
+             94 LOAD_ATTR                3 (page_count)
+            104 PRECALL                  1
+            108 CALL                     1
+            118 JUMP_FORWARD             1 (to 122)
+        >>  120 LOAD_FAST                2 (page_indices)
+        >>  122 STORE_FAST               4 (indices)
+
+427         124 LOAD_FAST                4 (indices)
+            126 GET_ITER
+        >>  128 FOR_ITER                96 (to 322)
+            130 STORE_FAST               5 (i)
+
+428         132 LOAD_FAST                5 (i)
+            134 LOAD_FAST                0 (doc)
+            136 LOAD_ATTR                3 (page_count)
+            146 COMPARE_OP               5 (>=)
+            152 POP_JUMP_FORWARD_IF_FALSE     1 (to 156)
+
+429         154 JUMP_BACKWARD           14 (to 128)
+
+430     >>  156 LOAD_GLOBAL              9 (NULL + build_page_lines)
+            168 LOAD_FAST                0 (doc)
+            170 LOAD_FAST                5 (i)
+            172 BINARY_SUBSCR
+            182 PRECALL                  1
+            186 CALL                     1
+            196 STORE_FAST               6 (lines)
+
+431         198 LOAD_DEREF               7 (skip)
+            200 POP_JUMP_FORWARD_IF_FALSE    36 (to 274)
+            202 LOAD_GLOBAL             11 (NULL + any)
+            214 LOAD_CLOSURE             7 (skip)
+            216 BUILD_TUPLE              1
+            218 LOAD_CONST               2 (<code object <genexpr> at 0x00000290C3A17A30, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\replay.py", line 431>)
+            220 MAKE_FUNCTION            8 (closure)
+            222 LOAD_FAST                6 (lines)
+            224 LOAD_CONST               0 (None)
+            226 LOAD_CONST               3 (6)
+            228 BUILD_SLICE              2
+            230 BINARY_SUBSCR
+            240 GET_ITER
+            242 PRECALL                  0
+            246 CALL                     0
+            256 PRECALL                  1
+            260 CALL                     1
+            270 POP_JUMP_FORWARD_IF_FALSE     1 (to 274)
+
+432         272 JUMP_BACKWARD           73 (to 128)
+
+433     >>  274 LOAD_FAST                3 (pages)
+            276 LOAD_METHOD              6 (append)
+            298 LOAD_FAST                5 (i)
+            300 LOAD_FAST                6 (lines)
+            302 BUILD_TUPLE              2
+            304 PRECALL                  1
+            308 CALL                     1
+            318 POP_TOP
+            320 JUMP_BACKWARD           97 (to 128)
+
+434     >>  322 LOAD_FAST                3 (pages)
+            324 RETURN_VALUE
+
+Disassembly of <code object <genexpr> at 0x00000290C3A17A30, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\replay.py", line 431>:
+              0 COPY_FREE_VARS           1
+
+431           2 RETURN_GENERATOR
+              4 POP_TOP
+              6 RESUME                   0
+              8 LOAD_FAST                0 (.0)
+        >>   10 FOR_ITER                25 (to 62)
+             12 STORE_FAST               1 (L)
+             14 LOAD_GLOBAL              1 (NULL + _is_noise)
+             26 LOAD_FAST                1 (L)
+             28 LOAD_ATTR                1 (text)
+             38 LOAD_DEREF               2 (skip)
+             40 PRECALL                  2
+             44 CALL                     2
+             54 YIELD_VALUE
+             56 RESUME                   1
+             58 POP_TOP
+             60 JUMP_BACKWARD           26 (to 10)
+        >>   62 LOAD_CONST               0 (None)
+             64 RETURN_VALUE
+
+Disassembly of <code object replay at 0x00000290C1AEE240, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\replay.py", line 437>:
+437           0 RESUME                   0
+
+440           2 LOAD_GLOBAL              1 (NULL + fitz)
+             14 LOAD_ATTR                1 (open)
+             24 LOAD_FAST                0 (pdf_path)
+             26 PRECALL                  1
+             30 CALL                     1
+             40 STORE_FAST               3 (doc)
+
+441          42 LOAD_GLOBAL              5 (NULL + build_pages)
+             54 LOAD_FAST                3 (doc)
+             56 LOAD_FAST                1 (recipe)
+             58 LOAD_FAST                2 (page_indices)
+             60 PRECALL                  3
+             64 CALL                     3
+             74 STORE_FAST               4 (pages)
+
+442          76 LOAD_GLOBAL              7 (NULL + ReplayResult)
+             88 LOAD_FAST                1 (recipe)
+             90 LOAD_METHOD              4 (get)
+            112 LOAD_CONST               1 ('format_id')
+            114 LOAD_CONST               2 ('unknown')
+            116 PRECALL                  2
+            120 CALL                     2
+            130 LOAD_FAST                3 (doc)
+            132 LOAD_ATTR                5 (page_count)
+            142 KW_NAMES                 3
+            144 PRECALL                  2
+            148 CALL                     2
+            158 STORE_FAST               5 (result)
+
+443         160 LOAD_FAST                1 (recipe)
+            162 LOAD_METHOD              4 (get)
+            184 LOAD_CONST               4 ('fields')
+            186 BUILD_MAP                0
+            188 PRECALL                  2
+            192 CALL                     2
+            202 LOAD_METHOD              4 (get)
+            224 LOAD_CONST               5 ('engine')
+            226 PRECALL                  1
+            230 CALL                     1
+            240 STORE_FAST               6 (engine)
+
+444         242 LOAD_FAST                6 (engine)
+            244 LOAD_GLOBAL             12 (ENGINES)
+            256 CONTAINS_OP              1
+            258 POP_JUMP_FORWARD_IF_FALSE    39 (to 338)
+
+445         260 LOAD_GLOBAL             15 (NULL + ValueError)
+            272 LOAD_CONST               6 ('unknown engine ')
+            274 LOAD_FAST                6 (engine)
+            276 FORMAT_VALUE             2 (repr)
+            278 LOAD_CONST               7 ('; must be one of ')
+            280 LOAD_GLOBAL             17 (NULL + sorted)
+            292 LOAD_GLOBAL             12 (ENGINES)
+            304 PRECALL                  1
+            308 CALL                     1
+            318 FORMAT_VALUE             0
+            320 BUILD_STRING             4
+            322 PRECALL                  1
+            326 CALL                     1
+            336 RAISE_VARARGS            1
+
+446     >>  338 LOAD_GLOBAL             13 (NULL + ENGINES)
+            350 LOAD_FAST                6 (engine)
+            352 BINARY_SUBSCR
+            362 LOAD_FAST                4 (pages)
+            364 LOAD_FAST                1 (recipe)
+            366 LOAD_FAST                5 (result)
+            368 PRECALL                  3
+            372 CALL                     3
+            382 POP_TOP
+
+447         384 LOAD_FAST                5 (result)
+            386 LOAD_METHOD              9 (dedup)
+            408 PRECALL                  0
+            412 CALL                     0
+            422 POP_TOP
+
+448         424 LOAD_FAST                3 (doc)
+            426 LOAD_METHOD             10 (close)
+            448 PRECALL                  0
+            452 CALL                     0
+            462 POP_TOP
+
+449         464 LOAD_FAST                5 (result)
+            466 RETURN_VALUE
+
+Disassembly of <code object detect_format at 0x00000290C1B10F00, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\replay.py", line 452>:
+              0 MAKE_CELL               11 (doc)
+              2 MAKE_CELL               12 (text)
+
+452           4 RESUME                   0
+
+454           6 LOAD_GLOBAL              1 (NULL + fitz)
+             18 LOAD_ATTR                1 (open)
+             28 LOAD_FAST                0 (pdf_path)
+             30 PRECALL                  1
+             34 CALL                     1
+             44 STORE_DEREF             11 (doc)
+
+455          46 LOAD_CONST               1 ('\n')
+             48 LOAD_METHOD              2 (join)
+             70 LOAD_CLOSURE            11 (doc)
+             72 BUILD_TUPLE              1
+             74 LOAD_CONST               2 (<code object <genexpr> at 0x00000290C3A51E90, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\replay.py", line 455>)
+             76 MAKE_FUNCTION            8 (closure)
+             78 LOAD_FAST                2 (sample_pages)
+             80 GET_ITER
+             82 PRECALL                  0
+             86 CALL                     0
+             96 PRECALL                  1
+            100 CALL                     1
+            110 STORE_DEREF             12 (text)
+
+456         112 LOAD_DEREF              11 (doc)
+            114 LOAD_METHOD              3 (close)
+            136 PRECALL                  0
+            140 CALL                     0
+            150 POP_TOP
+
+457         152 BUILD_MAP                0
+            154 STORE_FAST               3 (scores)
+
+458         156 LOAD_CONST               3 ((None, 0.0))
+            158 UNPACK_SEQUENCE          2
+            162 STORE_FAST               4 (best)
+            164 STORE_FAST               5 (best_score)
+
+459         166 LOAD_FAST                1 (recipes)
+            168 GET_ITER
+        >>  170 FOR_ITER               163 (to 498)
+            172 STORE_FAST               6 (r)
+
+460         174 LOAD_FAST                6 (r)
+            176 LOAD_METHOD              4 (get)
+            198 LOAD_CONST               4 ('detect')
+            200 BUILD_MAP                0
+            202 PRECALL                  2
+            206 CALL                     2
+            216 STORE_FAST               7 (det)
+
+461         218 LOAD_GLOBAL             11 (NULL + sum)
+            230 LOAD_CLOSURE            12 (text)
+            232 BUILD_TUPLE              1
+            234 LOAD_CONST               5 (<code object <genexpr> at 0x00000290C3A17B30, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\replay.py", line 461>)
+            236 MAKE_FUNCTION            8 (closure)
+            238 LOAD_FAST                7 (det)
+            240 LOAD_METHOD              4 (get)
+            262 LOAD_CONST               6 ('all')
+            264 BUILD_LIST               0
+            266 PRECALL                  2
+            270 CALL                     2
+            280 GET_ITER
+            282 PRECALL                  0
+            286 CALL                     0
+            296 PRECALL                  1
+            300 CALL                     1
+            310 STORE_FAST               8 (hits)
+
+462         312 LOAD_GLOBAL             13 (NULL + len)
+            324 LOAD_FAST                7 (det)
+            326 LOAD_METHOD              4 (get)
+            348 LOAD_CONST               6 ('all')
+            350 BUILD_LIST               0
+            352 PRECALL                  2
+            356 CALL                     2
+            366 JUMP_IF_TRUE_OR_POP      2 (to 372)
+            368 LOAD_CONST               7 (1)
+            370 BUILD_LIST               1
+        >>  372 PRECALL                  1
+            376 CALL                     1
+            386 STORE_FAST               9 (need)
+
+463         388 LOAD_FAST                8 (hits)
+            390 LOAD_FAST                9 (need)
+            392 BINARY_OP               11 (/)
+            396 STORE_FAST              10 (score)
+
+464         398 LOAD_GLOBAL             15 (NULL + round)
+            410 LOAD_FAST               10 (score)
+            412 LOAD_CONST               8 (2)
+            414 PRECALL                  2
+            418 CALL                     2
+            428 LOAD_FAST                3 (scores)
+            430 LOAD_FAST                6 (r)
+            432 LOAD_CONST               9 ('format_id')
+            434 BINARY_SUBSCR
+            444 STORE_SUBSCR
+
+465         448 LOAD_FAST               10 (score)
+            450 LOAD_FAST                5 (best_score)
+            452 COMPARE_OP               4 (>)
+            458 POP_JUMP_FORWARD_IF_TRUE     8 (to 476)
+            460 LOAD_FAST               10 (score)
+            462 LOAD_FAST                5 (best_score)
+            464 COMPARE_OP               2 (==)
+            470 POP_JUMP_FORWARD_IF_FALSE    12 (to 496)
+            472 LOAD_FAST                4 (best)
+            474 POP_JUMP_FORWARD_IF_NOT_NONE    10 (to 496)
+
+466     >>  476 LOAD_FAST                8 (hits)
+            478 LOAD_FAST                9 (need)
+            480 COMPARE_OP               2 (==)
+            486 POP_JUMP_FORWARD_IF_FALSE     4 (to 496)
+
+467         488 LOAD_FAST                6 (r)
+            490 LOAD_FAST               10 (score)
+            492 STORE_FAST               5 (best_score)
+            494 STORE_FAST               4 (best)
+        >>  496 JUMP_BACKWARD          164 (to 170)
+
+468     >>  498 LOAD_FAST                4 (best)
+            500 LOAD_FAST                3 (scores)
+            502 BUILD_TUPLE              2
+            504 RETURN_VALUE
+
+Disassembly of <code object <genexpr> at 0x00000290C3A51E90, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\replay.py", line 455>:
+              0 COPY_FREE_VARS           1
+
+455           2 RETURN_GENERATOR
+              4 POP_TOP
+              6 RESUME                   0
+              8 LOAD_FAST                0 (.0)
+        >>   10 FOR_ITER                41 (to 94)
+             12 STORE_FAST               1 (p)
+             14 LOAD_FAST                1 (p)
+             16 LOAD_DEREF               2 (doc)
+             18 LOAD_ATTR                0 (page_count)
+             28 COMPARE_OP               0 (<)
+             34 POP_JUMP_BACKWARD_IF_FALSE    13 (to 10)
+             36 LOAD_DEREF               2 (doc)
+             38 LOAD_FAST                1 (p)
+             40 BINARY_SUBSCR
+             50 LOAD_METHOD              1 (get_text)
+             72 PRECALL                  0
+             76 CALL                     0
+             86 YIELD_VALUE
+             88 RESUME                   1
+             90 POP_TOP
+             92 JUMP_BACKWARD           42 (to 10)
+        >>   94 LOAD_CONST               0 (None)
+             96 RETURN_VALUE
+
+Disassembly of <code object <genexpr> at 0x00000290C3A17B30, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\replay.py", line 461>:
+              0 COPY_FREE_VARS           1
+
+461           2 RETURN_GENERATOR
+              4 POP_TOP
+              6 RESUME                   0
+              8 LOAD_FAST                0 (.0)
+        >>   10 FOR_ITER                27 (to 66)
+             12 STORE_FAST               1 (rx)
+             14 LOAD_GLOBAL              1 (NULL + re)
+             26 LOAD_ATTR                1 (search)
+             36 LOAD_FAST                1 (rx)
+             38 LOAD_DEREF               2 (text)
+             40 PRECALL                  2
+             44 CALL                     2
+             54 POP_JUMP_BACKWARD_IF_FALSE    23 (to 10)
+             56 LOAD_CONST               0 (1)
+             58 YIELD_VALUE
+             60 RESUME                   1
+             62 POP_TOP
+             64 JUMP_BACKWARD           28 (to 10)
+        >>   66 LOAD_CONST               1 (None)
+             68 RETURN_VALUE

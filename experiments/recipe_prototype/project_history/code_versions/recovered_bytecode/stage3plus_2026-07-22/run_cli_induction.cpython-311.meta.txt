@@ -1,0 +1,404 @@
+# module: D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\run_cli_induction.py
+# top-level names: ['__doc__', '__future__', 'annotations', 'argparse', 'csv', 'json', 'os', 're', 'shutil', 'subprocess', 'tempfile', 'time', 'run_report', 'codegen', 'AUDIT_NOT_RUN', 'audit_issues', 'audit_problem_lines', 'build_audit_prompt', 'build_code_revision_prompt', 'build_codegen_prompt', 'build_coverage_confirm_prompt', 'improves', 'is_confirm_no_fields', 'parse_audit_reply', 'run_extractor', 'validate_generated', 'version_score', 'common', 'OUT_DIR', 'doc_key', 'list_root_pdfs', 'DEFAULT_DOCS', 'find_agent', 'call_cli', 'slug', 'doc_meta', 'doc_status', 'save_reply', 'jsonable_score', 'coverage_of', 'audit_page_num', 'induce_document', 'write_timings', 'finalize_document', 'main', '__name__']
+
+=== module()  [line 1] ===
+  [STR]
+    | Run the codegen induction loop against a REAL external model via the Cursor CLI.
+    | 
+    | This exists to validate the production model (Claude Sonnet 4.5) locally, before
+    | the Dataiku notebook run. The CLI call is a plain chat completion: the prompt file
+    | goes in on stdin, the reply comes out on stdout. The agent process runs in an
+    | EMPTY sandbox directory outside the repo: its working dir exposes nothing. (A
+    | print-mode agent does retain tool access to absolute paths, so the blind
+    | property also rests on the prompt containing page dumps only - never repo or
+    | artifact paths.)
+    | 
+    | Loop semantics (mirrors the intended Dataiku notebook). Every cycle produces ONE
+    | parser version and ends with one comparable result:
+    | 
+    |   generate/revise -> full-document run + gates
+    |                   -> [one-time coverage confirmation; an adopted extension is
+    |                      scored as its OWN next version, after the pre-extension
+    |                      program got its own trail entry and chance at best]
+    |                   -> grounded audit on a page sample FIXED at the first audit
+    |                   -> version_score = (hard problems, audit issues, warnings, -coverage)
+    | 
+    | Stopping (no phase-local budgets; one rule set for the whole loop):
+    |   converged  gates pass, the audit finds zero issues, and the version is the new
+    |              best -> accept immediately
+    |   plateau    a version fails to strictly improve on the PREVIOUS one
+    |              (diminishing returns; audit counts are compared on the same pages,
+    |              and a version that loses >10% page coverage never counts as improved
+    |              - neither for continuing the loop nor for best selection). Two
+    |              CONSECUTIVE gate-failed versions never plateau: identical crash
+    |              scores are not diminishing returns, they are zero returns - the
+    |              revision loop keeps trying until the budget cap.
+    |   budget     at most --max-versions cycles (default 5)
+    |   error      transport/audit failure -> stop with what we have
+    | 
+    | A zero-issue audit is only TRUSTED when the reply actually covers every audited
+    | page; a malformed or partial audit reply gets ONE reprompt before it counts as
+    | failed/partial. Issue counts ignore pages outside the fixed sample. The BEST
+    | version (not the last) is exported; if every version hard-failed the document is
+    | flagged needs_manual_template. The controller is a small explicit state machine
+    | on purpose - it maps 1:1 onto a LangGraph StateGraph (nodes: generate / validate
+    | / confirm / audit; conditional edges = the stop rules) if the Dataiku notebook
+    | later wants checkpointing/tracing, with zero logic changes.
+    | 
+    | Usage:
+    |   python run_cli_induction.py --model claude-4.5-sonnet [--only substring] [--max-versions 5]
+    | 
+    | Outputs per document (suffix keeps them separate from the parent-model runs):
+    |   codegen_reply_<model>_<n>.py   raw model replies (one per version; an adopted
+    |                                  coverage extension is also kept as _confirm.txt)
+    |   codegen_trail_<model>.json     {stop_reason, versions, best_version, score_key,
+    |                                  cycles}; an adopted extension appears as its own
+    |                                  version right after the version it extends
+    |   generated_extractor_<model>.py best accepted program
+    |   fields_codegen_<model>.csv     full-document extraction
+    |   llm_calls_<model>.jsonl        every LLM call verbatim: {seq, kind, version, s,
+    |                                  prompt_chars, reply_chars, prompt, reply} - the
+    |                                  traceability + token/cost record (cost_report.py)
+    |   timings_<model>.json           per-document profile: stage0_s, llm time by call
+    |                                  kind, sandbox time, export_s, total_s
+    | 
+    | Run-root outputs:
+    |   cli_induction_summary_<model>.json  one row per document (now incl. elapsed_s,
+    |                                       llm_s, llm_calls, stage0_s)
+    |   cli_error_events_<model>.csv        stage-attributed error/event log (run_report)
+    |   cli_error_summary_<model>.json      event counts by stage / code / severity
+  [STR] 'return'
+  [STR] 'str'
+  [STR] 'agent_bin'
+  [STR] 'model'
+  [STR] 'prompt'
+  [STR] 'timeout_s'
+  [STR] 'int'
+  [STR] 'outdir'
+  [STR] 'dict'
+  [STR] 'py'
+  [STR] 'tag'
+  [STR] 'name'
+  [STR] 'str | int'
+  [STR] 'reply'
+  [STR] 'ext'
+  [STR] 'None'
+  [STR] 'score'
+  [STR] 'tuple'
+  [STR] 'list'
+  [STR] 'verdict'
+  [STR] 'v'
+  [STR] 'int | None'
+  [STR] 'pdf'
+  [STR] 'initial_prompt'
+  [STR] 'max_versions'
+  [STR] 'profile'
+  [STR] 'dict | None'
+  [STR] 'tuple[dict | None, list[dict], str, int]'
+  [STR] 'export_s'
+  [STR] 'float | None'
+  [STR] 'key'
+  [STR] 'best'
+  [STR] 'trail'
+  [STR] 'list[dict]'
+  [STR] 'stop_reason'
+  [STR] 'versions'
+  [STR] '__main__'
+
+=== find_agent()  [line 93] ===
+  [STR] 'agent'
+  [STR] 'USERPROFILE'
+  [STR] '.local'
+  [STR] 'bin'
+  [STR] 'agent.exe'
+  [STR]
+    | cursor CLI 'agent' not found on PATH or in ~/.local/bin
+
+=== call_cli(agent_bin, model, prompt, timeout_s)  [line 102] ===
+  [STR] 'crf_llm_sandbox_'
+  [STR] '-p'
+  [STR] '--trust'
+  [STR] '--model'
+  [STR] '--output-format'
+  [STR] 'text'
+  [STR] 'utf-8'
+  [STR] 'replace'
+  [STR] 'agent CLI exited '
+  [STR] ': '
+  [STR] 'agent CLI returned empty reply; stderr: '
+
+=== slug(model)  [line 124] ===
+  [STR] '[^a-z0-9]+'
+  [STR] '_'
+
+=== doc_meta(outdir)  [line 128] ===
+  [STR] 'clusters.json'
+  [STR] 'utf-8'
+  [STR] 'status'
+  [STR] 'missing_stage0'
+
+=== doc_status(outdir)  [line 136] ===
+  [STR] 'status'
+  [STR] 'ok'
+
+=== save_reply(outdir, tag, name, reply, ext)  [line 140] ===
+  [STR] 'codegen_reply_'
+  [STR] '_'
+  [STR] '.'
+  [STR] 'w'
+  [STR] 'utf-8'
+
+=== jsonable_score(score)  [line 145] ===
+
+=== <listcomp>(.0)  [line 146] ===
+  [STR] 'not_audited'
+
+=== coverage_of(verdict)  [line 149] ===
+  [STR] 'metrics'
+  [STR] 'pages_with_fields'
+
+=== audit_page_num(v)  [line 153] ===
+  [STR] 'page'
+
+=== induce_document(call, model, tag, pdf, outdir, initial_prompt, max_versions, profile)  [line 160] ===
+  [STR]
+    | One document through the loop. Returns (best, trail, stop_reason, versions).
+    | 
+    |     `call` is the LLM transport: fn(prompt: str) -> reply str. The Cursor-CLI
+    |     driver below and the Dataiku notebook (LLM Mesh) inject different transports
+    |     around this SAME controller; `model` is a label for logs only.
+    | 
+    |     `profile` (optional, mutated in place) collects wall-time instrumentation:
+    |     every LLM call as {seq, kind, version, s, prompt_chars, reply_chars} plus
+    |     accumulated sandbox time. The full prompt/reply text of every call is
+    |     additionally appended to llm_calls_<tag>.jsonl in outdir - the traceability
+    |     record cost_report.py tokenizes locally. Instrumentation never fails the
+    |     run: an unwritable outdir (synthetic test dirs) disables the JSONL log.
+    | 
+    |     `best` is the best-scoring version so far (never the merely-latest one):
+    |     {reply, verdict, score, version, audit_issues}. Plateau stopping compares
+    |     CONSECUTIVE version scores; best selection additionally applies the
+    |     coverage-regression guard in improves().
+  [STR] 'generate'
+  [STR] 'llm_calls'
+  [STR] 'sandbox_validate_s'
+  [STR] 'sandbox_validate_calls'
+  [STR] 'llm_calls_'
+  [STR] '.jsonl'
+  [STR] 'w'
+  [STR] 'utf-8'
+  [STR] 'prompt_'
+  [STR] 'str'
+  [STR] 'kind_'
+  [STR] 'return'
+  [STR] 'reply_'
+  [STR] 'dict'
+  [STR] 'budget'
+  [STR] '    v'
+  [STR] ' ['
+  [STR] ']: calling '
+  [STR] ' ...'
+  [STR] '    transport error: '
+  [STR] 'transport_error'
+  [STR] 'problems'
+  [STR] 'cluster_feedback'
+  [STR] 'weak_clusters'
+  [STR] '    coverage confirmation (uncovered: '
+  [STR] 'doc-wide holes'
+  [STR] ') ...'
+  [STR] 'confirm'
+  [STR] 'txt'
+  [STR] 'confirmed_no_fields'
+  [STR]
+    |     model confirmed uncovered clusters are field-free
+  [STR] 'metrics'
+  [STR] 'records'
+  [STR] 'extended_program'
+  [STR] 'extension_rejected'
+  [STR] 'warnings'
+  [STR] 'confirm_extension'
+  [STR] '    extended program adopted as v'
+  [STR] ': '
+  [STR]
+    |     extension rejected (regression or gate failure); keeping current
+  [STR] '    confirmation transport error: '
+  [STR] 'result'
+  [STR] 'audit'
+  [STR]
+    | 
+    | 
+    | Your previous reply contained no valid JSON array. Reply again with ONLY the JSON array described above, one object per audited page.
+  [STR]
+    | 
+    | 
+    | Your previous reply skipped some audited pages. Reply again with ONLY the JSON array, exactly one object per page, for pages 
+  [STR] ', '
+  [STR] '.'
+  [STR] '    audit reply skipped some of pages '
+  [STR] '; zero-issue count not trusted'
+  [STR] '    audit: '
+  [STR] ' issue(s) on a PARTIAL reply (pages '
+  [STR] ')'
+  [STR] ' issue(s) on pages '
+  [STR] '    audit error: '
+  [STR] 'audit_error'
+  [STR] '    problems: '
+  [STR] '    warnings: '
+  [STR] 'converged'
+  [STR] 'had_problems'
+  [STR] 'score'
+  [STR] 'cov'
+  [STR] 'plateau'
+  [STR] 'revise_gates'
+  [STR] 'source'
+  [STR] 'sample'
+  [STR]
+    | (aggregate gates passed; a page-level audit of the document found the issues below)
+  [STR] 'revise_audit'
+
+=== timed_call(prompt_, kind_)  [line 199] ===
+  [STR]
+    | The transport, timed + logged. Failed calls are recorded too (with
+    |         `error` and no reply) before the exception propagates to the caller's
+    |         existing handling.
+  [STR] 'llm_calls'
+  [STR] 'error'
+  [STR] 'a'
+  [STR] 'utf-8'
+
+=== timed_validate(reply_)  [line 227] ===
+  [STR] 'sandbox_validate_s'
+  [STR] 'sandbox_validate_calls'
+
+=== track(reply_, verdict_, score_, aud_)  [line 238] ===
+  [STR]
+    | Update best with a candidate version; returns whether it improved.
+  [STR] 'score'
+  [STR] 'verdict'
+
+=== <listcomp>(.0)  [line 275] ===
+  [STR] 'cluster'
+  [STR] 'n_pages'
+
+=== <listcomp>(.0)  [line 343] ===
+
+=== <setcomp>(.0)  [line 353] ===
+
+=== <genexpr>(.0)  [line 359] ===
+
+=== <setcomp>(.0)  [line 361] ===
+
+=== write_timings(outdir, tag, profile, export_s)  [line 430] ===
+  [STR]
+    | Assemble the per-document time profile from the filled `profile` dict
+    |     (plus stage-0's own elapsed_s from clusters.json) and persist it as
+    |     timings_<tag>.json. Returns the profile dict (None when not profiling).
+  [STR] 'llm_calls'
+  [STR] 'kind'
+  [STR] 'calls'
+  [STR] 's'
+  [STR] 'prompt_chars'
+  [STR] 'reply_chars'
+  [STR] 'elapsed_s'
+  [STR] 'sandbox_validate_s'
+  [STR] 'sandbox_validate_calls'
+  [STR] 'doc_t0'
+  [STR] 'timings_'
+  [STR] '.json'
+  [STR] 'w'
+  [STR] 'utf-8'
+
+=== <genexpr>(.0)  [line 448] ===
+  [STR] 's'
+
+=== <genexpr>(.0)  [line 450] ===
+  [STR] 'prompt_chars'
+
+=== <genexpr>(.0)  [line 451] ===
+  [STR] 'reply_chars'
+
+=== finalize_document(key, pdf, outdir, tag, best, trail, stop_reason, versions, profile)  [line 468] ===
+  [STR]
+    | Persist the trail, export the best program + full-document CSV, and build
+    |     the summary row. Shared verbatim by this CLI driver and the Dataiku notebook.
+    |     With a `profile` (the dict induce_document filled), also writes
+    |     timings_<tag>.json and adds headline timing fields to the row.
+  [STR] 'codegen_trail_'
+  [STR] '.json'
+  [STR] 'w'
+  [STR] 'utf-8'
+  [STR] 'version'
+  [STR] 'row_'
+  [STR] 'dict'
+  [STR] 'export_s'
+  [STR] 'float | None'
+  [STR] 'return'
+  [STR] 'verdict'
+  [STR] 'problems'
+  [STR] 'needs_manual_template'
+  [STR] 'status'
+  [STR] 'audit_issues'
+  [STR] 'ok_unaudited'
+  [STR] 'ok_audit_issues'
+  [STR] 'warnings'
+  [STR] 'ok_with_warnings'
+  [STR] 'ok'
+  [STR] 'best_version'
+  [STR] 'source'
+  [STR] 'generated_extractor_'
+  [STR] '.py'
+  [STR] 'export_failed'
+  [STR] 'error'
+  [STR] 'fields_codegen_'
+  [STR] '.csv'
+
+=== finish(row_, export_s)  [line 482] ===
+  [STR] 'total_s'
+  [STR] 'stage0_s'
+  [STR] 'llm_s'
+  [STR] 'llm_calls'
+
+=== <setcomp>(.0)  [line 522] ===
+
+=== main()  [line 529] ===
+  [STR] '--model'
+  [STR] '--only'
+  [STR] 'substring filter on doc key'
+  [STR] '--all-docs'
+  [STR] 'store_true'
+  [STR] 'run every doc, not just the default 3'
+  [STR] '--max-versions'
+  [STR]
+    | hard cap on parser versions per document (loop also stops earlier on convergence or plateau)
+  [STR] '--max-versions must be >= 1'
+  [STR]
+    | doc_key collision among input PDFs (near-identical names) - rename the colliding files
+  [STR] '=== '
+  [STR] 'doc_t0'
+  [STR] 'status'
+  [STR] 'ok'
+  [STR] 'skipped_'
+  [STR] 'elapsed_s'
+  [STR] 'stage0_s'
+  [STR] '    skipped: '
+  [STR] 'codegen_prompt.txt'
+  [STR] 'w'
+  [STR] 'utf-8'
+  [STR] 'text_layer_pct'
+  [STR] 'error'
+  [STR] '    -> '
+  [STR] 'cli_induction_summary_'
+  [STR] '.json'
+  [STR] 'cli_'
+  [STR] 'stage'
+  [STR] 'error report: '
+  [STR] ' event(s) '
+  [STR] ' -> '
+
+=== <dictcomp>(.0)  [line 544] ===
+
+=== <listcomp>(.0)  [line 548] ===
+
+=== <listcomp>(.0)  [line 550] ===
+
+=== <lambda>(prompt)  [line 576] ===

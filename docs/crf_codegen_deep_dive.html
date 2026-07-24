@@ -144,7 +144,7 @@
   <a href="#problem">1 Problem</a><a href="#lines">2 What the machine sees</a><a href="#clustering">3 Clustering</a>
   <a href="#codegen">4 AI writes a parser</a><a href="#sandbox">5 Sandbox</a><a href="#gates">6 Gates &amp; coverage</a>
   <a href="#review">7 AI reviews itself</a><a href="#loop">8 The loop</a><a href="#output">9 Output</a>
-  <a href="#deploy">10 Running it</a><a href="#faq">11 Design choices</a>
+  <a href="#deploy">10 Running it</a><a href="#faq">11 Design choices</a><a href="#evolution">12 Loop-2+ evolution</a>
 </nav>
 
 <header class="hero">
@@ -1887,6 +1887,134 @@ PK Plasma Samples: 24 Hours,  Specimen Type,                                 133
         pages; 7–10 calls in the benchmark runs, hard-capped at ~16 with every audit reprompt counted), not
         the number of pages. Page count only adds cheap deterministic replay time.</td></tr>
   </table>
+</section>
+
+<!-- ================================================================ -->
+<section id="evolution">
+  <h2><span class="snum">12</span>Loop-2 onward: how the pipeline evolved</h2>
+  <p class="one-liner"><b>In one sentence:</b> sections 1&ndash;11 describe the pipeline as it stood after loop&nbsp;1; everything below is the loop&#8209;2+ evolution &mdash; each change recorded as <em>what it was &rarr; the symptom we saw &rarr; the change &rarr; the measured effect</em>, all on the same 11&#8209;book bench, and none of it adding any format&#8209;specific knowledge.</p>
+
+  <div class="card">
+    <h4>How to read this appendix</h4>
+    <p style="margin:0 0 8px">A few claims earlier in this document are loop&#8209;1&#8209;era and are superseded here. Specifically: the &ldquo;one prompt, one parser, ~7 calls, hard cap ~16&rdquo; story (hero + &sect;4/&sect;8) is now <b>one <em>generalist</em> pass plus zero&ndash;few tail <em>specialist</em> passes</b> on genuinely fragmented books, so call counts and the cap scale with the number of passes; and the version budget can grow by up to +2 on 900+&#8209;page books.</p>
+    <p style="margin:0 0 8px"><b>Two rulers, kept separate.</b> Numbers are either <b>page&#8209;sampled</b> (a frozen ~110&#8209;page human&#8209;checked sample &mdash; precision / page&nbsp;recall / form accuracy) or <b>Rave full&#8209;document</b> (every extracted <code>(form,field)</code> pair vs the digitized truth for the one book we have complete truth for). A change can move one ruler and not the other; watch which is quoted.</p>
+    <p style="margin:0"><b>Authoritative sources.</b> Every number and change below is drawn from the two eval reports and the reconstructed project history &mdash;
+      <a href="../experiments/recipe_prototype/project_history/README.md">project&#8209;history timeline</a> (code snapshots, results, and per&#8209;stage effect),
+      <a href="../experiments/recipe_prototype/data/outputs/out/eval_report_loop2_20260723.md">loop&#8209;2 eval report</a>, and
+      <a href="../experiments/recipe_prototype/data/outputs/out/eval_report_backpocket_20260723.md">backpocket eval report</a>.
+      Per&#8209;stage source snapshots and the full inter&#8209;version diff live under
+      <code>project_history/code_versions/</code> (<a href="../experiments/recipe_prototype/project_history/code_versions/DIFFS.txt">DIFFS.txt</a>).</p>
+  </div>
+
+  <!-- 12.0 -------------------------------------------------------- -->
+  <h3>12.0 &nbsp;The full arc &mdash; every stage from the first baseline</h3>
+  <span class="tag loop">timeline</span>
+  <p>Six numbered stages run from the first CLI bring&#8209;up to today. Stages 1&ndash;3 <em>are</em> the pipeline that sections 1&ndash;11 describe; stages 4&ndash;6 are the loop&#8209;2+ evolution detailed in 12.1&ndash;12.8. The early&#8209;CLI source (07&#8209;20/07&#8209;21) was never snapshotted &mdash; only its outputs survive &mdash; so those rows are recorded honestly as &ldquo;outputs only.&rdquo; Full detail, code snapshots and result folders are in the <a href="../experiments/recipe_prototype/project_history/README.md">project&#8209;history timeline</a>.</p>
+  <table>
+    <tr><th>#</th><th>stage</th><th>date</th><th>what changed</th><th>headline (Sonnet unless noted)</th></tr>
+    <tr><td>1</td><td>Early CLI bring&#8209;up v1</td><td>07&#8209;20</td><td>first end&#8209;to&#8209;end CLI run</td><td>superseded; per&#8209;doc outputs only</td></tr>
+    <tr><td>2</td><td>Early CLI v2</td><td>07&#8209;21</td><td>iteration on bring&#8209;up</td><td>superseded; per&#8209;doc outputs only</td></tr>
+    <tr><td>3</td><td><b>Loop&#8209;1 baseline</b> (pre&#8209;loopfix)</td><td>07&#8209;22</td><td>the design in &sect;1&ndash;&sect;11</td><td>78% / 76% &middot; forms 48/49 &middot; Rave 67% / 89%</td></tr>
+    <tr><td>4</td><td>Pre&#8209;loop&#8209;2 baseline</td><td>07&#8209;22</td><td>reference point for loop&#8209;2 comparison</td><td>baseline for the deltas below</td></tr>
+    <tr><td>5</td><td>Loop&#8209;2 eval (11 docs &times; 2 models)</td><td>07&#8209;23</td><td>12.1&ndash;12.4 changes (first cut)</td><td>Sonnet 78% / 63% / 91% &middot; forms 43/45 &middot; Rave 87% / 83% &middot; <b>GPT 74% / 85% / 96% &middot; forms 18/51 &middot; Rave 97% / 84%</b></td></tr>
+    <tr><td>6</td><td><b>Backpocket (current)</b></td><td>07&#8209;23</td><td>12.4&ndash;12.6 fixes + hybrid</td><td>Sonnet 73.2% / 73.6% / 93.9% &middot; F1 73.4% &middot; forms 50/51 &middot; Rave 85.4% / 84.7% &middot; <b>GPT 80.3% / 82.7% / 96.5% &middot; F1 81.5% &middot; forms 44/57 &middot; Rave 47.5% / 84.5%</b></td></tr>
+  </table>
+  <p class="note">The code grew almost entirely in the stage&nbsp;4&rarr;6 window (07&#8209;23): <code>codegen.py</code> 611&nbsp;&rarr;&nbsp;1274 lines, <code>run_cli_induction.py</code> 605&nbsp;&rarr;&nbsp;1010 lines &mdash; every change in 12.1&ndash;12.6. Stages 1&ndash;2 have no saved source, so this doc describes the pipeline from the loop&#8209;1 baseline (stage&nbsp;3) forward.</p>
+
+  <!-- 12.1 -------------------------------------------------------- -->
+  <h3>12.1 &nbsp;From one parser to many passes &mdash; multi-pass specialists</h3>
+  <span class="tag loop">feedback loop</span>
+  <p><b>Before:</b> one codegen prompt carried ~4&ndash;12 representative pages and asked for a single parser for the whole book (&sect;3&ndash;&sect;4). <b>Symptom:</b> books with many distinct layout families (the 913&#8209;page form tracker, the 1083&#8209;page 331 books, the 35&#8209;cluster 2021 book) have more families than fit one prompt&rsquo;s rep budget, so the tail families never reach the model and stay dark.</p>
+  <p><b>Change:</b> <code>plan_passes</code> (in <code>codegen.py</code>) can now split a document into a <b>generalist pass&nbsp;1</b> covering the budgeted clusters plus one or more <b>tail specialist passes</b> that own the leftover families. Each pass runs its own induction loop; the harness masks coverage to the pass&rsquo;s assigned pages and merges the extractors.</p>
+
+  <div class="card" style="border-color:var(--bad-bg)">
+    <h4 style="color:var(--bad)">The regression this caused &mdash; and the fix</h4>
+    <p style="margin:0 0 8px">The first cut gave <em>every</em> pass an ownership note (&ldquo;you own ONLY the layout families shown&hellip;&rdquo;). Sonnet took it literally and wrote narrow, representative&#8209;matching parsers, <b>collapsing the generalist pass</b>:</p>
+    <table>
+      <tr><th>book</th><th>generalist pass v1 (with note)</th><th>identical model, no note</th></tr>
+      <tr><td>MAC186 (913p)</td><td>5% coverage / 327 records</td><td><b>88% / 4,852 records</b></td></tr>
+    </table>
+    <p style="margin:8px 0">Three books collapsed this way (MAC186 &minus;85% fields, 04_Jul &minus;65%, aCRF_16JAN &minus;59%), dragging Sonnet page recall <b>76% &rarr; 63%</b>. GPT largely ignored the framing and kept doc&#8209;wide parsers, so it was not hurt &mdash; a sign the problem was prompt wording, not architecture.</p>
+    <p style="margin:0"><b>Fix (two parts):</b> (1) pass&nbsp;1 is now a pure <b>generalist</b> whose initial/revision/confirm prompts are <em>byte&#8209;identical</em> to a single&#8209;pass run &mdash; no ownership language anywhere; only tail passes keep a note, reworded from behavior&#8209;restricting to <b>harness&#8209;descriptive</b> (&ldquo;the harness credits you only for your pages and over&#8209;extraction costs nothing, so write as if you owned the whole document&rdquo;). (2) <b>Splitting made rare:</b> a tail pass is spawned only when it is substantial &mdash; <code>&ge; 8</code> tail rep pages <b>and</b> <code>&ge; 20</code> content pages &mdash; otherwise the tail folds back into pass&nbsp;1.</p>
+  </div>
+  <p><b>Effect:</b> split rate dropped <b>9/11 &rarr; 3/11</b> books; Sonnet page recall recovered to <b>75.5%</b> at three fewer specialist passes per corpus run; 04_Jul&rsquo;s generalist pass alone reached 88% coverage (vs 5% under the note). <span class="note">Full collapse trail and per&#8209;book deltas: <a href="../experiments/recipe_prototype/data/outputs/out/eval_report_loop2_20260723.md">loop&#8209;2 report</a> &sect;4 (symptom) and &sect;8 (fix + validation).</span></p>
+
+  <!-- 12.2 -------------------------------------------------------- -->
+  <h3>12.2 &nbsp;A loop that explores &mdash; audit rotation, promotion, coverage confirm</h3>
+  <span class="tag loop">feedback loop</span> <span class="tag ai">LLM call</span>
+  <p><b>Before:</b> the grounded audit (&sect;7) sampled a small fixed set of pages and re&#8209;checked roughly the same ones each round. <b>Change:</b> audit samples grew (<code>6 &rarr; 9&ndash;12</code> pages), the sampler now <b>rotates</b> to fresh pages every round instead of re&#8209;auditing the same six, and pages the audit flags are <b>promoted</b> into the extractor&rsquo;s coverage cores so the next revision must satisfy them (trails literally show &ldquo;audit core grew by [5]&rdquo;).</p>
+  <p><b>Sparse&#8209;scope softening + <code>CONFIRM_NO_FIELDS</code>:</b> a pass that produces zero records is no longer an automatic failure. On MAC186 a tail pass went <code>0 records &rarr; 116 records at 94% scope coverage</code> through the confirm round; on aCRF_16JAN the model correctly answered <em>&ldquo;this 7&#8209;page scope is furniture&#8209;only&rdquo;</em> in just 2 calls. Under loop&#8209;1 gates both would have been flagged <code>needs_manual_template</code>.</p>
+
+  <!-- 12.3 -------------------------------------------------------- -->
+  <h3>12.3 &nbsp;Protecting real coverage &mdash; evidence&#8209;based junk carve&#8209;out</h3>
+  <span class="tag py">deterministic</span>
+  <p><b>Before:</b> when a new version dropped pages, <code>improves()</code> guessed whether the loss was &ldquo;junk cleanup&rdquo; from proxies (audit issues down on shared pages, few new pages, and a hard <b>half&#8209;retention floor</b>). <b>Symptom:</b> that floor baked in an assumed junk&#8209;to&#8209;content ratio, and the inference had no idea what was on the dropped pages. On MAC186 it blessed a version that shed <b>~340 pages / ~3,000 real records</b> to buy a 1&#8209;issue audit improvement measured on a 13&#8209;page sample.</p>
+  <p><b>Change (generic, evidence&#8209;scaled, no ratio knobs):</b> a lost page is forgiven <b>only if every record the incumbent extracted on it matches verified junk evidence</b> &mdash; values the page&#8209;grounded audit explicitly flagged as <code>false</code>, or doc&#8209;wide furniture candidates (a value present on <code>&ge; 70%</code> of pages). Matching is normalized exact&#8209;value, because junk is a repeated stamp. The failure direction is <b>one&#8209;way</b>: missing evidence keeps junk (a visible, bounded cost); it never releases real coverage (the invisible, unbounded MAC186 failure). Forgiven drops are recorded in the trail (<code>forgiven_pages</code>) so a coverage&#8209;sacrificing best&#8209;switch is diagnosable after the fact.</p>
+  <table>
+    <tr><th>MAC186</th><th>pre&#8209;loop2 baseline</th><th>broken carve&#8209;out</th><th>evidence&#8209;based now</th></tr>
+    <tr><td>doc&#8209;level recall</td><td>87.1%</td><td>74%</td><td><b>90.1%</b></td></tr>
+    <tr><td>pages covered</td><td>407</td><td>74&ndash;340</td><td><b>414</b></td></tr>
+  </table>
+  <p><b>Effect:</b> corpus Sonnet moved to <b>78% precision / 80% page recall</b> &mdash; above the pre&#8209;loop2 baseline on both axes. <span class="note">Root&#8209;cause replay, the ratio&#8209;independence tests, and the MAC186 rerun table: <a href="../experiments/recipe_prototype/data/outputs/out/eval_report_loop2_20260723.md">loop&#8209;2 report</a> &sect;9.</span></p>
+
+  <!-- 12.4 -------------------------------------------------------- -->
+  <h3>12.4 &nbsp;Getting <code>form_name</code> right &mdash; the four&#8209;layer title fix</h3>
+  <span class="tag ai">LLM call</span> <span class="tag py">deterministic gate</span>
+  <p><b>Before:</b> the contract said <code>form_name</code> is &ldquo;the CRF form/section the field belongs to.&rdquo; On annotated CRFs two printed signals compete: the page&rsquo;s <em>form title</em> and each field&rsquo;s <em>annotation stamp</em>. <b>Symptom:</b> on the same book, GPT loop&#8209;1 produced 6 forms (correct titles), Sonnet 7 &mdash; but loop&#8209;2 GPT produced <b>331 distinct forms out of 996 records</b>, using per&#8209;field stamps like <code>&quot;Exclusion: E05 #1&quot;</code> as the form name. Form accuracy <b>18/51</b> (Sonnet: near&#8209;perfect on the same pages). Four structural layers were added, none fitted to this corpus&rsquo;s annotation shapes:</p>
+  <div class="grid2">
+    <div class="card"><h4>1 &middot; Contract by definition</h4><p style="margin:0">The prompt now defines <code>form_name</code> as the title printed for humans that <em>groups</em> a form&rsquo;s fields and is carried across continuation pages &mdash; <b>never</b> text attached to a single field. States the self&#8209;check: near&#8209;unique form per record means per&#8209;field text was read.</p></div>
+    <div class="card"><h4>2 &middot; Two&#8209;tier structural gate</h4><p style="margin:0"><code>gate_form_explosion</code>: <code>&ge; 20</code> records averaging <code>&lt; 2</code> fields/form violates the grouping definition &mdash; <b>hard gate</b>. Average <code>&lt; 4</code> is an advice warning. Scoped specialist passes are <b>not</b> exempt.</p></div>
+    <div class="card"><h4>3 &middot; Audit given the convention</h4><p style="margin:0">The <code>wrong_form</code> audit channel now explicitly covers form_name values that are not printed titles, so page&#8209;grounded findings block convergence in the 2&ndash;4 fields/form band the hard gate deliberately leaves open.</p></div>
+    <div class="card"><h4>4 &middot; Independent title&#8209;context channel</h4><p style="margin:0">Stage&nbsp;0 finds top&#8209;region strings that change by a <em>run</em> of pages (not chrome present on &ge;95% of pages), dumps up to six as <code>title_p*</code> in a <b>TITLE/FORM CONTEXT ONLY</b> prompt block, and gives each audited page the top region of its two preceding pages as lookback. No layout ownership, no coverage effect.</p></div>
+  </div>
+  <p><b>Effect:</b> on the 112&#8209;page 326 book, GPT form accuracy went <b>0/10 &rarr; 10/10</b> with the title channel while Sonnet stayed 10/10; corpus GPT forms climbed <b>18 &rarr; 28 &rarr; 44/57</b> across the layers. <b>Caveat:</b> the signal is necessary but not sufficient &mdash; on the 489&#8209;page 326 book GPT still scored 0/10 because a repeated non&#8209;title annotation satisfies same&#8209;page persistence, which is why a <b>Sonnet&#8209;generate / GPT&#8209;audit hybrid</b> exists as a targeted fallback (recovered that book to 10/10). <span class="note">Layer&#8209;by&#8209;layer implementation and evidence: <a href="../experiments/recipe_prototype/data/outputs/out/eval_report_loop2_20260723.md">loop&#8209;2 report</a> &sect;7 (contract + gate), &sect;11 (title channel); hybrid results in the <a href="../experiments/recipe_prototype/data/outputs/out/eval_report_backpocket_20260723.md">backpocket report</a> &sect;5.</span></p>
+
+  <!-- 12.5 -------------------------------------------------------- -->
+  <h3>12.5 &nbsp;Not overfitting to the samples shown</h3>
+  <span class="tag ai">LLM call</span> <span class="tag py">AST guard</span>
+  <p>A recurring failure mode: the model writes a parser that pattern&#8209;matches the exact strings on the few pages it was shown, instead of the general structure. Three defenses:</p>
+  <ul>
+    <li><b>Family&#8209;labeled prompts.</b> Rep pages are grouped and labeled by structural layout family; the generator is asked for a handler&#8209;per&#8209;family plus a structural dispatcher, tolerant/relative geometry, and no literal&#8209;text blocklists. This <em>recovered</em> MAC186 Sonnet page recall <b>44.6% &rarr; 62.4%</b> (859/913 pages) &mdash; but <em>regressed</em> GPT on the 326 book to 0 TP. So it was made <b>optional and model&#8209;neutral</b>: family labels stay (they help Sonnet), the architecture is not forced on simple single&#8209;family layouts.</li>
+    <li><b>Literal&#8209;blocklist AST detection.</b> A static check counts literal text filters in the generated program (including named collections/sets). Prompt advice alone did not stop the behavior (MAC186 grew 11&nbsp;&rarr;&nbsp;15&nbsp;&rarr;&nbsp;18 filters despite guidance), so it became a real gate: <b>warn at 10, hard&#8209;reject at 30</b>. In the final run this rejected multiple 30&ndash;71&#8209;filter versions while keeping earlier, less content&#8209;fitted ones eligible.</li>
+    <li><b>Diversity / radius&#8209;driven representatives.</b> Reps are chosen for structural spread within a cluster, and coverage confirmation dumps <b>holes first</b>, so the model sees varied in&#8209;family samples rather than near&#8209;duplicates.</li>
+  </ul>
+
+  <!-- 12.6 -------------------------------------------------------- -->
+  <h3>12.6 &nbsp;Scaling &amp; reliability plumbing</h3>
+  <span class="tag py">deterministic</span>
+  <ul>
+    <li><b>Size&#8209;scaled version budget:</b> +1 parser version at 900 pages, capped at +2 &mdash; more revisions for genuinely large books. (Effect is <em>mixed</em>: GPT gained +10.7pp page recall on both 331 books; Sonnet gained on one and lost on the other. Marginal v6 value should be confirmed from trails before keeping it universally.)</li>
+    <li><b>Stale&#8209;artifact purge</b> per tag before a run, <b>collision&#8209;resistant composite tags</b> for hybrid model runs, and <b>per&#8209;(config,&nbsp;model) isolated output directories</b> so concurrent runs never overwrite each other&rsquo;s prompts/replies.</li>
+    <li><b>Per&#8209;pass profiling</b> and a mechanical multi&#8209;pass orchestration test (stale purge, worst&#8209;status merge, per&#8209;pass profile slicing). Result: <b>22/22 document runs exported</b> across both models with no crashes or transport failures.</li>
+  </ul>
+
+  <!-- 12.7 -------------------------------------------------------- -->
+  <h3>12.7 &nbsp;Where it stands, and what is still open</h3>
+  <span class="tag loop">status</span>
+  <p>Latest full 11&#8209;document rerun with both CLI models (page&#8209;sampled truth), from the <a href="../experiments/recipe_prototype/data/outputs/out/eval_report_backpocket_20260723.md">backpocket eval report</a>:</p>
+  <table>
+    <tr><th>model</th><th>precision</th><th>page recall</th><th>doc recall</th><th>F1</th><th>form accuracy</th></tr>
+    <tr><td>Claude Sonnet 4.5</td><td>73.2%</td><td>73.6%</td><td>93.9%</td><td>73.4%</td><td><b>50/51</b> (98%)</td></tr>
+    <tr><td>GPT 5.2</td><td><b>80.3%</b></td><td><b>82.7%</b></td><td><b>96.5%</b></td><td><b>81.5%</b></td><td>44/57 (77%)</td></tr>
+  </table>
+  <p>GPT is now the strongest field extractor on the sample; Sonnet is the form&#8209;attribution leader and ~4&times; faster. The remaining open items (the &ldquo;backpocket&rdquo;), in priority order:</p>
+  <ol>
+    <li><b>GPT&rsquo;s unsampled&#8209;page over&#8209;extraction.</b> On the full Rave book, matched pairs stayed flat (772&nbsp;&rarr;&nbsp;773) while distinct extracted pairs doubled (792&nbsp;&rarr;&nbsp;1,628), collapsing full&#8209;document precision <b>97.5% &rarr; 47.5%</b>. The 10&#8209;page sample scored 100%, so proportional audit sampling missed it &rarr; add <b>risk&#8209;targeted audit sampling</b> for high unique&#8209;label / high extraction&#8209;density pages.</li>
+    <li><b>Title&#8209;source support</b> beyond same&#8209;page persistence (validate that emitted titles are backed by a prominent top&#8209;region candidate or a carried&#8209;forward one).</li>
+    <li>Keep <b>hybrid routing</b> a targeted fallback, triggered only on wrong&#8209;form / weak title evidence.</li>
+    <li>Diagnose Sonnet&rsquo;s 384 precision regressions and GPT&rsquo;s Rave explosion from the accepted extractor before touching global thresholds.</li>
+    <li>Measure the marginal value of the sixth version on 900+&#8209;page books.</li>
+    <li>Promote parallel disjoint&#8209;document execution to a first&#8209;class runner (one manifest, atomic summary merge).</li>
+    <li>Validate the selected fixes on additional <b>unseen</b> CRF books.</li>
+  </ol>
+  <div class="card">
+    <h4>In flight right now</h4>
+    <p style="margin:0">A cluster&#8209;sizing ablation is running for both models: instead of many clusters with few samples each, give each generalist pass <b>fewer clusters but more good samples per cluster</b> (via <code>ECS_REPS_PER_CLUSTER</code> / <code>ECS_MAX_REPS</code> knobs, no code edits). It tests whether offloading per&#8209;agent pressure improves coverage; results slot in here once the six parallel runs finish.</p>
+  </div>
+
+  <!-- 12.8 -------------------------------------------------------- -->
+  <h3>12.8 &nbsp;The invariant every change respected</h3>
+  <p class="one-liner"><b>No format knowledge was added.</b> Every fix above is structural and generic &mdash; grouping&#8209;title <em>definitions</em> not annotation regexes, evidence&#8209;<em>scaled</em> forgiveness not junk ratios, changing&#8209;header <em>detection</em> not vendor vocabularies, AST <em>counts</em> not string denylists. The 11 CRFs shaped our understanding of what CRFs look like; not one line of shipped code is tuned to their specific strings, and each change was accepted only when it moved the generic mechanism, not the benchmark.</p>
 </section>
 
 </main>

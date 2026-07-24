@@ -1,0 +1,1261 @@
+  0           0 RESUME                   0
+
+  1           2 LOAD_CONST               0 ('Generate the STANDALONE Dataiku notebook for the unknown-format CRF pipeline.\n\nThe notebook must run inside Dataiku with no repo checkout, so it carries the\npipeline modules (common/generic_profile/replay/induction/codegen/sandbox_runner/\nstage0_cluster/run_cli_induction) embedded as raw-string cells, materializes them\nto a local work dir at runtime, and drives the SAME induce_document controller\nthat the local CLI runs - only the LLM transport differs (LLM Mesh vs Cursor CLI).\n\nUsage:\n  python build_dataiku_notebook.py               # write dataiku/CRF_codegen_induction.ipynb\n  python build_dataiku_notebook.py --selftest    # also prove the embedded bundle works:\n                                                 # import it from a scratch dir and run one\n                                                 # document end-to-end with a scripted LLM\n\nRegenerate after ANY change to the embedded modules - the notebook is a build\nartifact; never hand-edit its module cells.\n')
+              4 STORE_NAME               0 (__doc__)
+
+ 18           6 LOAD_CONST               1 (0)
+              8 LOAD_CONST               2 (None)
+             10 IMPORT_NAME              1 (argparse)
+             12 STORE_NAME               1 (argparse)
+
+ 19          14 LOAD_CONST               1 (0)
+             16 LOAD_CONST               2 (None)
+             18 IMPORT_NAME              2 (json)
+             20 STORE_NAME               2 (json)
+
+ 20          22 LOAD_CONST               1 (0)
+             24 LOAD_CONST               2 (None)
+             26 IMPORT_NAME              3 (os)
+             28 STORE_NAME               3 (os)
+
+ 21          30 LOAD_CONST               1 (0)
+             32 LOAD_CONST               2 (None)
+             34 IMPORT_NAME              4 (sys)
+             36 STORE_NAME               4 (sys)
+
+ 23          38 LOAD_NAME                3 (os)
+             40 LOAD_ATTR                5 (path)
+             50 LOAD_METHOD              6 (dirname)
+             72 LOAD_NAME                3 (os)
+             74 LOAD_ATTR                5 (path)
+             84 LOAD_METHOD              7 (abspath)
+            106 LOAD_NAME                8 (__file__)
+            108 PRECALL                  1
+            112 CALL                     1
+            122 PRECALL                  1
+            126 CALL                     1
+            136 STORE_NAME               9 (HERE)
+
+ 24         138 LOAD_NAME                3 (os)
+            140 LOAD_ATTR                5 (path)
+            150 LOAD_METHOD             10 (join)
+            172 LOAD_NAME                9 (HERE)
+            174 LOAD_CONST               3 ('dataiku')
+            176 LOAD_CONST               4 ('CRF_codegen_induction.ipynb')
+            178 PRECALL                  3
+            182 CALL                     3
+            192 STORE_NAME              11 (OUT_NOTEBOOK)
+
+ 26         194 BUILD_LIST               0
+            196 LOAD_CONST               5 (('common.py', 'generic_profile.py', 'replay.py', 'induction.py', 'codegen.py', 'sandbox_runner.py', 'stage0_cluster.py', 'run_cli_induction.py', 'oid_mapping.py'))
+            198 LIST_EXTEND              1
+            200 STORE_NAME              12 (EMBEDDED_MODULES)
+
+ 39         202 LOAD_CONST               6 ('name')
+            204 LOAD_NAME               13 (str)
+            206 LOAD_CONST               7 ('return')
+            208 LOAD_NAME               13 (str)
+            210 BUILD_TUPLE              4
+            212 LOAD_CONST               8 (<code object read_module at 0x00000290C37623D0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\build_dataiku_notebook.py", line 39>)
+            214 MAKE_FUNCTION            4 (annotations)
+            216 STORE_NAME              14 (read_module)
+
+ 49         218 LOAD_CONST               9 ('cell_id')
+            220 LOAD_NAME               13 (str)
+            222 LOAD_CONST              10 ('src')
+            224 LOAD_NAME               13 (str)
+            226 LOAD_CONST               7 ('return')
+            228 LOAD_NAME               15 (dict)
+            230 BUILD_TUPLE              6
+            232 LOAD_CONST              11 (<code object code_cell at 0x00000290C3A6C920, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\build_dataiku_notebook.py", line 49>)
+            234 MAKE_FUNCTION            4 (annotations)
+            236 STORE_NAME              16 (code_cell)
+
+ 55         238 LOAD_CONST               9 ('cell_id')
+            240 LOAD_NAME               13 (str)
+            242 LOAD_CONST              10 ('src')
+            244 LOAD_NAME               13 (str)
+            246 LOAD_CONST               7 ('return')
+            248 LOAD_NAME               15 (dict)
+            250 BUILD_TUPLE              6
+            252 LOAD_CONST              12 (<code object md_cell at 0x00000290C3A6C370, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\build_dataiku_notebook.py", line 55>)
+            254 MAKE_FUNCTION            4 (annotations)
+            256 STORE_NAME              17 (md_cell)
+
+ 62         258 LOAD_CONST              13 ('# Unknown-format CRF digitizer - code-generation induction\n\nFor every CRF PDF in the input managed folder - **any vendor format, no template,\nno configuration** - a pure-Python pass clusters the pages by structural layout\n(word-blind typography tokens, per-document chrome damping, similarity threshold\nself-selected per document) and picks a handful of representative pages (~4-12);\nthe LLM (via LLM Mesh) writes a document-specific Python parser from those pages;\nthe parser runs in a sandboxed subprocess over the whole document; machine gates\nplus an LLM page-grounded audit challenge the result; and the LLM revises its own\ncode in a bounded loop. Output per document: `(form_name, field_name, page)`\nrecords. OIDs are resolved downstream by name mapping against the rule library.\n\n**Requirements**\n- Code env for this notebook (the sandbox subprocess uses the same interpreter):\n  `PyMuPDF`, `pandas`; `rapidfuzz` optional (mapping cell only).\n- Managed folders: one with the input CRF PDFs, one (empty) for output artifacts.\n- LLM Mesh: uses the project variable `default_llm_model` (Claude Sonnet 4.5)\n  unless `LLM_ID` overrides it below.\n\n**LLM budget - bounded, never endless.** Per document: at most `MAX_VERSIONS`\nparser versions (1 generation call each, +1 audit call when gates pass, +1 audit\nreprompt if a reply is malformed/partial) plus at most one coverage-confirmation\ncall. Defaults give a worst case of ~16 calls per document; the benchmark runs\ntook 7-10. The loop stops early on a clean audit (converged) or when a version\nfails to improve on the previous one (diminishing returns; two consecutive\ngate-failed versions keep revising until the cap); the best-scoring version -\nnever merely the last - is exported.\n\n*This notebook is generated by `experiments/recipe_prototype/build_dataiku_notebook.py`.\nThe "pipeline module" cells below are verbatim copies of the tested repo sources -\nedit the repo and regenerate instead of editing them here.*\n')
+            260 STORE_NAME              18 (INTRO_MD)
+
+ 96         262 LOAD_CONST              14 ("# ------------------------------- CONFIG -------------------------------------\nINPUT_FOLDER = 'crf_unknown_pdfs'    # managed folder (name or id) with input CRF PDFs\nOUTPUT_FOLDER = 'ecs_codegen_out'    # managed folder (name or id) for all artifacts\nLLM_ID = None                        # None -> project variable 'default_llm_model'\nCOMPLETION_SETTINGS = {'temperature': 0.2, 'maxOutputTokens': 8000}  # best effort\n\nMAX_VERSIONS = 5     # hard cap on parser versions per document\nDOC_FILTER = ''      # substring filter on PDF names ('' = all)\nMAX_DOCS = None      # int -> cap the number of documents (smoke runs)\n\nUPLOAD_PAGE_PNGS = False   # representative-page PNGs are handy but heavy\nRUN_OID_MAPPING = False    # name->OID funnel + LLM ranker (see mapping cell)\nECS_INDEX_DATASET = 'ecs_index_data'  # dataset with form_field_value / variable_name\n\nWORK_DIR = None      # None -> ./crf_codegen_work under the kernel's cwd\n")
+            264 STORE_NAME              19 (CONFIG_CELL)
+
+114         266 LOAD_CONST              15 ("# Bootstrap: materialize the embedded pipeline modules into a local work dir,\n# so this notebook is fully standalone (no repo checkout on the DSS host).\nimport os\nimport sys\n\nWORK = os.path.abspath(WORK_DIR or 'crf_codegen_work')\nMODULES_DIR = os.path.join(WORK, 'modules')\nos.makedirs(MODULES_DIR, exist_ok=True)\n# pipeline paths (input staging dir, output dir) derive from this env var;\n# it must be set BEFORE the modules are imported\nos.environ['ECS_BASE'] = WORK\n\ndef _write_module(name, source):\n    with open(os.path.join(MODULES_DIR, name), 'w', encoding='utf-8') as f:\n        f.write(source)\n    print('module written:', name, '(' + str(len(source)) + ' chars)')\n")
+            268 STORE_NAME              20 (BOOTSTRAP_CELL)
+
+133         270 LOAD_CONST              16 ("# Import the pipeline from the materialized modules. Pop-and-import (never\n# importlib.reload): reload would re-execute a module from wherever it was FIRST\n# imported, so a foreign 'codegen'/'common' already living in the kernel would\n# silently shadow the bundle. Re-run safe top to bottom.\n_PIPELINE_MODULES = ('common', 'generic_profile', 'replay', 'induction',\n                     'codegen', 'stage0_cluster', 'run_cli_induction')\nif MODULES_DIR not in sys.path:\n    sys.path.insert(0, MODULES_DIR)\nfor _m in _PIPELINE_MODULES:\n    sys.modules.pop(_m, None)\n\nimport common\nimport codegen\nimport stage0_cluster\nimport run_cli_induction as rci\n\nfor _m in _PIPELINE_MODULES:\n    _f = os.path.abspath(getattr(sys.modules[_m], '__file__', '') or '')\n    assert _f.startswith(os.path.abspath(MODULES_DIR) + os.sep),         _m + ' imported from ' + _f + ' instead of the bundle - check sys.path'\n\nfrom common import CRF_DIR, OUT_DIR, doc_key, list_root_pdfs\n\nos.makedirs(CRF_DIR, exist_ok=True)\nos.makedirs(OUT_DIR, exist_ok=True)\nprint('work dir:', WORK)\n")
+            272 STORE_NAME              21 (IMPORT_CELL)
+
+162         274 LOAD_CONST              17 ("# Stage the input PDFs from the managed folder into the local work dir\n# (PyMuPDF needs real files; managed folders may be S3-backed). PDFS - the list\n# bound HERE - is what every later cell iterates: a warm work dir from an\n# earlier session never adds documents the current DOC_FILTER excludes.\nimport re\nimport shutil\n\nimport dataiku\n\nfolder_in = dataiku.Folder(INPUT_FOLDER)\npaths = sorted(p for p in folder_in.list_paths_in_partition() if p.lower().endswith('.pdf'))\nif DOC_FILTER:\n    paths = [p for p in paths if DOC_FILTER.lower() in p.lower()]\nif MAX_DOCS:\n    paths = paths[:MAX_DOCS]\n\nflat = {}\nfor p in paths:\n    local_name = re.sub(r'[\\\\/]+', '_', p.strip('/'))\n    if local_name in flat:\n        raise RuntimeError('two folder paths flatten to the same file name: '\n                           + flat[local_name] + ' and ' + p + ' -> ' + local_name)\n    flat[local_name] = p\n\nPDFS = []\nfor local_name, p in sorted(flat.items()):\n    dest = os.path.join(CRF_DIR, local_name)\n    with folder_in.get_download_stream(p) as s, open(dest, 'wb') as f:\n        shutil.copyfileobj(s, f)  # always overwrite - folder content may have changed\n    PDFS.append(dest)\n\n_keys = [doc_key(p) for p in PDFS]\nassert len(set(_keys)) == len(_keys),     'doc_key collision among input PDFs (near-identical names) - rename the colliding files'\nprint(len(PDFS), 'pdf(s) staged')\nfor p in PDFS:\n    print('  ', os.path.basename(p))\n")
+            276 STORE_NAME              22 (FETCH_CELL)
+
+202         278 LOAD_CONST              18 ('# Stage 0 (pure Python, no LLM): cluster every page by structural layout and\n# pick representative pages. The clusterer (generic_profile) is word-blind:\n# each line becomes a typography/geometry token, tokens the document repeats\n# on nearly every page (its own header/footer chrome) are discovered and\n# down-weighted, pages are grouped by weighted-Jaccard similarity, and the\n# similarity threshold theta is selected PER DOCUMENT by stability - no\n# corpus-tuned constants. Encrypted or scanned (no text layer) PDFs are\n# flagged here and never spend LLM budget. One corrupt PDF must not sink the\n# batch: it is reported and skipped (no clusters.json -> the induction cell\n# records it as skipped).\nfor _pdf in PDFS:\n    try:\n        _m = stage0_cluster.run(_pdf)\n    except Exception as _e:\n        print(f"{os.path.basename(_pdf)[:58]:58s} stage0 FAILED: {_e!r}")\n        continue\n    _flag = \'\' if _m.get(\'status\') == \'ok\' else \'  [\' + _m[\'status\'] + \' - will skip induction]\'\n    _theta = \' theta*=%.2f\' % _m[\'theta\'] if _m.get(\'theta\') is not None else \'\'\n    print(f"{_m[\'file\'][:58]:58s} pages={_m[\'pages\']:5d} clusters={_m[\'n_clusters\']:3d} "\n          f"reps={len(_m[\'representative_pages_1based\']):3d}{_theta}{_flag}")\n')
+            280 STORE_NAME              23 (STAGE0_CELL)
+
+225         282 LOAD_CONST              19 ("# LLM transport: Dataiku LLM Mesh (same get_llm/new_completion conventions as\n# the ECS generation recipes). Plain-text completion per call, bounded retries.\nimport time\n\nclient = dataiku.api_client()\nproject = client.get_default_project()\nllm_id = LLM_ID or project.get_variables()['local'].get('default_llm_model')\nassert llm_id, 'set LLM_ID or the project variable default_llm_model'\nllm = project.get_llm(llm_id)\n\ndef call_mesh(prompt, retries=2, backoff_s=15):\n    last = None\n    for attempt in range(retries + 1):\n        try:\n            comp = llm.new_completion()\n            try:\n                comp.settings.update(COMPLETION_SETTINGS)\n            except Exception as e:\n                # settings shape varies across mesh/provider versions; warn ONCE -\n                # without maxOutputTokens the provider default cap may truncate\n                # long generated programs (which then fail gates and burn budget)\n                if not getattr(call_mesh, '_settings_warned', False):\n                    call_mesh._settings_warned = True\n                    print('WARNING: completion settings not applied (' + repr(e)\n                          + '); mesh defaults in effect')\n            comp.with_message(prompt)\n            resp = comp.execute()\n            if getattr(resp, 'success', False) and (resp.text or '').strip():\n                return resp.text\n            last = RuntimeError('unsuccessful or empty completion')\n        except Exception as e:\n            last = e\n        if attempt < retries:\n            time.sleep(backoff_s * (attempt + 1))\n    raise RuntimeError('LLM Mesh call failed after ' + str(retries + 1) + ' attempts: ' + repr(last))\n\nprint('LLM Mesh id:', llm_id)\n")
+            284 STORE_NAME              24 (MESH_CELL)
+
+265         286 LOAD_CONST              20 ("# The induction loop. rci.induce_document is the SAME controller validated by\n# stop_policy_test.py locally; only the transport (call_mesh) is Dataiku-specific.\n# Stop rules: converged (clean audit) / plateau (no improvement between two\n# consecutive versions) / budget (MAX_VERSIONS) - best version wins.\n# A per-document failure becomes a summary row, never a lost batch (this can be\n# a multi-hour paid run). Summary file is induction_summary_<tag>.json - the\n# 'cli_' prefix is reserved for the local CLI driver so runs cannot be confused.\nimport json\n\ntag = rci.slug(llm_id)\nsummary = []\nfor _pdf in PDFS:\n    _key = doc_key(_pdf)\n    _outdir = os.path.join(OUT_DIR, _key)\n    print('===', _key)\n    try:\n        _meta = rci.doc_meta(_outdir)\n        _status = _meta.get('status', 'ok')\n        if _status != 'ok':\n            summary.append({'doc': _key, 'status': 'skipped_' + _status})\n            print('    skipped:', _status)\n            continue\n        _prompt = codegen.build_codegen_prompt(_pdf, _outdir)\n        with open(os.path.join(_outdir, 'codegen_prompt.txt'), 'w', encoding='utf-8') as f:\n            f.write(_prompt)\n        _best, _trail, _stop, _versions = rci.induce_document(\n            call_mesh, llm_id, tag, _pdf, _outdir, _prompt, MAX_VERSIONS)\n        _row = rci.finalize_document(_key, _pdf, _outdir, tag, _best, _trail, _stop, _versions)\n        if _meta.get('text_layer_pct', 100) < 100:\n            # partially scanned book: its no-text pages are unreachable (OCR out\n            # of scope) - surface that in the summary instead of hiding it\n            _row['text_layer_pct'] = _meta['text_layer_pct']\n    except Exception as _e:\n        _row = {'doc': _key, 'status': 'error', 'error': repr(_e)}\n    summary.append(_row)\n    print('    ->', _row)\n\nwith open(os.path.join(OUT_DIR, 'induction_summary_' + tag + '.json'), 'w', encoding='utf-8') as f:\n    json.dump(summary, f, indent=1)\n\nimport pandas as pd\npd.DataFrame(summary)\n")
+            288 STORE_NAME              25 (INDUCTION_CELL)
+
+310         290 LOAD_CONST              21 ("# Persist all artifacts to the output managed folder, mirroring the local\n# out/ tree: <doc_key>/clusters.json, rep_p*.txt, codegen_prompt.txt,\n# codegen_reply_*<n>.py, codegen_trail_*.json, generated_extractor_*.py,\n# fields_codegen_*.csv, plus induction_summary_*.json at the root.\n# Scope: THIS run's documents only. A warm work dir may hold artifacts of\n# documents an earlier session processed but the current DOC_FILTER excludes -\n# re-uploading those would contradict the run scoping FETCH_CELL guarantees.\nfolder_out = dataiku.Folder(OUTPUT_FOLDER)\n_run_keys = {doc_key(_p) for _p in PDFS}\nuploaded = 0\nfor _root, _dirs, _files in os.walk(OUT_DIR):\n    for _fn in _files:\n        if _fn.endswith('.png') and not UPLOAD_PAGE_PNGS:\n            continue\n        _full = os.path.join(_root, _fn)\n        _rel = os.path.relpath(_full, OUT_DIR).replace(os.sep, '/')\n        _top = _rel.split('/')[0]\n        if '/' in _rel and _top not in _run_keys:\n            continue  # another session's document dir\n        with open(_full, 'rb') as f:\n            folder_out.upload_stream(_rel, f)\n        uploaded += 1\nprint('uploaded', uploaded, 'file(s) to folder', OUTPUT_FOLDER,\n      'for', len(_run_keys), 'document(s)')\n")
+            292 STORE_NAME              26 (UPLOAD_CELL)
+
+337         294 LOAD_CONST              22 ("# OPTIONAL - name->OID mapping via the form-first funnel (oid_mapping.py):\n#   1. form scoping   partial_ratio >= 70 (production's own convention,\n#                     review_table.get_standard_crf)\n#   2. field in form  token_sort_ratio >= 85 against the scoped rows only\n#   3. LLM ranker     EVERY candidate-bearing pair is judged via LLM Mesh -\n#                     pick one of the listed OIDs or refuse. String scores\n#                     generate candidates; they never certify them.\n# Unmapped pairs are safe by design: production writes LLM-generated rules\n# from the names alone. Measured on the ground-truth book: 94% of what it\n# maps is correct; coverage is bounded by library breadth, not this logic.\n# Needs rapidfuzz. CAVEAT: _norm strips every non-ASCII character, so on\n# non-Latin documents (or a non-Latin library) mapping coverage will be ~0%.\nif RUN_OID_MAPPING:\n    import csv\n    import re\n\n    import pandas as pd\n\n    sys.modules.pop('oid_mapping', None)  # same rerun hygiene as the import cell\n    import oid_mapping\n    assert os.path.abspath(oid_mapping.__file__).startswith(\n        os.path.abspath(MODULES_DIR) + os.sep), 'oid_mapping imported from outside the bundle'\n\n    def _norm(s):\n        s = re.sub(r'\\(.*?\\)', ' ', str(s or '').lower())\n        s = re.sub(r'[^a-z0-9 ]+', ' ', s)\n        return re.sub(r'\\s+', ' ', s).strip()\n\n    _lib_df = dataiku.Dataset(ECS_INDEX_DATASET).get_dataframe()\n    _need = {'form_field_value', 'variable_name'}\n    assert _need <= set(_lib_df.columns), ECS_INDEX_DATASET + ' must have columns ' + str(_need)\n    _lib_df = _lib_df.fillna('')  # NaN is truthy - without this it becomes the string 'nan'\n    _lib = [{'field': _norm(r['form_field_value']), 'form': _norm(r.get('form_name', '')),\n             'oid': str(r['variable_name']).strip(),\n             'field_raw': str(r['form_field_value']).strip(),\n             'form_raw': str(r.get('form_name', '')).strip()}\n            for _, r in _lib_df.iterrows()\n            if str(r.get('form_field_value') or '').strip()\n            and str(r.get('variable_name') or '').strip()]\n    print('library entries:', len(_lib))\n\n    for _key in sorted(os.listdir(OUT_DIR)):\n        _src = os.path.join(OUT_DIR, _key, 'fields_codegen_' + tag + '.csv')\n        if not os.path.isfile(_src):\n            continue\n        with open(_src, encoding='utf-8') as f:\n            _pairs = sorted({(_norm(r['form_name']), _norm(r['field_name']))\n                             for r in csv.DictReader(f)})\n        _results = oid_mapping.map_pairs(_pairs, _lib, llm=call_mesh)\n        _rows = [{'form_name': r.form, 'field_name': r.field, 'status': r.status,\n                  'oid': r.oid or '', 'via': r.via if r.status == 'mapped' else '',\n                  'n_candidates': len(r.candidates)}\n                 for r in _results]\n        pd.DataFrame(_rows).to_csv(os.path.join(OUT_DIR, _key, 'oid_mapping_' + tag + '.csv'),\n                                   index=False)\n        _mapped = [r for r in _results if r.status == 'mapped']\n        _by = {v: sum(1 for r in _mapped if r.via == v)\n               for v in sorted({r.via for r in _mapped})}\n        print(f'{_key[:52]:52s} pairs={len(_pairs):5d} mapped={len(_mapped):4d} '\n              f'({100 * len(_mapped) // max(1, len(_pairs))}%) by={_by}')\n    print('re-run the upload cell to persist the mapping CSVs')\nelse:\n    print('RUN_OID_MAPPING is False - skipped')\n")
+            296 STORE_NAME              27 (MAPPING_CELL)
+
+403         298 LOAD_CONST              23 ('## Reading the outputs\n\nPer document (in the output folder, under `<doc_key>/`):\n\n| artifact | meaning |\n|---|---|\n| `clusters.json` | stage-0 layout clusters, representative pages, selected `theta`, `status` |\n| `rep_p<N>.txt` | the representative page dumps the LLM saw (text + geometry) |\n| `codegen_prompt.txt` | the exact induction prompt |\n| `codegen_reply_<tag>_<n>.py` | every parser version the LLM wrote |\n| `codegen_reply_<tag>_confirm.txt` | the coverage-confirmation reply, if that round ran |\n| `codegen_trail_<tag>.json` | per-version metrics/problems/audit + `stop_reason` + `best_version` |\n| `generated_extractor_<tag>.py` | the accepted (best) parser |\n| `fields_codegen_<tag>.csv` | final `form_name, field_name, page` extraction |\n| `oid_mapping_<tag>.csv` | optional name->OID funnel result: status / oid / via (mapping cell) |\n\nSummary `status` values: `ok` (clean audit, no warnings) / `ok_with_warnings`\n(soft quality signals; document may legitimately violate them) /\n`ok_audit_issues` (best version still has known page-level issues - review) /\n`ok_unaudited` (audit errored; parser passed gates but was never page-verified) /\n`needs_manual_template` (every version hard-failed - human review) /\n`export_failed` (best parser accepted but the final replay crashed - re-run) /\n`error` (unexpected per-document failure; see the cell output for the traceback) /\n`skipped_encrypted`, `skipped_no_text_layer`, `skipped_no_pages`,\n`skipped_missing_stage0` (stage 0 refused or failed on the PDF; OCR is out of\nscope by design - fail loudly, never guess). A row may additionally carry\n`text_layer_pct` when the book is PARTIALLY scanned (>=20% text pages proceed,\nbut the scanned pages are unreachable and their fields cannot appear in the\noutput - review such documents).\n\n**Not in this notebook**: ground-truth evaluation (no annotated truth exists on\nthe Dataiku side; the local repo has `eval_form_field.py` for the one document\nwith printed OIDs) and the production OID-assignment step (form-scoped\ncandidates + LLM ranking - designed separately; the mapping cell here is the\nlexical baseline only).\n')
+            300 STORE_NAME              28 (OUTPUTS_MD)
+
+442         302 LOAD_CONST               7 ('return')
+            304 LOAD_NAME               15 (dict)
+            306 BUILD_TUPLE              2
+            308 LOAD_CONST              24 (<code object build_notebook at 0x00000290C1B11CF0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\build_dataiku_notebook.py", line 442>)
+            310 MAKE_FUNCTION            4 (annotations)
+            312 STORE_NAME              29 (build_notebook)
+
+478         314 LOAD_CONST              25 ("# selftest parser: two plausible text lines per page become field records.\n# The page suffix keeps records distinct across pages (repeated headers/footers\n# would otherwise dedup to a single record and trip the volume gate) - this\n# validates PLUMBING, not extraction quality.\ndef extract(pages):\n    out = []\n    for pno, lines in pages:\n        kept = 0\n        for L in lines:\n            letters = sum(1 for c in L.text if c.isalpha())\n            if letters >= 4 and len(L.text) <= 120:\n                out.append({'form_name': 'Selftest Section',\n                            'field_name': L.text[:60] + ' (p' + str(pno + 1) + ')',\n                            'page': pno + 1})\n                kept += 1\n                if kept == 2:\n                    break\n    return out\n")
+            316 STORE_NAME              30 (SELFTEST_PROGRAM)
+
+500         318 LOAD_CONST              29 (('return', None))
+            320 LOAD_CONST              26 (<code object selftest at 0x00000290C1B12A30, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\build_dataiku_notebook.py", line 500>)
+            322 MAKE_FUNCTION            4 (annotations)
+            324 STORE_NAME              31 (selftest)
+
+582         326 LOAD_CONST              29 (('return', None))
+            328 LOAD_CONST              27 (<code object main at 0x00000290C1B4C2F0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\build_dataiku_notebook.py", line 582>)
+            330 MAKE_FUNCTION            4 (annotations)
+            332 STORE_NAME              32 (main)
+
+599         334 LOAD_NAME               33 (__name__)
+            336 LOAD_CONST              28 ('__main__')
+            338 COMPARE_OP               2 (==)
+            344 POP_JUMP_FORWARD_IF_FALSE    12 (to 370)
+
+600         346 PUSH_NULL
+            348 LOAD_NAME               32 (main)
+            350 PRECALL                  0
+            354 CALL                     0
+            364 POP_TOP
+            366 LOAD_CONST               2 (None)
+            368 RETURN_VALUE
+
+599     >>  370 LOAD_CONST               2 (None)
+            372 RETURN_VALUE
+
+Disassembly of <code object read_module at 0x00000290C37623D0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\build_dataiku_notebook.py", line 39>:
+ 39           0 RESUME                   0
+
+ 40           2 LOAD_GLOBAL              1 (NULL + open)
+             14 LOAD_GLOBAL              2 (os)
+             26 LOAD_ATTR                2 (path)
+             36 LOAD_METHOD              3 (join)
+             58 LOAD_GLOBAL              8 (HERE)
+             70 LOAD_FAST                0 (name)
+             72 PRECALL                  2
+             76 CALL                     2
+             86 LOAD_CONST               1 ('utf-8')
+             88 KW_NAMES                 2
+             90 PRECALL                  2
+             94 CALL                     2
+            104 BEFORE_WITH
+            106 STORE_FAST               1 (f)
+
+ 41         108 LOAD_FAST                1 (f)
+            110 LOAD_METHOD              5 (read)
+            132 PRECALL                  0
+            136 CALL                     0
+            146 STORE_FAST               2 (src)
+
+ 40         148 LOAD_CONST               0 (None)
+            150 LOAD_CONST               0 (None)
+            152 LOAD_CONST               0 (None)
+            154 PRECALL                  2
+            158 CALL                     2
+            168 POP_TOP
+            170 JUMP_FORWARD            11 (to 194)
+        >>  172 PUSH_EXC_INFO
+            174 WITH_EXCEPT_START
+            176 POP_JUMP_FORWARD_IF_TRUE     4 (to 186)
+            178 RERAISE                  2
+        >>  180 COPY                     3
+            182 POP_EXCEPT
+            184 RERAISE                  1
+        >>  186 POP_TOP
+            188 POP_EXCEPT
+            190 POP_TOP
+            192 POP_TOP
+
+ 42     >>  194 LOAD_CONST               3 ("'''")
+            196 LOAD_FAST                2 (src)
+            198 CONTAINS_OP              0
+            200 POP_JUMP_FORWARD_IF_FALSE    18 (to 238)
+
+ 43         202 LOAD_GLOBAL             13 (NULL + SystemExit)
+            214 LOAD_FAST                0 (name)
+            216 FORMAT_VALUE             0
+            218 LOAD_CONST               4 (" contains ''' - cannot embed as a raw string cell")
+            220 BUILD_STRING             2
+            222 PRECALL                  1
+            226 CALL                     1
+            236 RAISE_VARARGS            1
+
+ 44     >>  238 LOAD_FAST                2 (src)
+            240 LOAD_METHOD              7 (endswith)
+            262 LOAD_CONST               5 ('\n')
+            264 PRECALL                  1
+            268 CALL                     1
+            278 POP_JUMP_FORWARD_IF_TRUE     5 (to 290)
+
+ 45         280 LOAD_FAST                2 (src)
+            282 LOAD_CONST               5 ('\n')
+            284 BINARY_OP               13 (+=)
+            288 STORE_FAST               2 (src)
+
+ 46     >>  290 LOAD_FAST                2 (src)
+            292 RETURN_VALUE
+ExceptionTable:
+  106 to 146 -> 172 [1] lasti
+  172 to 178 -> 180 [3] lasti
+  186 to 186 -> 180 [3] lasti
+
+Disassembly of <code object code_cell at 0x00000290C3A6C920, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\build_dataiku_notebook.py", line 49>:
+ 49           0 RESUME                   0
+
+ 51           2 LOAD_CONST               1 ('code')
+              4 LOAD_FAST                0 (cell_id)
+              6 BUILD_MAP                0
+              8 LOAD_CONST               0 (None)
+
+ 52          10 BUILD_LIST               0
+             12 LOAD_FAST                1 (src)
+
+ 51          14 LOAD_CONST               2 (('cell_type', 'id', 'metadata', 'execution_count', 'outputs', 'source'))
+             16 BUILD_CONST_KEY_MAP      6
+             18 RETURN_VALUE
+
+Disassembly of <code object md_cell at 0x00000290C3A6C370, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\build_dataiku_notebook.py", line 55>:
+ 55           0 RESUME                   0
+
+ 56           2 LOAD_CONST               1 ('markdown')
+              4 LOAD_FAST                0 (cell_id)
+              6 BUILD_MAP                0
+              8 LOAD_FAST                1 (src)
+             10 LOAD_CONST               2 (('cell_type', 'id', 'metadata', 'source'))
+             12 BUILD_CONST_KEY_MAP      4
+             14 RETURN_VALUE
+
+Disassembly of <code object build_notebook at 0x00000290C1B11CF0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\build_dataiku_notebook.py", line 442>:
+442           0 RESUME                   0
+
+444           2 LOAD_GLOBAL              1 (NULL + md_cell)
+             14 LOAD_CONST               1 ('intro')
+             16 LOAD_GLOBAL              2 (INTRO_MD)
+             28 PRECALL                  2
+             32 CALL                     2
+
+445          42 LOAD_GLOBAL              5 (NULL + code_cell)
+             54 LOAD_CONST               2 ('config')
+             56 LOAD_GLOBAL              6 (CONFIG_CELL)
+             68 PRECALL                  2
+             72 CALL                     2
+
+446          82 LOAD_GLOBAL              5 (NULL + code_cell)
+             94 LOAD_CONST               3 ('bootstrap')
+             96 LOAD_GLOBAL              8 (BOOTSTRAP_CELL)
+            108 PRECALL                  2
+            112 CALL                     2
+
+443         122 BUILD_LIST               3
+            124 STORE_FAST               0 (cells)
+
+448         126 LOAD_GLOBAL             10 (EMBEDDED_MODULES)
+            138 GET_ITER
+        >>  140 FOR_ITER               105 (to 352)
+            142 STORE_FAST               1 (name)
+
+449         144 LOAD_GLOBAL             13 (NULL + read_module)
+            156 LOAD_FAST                1 (name)
+            158 PRECALL                  1
+            162 CALL                     1
+            172 STORE_FAST               2 (src)
+
+450         174 LOAD_FAST                0 (cells)
+            176 LOAD_METHOD              7 (append)
+            198 LOAD_GLOBAL              5 (NULL + code_cell)
+
+451         210 LOAD_CONST               4 ('module-')
+            212 LOAD_FAST                1 (name)
+            214 LOAD_METHOD              8 (replace)
+            236 LOAD_CONST               5 ('.py')
+            238 LOAD_CONST               6 ('')
+            240 PRECALL                  2
+            244 CALL                     2
+            254 LOAD_METHOD              8 (replace)
+            276 LOAD_CONST               7 ('_')
+            278 LOAD_CONST               8 ('-')
+            280 PRECALL                  2
+            284 CALL                     2
+            294 BINARY_OP                0 (+)
+
+452         298 LOAD_CONST               9 ('# --- pipeline module: ')
+            300 LOAD_FAST                1 (name)
+            302 FORMAT_VALUE             0
+            304 LOAD_CONST              10 (" (verbatim from the repo; regenerate, don't edit) ---\n_write_module(")
+
+453         306 LOAD_FAST                1 (name)
+
+452         308 FORMAT_VALUE             2 (repr)
+            310 LOAD_CONST              11 (", r'''")
+
+453         312 LOAD_FAST                2 (src)
+
+452         314 FORMAT_VALUE             0
+            316 LOAD_CONST              12 ("''')\n")
+            318 BUILD_STRING             7
+
+450         320 PRECALL                  2
+            324 CALL                     2
+            334 PRECALL                  1
+            338 CALL                     1
+            348 POP_TOP
+            350 JUMP_BACKWARD          106 (to 140)
+
+454     >>  352 LOAD_FAST                0 (cells)
+
+455         354 LOAD_GLOBAL              5 (NULL + code_cell)
+            366 LOAD_CONST              13 ('imports')
+            368 LOAD_GLOBAL             18 (IMPORT_CELL)
+            380 PRECALL                  2
+            384 CALL                     2
+
+456         394 LOAD_GLOBAL              5 (NULL + code_cell)
+            406 LOAD_CONST              14 ('fetch-pdfs')
+            408 LOAD_GLOBAL             20 (FETCH_CELL)
+            420 PRECALL                  2
+            424 CALL                     2
+
+457         434 LOAD_GLOBAL              5 (NULL + code_cell)
+            446 LOAD_CONST              15 ('stage0')
+            448 LOAD_GLOBAL             22 (STAGE0_CELL)
+            460 PRECALL                  2
+            464 CALL                     2
+
+458         474 LOAD_GLOBAL              5 (NULL + code_cell)
+            486 LOAD_CONST              16 ('mesh-transport')
+            488 LOAD_GLOBAL             24 (MESH_CELL)
+            500 PRECALL                  2
+            504 CALL                     2
+
+459         514 LOAD_GLOBAL              5 (NULL + code_cell)
+            526 LOAD_CONST              17 ('induction-loop')
+            528 LOAD_GLOBAL             26 (INDUCTION_CELL)
+            540 PRECALL                  2
+            544 CALL                     2
+
+460         554 LOAD_GLOBAL              5 (NULL + code_cell)
+            566 LOAD_CONST              18 ('upload-artifacts')
+            568 LOAD_GLOBAL             28 (UPLOAD_CELL)
+            580 PRECALL                  2
+            584 CALL                     2
+
+461         594 LOAD_GLOBAL              5 (NULL + code_cell)
+            606 LOAD_CONST              19 ('oid-mapping')
+            608 LOAD_GLOBAL             30 (MAPPING_CELL)
+            620 PRECALL                  2
+            624 CALL                     2
+
+462         634 LOAD_GLOBAL              1 (NULL + md_cell)
+            646 LOAD_CONST              20 ('outputs-guide')
+            648 LOAD_GLOBAL             32 (OUTPUTS_MD)
+            660 PRECALL                  2
+            664 CALL                     2
+
+454         674 BUILD_LIST               8
+            676 BINARY_OP               13 (+=)
+            680 STORE_FAST               0 (cells)
+
+465         682 LOAD_FAST                0 (cells)
+
+467         684 LOAD_CONST              21 ('Python 3')
+            686 LOAD_CONST              22 ('python')
+            688 LOAD_CONST              23 ('python3')
+            690 LOAD_CONST              24 (('display_name', 'language', 'name'))
+            692 BUILD_CONST_KEY_MAP      3
+
+468         694 LOAD_CONST              22 ('python')
+            696 LOAD_CONST              25 ('3.10')
+            698 LOAD_CONST              26 (('name', 'version'))
+            700 BUILD_CONST_KEY_MAP      2
+
+466         702 LOAD_CONST              27 (('kernelspec', 'language_info'))
+            704 BUILD_CONST_KEY_MAP      2
+
+470         706 LOAD_CONST              28 (4)
+
+471         708 LOAD_CONST              29 (5)
+
+464         710 LOAD_CONST              30 (('cells', 'metadata', 'nbformat', 'nbformat_minor'))
+            712 BUILD_CONST_KEY_MAP      4
+            714 RETURN_VALUE
+
+Disassembly of <code object selftest at 0x00000290C1B12A30, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\build_dataiku_notebook.py", line 500>:
+              0 MAKE_CELL               26 (fitz)
+              2 MAKE_CELL               27 (re)
+              4 MAKE_CELL               28 (src_dir)
+
+500           6 RESUME                   0
+
+501           8 LOAD_CONST               1 (0)
+             10 LOAD_CONST               0 (None)
+             12 IMPORT_NAME              0 (re)
+             14 STORE_DEREF             27 (re)
+
+502          16 LOAD_CONST               1 (0)
+             18 LOAD_CONST               0 (None)
+             20 IMPORT_NAME              1 (shutil)
+             22 STORE_FAST               0 (shutil)
+
+503          24 LOAD_CONST               1 (0)
+             26 LOAD_CONST               0 (None)
+             28 IMPORT_NAME              2 (tempfile)
+             30 STORE_FAST               1 (tempfile)
+
+505          32 LOAD_CONST               1 (0)
+             34 LOAD_CONST               0 (None)
+             36 IMPORT_NAME              3 (fitz)
+             38 STORE_DEREF             26 (fitz)
+
+507          40 LOAD_FAST                1 (tempfile)
+             42 LOAD_METHOD              4 (mkdtemp)
+             64 LOAD_CONST               2 ('crf_nb_selftest_')
+             66 KW_NAMES                 3
+             68 PRECALL                  1
+             72 CALL                     1
+             82 STORE_FAST               2 (work)
+
+508          84 LOAD_GLOBAL             10 (os)
+             96 LOAD_ATTR                6 (path)
+            106 LOAD_METHOD              7 (join)
+            128 LOAD_FAST                2 (work)
+            130 LOAD_CONST               4 ('modules')
+            132 PRECALL                  2
+            136 CALL                     2
+            146 STORE_FAST               3 (modules)
+
+509         148 LOAD_GLOBAL             11 (NULL + os)
+            160 LOAD_ATTR                8 (makedirs)
+            170 LOAD_FAST                3 (modules)
+            172 PRECALL                  1
+            176 CALL                     1
+            186 POP_TOP
+
+510         188 LOAD_GLOBAL             18 (EMBEDDED_MODULES)
+            200 GET_ITER
+        >>  202 FOR_ITER               108 (to 420)
+            204 STORE_FAST               4 (name)
+
+511         206 LOAD_GLOBAL             21 (NULL + open)
+            218 LOAD_GLOBAL             10 (os)
+            230 LOAD_ATTR                6 (path)
+            240 LOAD_METHOD              7 (join)
+            262 LOAD_FAST                3 (modules)
+            264 LOAD_FAST                4 (name)
+            266 PRECALL                  2
+            270 CALL                     2
+            280 LOAD_CONST               5 ('w')
+            282 LOAD_CONST               6 ('utf-8')
+            284 KW_NAMES                 7
+            286 PRECALL                  3
+            290 CALL                     3
+            300 BEFORE_WITH
+            302 STORE_FAST               5 (f)
+
+512         304 LOAD_FAST                5 (f)
+            306 LOAD_METHOD             11 (write)
+            328 LOAD_GLOBAL             25 (NULL + read_module)
+            340 LOAD_FAST                4 (name)
+            342 PRECALL                  1
+            346 CALL                     1
+            356 PRECALL                  1
+            360 CALL                     1
+            370 POP_TOP
+
+511         372 LOAD_CONST               0 (None)
+            374 LOAD_CONST               0 (None)
+            376 LOAD_CONST               0 (None)
+            378 PRECALL                  2
+            382 CALL                     2
+            392 POP_TOP
+            394 JUMP_FORWARD            11 (to 418)
+        >>  396 PUSH_EXC_INFO
+            398 WITH_EXCEPT_START
+            400 POP_JUMP_FORWARD_IF_TRUE     4 (to 410)
+            402 RERAISE                  2
+        >>  404 COPY                     3
+            406 POP_EXCEPT
+            408 RERAISE                  1
+        >>  410 POP_TOP
+            412 POP_EXCEPT
+            414 POP_TOP
+            416 POP_TOP
+        >>  418 JUMP_BACKWARD          109 (to 202)
+
+514     >>  420 LOAD_FAST                2 (work)
+            422 LOAD_GLOBAL             10 (os)
+            434 LOAD_ATTR               13 (environ)
+            444 LOAD_CONST               8 ('ECS_BASE')
+            446 STORE_SUBSCR
+
+515         450 LOAD_GLOBAL             28 (sys)
+            462 LOAD_ATTR                6 (path)
+            472 LOAD_METHOD             15 (insert)
+            494 LOAD_CONST               1 (0)
+            496 LOAD_FAST                3 (modules)
+            498 PRECALL                  2
+            502 CALL                     2
+            512 POP_TOP
+
+516         514 LOAD_CONST               9 (('common', 'generic_profile', 'replay', 'induction', 'codegen', 'stage0_cluster', 'run_cli_induction'))
+            516 STORE_FAST               6 (names)
+
+518         518 LOAD_FAST                6 (names)
+            520 GET_ITER
+        >>  522 FOR_ITER                34 (to 592)
+            524 STORE_FAST               7 (m)
+
+519         526 LOAD_GLOBAL             28 (sys)
+            538 LOAD_ATTR               16 (modules)
+            548 LOAD_METHOD             17 (pop)
+            570 LOAD_FAST                7 (m)
+            572 LOAD_CONST               0 (None)
+            574 PRECALL                  2
+            578 CALL                     2
+            588 POP_TOP
+            590 JUMP_BACKWARD           35 (to 522)
+
+520     >>  592 LOAD_CONST               1 (0)
+            594 LOAD_CONST               0 (None)
+            596 IMPORT_NAME             18 (common)
+            598 STORE_FAST               8 (common)
+
+521         600 LOAD_CONST               1 (0)
+            602 LOAD_CONST               0 (None)
+            604 IMPORT_NAME             19 (codegen)
+            606 STORE_FAST               9 (codegen)
+
+522         608 LOAD_CONST               1 (0)
+            610 LOAD_CONST               0 (None)
+            612 IMPORT_NAME             20 (run_cli_induction)
+            614 STORE_FAST              10 (rci)
+
+523         616 LOAD_CONST               1 (0)
+            618 LOAD_CONST               0 (None)
+            620 IMPORT_NAME             21 (stage0_cluster)
+            622 STORE_FAST              11 (stage0_cluster)
+
+527         624 LOAD_FAST                6 (names)
+            626 GET_ITER
+        >>  628 FOR_ITER               116 (to 862)
+            630 STORE_FAST               7 (m)
+
+528         632 LOAD_GLOBAL             10 (os)
+            644 LOAD_ATTR                6 (path)
+            654 LOAD_METHOD             22 (abspath)
+            676 LOAD_GLOBAL             47 (NULL + getattr)
+            688 LOAD_GLOBAL             28 (sys)
+            700 LOAD_ATTR               16 (modules)
+            710 LOAD_FAST                7 (m)
+            712 BINARY_SUBSCR
+            722 LOAD_CONST              10 ('__file__')
+            724 LOAD_CONST              11 ('')
+            726 PRECALL                  3
+            730 CALL                     3
+            740 JUMP_IF_TRUE_OR_POP      1 (to 744)
+            742 LOAD_CONST              11 ('')
+        >>  744 PRECALL                  1
+            748 CALL                     1
+            758 STORE_FAST               5 (f)
+
+529         760 LOAD_FAST                5 (f)
+            762 LOAD_METHOD             24 (startswith)
+            784 LOAD_FAST                3 (modules)
+            786 LOAD_GLOBAL             10 (os)
+            798 LOAD_ATTR               25 (sep)
+            808 BINARY_OP                0 (+)
+            812 PRECALL                  1
+            816 CALL                     1
+            826 POP_JUMP_FORWARD_IF_TRUE    16 (to 860)
+            828 LOAD_ASSERTION_ERROR
+            830 LOAD_FAST                7 (m)
+            832 FORMAT_VALUE             0
+            834 LOAD_CONST              12 (' imported from ')
+            836 LOAD_FAST                5 (f)
+            838 FORMAT_VALUE             0
+            840 LOAD_CONST              13 (', not the bundle')
+            842 BUILD_STRING             4
+            844 PRECALL                  0
+            848 CALL                     0
+            858 RAISE_VARARGS            1
+        >>  860 JUMP_BACKWARD          117 (to 628)
+
+530     >>  862 LOAD_GLOBAL             10 (os)
+            874 LOAD_ATTR                6 (path)
+            884 LOAD_METHOD             26 (isfile)
+            906 LOAD_GLOBAL             10 (os)
+            918 LOAD_ATTR                6 (path)
+            928 LOAD_METHOD              7 (join)
+            950 LOAD_FAST                3 (modules)
+            952 LOAD_CONST              14 ('sandbox_runner.py')
+            954 PRECALL                  2
+            958 CALL                     2
+            968 PRECALL                  1
+            972 CALL                     1
+            982 POP_JUMP_FORWARD_IF_TRUE    10 (to 1004)
+            984 LOAD_ASSERTION_ERROR
+
+531         986 LOAD_CONST              15 ('sandbox_runner.py missing from the bundle')
+
+530         988 PRECALL                  0
+            992 CALL                     0
+           1002 RAISE_VARARGS            1
+
+532     >> 1004 LOAD_FAST                8 (common)
+           1006 LOAD_ATTR               27 (BASE)
+           1016 LOAD_FAST                2 (work)
+           1018 COMPARE_OP               2 (==)
+           1024 POP_JUMP_FORWARD_IF_TRUE    18 (to 1062)
+           1026 LOAD_ASSERTION_ERROR
+           1028 LOAD_CONST              16 ('bundle ignored ECS_BASE: ')
+           1030 LOAD_FAST                8 (common)
+           1032 LOAD_ATTR               27 (BASE)
+           1042 FORMAT_VALUE             0
+           1044 BUILD_STRING             2
+           1046 PRECALL                  0
+           1050 CALL                     0
+           1060 RAISE_VARARGS            1
+
+534     >> 1062 LOAD_GLOBAL             11 (NULL + os)
+           1074 LOAD_ATTR                8 (makedirs)
+           1084 LOAD_FAST                8 (common)
+           1086 LOAD_ATTR               28 (CRF_DIR)
+           1096 LOAD_CONST              17 (True)
+           1098 KW_NAMES                18
+           1100 PRECALL                  2
+           1104 CALL                     2
+           1114 POP_TOP
+
+535        1116 LOAD_GLOBAL             11 (NULL + os)
+           1128 LOAD_ATTR                8 (makedirs)
+           1138 LOAD_FAST                8 (common)
+           1140 LOAD_ATTR               29 (OUT_DIR)
+           1150 LOAD_CONST              17 (True)
+           1152 KW_NAMES                18
+           1154 PRECALL                  2
+           1158 CALL                     2
+           1168 POP_TOP
+
+538        1170 LOAD_CONST              19 ('p')
+           1172 LOAD_GLOBAL             60 (str)
+           1184 LOAD_CONST              20 ('return')
+           1186 LOAD_GLOBAL             62 (int)
+           1198 BUILD_TUPLE              4
+           1200 LOAD_CLOSURE            26 (fitz)
+           1202 BUILD_TUPLE              1
+           1204 LOAD_CONST              21 (<code object page_count at 0x00000290C37FBB90, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\build_dataiku_notebook.py", line 538>)
+           1206 MAKE_FUNCTION           12 (annotations, closure)
+           1208 STORE_FAST              12 (page_count)
+
+542        1210 LOAD_GLOBAL             10 (os)
+           1222 LOAD_ATTR                6 (path)
+           1232 LOAD_METHOD              7 (join)
+           1254 LOAD_GLOBAL             10 (os)
+           1266 LOAD_ATTR                6 (path)
+           1276 LOAD_METHOD             32 (dirname)
+           1298 LOAD_GLOBAL             10 (os)
+           1310 LOAD_ATTR                6 (path)
+           1320 LOAD_METHOD             32 (dirname)
+           1342 LOAD_GLOBAL             66 (HERE)
+           1354 PRECALL                  1
+           1358 CALL                     1
+           1368 PRECALL                  1
+           1372 CALL                     1
+           1382 LOAD_CONST              22 ('data')
+           1384 LOAD_CONST              23 ('crf_forms')
+           1386 PRECALL                  3
+           1390 CALL                     3
+           1400 STORE_DEREF             28 (src_dir)
+
+543        1402 LOAD_CLOSURE            28 (src_dir)
+           1404 BUILD_TUPLE              1
+           1406 LOAD_CONST              24 (<code object <listcomp> at 0x00000290C38366B0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\build_dataiku_notebook.py", line 543>)
+           1408 MAKE_FUNCTION            8 (closure)
+           1410 LOAD_GLOBAL             11 (NULL + os)
+           1422 LOAD_ATTR               34 (listdir)
+           1432 LOAD_DEREF              28 (src_dir)
+           1434 PRECALL                  1
+           1438 CALL                     1
+           1448 GET_ITER
+           1450 PRECALL                  0
+           1454 CALL                     0
+           1464 STORE_FAST              13 (candidates)
+
+545        1466 LOAD_FAST               13 (candidates)
+           1468 POP_JUMP_FORWARD_IF_TRUE    14 (to 1498)
+           1470 LOAD_ASSERTION_ERROR
+           1472 LOAD_CONST              25 ('no PDFs in ')
+           1474 LOAD_DEREF              28 (src_dir)
+           1476 FORMAT_VALUE             0
+           1478 LOAD_CONST              26 (' to selftest against')
+           1480 BUILD_STRING             3
+           1482 PRECALL                  0
+           1486 CALL                     0
+           1496 RAISE_VARARGS            1
+
+546     >> 1498 LOAD_GLOBAL             71 (NULL + min)
+           1510 LOAD_FAST               13 (candidates)
+           1512 LOAD_FAST               12 (page_count)
+           1514 KW_NAMES                27
+           1516 PRECALL                  2
+           1520 CALL                     2
+           1530 STORE_FAST              14 (pdf_src)
+
+547        1532 LOAD_GLOBAL             10 (os)
+           1544 LOAD_ATTR                6 (path)
+           1554 LOAD_METHOD              7 (join)
+           1576 LOAD_FAST                8 (common)
+           1578 LOAD_ATTR               28 (CRF_DIR)
+           1588 LOAD_GLOBAL             10 (os)
+           1600 LOAD_ATTR                6 (path)
+           1610 LOAD_METHOD             36 (basename)
+           1632 LOAD_FAST               14 (pdf_src)
+           1634 PRECALL                  1
+           1638 CALL                     1
+           1648 PRECALL                  2
+           1652 CALL                     2
+           1662 STORE_FAST              15 (pdf)
+
+548        1664 LOAD_FAST                0 (shutil)
+           1666 LOAD_METHOD             37 (copyfile)
+           1688 LOAD_FAST               14 (pdf_src)
+           1690 LOAD_FAST               15 (pdf)
+           1692 PRECALL                  2
+           1696 CALL                     2
+           1706 POP_TOP
+
+550        1708 LOAD_FAST               11 (stage0_cluster)
+           1710 LOAD_METHOD             38 (run)
+           1732 LOAD_FAST               15 (pdf)
+           1734 PRECALL                  1
+           1738 CALL                     1
+           1748 STORE_FAST              16 (meta)
+
+551        1750 LOAD_FAST               16 (meta)
+           1752 LOAD_CONST              28 ('status')
+           1754 BINARY_SUBSCR
+           1764 LOAD_CONST              29 ('ok')
+           1766 COMPARE_OP               2 (==)
+           1772 POP_JUMP_FORWARD_IF_TRUE    10 (to 1794)
+           1774 LOAD_ASSERTION_ERROR
+           1776 LOAD_FAST               16 (meta)
+           1778 PRECALL                  0
+           1782 CALL                     0
+           1792 RAISE_VARARGS            1
+
+553     >> 1794 LOAD_FAST                8 (common)
+           1796 LOAD_METHOD             39 (doc_key)
+           1818 LOAD_FAST               15 (pdf)
+           1820 PRECALL                  1
+           1824 CALL                     1
+           1834 STORE_FAST              17 (key)
+
+554        1836 LOAD_GLOBAL             10 (os)
+           1848 LOAD_ATTR                6 (path)
+           1858 LOAD_METHOD              7 (join)
+           1880 LOAD_FAST                8 (common)
+           1882 LOAD_ATTR               29 (OUT_DIR)
+           1892 LOAD_FAST               17 (key)
+           1894 PRECALL                  2
+           1898 CALL                     2
+           1908 STORE_FAST              18 (outdir)
+
+555        1910 LOAD_FAST                9 (codegen)
+           1912 LOAD_METHOD             40 (build_codegen_prompt)
+           1934 LOAD_FAST               15 (pdf)
+           1936 LOAD_FAST               18 (outdir)
+           1938 PRECALL                  2
+           1942 CALL                     2
+           1952 STORE_FAST              19 (prompt)
+
+556        1954 LOAD_GLOBAL             21 (NULL + open)
+           1966 LOAD_GLOBAL             10 (os)
+           1978 LOAD_ATTR                6 (path)
+           1988 LOAD_METHOD              7 (join)
+           2010 LOAD_FAST               18 (outdir)
+           2012 LOAD_CONST              30 ('codegen_prompt.txt')
+           2014 PRECALL                  2
+           2018 CALL                     2
+           2028 LOAD_CONST               5 ('w')
+           2030 LOAD_CONST               6 ('utf-8')
+           2032 KW_NAMES                 7
+           2034 PRECALL                  3
+           2038 CALL                     3
+           2048 BEFORE_WITH
+           2050 STORE_FAST               5 (f)
+
+557        2052 LOAD_FAST                5 (f)
+           2054 LOAD_METHOD             11 (write)
+           2076 LOAD_FAST               19 (prompt)
+           2078 PRECALL                  1
+           2082 CALL                     1
+           2092 POP_TOP
+
+556        2094 LOAD_CONST               0 (None)
+           2096 LOAD_CONST               0 (None)
+           2098 LOAD_CONST               0 (None)
+           2100 PRECALL                  2
+           2104 CALL                     2
+           2114 POP_TOP
+           2116 JUMP_FORWARD            11 (to 2140)
+        >> 2118 PUSH_EXC_INFO
+           2120 WITH_EXCEPT_START
+           2122 POP_JUMP_FORWARD_IF_TRUE     4 (to 2132)
+           2124 RERAISE                  2
+        >> 2126 COPY                     3
+           2128 POP_EXCEPT
+           2130 RERAISE                  1
+        >> 2132 POP_TOP
+           2134 POP_EXCEPT
+           2136 POP_TOP
+           2138 POP_TOP
+
+559     >> 2140 LOAD_CONST              19 ('p')
+           2142 LOAD_GLOBAL             60 (str)
+           2154 LOAD_CONST              20 ('return')
+           2156 LOAD_GLOBAL             60 (str)
+           2168 BUILD_TUPLE              4
+           2170 LOAD_CLOSURE            27 (re)
+           2172 BUILD_TUPLE              1
+           2174 LOAD_CONST              31 (<code object transport at 0x00000290C39FA130, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\build_dataiku_notebook.py", line 559>)
+           2176 MAKE_FUNCTION           12 (annotations, closure)
+           2178 STORE_FAST              20 (transport)
+
+568        2180 LOAD_FAST               10 (rci)
+           2182 LOAD_METHOD             41 (induce_document)
+
+569        2204 LOAD_FAST               20 (transport)
+           2206 LOAD_CONST              32 ('selftest-model')
+           2208 LOAD_CONST              33 ('selftest')
+           2210 LOAD_FAST               15 (pdf)
+           2212 LOAD_FAST               18 (outdir)
+           2214 LOAD_FAST               19 (prompt)
+           2216 LOAD_CONST              34 (3)
+
+568        2218 PRECALL                  7
+           2222 CALL                     7
+           2232 UNPACK_SEQUENCE          4
+           2236 STORE_FAST              21 (best)
+           2238 STORE_FAST              22 (trail)
+           2240 STORE_FAST              23 (stop)
+           2242 STORE_FAST              24 (versions)
+
+570        2244 LOAD_FAST               10 (rci)
+           2246 LOAD_METHOD             42 (finalize_document)
+           2268 LOAD_FAST               17 (key)
+           2270 LOAD_FAST               15 (pdf)
+           2272 LOAD_FAST               18 (outdir)
+           2274 LOAD_CONST              33 ('selftest')
+           2276 LOAD_FAST               21 (best)
+           2278 LOAD_FAST               22 (trail)
+           2280 LOAD_FAST               23 (stop)
+           2282 LOAD_FAST               24 (versions)
+           2284 PRECALL                  8
+           2288 CALL                     8
+           2298 STORE_FAST              25 (row)
+
+571        2300 LOAD_GLOBAL             87 (NULL + print)
+           2312 LOAD_CONST              35 ('selftest row:')
+           2314 LOAD_FAST               25 (row)
+           2316 PRECALL                  2
+           2320 CALL                     2
+           2330 POP_TOP
+
+574        2332 LOAD_FAST               23 (stop)
+           2334 LOAD_CONST              36 ('converged')
+           2336 COMPARE_OP               2 (==)
+           2342 POP_JUMP_FORWARD_IF_TRUE    13 (to 2370)
+           2344 LOAD_ASSERTION_ERROR
+           2346 LOAD_CONST              37 ('expected converged, got ')
+           2348 LOAD_FAST               23 (stop)
+           2350 FORMAT_VALUE             0
+           2352 BUILD_STRING             2
+           2354 PRECALL                  0
+           2358 CALL                     0
+           2368 RAISE_VARARGS            1
+
+575     >> 2370 LOAD_FAST               25 (row)
+           2372 LOAD_CONST              28 ('status')
+           2374 BINARY_SUBSCR
+           2384 LOAD_CONST              29 ('ok')
+           2386 COMPARE_OP               2 (==)
+           2392 POP_JUMP_FORWARD_IF_TRUE    10 (to 2414)
+           2394 LOAD_ASSERTION_ERROR
+           2396 LOAD_FAST               25 (row)
+           2398 PRECALL                  0
+           2402 CALL                     0
+           2412 RAISE_VARARGS            1
+
+576     >> 2414 LOAD_GLOBAL             10 (os)
+           2426 LOAD_ATTR                6 (path)
+           2436 LOAD_METHOD             26 (isfile)
+           2458 LOAD_GLOBAL             10 (os)
+           2470 LOAD_ATTR                6 (path)
+           2480 LOAD_METHOD              7 (join)
+           2502 LOAD_FAST               18 (outdir)
+           2504 LOAD_CONST              38 ('fields_codegen_selftest.csv')
+           2506 PRECALL                  2
+           2510 CALL                     2
+           2520 PRECALL                  1
+           2524 CALL                     1
+           2534 POP_JUMP_FORWARD_IF_TRUE     2 (to 2540)
+           2536 LOAD_ASSERTION_ERROR
+           2538 RAISE_VARARGS            1
+
+577     >> 2540 LOAD_GLOBAL             10 (os)
+           2552 LOAD_ATTR                6 (path)
+           2562 LOAD_METHOD             26 (isfile)
+           2584 LOAD_GLOBAL             10 (os)
+           2596 LOAD_ATTR                6 (path)
+           2606 LOAD_METHOD              7 (join)
+           2628 LOAD_FAST               18 (outdir)
+           2630 LOAD_CONST              39 ('codegen_trail_selftest.json')
+           2632 PRECALL                  2
+           2636 CALL                     2
+           2646 PRECALL                  1
+           2650 CALL                     1
+           2660 POP_JUMP_FORWARD_IF_TRUE     2 (to 2666)
+           2662 LOAD_ASSERTION_ERROR
+           2664 RAISE_VARARGS            1
+
+578     >> 2666 LOAD_FAST                0 (shutil)
+           2668 LOAD_METHOD             44 (rmtree)
+           2690 LOAD_FAST                2 (work)
+           2692 LOAD_CONST              17 (True)
+           2694 KW_NAMES                40
+           2696 PRECALL                  2
+           2700 CALL                     2
+           2710 POP_TOP
+
+579        2712 LOAD_GLOBAL             87 (NULL + print)
+           2724 LOAD_CONST              41 ('selftest PASSED: bundle imports cleanly, stage0 + loop + export ran end-to-end')
+           2726 PRECALL                  1
+           2730 CALL                     1
+           2740 POP_TOP
+           2742 LOAD_CONST               0 (None)
+           2744 RETURN_VALUE
+ExceptionTable:
+  302 to 370 -> 396 [2] lasti
+  396 to 402 -> 404 [4] lasti
+  410 to 410 -> 404 [4] lasti
+  2050 to 2092 -> 2118 [1] lasti
+  2118 to 2124 -> 2126 [3] lasti
+  2132 to 2132 -> 2126 [3] lasti
+
+Disassembly of <code object page_count at 0x00000290C37FBB90, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\build_dataiku_notebook.py", line 538>:
+              0 COPY_FREE_VARS           1
+
+538           2 RESUME                   0
+
+539           4 LOAD_DEREF               2 (fitz)
+              6 LOAD_METHOD              0 (open)
+             28 LOAD_FAST                0 (p)
+             30 PRECALL                  1
+             34 CALL                     1
+             44 BEFORE_WITH
+             46 STORE_FAST               1 (d)
+
+540          48 LOAD_FAST                1 (d)
+             50 LOAD_ATTR                1 (page_count)
+
+539          60 SWAP                     2
+             62 LOAD_CONST               0 (None)
+             64 LOAD_CONST               0 (None)
+             66 LOAD_CONST               0 (None)
+             68 PRECALL                  2
+             72 CALL                     2
+             82 POP_TOP
+             84 RETURN_VALUE
+        >>   86 PUSH_EXC_INFO
+             88 WITH_EXCEPT_START
+             90 POP_JUMP_FORWARD_IF_TRUE     4 (to 100)
+             92 RERAISE                  2
+        >>   94 COPY                     3
+             96 POP_EXCEPT
+             98 RERAISE                  1
+        >>  100 POP_TOP
+            102 POP_EXCEPT
+            104 POP_TOP
+            106 POP_TOP
+            108 LOAD_CONST               0 (None)
+            110 RETURN_VALUE
+ExceptionTable:
+  46 to 58 -> 86 [1] lasti
+  86 to 92 -> 94 [3] lasti
+  100 to 100 -> 94 [3] lasti
+
+Disassembly of <code object <listcomp> at 0x00000290C38366B0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\build_dataiku_notebook.py", line 543>:
+              0 COPY_FREE_VARS           1
+
+543           2 RESUME                   0
+              4 BUILD_LIST               0
+              6 LOAD_FAST                0 (.0)
+        >>    8 FOR_ITER                73 (to 156)
+             10 STORE_FAST               1 (fn)
+
+544          12 LOAD_FAST                1 (fn)
+             14 LOAD_METHOD              0 (lower)
+             36 PRECALL                  0
+             40 CALL                     0
+             50 LOAD_METHOD              1 (endswith)
+             72 LOAD_CONST               0 ('.pdf')
+             74 PRECALL                  1
+             78 CALL                     1
+
+543          88 POP_JUMP_BACKWARD_IF_FALSE    41 (to 8)
+             90 LOAD_GLOBAL              4 (os)
+            102 LOAD_ATTR                3 (path)
+            112 LOAD_METHOD              4 (join)
+            134 LOAD_DEREF               2 (src_dir)
+            136 LOAD_FAST                1 (fn)
+            138 PRECALL                  2
+            142 CALL                     2
+            152 LIST_APPEND              2
+            154 JUMP_BACKWARD           74 (to 8)
+        >>  156 RETURN_VALUE
+
+Disassembly of <code object transport at 0x00000290C39FA130, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\build_dataiku_notebook.py", line 559>:
+              0 COPY_FREE_VARS           1
+
+559           2 RESUME                   0
+
+560           4 LOAD_CONST               1 ('You are auditing the output')
+              6 LOAD_FAST                0 (p)
+              8 CONTAINS_OP              0
+             10 POP_JUMP_FORWARD_IF_FALSE    81 (to 174)
+
+561          12 LOAD_GLOBAL              1 (NULL + sorted)
+             24 LOAD_CONST               2 (<code object <setcomp> at 0x00000290C3A792F0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\build_dataiku_notebook.py", line 561>)
+             26 MAKE_FUNCTION            0
+             28 LOAD_DEREF               2 (re)
+             30 LOAD_METHOD              1 (findall)
+             52 LOAD_CONST               3 ('^--- page (\\d+) ---')
+             54 LOAD_FAST                0 (p)
+             56 LOAD_DEREF               2 (re)
+             58 LOAD_ATTR                2 (M)
+             68 PRECALL                  3
+             72 CALL                     3
+             82 GET_ITER
+             84 PRECALL                  0
+             88 CALL                     0
+             98 PRECALL                  1
+            102 CALL                     1
+            112 STORE_FAST               1 (pages)
+
+562         114 LOAD_GLOBAL              7 (NULL + json)
+            126 LOAD_ATTR                4 (dumps)
+            136 LOAD_CONST               4 (<code object <listcomp> at 0x00000290C3A0FAD0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\build_dataiku_notebook.py", line 562>)
+            138 MAKE_FUNCTION            0
+
+563         140 LOAD_FAST                1 (pages)
+
+562         142 GET_ITER
+            144 PRECALL                  0
+            148 CALL                     0
+            158 PRECALL                  1
+            162 CALL                     1
+            172 RETURN_VALUE
+
+564     >>  174 LOAD_CONST               5 ('You previously wrote the extraction program')
+            176 LOAD_FAST                0 (p)
+            178 CONTAINS_OP              0
+            180 POP_JUMP_FORWARD_IF_FALSE     2 (to 186)
+
+565         182 LOAD_CONST               6 ('CONFIRM_NO_FIELDS')
+            184 RETURN_VALUE
+
+566     >>  186 LOAD_GLOBAL             10 (SELFTEST_PROGRAM)
+            198 RETURN_VALUE
+
+Disassembly of <code object <setcomp> at 0x00000290C3A792F0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\build_dataiku_notebook.py", line 561>:
+561           0 RESUME                   0
+              2 BUILD_SET                0
+              4 LOAD_FAST                0 (.0)
+        >>    6 FOR_ITER                17 (to 42)
+              8 STORE_FAST               1 (m)
+             10 LOAD_GLOBAL              1 (NULL + int)
+             22 LOAD_FAST                1 (m)
+             24 PRECALL                  1
+             28 CALL                     1
+             38 SET_ADD                  2
+             40 JUMP_BACKWARD           18 (to 6)
+        >>   42 RETURN_VALUE
+
+Disassembly of <code object <listcomp> at 0x00000290C3A0FAD0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\build_dataiku_notebook.py", line 562>:
+562           0 RESUME                   0
+              2 BUILD_LIST               0
+              4 LOAD_FAST                0 (.0)
+        >>    6 FOR_ITER                 9 (to 26)
+
+563           8 STORE_FAST               1 (n)
+
+562          10 LOAD_FAST                1 (n)
+             12 BUILD_LIST               0
+             14 BUILD_LIST               0
+             16 BUILD_LIST               0
+             18 LOAD_CONST               0 (('page', 'missed', 'false', 'wrong_form'))
+             20 BUILD_CONST_KEY_MAP      4
+             22 LIST_APPEND              2
+             24 JUMP_BACKWARD           10 (to 6)
+        >>   26 RETURN_VALUE
+
+Disassembly of <code object main at 0x00000290C1B4C2F0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\build_dataiku_notebook.py", line 582>:
+582           0 RESUME                   0
+
+583           2 LOAD_GLOBAL              1 (NULL + argparse)
+             14 LOAD_ATTR                1 (ArgumentParser)
+             24 PRECALL                  0
+             28 CALL                     0
+             38 STORE_FAST               0 (ap)
+
+584          40 LOAD_FAST                0 (ap)
+             42 LOAD_METHOD              2 (add_argument)
+             64 LOAD_CONST               1 ('--selftest')
+             66 LOAD_CONST               2 ('store_true')
+
+585          68 LOAD_CONST               3 ('run the embedded bundle end-to-end with a scripted LLM')
+
+584          70 KW_NAMES                 4
+             72 PRECALL                  3
+             76 CALL                     3
+             86 POP_TOP
+
+586          88 LOAD_FAST                0 (ap)
+             90 LOAD_METHOD              3 (parse_args)
+            112 PRECALL                  0
+            116 CALL                     0
+            126 STORE_FAST               1 (args)
+
+588         128 LOAD_GLOBAL              9 (NULL + build_notebook)
+            140 PRECALL                  0
+            144 CALL                     0
+            154 STORE_FAST               2 (nb)
+
+589         156 LOAD_GLOBAL             11 (NULL + os)
+            168 LOAD_ATTR                6 (makedirs)
+            178 LOAD_GLOBAL             10 (os)
+            190 LOAD_ATTR                7 (path)
+            200 LOAD_METHOD              8 (dirname)
+            222 LOAD_GLOBAL             18 (OUT_NOTEBOOK)
+            234 PRECALL                  1
+            238 CALL                     1
+            248 LOAD_CONST               5 (True)
+            250 KW_NAMES                 6
+            252 PRECALL                  2
+            256 CALL                     2
+            266 POP_TOP
+
+590         268 LOAD_GLOBAL             21 (NULL + open)
+            280 LOAD_GLOBAL             18 (OUT_NOTEBOOK)
+            292 LOAD_CONST               7 ('w')
+            294 LOAD_CONST               8 ('utf-8')
+            296 KW_NAMES                 9
+            298 PRECALL                  3
+            302 CALL                     3
+            312 BEFORE_WITH
+            314 STORE_FAST               3 (f)
+
+591         316 LOAD_GLOBAL             23 (NULL + json)
+            328 LOAD_ATTR               12 (dump)
+            338 LOAD_FAST                2 (nb)
+            340 LOAD_FAST                3 (f)
+            342 LOAD_CONST              10 (1)
+            344 KW_NAMES                11
+            346 PRECALL                  3
+            350 CALL                     3
+            360 POP_TOP
+
+590         362 LOAD_CONST               0 (None)
+            364 LOAD_CONST               0 (None)
+            366 LOAD_CONST               0 (None)
+            368 PRECALL                  2
+            372 CALL                     2
+            382 POP_TOP
+            384 JUMP_FORWARD            11 (to 408)
+        >>  386 PUSH_EXC_INFO
+            388 WITH_EXCEPT_START
+            390 POP_JUMP_FORWARD_IF_TRUE     4 (to 400)
+            392 RERAISE                  2
+        >>  394 COPY                     3
+            396 POP_EXCEPT
+            398 RERAISE                  1
+        >>  400 POP_TOP
+            402 POP_EXCEPT
+            404 POP_TOP
+            406 POP_TOP
+
+592     >>  408 LOAD_GLOBAL             10 (os)
+            420 LOAD_ATTR                7 (path)
+            430 LOAD_METHOD             13 (getsize)
+            452 LOAD_GLOBAL             18 (OUT_NOTEBOOK)
+            464 PRECALL                  1
+            468 CALL                     1
+            478 LOAD_CONST              12 (1024)
+            480 BINARY_OP                2 (//)
+            484 STORE_FAST               4 (size_kb)
+
+593         486 LOAD_GLOBAL             29 (NULL + print)
+            498 LOAD_CONST              13 ('wrote ')
+            500 LOAD_GLOBAL             18 (OUT_NOTEBOOK)
+            512 FORMAT_VALUE             0
+            514 LOAD_CONST              14 (' (')
+            516 LOAD_GLOBAL             31 (NULL + len)
+            528 LOAD_FAST                2 (nb)
+            530 LOAD_CONST              15 ('cells')
+            532 BINARY_SUBSCR
+            542 PRECALL                  1
+            546 CALL                     1
+            556 FORMAT_VALUE             0
+            558 LOAD_CONST              16 (' cells, ')
+            560 LOAD_FAST                4 (size_kb)
+            562 FORMAT_VALUE             0
+            564 LOAD_CONST              17 (' KB)')
+            566 BUILD_STRING             7
+            568 PRECALL                  1
+            572 CALL                     1
+            582 POP_TOP
+
+595         584 LOAD_FAST                1 (args)
+            586 LOAD_ATTR               16 (selftest)
+            596 POP_JUMP_FORWARD_IF_FALSE    16 (to 630)
+
+596         598 LOAD_GLOBAL             33 (NULL + selftest)
+            610 PRECALL                  0
+            614 CALL                     0
+            624 POP_TOP
+            626 LOAD_CONST               0 (None)
+            628 RETURN_VALUE
+
+595     >>  630 LOAD_CONST               0 (None)
+            632 RETURN_VALUE
+ExceptionTable:
+  314 to 360 -> 386 [1] lasti
+  386 to 392 -> 394 [3] lasti
+  400 to 400 -> 394 [3] lasti

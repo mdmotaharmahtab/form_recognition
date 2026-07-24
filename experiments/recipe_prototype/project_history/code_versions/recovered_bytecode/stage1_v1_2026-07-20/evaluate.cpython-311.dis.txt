@@ -1,0 +1,851 @@
+  0           0 RESUME                   0
+
+  1           2 LOAD_CONST               0 ("Evaluate induced-recipe extractions.\n\n1. Rave document vs production ground truth (data/outputs/.../digitized.csv):\n   recall/precision of (form, oid) and oid-only sets.\n2. Every document vs the ecs_index rule library: how many extracted OIDs appear\n   in the library's field_oids (the signal Phase-2 matching runs on).\n")
+              4 STORE_NAME               0 (__doc__)
+
+  8           6 LOAD_CONST               1 (0)
+              8 LOAD_CONST               2 (None)
+             10 IMPORT_NAME              1 (ast)
+             12 STORE_NAME               1 (ast)
+
+  9          14 LOAD_CONST               1 (0)
+             16 LOAD_CONST               2 (None)
+             18 IMPORT_NAME              2 (csv)
+             20 STORE_NAME               2 (csv)
+
+ 10          22 LOAD_CONST               1 (0)
+             24 LOAD_CONST               2 (None)
+             26 IMPORT_NAME              3 (json)
+             28 STORE_NAME               3 (json)
+
+ 11          30 LOAD_CONST               1 (0)
+             32 LOAD_CONST               2 (None)
+             34 IMPORT_NAME              4 (os)
+             36 STORE_NAME               4 (os)
+
+ 12          38 LOAD_CONST               1 (0)
+             40 LOAD_CONST               2 (None)
+             42 IMPORT_NAME              5 (re)
+             44 STORE_NAME               5 (re)
+
+ 13          46 LOAD_CONST               1 (0)
+             48 LOAD_CONST               2 (None)
+             50 IMPORT_NAME              6 (sys)
+             52 STORE_NAME               6 (sys)
+
+ 15          54 LOAD_CONST               1 (0)
+             56 LOAD_CONST               3 (('BASE', 'OUT_DIR'))
+             58 IMPORT_NAME              7 (common)
+             60 IMPORT_FROM              8 (BASE)
+             62 STORE_NAME               8 (BASE)
+             64 IMPORT_FROM              9 (OUT_DIR)
+             66 STORE_NAME               9 (OUT_DIR)
+             68 POP_TOP
+
+ 17          70 LOAD_NAME                4 (os)
+             72 LOAD_ATTR               10 (path)
+             82 LOAD_METHOD             11 (join)
+            104 LOAD_NAME                8 (BASE)
+            106 LOAD_CONST               4 ('data')
+            108 LOAD_CONST               5 ('outputs')
+            110 LOAD_CONST               6 ('outputs_from_384_201_00002_annotated_unique_crf')
+            112 LOAD_CONST               7 ('digitized.csv')
+            114 PRECALL                  5
+            118 CALL                     5
+            128 STORE_NAME              12 (GT)
+
+ 18         130 LOAD_NAME                4 (os)
+            132 LOAD_ATTR               10 (path)
+            142 LOAD_METHOD             11 (join)
+            164 LOAD_NAME                8 (BASE)
+            166 LOAD_CONST               4 ('data')
+            168 LOAD_CONST               8 ('index')
+            170 LOAD_CONST               9 ('ecs_index.csv')
+            172 PRECALL                  4
+            176 CALL                     4
+            186 STORE_NAME              13 (INDEX)
+
+ 19         188 LOAD_CONST              10 ('384-201-00002_Annotated_Unique_CRF_04Nov2024')
+            190 STORE_NAME              14 (RAVE_KEY)
+
+ 22         192 LOAD_CONST              11 ('s')
+            194 LOAD_NAME               15 (str)
+            196 LOAD_CONST              12 ('return')
+            198 LOAD_NAME               15 (str)
+            200 BUILD_TUPLE              4
+            202 LOAD_CONST              13 (<code object norm at 0x00000290C3812FB0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\evaluate.py", line 22>)
+            204 MAKE_FUNCTION            4 (annotations)
+            206 STORE_NAME              16 (norm)
+
+ 26         208 LOAD_CONST              14 ('key')
+            210 LOAD_NAME               15 (str)
+            212 LOAD_CONST              12 ('return')
+            214 LOAD_NAME               17 (list)
+            216 LOAD_NAME               18 (dict)
+            218 BINARY_SUBSCR
+            228 BUILD_TUPLE              4
+            230 LOAD_CONST              15 (<code object load_fields at 0x00000290C3762010, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\evaluate.py", line 26>)
+            232 MAKE_FUNCTION            4 (annotations)
+            234 STORE_NAME              19 (load_fields)
+
+ 34         236 LOAD_CONST              12 ('return')
+            238 LOAD_NAME               18 (dict)
+            240 BUILD_TUPLE              2
+            242 LOAD_CONST              16 (<code object eval_rave at 0x00000290C1B0AE20, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\evaluate.py", line 34>)
+            244 MAKE_FUNCTION            4 (annotations)
+            246 STORE_NAME              20 (eval_rave)
+
+ 58         248 LOAD_CONST              12 ('return')
+            250 LOAD_NAME               21 (set)
+            252 LOAD_NAME               15 (str)
+            254 BINARY_SUBSCR
+            264 BUILD_TUPLE              2
+            266 LOAD_CONST              17 (<code object load_index_oids at 0x00000290C1AEDA90, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\evaluate.py", line 58>)
+            268 MAKE_FUNCTION            4 (annotations)
+            270 STORE_NAME              22 (load_index_oids)
+
+ 73         272 LOAD_CONST              12 ('return')
+            274 LOAD_NAME               17 (list)
+            276 LOAD_NAME               18 (dict)
+            278 BINARY_SUBSCR
+            288 BUILD_TUPLE              2
+            290 LOAD_CONST              18 (<code object eval_index_coverage at 0x00000290C1AE8C50, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\evaluate.py", line 73>)
+            292 MAKE_FUNCTION            4 (annotations)
+            294 STORE_NAME              23 (eval_index_coverage)
+
+ 87         296 LOAD_NAME               24 (__name__)
+            298 LOAD_CONST              19 ('__main__')
+            300 COMPARE_OP               2 (==)
+            306 POP_JUMP_FORWARD_IF_FALSE   132 (to 572)
+
+ 88         308 PUSH_NULL
+            310 LOAD_NAME               20 (eval_rave)
+            312 PRECALL                  0
+            316 CALL                     0
+            326 PUSH_NULL
+            328 LOAD_NAME               23 (eval_index_coverage)
+            330 PRECALL                  0
+            334 CALL                     0
+            344 LOAD_CONST              20 (('rave_vs_ground_truth', 'ecs_index_oid_coverage'))
+            346 BUILD_CONST_KEY_MAP      2
+            348 STORE_NAME              25 (report)
+
+ 89         350 PUSH_NULL
+            352 LOAD_NAME               26 (open)
+            354 LOAD_NAME                4 (os)
+            356 LOAD_ATTR               10 (path)
+            366 LOAD_METHOD             11 (join)
+            388 LOAD_NAME                9 (OUT_DIR)
+            390 LOAD_CONST              21 ('evaluation.json')
+            392 PRECALL                  2
+            396 CALL                     2
+            406 LOAD_CONST              22 ('w')
+            408 LOAD_CONST              23 ('utf-8')
+            410 KW_NAMES                24
+            412 PRECALL                  3
+            416 CALL                     3
+            426 BEFORE_WITH
+            428 STORE_NAME              27 (f)
+
+ 90         430 PUSH_NULL
+            432 LOAD_NAME                3 (json)
+            434 LOAD_ATTR               28 (dump)
+            444 LOAD_NAME               25 (report)
+            446 LOAD_NAME               27 (f)
+            448 LOAD_CONST              25 (1)
+            450 KW_NAMES                26
+            452 PRECALL                  3
+            456 CALL                     3
+            466 POP_TOP
+
+ 89         468 LOAD_CONST               2 (None)
+            470 LOAD_CONST               2 (None)
+            472 LOAD_CONST               2 (None)
+            474 PRECALL                  2
+            478 CALL                     2
+            488 POP_TOP
+            490 JUMP_FORWARD            11 (to 514)
+        >>  492 PUSH_EXC_INFO
+            494 WITH_EXCEPT_START
+            496 POP_JUMP_FORWARD_IF_TRUE     4 (to 506)
+            498 RERAISE                  2
+        >>  500 COPY                     3
+            502 POP_EXCEPT
+            504 RERAISE                  1
+        >>  506 POP_TOP
+            508 POP_EXCEPT
+            510 POP_TOP
+            512 POP_TOP
+
+ 91     >>  514 PUSH_NULL
+            516 LOAD_NAME               29 (print)
+            518 PUSH_NULL
+            520 LOAD_NAME                3 (json)
+            522 LOAD_ATTR               30 (dumps)
+            532 LOAD_NAME               25 (report)
+            534 LOAD_CONST              25 (1)
+            536 KW_NAMES                26
+            538 PRECALL                  2
+            542 CALL                     2
+            552 PRECALL                  1
+            556 CALL                     1
+            566 POP_TOP
+            568 LOAD_CONST               2 (None)
+            570 RETURN_VALUE
+
+ 87     >>  572 LOAD_CONST               2 (None)
+            574 RETURN_VALUE
+ExceptionTable:
+  428 to 466 -> 492 [1] lasti
+  492 to 498 -> 500 [3] lasti
+  506 to 506 -> 500 [3] lasti
+
+Disassembly of <code object norm at 0x00000290C3812FB0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\evaluate.py", line 22>:
+ 22           0 RESUME                   0
+
+ 23           2 LOAD_GLOBAL              1 (NULL + re)
+             14 LOAD_ATTR                1 (sub)
+             24 LOAD_CONST               1 ('\\s+')
+             26 LOAD_CONST               2 (' ')
+             28 LOAD_FAST                0 (s)
+             30 JUMP_IF_TRUE_OR_POP      1 (to 34)
+             32 LOAD_CONST               3 ('')
+        >>   34 LOAD_METHOD              2 (strip)
+             56 PRECALL                  0
+             60 CALL                     0
+             70 LOAD_METHOD              3 (lower)
+             92 PRECALL                  0
+             96 CALL                     0
+            106 PRECALL                  3
+            110 CALL                     3
+            120 RETURN_VALUE
+
+Disassembly of <code object load_fields at 0x00000290C3762010, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\evaluate.py", line 26>:
+ 26           0 RESUME                   0
+
+ 27           2 LOAD_GLOBAL              0 (os)
+             14 LOAD_ATTR                1 (path)
+             24 LOAD_METHOD              2 (join)
+             46 LOAD_GLOBAL              6 (OUT_DIR)
+             58 LOAD_FAST                0 (key)
+             60 LOAD_CONST               1 ('fields_induced.csv')
+             62 PRECALL                  3
+             66 CALL                     3
+             76 STORE_FAST               1 (path)
+
+ 28          78 LOAD_GLOBAL              0 (os)
+             90 LOAD_ATTR                1 (path)
+            100 LOAD_METHOD              4 (exists)
+            122 LOAD_FAST                1 (path)
+            124 PRECALL                  1
+            128 CALL                     1
+            138 POP_JUMP_FORWARD_IF_TRUE     2 (to 144)
+
+ 29         140 BUILD_LIST               0
+            142 RETURN_VALUE
+
+ 30     >>  144 LOAD_GLOBAL             11 (NULL + open)
+            156 LOAD_FAST                1 (path)
+            158 LOAD_CONST               2 ('utf-8')
+            160 KW_NAMES                 3
+            162 PRECALL                  2
+            166 CALL                     2
+            176 BEFORE_WITH
+            178 STORE_FAST               2 (f)
+
+ 31         180 LOAD_GLOBAL             13 (NULL + list)
+            192 LOAD_GLOBAL             15 (NULL + csv)
+            204 LOAD_ATTR                8 (DictReader)
+            214 LOAD_FAST                2 (f)
+            216 PRECALL                  1
+            220 CALL                     1
+            230 PRECALL                  1
+            234 CALL                     1
+
+ 30         244 SWAP                     2
+            246 LOAD_CONST               0 (None)
+            248 LOAD_CONST               0 (None)
+            250 LOAD_CONST               0 (None)
+            252 PRECALL                  2
+            256 CALL                     2
+            266 POP_TOP
+            268 RETURN_VALUE
+        >>  270 PUSH_EXC_INFO
+            272 WITH_EXCEPT_START
+            274 POP_JUMP_FORWARD_IF_TRUE     4 (to 284)
+            276 RERAISE                  2
+        >>  278 COPY                     3
+            280 POP_EXCEPT
+            282 RERAISE                  1
+        >>  284 POP_TOP
+            286 POP_EXCEPT
+            288 POP_TOP
+            290 POP_TOP
+            292 LOAD_CONST               0 (None)
+            294 RETURN_VALUE
+ExceptionTable:
+  178 to 242 -> 270 [1] lasti
+  270 to 276 -> 278 [3] lasti
+  284 to 284 -> 278 [3] lasti
+
+Disassembly of <code object eval_rave at 0x00000290C1B0AE20, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\evaluate.py", line 34>:
+ 34           0 RESUME                   0
+
+ 35           2 LOAD_GLOBAL              1 (NULL + open)
+             14 LOAD_GLOBAL              2 (GT)
+             26 LOAD_CONST               1 ('utf-8')
+             28 KW_NAMES                 2
+             30 PRECALL                  2
+             34 CALL                     2
+             44 BEFORE_WITH
+             46 STORE_FAST               0 (f)
+
+ 36          48 LOAD_GLOBAL              5 (NULL + list)
+             60 LOAD_GLOBAL              7 (NULL + csv)
+             72 LOAD_ATTR                4 (DictReader)
+             82 LOAD_FAST                0 (f)
+             84 PRECALL                  1
+             88 CALL                     1
+             98 PRECALL                  1
+            102 CALL                     1
+            112 STORE_FAST               1 (gt)
+
+ 35         114 LOAD_CONST               0 (None)
+            116 LOAD_CONST               0 (None)
+            118 LOAD_CONST               0 (None)
+            120 PRECALL                  2
+            124 CALL                     2
+            134 POP_TOP
+            136 JUMP_FORWARD            11 (to 160)
+        >>  138 PUSH_EXC_INFO
+            140 WITH_EXCEPT_START
+            142 POP_JUMP_FORWARD_IF_TRUE     4 (to 152)
+            144 RERAISE                  2
+        >>  146 COPY                     3
+            148 POP_EXCEPT
+            150 RERAISE                  1
+        >>  152 POP_TOP
+            154 POP_EXCEPT
+            156 POP_TOP
+            158 POP_TOP
+
+ 37     >>  160 LOAD_GLOBAL             11 (NULL + load_fields)
+            172 LOAD_GLOBAL             12 (RAVE_KEY)
+            184 PRECALL                  1
+            188 CALL                     1
+            198 STORE_FAST               2 (got)
+
+ 39         200 LOAD_CONST               3 (<code object <setcomp> at 0x00000290C3A16430, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\evaluate.py", line 39>)
+            202 MAKE_FUNCTION            0
+            204 LOAD_FAST                1 (gt)
+            206 GET_ITER
+            208 PRECALL                  0
+            212 CALL                     0
+            222 STORE_FAST               3 (gt_oid)
+
+ 40         224 LOAD_CONST               4 (<code object <setcomp> at 0x00000290C3A16930, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\evaluate.py", line 40>)
+            226 MAKE_FUNCTION            0
+            228 LOAD_FAST                2 (got)
+            230 GET_ITER
+            232 PRECALL                  0
+            236 CALL                     0
+            246 STORE_FAST               4 (got_oid)
+
+ 41         248 LOAD_CONST               5 (<code object <setcomp> at 0x00000290C37FBB90, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\evaluate.py", line 41>)
+            250 MAKE_FUNCTION            0
+            252 LOAD_FAST                1 (gt)
+            254 GET_ITER
+            256 PRECALL                  0
+            260 CALL                     0
+            270 STORE_FAST               5 (gt_pairs)
+
+ 42         272 LOAD_CONST               6 (<code object <setcomp> at 0x00000290C3A804F0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\evaluate.py", line 42>)
+            274 MAKE_FUNCTION            0
+            276 LOAD_FAST                2 (got)
+            278 GET_ITER
+            280 PRECALL                  0
+            284 CALL                     0
+            294 STORE_FAST               6 (got_pairs)
+
+ 44         296 LOAD_FAST                3 (gt_oid)
+            298 LOAD_FAST                4 (got_oid)
+            300 BINARY_OP                1 (&)
+            304 STORE_FAST               7 (inter_oid)
+
+ 45         306 LOAD_FAST                5 (gt_pairs)
+            308 LOAD_FAST                6 (got_pairs)
+            310 BINARY_OP                1 (&)
+            314 STORE_FAST               8 (inter_pairs)
+
+ 47         316 LOAD_GLOBAL             15 (NULL + len)
+            328 LOAD_FAST                1 (gt)
+            330 PRECALL                  1
+            334 CALL                     1
+            344 LOAD_GLOBAL             15 (NULL + len)
+            356 LOAD_FAST                2 (got)
+            358 PRECALL                  1
+            362 CALL                     1
+
+ 48         372 LOAD_GLOBAL             15 (NULL + len)
+            384 LOAD_FAST                3 (gt_oid)
+            386 PRECALL                  1
+            390 CALL                     1
+            400 LOAD_GLOBAL             15 (NULL + len)
+            412 LOAD_FAST                4 (got_oid)
+            414 PRECALL                  1
+            418 CALL                     1
+
+ 49         428 LOAD_GLOBAL             17 (NULL + round)
+            440 LOAD_CONST               7 (100)
+            442 LOAD_GLOBAL             15 (NULL + len)
+            454 LOAD_FAST                7 (inter_oid)
+            456 PRECALL                  1
+            460 CALL                     1
+            470 BINARY_OP                5 (*)
+            474 LOAD_GLOBAL             19 (NULL + max)
+            486 LOAD_CONST               8 (1)
+            488 LOAD_GLOBAL             15 (NULL + len)
+            500 LOAD_FAST                3 (gt_oid)
+            502 PRECALL                  1
+            506 CALL                     1
+            516 PRECALL                  2
+            520 CALL                     2
+            530 BINARY_OP               11 (/)
+            534 PRECALL                  1
+            538 CALL                     1
+
+ 50         548 LOAD_GLOBAL             17 (NULL + round)
+            560 LOAD_CONST               7 (100)
+            562 LOAD_GLOBAL             15 (NULL + len)
+            574 LOAD_FAST                7 (inter_oid)
+            576 PRECALL                  1
+            580 CALL                     1
+            590 BINARY_OP                5 (*)
+            594 LOAD_GLOBAL             19 (NULL + max)
+            606 LOAD_CONST               8 (1)
+            608 LOAD_GLOBAL             15 (NULL + len)
+            620 LOAD_FAST                4 (got_oid)
+            622 PRECALL                  1
+            626 CALL                     1
+            636 PRECALL                  2
+            640 CALL                     2
+            650 BINARY_OP               11 (/)
+            654 PRECALL                  1
+            658 CALL                     1
+
+ 51         668 LOAD_GLOBAL             17 (NULL + round)
+            680 LOAD_CONST               7 (100)
+            682 LOAD_GLOBAL             15 (NULL + len)
+            694 LOAD_FAST                8 (inter_pairs)
+            696 PRECALL                  1
+            700 CALL                     1
+            710 BINARY_OP                5 (*)
+            714 LOAD_GLOBAL             19 (NULL + max)
+            726 LOAD_CONST               8 (1)
+            728 LOAD_GLOBAL             15 (NULL + len)
+            740 LOAD_FAST                5 (gt_pairs)
+            742 PRECALL                  1
+            746 CALL                     1
+            756 PRECALL                  2
+            760 CALL                     2
+            770 BINARY_OP               11 (/)
+            774 PRECALL                  1
+            778 CALL                     1
+
+ 52         788 LOAD_GLOBAL             21 (NULL + sorted)
+            800 LOAD_FAST                3 (gt_oid)
+            802 LOAD_FAST                4 (got_oid)
+            804 BINARY_OP               10 (-)
+            808 PRECALL                  1
+            812 CALL                     1
+            822 LOAD_CONST               0 (None)
+            824 LOAD_CONST               9 (15)
+            826 BUILD_SLICE              2
+            828 BINARY_SUBSCR
+
+ 53         838 LOAD_GLOBAL             21 (NULL + sorted)
+            850 LOAD_FAST                4 (got_oid)
+            852 LOAD_FAST                3 (gt_oid)
+            854 BINARY_OP               10 (-)
+            858 PRECALL                  1
+            862 CALL                     1
+            872 LOAD_CONST               0 (None)
+            874 LOAD_CONST               9 (15)
+            876 BUILD_SLICE              2
+            878 BINARY_SUBSCR
+
+ 46         888 LOAD_CONST              10 (('gt_rows', 'induced_rows', 'gt_distinct_oids', 'induced_distinct_oids', 'oid_recall_pct', 'oid_precision_pct', 'form_oid_pair_recall_pct', 'missed_oids_sample', 'extra_oids_sample'))
+            890 BUILD_CONST_KEY_MAP      9
+            892 STORE_FAST               9 (res)
+
+ 55         894 LOAD_FAST                9 (res)
+            896 RETURN_VALUE
+ExceptionTable:
+  46 to 112 -> 138 [1] lasti
+  138 to 144 -> 146 [3] lasti
+  152 to 152 -> 146 [3] lasti
+
+Disassembly of <code object <setcomp> at 0x00000290C3A16430, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\evaluate.py", line 39>:
+ 39           0 RESUME                   0
+              2 BUILD_SET                0
+              4 LOAD_FAST                0 (.0)
+        >>    6 FOR_ITER                31 (to 70)
+              8 STORE_FAST               1 (r)
+             10 LOAD_FAST                1 (r)
+             12 LOAD_CONST               0 ('field_oid')
+             14 BINARY_SUBSCR
+             24 POP_JUMP_BACKWARD_IF_FALSE    10 (to 6)
+             26 LOAD_GLOBAL              1 (NULL + norm)
+             38 LOAD_FAST                1 (r)
+             40 LOAD_CONST               0 ('field_oid')
+             42 BINARY_SUBSCR
+             52 PRECALL                  1
+             56 CALL                     1
+             66 SET_ADD                  2
+             68 JUMP_BACKWARD           32 (to 6)
+        >>   70 RETURN_VALUE
+
+Disassembly of <code object <setcomp> at 0x00000290C3A16930, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\evaluate.py", line 40>:
+ 40           0 RESUME                   0
+              2 BUILD_SET                0
+              4 LOAD_FAST                0 (.0)
+        >>    6 FOR_ITER                31 (to 70)
+              8 STORE_FAST               1 (r)
+             10 LOAD_FAST                1 (r)
+             12 LOAD_CONST               0 ('field_oid')
+             14 BINARY_SUBSCR
+             24 POP_JUMP_BACKWARD_IF_FALSE    10 (to 6)
+             26 LOAD_GLOBAL              1 (NULL + norm)
+             38 LOAD_FAST                1 (r)
+             40 LOAD_CONST               0 ('field_oid')
+             42 BINARY_SUBSCR
+             52 PRECALL                  1
+             56 CALL                     1
+             66 SET_ADD                  2
+             68 JUMP_BACKWARD           32 (to 6)
+        >>   70 RETURN_VALUE
+
+Disassembly of <code object <setcomp> at 0x00000290C37FBB90, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\evaluate.py", line 41>:
+ 41           0 RESUME                   0
+              2 BUILD_SET                0
+              4 LOAD_FAST                0 (.0)
+        >>    6 FOR_ITER                52 (to 112)
+              8 STORE_FAST               1 (r)
+             10 LOAD_FAST                1 (r)
+             12 LOAD_CONST               0 ('field_oid')
+             14 BINARY_SUBSCR
+             24 POP_JUMP_BACKWARD_IF_FALSE    10 (to 6)
+             26 LOAD_GLOBAL              1 (NULL + norm)
+             38 LOAD_FAST                1 (r)
+             40 LOAD_CONST               1 ('form_name')
+             42 BINARY_SUBSCR
+             52 PRECALL                  1
+             56 CALL                     1
+             66 LOAD_GLOBAL              1 (NULL + norm)
+             78 LOAD_FAST                1 (r)
+             80 LOAD_CONST               0 ('field_oid')
+             82 BINARY_SUBSCR
+             92 PRECALL                  1
+             96 CALL                     1
+            106 BUILD_TUPLE              2
+            108 SET_ADD                  2
+            110 JUMP_BACKWARD           53 (to 6)
+        >>  112 RETURN_VALUE
+
+Disassembly of <code object <setcomp> at 0x00000290C3A804F0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\evaluate.py", line 42>:
+ 42           0 RESUME                   0
+              2 BUILD_SET                0
+              4 LOAD_FAST                0 (.0)
+        >>    6 FOR_ITER                52 (to 112)
+              8 STORE_FAST               1 (r)
+             10 LOAD_FAST                1 (r)
+             12 LOAD_CONST               0 ('field_oid')
+             14 BINARY_SUBSCR
+             24 POP_JUMP_BACKWARD_IF_FALSE    10 (to 6)
+             26 LOAD_GLOBAL              1 (NULL + norm)
+             38 LOAD_FAST                1 (r)
+             40 LOAD_CONST               1 ('form_name')
+             42 BINARY_SUBSCR
+             52 PRECALL                  1
+             56 CALL                     1
+             66 LOAD_GLOBAL              1 (NULL + norm)
+             78 LOAD_FAST                1 (r)
+             80 LOAD_CONST               0 ('field_oid')
+             82 BINARY_SUBSCR
+             92 PRECALL                  1
+             96 CALL                     1
+            106 BUILD_TUPLE              2
+            108 SET_ADD                  2
+            110 JUMP_BACKWARD           53 (to 6)
+        >>  112 RETURN_VALUE
+
+Disassembly of <code object load_index_oids at 0x00000290C1AEDA90, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\evaluate.py", line 58>:
+ 58           0 RESUME                   0
+
+ 59           2 LOAD_GLOBAL              1 (NULL + set)
+             14 PRECALL                  0
+             18 CALL                     0
+             28 STORE_FAST               0 (oids)
+
+ 60          30 LOAD_GLOBAL              3 (NULL + open)
+             42 LOAD_GLOBAL              4 (INDEX)
+             54 LOAD_CONST               1 ('utf-8')
+             56 KW_NAMES                 2
+             58 PRECALL                  2
+             62 CALL                     2
+             72 BEFORE_WITH
+             74 STORE_FAST               1 (f)
+
+ 61          76 LOAD_GLOBAL              7 (NULL + csv)
+             88 LOAD_ATTR                4 (DictReader)
+             98 LOAD_FAST                1 (f)
+            100 PRECALL                  1
+            104 CALL                     1
+            114 GET_ITER
+        >>  116 FOR_ITER               151 (to 420)
+            118 STORE_FAST               2 (row)
+
+ 62         120 LOAD_FAST                2 (row)
+            122 LOAD_METHOD              5 (get)
+            144 LOAD_CONST               3 ('field_oids')
+            146 PRECALL                  1
+            150 CALL                     1
+            160 JUMP_IF_TRUE_OR_POP      1 (to 164)
+            162 LOAD_CONST               4 ('')
+        >>  164 STORE_FAST               3 (raw)
+
+ 63         166 NOP
+
+ 64         168 LOAD_FAST                3 (raw)
+            170 LOAD_METHOD              6 (startswith)
+            192 LOAD_CONST               5 ('[')
+            194 PRECALL                  1
+            198 CALL                     1
+            208 POP_JUMP_FORWARD_IF_FALSE    20 (to 250)
+            210 LOAD_GLOBAL             15 (NULL + ast)
+            222 LOAD_ATTR                8 (literal_eval)
+            232 LOAD_FAST                3 (raw)
+            234 PRECALL                  1
+            238 CALL                     1
+            248 JUMP_FORWARD             2 (to 254)
+        >>  250 LOAD_FAST                3 (raw)
+            252 BUILD_LIST               1
+        >>  254 STORE_FAST               4 (vals)
+            256 JUMP_FORWARD            26 (to 310)
+        >>  258 PUSH_EXC_INFO
+
+ 65         260 LOAD_GLOBAL             18 (ValueError)
+            272 LOAD_GLOBAL             20 (SyntaxError)
+            284 BUILD_TUPLE              2
+            286 CHECK_EXC_MATCH
+            288 POP_JUMP_FORWARD_IF_FALSE     6 (to 302)
+            290 POP_TOP
+
+ 66         292 LOAD_FAST                3 (raw)
+            294 BUILD_LIST               1
+            296 STORE_FAST               4 (vals)
+            298 POP_EXCEPT
+            300 JUMP_FORWARD             4 (to 310)
+
+ 65     >>  302 RERAISE                  0
+        >>  304 COPY                     3
+            306 POP_EXCEPT
+            308 RERAISE                  1
+
+ 67     >>  310 LOAD_FAST                4 (vals)
+            312 GET_ITER
+        >>  314 FOR_ITER                51 (to 418)
+            316 STORE_FAST               5 (v)
+
+ 68         318 LOAD_FAST                5 (v)
+            320 POP_JUMP_FORWARD_IF_FALSE    47 (to 416)
+
+ 69         322 LOAD_FAST                0 (oids)
+            324 LOAD_METHOD             11 (add)
+            346 LOAD_GLOBAL             25 (NULL + norm)
+            358 LOAD_GLOBAL             27 (NULL + str)
+            370 LOAD_FAST                5 (v)
+            372 PRECALL                  1
+            376 CALL                     1
+            386 PRECALL                  1
+            390 CALL                     1
+            400 PRECALL                  1
+            404 CALL                     1
+            414 POP_TOP
+        >>  416 JUMP_BACKWARD           52 (to 314)
+
+ 67     >>  418 JUMP_BACKWARD          152 (to 116)
+
+ 61     >>  420 NOP
+
+ 60         422 LOAD_CONST               0 (None)
+            424 LOAD_CONST               0 (None)
+            426 LOAD_CONST               0 (None)
+            428 PRECALL                  2
+            432 CALL                     2
+            442 POP_TOP
+            444 JUMP_FORWARD            11 (to 468)
+        >>  446 PUSH_EXC_INFO
+            448 WITH_EXCEPT_START
+            450 POP_JUMP_FORWARD_IF_TRUE     4 (to 460)
+            452 RERAISE                  2
+        >>  454 COPY                     3
+            456 POP_EXCEPT
+            458 RERAISE                  1
+        >>  460 POP_TOP
+            462 POP_EXCEPT
+            464 POP_TOP
+            466 POP_TOP
+
+ 70     >>  468 LOAD_FAST                0 (oids)
+            470 RETURN_VALUE
+ExceptionTable:
+  74 to 164 -> 446 [1] lasti
+  168 to 254 -> 258 [2]
+  256 to 256 -> 446 [1] lasti
+  258 to 296 -> 304 [3] lasti
+  298 to 300 -> 446 [1] lasti
+  302 to 302 -> 304 [3] lasti
+  304 to 418 -> 446 [1] lasti
+  446 to 452 -> 454 [3] lasti
+  460 to 460 -> 454 [3] lasti
+
+Disassembly of <code object eval_index_coverage at 0x00000290C1AE8C50, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\evaluate.py", line 73>:
+              0 MAKE_CELL                5 (lib)
+
+ 73           2 RESUME                   0
+
+ 74           4 LOAD_GLOBAL              1 (NULL + load_index_oids)
+             16 PRECALL                  0
+             20 CALL                     0
+             30 STORE_DEREF              5 (lib)
+
+ 75          32 BUILD_LIST               0
+             34 STORE_FAST               0 (out)
+
+ 76          36 LOAD_GLOBAL              3 (NULL + sorted)
+             48 LOAD_GLOBAL              5 (NULL + os)
+             60 LOAD_ATTR                3 (listdir)
+             70 LOAD_GLOBAL              8 (OUT_DIR)
+             82 PRECALL                  1
+             86 CALL                     1
+             96 PRECALL                  1
+            100 CALL                     1
+            110 GET_ITER
+        >>  112 FOR_ITER               165 (to 444)
+            114 STORE_FAST               1 (key)
+
+ 77         116 LOAD_GLOBAL             11 (NULL + load_fields)
+            128 LOAD_FAST                1 (key)
+            130 PRECALL                  1
+            134 CALL                     1
+            144 STORE_FAST               2 (rows)
+
+ 78         146 LOAD_FAST                2 (rows)
+            148 POP_JUMP_FORWARD_IF_TRUE     1 (to 152)
+
+ 79         150 JUMP_BACKWARD           20 (to 112)
+
+ 80     >>  152 LOAD_CONST               1 (<code object <setcomp> at 0x00000290C3A16F30, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\evaluate.py", line 80>)
+            154 MAKE_FUNCTION            0
+            156 LOAD_FAST                2 (rows)
+            158 GET_ITER
+            160 PRECALL                  0
+            164 CALL                     0
+            174 STORE_FAST               3 (oids)
+
+ 81         176 LOAD_GLOBAL             13 (NULL + sum)
+            188 LOAD_CLOSURE             5 (lib)
+            190 BUILD_TUPLE              1
+            192 LOAD_CONST               2 (<code object <genexpr> at 0x00000290C3A0E250, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\evaluate.py", line 81>)
+            194 MAKE_FUNCTION            8 (closure)
+            196 LOAD_FAST                3 (oids)
+            198 GET_ITER
+            200 PRECALL                  0
+            204 CALL                     0
+            214 PRECALL                  1
+            218 CALL                     1
+            228 STORE_FAST               4 (hit)
+
+ 82         230 LOAD_FAST                0 (out)
+            232 LOAD_METHOD              7 (append)
+            254 LOAD_FAST                1 (key)
+            256 LOAD_CONST               0 (None)
+            258 LOAD_CONST               3 (52)
+            260 BUILD_SLICE              2
+            262 BINARY_SUBSCR
+            272 LOAD_GLOBAL             17 (NULL + len)
+            284 LOAD_FAST                2 (rows)
+            286 PRECALL                  1
+            290 CALL                     1
+            300 LOAD_GLOBAL             17 (NULL + len)
+            312 LOAD_FAST                3 (oids)
+            314 PRECALL                  1
+            318 CALL                     1
+
+ 83         328 LOAD_GLOBAL             19 (NULL + round)
+            340 LOAD_CONST               4 (100)
+            342 LOAD_FAST                4 (hit)
+            344 BINARY_OP                5 (*)
+            348 LOAD_GLOBAL             21 (NULL + max)
+            360 LOAD_CONST               5 (1)
+            362 LOAD_GLOBAL             17 (NULL + len)
+            374 LOAD_FAST                3 (oids)
+            376 PRECALL                  1
+            380 CALL                     1
+            390 PRECALL                  2
+            394 CALL                     2
+            404 BINARY_OP               11 (/)
+            408 PRECALL                  1
+            412 CALL                     1
+
+ 82         422 LOAD_CONST               6 (('doc', 'fields', 'distinct_oids', 'oids_in_ecs_index_pct'))
+            424 BUILD_CONST_KEY_MAP      4
+            426 PRECALL                  1
+            430 CALL                     1
+            440 POP_TOP
+            442 JUMP_BACKWARD          166 (to 112)
+
+ 84     >>  444 LOAD_FAST                0 (out)
+            446 RETURN_VALUE
+
+Disassembly of <code object <setcomp> at 0x00000290C3A16F30, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\evaluate.py", line 80>:
+ 80           0 RESUME                   0
+              2 BUILD_SET                0
+              4 LOAD_FAST                0 (.0)
+        >>    6 FOR_ITER                31 (to 70)
+              8 STORE_FAST               1 (r)
+             10 LOAD_FAST                1 (r)
+             12 LOAD_CONST               0 ('field_oid')
+             14 BINARY_SUBSCR
+             24 POP_JUMP_BACKWARD_IF_FALSE    10 (to 6)
+             26 LOAD_GLOBAL              1 (NULL + norm)
+             38 LOAD_FAST                1 (r)
+             40 LOAD_CONST               0 ('field_oid')
+             42 BINARY_SUBSCR
+             52 PRECALL                  1
+             56 CALL                     1
+             66 SET_ADD                  2
+             68 JUMP_BACKWARD           32 (to 6)
+        >>   70 RETURN_VALUE
+
+Disassembly of <code object <genexpr> at 0x00000290C3A0E250, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\evaluate.py", line 81>:
+              0 COPY_FREE_VARS           1
+
+ 81           2 RETURN_GENERATOR
+              4 POP_TOP
+              6 RESUME                   0
+              8 LOAD_FAST                0 (.0)
+        >>   10 FOR_ITER                10 (to 32)
+             12 STORE_FAST               1 (o)
+             14 LOAD_FAST                1 (o)
+             16 LOAD_DEREF               2 (lib)
+             18 CONTAINS_OP              0
+             20 POP_JUMP_BACKWARD_IF_FALSE     6 (to 10)
+             22 LOAD_CONST               0 (1)
+             24 YIELD_VALUE
+             26 RESUME                   1
+             28 POP_TOP
+             30 JUMP_BACKWARD           11 (to 10)
+        >>   32 LOAD_CONST               1 (None)
+             34 RETURN_VALUE

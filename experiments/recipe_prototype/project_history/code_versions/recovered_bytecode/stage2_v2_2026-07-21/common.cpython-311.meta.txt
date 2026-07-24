@@ -1,0 +1,171 @@
+# module: D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\common.py
+# top-level names: ['__doc__', '__future__', 'annotations', 'hashlib', 'os', 're', 'collections', 'defaultdict', 'dataclasses', 'dataclass', 'fitz', 'environ', 'get', 'path', 'dirname', 'abspath', '__file__', 'BASE', 'join', 'CRF_DIR', 'OUT_DIR', 'Line', 'build_page_lines', 'group_rows', 'compile', 'BRACKET_LINE', 'INT_ONLY', '_bucket', 'page_fingerprint', 'cluster_pages', 'dump_rep_page', 'list_root_pdfs', 'doc_key']
+
+=== module()  [line 1] ===
+  [STR]
+    | Shared page model (Line / build_page_lines / dump_rep_page) plus the V1
+    | five-signal layout fingerprint, kept as a reference baseline.
+    | 
+    | Pipeline stages:
+    |   stage 0  - cluster pages by structural layout, pick representative pages.
+    |              SHIPPED front-end: generic_profile.cluster_pages_generic (word-blind
+    |              typography tokens, per-document chrome damping, weighted-Jaccard
+    |              leader clustering, per-document theta by stability selection).
+    |              page_fingerprint/cluster_pages below are the v1 five-signal method,
+    |              retained for comparison probes (generic_cluster_probe, qsc_merge_diag).
+    |   stage 1  - LLM writes a document-specific extraction program from the
+    |              representative pages (codegen.py) and revises it in a bounded loop
+    |   stage 2  - the accepted program replays deterministically over every page
+  [STR] 'ECS_BASE'
+  [STR] 'data'
+  [STR] 'crf_forms'
+  [STR] 'experiments'
+  [STR] 'recipe_prototype'
+  [STR] 'out'
+  [STR] 'Line'
+  [STR] 'return'
+  [STR] 'list[Line]'
+  [STR] 'lines'
+  [STR] 'ytol'
+  [STR] 'float'
+  [STR] 'list[list[Line]]'
+  [STR] '^\\[[^\\]]+\\]'
+  [STR] '^\\d{1,3}(\\.\\d)?$'
+  [STR] 'x'
+  [STR] 'str'
+  [STR] 'page_width'
+  [STR] 'tuple'
+  [STR] 'max_reps'
+  [STR] 'int'
+  [STR] 'coverage'
+  [STR] 'dict'
+  [STR] 'path'
+  [STR] 'None'
+  [STR] 'list[str]'
+
+=== Line()  [line 33] ===
+  [STR] 'Line'
+  [STR] 'str'
+  [STR] 'text'
+  [STR] 'float'
+  [STR] 'x0'
+  [STR] 'y0'
+  [STR] 'x1'
+  [STR] 'y1'
+  [STR] 'size'
+  [STR] 'tuple'
+  [STR] 'colors'
+  [STR] 'bool'
+  [STR] 'bold'
+  [STR] 'return'
+
+=== non_black(self)  [line 44] ===
+
+=== <genexpr>(.0)  [line 46] ===
+
+=== build_page_lines(page)  [line 49] ===
+  [STR]
+    | Visual lines with geometry, font size, colour and boldness.
+  [STR] 'dict'
+  [STR] 'blocks'
+  [STR] 'type'
+  [STR] 'lines'
+  [STR] 'spans'
+  [STR] 'bbox'
+
+=== <genexpr>(.0)  [line 58] ===
+  [STR] 'text'
+
+=== <genexpr>(.0)  [line 62] ===
+  [STR] 'size'
+
+=== <setcomp>(.0)  [line 63] ===
+  [STR] 'color'
+
+=== <genexpr>(.0)  [line 67] ===
+  [STR] 'bold'
+  [STR] 'font'
+  [STR] 'flags'
+
+=== <lambda>(L)  [line 70] ===
+
+=== group_rows(lines, ytol)  [line 74] ===
+  [STR]
+    | Group lines that sit on the same visual row (same y within tolerance).
+
+=== <lambda>(L)  [line 85] ===
+
+=== _bucket(x)  [line 99] ===
+  [STR] '0'
+  [STR] 'lo'
+  [STR] 'hi'
+
+=== page_fingerprint(lines, page_width)  [line 103] ===
+  [STR]
+    | Coarse layout signature built from structure only (never from page content),
+    |     so that e.g. 900 form pages with different questions land in one cluster.
+    | 
+    |     All cutoffs below (0.25 bucket split, 10% column-presence, 10/40/90 density
+    |     bands, 4 x-bins) are tuned coarseness knobs, not correctness constraints:
+    |     they trade cluster count against representative-page count. Documents with
+    |     unusual line densities may over/under-merge; the coverage-confirm and audit
+    |     rounds are the safety net for that, not these numbers.
+  [STR] 's'
+  [STR] 'm'
+  [STR] 'l'
+  [STR] 'xl'
+
+=== <genexpr>(.0)  [line 115] ===
+
+=== <genexpr>(.0)  [line 116] ===
+
+=== <genexpr>(.0)  [line 117] ===
+
+=== <genexpr>(.0)  [line 122] ===
+  [STR] '1'
+  [STR] '0'
+
+=== cluster_pages(doc, max_reps, coverage)  [line 127] ===
+  [STR]
+    | V1 exact-tuple clustering (reference baseline - the shipped pipeline calls
+    |     generic_profile.cluster_pages_generic instead). Assign every page to a layout
+    |     cluster; pick representatives from the biggest clusters until `coverage` of
+    |     pages is represented (capped at `max_reps`).
+
+=== <lambda>(kv)  [line 140] ===
+
+=== dump_rep_page(lines, path)  [line 162] ===
+  [STR]
+    | Structured text dump of one page - this is what recipe induction gets to see.
+  [STR] 'w'
+  [STR] 'utf-8'
+  [STR] '#{:06x}'
+  [STR] 'black  '
+  [STR] 'x='
+  [STR] '6.1f'
+  [STR] ' y='
+  [STR] ' sz='
+  [STR] '4.1f'
+  [STR] 'B'
+  [STR] ' | '
+
+=== list_root_pdfs()  [line 170] ===
+
+=== <genexpr>(.0)  [line 171] ===
+  [STR] '.pdf'
+
+=== doc_key(path)  [line 178] ===
+  [STR]
+    | Filesystem-safe per-document key. Long names get a hash suffix so two
+    |     documents sharing a 70-char prefix cannot collide on the same output dir
+    |     (which would silently cross-contaminate clusters.json and extraction CSVs).
+    |     A stem with no ASCII alphanumerics at all (fully non-Latin filenames)
+    |     sanitizes to bare underscores - every such file would collide on '_', so
+    |     those become a hash key outright. Partially non-Latin names can still
+    |     collide after sanitization; both batch drivers guard that with a loud
+    |     doc_key-collision check before spending any budget.
+  [STR] '[^A-Za-z0-9_.-]+'
+  [STR] '_'
+  [STR] '[A-Za-z0-9]'
+  [STR] 'doc_'
+  [STR] 'utf-8'

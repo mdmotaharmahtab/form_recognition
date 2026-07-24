@@ -1,0 +1,1338 @@
+  0           0 RESUME                   0
+
+  1           2 LOAD_CONST               0 ('Shared page model (Line / build_page_lines / dump_rep_page) plus the V1\nfive-signal layout fingerprint, kept as a reference baseline.\n\nPipeline stages:\n  stage 0  - cluster pages by structural layout, pick representative pages.\n             SHIPPED front-end: generic_profile.cluster_pages_generic (word-blind\n             typography tokens, per-document chrome damping, weighted-Jaccard\n             leader clustering, per-document theta by stability selection).\n             page_fingerprint/cluster_pages below are the v1 five-signal method,\n             retained for comparison probes (generic_cluster_probe, qsc_merge_diag).\n  stage 1  - LLM writes a document-specific extraction program from the\n             representative pages (codegen.py) and revises it in a bounded loop\n  stage 2  - the accepted program replays deterministically over every page\n')
+              4 STORE_NAME               0 (__doc__)
+
+ 15           6 LOAD_CONST               1 (0)
+              8 LOAD_CONST               2 (('annotations',))
+             10 IMPORT_NAME              1 (__future__)
+             12 IMPORT_FROM              2 (annotations)
+             14 STORE_NAME               2 (annotations)
+             16 POP_TOP
+
+ 17          18 LOAD_CONST               1 (0)
+             20 LOAD_CONST               3 (None)
+             22 IMPORT_NAME              3 (hashlib)
+             24 STORE_NAME               3 (hashlib)
+
+ 18          26 LOAD_CONST               1 (0)
+             28 LOAD_CONST               3 (None)
+             30 IMPORT_NAME              4 (os)
+             32 STORE_NAME               4 (os)
+
+ 19          34 LOAD_CONST               1 (0)
+             36 LOAD_CONST               3 (None)
+             38 IMPORT_NAME              5 (re)
+             40 STORE_NAME               5 (re)
+
+ 20          42 LOAD_CONST               1 (0)
+             44 LOAD_CONST               4 (('defaultdict',))
+             46 IMPORT_NAME              6 (collections)
+             48 IMPORT_FROM              7 (defaultdict)
+             50 STORE_NAME               7 (defaultdict)
+             52 POP_TOP
+
+ 21          54 LOAD_CONST               1 (0)
+             56 LOAD_CONST               5 (('dataclass',))
+             58 IMPORT_NAME              8 (dataclasses)
+             60 IMPORT_FROM              9 (dataclass)
+             62 STORE_NAME               9 (dataclass)
+             64 POP_TOP
+
+ 23          66 LOAD_CONST               1 (0)
+             68 LOAD_CONST               3 (None)
+             70 IMPORT_NAME             10 (fitz)
+             72 STORE_NAME              10 (fitz)
+
+ 27          74 LOAD_NAME                4 (os)
+             76 LOAD_ATTR               11 (environ)
+             86 LOAD_METHOD             12 (get)
+            108 LOAD_CONST               6 ('ECS_BASE')
+            110 PRECALL                  1
+            114 CALL                     1
+            124 JUMP_IF_TRUE_OR_POP     97 (to 320)
+            126 LOAD_NAME                4 (os)
+            128 LOAD_ATTR               13 (path)
+            138 LOAD_METHOD             14 (dirname)
+
+ 28         160 LOAD_NAME                4 (os)
+            162 LOAD_ATTR               13 (path)
+            172 LOAD_METHOD             14 (dirname)
+            194 LOAD_NAME                4 (os)
+            196 LOAD_ATTR               13 (path)
+            206 LOAD_METHOD             14 (dirname)
+            228 LOAD_NAME                4 (os)
+            230 LOAD_ATTR               13 (path)
+            240 LOAD_METHOD             15 (abspath)
+            262 LOAD_NAME               16 (__file__)
+            264 PRECALL                  1
+            268 CALL                     1
+            278 PRECALL                  1
+            282 CALL                     1
+            292 PRECALL                  1
+            296 CALL                     1
+
+ 27         306 PRECALL                  1
+            310 CALL                     1
+        >>  320 STORE_NAME              17 (BASE)
+
+ 29         322 LOAD_NAME                4 (os)
+            324 LOAD_ATTR               13 (path)
+            334 LOAD_METHOD             18 (join)
+            356 LOAD_NAME               17 (BASE)
+            358 LOAD_CONST               7 ('data')
+            360 LOAD_CONST               8 ('crf_forms')
+            362 PRECALL                  3
+            366 CALL                     3
+            376 STORE_NAME              19 (CRF_DIR)
+
+ 30         378 LOAD_NAME                4 (os)
+            380 LOAD_ATTR               13 (path)
+            390 LOAD_METHOD             18 (join)
+            412 LOAD_NAME               17 (BASE)
+            414 LOAD_CONST               9 ('experiments')
+            416 LOAD_CONST              10 ('recipe_prototype')
+            418 LOAD_CONST              11 ('out')
+            420 PRECALL                  4
+            424 CALL                     4
+            434 STORE_NAME              20 (OUT_DIR)
+
+ 33         436 LOAD_NAME                9 (dataclass)
+
+ 34         438 PUSH_NULL
+            440 LOAD_BUILD_CLASS
+            442 LOAD_CONST              12 (<code object Line at 0x00000290C3A80880, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\common.py", line 33>)
+            444 MAKE_FUNCTION            0
+            446 LOAD_CONST              13 ('Line')
+            448 PRECALL                  2
+            452 CALL                     2
+
+ 33         462 PRECALL                  0
+            466 CALL                     0
+
+ 34         476 STORE_NAME              21 (Line)
+
+ 49         478 LOAD_CONST              44 (('return', 'list[Line]'))
+            480 LOAD_CONST              16 (<code object build_page_lines at 0x00000290C1B0C600, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\common.py", line 49>)
+            482 MAKE_FUNCTION            4 (annotations)
+            484 STORE_NAME              22 (build_page_lines)
+
+ 74         486 LOAD_CONST              45 ((3.5,))
+            488 LOAD_CONST              46 (('lines', 'list[Line]', 'ytol', 'float', 'return', 'list[list[Line]]'))
+            490 LOAD_CONST              22 (<code object group_rows at 0x00000290C3831BD0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\common.py", line 74>)
+            492 MAKE_FUNCTION            5 (defaults, annotations)
+            494 STORE_NAME              23 (group_rows)
+
+ 95         496 PUSH_NULL
+            498 LOAD_NAME                5 (re)
+            500 LOAD_ATTR               24 (compile)
+            510 LOAD_CONST              23 ('^\\[[^\\]]+\\]')
+            512 PRECALL                  1
+            516 CALL                     1
+            526 STORE_NAME              25 (BRACKET_LINE)
+
+ 96         528 PUSH_NULL
+            530 LOAD_NAME                5 (re)
+            532 LOAD_ATTR               24 (compile)
+            542 LOAD_CONST              24 ('^\\d{1,3}(\\.\\d)?$')
+            544 PRECALL                  1
+            548 CALL                     1
+            558 STORE_NAME              26 (INT_ONLY)
+
+ 99         560 LOAD_CONST              47 (('x', 'float', 'return', 'str'))
+            562 LOAD_CONST              27 (<code object _bucket at 0x00000290C3A0DDF0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\common.py", line 99>)
+            564 MAKE_FUNCTION            4 (annotations)
+            566 STORE_NAME              27 (_bucket)
+
+103         568 LOAD_CONST              48 (('lines', 'list[Line]', 'page_width', 'float', 'return', 'tuple'))
+            570 LOAD_CONST              30 (<code object page_fingerprint at 0x00000290C1B0AE20, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\common.py", line 103>)
+            572 MAKE_FUNCTION            4 (annotations)
+            574 STORE_NAME              28 (page_fingerprint)
+
+127         576 LOAD_CONST              49 ((10, 0.95))
+            578 LOAD_CONST              50 (('max_reps', 'int', 'coverage', 'float', 'return', 'dict'))
+            580 LOAD_CONST              37 (<code object cluster_pages at 0x00000290C1B42490, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\common.py", line 127>)
+            582 MAKE_FUNCTION            5 (defaults, annotations)
+            584 STORE_NAME              29 (cluster_pages)
+
+162         586 LOAD_CONST              51 (('lines', 'list[Line]', 'path', 'str', 'return', 'None'))
+            588 LOAD_CONST              40 (<code object dump_rep_page at 0x00000290C11FA680, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\common.py", line 162>)
+            590 MAKE_FUNCTION            4 (annotations)
+            592 STORE_NAME              30 (dump_rep_page)
+
+170         594 LOAD_CONST              52 (('return', 'list[str]'))
+            596 LOAD_CONST              42 (<code object list_root_pdfs at 0x00000290C3A51D70, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\common.py", line 170>)
+            598 MAKE_FUNCTION            4 (annotations)
+            600 STORE_NAME              31 (list_root_pdfs)
+
+178         602 LOAD_CONST              53 (('path', 'str', 'return', 'str'))
+            604 LOAD_CONST              43 (<code object doc_key at 0x00000290C1B0B140, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\common.py", line 178>)
+            606 MAKE_FUNCTION            4 (annotations)
+            608 STORE_NAME              32 (doc_key)
+            610 LOAD_CONST               3 (None)
+            612 RETURN_VALUE
+
+Disassembly of <code object Line at 0x00000290C3A80880, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\common.py", line 33>:
+ 33           0 RESUME                   0
+              2 LOAD_NAME                0 (__name__)
+              4 STORE_NAME               1 (__module__)
+              6 LOAD_CONST               0 ('Line')
+              8 STORE_NAME               2 (__qualname__)
+             10 SETUP_ANNOTATIONS
+
+ 35          12 LOAD_CONST               1 ('str')
+             14 LOAD_NAME                3 (__annotations__)
+             16 LOAD_CONST               2 ('text')
+             18 STORE_SUBSCR
+
+ 36          22 LOAD_CONST               3 ('float')
+             24 LOAD_NAME                3 (__annotations__)
+             26 LOAD_CONST               4 ('x0')
+             28 STORE_SUBSCR
+
+ 37          32 LOAD_CONST               3 ('float')
+             34 LOAD_NAME                3 (__annotations__)
+             36 LOAD_CONST               5 ('y0')
+             38 STORE_SUBSCR
+
+ 38          42 LOAD_CONST               3 ('float')
+             44 LOAD_NAME                3 (__annotations__)
+             46 LOAD_CONST               6 ('x1')
+             48 STORE_SUBSCR
+
+ 39          52 LOAD_CONST               3 ('float')
+             54 LOAD_NAME                3 (__annotations__)
+             56 LOAD_CONST               7 ('y1')
+             58 STORE_SUBSCR
+
+ 40          62 LOAD_CONST               3 ('float')
+             64 LOAD_NAME                3 (__annotations__)
+             66 LOAD_CONST               8 ('size')
+             68 STORE_SUBSCR
+
+ 41          72 LOAD_CONST               9 ('tuple')
+             74 LOAD_NAME                3 (__annotations__)
+             76 LOAD_CONST              10 ('colors')
+             78 STORE_SUBSCR
+
+ 42          82 LOAD_CONST              11 ('bool')
+             84 LOAD_NAME                3 (__annotations__)
+             86 LOAD_CONST              12 ('bold')
+             88 STORE_SUBSCR
+
+ 44          92 LOAD_NAME                4 (property)
+
+ 45          94 LOAD_CONST              16 (('return', 'bool'))
+             96 LOAD_CONST              14 (<code object non_black at 0x00000290C3A17030, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\common.py", line 44>)
+             98 MAKE_FUNCTION            4 (annotations)
+
+ 44         100 PRECALL                  0
+            104 CALL                     0
+
+ 45         114 STORE_NAME               5 (non_black)
+            116 LOAD_CONST              15 (None)
+            118 RETURN_VALUE
+
+Disassembly of <code object non_black at 0x00000290C3A17030, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\common.py", line 44>:
+ 44           0 RESUME                   0
+
+ 46           2 LOAD_GLOBAL              1 (NULL + any)
+             14 LOAD_CONST               1 (<code object <genexpr> at 0x00000290C3A0FE50, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\common.py", line 46>)
+             16 MAKE_FUNCTION            0
+             18 LOAD_FAST                0 (self)
+             20 LOAD_ATTR                1 (colors)
+             30 GET_ITER
+             32 PRECALL                  0
+             36 CALL                     0
+             46 PRECALL                  1
+             50 CALL                     1
+             60 RETURN_VALUE
+
+Disassembly of <code object <genexpr> at 0x00000290C3A0FE50, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\common.py", line 46>:
+ 46           0 RETURN_GENERATOR
+              2 POP_TOP
+              4 RESUME                   0
+              6 LOAD_FAST                0 (.0)
+        >>    8 FOR_ITER                10 (to 30)
+             10 STORE_FAST               1 (c)
+             12 LOAD_FAST                1 (c)
+             14 LOAD_CONST               0 (0)
+             16 COMPARE_OP               3 (!=)
+             22 YIELD_VALUE
+             24 RESUME                   1
+             26 POP_TOP
+             28 JUMP_BACKWARD           11 (to 8)
+        >>   30 LOAD_CONST               1 (None)
+             32 RETURN_VALUE
+
+Disassembly of <code object build_page_lines at 0x00000290C1B0C600, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\common.py", line 49>:
+ 49           0 RESUME                   0
+
+ 51           2 LOAD_FAST                0 (page)
+              4 LOAD_METHOD              0 (get_text)
+             26 LOAD_CONST               1 ('dict')
+             28 PRECALL                  1
+             32 CALL                     1
+             42 STORE_FAST               1 (d)
+
+ 52          44 BUILD_LIST               0
+             46 STORE_FAST               2 (lines)
+
+ 53          48 LOAD_FAST                1 (d)
+             50 LOAD_METHOD              1 (get)
+             72 LOAD_CONST               2 ('blocks')
+             74 BUILD_LIST               0
+             76 PRECALL                  2
+             80 CALL                     2
+             90 GET_ITER
+        >>   92 EXTENDED_ARG             1
+             94 FOR_ITER               271 (to 638)
+             96 STORE_FAST               3 (block)
+
+ 54          98 LOAD_FAST                3 (block)
+            100 LOAD_METHOD              1 (get)
+            122 LOAD_CONST               3 ('type')
+            124 PRECALL                  1
+            128 CALL                     1
+            138 LOAD_CONST               4 (0)
+            140 COMPARE_OP               3 (!=)
+            146 POP_JUMP_FORWARD_IF_FALSE     1 (to 150)
+
+ 55         148 JUMP_BACKWARD           29 (to 92)
+
+ 56     >>  150 LOAD_FAST                3 (block)
+            152 LOAD_METHOD              1 (get)
+            174 LOAD_CONST               5 ('lines')
+            176 BUILD_LIST               0
+            178 PRECALL                  2
+            182 CALL                     2
+            192 GET_ITER
+        >>  194 FOR_ITER               219 (to 634)
+            196 STORE_FAST               4 (l)
+
+ 57         198 LOAD_FAST                4 (l)
+            200 LOAD_METHOD              1 (get)
+            222 LOAD_CONST               6 ('spans')
+            224 PRECALL                  1
+            228 CALL                     1
+            238 JUMP_IF_TRUE_OR_POP      1 (to 242)
+            240 BUILD_LIST               0
+        >>  242 STORE_FAST               5 (spans)
+
+ 58         244 LOAD_CONST               7 ('')
+            246 LOAD_METHOD              2 (join)
+            268 LOAD_CONST               8 (<code object <genexpr> at 0x00000290C3A17130, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\common.py", line 58>)
+            270 MAKE_FUNCTION            0
+            272 LOAD_FAST                5 (spans)
+            274 GET_ITER
+            276 PRECALL                  0
+            280 CALL                     0
+            290 PRECALL                  1
+            294 CALL                     1
+            304 LOAD_METHOD              3 (strip)
+            326 PRECALL                  0
+            330 CALL                     0
+            340 STORE_FAST               6 (text)
+
+ 59         342 LOAD_FAST                6 (text)
+            344 POP_JUMP_FORWARD_IF_TRUE     1 (to 348)
+
+ 60         346 JUMP_BACKWARD           77 (to 194)
+
+ 61     >>  348 LOAD_FAST                4 (l)
+            350 LOAD_CONST               9 ('bbox')
+            352 BINARY_SUBSCR
+            362 UNPACK_SEQUENCE          4
+            366 STORE_FAST               7 (x0)
+            368 STORE_FAST               8 (y0)
+            370 STORE_FAST               9 (x1)
+            372 STORE_FAST              10 (y1)
+
+ 62         374 LOAD_GLOBAL              9 (NULL + max)
+            386 LOAD_CONST              10 (<code object <genexpr> at 0x00000290C3A504B0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\common.py", line 62>)
+            388 MAKE_FUNCTION            0
+            390 LOAD_FAST                5 (spans)
+            392 GET_ITER
+            394 PRECALL                  0
+            398 CALL                     0
+            408 PRECALL                  1
+            412 CALL                     1
+            422 STORE_FAST              11 (size)
+
+ 63         424 LOAD_GLOBAL             11 (NULL + tuple)
+            436 LOAD_GLOBAL             13 (NULL + sorted)
+            448 LOAD_CONST              11 (<code object <setcomp> at 0x00000290C3A17230, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\common.py", line 63>)
+            450 MAKE_FUNCTION            0
+            452 LOAD_FAST                5 (spans)
+            454 GET_ITER
+            456 PRECALL                  0
+            460 CALL                     0
+            470 PRECALL                  1
+            474 CALL                     1
+            484 PRECALL                  1
+            488 CALL                     1
+            498 STORE_FAST              12 (colors)
+
+ 67         500 LOAD_GLOBAL             15 (NULL + any)
+            512 LOAD_CONST              12 (<code object <genexpr> at 0x00000290C3836810, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\common.py", line 67>)
+            514 MAKE_FUNCTION            0
+
+ 68         516 LOAD_FAST                5 (spans)
+
+ 67         518 GET_ITER
+            520 PRECALL                  0
+            524 CALL                     0
+            534 PRECALL                  1
+            538 CALL                     1
+            548 STORE_FAST              13 (bold)
+
+ 69         550 LOAD_FAST                2 (lines)
+            552 LOAD_METHOD              8 (append)
+            574 LOAD_GLOBAL             19 (NULL + Line)
+            586 LOAD_FAST                6 (text)
+            588 LOAD_FAST                7 (x0)
+            590 LOAD_FAST                8 (y0)
+            592 LOAD_FAST                9 (x1)
+            594 LOAD_FAST               10 (y1)
+            596 LOAD_FAST               11 (size)
+            598 LOAD_FAST               12 (colors)
+            600 LOAD_FAST               13 (bold)
+            602 PRECALL                  8
+            606 CALL                     8
+            616 PRECALL                  1
+            620 CALL                     1
+            630 POP_TOP
+            632 JUMP_BACKWARD          220 (to 194)
+
+ 56     >>  634 EXTENDED_ARG             1
+            636 JUMP_BACKWARD          273 (to 92)
+
+ 70     >>  638 LOAD_FAST                2 (lines)
+            640 LOAD_METHOD             10 (sort)
+            662 LOAD_CONST              13 (<code object <lambda> at 0x00000290C3A17330, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\common.py", line 70>)
+            664 MAKE_FUNCTION            0
+            666 KW_NAMES                14
+            668 PRECALL                  1
+            672 CALL                     1
+            682 POP_TOP
+
+ 71         684 LOAD_FAST                2 (lines)
+            686 RETURN_VALUE
+
+Disassembly of <code object <genexpr> at 0x00000290C3A17130, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\common.py", line 58>:
+ 58           0 RETURN_GENERATOR
+              2 POP_TOP
+              4 RESUME                   0
+              6 LOAD_FAST                0 (.0)
+        >>    8 FOR_ITER                26 (to 62)
+             10 STORE_FAST               1 (s)
+             12 LOAD_FAST                1 (s)
+             14 LOAD_METHOD              0 (get)
+             36 LOAD_CONST               0 ('text')
+             38 LOAD_CONST               1 ('')
+             40 PRECALL                  2
+             44 CALL                     2
+             54 YIELD_VALUE
+             56 RESUME                   1
+             58 POP_TOP
+             60 JUMP_BACKWARD           27 (to 8)
+        >>   62 LOAD_CONST               2 (None)
+             64 RETURN_VALUE
+
+Disassembly of <code object <genexpr> at 0x00000290C3A504B0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\common.py", line 62>:
+ 62           0 RETURN_GENERATOR
+              2 POP_TOP
+              4 RESUME                   0
+              6 LOAD_FAST                0 (.0)
+        >>    8 FOR_ITER                40 (to 90)
+             10 STORE_FAST               1 (s)
+             12 LOAD_GLOBAL              1 (NULL + round)
+             24 LOAD_FAST                1 (s)
+             26 LOAD_METHOD              1 (get)
+             48 LOAD_CONST               0 ('size')
+             50 LOAD_CONST               1 (0.0)
+             52 PRECALL                  2
+             56 CALL                     2
+             66 LOAD_CONST               2 (1)
+             68 PRECALL                  2
+             72 CALL                     2
+             82 YIELD_VALUE
+             84 RESUME                   1
+             86 POP_TOP
+             88 JUMP_BACKWARD           41 (to 8)
+        >>   90 LOAD_CONST               3 (None)
+             92 RETURN_VALUE
+
+Disassembly of <code object <setcomp> at 0x00000290C3A17230, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\common.py", line 63>:
+ 63           0 RESUME                   0
+              2 BUILD_SET                0
+              4 LOAD_FAST                0 (.0)
+        >>    6 FOR_ITER                24 (to 56)
+              8 STORE_FAST               1 (s)
+             10 LOAD_FAST                1 (s)
+             12 LOAD_METHOD              0 (get)
+             34 LOAD_CONST               0 ('color')
+             36 LOAD_CONST               1 (0)
+             38 PRECALL                  2
+             42 CALL                     2
+             52 SET_ADD                  2
+             54 JUMP_BACKWARD           25 (to 6)
+        >>   56 RETURN_VALUE
+
+Disassembly of <code object <genexpr> at 0x00000290C3836810, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\common.py", line 67>:
+ 67           0 RETURN_GENERATOR
+              2 POP_TOP
+              4 RESUME                   0
+              6 LOAD_FAST                0 (.0)
+        >>    8 FOR_ITER                73 (to 156)
+
+ 68          10 STORE_FAST               1 (s)
+
+ 67          12 LOAD_CONST               0 ('bold')
+             14 LOAD_FAST                1 (s)
+             16 LOAD_METHOD              0 (get)
+             38 LOAD_CONST               1 ('font')
+             40 LOAD_CONST               2 ('')
+             42 PRECALL                  2
+             46 CALL                     2
+             56 JUMP_IF_TRUE_OR_POP      1 (to 60)
+             58 LOAD_CONST               2 ('')
+        >>   60 LOAD_METHOD              1 (lower)
+             82 PRECALL                  0
+             86 CALL                     0
+             96 CONTAINS_OP              0
+             98 JUMP_IF_TRUE_OR_POP     24 (to 148)
+
+ 68         100 LOAD_FAST                1 (s)
+            102 LOAD_METHOD              0 (get)
+            124 LOAD_CONST               3 ('flags')
+            126 LOAD_CONST               4 (0)
+            128 PRECALL                  2
+            132 CALL                     2
+            142 LOAD_CONST               5 (16)
+            144 BINARY_OP                1 (&)
+
+ 67     >>  148 YIELD_VALUE
+            150 RESUME                   1
+            152 POP_TOP
+            154 JUMP_BACKWARD           74 (to 8)
+        >>  156 LOAD_CONST               6 (None)
+            158 RETURN_VALUE
+
+Disassembly of <code object <lambda> at 0x00000290C3A17330, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\common.py", line 70>:
+ 70           0 RESUME                   0
+              2 LOAD_GLOBAL              1 (NULL + round)
+             14 LOAD_FAST                0 (L)
+             16 LOAD_ATTR                1 (y0)
+             26 LOAD_CONST               1 (1)
+             28 PRECALL                  2
+             32 CALL                     2
+             42 LOAD_FAST                0 (L)
+             44 LOAD_ATTR                2 (x0)
+             54 BUILD_TUPLE              2
+             56 RETURN_VALUE
+
+Disassembly of <code object group_rows at 0x00000290C3831BD0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\common.py", line 74>:
+ 74           0 RESUME                   0
+
+ 76           2 BUILD_LIST               0
+              4 STORE_FAST               2 (rows)
+
+ 77           6 LOAD_CONST               1 (None)
+              8 STORE_FAST               3 (anchor)
+
+ 78          10 LOAD_FAST                0 (lines)
+             12 GET_ITER
+        >>   14 FOR_ITER                75 (to 166)
+             16 STORE_FAST               4 (L)
+
+ 79          18 LOAD_FAST                3 (anchor)
+             20 POP_JUMP_FORWARD_IF_NONE    14 (to 50)
+             22 LOAD_FAST                4 (L)
+             24 LOAD_ATTR                0 (y0)
+             34 LOAD_FAST                3 (anchor)
+             36 BINARY_OP               10 (-)
+             40 LOAD_FAST                1 (ytol)
+             42 COMPARE_OP               4 (>)
+             48 POP_JUMP_FORWARD_IF_FALSE    30 (to 110)
+
+ 80     >>   50 LOAD_FAST                2 (rows)
+             52 LOAD_METHOD              1 (append)
+             74 LOAD_FAST                4 (L)
+             76 BUILD_LIST               1
+             78 PRECALL                  1
+             82 CALL                     1
+             92 POP_TOP
+
+ 81          94 LOAD_FAST                4 (L)
+             96 LOAD_ATTR                0 (y0)
+            106 STORE_FAST               3 (anchor)
+            108 JUMP_BACKWARD           48 (to 14)
+
+ 83     >>  110 LOAD_FAST                2 (rows)
+            112 LOAD_CONST               2 (-1)
+            114 BINARY_SUBSCR
+            124 LOAD_METHOD              1 (append)
+            146 LOAD_FAST                4 (L)
+            148 PRECALL                  1
+            152 CALL                     1
+            162 POP_TOP
+            164 JUMP_BACKWARD           76 (to 14)
+
+ 84     >>  166 LOAD_FAST                2 (rows)
+            168 GET_ITER
+        >>  170 FOR_ITER                25 (to 222)
+            172 STORE_FAST               5 (r)
+
+ 85         174 LOAD_FAST                5 (r)
+            176 LOAD_METHOD              2 (sort)
+            198 LOAD_CONST               3 (<code object <lambda> at 0x00000290C3A6C370, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\common.py", line 85>)
+            200 MAKE_FUNCTION            0
+            202 KW_NAMES                 4
+            204 PRECALL                  1
+            208 CALL                     1
+            218 POP_TOP
+            220 JUMP_BACKWARD           26 (to 170)
+
+ 86     >>  222 LOAD_FAST                2 (rows)
+            224 RETURN_VALUE
+
+Disassembly of <code object <lambda> at 0x00000290C3A6C370, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\common.py", line 85>:
+ 85           0 RESUME                   0
+              2 LOAD_FAST                0 (L)
+              4 LOAD_ATTR                0 (x0)
+             14 RETURN_VALUE
+
+Disassembly of <code object _bucket at 0x00000290C3A0DDF0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\common.py", line 99>:
+ 99           0 RESUME                   0
+
+100           2 LOAD_FAST                0 (x)
+              4 LOAD_CONST               1 (0)
+              6 COMPARE_OP               2 (==)
+             12 POP_JUMP_FORWARD_IF_FALSE     2 (to 18)
+             14 LOAD_CONST               2 ('0')
+             16 JUMP_FORWARD             9 (to 36)
+        >>   18 LOAD_FAST                0 (x)
+             20 LOAD_CONST               3 (0.25)
+             22 COMPARE_OP               0 (<)
+             28 POP_JUMP_FORWARD_IF_FALSE     2 (to 34)
+             30 LOAD_CONST               4 ('lo')
+             32 JUMP_FORWARD             1 (to 36)
+        >>   34 LOAD_CONST               5 ('hi')
+        >>   36 RETURN_VALUE
+
+Disassembly of <code object page_fingerprint at 0x00000290C1B0AE20, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\common.py", line 103>:
+              0 MAKE_CELL               10 (n)
+
+103           2 RESUME                   0
+
+112           4 LOAD_FAST                0 (lines)
+              6 POP_JUMP_FORWARD_IF_TRUE     2 (to 12)
+
+113           8 LOAD_CONST               1 (('<empty>',))
+             10 RETURN_VALUE
+
+114     >>   12 LOAD_GLOBAL              1 (NULL + len)
+             24 LOAD_FAST                0 (lines)
+             26 PRECALL                  1
+             30 CALL                     1
+             40 STORE_DEREF             10 (n)
+
+115          42 LOAD_GLOBAL              3 (NULL + _bucket)
+             54 LOAD_GLOBAL              5 (NULL + sum)
+             66 LOAD_CONST               2 (<code object <genexpr> at 0x00000290C3A6A560, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\common.py", line 115>)
+             68 MAKE_FUNCTION            0
+             70 LOAD_FAST                0 (lines)
+             72 GET_ITER
+             74 PRECALL                  0
+             78 CALL                     0
+             88 PRECALL                  1
+             92 CALL                     1
+            102 LOAD_DEREF              10 (n)
+            104 BINARY_OP               11 (/)
+            108 PRECALL                  1
+            112 CALL                     1
+            122 STORE_FAST               2 (bracket)
+
+116         124 LOAD_GLOBAL              3 (NULL + _bucket)
+            136 LOAD_GLOBAL              5 (NULL + sum)
+            148 LOAD_CONST               3 (<code object <genexpr> at 0x00000290C3A6A670, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\common.py", line 116>)
+            150 MAKE_FUNCTION            0
+            152 LOAD_FAST                0 (lines)
+            154 GET_ITER
+            156 PRECALL                  0
+            160 CALL                     0
+            170 PRECALL                  1
+            174 CALL                     1
+            184 LOAD_DEREF              10 (n)
+            186 BINARY_OP               11 (/)
+            190 PRECALL                  1
+            194 CALL                     1
+            204 STORE_FAST               3 (ints)
+
+117         206 LOAD_GLOBAL              3 (NULL + _bucket)
+            218 LOAD_GLOBAL              5 (NULL + sum)
+            230 LOAD_CONST               4 (<code object <genexpr> at 0x00000290C3A0FD70, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\common.py", line 117>)
+            232 MAKE_FUNCTION            0
+            234 LOAD_FAST                0 (lines)
+            236 GET_ITER
+            238 PRECALL                  0
+            242 CALL                     0
+            252 PRECALL                  1
+            256 CALL                     1
+            266 LOAD_DEREF              10 (n)
+            268 BINARY_OP               11 (/)
+            272 PRECALL                  1
+            276 CALL                     1
+            286 STORE_FAST               4 (color)
+
+118         288 LOAD_CONST               5 (4)
+            290 STORE_FAST               5 (nbins)
+
+119         292 LOAD_CONST               6 (0)
+            294 BUILD_LIST               1
+            296 LOAD_FAST                5 (nbins)
+            298 BINARY_OP                5 (*)
+            302 STORE_FAST               6 (xhist)
+
+120         304 LOAD_FAST                0 (lines)
+            306 GET_ITER
+        >>  308 FOR_ITER                73 (to 456)
+            310 STORE_FAST               7 (L)
+
+121         312 LOAD_FAST                6 (xhist)
+            314 LOAD_GLOBAL              7 (NULL + min)
+            326 LOAD_FAST                5 (nbins)
+            328 LOAD_CONST               7 (1)
+            330 BINARY_OP               10 (-)
+            334 LOAD_GLOBAL              9 (NULL + int)
+            346 LOAD_FAST                7 (L)
+            348 LOAD_ATTR                5 (x0)
+            358 LOAD_GLOBAL             13 (NULL + max)
+            370 LOAD_FAST                1 (page_width)
+            372 LOAD_CONST               7 (1)
+            374 PRECALL                  2
+            378 CALL                     2
+            388 BINARY_OP               11 (/)
+            392 LOAD_FAST                5 (nbins)
+            394 BINARY_OP                5 (*)
+            398 PRECALL                  1
+            402 CALL                     1
+            412 PRECALL                  2
+            416 CALL                     2
+            426 COPY                     2
+            428 COPY                     2
+            430 BINARY_SUBSCR
+            440 LOAD_CONST               7 (1)
+            442 BINARY_OP               13 (+=)
+            446 SWAP                     3
+            448 SWAP                     2
+            450 STORE_SUBSCR
+            454 JUMP_BACKWARD           74 (to 308)
+
+122     >>  456 LOAD_CONST               8 ('')
+            458 LOAD_METHOD              7 (join)
+            480 LOAD_CLOSURE            10 (n)
+            482 BUILD_TUPLE              1
+            484 LOAD_CONST               9 (<code object <genexpr> at 0x00000290C3A6A780, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\common.py", line 122>)
+            486 MAKE_FUNCTION            8 (closure)
+            488 LOAD_FAST                6 (xhist)
+            490 GET_ITER
+            492 PRECALL                  0
+            496 CALL                     0
+            506 PRECALL                  1
+            510 CALL                     1
+            520 STORE_FAST               8 (xsig)
+
+123         522 LOAD_DEREF              10 (n)
+            524 LOAD_CONST              10 (10)
+            526 COMPARE_OP               1 (<=)
+            532 POP_JUMP_FORWARD_IF_FALSE     2 (to 538)
+            534 LOAD_CONST              11 ('s')
+            536 JUMP_FORWARD            17 (to 572)
+        >>  538 LOAD_DEREF              10 (n)
+            540 LOAD_CONST              12 (40)
+            542 COMPARE_OP               1 (<=)
+            548 POP_JUMP_FORWARD_IF_FALSE     2 (to 554)
+            550 LOAD_CONST              13 ('m')
+            552 JUMP_FORWARD             9 (to 572)
+        >>  554 LOAD_DEREF              10 (n)
+            556 LOAD_CONST              14 (90)
+            558 COMPARE_OP               1 (<=)
+            564 POP_JUMP_FORWARD_IF_FALSE     2 (to 570)
+            566 LOAD_CONST              15 ('l')
+            568 JUMP_FORWARD             1 (to 572)
+        >>  570 LOAD_CONST              16 ('xl')
+        >>  572 STORE_FAST               9 (size_bucket)
+
+124         574 LOAD_FAST                2 (bracket)
+            576 LOAD_FAST                3 (ints)
+            578 LOAD_FAST                4 (color)
+            580 LOAD_FAST                9 (size_bucket)
+            582 LOAD_FAST                8 (xsig)
+            584 BUILD_TUPLE              5
+            586 RETURN_VALUE
+
+Disassembly of <code object <genexpr> at 0x00000290C3A6A560, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\common.py", line 115>:
+115           0 RETURN_GENERATOR
+              2 POP_TOP
+              4 RESUME                   0
+              6 LOAD_FAST                0 (.0)
+        >>    8 FOR_ITER                37 (to 84)
+             10 STORE_FAST               1 (L)
+             12 LOAD_GLOBAL              0 (BRACKET_LINE)
+             24 LOAD_METHOD              1 (match)
+             46 LOAD_FAST                1 (L)
+             48 LOAD_ATTR                2 (text)
+             58 PRECALL                  1
+             62 CALL                     1
+             72 POP_JUMP_BACKWARD_IF_FALSE    33 (to 8)
+             74 LOAD_CONST               0 (1)
+             76 YIELD_VALUE
+             78 RESUME                   1
+             80 POP_TOP
+             82 JUMP_BACKWARD           38 (to 8)
+        >>   84 LOAD_CONST               1 (None)
+             86 RETURN_VALUE
+
+Disassembly of <code object <genexpr> at 0x00000290C3A6A670, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\common.py", line 116>:
+116           0 RETURN_GENERATOR
+              2 POP_TOP
+              4 RESUME                   0
+              6 LOAD_FAST                0 (.0)
+        >>    8 FOR_ITER                37 (to 84)
+             10 STORE_FAST               1 (L)
+             12 LOAD_GLOBAL              0 (INT_ONLY)
+             24 LOAD_METHOD              1 (match)
+             46 LOAD_FAST                1 (L)
+             48 LOAD_ATTR                2 (text)
+             58 PRECALL                  1
+             62 CALL                     1
+             72 POP_JUMP_BACKWARD_IF_FALSE    33 (to 8)
+             74 LOAD_CONST               0 (1)
+             76 YIELD_VALUE
+             78 RESUME                   1
+             80 POP_TOP
+             82 JUMP_BACKWARD           38 (to 8)
+        >>   84 LOAD_CONST               1 (None)
+             86 RETURN_VALUE
+
+Disassembly of <code object <genexpr> at 0x00000290C3A0FD70, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\common.py", line 117>:
+117           0 RETURN_GENERATOR
+              2 POP_TOP
+              4 RESUME                   0
+              6 LOAD_FAST                0 (.0)
+        >>    8 FOR_ITER                13 (to 36)
+             10 STORE_FAST               1 (L)
+             12 LOAD_FAST                1 (L)
+             14 LOAD_ATTR                0 (non_black)
+             24 POP_JUMP_BACKWARD_IF_FALSE     9 (to 8)
+             26 LOAD_CONST               0 (1)
+             28 YIELD_VALUE
+             30 RESUME                   1
+             32 POP_TOP
+             34 JUMP_BACKWARD           14 (to 8)
+        >>   36 LOAD_CONST               1 (None)
+             38 RETURN_VALUE
+
+Disassembly of <code object <genexpr> at 0x00000290C3A6A780, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\common.py", line 122>:
+              0 COPY_FREE_VARS           1
+
+122           2 RETURN_GENERATOR
+              4 POP_TOP
+              6 RESUME                   0
+              8 LOAD_FAST                0 (.0)
+        >>   10 FOR_ITER                31 (to 74)
+             12 STORE_FAST               1 (c)
+             14 LOAD_FAST                1 (c)
+             16 LOAD_GLOBAL              1 (NULL + max)
+             28 LOAD_CONST               0 (2)
+             30 LOAD_DEREF               2 (n)
+             32 LOAD_CONST               1 (0.1)
+             34 BINARY_OP                5 (*)
+             38 PRECALL                  2
+             42 CALL                     2
+             52 COMPARE_OP               5 (>=)
+             58 POP_JUMP_FORWARD_IF_FALSE     2 (to 64)
+             60 LOAD_CONST               2 ('1')
+             62 JUMP_FORWARD             1 (to 66)
+        >>   64 LOAD_CONST               3 ('0')
+        >>   66 YIELD_VALUE
+             68 RESUME                   1
+             70 POP_TOP
+             72 JUMP_BACKWARD           32 (to 10)
+        >>   74 LOAD_CONST               4 (None)
+             76 RETURN_VALUE
+
+Disassembly of <code object cluster_pages at 0x00000290C1B42490, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\common.py", line 127>:
+127           0 RESUME                   0
+
+132           2 LOAD_GLOBAL              1 (NULL + defaultdict)
+             14 LOAD_GLOBAL              2 (list)
+             26 PRECALL                  1
+             30 CALL                     1
+             40 STORE_FAST               3 (sigs)
+
+133          42 BUILD_MAP                0
+             44 STORE_FAST               4 (page_lines)
+
+134          46 LOAD_GLOBAL              5 (NULL + range)
+             58 LOAD_FAST                0 (doc)
+             60 LOAD_ATTR                3 (page_count)
+             70 PRECALL                  1
+             74 CALL                     1
+             84 GET_ITER
+        >>   86 FOR_ITER                81 (to 250)
+             88 STORE_FAST               5 (i)
+
+135          90 LOAD_FAST                0 (doc)
+             92 LOAD_FAST                5 (i)
+             94 BINARY_SUBSCR
+            104 STORE_FAST               6 (page)
+
+136         106 LOAD_GLOBAL              9 (NULL + build_page_lines)
+            118 LOAD_FAST                6 (page)
+            120 PRECALL                  1
+            124 CALL                     1
+            134 STORE_FAST               7 (lines)
+
+137         136 LOAD_FAST                7 (lines)
+            138 LOAD_FAST                4 (page_lines)
+            140 LOAD_FAST                5 (i)
+            142 STORE_SUBSCR
+
+138         146 LOAD_FAST                3 (sigs)
+            148 LOAD_GLOBAL             11 (NULL + page_fingerprint)
+            160 LOAD_FAST                7 (lines)
+            162 LOAD_FAST                6 (page)
+            164 LOAD_ATTR                6 (rect)
+            174 LOAD_ATTR                7 (width)
+            184 PRECALL                  2
+            188 CALL                     2
+            198 BINARY_SUBSCR
+            208 LOAD_METHOD              8 (append)
+            230 LOAD_FAST                5 (i)
+            232 PRECALL                  1
+            236 CALL                     1
+            246 POP_TOP
+            248 JUMP_BACKWARD           82 (to 86)
+
+140     >>  250 LOAD_GLOBAL             19 (NULL + sorted)
+            262 LOAD_FAST                3 (sigs)
+            264 LOAD_METHOD             10 (items)
+            286 PRECALL                  0
+            290 CALL                     0
+            300 LOAD_CONST               1 (<code object <lambda> at 0x00000290C3A1A1F0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\common.py", line 140>)
+            302 MAKE_FUNCTION            0
+            304 KW_NAMES                 2
+            306 PRECALL                  2
+            310 CALL                     2
+            320 STORE_FAST               8 (ordered)
+
+141         322 BUILD_LIST               0
+            324 LOAD_CONST               3 (0)
+            326 BUILD_LIST               0
+            328 STORE_FAST              11 (reps)
+            330 STORE_FAST              10 (covered)
+            332 STORE_FAST               9 (clusters)
+
+142         334 LOAD_FAST                8 (ordered)
+            336 GET_ITER
+        >>  338 FOR_ITER               254 (to 848)
+            340 UNPACK_SEQUENCE          2
+            344 STORE_FAST              12 (sig)
+            346 STORE_FAST              13 (pages)
+
+143         348 LOAD_FAST               10 (covered)
+            350 LOAD_FAST                2 (coverage)
+            352 LOAD_FAST                0 (doc)
+            354 LOAD_ATTR                3 (page_count)
+            364 BINARY_OP                5 (*)
+            368 COMPARE_OP               0 (<)
+            374 JUMP_IF_FALSE_OR_POP    18 (to 412)
+            376 LOAD_GLOBAL             23 (NULL + len)
+            388 LOAD_FAST               11 (reps)
+            390 PRECALL                  1
+            394 CALL                     1
+            404 LOAD_FAST                1 (max_reps)
+            406 COMPARE_OP               0 (<)
+        >>  412 STORE_FAST              14 (is_rep_cluster)
+
+144         414 LOAD_FAST               14 (is_rep_cluster)
+            416 POP_JUMP_FORWARD_IF_FALSE    25 (to 468)
+            418 LOAD_FAST               13 (pages)
+            420 LOAD_GLOBAL             23 (NULL + len)
+            432 LOAD_FAST               13 (pages)
+            434 PRECALL                  1
+            438 CALL                     1
+            448 LOAD_CONST               4 (2)
+            450 BINARY_OP                2 (//)
+            454 BINARY_SUBSCR
+            464 BUILD_LIST               1
+            466 JUMP_FORWARD             1 (to 470)
+        >>  468 BUILD_LIST               0
+        >>  470 STORE_FAST              15 (cluster_reps)
+
+145         472 LOAD_FAST               14 (is_rep_cluster)
+            474 POP_JUMP_FORWARD_IF_FALSE    62 (to 600)
+            476 LOAD_GLOBAL             23 (NULL + len)
+            488 LOAD_FAST               13 (pages)
+            490 PRECALL                  1
+            494 CALL                     1
+            504 LOAD_CONST               5 (50)
+            506 COMPARE_OP               4 (>)
+            512 POP_JUMP_FORWARD_IF_FALSE    43 (to 600)
+
+146         514 LOAD_FAST               15 (cluster_reps)
+            516 LOAD_METHOD              8 (append)
+            538 LOAD_FAST               13 (pages)
+            540 LOAD_GLOBAL             23 (NULL + len)
+            552 LOAD_FAST               13 (pages)
+            554 PRECALL                  1
+            558 CALL                     1
+            568 LOAD_CONST               6 (4)
+            570 BINARY_OP                2 (//)
+            574 BINARY_SUBSCR
+            584 PRECALL                  1
+            588 CALL                     1
+            598 POP_TOP
+
+147     >>  600 LOAD_FAST               11 (reps)
+            602 LOAD_METHOD             12 (extend)
+            624 LOAD_FAST               15 (cluster_reps)
+            626 PRECALL                  1
+            630 CALL                     1
+            640 POP_TOP
+
+148         642 LOAD_FAST               10 (covered)
+            644 LOAD_GLOBAL             23 (NULL + len)
+            656 LOAD_FAST               13 (pages)
+            658 PRECALL                  1
+            662 CALL                     1
+            672 BINARY_OP               13 (+=)
+            676 STORE_FAST              10 (covered)
+
+149         678 LOAD_FAST                9 (clusters)
+            680 LOAD_METHOD              8 (append)
+
+150         702 LOAD_GLOBAL              3 (NULL + list)
+            714 LOAD_GLOBAL             27 (NULL + map)
+            726 LOAD_GLOBAL             28 (str)
+            738 LOAD_FAST               12 (sig)
+            740 PRECALL                  2
+            744 CALL                     2
+            754 PRECALL                  1
+            758 CALL                     1
+
+151         768 LOAD_GLOBAL             23 (NULL + len)
+            780 LOAD_FAST               13 (pages)
+            782 PRECALL                  1
+            786 CALL                     1
+
+152         796 LOAD_FAST               13 (pages)
+
+153         798 LOAD_GLOBAL             19 (NULL + sorted)
+            810 LOAD_FAST               15 (cluster_reps)
+            812 PRECALL                  1
+            816 CALL                     1
+
+149         826 LOAD_CONST               7 (('signature', 'n_pages', 'pages', 'representatives'))
+            828 BUILD_CONST_KEY_MAP      4
+            830 PRECALL                  1
+            834 CALL                     1
+            844 POP_TOP
+            846 JUMP_BACKWARD          255 (to 338)
+
+156     >>  848 LOAD_CONST               8 ((0, 1))
+            850 GET_ITER
+        >>  852 FOR_ITER                38 (to 930)
+            854 STORE_FAST              16 (p)
+
+157         856 LOAD_FAST               16 (p)
+            858 LOAD_FAST                0 (doc)
+            860 LOAD_ATTR                3 (page_count)
+            870 COMPARE_OP               0 (<)
+            876 POP_JUMP_FORWARD_IF_FALSE    25 (to 928)
+            878 LOAD_FAST               16 (p)
+            880 LOAD_FAST               11 (reps)
+            882 CONTAINS_OP              1
+            884 POP_JUMP_FORWARD_IF_FALSE    21 (to 928)
+
+158         886 LOAD_FAST               11 (reps)
+            888 LOAD_METHOD              8 (append)
+            910 LOAD_FAST               16 (p)
+            912 PRECALL                  1
+            916 CALL                     1
+            926 POP_TOP
+        >>  928 JUMP_BACKWARD           39 (to 852)
+
+159     >>  930 LOAD_FAST                9 (clusters)
+            932 LOAD_FAST                4 (page_lines)
+            934 LOAD_GLOBAL             19 (NULL + sorted)
+            946 LOAD_GLOBAL             31 (NULL + set)
+            958 LOAD_FAST               11 (reps)
+            960 PRECALL                  1
+            964 CALL                     1
+            974 PRECALL                  1
+            978 CALL                     1
+            988 LOAD_CONST               9 (('clusters', 'page_lines', 'representatives'))
+            990 BUILD_CONST_KEY_MAP      3
+            992 RETURN_VALUE
+
+Disassembly of <code object <lambda> at 0x00000290C3A1A1F0, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\common.py", line 140>:
+140           0 RESUME                   0
+              2 LOAD_GLOBAL              1 (NULL + len)
+             14 LOAD_FAST                0 (kv)
+             16 LOAD_CONST               1 (1)
+             18 BINARY_SUBSCR
+             28 PRECALL                  1
+             32 CALL                     1
+             42 UNARY_NEGATIVE
+             44 RETURN_VALUE
+
+Disassembly of <code object dump_rep_page at 0x00000290C11FA680, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\common.py", line 162>:
+162           0 RESUME                   0
+
+164           2 LOAD_GLOBAL              1 (NULL + open)
+             14 LOAD_FAST                1 (path)
+             16 LOAD_CONST               1 ('w')
+             18 LOAD_CONST               2 ('utf-8')
+             20 KW_NAMES                 3
+             22 PRECALL                  3
+             26 CALL                     3
+             36 BEFORE_WITH
+             38 STORE_FAST               2 (f)
+
+165          40 LOAD_FAST                0 (lines)
+             42 GET_ITER
+        >>   44 FOR_ITER               115 (to 276)
+             46 STORE_FAST               3 (L)
+
+166          48 LOAD_FAST                3 (L)
+             50 LOAD_ATTR                1 (non_black)
+             60 POP_JUMP_FORWARD_IF_FALSE    32 (to 126)
+             62 LOAD_CONST               4 ('#{:06x}')
+             64 LOAD_METHOD              2 (format)
+             86 LOAD_FAST                3 (L)
+             88 LOAD_ATTR                3 (colors)
+             98 LOAD_CONST               5 (-1)
+            100 BINARY_SUBSCR
+            110 PRECALL                  1
+            114 CALL                     1
+            124 JUMP_FORWARD             1 (to 128)
+        >>  126 LOAD_CONST               6 ('black  ')
+        >>  128 STORE_FAST               4 (color)
+
+167         130 LOAD_FAST                2 (f)
+            132 LOAD_METHOD              4 (write)
+            154 LOAD_CONST               7 ('x=')
+            156 LOAD_FAST                3 (L)
+            158 LOAD_ATTR                5 (x0)
+            168 LOAD_CONST               8 ('6.1f')
+            170 FORMAT_VALUE             4 (with format)
+            172 LOAD_CONST               9 (' y=')
+            174 LOAD_FAST                3 (L)
+            176 LOAD_ATTR                6 (y0)
+            186 LOAD_CONST               8 ('6.1f')
+            188 FORMAT_VALUE             4 (with format)
+            190 LOAD_CONST              10 (' sz=')
+            192 LOAD_FAST                3 (L)
+            194 LOAD_ATTR                7 (size)
+            204 LOAD_CONST              11 ('4.1f')
+            206 FORMAT_VALUE             4 (with format)
+            208 LOAD_CONST              12 (' ')
+            210 LOAD_FAST                4 (color)
+            212 FORMAT_VALUE             0
+            214 LOAD_CONST              12 (' ')
+            216 LOAD_FAST                3 (L)
+            218 LOAD_ATTR                8 (bold)
+            228 POP_JUMP_FORWARD_IF_FALSE     2 (to 234)
+            230 LOAD_CONST              13 ('B')
+            232 JUMP_FORWARD             1 (to 236)
+        >>  234 LOAD_CONST              12 (' ')
+        >>  236 FORMAT_VALUE             0
+            238 LOAD_CONST              14 (' | ')
+            240 LOAD_FAST                3 (L)
+            242 LOAD_ATTR                9 (text)
+            252 FORMAT_VALUE             0
+            254 LOAD_CONST              15 ('\n')
+            256 BUILD_STRING            13
+            258 PRECALL                  1
+            262 CALL                     1
+            272 POP_TOP
+            274 JUMP_BACKWARD          116 (to 44)
+
+165     >>  276 NOP
+
+164         278 LOAD_CONST              16 (None)
+            280 LOAD_CONST              16 (None)
+            282 LOAD_CONST              16 (None)
+            284 PRECALL                  2
+            288 CALL                     2
+            298 POP_TOP
+            300 LOAD_CONST              16 (None)
+            302 RETURN_VALUE
+        >>  304 PUSH_EXC_INFO
+            306 WITH_EXCEPT_START
+            308 POP_JUMP_FORWARD_IF_TRUE     4 (to 318)
+            310 RERAISE                  2
+        >>  312 COPY                     3
+            314 POP_EXCEPT
+            316 RERAISE                  1
+        >>  318 POP_TOP
+            320 POP_EXCEPT
+            322 POP_TOP
+            324 POP_TOP
+            326 LOAD_CONST              16 (None)
+            328 RETURN_VALUE
+ExceptionTable:
+  38 to 274 -> 304 [1] lasti
+  304 to 310 -> 312 [3] lasti
+  318 to 318 -> 312 [3] lasti
+
+Disassembly of <code object list_root_pdfs at 0x00000290C3A51D70, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\common.py", line 170>:
+170           0 RESUME                   0
+
+171           2 LOAD_GLOBAL              1 (NULL + sorted)
+             14 LOAD_CONST               1 (<code object <genexpr> at 0x00000290C3796700, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\common.py", line 171>)
+             16 MAKE_FUNCTION            0
+
+173          18 LOAD_GLOBAL              3 (NULL + os)
+             30 LOAD_ATTR                2 (listdir)
+             40 LOAD_GLOBAL              6 (CRF_DIR)
+             52 PRECALL                  1
+             56 CALL                     1
+
+171          66 GET_ITER
+             68 PRECALL                  0
+             72 CALL                     0
+             82 PRECALL                  1
+             86 CALL                     1
+             96 RETURN_VALUE
+
+Disassembly of <code object <genexpr> at 0x00000290C3796700, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\common.py", line 171>:
+171           0 RETURN_GENERATOR
+              2 POP_TOP
+              4 RESUME                   0
+              6 LOAD_FAST                0 (.0)
+        >>    8 FOR_ITER                80 (to 170)
+
+173          10 STORE_FAST               1 (fn)
+
+174          12 LOAD_FAST                1 (fn)
+             14 LOAD_METHOD              0 (lower)
+             36 PRECALL                  0
+             40 CALL                     0
+             50 LOAD_METHOD              1 (endswith)
+             72 LOAD_CONST               0 ('.pdf')
+             74 PRECALL                  1
+             78 CALL                     1
+
+171          88 POP_JUMP_BACKWARD_IF_FALSE    41 (to 8)
+
+172          90 LOAD_GLOBAL              4 (os)
+            102 LOAD_ATTR                3 (path)
+            112 LOAD_METHOD              4 (join)
+            134 LOAD_GLOBAL             10 (CRF_DIR)
+            146 LOAD_FAST                1 (fn)
+            148 PRECALL                  2
+            152 CALL                     2
+
+171         162 YIELD_VALUE
+            164 RESUME                   1
+            166 POP_TOP
+            168 JUMP_BACKWARD           81 (to 8)
+        >>  170 LOAD_CONST               1 (None)
+            172 RETURN_VALUE
+
+Disassembly of <code object doc_key at 0x00000290C1B0B140, file "D:\ubuntu\codes\ZS\otsuka\ECS\experiments\recipe_prototype\common.py", line 178>:
+178           0 RESUME                   0
+
+187           2 LOAD_GLOBAL              0 (os)
+             14 LOAD_ATTR                1 (path)
+             24 LOAD_METHOD              2 (splitext)
+             46 LOAD_GLOBAL              0 (os)
+             58 LOAD_ATTR                1 (path)
+             68 LOAD_METHOD              3 (basename)
+             90 LOAD_FAST                0 (path)
+             92 PRECALL                  1
+             96 CALL                     1
+            106 PRECALL                  1
+            110 CALL                     1
+            120 LOAD_CONST               1 (0)
+            122 BINARY_SUBSCR
+            132 STORE_FAST               1 (stem)
+
+188         134 LOAD_GLOBAL              9 (NULL + re)
+            146 LOAD_ATTR                5 (sub)
+            156 LOAD_CONST               2 ('[^A-Za-z0-9_.-]+')
+            158 LOAD_CONST               3 ('_')
+            160 LOAD_FAST                1 (stem)
+            162 PRECALL                  3
+            166 CALL                     3
+            176 STORE_FAST               2 (key)
+
+189         178 LOAD_GLOBAL              9 (NULL + re)
+            190 LOAD_ATTR                6 (search)
+            200 LOAD_CONST               4 ('[A-Za-z0-9]')
+            202 LOAD_FAST                2 (key)
+            204 PRECALL                  2
+            208 CALL                     2
+            218 POP_JUMP_FORWARD_IF_TRUE    68 (to 356)
+
+190         220 LOAD_CONST               5 ('doc_')
+            222 LOAD_GLOBAL             15 (NULL + hashlib)
+            234 LOAD_ATTR                8 (sha1)
+            244 LOAD_FAST                1 (stem)
+            246 LOAD_METHOD              9 (encode)
+            268 LOAD_CONST               6 ('utf-8')
+            270 PRECALL                  1
+            274 CALL                     1
+            284 PRECALL                  1
+            288 CALL                     1
+            298 LOAD_METHOD             10 (hexdigest)
+            320 PRECALL                  0
+            324 CALL                     0
+            334 LOAD_CONST               7 (None)
+            336 LOAD_CONST               8 (12)
+            338 BUILD_SLICE              2
+            340 BINARY_SUBSCR
+            350 BINARY_OP                0 (+)
+            354 RETURN_VALUE
+
+191     >>  356 LOAD_GLOBAL             23 (NULL + len)
+            368 LOAD_FAST                2 (key)
+            370 PRECALL                  1
+            374 CALL                     1
+            384 LOAD_CONST               9 (70)
+            386 COMPARE_OP               1 (<=)
+            392 POP_JUMP_FORWARD_IF_FALSE     2 (to 398)
+
+192         394 LOAD_FAST                2 (key)
+            396 RETURN_VALUE
+
+193     >>  398 LOAD_FAST                2 (key)
+            400 LOAD_CONST               7 (None)
+            402 LOAD_CONST              10 (61)
+            404 BUILD_SLICE              2
+            406 BINARY_SUBSCR
+            416 LOAD_CONST               3 ('_')
+            418 BINARY_OP                0 (+)
+            422 LOAD_GLOBAL             15 (NULL + hashlib)
+            434 LOAD_ATTR                8 (sha1)
+            444 LOAD_FAST                1 (stem)
+            446 LOAD_METHOD              9 (encode)
+            468 LOAD_CONST               6 ('utf-8')
+            470 PRECALL                  1
+            474 CALL                     1
+            484 PRECALL                  1
+            488 CALL                     1
+            498 LOAD_METHOD             10 (hexdigest)
+            520 PRECALL                  0
+            524 CALL                     0
+            534 LOAD_CONST               7 (None)
+            536 LOAD_CONST              11 (8)
+            538 BUILD_SLICE              2
+            540 BINARY_SUBSCR
+            550 BINARY_OP                0 (+)
+            554 RETURN_VALUE

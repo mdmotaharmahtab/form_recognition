@@ -19,7 +19,7 @@ under **git** (see "Going forward").
 
 | Asset | Availability |
 |---|---|
-| Pipeline **source** at each stage | Partial. Three Dataiku `folder_code` bundles were saved on 07-22 (`ECSGENERATION/backup/folder_code*.zip`) plus the current live `scripts/`. The 07-20/07-21 early CLI source and the intermediate 07-23 loop-2/loop-3 edits were **not** separately snapshotted — only their outputs survive. |
+| Pipeline **source** at each stage | Partial. Three Dataiku `folder_code` bundles were saved on 07-22 (`ECSGENERATION/backup/folder_code*.zip`) plus the current live `scripts/`. The 07-20/07-21 early CLI source and the intermediate 07-23 loop-2/loop-3 edits were **not** separately snapshotted. The early stages have since been **recovered from surviving bytecode** — see `code_versions/recovered_bytecode/` (decompiled `.py` + faithful disassembly/constants; prompts verbatim). Only the outputs survive for the rest. |
 | **Generated extractors** per run | Yes — inside each `data/outputs/out*` backup, as `generated_extractor_*.py` per document. |
 | **Prompts** used per run | Yes — `codegen_prompt*.txt`, `induction_prompt.txt` inside each backup. |
 | **Version trails** (per-attempt metrics) | Yes — `codegen_trail_*.json` inside each backup. |
@@ -41,8 +41,8 @@ reports (`results/r6_backpocket_2026-07-23/eval_report_loop2_20260723.md` and
 
 | # | Stage | Date | Code | Results folder | Original backup | Headline (Sonnet unless noted) |
 |---|---|---|---|---|---|---|
-| 1 | Early CLI bring-up v1 | 07-20 22:47 | *(source not saved)* | `results/r1_v1_baseline_2026-07-20` | `data/outputs/snapshots/1_early_v1_2026-07-20` | superseded; per-doc outputs only |
-| 2 | Early CLI v2 | 07-21 08:06 | *(source not saved)* | `results/r2_v2_2026-07-21` | `data/outputs/snapshots/2_early_v2_2026-07-21` | superseded; per-doc outputs only |
+| 1 | Early CLI bring-up v1 | 07-20 22:47 | `code_versions/recovered_bytecode/stage1_v1_2026-07-20` *(from bytecode)* | `results/r1_v1_baseline_2026-07-20` | `data/outputs/snapshots/1_early_v1_2026-07-20` | superseded; source recovered from `.pyc` |
+| 2 | Early CLI v2 | 07-21 08:06 | `code_versions/recovered_bytecode/stage2_v2_2026-07-21` *(from bytecode)* | `results/r2_v2_2026-07-21` | `data/outputs/snapshots/2_early_v2_2026-07-21` | superseded; source recovered from `.pyc` |
 | 3 | Loop-1 baseline (pre-loopfix) | 07-22 15:20 | `code_versions/c1_2026-07-22_1520` | `results/r3_pre_loopfix_2026-07-22` | `data/outputs/snapshots/3_loop1_pre_loopfix_2026-07-22` | 78% / 76% / — · forms 48/49 · Rave 67% / 89% |
 | — | Dataiku code iteration | 07-22 16:23 | `code_versions/c2_2026-07-22_1623` | *(no separate run)* | — | adds `run_report.py`, oid/stage0 tweaks |
 | 4 | Pre-loop-2 baseline | 07-22 17:27–18:46 | `code_versions/c3_2026-07-22_1727` | `results/r4_pre_loop2_2026-07-22` | `data/outputs/snapshots/4_pre_loop2_baseline_2026-07-22` | baseline for loop-2 comparison |

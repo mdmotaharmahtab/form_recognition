@@ -136,7 +136,7 @@ measured effect.
   | a_baseline | 50.0% | 84.8% |
   | b_more_samples | 45.3% | 86.2% |
   | c_narrow_split | 83.6% | 73.8% |
-  | **d_your_design** | **89.2%** | *(pending)* |
+  | **d_your_design** | **89.2%** | 78.8% |
 
   - **Approach D is the best Sonnet result on this doc ever** (prec 87.9% /
     recall 90.6% / F1 89.2%, 29/4/3) — beating every prior Sonnet run including
@@ -145,10 +145,13 @@ measured effect.
     (`384-201-00004 v1.0 05 Mar 2025`): from 0 extracted fields
     (`needs_manual_template`) to **F1 90.5%** (19/20 truth fields recovered),
     above even the healthy Sonnet-CLI baseline (75%).
-  - **Model-dependent:** narrow-splitting *helps Sonnet* but *hurts GPT*
-    (`c_narrow_split` is GPT's worst config). GPT prefers more context in fewer
-    passes. Whether approach D recovers GPT's losses is still open (`d_gpt`
-    running).
+  - **Model-dependent — confirmed now that `d_gpt` finished:** approach D is a
+    *Sonnet* win, not a GPT one. GPT's best remain `b_more_samples` (86.2%, prec
+    96.2%) and `a_baseline` (84.8%); D lands at 78.8% (prec 76.5% / recall 96.9%
+    / F1 78.8%, 26/8/6). The richer per-specialist sampling knob *does* help both
+    models over narrow-split alone (Sonnet 83.6→89.2, GPT 73.8→78.8), but GPT
+    still prefers more context in fewer passes — so D is the right pick for the
+    Sonnet Dataiku run and GPT should stay on baseline/more-samples.
 - **Status — awaiting Dataiku results.** The Dataiku notebook
   (`dataiku_notebook_pipeline/CRF_codegen_induction.ipynb`) is now preset to
   approach D for Sonnet, with a `CONCURRENCY` knob for parallel batching. A full

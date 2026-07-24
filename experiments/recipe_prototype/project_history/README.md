@@ -116,6 +116,49 @@ measured effect.
   - One Sonnet doc (2021 331) is `needs_manual_template` (a specialist pass
     failed); its scored row is fresh but partial.
 
+### Cluster-sampling ablation → approach D (current best for Sonnet)
+- **Question tested:** should each generalist get *fewer* clusters but *more*
+  samples per cluster, offloading the rest to specialist passes that also see
+  several samples each? Added env-gated knobs (`ECS_REPS_PER_CLUSTER`,
+  `ECS_SPECIALIST_REPS_PER_CLUSTER`, `ECS_MAX_REPS`, `ECS_REP_BUDGET`,
+  `ECS_MIN_TAIL_*`, `ECS_MAX_PASSES`) and ran four configs (a=baseline,
+  b=more_samples, c=narrow_split, **d=few clusters + rich per-cluster samples,
+  offloaded**) for both models on the 2021 book (32-field truth packet).
+- **Key gap found and fixed:** `ECS_REPS_PER_CLUSTER` only enriched the
+  generalist's clusters — every *offloaded* cluster was hardwired to a single
+  sample page. The new `ECS_SPECIALIST_REPS_PER_CLUSTER` knob (default 1 =
+  unchanged) lets specialist passes see several samples per cluster, which is
+  what makes approach D expressible at all.
+- **Scored F1 on the 2021 doc:**
+
+  | config | Sonnet 4.5 | GPT 5.2 |
+  |---|---|---|
+  | a_baseline | 50.0% | 84.8% |
+  | b_more_samples | 45.3% | 86.2% |
+  | c_narrow_split | 83.6% | 73.8% |
+  | **d_your_design** | **89.2%** | 78.8% |
+
+  - **Approach D is the best Sonnet result on this doc ever** (prec 87.9% /
+    recall 90.6% / F1 89.2%, 29/4/3) — beating every prior Sonnet run including
+    backpocket's 85.2%, and it is the only run at/near the top on *both* axes.
+  - It also **fixed the doc Sonnet failed on completely in Dataiku**
+    (`384-201-00004 v1.0 05 Mar 2025`): from 0 extracted fields
+    (`needs_manual_template`) to **F1 90.5%** (19/20 truth fields recovered),
+    above even the healthy Sonnet-CLI baseline (75%).
+  - **Model-dependent — confirmed now that `d_gpt` finished:** approach D is a
+    *Sonnet* win, not a GPT one. GPT's best remain `b_more_samples` (86.2%, prec
+    96.2%) and `a_baseline` (84.8%); D lands at 78.8% (prec 76.5% / recall 96.9%
+    / F1 78.8%, 26/8/6). The richer per-specialist sampling knob *does* help both
+    models over narrow-split alone (Sonnet 83.6→89.2, GPT 73.8→78.8), but GPT
+    still prefers more context in fewer passes — so D is the right pick for the
+    Sonnet Dataiku run and GPT should stay on baseline/more-samples.
+- **Status — awaiting Dataiku results.** The Dataiku notebook
+  (`dataiku_notebook_pipeline/CRF_codegen_induction.ipynb`) is now preset to
+  approach D for Sonnet, with a `CONCURRENCY` knob for parallel batching. A full
+  11-document Dataiku validation run has **not yet been run** — these single-doc
+  numbers are strong but directional until the corpus run confirms they
+  generalize.
+
 ---
 
 ## Open follow-ups (from the backpocket report, not started)

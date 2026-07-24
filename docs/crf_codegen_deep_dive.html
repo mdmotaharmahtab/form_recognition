@@ -1909,7 +1909,7 @@ PK Plasma Samples: 24 Hours,  Specimen Type,                                 133
   <!-- 12.0 -------------------------------------------------------- -->
   <h3>12.0 &nbsp;The full arc &mdash; every stage from the first baseline</h3>
   <span class="tag loop">timeline</span>
-  <p>Six numbered stages run from the first CLI bring&#8209;up to today. Stages 1&ndash;3 <em>are</em> the pipeline that sections 1&ndash;11 describe; stages 4&ndash;6 are the loop&#8209;2+ evolution detailed in 12.1&ndash;12.8. The early&#8209;CLI source (07&#8209;20/07&#8209;21) was never snapshotted &mdash; only its outputs survive &mdash; so those rows are recorded honestly as &ldquo;outputs only.&rdquo; Full detail, code snapshots and result folders are in the <a href="../experiments/recipe_prototype/project_history/README.md">project&#8209;history timeline</a>.</p>
+  <p>Six numbered stages run from the first CLI bring&#8209;up to today. Stages 1&ndash;3 <em>are</em> the pipeline that sections 1&ndash;11 describe; stages 4&ndash;6 are the loop&#8209;2+ evolution detailed in 12.1&ndash;12.9. The early&#8209;CLI source (07&#8209;20/07&#8209;21) was never snapshotted &mdash; only its outputs survive &mdash; so those rows are recorded honestly as &ldquo;outputs only.&rdquo; Full detail, code snapshots and result folders are in the <a href="../experiments/recipe_prototype/project_history/README.md">project&#8209;history timeline</a>.</p>
   <table>
     <tr><th>#</th><th>stage</th><th>date</th><th>what changed</th><th>headline (Sonnet unless noted)</th></tr>
     <tr><td>1</td><td>Early CLI bring&#8209;up v1</td><td>07&#8209;20</td><td>first end&#8209;to&#8209;end CLI run</td><td>superseded; per&#8209;doc outputs only</td></tr>
@@ -2007,13 +2007,26 @@ PK Plasma Samples: 24 Hours,  Specimen Type,                                 133
     <li>Promote parallel disjoint&#8209;document execution to a first&#8209;class runner (one manifest, atomic summary merge).</li>
     <li>Validate the selected fixes on additional <b>unseen</b> CRF books.</li>
   </ol>
+  <!-- 12.8 -------------------------------------------------------- -->
+  <h3>12.8 &nbsp;Cluster&#8209;sampling ablation &rarr; approach&nbsp;D (current best for Sonnet)</h3>
+  <span class="tag loop">experiment</span>
+  <p>A four&#8209;way ablation tested how to divide work between the generalist pass and the offloaded specialist passes, driven entirely by env&#8209;gated knobs (no format knowledge): <b>a</b>&nbsp;=&nbsp;baseline, <b>b</b>&nbsp;=&nbsp;more samples for one fat generalist, <b>c</b>&nbsp;=&nbsp;narrow split (many small agents, one sample each), <b>d</b>&nbsp;=&nbsp;<b>few clusters per agent <em>and</em> more samples per cluster, offloaded</b>. Expressing&nbsp;<b>d</b> required a new knob, <code>ECS_SPECIALIST_REPS_PER_CLUSTER</code> (default&nbsp;1&nbsp;=&nbsp;unchanged): until now every <em>offloaded</em> cluster was hardwired to a single sample page, so &ldquo;more samples per cluster&rdquo; never reached the specialists.</p>
+  <p>Scored F1 on the 2021 book (32&#8209;field page&#8209;sampled truth packet):</p>
+  <table>
+    <tr><th>config</th><th>Claude Sonnet 4.5</th><th>GPT 5.2</th></tr>
+    <tr><td>a &mdash; baseline</td><td>50.0%</td><td>84.8%</td></tr>
+    <tr><td>b &mdash; more samples</td><td>45.3%</td><td>86.2%</td></tr>
+    <tr><td>c &mdash; narrow split</td><td>83.6%</td><td>73.8%</td></tr>
+    <tr><td><b>d &mdash; few clusters + rich samples</b></td><td><b>89.2%</b></td><td>78.8%</td></tr>
+  </table>
+  <p><b>Effect:</b> approach&nbsp;D is the <b>best Sonnet result on this doc ever</b> (precision&nbsp;87.9% / recall&nbsp;90.6% / F1&nbsp;89.2%), beating every prior Sonnet run including backpocket&rsquo;s 85.2%, and the only run at/near the top on <em>both</em> axes. It also <b>fixed the book Sonnet had failed on completely in Dataiku</b> (<code>384&#8209;201&#8209;00004 v1.0</code>): from 0&nbsp;extracted fields (<code>needs_manual_template</code>) to <b>F1&nbsp;90.5%</b> (19&nbsp;of&nbsp;20 truth fields). <b>Caveat &mdash; model&#8209;dependent (now confirmed, <code>d_gpt</code> finished):</b> approach&nbsp;D is a <em>Sonnet</em> win, not a GPT one &mdash; GPT&rsquo;s best stay <code>b</code>&nbsp;(86.2%, precision&nbsp;96.2%) and <code>a</code>&nbsp;(84.8%), while D lands at 78.8% (26/8/6). The richer per&#8209;specialist sampling knob does help <em>both</em> models over narrow&#8209;split alone (Sonnet&nbsp;83.6&rarr;89.2, GPT&nbsp;73.8&rarr;78.8), but GPT still prefers more context in fewer passes &mdash; so&nbsp;D is the right pick for the Sonnet Dataiku run and GPT should stay on baseline/more&#8209;samples.</p>
   <div class="card">
-    <h4>In flight right now</h4>
-    <p style="margin:0">A cluster&#8209;sizing ablation is running for both models: instead of many clusters with few samples each, give each generalist pass <b>fewer clusters but more good samples per cluster</b> (via <code>ECS_REPS_PER_CLUSTER</code> / <code>ECS_MAX_REPS</code> knobs, no code edits). It tests whether offloading per&#8209;agent pressure improves coverage; results slot in here once the six parallel runs finish.</p>
+    <h4>Status &mdash; awaiting Dataiku results</h4>
+    <p style="margin:0">The Dataiku notebook (<code>dataiku_notebook_pipeline/CRF_codegen_induction.ipynb</code>) is now <b>preset to approach&nbsp;D for Sonnet</b>, with a <code>CONCURRENCY</code> knob that processes several independent documents in parallel. A full <b>11&#8209;document Dataiku validation run has not yet been executed</b> &mdash; the numbers above are strong but <em>directional single&#8209;doc</em> evidence until the corpus run confirms they generalize. Results slot in here once that run finishes. See the <a href="../experiments/recipe_prototype/project_history/README.md">project&#8209;history timeline</a> for the knob details.</p>
   </div>
 
-  <!-- 12.8 -------------------------------------------------------- -->
-  <h3>12.8 &nbsp;The invariant every change respected</h3>
+  <!-- 12.9 -------------------------------------------------------- -->
+  <h3>12.9 &nbsp;The invariant every change respected</h3>
   <p class="one-liner"><b>No format knowledge was added.</b> Every fix above is structural and generic &mdash; grouping&#8209;title <em>definitions</em> not annotation regexes, evidence&#8209;<em>scaled</em> forgiveness not junk ratios, changing&#8209;header <em>detection</em> not vendor vocabularies, AST <em>counts</em> not string denylists. The 11 CRFs shaped our understanding of what CRFs look like; not one line of shipped code is tuned to their specific strings, and each change was accepted only when it moved the generic mechanism, not the benchmark.</p>
 </section>
 

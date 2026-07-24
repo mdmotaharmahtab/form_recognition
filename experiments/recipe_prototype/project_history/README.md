@@ -41,14 +41,14 @@ reports (`results/r6_backpocket_2026-07-23/eval_report_loop2_20260723.md` and
 
 | # | Stage | Date | Code | Results folder | Original backup | Headline (Sonnet unless noted) |
 |---|---|---|---|---|---|---|
-| 1 | Early CLI bring-up v1 | 07-20 22:47 | *(source not saved)* | `results/r1_v1_baseline_2026-07-20` | `data/outputs/out_v1_backup` | superseded; per-doc outputs only |
-| 2 | Early CLI v2 | 07-21 08:06 | *(source not saved)* | `results/r2_v2_2026-07-21` | `data/outputs/out_v2_backup` | superseded; per-doc outputs only |
-| 3 | Loop-1 baseline (pre-loopfix) | 07-22 15:20 | `code_versions/c1_2026-07-22_1520` | `results/r3_pre_loopfix_2026-07-22` | `out_baseline_pre_loopfix_20260722` | 78% / 76% / — · forms 48/49 · Rave 67% / 89% |
+| 1 | Early CLI bring-up v1 | 07-20 22:47 | *(source not saved)* | `results/r1_v1_baseline_2026-07-20` | `data/outputs/snapshots/1_early_v1_2026-07-20` | superseded; per-doc outputs only |
+| 2 | Early CLI v2 | 07-21 08:06 | *(source not saved)* | `results/r2_v2_2026-07-21` | `data/outputs/snapshots/2_early_v2_2026-07-21` | superseded; per-doc outputs only |
+| 3 | Loop-1 baseline (pre-loopfix) | 07-22 15:20 | `code_versions/c1_2026-07-22_1520` | `results/r3_pre_loopfix_2026-07-22` | `data/outputs/snapshots/3_loop1_pre_loopfix_2026-07-22` | 78% / 76% / — · forms 48/49 · Rave 67% / 89% |
 | — | Dataiku code iteration | 07-22 16:23 | `code_versions/c2_2026-07-22_1623` | *(no separate run)* | — | adds `run_report.py`, oid/stage0 tweaks |
-| 4 | Pre-loop-2 baseline | 07-22 17:27–18:46 | `code_versions/c3_2026-07-22_1727` | `results/r4_pre_loop2_2026-07-22` | `out_backup_20260723_pre_loop2` | baseline for loop-2 comparison |
-| 4b | Sanity (guidance regression) | 07-22 22:08 | *(live)* | `results/r4b_sanity_guidance_2026-07-22` | `out_sanity1_guidance_regression_20260722` | diagnostic only |
-| 5 | Loop-2 eval (11 docs × 2 models) | 07-23 09:05 | *(live, evolving)* | `results/r5_loop2_eval_2026-07-23` | `out_backup_loop2eval` | Sonnet 78% / 63% / 91% · forms 43/45 · Rave 87% / 83% · **GPT 74% / 85% / 96% · forms 18/51 · Rave 97% / 84%** |
-| 6 | Backpocket (current) | 07-23 | `code_versions/c4_current_2026-07-23` **= live `scripts/`** | `results/r6_backpocket_2026-07-23` | `data/outputs/out` | Sonnet 73.2% / 73.6% / 93.9% · F1 73.4% · forms 50/51 · Rave 85.4% / 84.7% · **GPT 80.3% / 82.7% / 96.5% · F1 81.5% · forms 44/57 · Rave 47.5% / 84.5%** |
+| 4 | Pre-loop-2 baseline | 07-22 17:27–18:46 | `code_versions/c3_2026-07-22_1727` | `results/r4_pre_loop2_2026-07-22` | `data/outputs/snapshots/4_pre_loop2_baseline_2026-07-22` | baseline for loop-2 comparison |
+| 4b | Sanity (guidance regression) | 07-22 22:08 | *(live)* | `results/r4b_sanity_guidance_2026-07-22` | `data/outputs/snapshots/4b_sanity_guidance_2026-07-22` | diagnostic only |
+| 5 | Loop-2 eval (11 docs × 2 models) | 07-23 09:05 | *(live, evolving)* | `results/r5_loop2_eval_2026-07-23` | `data/outputs/snapshots/5_loop2_eval_2026-07-23` | Sonnet 78% / 63% / 91% · forms 43/45 · Rave 87% / 83% · **GPT 74% / 85% / 96% · forms 18/51 · Rave 97% / 84%** |
+| 6 | Backpocket (current) | 07-23 | `code_versions/c4_current_2026-07-23` **= live `scripts/`** | `results/r6_backpocket_2026-07-23` | `data/outputs/out` (live) | Sonnet 73.2% / 73.6% / 93.9% · F1 73.4% · forms 50/51 · Rave 85.4% / 84.7% · **GPT 80.3% / 82.7% / 96.5% · F1 81.5% · forms 44/57 · Rave 47.5% / 84.5%** |
 
 `code_versions/DIFFS.txt` is the full unified diff between consecutive code
 snapshots; `code_versions/DIFFS_summary.txt` shows how each core file grew. The
